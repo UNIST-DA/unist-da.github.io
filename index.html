@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>내 홈페이지</title>
+  <style>
+    :root{
+      --bg: #fafbff; --card:#fff; --text:#0e1116; --muted:#5b6472;
+      --primary:#536dfe; --radius: 16px; --maxw: 900px;
+    }
+    *{box-sizing:border-box; margin:0; padding:0;}
+    body{font-family:sans-serif; background:var(--bg); color:var(--text); line-height:1.6;}
+    header, footer{padding:20px; text-align:center;}
+    main{max-width:var(--maxw); margin:0 auto; padding:20px;}
+    .card{
+      background:var(--card); border-radius:var(--radius); padding:20px;
+      box-shadow:0 4px 15px rgba(0,0,0,.08); margin-bottom:20px;
+    }
+    a{color:var(--primary); text-decoration:none;}
+    a:hover{text-decoration:underline;}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>안녕하세요 👋</h1>
+    <p>이곳은 제 GitHub Pages 메인 홈페이지입니다.</p>
+  </header>
+
+  <main>
+    <div class="card">
+      <h2>소개</h2>
+      <p>여기에 자기소개나 프로젝트 간단 설명을 적으세요.</p>
+    </div>
+
+    <div class="card">
+      <h2>프로젝트</h2>
+      <ul>
+        <li><a href="https://username.github.io/project1/">프로젝트 1</a></li>
+        <li><a href="https://username.github.io/project2/">프로젝트 2</a></li>
+      </ul>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 내이름 · <a href="https://github.com/username">GitHub</a>
+  </footer>
+</body>
+</html>
