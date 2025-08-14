@@ -1,7 +1,7 @@
 title: "Data Analytics Lab"
 description: "UNIST Data Analytics Lab"
 url: "https://unist-da.github.io"
-baseurl: ""
+baseurl: "/heeyoon"
 
 # We won't use a remote theme; keep it simple and custom.
 theme: null
