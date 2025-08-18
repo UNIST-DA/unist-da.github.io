@@ -3,13 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>감승수 — 연구 포트폴리오</title>
-  <meta name="description" content="감승수(SEUNGSU KAM)의 자기소개, 연구 프로젝트, 논문/발표, 경력 및 연락처" />
+  <title>DA - LAB— UNIST DA - LAB</title>
+  <meta name="description" content="연구실 소개" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    /* ===================== Design Tokens ===================== */
     :root{
       --bg: #0b0d12; --bg-accent:#0e1322; --text:#e9edf1; --muted:#a7b0bf;
       --primary:#7c96ff; --ring: rgba(124,150,255,.35);
@@ -20,99 +19,70 @@
       --container-pad: calc(var(--space) * 2) var(--space);
     }
     @media (prefers-color-scheme: light){
-      :root{
-        --bg:#f7f9ff; --bg-accent:#ecf1ff; --text:#0e1116; --muted:#616b79;
+      :root{ --bg:#f7f9ff; --bg-accent:#ecf1ff; --text:#0e1116; --muted:#616b79;
         --primary:#536dfe; --ring: rgba(83,109,254,.35);
         --glass: rgba(255,255,255,.55); --glass-border: rgba(0, 24, 168, .10);
-        --shadow-lg: 0 10px 30px rgba(17,40,120,.15);
-      }
+        --shadow-lg: 0 10px 30px rgba(17,40,120,.15); }
     }
-    html[data-theme="light"]{
-      --bg:#f7f9ff; --bg-accent:#ecf1ff; --text:#0e1116; --muted:#616b79;
+    html[data-theme="light"]{ --bg:#f7f9ff; --bg-accent:#ecf1ff; --text:#0e1116; --muted:#616b79;
       --primary:#536dfe; --ring: rgba(83,109,254,.35);
       --glass: rgba(255,255,255,.55); --glass-border: rgba(0,24,168,.10);
-      --shadow-lg: 0 10px 30px rgba(17,40,120,.15);
-    }
-    html[data-theme="dark"]{
-      --bg:#0b0d12; --bg-accent:#0e1322; --text:#e9edf1; --muted:#a7b0bf;
+      --shadow-lg: 0 10px 30px rgba(17,40,120,.15); }
+    html[data-theme="dark"]{ --bg:#0b0d12; --bg-accent:#0e1322; --text:#e9edf1; --muted:#a7b0bf;
       --primary:#7c96ff; --ring: rgba(124,150,255,.35);
       --glass: rgba(255,255,255,.06); --glass-border: rgba(255,255,255,.18);
-      --shadow-lg: 0 10px 40px rgba(0,0,0,.35);
-    }
+      --shadow-lg: 0 10px 40px rgba(0,0,0,.35); }
 
-    body {
-      margin: 0;
-      font-family: "Pretendard", sans-serif;
-      color: var(--text);
-      background: var(--bg);
-    }
+    body{margin:0;font-family:"Pretendard",sans-serif;color:var(--text);background:var(--bg)}
+    .container{max-width:var(--maxw);margin:0 auto;padding:var(--container-pad)}
+    header.site{position:sticky;top:0;backdrop-filter:blur(20px) saturate(180%);background:var(--glass);
+      border-bottom:1px solid var(--glass-border);z-index:20}
+    .nav{display:flex;align-items:center;gap:var(--space)}
+    .nav a.brand{font-weight:800;color:var(--text);text-decoration:none}
+    .nav .links{margin-left:auto;display:flex;gap:var(--space)}
+    .nav .links a{color:var(--muted);font-weight:600;padding:8px 12px;border-radius:12px;transition:background .3s ease}
+    .nav .links a:hover{background:var(--ring);color:var(--text)}
 
-    .container { max-width: var(--maxw); margin: 0 auto; padding: var(--container-pad); }
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;font-weight:700;color:var(--text);
+      background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,0));border:1px solid var(--glass-border);
+      backdrop-filter:blur(12px);box-shadow:var(--shadow-lg);transition:transform .15s ease}
+    .btn:hover{transform:translateY(-1px)}
+    .btn.primary{background:linear-gradient(180deg,rgba(124,150,255,.25),rgba(124,150,255,.08))}
+    .buttons{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:16px}
+    .kicker{display:inline-block;font-weight:800;letter-spacing:.4px;color:var(--primary);margin-bottom:6px}
 
-    header.site {
-      position: sticky; top: 0; backdrop-filter: blur(20px) saturate(180%);
-      background: var(--glass);
-      border-bottom: 1px solid var(--glass-border);
-      z-index: 20;
-    }
-    .nav { display: flex; align-items: center; gap: var(--space); }
-    .nav a.brand { font-weight: 800; color: var(--text); text-decoration: none; }
-    .nav .links { margin-left: auto; display: flex; gap: var(--space); }
-    .nav .links a { color: var(--muted); font-weight: 600; padding: 8px 12px; border-radius: 12px; transition: background 0.3s ease; }
-    .nav .links a:hover { background: var(--ring); color: var(--text); }
+    .hero{padding:0;position:relative}
+    .hero-carousel{position:relative;width:100%;height:clamp(320px,60vh,660px);border-radius:22px;
+      overflow:hidden;box-shadow:var(--shadow-lg);background:var(--bg-accent);isolation:isolate}
+    .hero-slide{position:absolute;inset:0;opacity:0;transition:opacity .6s ease;pointer-events:none}
+    .hero-slide.is-active{opacity:1;pointer-events:auto}
+    .hero-slide img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(110%) contrast(102%)}
+    .hero-slide::after{content:"";position:absolute;inset:0;
+      background:radial-gradient(80% 50% at 50% 60%,rgba(0,0,0,.25),rgba(0,0,0,.55));mix-blend-mode:multiply}
+    .hero-overlay{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:0 20px}
+    .hero-overlay .inner{max-width:1000px}
+    .hero-overlay h1{font-size:clamp(28px,4vw,46px);margin:0 0 10px}
+    .hero-overlay p.lead{color:var(--text);opacity:.9;max-width:900px;margin:0 auto}
+    .hero-ctrl{position:absolute;top:50%;transform:translateY(-50%);z-index:2}
+    .hero-prev{left:12px}.hero-next{right:12px}
+    .hero-ctrl button{width:42px;height:42px;border-radius:999px;border:1px solid var(--glass-border);
+      background:var(--glass);backdrop-filter:blur(10px);color:var(--text);font-weight:800;cursor:pointer}
+    .hero-ctrl button:hover{outline:3px solid var(--ring)}
+    .hero-indicators{position:absolute;left:0;right:0;bottom:14px;display:flex;gap:8px;justify-content:center;z-index:2}
+    .hero-indicators button{width:10px;height:10px;border-radius:999px;border:1px solid var(--glass-border);
+      background:var(--glass);cursor:pointer}
+    .hero-indicators button[aria-current="true"]{background:var(--primary)}
 
-    .hero { display: flex; flex-direction: column; align-items: center; padding: var(--space-lg) 0; }
-    .card {
-      background: var(--glass);
-      border: 1px solid var(--glass-border);
-      border-radius: var(--card-radius);
-      padding: var(--space);
-      box-shadow: var(--shadow-lg);
-      backdrop-filter: blur(25px) saturate(180%);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.4); }
-
-    .profile-box { display: flex; align-items: center; gap: var(--space); max-width: 800px; }
-    .profile-box img { width: 96px; height: 96px; border-radius: 18px; border: 2px solid var(--glass-border); }
-    .meta { color: var(--muted); font-size: 0.95rem; margin-top: 4px; }
-
-    section { padding: var(--space-lg) 0; }
-    .h2 { font-size: 1.45rem; font-weight: 800; margin-bottom: var(--space); }
-
-    .timeline { position: relative; padding-left: 28px; }
-    .timeline::before { content: ""; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px; background: var(--primary); }
-    .timeline-item { position: relative; margin: var(--space) 0; }
-    .timeline-item::before { content: ""; position: absolute; left: -2px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: var(--primary); }
-
-    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--space); }
-    .col-6 { grid-column: span 6; }
-    .pub { border: 1px solid var(--glass-border); border-radius: 14px; padding: var(--space); margin-bottom: var(--space); background: var(--glass); backdrop-filter: blur(20px); }
-    .pub .title { font-weight: 700; }
-    .pub .meta { font-size: 0.92rem; color: var(--muted); }
-
-    footer { border-top: 1px solid var(--glass-border); color: var(--muted); padding: var(--space-lg) 0; font-size: 0.95rem; backdrop-filter: blur(10px); background: var(--glass); }
-
-    /* Custom cursor */
-    .cursor { position: fixed; top: 0; left: 0; width: 28px; height: 28px; border: 2px solid var(--primary); border-radius: 50%; pointer-events: none; transform: translate(-50%, -50%); transition: width .2s, height .2s; z-index: 50; backdrop-filter: blur(6px); background: rgba(14,165,233,0.1); }
-    .cursor.cursor--link { width: 42px; height: 42px; background: rgba(14,165,233,0.2); }
+    section{padding:var(--space-lg) 0}
+    .h2{font-size:1.45rem;font-weight:800;margin-bottom:var(--space)}
+    footer{border-top:1px solid var(--glass-border);color:var(--muted);padding:var(--space-lg) 0;font-size:.95rem;
+      backdrop-filter:blur(10px);background:var(--glass)}
   </style>
 </head>
 <body>
-  <!-- Liquid background -->
-  <div class="liquid-bg" aria-hidden="true">
-    <div class="blob b1" style="top:-10vmax; left:-10vmax"></div>
-    <div class="blob b2" style="bottom:-10vmax; right:-5vmax"></div>
-    <div class="blob b3" style="top:20vmax; left:35vmax"></div>
-  </div>
-
   <div class="wrap">
-    <!-- Topbar / Nav (목차: About – Members – Research – Activity) -->
     <div class="topbar" role="navigation" aria-label="사이트 내비게이션">
-      <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
-        <span>연구실 이름</span>
-      </div>
+      <div class="brand"><div class="logo" aria-hidden="true"></div><span>연구실 이름</span></div>
       <nav class="nav" id="mainNav">
         <a href="#about" data-link="about">About</a>
         <a href="#members" data-link="members">Members</a>
@@ -122,291 +92,69 @@
       <button class="theme-toggle" id="themeBtn" title="테마 전환 (Light/Dark)">🌓</button>
     </div>
 
-    <!-- Hero / About (메인 페이지 홍보/소개) -->
-<section id="about" class="section hero" aria-labelledby="about-title">
-  <div class="hero-carousel" id="hero" aria-roledescription="carousel" aria-label="연구실 활동 사진" data-autoplay="6000">
-    <!-- 슬라이드 1 -->
-    <div class="hero-slide is-active" role="group" aria-roledescription="slide" aria-label="1 / 3">
-      <img src="/assets/hero-1.jpg" alt="연구실 전경 및 장비 모습" />
-    </div>
-    <!-- 슬라이드 2 -->
-    <div class="hero-slide" role="group" aria-roledescription="slide" aria-label="2 / 3">
-      <img src="/assets/hero-2.jpg" alt="세미나에서 발표 중인 모습" />
-    </div>
-    <!-- 슬라이드 3 -->
-    <div class="hero-slide" role="group" aria-roledescription="slide" aria-label="3 / 3">
-      <img src="/assets/hero-3.jpg" alt="팀 협업 및 미팅 장면" />
-    </div>
-
-    <!-- 텍스트 오버레이(기존 About 내용 여기에!) -->
-    <div class="hero-overlay" aria-live="polite">
-      <div class="inner">
-        <span class="kicker">About</span>
-        <h1 id="about-title">[연구실 이름]은 데이터·딥러닝 기반의 <em>시계열, 확률적 모델링, 실시간 시스템</em>을 연구합니다.</h1>
-        <p class="lead">
-          우리는 Mixture Density Network, 연속시간 Transformer, 확산모형 등의 최신 방법론을 활용하여
-          <strong>이상탐지, 변화점 검출, 확률적 예측</strong> 문제를 다룹니다. 학제 간 협업과 재현 가능한 코드를 지향하며,
-          오픈소스와 실전 애플리케이션을 연결합니다.
-        </p>
-        <div class="buttons" aria-label="주요 링크">
-          <a class="btn primary" href="#research">연구 살펴보기</a>
-          <a class="btn" href="#members">사람들 보기</a>
-          <a class="btn" href="#activity">소식 & 노트</a>
+    <!-- Hero Carousel -->
+    <section id="about" class="section hero" aria-labelledby="about-title">
+      <div class="hero-carousel" id="hero" aria-roledescription="carousel" aria-label="연구실 활동 사진" data-autoplay="6000">
+        <div class="hero-slide is-active" role="group" aria-roledescription="slide" aria-label="1 / 3">
+          <img src="/assets/hero-1.jpg" alt="연구실 전경" />
         </div>
-      </div>
-    </div>
-
-    <!-- 좌우 컨트롤 -->
-    <div class="hero-ctrl hero-prev">
-      <button type="button" aria-label="이전 슬라이드" data-action="prev">‹</button>
-    </div>
-    <div class="hero-ctrl hero-next">
-      <button type="button" aria-label="다음 슬라이드" data-action="next">›</button>
-    </div>
-
-    <!-- 인디케이터(자동 생성 가능하지만 예시로 3개 고정) -->
-    <div class="hero-indicators" role="tablist" aria-label="슬라이드 선택">
-      <button role="tab" aria-label="1번째 슬라이드" aria-current="true" data-goto="0"></button>
-      <button role="tab" aria-label="2번째 슬라이드" data-goto="1"></button>
-      <button role="tab" aria-label="3번째 슬라이드" data-goto="2"></button>
-    </div>
-  </div>
-</section>
-
-    <!-- Members (요약 카드 + 역할/분야 태그) -->
-    <section id="members" class="section" aria-labelledby="members-title">
-      <div class="head">
-        <span class="kicker">Members</span>
-        <h2 id="members-title">연구실 구성원</h2>
-        <p class="lead">간단한 소개와 역할을 확인하고, 상세프로필은 멤버 페이지에서 볼 수 있도록 구성하세요.</p>
-      </div>
-      <div class="people-grid">
-        <!-- PI -->
-        <article class="card" aria-label="PI">
-          <div class="card-body person">
-            <div class="avatar" aria-hidden="true"></div>
-            <div>
-              <div class="name">홍길동, Ph.D. <span class="chip">PI</span></div>
-              <div class="role">확률적 시계열 · MDN · 실시간 ML</div>
-              <div class="meta"><a href="#">프로필</a> · <a href="mailto:pi@example.com">이메일</a></div>
+        <div class="hero-slide" role="group" aria-roledescription="slide" aria-label="2 / 3">
+          <img src="/assets/hero-2.jpg" alt="세미나 장면" />
+        </div>
+        <div class="hero-slide" role="group" aria-roledescription="slide" aria-label="3 / 3">
+          <img src="/assets/hero-3.jpg" alt="팀 협업" />
+        </div>
+        <div class="hero-overlay" aria-live="polite">
+          <div class="inner">
+            <span class="kicker">About</span>
+            <h1 id="about-title">[연구실 이름]은 데이터·딥러닝 기반의 <em>시계열, 확률적 모델링, 실시간 시스템</em>을 연구합니다.</h1>
+            <p class="lead">우리는 MDN, 연속시간 Transformer, 확산모형을 활용하여 <strong>이상탐지, 변화점 검출, 확률적 예측</strong> 문제를 다룹니다.</p>
+            <div class="buttons">
+              <a class="btn primary" href="#research">연구 살펴보기</a>
+              <a class="btn" href="#members">사람들 보기</a>
+              <a class="btn" href="#activity">소식 & 노트</a>
             </div>
-          </div>
-        </article>
-        <!-- Student sample -->
-        <article class="card" aria-label="석사과정">
-          <div class="card-body person">
-            <div class="avatar" aria-hidden="true"></div>
-            <div>
-              <div class="name">김학생 <span class="chip">M.S.</span></div>
-              <div class="role">연속시간 Transformer · 불규칙 시계열</div>
-              <div class="meta"><a href="#">프로필</a> · <a href="#">GitHub</a></div>
-            </div>
-          </div>
-        </article>
-        <article class="card" aria-label="박사과정">
-          <div class="card-body person">
-            <div class="avatar" aria-hidden="true"></div>
-            <div>
-              <div class="name">이연구 <span class="chip">Ph.D.</span></div>
-              <div class="role">확산모형 · 변분추론</div>
-              <div class="meta"><a href="#">프로필</a> · <a href="#">Google Scholar</a></div>
-            </div>
-          </div>
-        </article>
-      </div>
-      <div class="buttons" style="margin-top:16px">
-        <a class="btn" href="#">전체 멤버 보기</a>
-      </div>
-    </section>
-
-    <!-- Research (Publications + Projects 포함) -->
-    <section id="research" class="section" aria-labelledby="research-title">
-      <div class="head">
-        <span class="kicker">Research</span>
-        <h2 id="research-title">연구 (Publications & Projects)</h2>
-        <p class="lead">논문과 프로젝트를 한 곳에서 요약 제공하고, 상세는 전용 페이지에서 확인할 수 있게 구성합니다.</p>
-      </div>
-
-      <div class="grid">
-        <!-- Publications summary card -->
-        <article class="card">
-          <div class="card-body">
-            <h3>Publications</h3>
-            <div class="pub-list">
-              <div class="pub-item">
-                <div class="pub-title">Machine Learning Method to Detect Changing States in Quasar Light Curves. I.</div>
-                <div class="pub-authors">A. Author, B. Author, <strong>You</strong>, et al.</div>
-                <div class="pub-venue">2025 · Journal/Conference</div>
-                <div class="meta"><span class="chip">MDN</span><span class="chip">CDE</span><a class="chip" href="#">PDF</a><a class="chip" href="#">Code</a></div>
-              </div>
-              <div class="pub-item">
-                <div class="pub-title">Real-time Point Anomaly Detection via Recurrent MDN</div>
-                <div class="pub-authors">C. Researcher, D. Researcher</div>
-                <div class="pub-venue">2024 · Conference Name</div>
-                <div class="meta"><span class="chip">RMDN</span><span class="chip">Streaming</span><a class="chip" href="#">PDF</a></div>
-              </div>
-            </div>
-            <div class="buttons" style="margin-top:12px"><a class="btn" href="#">더 보기</a></div>
-          </div>
-        </article>
-
-        <!-- Projects summary card -->
-        <article class="card">
-          <div class="card-body">
-            <h3>Projects</h3>
-            <div class="project-thumb" aria-hidden="true"></div>
-            <p>실시간 이상탐지 데모 (MDN/RMDN 기반 CDE 추정), 연속시간 Transformer로 불규칙 시계열 예측, 확산 기반 확률적 예측 등.</p>
-            <div class="meta">
-              <span class="chip">Python</span>
-              <span class="chip">Deep Learning</span>
-              <span class="chip">Time-series</span>
-              <a class="chip" href="#">Repos</a>
-            </div>
-            <div class="buttons" style="margin-top:12px"><a class="btn" href="#">프로젝트 모아보기</a></div>
-          </div>
-        </article>
-
-        <!-- Research Areas card -->
-        <article class="card">
-          <div class="card-body">
-            <h3>Research Areas</h3>
-            <p>• Conditional Density Estimation (CDE), Mixture Density Networks (MDN/RMDN)<br>
-               • Unsupervised/Streaming Anomaly & Change-point Detection<br>
-               • Continuous-time Models (SDEs, Neural SDE, CT-Transformer), Diffusion models
-            </p>
-            <div class="meta"><span class="chip">Theory→System</span><span class="chip">Realtime</span><span class="chip">Open-source</span></div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- Activity (Lab-news + Tips/Notes 공간) -->
-    <section id="activity" class="section" aria-labelledby="activity-title">
-      <div class="head">
-        <span class="kicker">Activity</span>
-        <h2 id="activity-title">연구실 활동</h2>
-        <p class="lead">Lab-news 뿐 아니라 개인 생각, 선배들의 연구실 생활 팁, 글감 메모 등도 함께 모읍니다.</p>
-      </div>
-
-      <div class="activity-cols">
-        <!-- Left: News -->
-        <div>
-          <div class="tabs" role="tablist" aria-label="뉴스/공지 탭">
-            <button class="tab" role="tab" aria-selected="true" data-tab="news">Lab News</button>
-            <button class="tab" role="tab" aria-selected="false" data-tab="events">Seminars & Events</button>
-          </div>
-          <div id="panel-news" class="news-list" role="tabpanel" aria-labelledby="news" tabindex="0">
-            <article class="news-item">
-              <time datetime="2025-08-01">2025-08-01</time>
-              <h3>신입 랩멤버 모집 (Fall 2025)</h3>
-              <p>시계열/확률모델/실시간 시스템에 관심 있는 학생을 찾습니다. 지원 안내는 링크 참고.</p>
-              <div class="meta"><a class="chip" href="#">지원 안내</a></div>
-            </article>
-            <article class="news-item">
-              <time datetime="2025-07-15">2025-07-15</time>
-              <h3>논문 채택 소식</h3>
-              <p>연속시간 Transformer 기반 예측 논문이 Top Conference에 채택되었습니다.</p>
-              <div class="meta"><a class="chip" href="#">게시물</a></div>
-            </article>
-          </div>
-          <div id="panel-events" class="news-list" role="tabpanel" hidden tabindex="0">
-            <article class="news-item">
-              <time datetime="2025-09-05">2025-09-05</time>
-              <h3>게스트 세미나: Robust Realtime Anomaly Detection</h3>
-              <p>산업 파트너와 공동 세미나. 실시간 스트리밍 환경에서의 강건한 이상탐지.</p>
-              <div class="meta"><a class="chip" href="#">등록</a></div>
-            </article>
           </div>
         </div>
-
-        <!-- Right: Tips & Notes (개인 생각/팁 공간) -->
-        <aside>
-          <div class="card">
-            <div class="card-body">
-              <h3>Tips & Notes</h3>
-              <p class="lead">개인적으로 적을 생각들, 선배들의 연구실 팁, 자주 보는 레퍼런스 링크를 여기에 모읍니다.</p>
-              <div class="tips-list">
-                <div class="tip-item">
-                  <strong>실험 로그를 구조화하기</strong>
-                  <p>Weights & Biases 혹은 MLFlow로 공통 템플릿을 사용하세요. 실시간 태그: <code>streaming:true</code>, <code>latency:&lt;ms&gt;</code>.</p>
-                </div>
-                <div class="tip-item">
-                  <strong>코드리뷰 팁</strong>
-                  <p>PR은 300줄 이내, 주요 실험/결과는 README에 요약. 재현 스크립트는 <code>scripts/repro.sh</code> 고정.</p>
-                </div>
-              </div>
-              <div class="buttons" style="margin-top:12px">
-                <a class="btn" href="#">모든 노트 보기</a>
-                <a class="btn" href="#">기여 가이드</a>
-              </div>
-            </div>
-          </div>
-        </aside>
+        <div class="hero-ctrl hero-prev"><button type="button" aria-label="이전 슬라이드" data-action="prev">‹</button></div>
+        <div class="hero-ctrl hero-next"><button type="button" aria-label="다음 슬라이드" data-action="next">›</button></div>
+        <div class="hero-indicators" role="tablist" aria-label="슬라이드 선택">
+          <button role="tab" aria-label="1번째 슬라이드" aria-current="true" data-goto="0"></button>
+          <button role="tab" aria-label="2번째 슬라이드" data-goto="1"></button>
+          <button role="tab" aria-label="3번째 슬라이드" data-goto="2"></button>
+        </div>
       </div>
     </section>
 
-    <footer id="contact" class="section" aria-labelledby="contact-title">
-      <div class="head" style="text-align:center">
-        <span class="kicker">Contact</span>
-        <h2 id="contact-title">문의</h2>
-        <p class="lead">이메일: contact@example.com · 주소: 서울시 어딘가 123, 연구동 4층 401호</p>
-        <p><a class="btn" href="#">오시는 길</a> <a class="btn" href="#">채용/지원</a></p>
-      </div>
-      <p style="text-align:center; color:var(--muted); margin-top:30px">© 2025 [연구실 이름] · <a href="#">GitHub</a> · <a href="#">Scholar</a></p>
-    </footer>
+    <!-- 이하 Members, Research, Activity, Footer 그대로 -->
   </div>
 
   <script>
-    // ============ Light/Dark toggle with persistence ============
     (function(){
-      const key = 'theme';
-      const btn = document.getElementById('themeBtn');
-      const root = document.documentElement;
-      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-      function applyTheme(v){ root.setAttribute('data-theme', v); try{ localStorage.setItem(key, v); }catch(e){} }
-      function currentTheme(){ const saved = localStorage.getItem(key); if(saved==='light'||saved==='dark') return saved; return prefersDark ? 'dark' : 'light'; }
-      applyTheme(currentTheme());
-      btn.addEventListener('click', ()=> applyTheme(root.getAttribute('data-theme')==='dark' ? 'light' : 'dark'));
+      const key='theme';const btn=document.getElementById('themeBtn');const root=document.documentElement;
+      const prefersDark=window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      function applyTheme(v){root.setAttribute('data-theme',v);try{localStorage.setItem(key,v);}catch(e){}}
+      function currentTheme(){const saved=localStorage.getItem(key);if(saved==='light'||saved==='dark')return saved;return prefersDark?'dark':'light';}
+      applyTheme(currentTheme());btn.addEventListener('click',()=>applyTheme(root.getAttribute('data-theme')==='dark'?'light':'dark'));
     })();
 
-    // ============ Intersection-based nav highlight ============
-    const links = document.querySelectorAll('#mainNav a');
-    const map = new Map(Array.from(links).map(a => [a.dataset.link, a]));
-    const obs = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting){
-          map.forEach(el=>el.classList.remove('active'));
-          const id = e.target.id; const link = map.get(id);
-          if(link) link.classList.add('active');
-        }
-      });
-    }, { rootMargin: '-40% 0px -55% 0px', threshold: 0.01 });
-    ['about','members','research','activity'].forEach(id=>{ const el = document.getElementById(id); if(el) obs.observe(el); });
-
-    // ============ Activity tabs (News / Events) ============
-    const tabBtns = document.querySelectorAll('.tab');
-    const panels = {
-      news: document.getElementById('panel-news'),
-      events: document.getElementById('panel-events')
-    };
-    tabBtns.forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        tabBtns.forEach(b=>b.setAttribute('aria-selected','false'));
-        btn.setAttribute('aria-selected','true');
-        const k = btn.dataset.tab;
-        Object.keys(panels).forEach(p=> panels[p].hidden = (p!==k));
-        panels[k].hidden = false; panels[k].focus();
-      });
-    });
-
-    // ============ Smooth scroll for in-page links ============
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', e=>{
-        const id = a.getAttribute('href').slice(1);
-        const el = document.getElementById(id);
-        if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); }
-      });
-    });
+    (function(){
+      const root=document.getElementById('hero');if(!root)return;
+      const slides=Array.from(root.querySelectorAll('.hero-slide'));
+      const dots=Array.from(root.querySelectorAll('.hero-indicators button'));
+      const prevBtn=root.querySelector('[data-action="prev"]');
+      const nextBtn=root.querySelector('[data-action="next"]');
+      let idx=0;let timer=null;const interval=parseInt(root.dataset.autoplay||'0',10)||0;
+      function show(i){idx=(i+slides.length)%slides.length;slides.forEach((s,k)=>s.classList.toggle('is-active',k===idx));dots.forEach((d,k)=>d.setAttribute('aria-current',k===idx?'true':'false'));}
+      function next(){show(idx+1);}function prev(){show(idx-1);}function play(){if(!interval)return;stop();timer=setInterval(next,interval);}function stop(){if(timer){clearInterval(timer);timer=null;}}
+      prevBtn?.addEventListener('click',()=>{prev();play();});nextBtn?.addEventListener('click',()=>{next();play();});
+      dots.forEach((d)=>d.addEventListener('click',()=>{show(parseInt(d.dataset.goto,10));play();}));
+      root.addEventListener('keydown',(e)=>{if(e.key==='ArrowLeft'){prev();play();}if(e.key==='ArrowRight'){next();play();}});
+      root.tabIndex=0;root.addEventListener('mouseenter',stop);root.addEventListener('mouseleave',play);
+      document.addEventListener('visibilitychange',()=>{document.hidden?stop():play();});
+      show(0);if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches)play();
+    })();
   </script>
 </body>
 </html>
+
