@@ -1,1 +1,168 @@
+<!doctype html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>About | Data Analytics Lab · UNIST Industrial Engineering</title>
+  <meta name="description" content="UNIST 산업공학과 Data Analytics Lab 소개. Industrial Statistics, Quality Engineering & Management, Machine Learning & Data Mining." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#ffffff; --bg-soft:#f6f7fb; --surface:#ffffff;
+      --text:#0c1323; --muted:#5e6a83; --line:#e8ebf3;
+      --primary:#2c59ff; --primary-weak:#edf2ff; --accent:#11a37f;
+      --radius:18px; --shadow-lg:0 12px 30px rgba(16,24,40,.08);
+      --w:1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);
+      font-family:'Inter','Noto Sans KR',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.55}
+    a{color:var(--primary);text-decoration:none}
+    a:hover{opacity:.9}
+    img{max-width:100%;display:block}
+    .container{max-width:var(--w);margin:0 auto;padding:0 20px}
+
+    /* Header / Navbar */
+    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.8);
+      backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid var(--line)}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .brand{display:flex;gap:10px;align-items:center;font-weight:700}
+    .brand-logo{width:32px;height:32px;border-radius:10px;
+      background:linear-gradient(135deg,#2c59ff 0%,#11a37f 100%)}
+    .nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
+    .nav a{padding:8px 10px;border-radius:10px;color:var(--text)}
+    .nav a.active,.nav a:hover{background:var(--bg-soft)}
+    .nav-cta{padding:10px 14px;border:1px solid var(--line);border-radius:12px;background:#fff}
+    .menu-btn{display:none}
+    @media (max-width:860px){
+      .menu-btn{display:block;border:1px solid var(--line);background:#fff;border-radius:12px;padding:8px 10px}
+      .nav ul{display:none}
+      .nav.open ul{display:flex;position:absolute;left:20px;right:20px;top:60px;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-lg);padding:10px}
+    }
+
+    /* Page Hero */
+    .page-hero{padding:48px 0 28px;border-bottom:1px solid var(--line);
+      background:linear-gradient(180deg,#fff 0%,#f9fbff 100%)}
+    .breadcrumbs{font-size:13px;color:var(--muted)}
+    .breadcrumbs a{color:inherit}
+    .title{font-size:32px;margin:8px 0 4px}
+    .kicker{display:inline-flex;align-items:center;gap:8px;
+      font-weight:700;color:#1a2e8f;background:var(--primary-weak);
+      border:1px solid #dfe6ff;border-radius:999px;padding:6px 10px;font-size:12px}
+    .divider{width:120px;height:3px;background:#cfd8ff;border-radius:3px;margin:12px 0 0}
+
+    /* Content */
+    section{padding:28px 0}
+    .prose p{margin:0 0 12px}
+    .muted{color:var(--muted)}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
+    .photo{border-radius:18px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow-lg)}
+    .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-lg)}
+    .card-pad{padding:18px}
+    .list{display:flex;flex-wrap:wrap;gap:8px}
+    .chip{padding:8px 12px;border:1px solid var(--line);border-radius:12px;background:var(--bg-soft)}
+    footer{padding:36px 0;border-top:1px solid var(--line)}
+    .small{font-size:13px}
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container nav" id="navbar">
+      <div class="brand">
+        <div class="brand-logo" aria-hidden="true"></div>
+        <div>Data Analytics Lab · <span class="muted">UNIST IE</span></div>
+      </div>
+      <button class="menu-btn" aria-label="Toggle Menu" onclick="document.getElementById('navbar').classList.toggle('open')">☰</button>
+      <ul>
+        <!-- 홈(메인) 섹션으로 이동 -->
+        <li><a href="./#about" class="active">About</a></li>
+        <li><a href="./#members">Members</a></li>
+        <li><a href="./#research">Research</a></li>
+        <li><a href="./activity/">Activity</a></li>
+        <li><a href="./contact/" class="nav-cta">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Page Hero -->
+  <div class="page-hero">
+    <div class="container">
+      <div class="breadcrumbs"><a href="./">Home</a> · About</div>
+      <div class="kicker">About DAL</div>
+      <h1 class="title">UNIST Data Analytics Lab.</h1>
+      <div class="divider"></div>
+    </div>
+  </div>
+
+  <main class="container">
+    <section class="prose">
+      <div class="grid">
+        <div class="card card-pad" style="grid-column: span 12">
+          <h2 style="margin:0 0 6px">데이터애널리틱스 연구실(UNIST 산업공학과)</h2>
+          <p>
+            데이터가 주요 자산인 시대, 데이터애널리틱스 연구실은
+            <strong>산업 통계(Industrial Statistics)</strong>와
+            <strong>기계학습/데이터마이닝</strong>을 결합해
+            <strong>품질 공학(Quality Engineering & Management)</strong> 문제를 해결합니다.
+            제조·서비스 공정의 <strong>시스템 모니터링과 이상 탐지</strong>, 그리고
+            <strong>시계열 표현학습</strong>을 핵심 축으로 삼아
+            신뢰 가능한 의사결정을 지원하는 방법론을 연구합니다.
+          </p>
+          <p class="muted">
+            We build interpretable, reliable AI systems for quality engineering,
+            process monitoring, and time-series understanding with real industrial data.
+          </p>
+          <p>
+            본 홈페이지는 구성원들의 <strong>발자취 기록</strong>과
+            <strong>지식의 나눔</strong>을 지향합니다. 연구실의 크고 작은 소식은
+            <a href="./activity/">Lab News</a>로, 연구 과정에서 얻은 노하우와 팁은
+            <a href="./activity/">Tips & Notes</a>로 공개하여
+            학계·산업계와 활발히 소통하겠습니다.
+          </p>
+        </div>
+
+        <!-- Interests / Research Areas -->
+        <div class="card card-pad" style="grid-column: span 6">
+          <h3 style="margin:0 0 10px">Interests</h3>
+          <div class="list">
+            <span class="chip">Industrial Statistics</span>
+            <span class="chip">Quality Engineering & Management</span>
+            <span class="chip">Machine Learning & Data Mining</span>
+          </div>
+        </div>
+        <div class="card card-pad" style="grid-column: span 6">
+          <h3 style="margin:0 0 10px">Research Areas</h3>
+          <ul style="margin:0; padding-left:18px">
+            <li>Artificial Intelligence in Quality Engineering</li>
+            <li>System Monitoring & Anomaly Detection</li>
+            <li>Time-Series Representation</li>
+          </ul>
+        </div>
+
+        <!-- Photos (replace with lab photos) -->
+        <div class="photo" style="grid-column: span 6">
+          <img src="/assets/about-1.jpg" alt="Data Analytics Lab group photo 1">
+        </div>
+        <div class="photo" style="grid-column: span 6">
+          <img src="/assets/about-2.jpg" alt="Data Analytics Lab group photo 2">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container small muted">© <span id="year"></span> Data Analytics Lab, UNIST Industrial Engineering.</div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
 

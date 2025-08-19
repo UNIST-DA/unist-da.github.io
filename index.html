@@ -6,103 +6,12 @@
   <title>Data Analytics Lab | UNIST Industrial Engineering</title>
   <meta name="description" content="Data Analytics Lab at UNIST (Industrial Engineering). Industrial Statistics, Quality Engineering & Management, Machine Learning & Data Mining." />
 
-  <!-- Fonts (optional) -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    /* ===================== Design Tokens (Light Theme) ===================== */
-    :root{
-      --bg:#ffffff; --bg-soft:#f6f7fb; --surface:#ffffff;
-      --text:#0c1323; --muted:#5e6a83; --line:#e8ebf3;
-      --primary:#2c59ff; --primary-weak:#edf2ff; --accent:#11a37f;
-      --warn:#f59e0b; --danger:#ef4444;
-      --radius:18px; --shadow-lg:0 12px 30px rgba(16,24,40,.08);
-      --w:1100px;
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:'Inter','Noto Sans KR',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,'Apple Color Emoji','Segoe UI Emoji';line-height:1.55}
-    img{max-width:100%;display:block}
-    a{color:var(--primary);text-decoration:none}
-    a:hover{opacity:.9}
-    .container{max-width:var(--w);margin:0 auto;padding:0 20px}
-
-    /* ===================== Header / Navbar ===================== */
-    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.8);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid var(--line)}
-    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
-    .brand{display:flex;gap:10px;align-items:center;font-weight:700}
-    .brand-logo{width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,#2c59ff 0%,#11a37f 100%)}
-    .nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
-    .nav a{padding:8px 10px;border-radius:10px;color:var(--text)}
-    .nav a.active,.nav a:hover{background:var(--bg-soft)}
-    .nav-cta{padding:10px 14px;border:1px solid var(--line);border-radius:12px;background:#fff}
-    .menu-btn{display:none}
-
-    @media (max-width:860px){
-      .menu-btn{display:block;border:1px solid var(--line);background:#fff;border-radius:12px;padding:8px 10px}
-      .nav ul{display:none}
-      .nav.open ul{display:flex;position:absolute;left:20px;right:20px;top:60px;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-lg);padding:10px}
-    }
-
-    /* ===================== Hero Carousel ===================== */
-    .hero{position:relative}
-    .carousel{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
-    .slides{display:flex;transition:transform .7s ease}
-    .slide{min-width:100%;height:58vh;position:relative;background:#dfe7ff}
-    .slide::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(12,19,35,.45),rgba(12,19,35,.15) 35%,rgba(12,19,35,0))}
-    .slide img{width:100%;height:100%;object-fit:cover}
-
-    .hero-overlay{position:absolute;inset:0;display:flex;align-items:flex-end}
-    .hero-copy{width:100%;max-width:var(--w);margin:0 auto;padding:24px 20px 40px;color:#fff}
-    .hero-kicker{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);padding:6px 10px;border-radius:999px;font-size:12px;font-weight:600;backdrop-filter:blur(6px)}
-    .hero-title{font-size:36px;line-height:1.2;margin:12px 0 8px}
-    .hero-desc{opacity:.95;max-width:720px}
-
-    .hero-ctrl{position:absolute;inset:auto 0 16px 0;display:flex;justify-content:center;gap:8px}
-    .dot{width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.8);cursor:pointer}
-    .dot.active{background:#fff}
-    .nav-arrows{position:absolute;inset:0;display:flex;justify-content:space-between;align-items:center;padding:0 8px}
-    .arrow{width:40px;height:40px;border-radius:999px;border:1px solid rgba(255,255,255,.6);background:rgba(255,255,255,.4);display:grid;place-items:center;cursor:pointer;backdrop-filter:blur(6px)}
-
-    /* ===================== Sections ===================== */
-    section{padding:64px 0;border-bottom:1px solid var(--line)}
-    section .head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:24px}
-    .head h2{font-size:28px;margin:0}
-    .muted{color:var(--muted)}
-
-    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
-    .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-lg)}
-    .card-pad{padding:18px}
-
-    /* About */
-    .about p{margin:0 0 12px}
-    .pill{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;background:var(--primary-weak);color:#1732a2;border:1px solid #dfe6ff;font-weight:600;font-size:12px}
-    .list{display:flex;flex-wrap:wrap;gap:8px}
-    .list .chip{padding:8px 12px;border:1px solid var(--line);border-radius:12px;background:var(--bg-soft)}
-
-    /* Members */
-    .member{display:flex;gap:14px;align-items:center}
-    .avatar{width:56px;height:56px;border-radius:14px;background:#eef1f8;flex:0 0 auto;overflow:hidden;border:1px solid var(--line)}
-    .avatar img{width:100%;height:100%;object-fit:cover}
-
-    /* Research */
-    .tabs{display:flex;gap:8px;flex-wrap:wrap}
-    .tab{padding:8px 12px;border:1px solid var(--line);border-radius:10px;background:#fff}
-    .tab.active{background:var(--primary);border-color:var(--primary);color:#fff}
-    .area{display:flex;flex-direction:column;gap:10px}
-
-    /* Activity */
-    .news-item{display:grid;grid-template-columns:88px 1fr;gap:12px;align-items:start;padding:12px;border:1px dashed var(--line);border-radius:12px;background:var(--bg-soft)}
-    .news-date{font-weight:700}
-
-    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-    @media (max-width:900px){.two-col{grid-template-columns:1fr}}
-
-    /* Footer */
-    footer{padding:36px 0}
-    .small{font-size:13px}
-  </style>
+  <!-- External CSS -->
+  <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
   <!-- ===================== Header ===================== -->
@@ -116,8 +25,19 @@
       <ul>
         <li><a href="#about" class="active">About</a></li>
         <li><a href="#members">Members</a></li>
+
+        <!-- Dropdown -->
+        <li class="has-dd">
+          <a href="./activity/">Activity</a>
+          <button class="dd-toggle" aria-label="Open submenu"></button>
+          <ul class="dropdown" role="menu" aria-label="Activity submenu">
+            <li><a href="./activity/#news">Lab News</a></li>
+            <li><a href="./activity/#events">Lab Events</a></li>
+            <li><a href="./activity/#tips">Tips & Notes</a></li>
+          </ul>
+        </li>
+
         <li><a href="#research">Research</a></li>
-        <li><a href="#activity">Activity</a></li>
         <li><a href="#contact" class="nav-cta">Contact</a></li>
       </ul>
     </div>
@@ -127,7 +47,6 @@
   <section class="hero" aria-label="Lab highlights">
     <div class="carousel" id="carousel" aria-roledescription="carousel" aria-label="Hero carousel" tabindex="0">
       <div class="slides" id="slides">
-        <!-- Replace images with your lab photos (e.g., /assets/hero-1.jpg) -->
         <div class="slide"><img src="https://picsum.photos/1400/800?random=11" alt="Lab activity photo 1"></div>
         <div class="slide"><img src="https://picsum.photos/1400/800?random=12" alt="Lab activity photo 2"></div>
         <div class="slide"><img src="https://picsum.photos/1400/800?random=13" alt="Lab activity photo 3"></div>
@@ -264,7 +183,6 @@
       <div id="pubs" role="tabpanel" aria-labelledby="tab-pubs" style="margin-top:14px">
         <div class="card card-pad">
           <ol style="margin:0; padding-left:18px">
-            <!-- Example item; list newest first -->
             <li><strong>Title,</strong> Authors, <em>Conference/Journal</em>, Year. <a href="#">PDF</a> · <a href="#">Code</a></li>
             <li><strong>Another Paper,</strong> Authors, <em>Journal</em>, Year. <a href="#">PDF</a></li>
           </ol>
@@ -316,7 +234,7 @@
           </div>
         </div>
 
-        <!-- Tips & Notes (personal thoughts, lab know-how) -->
+        <!-- Tips & Notes -->
         <div>
           <h4 style="margin:6px 0">Lab Tips & Notes</h4>
           <div class="card card-pad" style="margin-bottom:12px">
@@ -398,6 +316,28 @@
     document.getElementById('carousel').addEventListener('mouseleave', ()=>{ isHover=false; });
 
     renderDots(); update(); start();
+
+    // ① 모바일 드롭다운 토글
+    document.querySelectorAll('.dd-toggle').forEach(btn=>{
+      btn.addEventListener('click', (e)=>{
+        e.stopPropagation();
+        btn.closest('.has-dd').classList.toggle('open');
+      });
+    });
+
+    // ② Research 탭 전환
+    function switchTab(id){
+      const panels = ['pubs','projects'];
+      panels.forEach(pid=>{
+        const panel = document.getElementById(pid);
+        if(panel){ panel.hidden = (pid !== id); }
+      });
+      document.querySelectorAll('.tabs .tab').forEach(btn=>{
+        const on = btn.getAttribute('aria-controls') === id;
+        btn.classList.toggle('active', on);
+        btn.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+    }
   </script>
 </body>
 </html>
