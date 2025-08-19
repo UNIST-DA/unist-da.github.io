@@ -136,14 +136,16 @@ footer{padding:36px 0}
 .has-dd > a::after{content:"▾"; font-size:11px; margin-left:6px; opacity:.7}
 
 /* 기본: 숨김 + 절대배치 (상단 li를 기준) */
+.nav > ul > li{ position:relative; }                            /* ✅ li 기준점 보장 */
 .nav > ul > li > .dropdown{
   position:absolute; top:100%; left:0; z-index:60;
   min-width:220px; padding:8px 8px 10px;
   background:#fff; border:1px solid var(--line);
   border-radius:12px; box-shadow:var(--shadow-lg);
+  display:none; /* 기본적으로 숨김 */
 }
 .nav > ul > li > .dropdown::before{
-  content:""; position:absolute; top:-6px; left:0; right:0; height:6px;
+  content:""; position:absolute; top:-6px; left:0; right:0; height:10px;
 }
 .nav > ul > li > .dropdown > li{list-style:none}
 .nav > ul > li > .dropdown a{
