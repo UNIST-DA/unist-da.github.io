@@ -161,3 +161,5 @@ footer{padding:36px 0}
   }
   .nav.open ul .has-dd.open > .dropdown{ display:block; }
 }
+.brand-link{color:var(--text); text-decoration:none}
+.brand-link:hover{opacity:.9}
