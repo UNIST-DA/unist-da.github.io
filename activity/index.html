@@ -1,1 +1,159 @@
+<!doctype html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Activity | Data Analytics Lab · UNIST IE</title>
+  <meta name="description" content="Lab news and tips/notes from Data Analytics Lab at UNIST." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#ffffff; --bg-soft:#f6f7fb; --surface:#ffffff;
+      --text:#0c1323; --muted:#5e6a83; --line:#e8ebf3;
+      --primary:#2c59ff; --primary-weak:#edf2ff; --accent:#11a37f;
+      --radius:18px; --shadow-lg:0 12px 30px rgba(16,24,40,.08);
+      --w:1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:'Inter','Noto Sans KR',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.55}
+    a{color:var(--primary);text-decoration:none}
+    a:hover{opacity:.9}
+    img{max-width:100%;display:block}
+    .container{max-width:var(--w);margin:0 auto;padding:0 20px}
+
+    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.8);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid var(--line)}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .brand{display:flex;gap:10px;align-items:center;font-weight:700}
+    .brand-logo{width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,#2c59ff 0%,#11a37f 100%)}
+    .nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
+    .nav a{padding:8px 10px;border-radius:10px;color:var(--text)}
+    .nav a.active,.nav a:hover{background:var(--bg-soft)}
+    .nav-cta{padding:10px 14px;border:1px solid var(--line);border-radius:12px;background:#fff}
+    .menu-btn{display:none}
+    @media (max-width:860px){
+      .menu-btn{display:block;border:1px solid var(--line);background:#fff;border-radius:12px;padding:8px 10px}
+      .nav ul{display:none}
+      .nav.open ul{display:flex;position:absolute;left:20px;right:20px;top:60px;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-lg);padding:10px}
+    }
+
+    .page-hero{padding:40px 0;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#fff 0%,#f9fbff 100%)}
+    .breadcrumbs{font-size:13px;color:var(--muted)}
+    .breadcrumbs a{color:inherit}
+    .page-title{margin:6px 0 0;font-size:28px}
+
+    section{padding:28px 0}
+    .tabs{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 16px}
+    .tab{padding:8px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;cursor:pointer}
+    .tab.active{background:var(--primary);border-color:var(--primary);color:#fff}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
+    .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-lg)}
+    .card-pad{padding:18px}
+
+    .news-item{display:grid;grid-template-columns:92px 1fr;gap:12px;align-items:start;padding:12px;border:1px dashed var(--line);border-radius:12px;background:var(--bg-soft)}
+    .news-date{font-weight:700}
+    .tag{display:inline-block;padding:4px 8px;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:12px;color:#364152;margin-right:6px}
+    .muted{color:var(--muted)}
+    footer{padding:36px 0;border-top:1px solid var(--line)}
+    .small{font-size:13px}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav" id="navbar">
+      <div class="brand">
+        <div class="brand-logo" aria-hidden="true"></div>
+        <div>Data Analytics Lab · <span class="muted">UNIST IE</span></div>
+      </div>
+      <button class="menu-btn" aria-label="Toggle Menu" onclick="document.getElementById('navbar').classList.toggle('open')">☰</button>
+      <ul>
+        <li><a href="../#about">About</a></li>
+        <li><a href="../#members">Members</a></li>
+        <li><a href="../#research">Research</a></li>
+        <li><a href="./" class="active">Activity</a></li>
+        <li><a href="../contact/" class="nav-cta">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <div class="page-hero">
+    <div class="container">
+      <div class="breadcrumbs"><a href="../">Home</a> · Activity</div>
+      <h1 class="page-title">Activity</h1>
+      <p class="muted">Lab News와 Tips & Notes를 한곳에서 모아봅니다.</p>
+    </div>
+  </div>
+
+  <main class="container">
+    <section>
+      <div class="tabs" role="tablist" aria-label="Activity tabs">
+        <button class="tab active" data-filter="all" role="tab" aria-selected="true">All</button>
+        <button class="tab" data-filter="news" role="tab" aria-selected="false">Lab News</button>
+        <button class="tab" data-filter="tips" role="tab" aria-selected="false">Tips & Notes</button>
+      </div>
+
+      <div class="grid" id="activity-list">
+        <!-- Lab News -->
+        <article class="card card-pad" style="grid-column: span 12" data-type="news">
+          <div class="news-item">
+            <div class="news-date">2025-08-01</div>
+            <div>
+              <div style="font-weight:600">Paper accepted to Conference XYZ 🎉</div>
+              <p class="muted">Congrats to team on the acceptance.</p>
+              <span class="tag">publication</span><span class="tag">conference</span>
+            </div>
+          </div>
+        </article>
+        <article class="card card-pad" style="grid-column: span 12" data-type="news">
+          <div class="news-item">
+            <div class="news-date">2025-07-15</div>
+            <div>
+              <div style="font-weight:600">Invited talk at Company ABC</div>
+              <p class="muted">Talk on real-time anomaly detection.</p>
+              <span class="tag">talk</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Tips & Notes -->
+        <article class="card card-pad" style="grid-column: span 12" data-type="tips">
+          <h3 style="margin:0 0 6px">Onboarding Tips</h3>
+          <p class="muted">서버 접속, 데이터 접근, 코드 컨벤션 등 연구실 합류 초반에 필요한 내용을 정리합니다.</p>
+          <a href="#">Read →</a>
+        </article>
+        <article class="card card-pad" style="grid-column: span 12" data-type="tips">
+          <h3 style="margin:0 0 6px">Research Notes</h3>
+          <p class="muted">실험 노트, 실패에서 배운 점, 재현성 체크리스트.</p>
+          <a href="#">Read →</a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container small muted">© <span id="year"></span> Data Analytics Lab, UNIST Industrial Engineering.</div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Simple filter tabs
+    const tabs = document.querySelectorAll('.tab');
+    const items = document.querySelectorAll('#activity-list [data-type]');
+    tabs.forEach(t=>{
+      t.addEventListener('click', ()=>{
+        tabs.forEach(x=>x.classList.remove('active'));
+        t.classList.add('active');
+        const f = t.dataset.filter;
+        items.forEach(it=>{
+          it.style.display = (f==='all' || it.dataset.type===f) ? '' : 'none';
+        });
+      });
+    });
+  </script>
+</body>
+</html>
 
