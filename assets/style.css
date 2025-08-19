@@ -21,24 +21,37 @@ a:hover{opacity:.9}
 .small{font-size:13px}
 
 /* ===== Header / Navbar ===== */
-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.8);
-  backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid var(--line)}
+header{
+  position:sticky; top:0; z-index:50;
+  background:rgba(255,255,255,.8);
+  backdrop-filter:saturate(180%) blur(10px);
+  border-bottom:1px solid var(--line);
+}
 .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
 .brand{display:flex;gap:10px;align-items:center;font-weight:700}
 .brand-logo{width:32px;height:32px;border-radius:10px;
   background:linear-gradient(135deg,#2c59ff 0%,#11a37f 100%)}
+
+/* ⬇️ 꼭 ‘>’ 포함: 상단 1단 메뉴에만 적용 */
 .nav > ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
-.nav > ul > li{position:relative}  /* 드롭다운 기준점 */
-  .nav a{padding:8px 10px;border-radius:10px;color:var(--text)}
-.nav a.active,.nav a:hover{background:var(--bg-soft)}
+.nav > ul > li{position:relative}
+.nav > ul > li > a{padding:8px 10px;border-radius:10px;color:var(--text);display:inline-block}
+.nav > ul > li > a.active,
+.nav > ul > li > a:hover{background:var(--bg-soft)}
 .nav-cta{padding:10px 14px;border:1px solid var(--line);border-radius:12px;background:#fff}
 .menu-btn{display:none}
+
+/* 모바일에서만 전체 메뉴 펼치기 */
 @media (max-width:860px){
   .menu-btn{display:block;border:1px solid var(--line);background:#fff;border-radius:12px;padding:8px 10px}
   .nav > ul{display:none}
-  .nav.open > ul{display:flex;position:absolute;left:20px;right:20px;top:60px;flex-direction:column;background:#fff;
-    border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-lg);padding:10px}
+  .nav.open > ul{
+    display:flex; position:absolute; left:20px; right:20px; top:60px;
+    flex-direction:column; background:#fff;
+    border:1px solid var(--line); border-radius:14px; box-shadow:var(--shadow-lg); padding:10px
+  }
 }
+
 
 /* ===== Hero Carousel ===== */
 .hero{position:relative}
@@ -120,48 +133,38 @@ iframe.map{width:100%;min-height:320px;border:0;border-radius:14px}
 footer{padding:36px 0}
 
 /* ===== Nav Dropdown ===== */
-.nav li{ position: relative; }
+.has-dd > a::after{content:"▾"; font-size:11px; margin-left:6px; opacity:.7}
 
-/* 드롭다운 표시용 작은 화살표 */
-.has-dd > a::after{
-  content:"▾"; font-size:11px; margin-left:6px; opacity:.7;
-}
-
-/* 드롭다운 패널 */
-.dropdown{
+/* 기본: 숨김 + 절대배치 (상단 li를 기준) */
+.nav > ul > li > .dropdown{
   position:absolute; top:calc(100% + 8px); left:0; z-index:60;
-  min-width:220px; padding:8px;
-  display:none; background:#fff; border:1px solid var(--line);
+  min-width:220px; padding:8px; display:none;
+  background:#fff; border:1px solid var(--line);
   border-radius:12px; box-shadow:var(--shadow-lg);
 }
-.dropdown li{ list-style:none; }
-.dropdown a{
-  display:block; padding:10px 12px; border-radius:10px; color:var(--text);
-  white-space:nowrap;
+.nav > ul > li > .dropdown > li{list-style:none}
+.nav > ul > li > .dropdown a{
+  display:block; padding:10px 12px; border-radius:10px; color:var(--text); white-space:nowrap;
 }
-.dropdown a:hover{ background:var(--bg-soft); }
-.nav .dropdown{ display:none; }
+.nav > ul > li > .dropdown a:hover{background:var(--bg-soft)}
 
-/* 데스크탑: hover 시 열기 */
+/* 데스크탑: hover 시 해당 항목만 열기 */
 @media (hover:hover){
-  .has-dd:hover > .dropdown{ display:block; }
+  .nav > ul > li.has-dd:hover > .dropdown{display:block}
 }
 
-/* 모바일 토글 버튼 (작은 삼각형) */
-.dd-toggle{
-  display:none; border:none; background:transparent; cursor:pointer;
-  padding:6px; margin-left:4px; font-size:14px; line-height:1;
-}
-.dd-toggle::after{ content:"▾"; opacity:.8; }
+/* 모바일: 토글 버튼으로 열기 */
+.dd-toggle{display:none; border:none; background:transparent; cursor:pointer; padding:6px; margin-left:4px; font-size:14px; line-height:1}
+.dd-toggle::after{content:"▾"; opacity:.8}
 
-/* 모바일 메뉴가 열린 상태에서 드롭다운 표시 */
 @media (max-width:860px){
-  .dd-toggle{ display:inline-block; }
+  .dd-toggle{display:inline-block}
   .nav.open > ul .dropdown{
     position:static; display:none; margin-top:6px; padding:6px;
     background:var(--bg-soft); border-radius:10px;
   }
-  .nav.open > ul .has-dd.open > .dropdown{ display:block; }
+  .nav.open > ul .has-dd.open > .dropdown{display:block}
 }
+
 .brand-link{color:var(--text); text-decoration:none}
 .brand-link:hover{opacity:.9}
