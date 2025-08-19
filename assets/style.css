@@ -32,7 +32,7 @@ header{
 .brand-logo{width:32px;height:32px;border-radius:10px;
   background:linear-gradient(135deg,#2c59ff 0%,#11a37f 100%)}
 
-/* ⬇️ 꼭 ‘>’ 포함: 상단 1단 메뉴에만 적용 */
+/* ⬇️ 꼭 '>' 포함: 상단 1단 메뉴에만 적용 */
 .nav > ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
 .nav > ul > li{position:relative}
 .nav > ul > li > a{padding:8px 10px;border-radius:10px;color:var(--text);display:inline-block}
@@ -51,7 +51,6 @@ header{
     border:1px solid var(--line); border-radius:14px; box-shadow:var(--shadow-lg); padding:10px
   }
 }
-
 
 /* ===== Hero Carousel ===== */
 .hero{position:relative}
@@ -132,11 +131,10 @@ iframe.map{width:100%;min-height:320px;border:0;border-radius:14px}
 /* ===== Footer ===== */
 footer{padding:36px 0}
 
-/* ===== Nav Dropdown ===== */
+/* ===== Nav Dropdown (개선된 버전) ===== */
 .has-dd > a::after{content:"▾"; font-size:11px; margin-left:6px; opacity:.7}
 
 /* 기본: 숨김 + 절대배치 (상단 li를 기준) */
-.nav > ul > li{ position:relative; }                            /* ✅ li 기준점 보장 */
 .nav > ul > li > .dropdown{
   position:absolute; top:100%; left:0; z-index:60;
   min-width:220px; padding:8px 8px 10px;
@@ -144,9 +142,18 @@ footer{padding:36px 0}
   border-radius:12px; box-shadow:var(--shadow-lg);
   display:none; /* 기본적으로 숨김 */
 }
+
+/* 🔥 핵심 개선: 드롭다운과 메인 메뉴 사이의 간격을 메우는 가상 요소 */
 .nav > ul > li > .dropdown::before{
-  content:""; position:absolute; top:-6px; left:0; right:0; height:10px;
+  content:""; 
+  position:absolute; 
+  top:-8px;  /* 메인 메뉴와 드롭다운 사이의 간격을 덮음 */
+  left:0; 
+  right:0; 
+  height:8px; /* 간격 크기만큼 설정 */
+  background:transparent; /* 보이지 않지만 hover 영역 확보 */
 }
+
 .nav > ul > li > .dropdown > li{list-style:none}
 .nav > ul > li > .dropdown a{
   display:block; padding:10px 12px; border-radius:10px; color:var(--text); white-space:nowrap;
@@ -155,7 +162,24 @@ footer{padding:36px 0}
 
 /* 데스크탑: hover 시 해당 항목만 열기 */
 @media (hover:hover){
-  .nav > ul > li.has-dd:hover > .dropdown{display:block}
+  /* 🔥 핵심: 메인 메뉴 항목 OR 드롭다운에 hover할 때 표시 */
+  .nav > ul > li.has-dd:hover > .dropdown,
+  .nav > ul > li > .dropdown:hover{
+    display:block;
+  }
+  
+  /* 🔥 추가 개선: 드롭다운에서 나갈 때 약간의 지연 추가 */
+  .nav > ul > li.has-dd > .dropdown{
+    transition:opacity 0.15s ease-in-out, visibility 0.15s ease-in-out;
+    opacity:0;
+    visibility:hidden;
+  }
+  
+  .nav > ul > li.has-dd:hover > .dropdown{
+    opacity:1;
+    visibility:visible;
+    display:block;
+  }
 }
 
 /* 모바일: 토글 버튼으로 열기 */
