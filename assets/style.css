@@ -27,15 +27,16 @@ header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.8);
 .brand{display:flex;gap:10px;align-items:center;font-weight:700}
 .brand-logo{width:32px;height:32px;border-radius:10px;
   background:linear-gradient(135deg,#2c59ff 0%,#11a37f 100%)}
-.nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
-.nav a{padding:8px 10px;border-radius:10px;color:var(--text)}
+.nav > ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
+.nav > ul > li{position:relative}  /* 드롭다운 기준점 */
+  .nav a{padding:8px 10px;border-radius:10px;color:var(--text)}
 .nav a.active,.nav a:hover{background:var(--bg-soft)}
 .nav-cta{padding:10px 14px;border:1px solid var(--line);border-radius:12px;background:#fff}
 .menu-btn{display:none}
 @media (max-width:860px){
   .menu-btn{display:block;border:1px solid var(--line);background:#fff;border-radius:12px;padding:8px 10px}
-  .nav ul{display:none}
-  .nav.open ul{display:flex;position:absolute;left:20px;right:20px;top:60px;flex-direction:column;background:#fff;
+  .nav > ul{display:none}
+  .nav.open > ul{display:flex;position:absolute;left:20px;right:20px;top:60px;flex-direction:column;background:#fff;
     border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-lg);padding:10px}
 }
 
@@ -139,6 +140,7 @@ footer{padding:36px 0}
   white-space:nowrap;
 }
 .dropdown a:hover{ background:var(--bg-soft); }
+.nav .dropdown{ display:none; }
 
 /* 데스크탑: hover 시 열기 */
 @media (hover:hover){
@@ -155,11 +157,11 @@ footer{padding:36px 0}
 /* 모바일 메뉴가 열린 상태에서 드롭다운 표시 */
 @media (max-width:860px){
   .dd-toggle{ display:inline-block; }
-  .nav.open ul .dropdown{
+  .nav.open > ul .dropdown{
     position:static; display:none; margin-top:6px; padding:6px;
     background:var(--bg-soft); border-radius:10px;
   }
-  .nav.open ul .has-dd.open > .dropdown{ display:block; }
+  .nav.open > ul .has-dd.open > .dropdown{ display:block; }
 }
 .brand-link{color:var(--text); text-decoration:none}
 .brand-link:hover{opacity:.9}
