@@ -1,0 +1,58 @@
+<header>
+  <div class="container nav" id="navbar">
+    <!-- 브랜드: 클릭하면 메인 -->
+    <a class="brand brand-link" href="{{ site.baseurl }}/">
+      <div class="brand-logo" aria-hidden="true"></div>
+      <div>Data Analytics Lab · <span class="muted">UNIST IE</span></div>
+    </a>
+
+    <button class="menu-btn" aria-label="Toggle Menu"
+            onclick="document.getElementById('navbar').classList.toggle('open')">☰</button>
+
+    <ul>
+      <!-- About -->
+      <li class="has-dd">
+        <a href="{{ site.baseurl }}/#about">About</a>
+        <button class="dd-toggle" aria-label="Open submenu"></button>
+        <ul class="dropdown" role="menu" aria-label="About submenu">
+          <li><a href="{{ site.baseurl }}/about.html">Introduction</a></li>
+          <li><a href="{{ site.baseurl }}/location.html">Location</a></li>
+        </ul>
+      </li>
+
+      <!-- Members -->
+      <li class="has-dd">
+        <a href="{{ site.baseurl }}/#members">Members</a>
+        <button class="dd-toggle" aria-label="Open submenu"></button>
+        <ul class="dropdown" role="menu" aria-label="Members submenu">
+          <li><a href="{{ site.baseurl }}/members/professor/">Professor</a></li>
+          <li><a href="{{ site.baseurl }}/members/students/">Students</a></li>
+          <li><a href="{{ site.baseurl }}/members/alumni/">Alumni</a></li>
+        </ul>
+      </li>
+
+      <!-- Research -->
+      <li class="has-dd">
+        <a href="{{ site.baseurl }}/#research">Research</a>
+        <button class="dd-toggle" aria-label="Open submenu"></button>
+        <ul class="dropdown" role="menu" aria-label="Research submenu">
+          <li><a href="{{ site.baseurl }}/research/projects/">Projects</a></li>
+          <li><a href="{{ site.baseurl }}/research/publications/">Publications</a></li>
+        </ul>
+      </li>
+
+      <!-- Activity -->
+      <li class="has-dd">
+        <a href="{{ site.baseurl }}/activity/">Activity</a>
+        <button class="dd-toggle" aria-label="Open submenu"></button>
+        <ul class="dropdown" role="menu" aria-label="Activity submenu">
+          <li><a href="{{ site.baseurl }}/activity/#news">Lab News</a></li>
+          <li><a href="{{ site.baseurl }}/activity/#events">Lab Events</a></li>
+        </ul>
+      </li>
+
+      <!-- Contact -->
+      <li><a class="nav-cta" href="{{ site.baseurl }}/contact/">Contact</a></li>
+    </ul>
+  </div>
+</header>

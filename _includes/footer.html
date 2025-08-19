@@ -1,0 +1,18 @@
+<footer>
+  <div class="container small muted">© <span id="year"></span> Data Analytics Lab, UNIST IE.</div>
+</footer>
+
+<script>
+  // footer year
+  (function(){ const y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear(); })();
+
+  // 모바일 드롭다운 토글
+  document.addEventListener('click', (e) => {
+    if (e.target.classList && e.target.classList.contains('dd-toggle')) {
+      e.preventDefault();
+      e.stopPropagation();
+      const li = e.target.closest('.has-dd');
+      if (li) li.classList.toggle('open');
+    }
+  });
+</script>
