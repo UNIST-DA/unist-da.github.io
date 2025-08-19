@@ -1,138 +1,59 @@
-<!doctype html>
-<html lang="ko" data-theme="light">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Contact | Data Analytics Lab · UNIST IE</title>
-  <meta name="description" content="Contact details and location for Data Analytics Lab at UNIST." />
+---
+layout: default
+title: Contact | Data Analytics Lab · UNIST IE
+description: Contact details and location for Data Analytics Lab at UNIST.
+---
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    :root{
-      --bg:#ffffff; --bg-soft:#f6f7fb; --surface:#ffffff;
-      --text:#0c1323; --muted:#5e6a83; --line:#e8ebf3;
-      --primary:#2c59ff; --primary-weak:#edf2ff; --accent:#11a37f;
-      --radius:18px; --shadow-lg:0 12px 30px rgba(16,24,40,.08);
-      --w:1100px;
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:'Inter','Noto Sans KR',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.55}
-    a{color:var(--primary);text-decoration:none}
-    a:hover{opacity:.9}
-    .container{max-width:var(--w);margin:0 auto;padding:0 20px}
-
-    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.8);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid var(--line)}
-    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
-    .brand{display:flex;gap:10px;align-items:center;font-weight:700}
-    .brand-logo{width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,#2c59ff 0%,#11a37f 100%)}
-    .nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
-    .nav a{padding:8px 10px;border-radius:10px;color:var(--text)}
-    .nav a.active,.nav a:hover{background:var(--bg-soft)}
-    .nav-cta{padding:10px 14px;border:1px solid var(--line);border-radius:12px;background:#fff}
-    .menu-btn{display:none}
-    @media (max-width:860px){
-      .menu-btn{display:block;border:1px solid var(--line);background:#fff;border-radius:12px;padding:8px 10px}
-      .nav ul{display:none}
-      .nav.open ul{display:flex;position:absolute;left:20px;right:20px;top:60px;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-lg);padding:10px}
-    }
-
-    .page-hero{padding:40px 0;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#fff 0%,#f9fbff 100%)}
-    .breadcrumbs{font-size:13px;color:var(--muted)}
-    .breadcrumbs a{color:inherit}
-    .page-title{margin:6px 0 0;font-size:28px}
-    .muted{color:var(--muted)}
-
-    section{padding:28px 0}
-    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
-    .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-lg)}
-    .card-pad{padding:18px}
-    .input{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:#fff}
-    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    @media (max-width:820px){.row{grid-template-columns:1fr}}
-    .btn{display:inline-block;padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:var(--primary);color:#fff;cursor:pointer}
-    footer{padding:36px 0;border-top:1px solid var(--line)}
-    .small{font-size:13px}
-    iframe.map{width:100%;min-height:320px;border:0;border-radius:14px}
-  </style>
-</head>
-<body>
-  <header>
-    <div class="container nav" id="navbar">
-      <div class="brand">
-        <div class="brand-logo" aria-hidden="true"></div>
-        <div>Data Analytics Lab · <span class="muted">UNIST IE</span></div>
-      </div>
-      <button class="menu-btn" aria-label="Toggle Menu" onclick="document.getElementById('navbar').classList.toggle('open')">☰</button>
-      <ul>
-        <li><a href="../#about">About</a></li>
-        <li><a href="../#members">Members</a></li>
-        <li><a href="../#research">Research</a></li>
-        <li><a href="../activity/">Activity</a></li>
-        <li><a href="./" class="nav-cta active">Contact</a></li>
-      </ul>
-    </div>
-  </header>
-
-  <div class="page-hero">
-    <div class="container">
-      <div class="breadcrumbs"><a href="../">Home</a> · Contact</div>
-      <h1 class="page-title">Contact</h1>
-      <p class="muted">연락처, 위치, 그리고 협업/합류 관련 안내입니다.</p>
-    </div>
+<!-- Page Hero -->
+<div class="page-hero">
+  <div class="container">
+    <div class="breadcrumbs"><a href="{{ site.baseurl }}/">Home</a> · Contact</div>
+    <h1 class="page-title">Contact</h1>
+    <p class="muted">연락처, 위치, 그리고 협업/합류 관련 안내입니다.</p>
   </div>
+</div>
 
-  <main class="container">
-    <section>
-      <div class="grid">
-        <!-- Contact details -->
-        <div class="card card-pad" style="grid-column: span 6">
-          <h3 style="margin:0 0 8px">Get in touch</h3>
-          <p class="muted">Email: <a href="mailto:lab@unist.ac.kr">lab@unist.ac.kr</a></p>
-          <p class="muted">Address: UNIST, Ulsan, South Korea</p>
-          <hr style="border:none;border-top:1px solid var(--line);margin:14px 0">
-          <h4 style="margin:0 0 6px">Prospective Students</h4>
-          <p class="muted">지원 시, CV/연구관심/프로젝트 포트폴리오 링크를 함께 보내주세요.</p>
-          <h4 style="margin:12px 0 6px">Industry Collaboration</h4>
-          <p class="muted">품질/공정 데이터 분석·이상탐지 PoC, 공동연구·자문 문의 환영합니다.</p>
-        </div>
-
-        <!-- Inquiry form -->
-        <div class="card card-pad" style="grid-column: span 6">
-          <h3 style="margin:0 0 8px">Quick message</h3>
-          <!-- 방법 1) 간단 mailto; 방법 2) Formspree/Netlify endpoint로 action 변경 -->
-          <form action="mailto:lab@unist.ac.kr" method="post" enctype="text/plain">
-            <div class="row">
-              <input class="input" type="text" name="name" placeholder="Your name" required>
-              <input class="input" type="email" name="email" placeholder="Email address" required>
-            </div>
-            <input class="input" type="text" name="subject" placeholder="Subject" style="margin-top:12px">
-            <textarea class="input" name="message" rows="6" placeholder="Your message" style="margin-top:12px"></textarea>
-            <button class="btn" type="submit" style="margin-top:12px">Send</button>
-          </form>
-          <p class="muted" style="margin-top:8px">※ 더 안정적인 제출을 원하면 <code>action</code>을 Formspree 엔드포인트로 교체하세요.</p>
-        </div>
-
-        <!-- Map -->
-        <div class="card card-pad" style="grid-column: span 12">
-          <h3 style="margin:0 0 8px">Location</h3>
-          <iframe class="map" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps?q=UNIST&output=embed" title="UNIST on Google Maps"></iframe>
-        </div>
+<main class="container">
+  <section>
+    <div class="grid">
+      <!-- Contact details -->
+      <div class="card card-pad" style="grid-column: span 6">
+        <h3 style="margin:0 0 8px">Get in touch</h3>
+        <p class="muted">Email: <a href="mailto:lab@unist.ac.kr">lab@unist.ac.kr</a></p>
+        <p class="muted">Address: UNIST, Ulsan, South Korea</p>
+        <hr style="border:none;border-top:1px solid var(--line);margin:14px 0">
+        <h4 style="margin:0 0 6px">Prospective Students</h4>
+        <p class="muted">지원 시, CV/연구관심/프로젝트 포트폴리오 링크를 함께 보내주세요.</p>
+        <h4 style="margin:12px 0 6px">Industry Collaboration</h4>
+        <p class="muted">품질/공정 데이터 분석·이상탐지 PoC, 공동연구·자문 문의 환영합니다.</p>
       </div>
-    </section>
-  </main>
 
-  <footer>
-    <div class="container small muted">© <span id="year"></span> Data Analytics Lab, UNIST Industrial Engineering.</div>
-  </footer>
+      <!-- Inquiry form -->
+      <div class="card card-pad" style="grid-column: span 6">
+        <h3 style="margin:0 0 8px">Quick message</h3>
+        <!-- 방법 1) 간단 mailto; 방법 2) Formspree/Netlify endpoint로 action 교체 -->
+        <form action="mailto:lab@unist.ac.kr" method="post" enctype="text/plain">
+          <div class="row">
+            <input class="input" type="text" name="name" placeholder="Your name" required>
+            <input class="input" type="email" name="email" placeholder="Email address" required>
+          </div>
+          <input class="input" type="text" name="subject" placeholder="Subject" style="margin-top:12px">
+          <textarea class="input" name="message" rows="6" placeholder="Your message" style="margin-top:12px"></textarea>
+          <button class="btn" type="submit" style="margin-top:12px">Send</button>
+        </form>
+        <p class="muted small" style="margin-top:8px">
+          ※ 더 안정적인 제출을 원하면 <code>action</code>을 Formspree/Netlify Forms 엔드포인트로 바꾸세요.
+        </p>
+      </div>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>
-
+      <!-- Map -->
+      <div class="card card-pad" style="grid-column: span 12">
+        <h3 style="margin:0 0 8px">Location</h3>
+        <iframe class="map" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=UNIST&output=embed"
+          title="UNIST on Google Maps"></iframe>
+      </div>
+    </div>
+  </section>
+</main>
