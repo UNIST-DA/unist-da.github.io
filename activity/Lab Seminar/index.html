@@ -15,15 +15,17 @@ permalink: /activity/seminar/
 <main class="container">
   <section>
     <div class="grid">
-      <article class="card card-pad" style="grid-column: span 12">
+      {% for it in site.data.activity.seminar %}
+      <article class="card card-pad" style="grid-column: span 12" id="{{ it.slug }}">
         <div class="news-item">
-          <div class="news-date">2025-08-25</div>
+          <div class="news-date">{{ it.date }}</div>
           <div>
-            <div style="font-weight:600">Lab Seminar – Example</div>
-            <p class="muted">Replace with real seminar info.</p>
+            <div style="font-weight:600">{{ it.title }}</div>
+            {% if it.detail %}<p class="muted">{{ it.detail }}</p>{% endif %}
           </div>
         </div>
       </article>
+      {% endfor %}
     </div>
   </section>
 </main>
