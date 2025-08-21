@@ -28,7 +28,7 @@ header{position:sticky; top:0; z-index:50; background:rgba(255,255,255,.8);
 .brand-text{display:inline-block}
 
 /* PNG 로고(박스 없음) – 한 줄 고정 크기 */
-.brand-img{height:36px;width:auto;display:block;object-fit:contain}
+.brand-img{height:46px;width:auto;display:block;object-fit:contain}
 @media (max-width:860px){ .brand-img{height:32px} }
 
 /* 1단 메뉴 */
@@ -63,8 +63,22 @@ header{position:sticky; top:0; z-index:50; background:rgba(255,255,255,.8);
   .nav > ul > li.has-dd:hover > .dropdown{opacity:1;visibility:visible;display:block}
 }
 @media (max-width:860px){
-  .dd-toggle{display:inline-block;border:none;background:transparent;cursor:pointer;padding:6px;margin-left:4px;font-size:14px;line-height:1}
-  .dd-toggle::after{content:"▾";opacity:.8}
+  .dd-toggle{
+    display:none !important;
+    appearance:none;
+    border:none;
+    background:transparent;
+    padding:0;
+  }
+  
+  /* 모바일에서만 노출 */
+  @media (max-width:860px){
+    .dd-toggle{
+      display:inline-flex !important;
+      align-items:center; justify-content:center;
+      padding:6px; margin-left:4px;
+    }
+  }
   .nav.open > ul .dropdown{position:static;display:none;margin-top:6px;padding:6px;background:var(--bg-soft);border-radius:10px}
   .nav.open > ul .has-dd.open > .dropdown{display:block}
 }
