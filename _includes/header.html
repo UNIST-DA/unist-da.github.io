@@ -2,10 +2,12 @@
   <div class="container nav" id="navbar">
     <!-- 브랜드: 메인으로 -->
     <a class="brand brand-link" href="{{ '/' | relative_url }}">
-      <div class="brand-logo" aria-hidden="true"></div>
+      <div class="brand-logo">
+        <img src="{{ '/assets/hero/LabSign.png' | relative_url }}"
+             alt="Data Analytics Lab logo" loading="eager" decoding="async">
+      </div>
       <div>Data Analytics Lab · <span class="muted">UNIST IE</span></div>
     </a>
-
     <button class="menu-btn" aria-label="Toggle Menu"
             onclick="document.getElementById('navbar').classList.toggle('open')">☰</button>
 
