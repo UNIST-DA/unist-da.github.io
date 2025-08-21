@@ -28,7 +28,7 @@ header{position:sticky; top:0; z-index:50; background:rgba(255,255,255,.8);
 .brand-text{display:inline-block}
 
 /* PNG 로고(박스 없음) – 한 줄 고정 크기 */
-.brand-img{height:46px;width:auto;display:block;object-fit:contain}
+.brand-img{height:60px;width:auto;display:block;object-fit:contain}
 @media (max-width:860px){ .brand-img{height:32px} }
 
 /* 1단 메뉴 */
