@@ -61,38 +61,27 @@ description: Data Analytics Lab at UNIST (Industrial Engineering). Industrial St
   </div>
 </section>
 
-<!-- ===================== Research (3 Cards) ===================== -->
+<!-- ===================== Research (Top 3 from Projects) ===================== -->
 <section id="research">
   <div class="container">
     <div class="head">
       <h2>Research</h2>
-      <div class="muted">Overview · Projects · Publications</div>
+      <div class="muted">Projects</div>
     </div>
 
     <div class="grid">
-      <!-- Overview -->
-      <a class="card card-pad" href="{{ '/research/' | relative_url }}" style="grid-column: span 4; display:block; text-decoration:none; color:inherit">
-        <img src="{{ '/assets/research/cards/overview.jpg' | relative_url }}" alt="Research overview" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin-bottom:10px">
-        <h4 style="margin:0 0 6px">Overview</h4>
-        <p class="muted">Topics and directions of the lab.</p>
-        <div class="muted" style="font-size:13px">Explore →</div>
+      {% assign list = site.data.projects | slice: 0, 3 %}
+      {% for p in list %}
+      <a class="card card-pad" href="{{ p.url | relative_url }}"
+         style="grid-column: span 4; display:block; text-decoration:none; color:inherit" id="home-{{ p.slug }}">
+        {% if p.image %}
+        <img src="{{ p.image | relative_url }}" alt="{{ p.title }}" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin-bottom:10px">
+        {% endif %}
+        <h4 style="margin:0 0 6px">{{ p.title }}</h4>
+        <p class="muted">{{ p.summary }}</p>
+        {% if p.period %}<div class="muted" style="font-size:13px">{{ p.period }}</div>{% endif %}
       </a>
-
-      <!-- Projects -->
-      <a class="card card-pad" href="{{ '/research/projects/' | relative_url }}" style="grid-column: span 4; display:block; text-decoration:none; color:inherit">
-        <img src="{{ '/assets/research/cards/projects.jpg' | relative_url }}" alt="Projects" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin-bottom:10px">
-        <h4 style="margin:0 0 6px">Projects</h4>
-        <p class="muted">Sponsored and collaborative projects with industry.</p>
-        <div class="muted" style="font-size:13px">See projects →</div>
-      </a>
-
-      <!-- Publications -->
-      <a class="card card-pad" href="{{ '/research/publications/' | relative_url }}" style="grid-column: span 4; display:block; text-decoration:none; color:inherit">
-        <img src="{{ '/assets/research/cards/pubs.jpg' | relative_url }}" alt="Publications" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin-bottom:10px">
-        <h4 style="margin:0 0 6px">Publications</h4>
-        <p class="muted">Journal and conference papers.</p>
-        <div class="muted" style="font-size:13px">Browse papers →</div>
-      </a>
+      {% endfor %}
     </div>
   </div>
 </section>
@@ -106,32 +95,41 @@ description: Data Analytics Lab at UNIST (Industrial Engineering). Industrial St
     </div>
 
     <div class="grid">
-      <!-- Seminar -->
+      <!-- Seminar (최신 2개) -->
       <div class="card card-pad" style="grid-column: span 4">
         <h4 style="margin:6px 0">Lab Seminar</h4>
         <ul style="margin:8px 0 12px; padding-left:18px">
-          <li><strong>2025‑09‑10</strong> — Speaker TBA</li>
-          <li><strong>2025‑08‑25</strong> — Deep dive into SPC with ML</li>
+          {% for it in site.data.activity.seminar limit:2 %}
+          <li>
+            <strong>{{ it.date }}</strong> — <a href="{{ it.url | relative_url }}">{{ it.title }}</a>
+          </li>
+          {% endfor %}
         </ul>
         <a href="{{ '/activity/seminar/' | relative_url }}">View all →</a>
       </div>
 
-      <!-- News -->
+      <!-- News (최신 2개) -->
       <div class="card card-pad" style="grid-column: span 4">
         <h4 style="margin:6px 0">Lab News</h4>
         <ul style="margin:8px 0 12px; padding-left:18px">
-          <li>Paper accepted to Conference XYZ 🎉</li>
-          <li>Invited talk at Company ABC</li>
+          {% for it in site.data.activity.news limit:2 %}
+          <li>
+            <strong>{{ it.date }}</strong> — <a href="{{ it.url | relative_url }}">{{ it.title }}</a>
+          </li>
+          {% endfor %}
         </ul>
         <a href="{{ '/activity/news/' | relative_url }}">View all →</a>
       </div>
 
-      <!-- Events -->
+      <!-- Events (최신 2개) -->
       <div class="card card-pad" style="grid-column: span 4">
         <h4 style="margin:6px 0">Lab Events</h4>
         <ul style="margin:8px 0 12px; padding-left:18px">
-          <li>Open lab day (Fall)</li>
-          <li>Industry workshop with partners</li>
+          {% for it in site.data.activity.events limit:2 %}
+          <li>
+            <strong>{{ it.date }}</strong> — <a href="{{ it.url | relative_url }}">{{ it.title }}</a>
+          </li>
+          {% endfor %}
         </ul>
         <a href="{{ '/activity/events/' | relative_url }}">View all →</a>
       </div>
