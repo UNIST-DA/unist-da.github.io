@@ -217,3 +217,29 @@ footer{padding:36px 0}
 @media (max-aspect-ratio: 16/10){
   .slide img, .slide video{ object-fit: contain; background:#fff; }
 }
+
+/* === Carousel: auto-fit by screen aspect ratio === */
+/* 기본(가로가 충분히 넓을 때): 꽉 채우기 */
+.slides.auto-fit .slide img,
+.slides.auto-fit .slide video{
+  object-fit: cover;
+}
+
+/* 화면이 세로로 긴 경우(가로/세로 비가 16:10 이하): 잘림 없이 contain으로 전환 */
+@media (max-aspect-ratio: 16/10){
+  .slides.auto-fit .slide{
+    height: 56vh;             /* 세로가 긴 화면에서 높이 살짝 줄여 레터박스 최소화 */
+    min-height: 360px;
+  }
+  .slides.auto-fit .slide img,
+  .slides.auto-fit .slide video{
+    object-fit: contain;
+    background:#fff;          /* 남는 여백 배경색 (원하면 transparent/#000 로 변경) */
+  }
+}
+
+/* 아주 좁은 모바일(세로 비율 더 큼)에서는 더 낮게 */
+@media (max-width: 480px){
+  .slides.auto-fit .slide{ height: 50vh; min-height: 300px; }
+}
+
