@@ -196,3 +196,4 @@ footer{padding:36px 0}
 
 .hero-overlay{ z-index:1; pointer-events:none; }
 .nav-arrows, .hero-ctrl{ z-index:2; position:absolute; }
+#about .head .muted, #research .head .muted, #activity .head .muted, #contact .head .muted{ display:none; }
