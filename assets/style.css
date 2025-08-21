@@ -36,7 +36,7 @@ header{
 .brand{display:flex;gap:10px;align-items:center;font-weight:700}
 /* 브랜드: PNG만 사용 */
 .brand-img{
-  height:40px;     /* ← 원하는 크기로 36~44px 사이 조절 */
+  height:20px;     /* ← 원하는 크기로 36~44px 사이 조절 */
   width:auto;
   display:block;
 }
