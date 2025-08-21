@@ -1,62 +1,59 @@
 <header>
   <div class="container nav" id="navbar">
-    <!-- 브랜드: 메인으로 -->
+    <!-- Brand: PNG만 사용 (박스 없음) -->
     <a class="brand brand-link" href="{{ '/' | relative_url }}">
-      <a class="brand brand-link" href="{{ '/' | relative_url }}">
-        <img class="brand-img"
-             src="{{ '/assets/hero/LabSign.png?v=' | append: site.github.build_revision | relative_url }}"
-             alt="Data Analytics Lab logo" loading="eager" decoding="async">
-        <div>Data Analytics Lab · <span class="muted">UNIST IE</span></div>
-      </a>
-      <div>Data Analytics Lab · <span class="muted">UNIST IE</span></div>
+      <img class="brand-img"
+           src="{{ '/assets/hero/LabSign.png' | relative_url }}"
+           alt="DA-Lab logo" loading="eager" decoding="async">
+      <span class="brand-text">Data Analytics Lab · <span class="muted">UNIST IE</span></span>
     </a>
+
     <button class="menu-btn" aria-label="Toggle Menu"
             onclick="document.getElementById('navbar').classList.toggle('open')">☰</button>
 
     <ul>
-      <!-- About: 첫 하위(Introduction)로 이동 -->
+      <!-- About: 첫 하위 -->
       <li class="has-dd">
         <a href="{{ '/about.html' | relative_url }}">About</a>
         <button class="dd-toggle" aria-label="Open submenu"></button>
-        <ul class="dropdown" role="menu" aria-label="About submenu">
-          <li><a href="{{ '/about.html' | relative_url }}">Introduction</a></li>
-          <li><a href="{{ '/location.html' | relative_url }}">Location</a></li>
+        <ul class="dropdown" role="menu">
+          <li><a href="{{ '/about.html'   | relative_url }}">Introduction</a></li>
+          <li><a href="{{ '/location.html'| relative_url }}">Location</a></li>
         </ul>
       </li>
 
-      <!-- Members: 첫 하위(Professor)로 이동 -->
+      <!-- Members: 첫 하위 -->
       <li class="has-dd">
         <a href="{{ '/members/professor/' | relative_url }}">Members</a>
         <button class="dd-toggle" aria-label="Open submenu"></button>
-        <ul class="dropdown" role="menu" aria-label="Members submenu">
+        <ul class="dropdown" role="menu">
           <li><a href="{{ '/members/professor/' | relative_url }}">Professor</a></li>
           <li><a href="{{ '/members/students/'  | relative_url }}">Students</a></li>
           <li><a href="{{ '/members/alumni/'    | relative_url }}">Alumni</a></li>
         </ul>
       </li>
 
-      <!-- Research: 첫 하위(Projects)로 이동 -->
+      <!-- Research: 첫 하위 -->
       <li class="has-dd">
         <a href="{{ '/research/projects/' | relative_url }}">Research</a>
         <button class="dd-toggle" aria-label="Open submenu"></button>
-        <ul class="dropdown" role="menu" aria-label="Research submenu">
+        <ul class="dropdown" role="menu">
           <li><a href="{{ '/research/projects/'     | relative_url }}">Projects</a></li>
           <li><a href="{{ '/research/publications/' | relative_url }}">Publications</a></li>
         </ul>
       </li>
 
-      <!-- Activity: 첫 하위( Lab Seminar )로 이동 -->
+      <!-- Activity: 첫 하위 -->
       <li class="has-dd">
         <a href="{{ '/activity/Lab%20Seminar/' | relative_url }}">Activity</a>
         <button class="dd-toggle" aria-label="Open submenu"></button>
-        <ul class="dropdown" role="menu" aria-label="Activity submenu">
+        <ul class="dropdown" role="menu">
           <li><a href="{{ '/activity/Lab%20Seminar/' | relative_url }}">Lab Seminar</a></li>
           <li><a href="{{ '/activity/Lab%20News/'    | relative_url }}">Lab News</a></li>
           <li><a href="{{ '/activity/Lab%20Events/'  | relative_url }}">Lab Events</a></li>
         </ul>
       </li>
 
-      <!-- Contact -->
       <li><a class="nav-cta" href="{{ '/contact/' | relative_url }}">Contact</a></li>
     </ul>
   </div>
