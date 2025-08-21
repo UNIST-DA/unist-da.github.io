@@ -95,9 +95,7 @@ header{position:sticky; top:0; z-index:50; background:rgba(255,255,255,.8);
 .slide img{
   width:100%;
   height:auto;
-  object-fit:none;
-}
-.slide{height:auto; min-height:400px;} /* 슬라이드 높이 고정 */
+  object-fit:cover;}
 .hero-overlay{position:absolute;inset:0;display:flex;align-items:flex-end}
 .hero-copy{width:100%;max-width:var(--w);margin:0 auto;padding:24px 20px 40px;color:#fff}
 .hero-kicker{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.15);
