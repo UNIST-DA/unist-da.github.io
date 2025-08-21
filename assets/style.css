@@ -200,3 +200,26 @@ footer{padding:36px 0}
 .hero-overlay{ z-index:1; pointer-events:none; }
 .nav-arrows, .hero-ctrl{ z-index:2; position:absolute; }
 #about .head .muted, #research .head .muted, #activity .head .muted, #contact .head .muted{ display:none; }
+/* === Carousel: no-crop (fit) mode === */
+/* 컨테이너 높이: 화면 60% + 최소 높이 */
+.slides.fit .slide{
+  height: 62vh;
+  min-height: 420px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(0deg, rgba(0,27,84,.08), rgba(0,27,84,0)); /* 여백 부드럽게 */
+}
+
+/* 이미지/비디오를 잘림 없이 배치 */
+.slides.fit .slide img,
+.slides.fit .slide video{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;       /* 핵심: 잘림 없음 */
+  background: #fff;          /* 레터박스 배경 (원하면 transparent 또는 #000) */
+}
+
+/* 모바일은 좀 더 낮게 */
+@media (max-width: 860px){
+  .slides.fit .slide{ height: 50vh; min-height: 320px; }
+}
