@@ -219,3 +219,12 @@ footer{padding:36px 0}
   color: var(--primary);
   box-shadow: inset 0 -2px 0 var(--primary);
 }
+
+.nav-cta{
+  background: transparent !important;
+  border: 0 !important;
+  color: var(--text) !important;
+  padding: 8px 10px !important;
+  border-radius: 10px !important;
+}
+.nav-cta:hover{ background: var(--primary-weak) !important; color: var(--text) !important; }
