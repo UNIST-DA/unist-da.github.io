@@ -1,153 +1,55 @@
-<!doctype html>
-<html lang="ko" data-theme="light">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Data Analytics Lab | UNIST Industrial Engineering</title>
-  <meta name="description" content="Data Analytics Lab at UNIST (Industrial Engineering). Industrial Statistics, Quality Engineering & Management, Machine Learning & Data Mining." />
+---
+layout: default
+title: About
+description: Data Analytics Lab at UNIST Industrial Engineering — 소개 페이지
+permalink: /about.html
+---
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <!-- External CSS -->
-  <link rel="stylesheet" href="assets/style.css">
-</head>
-<body>
-  <!-- ===================== Header ===================== -->
-<header>
-  <div class="container nav" id="navbar">
-    <!-- 왼쪽: 로고 + 문구 (메인으로 이동) -->
-    <a class="brand brand-link" href="./">
-      <div class="brand-logo" aria-hidden="true"></div>
-      <div>Data Analytics Lab · <span class="muted">UNIST IE</span></div>
-    </a>
-
-    <button class="menu-btn" aria-label="Toggle Menu"
-            onclick="document.getElementById('navbar').classList.toggle('open')">☰</button>
-
-    <ul>
-      <!-- About: Introduction / Location -->
-      <li class="has-dd">
-        <a href="./#about">About</a>
-        <button class="dd-toggle" aria-label="Open submenu"></button>
-        <ul class="dropdown" role="menu" aria-label="About submenu">
-          <li><a href="./about.html">Introduction</a></li>
-          <li><a href="./location.html">Location</a></li>
-        </ul>
-      </li>
-
-      <!-- Members: Professor / Students / Alumni -->
-      <li class="has-dd">
-        <a href="./#members">Members</a>
-        <button class="dd-toggle" aria-label="Open submenu"></button>
-        <ul class="dropdown" role="menu" aria-label="Members submenu">
-          <li><a href="./members/professor/">Professor</a></li>
-          <li><a href="./members/students/">Students</a></li>
-          <li><a href="./members/alumni/">Alumni</a></li>
-        </ul>
-      </li>
-
-      <!-- Research: Projects / Publications -->
-      <li class="has-dd">
-        <a href="./#research">Research</a>
-        <button class="dd-toggle" aria-label="Open submenu"></button>
-        <ul class="dropdown" role="menu" aria-label="Research submenu">
-          <li><a href="./research/projects/">Projects</a></li>
-          <li><a href="./research/publications/">Publications</a></li>
-        </ul>
-      </li>
-
-      <!-- Activity: Lab News / Lab Events -->
-      <li class="has-dd">
-        <a href="./Activity/">Activity</a>
-        <button class="dd-toggle" aria-label="Open submenu"></button>
-        <ul class="dropdown" role="menu" aria-label="Activity submenu">
-          <li><a href="./activity/#news">Lab News</a></li>
-          <li><a href="./activity/#events">Lab Events</a></li>
-        </ul>
-      </li>
-
-      <!-- Contact: 바로 이동 -->
-      <li><a class="nav-cta" href="./contact/">Contact</a></li>
-    </ul>
+<!-- Page Hero -->
+<div class="page-hero">
+  <div class="container">
+    <div class="breadcrumbs"><a href="{{ '/' | relative_url }}">Home</a> · About</div>
+    <h1 class="page-title">UNIST Data Analytics Lab.</h1>
+    <p class="muted">연구실 소개</p>
   </div>
-</header>
+</div>
 
+<main class="container">
+  <section class="prose">
+    <div class="grid">
+      <div class="card card-pad" style="grid-column: span 12">
+        <div class="pill">UNIST · Industrial Engineering</div>
+        <h2 style="margin:10px 0 6px">Data Analytics Lab</h2>
+        <p>
+          데이터애널리틱스 연구실은 <strong>산업 통계</strong>와
+          <strong>기계학습/데이터마이닝</strong>을 기반으로
+          <strong>품질 공학</strong>의 실제 문제를 해결합니다.
+          제조/서비스 공정의 <strong>시스템 모니터링·이상 탐지</strong>,
+          <strong>시계열 표현학습</strong>을 중심 주제로 연구합니다.
+        </p>
+        <p class="muted">
+          We build interpretable, reliable AI systems for quality engineering,
+          process monitoring, and time-series understanding.
+        </p>
+      </div>
 
-  <!-- Page Hero -->
-  <div class="page-hero">
-    <div class="container">
-      <div class="breadcrumbs"><a href="./">Home</a> · About</div>
-      <div class="kicker">About DAL</div>
-      <h1 class="title">UNIST Data Analytics Lab.</h1>
-      <div class="divider"></div>
-    </div>
-  </div>
-
-  <main class="container">
-    <section class="prose">
-      <div class="grid">
-        <div class="card card-pad" style="grid-column: span 12">
-          <h2 style="margin:0 0 6px">데이터애널리틱스 연구실(UNIST 산업공학과)</h2>
-          <p>
-            데이터가 주요 자산인 시대, 데이터애널리틱스 연구실은
-            <strong>산업 통계(Industrial Statistics)</strong>와
-            <strong>기계학습/데이터마이닝</strong>을 결합해
-            <strong>품질 공학(Quality Engineering & Management)</strong> 문제를 해결합니다.
-            제조·서비스 공정의 <strong>시스템 모니터링과 이상 탐지</strong>, 그리고
-            <strong>시계열 표현학습</strong>을 핵심 축으로 삼아
-            신뢰 가능한 의사결정을 지원하는 방법론을 연구합니다.
-          </p>
-          <p class="muted">
-            We build interpretable, reliable AI systems for quality engineering,
-            process monitoring, and time-series understanding with real industrial data.
-          </p>
-          <p>
-            본 홈페이지는 구성원들의 <strong>발자취 기록</strong>과
-            <strong>지식의 나눔</strong>을 지향합니다. 연구실의 크고 작은 소식은
-            <a href="./activity/">Lab News</a>로, 연구 과정에서 얻은 노하우와 팁은
-            <a href="./activity/">Tips & Notes</a>로 공개하여
-            학계·산업계와 활발히 소통하겠습니다.
-          </p>
-        </div>
-
-        <!-- Interests / Research Areas -->
-        <div class="card card-pad" style="grid-column: span 6">
-          <h3 style="margin:0 0 10px">Interests</h3>
-          <div class="list">
-            <span class="chip">Industrial Statistics</span>
-            <span class="chip">Quality Engineering & Management</span>
-            <span class="chip">Machine Learning & Data Mining</span>
-          </div>
-        </div>
-        <div class="card card-pad" style="grid-column: span 6">
-          <h3 style="margin:0 0 10px">Research Areas</h3>
-          <ul style="margin:0; padding-left:18px">
-            <li>Artificial Intelligence in Quality Engineering</li>
-            <li>System Monitoring & Anomaly Detection</li>
-            <li>Time-Series Representation</li>
-          </ul>
-        </div>
-
-        <!-- Photos (replace with lab photos) -->
-        <div class="photo" style="grid-column: span 6">
-          <img src="/assets/about-1.jpg" alt="Data Analytics Lab group photo 1">
-        </div>
-        <div class="photo" style="grid-column: span 6">
-          <img src="/assets/about-2.jpg" alt="Data Analytics Lab group photo 2">
+      <div class="card card-pad" style="grid-column: span 6">
+        <h3 style="margin:0 0 10px">Interests</h3>
+        <div class="list">
+          <span class="chip">Industrial Statistics</span>
+          <span class="chip">Quality Engineering &amp; Management</span>
+          <span class="chip">Machine Learning &amp; Data Mining</span>
         </div>
       </div>
-    </section>
-  </main>
 
-  <footer>
-    <div class="container small muted">© <span id="year"></span> Data Analytics Lab, UNIST Industrial Engineering.</div>
-  </footer>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>
-
+      <div class="card card-pad" style="grid-column: span 6">
+        <h3 style="margin:0 0 10px">Research Areas</h3>
+        <ul style="margin:0; padding-left:18px">
+          <li>AI in Quality Engineering</li>
+          <li>System Monitoring &amp; Anomaly Detection</li>
+          <li>Time-Series Representation</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
