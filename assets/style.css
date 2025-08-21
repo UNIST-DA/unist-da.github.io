@@ -164,3 +164,32 @@ footer{padding:36px 0}
 
 /* ===== Accessibility ===== */
 :focus-visible{outline:3px solid rgba(68,193,196,.6); outline-offset:2px}
+
+
+/* --- override: desktop에서 드롭다운 토글 완전 숨김, 모바일 메뉴 열렸을 때만 표시 --- */
+.dd-toggle{
+  display:none !important;
+  appearance:none;
+  border:0;
+  background:transparent;
+  padding:0;
+  margin-left:4px;
+}
+/* 모바일 햄버거를 눌러 .nav.open 상태일 때만 토글 버튼 노출 */
+.nav.open .dd-toggle{
+  display:inline-flex !important;
+  align-items:center; justify-content:center;
+  padding:6px;
+}
+.dd-toggle::after{ content:"▾"; opacity:.8; font-size:12px; }
+
+/* --- override: 로고 크기 살짝 증가 --- */
+.brand-img{
+  height:40px !important;   /* 필요하면 38~42px 사이로 조정 */
+  width:auto;
+  display:block;
+  object-fit:contain;
+}
+@media (max-width:860px){
+  .brand-img{ height:32px !important; }
+}
