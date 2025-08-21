@@ -32,29 +32,49 @@ header{
   backdrop-filter:saturate(180%) blur(10px);
   border-bottom:1px solid var(--line);
 }
-.nav{display:flex;align-items:center;justify-content:space-between;height:64px}
-.brand{display:flex;gap:12px;align-items:center;white-space:nowrap}
-.brand-text{display:inline-block}
+/* 헤더 높이와 로고 크기 동기화 */
+.nav{ height:64px; }                    /* 필요 시 60~68px 조절 */
+.brand{ gap:12px; align-items:center; white-space:nowrap; }
 
-/* 로고 PNG만 사용 (박스 없음) */
+/* 로고 PNG만 표시(박스 없음) + 크기 제한 */
 .brand-img{
-  height:36px;               /* 필요시 32~40px로 조정 */
+  height:44px !important;               /* 너무 크면 36px로, 작으면 44px로 */
+  max-height:44px;
   width:auto;
   display:block;
-  object-fit:contain;
+  object-fit:contain;                    /* 비율 유지, 잘림 방지 */
 }
 
-/* 1단 메뉴 */
+/* 작은 화면에서는 살짝 더 작게 */
+@media (max-width:860px){
+  .brand-img{ height:32px !important; }
+}
+
+/* 기존 박스 스타일은 제거(남아있어도 보이지 않게) */
+.brand-logo{ display:none !important; }
+
+/* 필요하면 높이 살짝 늘려 정렬 맞춤 */
+.nav{ height:68px; }  /* 기존 64px에서 +4px, 상황에 맞게 조절 */
+.brand{ gap:12px; align-items:center; }  /* 로고와 텍스트 간격/정렬 */
+
+/* ⬇️ 꼭 '>' 포함: 상단 1단 메뉴에만 적용 */
 .nav > ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
 .nav > ul > li{position:relative}
 .nav > ul > li > a{padding:8px 10px;border-radius:10px;color:var(--text);display:inline-block}
 .nav > ul > li > a.active,
 .nav > ul > li > a:hover{background:var(--primary-weak)}
-.nav > ul > li > a.active{color:var(--primary); box-shadow: inset 0 -2px 0 var(--primary)}
-.nav-cta{padding:10px 14px;border:1px solid transparent;border-radius:12px;background:var(--primary);color:#fff}
+/* active 상태는 브랜드 컬러로 살짝 더 강조 */
+.nav > ul > li > a.active{
+  color:var(--primary);
+  box-shadow: inset 0 -2px 0 var(--primary);
+}
+.nav-cta{
+  padding:10px 14px;border:1px solid transparent;border-radius:12px;
+  background:var(--primary); color:#fff;
+}
 .menu-btn{display:none}
 
-/* 모바일 네비 */
+/* 모바일에서만 전체 메뉴 펼치기 */
 @media (max-width:860px){
   .menu-btn{display:block;border:1px solid var(--line);background:#fff;border-radius:12px;padding:8px 10px}
   .nav > ul{display:none}
@@ -65,45 +85,14 @@ header{
   }
 }
 
-/* ===== Nav Dropdown ===== */
-.has-dd > a::after{content:"▾"; font-size:11px; margin-left:6px; opacity:.7}
-
-.nav > ul > li > .dropdown{
-  position:absolute; top:100%; left:0; z-index:60;
-  min-width:220px; padding:8px 8px 10px;
-  background:#fff; border:1px solid var(--line);
-  border-radius:12px; box-shadow:var(--shadow-lg);
-  display:none;
-}
-.nav > ul > li > .dropdown::before{
-  content:""; position:absolute; top:-8px; left:0; right:0; height:8px; background:transparent;
-}
-.nav > ul > li > .dropdown > li{list-style:none}
-.nav > ul > li > .dropdown a{display:block; padding:10px 12px; border-radius:10px; color:var(--text); white-space:nowrap}
-.nav > ul > li > .dropdown a:hover{background:var(--primary-weak)}
-
-@media (hover:hover){
-  .nav > ul > li.has-dd:hover > .dropdown,
-  .nav > ul > li > .dropdown:hover{display:block}
-  .nav > ul > li.has-dd > .dropdown{transition:opacity .15s ease, visibility .15s ease; opacity:0; visibility:hidden}
-  .nav > ul > li.has-dd:hover > .dropdown{opacity:1; visibility:visible; display:block}
-}
-@media (max-width:860px){
-  .dd-toggle{display:inline-block; border:none; background:transparent; cursor:pointer; padding:6px; margin-left:4px; font-size:14px; line-height:1}
-  .dd-toggle::after{content:"▾"; opacity:.8}
-  .nav.open > ul .dropdown{position:static; display:none; margin-top:6px; padding:6px; background:var(--bg-soft); border-radius:10px}
-  .nav.open > ul .has-dd.open > .dropdown{display:block}
-}
-
 /* ===== Hero Carousel ===== */
 .hero{position:relative}
 .carousel{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
 .slides{display:flex;transition:transform .7s ease}
 .slide{min-width:100%;height:58vh;position:relative;background:#dfe7ff}
-.slide::after{
-  content:""; position:absolute; inset:0;
-  background:linear-gradient(0deg,rgba(0,27,84,.55),rgba(0,27,84,.35) 35%,rgba(0,27,84,0));
-}
+.slide::after{content:"";position:absolute;inset:0;
+  /* 네이비 톤 오버레이 */
+  background:linear-gradient(0deg,rgba(0,27,84,.55),rgba(0,27,84,.35) 35%,rgba(0,27,84,0))}
 .slide img{width:100%;height:100%;object-fit:cover}
 .hero-overlay{position:absolute;inset:0;display:flex;align-items:flex-end}
 .hero-copy{width:100%;max-width:var(--w);margin:0 auto;padding:24px 20px 40px;color:#fff}
@@ -112,7 +101,8 @@ header{
 .hero-title{font-size:36px;line-height:1.2;margin:12px 0 8px}
 .hero-desc{opacity:.95;max-width:720px}
 .hero-ctrl{position:absolute;inset:auto 0 16px 0;display:flex;justify-content:center;gap:8px}
-.dot{width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,.6); border:1px solid rgba(255,255,255,.8);cursor:pointer}
+.dot{width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,.6);
+  border:1px solid rgba(255,255,255,.8);cursor:pointer}
 .dot.active{background:#fff}
 .nav-arrows{position:absolute;inset:0;display:flex;justify-content:space-between;align-items:center;padding:0 8px}
 .arrow{width:40px;height:40px;border-radius:999px;border:1px solid rgba(255,255,255,.6);
@@ -122,6 +112,7 @@ header{
 section{padding:64px 0;border-bottom:1px solid var(--line)}
 section .head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:24px}
 .head h2{font-size:28px;margin:0}
+/* 섹션 타이틀 하단 라인(브랜드 컬러) */
 .head h2::after{content:"";display:block;width:44px;height:3px;background:var(--primary);border-radius:999px;margin-top:8px}
 
 .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
@@ -134,9 +125,11 @@ section .head{display:flex;align-items:end;justify-content:space-between;gap:16p
   background:var(--primary-weak);color:var(--primary);border:1px solid #dfe3f5;font-weight:600;font-size:12px}
 .list{display:flex;flex-wrap:wrap;gap:8px}
 .list .chip{padding:8px 12px;border:1px solid var(--line);border-radius:12px;background:var(--bg-soft)}
+/* Extra (About page) */
 .prose p{margin:0 0 12px}
 .photo{border-radius:18px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow-lg)}
-.kicker{display:inline-flex;align-items:center;gap:8px;font-weight:700;color:var(--primary);background:var(--primary-weak);
+.kicker{display:inline-flex;align-items:center;gap:8px;
+  font-weight:700;color:var(--primary);background:var(--primary-weak);
   border:1px solid #dfe3f5;border-radius:999px;padding:6px 10px;font-size:12px}
 .title,.page-title{font-size:28px;margin:6px 0 0}
 .divider{width:120px;height:3px;background:var(--primary-weak);border-radius:3px;margin:12px 0 0}
@@ -175,5 +168,65 @@ iframe.map{width:100%;min-height:320px;border:0;border-radius:14px}
 /* ===== Footer ===== */
 footer{padding:36px 0}
 
-/* ===== Accessibility ===== */
-:focus-visible{outline:3px solid rgba(68,193,196,.6); outline-offset:2px}
+/* ===== Nav Dropdown (개선된 버전) ===== */
+.has-dd > a::after{content:"▾"; font-size:11px; margin-left:6px; opacity:.7}
+
+/* 기본: 숨김 + 절대배치 (상단 li를 기준) */
+.nav > ul > li > .dropdown{
+  position:absolute; top:100%; left:0; z-index:60;
+  min-width:220px; padding:8px 8px 10px;
+  background:#fff; border:1px solid var(--line);
+  border-radius:12px; box-shadow:var(--shadow-lg);
+  display:none; /* 기본적으로 숨김 */
+}
+
+/* 메인 메뉴와 드롭다운 사이 hover 간격 메움 */
+.nav > ul > li > .dropdown::before{
+  content:"";
+  position:absolute;
+  top:-8px; left:0; right:0; height:8px;
+  background:transparent;
+}
+
+.nav > ul > li > .dropdown > li{list-style:none}
+.nav > ul > li > .dropdown a{
+  display:block; padding:10px 12px; border-radius:10px; color:var(--text); white-space:nowrap;
+}
+.nav > ul > li > .dropdown a:hover{background:var(--bg-soft)}
+
+/* 데스크탑: hover 시 해당 항목만 열기 */
+@media (hover:hover){
+  .nav > ul > li.has-dd:hover > .dropdown,
+  .nav > ul > li > .dropdown:hover{
+    display:block;
+  }
+  .nav > ul > li.has-dd > .dropdown{
+    transition:opacity 0.15s ease-in-out, visibility 0.15s ease-in-out;
+    opacity:0; visibility:hidden;
+  }
+  .nav > ul > li.has-dd:hover > .dropdown{
+    opacity:1; visibility:visible; display:block;
+  }
+}
+
+/* 모바일: 토글 버튼으로 열기 */
+.dd-toggle{display:none; border:none; background:transparent; cursor:pointer; padding:6px; margin-left:4px; font-size:14px; line-height:1}
+.dd-toggle::after{content:"▾"; opacity:.8}
+
+@media (max-width:860px){
+  .dd-toggle{display:inline-block}
+  .nav.open > ul .dropdown{
+    position:static; display:none; margin-top:6px; padding:6px;
+    background:var(--bg-soft); border-radius:10px;
+  }
+  .nav.open > ul .has-dd.open > .dropdown{display:block}
+}
+
+.brand-link{color:var(--text); text-decoration:none}
+.brand-link:hover{opacity:.9}
+
+/* ===== Accessibility (optional but recommended) ===== */
+:focus-visible{
+  outline:3px solid rgba(68,193,196,.6);
+  outline-offset:2px;
+} 
