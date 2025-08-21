@@ -1,8 +1,9 @@
 <header>
   <div class="container nav" id="navbar">
+    <!-- Brand (PNG 1개 + 텍스트 1개) -->
     <a class="brand brand-link" href="{{ '/' | relative_url }}">
       <img class="brand-img"
-           src="{{ '/assets/hero/LabSign.png' | relative_url }}"
+           src="{{ '/assets/hero/LabSign.png?v=' | append: site.github.build_revision | relative_url }}"
            alt="DA-Lab logo" loading="eager" decoding="async">
       <span class="brand-text">Data Analytics Lab · <span class="muted">UNIST IE</span></span>
     </a>
@@ -15,7 +16,7 @@
         <a href="{{ '/about.html' | relative_url }}">About</a>
         <button class="dd-toggle" aria-label="Open submenu"></button>
         <ul class="dropdown" role="menu">
-          <li><a href="{{ '/about.html' | relative_url }}">Introduction</a></li>
+          <li><a href="{{ '/about.html'    | relative_url }}">Introduction</a></li>
           <li><a href="{{ '/location.html' | relative_url }}">Location</a></li>
         </ul>
       </li>
