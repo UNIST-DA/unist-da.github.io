@@ -6,17 +6,22 @@ description: Data Analytics Lab at UNIST (Industrial Engineering). Industrial St
 
 <!-- ===================== Hero ===================== -->
 <section class="hero" aria-label="Lab highlights">
-  <div class="carousel" id="carousel" aria-roledescription="carousel" aria-label="Hero carousel" tabindex="0">
-    <div class="slides" id="slides">
-      <!-- Replace the src with your local images under /assets/hero/ -->
-        <div class="slide"><img src="https://picsum.photos/1400/800?random=11" alt="Lab activity photo 1"></div>
-        <div class="slide"><img src="https://picsum.photos/1400/800?random=12" alt="Lab activity photo 2"></div>
-        <div class="slide"><img src="https://picsum.photos/1400/800?random=13" alt="Lab activity photo 3"></div>
+  <div class="carousel" id="heroCarousel" aria-roledescription="carousel" aria-label="Hero carousel">
+    <div class="slides" id="heroSlides">
+      <!-- 업로드할 이미지 5장 (없으면 남겨둬도 됨) -->
+      <div class="slide"><img src="{{ '/assets/main/slide-01.jpg' | relative_url }}" alt="Lab hero 1"></div>
+      <div class="slide"><img src="{{ '/assets/main/slide-02.jpg' | relative_url }}" alt="Lab hero 2"></div>
+      <div class="slide"><img src="{{ '/assets/main/slide-03.jpg' | relative_url }}" alt="Lab hero 3"></div>
+      <div class="slide"><img src="{{ '/assets/main/slide-04.jpg' | relative_url }}" alt="Lab hero 4"></div>
+      <div class="slide"><img src="{{ '/assets/main/slide-05.jpg' | relative_url }}" alt="Lab hero 5"></div>
     </div>
+
+    <!-- 화살표 (JS에서 이벤트 바인딩) -->
     <div class="nav-arrows">
-      <button class="arrow" aria-label="Previous" onclick="prevSlide()">‹</button>
-      <button class="arrow" aria-label="Next" onclick="nextSlide()">›</button>
+      <button class="arrow" id="heroPrev" aria-label="Previous">‹</button>
+      <button class="arrow" id="heroNext" aria-label="Next">›</button>
     </div>
+
     <div class="hero-overlay">
       <div class="hero-copy">
         <div class="hero-kicker">Data Analytics Lab @ UNIST</div>
@@ -24,9 +29,11 @@ description: Data Analytics Lab at UNIST (Industrial Engineering). Industrial St
         <p class="hero-desc">We research AI for Quality Engineering, System Monitoring &amp; Anomaly Detection, and Time‑Series Representation.</p>
       </div>
     </div>
-    <div class="hero-ctrl" id="dots" aria-label="Slide controls"></div>
+
+    <div class="hero-ctrl" id="heroDots" aria-label="Slide controls"></div>
   </div>
 </section>
+
 
 <!-- ===================== About ===================== -->
 <section id="about" class="about">
@@ -162,40 +169,61 @@ description: Data Analytics Lab at UNIST (Industrial Engineering). Industrial St
   </div>
 </section>
 
-<!-- ===================== Scripts ===================== -->
 <script>
-  // Hero carousel (autoplay + pause-on-hover)
-  const slides = document.getElementById('slides');
-  const dotsWrap = document.getElementById('dots');
-  if (slides && dotsWrap){
-    const total = slides.children.length;
-    let idx = 0; let timer = null; let isHover = false;
+/* === Hero carousel: arrows + dots + autoplay + 키보드/스와이프 === */
+(function(){
+  const carousel = document.getElementById('heroCarousel');
+  if(!carousel) return;
 
-    function renderDots(){
-      dotsWrap.innerHTML = '';
-      for(let i=0;i<total;i++){
-        const b = document.createElement('button');
-        b.className = 'dot'+(i===idx?' active':'');
-        b.setAttribute('aria-label', `Go to slide ${i+1}`);
-        b.onclick = ()=>{ idx=i; update(); };
-        dotsWrap.appendChild(b);
-      }
+  const track  = document.getElementById('heroSlides');
+  const prev   = document.getElementById('heroPrev');
+  const next   = document.getElementById('heroNext');
+  const dotsEl = document.getElementById('heroDots');
+  const slides = track ? track.children : [];
+
+  if(!slides || !slides.length) return;
+  let i = 0, N = slides.length, timer = null, hover = false;
+
+  function buildDots(){
+    dotsEl.innerHTML = '';
+    for(let k=0;k<N;k++){
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'dot' + (k===i ? ' active' : '');
+      b.setAttribute('aria-label', `Go to slide ${k+1}`);
+      b.addEventListener('click', ()=>goto(k));
+      dotsEl.appendChild(b);
     }
-    function update(){
-      slides.style.transform = `translateX(${-idx*100}%)`;
-      [...dotsWrap.children].forEach((d,i)=>d.classList.toggle('active', i===idx));
-    }
-    function nextSlide(){ idx = (idx+1)%total; update(); }
-    function prevSlide(){ idx = (idx-1+total)%total; update(); }
-
-    window.nextSlide = nextSlide;
-    window.prevSlide = prevSlide;
-
-    const carousel = document.getElementById('carousel');
-    carousel.addEventListener('mouseenter', ()=>{ isHover=true; });
-    carousel.addEventListener('mouseleave', ()=>{ isHover=false; });
-
-    function start(){ timer = setInterval(()=>{ if(!isHover) nextSlide(); }, 5000); }
-    renderDots(); update(); start();
   }
+  function update(){
+    track.style.transform = `translateX(${-i*100}%)`;
+    [...dotsEl.children].forEach((d,idx)=>d.classList.toggle('active', idx===i));
+  }
+  function goto(k){ i = (k+N)%N; update(); }
+  function start(){ stop(); timer = setInterval(()=>{ if(!hover) goto(i+1); }, 5000); }
+  function stop(){ if(timer) clearInterval(timer); }
+
+  prev.addEventListener('click', ()=>goto(i-1));
+  next.addEventListener('click', ()=>goto(i+1));
+  carousel.addEventListener('mouseenter', ()=>hover=true);
+  carousel.addEventListener('mouseleave', ()=>hover=false);
+
+  // 키보드
+  carousel.setAttribute('tabindex','0');
+  carousel.addEventListener('keydown', (e)=>{
+    if(e.key==='ArrowLeft') goto(i-1);
+    if(e.key==='ArrowRight') goto(i+1);
+  });
+
+  // 터치 스와이프
+  let startX=0;
+  track.addEventListener('touchstart', e=>{ startX = e.touches[0].clientX; }, {passive:true});
+  track.addEventListener('touchend', e=>{
+    const dx = e.changedTouches[0].clientX - startX;
+    if(Math.abs(dx) > 40){ dx<0 ? goto(i+1) : goto(i-1); }
+  });
+
+  buildDots(); update(); start();
+})();
 </script>
+
