@@ -1,6 +1,6 @@
 <header>
   <div class="container nav" id="navbar">
-    <!-- Brand (PNG 1개 + 텍스트 1개) -->
+    <!-- Brand -->
     <a class="brand brand-link" href="{{ '/' | relative_url }}">
       <img class="brand-img"
            src="{{ '/assets/hero/LabSign.png?v=' | append: site.github.build_revision | relative_url }}"
@@ -14,7 +14,6 @@
     <ul>
       <li class="has-dd">
         <a href="{{ '/about.html' | relative_url }}">About</a>
-        <button class="dd-toggle" aria-label="Open submenu"></button>
         <ul class="dropdown" role="menu">
           <li><a href="{{ '/about.html'    | relative_url }}">Introduction</a></li>
           <li><a href="{{ '/location.html' | relative_url }}">Location</a></li>
@@ -23,7 +22,6 @@
 
       <li class="has-dd">
         <a href="{{ '/members/professor/' | relative_url }}">Members</a>
-        <button class="dd-toggle" aria-label="Open submenu"></button>
         <ul class="dropdown" role="menu">
           <li><a href="{{ '/members/professor/' | relative_url }}">Professor</a></li>
           <li><a href="{{ '/members/students/'  | relative_url }}">Students</a></li>
@@ -33,7 +31,6 @@
 
       <li class="has-dd">
         <a href="{{ '/research/projects/' | relative_url }}">Research</a>
-        <button class="dd-toggle" aria-label="Open submenu"></button>
         <ul class="dropdown" role="menu">
           <li><a href="{{ '/research/projects/'     | relative_url }}">Projects</a></li>
           <li><a href="{{ '/research/publications/' | relative_url }}">Publications</a></li>
@@ -42,7 +39,6 @@
 
       <li class="has-dd">
         <a href="{{ '/activity/Lab%20Seminar/' | relative_url }}">Activity</a>
-        <button class="dd-toggle" aria-label="Open submenu"></button>
         <ul class="dropdown" role="menu">
           <li><a href="{{ '/activity/Lab%20Seminar/' | relative_url }}">Lab Seminar</a></li>
           <li><a href="{{ '/activity/Lab%20News/'    | relative_url }}">Lab News</a></li>
