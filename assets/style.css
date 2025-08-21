@@ -193,3 +193,16 @@ footer{padding:36px 0}
 @media (max-width:860px){
   .brand-img{ height:32px !important; }
 }
+
+/* --- override: CTA는 항상 흰색 텍스트 --- */
+.nav > ul > li > a.nav-cta{
+  color:#fff;
+}
+.nav > ul > li > a.nav-cta:visited{
+  color:#fff;
+}
+.nav > ul > li > a.nav-cta:hover{
+  color:#fff;
+  background:var(--primary);
+  opacity:.95;
+}
