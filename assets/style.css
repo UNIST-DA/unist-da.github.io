@@ -32,13 +32,22 @@ header{
   backdrop-filter:saturate(180%) blur(10px);
   border-bottom:1px solid var(--line);
 }
-.nav{display:flex;align-items:center;justify-content:space-between;height:64px}
-.brand{display:flex;gap:10px;align-items:center;font-weight:700}
-/* 브랜드: PNG만 사용 */
+/* 헤더 높이와 로고 크기 동기화 */
+.nav{ height:64px; }                    /* 필요 시 60~68px 조절 */
+.brand{ gap:12px; align-items:center; white-space:nowrap; }
+
+/* 로고 PNG만 표시(박스 없음) + 크기 제한 */
 .brand-img{
-  height:20px;     /* ← 원하는 크기로 36~44px 사이 조절 */
+  height:40px !important;               /* 너무 크면 36px로, 작으면 44px로 */
+  max-height:44px;
   width:auto;
   display:block;
+  object-fit:contain;                    /* 비율 유지, 잘림 방지 */
+}
+
+/* 작은 화면에서는 살짝 더 작게 */
+@media (max-width:860px){
+  .brand-img{ height:32px !important; }
 }
 
 /* 기존 박스 스타일은 제거(남아있어도 보이지 않게) */
