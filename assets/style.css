@@ -20,44 +20,33 @@ a:hover{opacity:.9}
 .muted{color:var(--muted)}
 .small{font-size:13px}
 
-//* ===== Header / Navbar (Dark Navy Theme) ===== */
-header{
-  position:sticky; top:0; z-index:50;
-  background: var(--primary);          /* 네이비 배경 */
-  border-bottom:1px solid rgba(0,0,0,.1);
-}
-.nav{
-  display:flex; align-items:center; justify-content:space-between; height:64px;
-}
-.brand-link{ color:#fff; font-weight:700; }        /* 로고 텍스트 흰색 볼드 */
-.brand-text{ color:#fff; font-weight:700; }        /* 브랜드명 텍스트 */
-.brand-text .muted{ color:#cfd8ff; }               /* UNIST IE는 연한 색 */
+/* ===== Header / Navbar ===== */
+header{position:sticky; top:0; z-index:50; background:rgba(255,255,255,.8);
+  backdrop-filter:saturate(180%) blur(10px); border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;gap:12px;align-items:center;white-space:nowrap}
+.brand-text{display:inline-block}
 
-.nav > ul{ display:flex; gap:24px; list-style:none; margin:0; padding:0; }
-.nav > ul > li > a{
-  padding:8px 10px;
-  border-radius:8px;
-  color:#fff;                 /* 글씨 흰색 */
-  font-weight:600;            /* 메뉴 볼드체 */
-  text-decoration:none;
-  display:inline-block;
-}
-.nav > ul > li > a:hover,
-.nav > ul > li > a.active{
-  background: rgba(255,255,255,.15);  /* hover 시 은은한 효과 */
-}
+/* PNG 로고(박스 없음) – 한 줄 고정 크기 */
+.brand-img{height:60px;width:auto;display:block;object-fit:contain}
+@media (max-width:860px){ .brand-img{height:32px} }
 
-.nav-cta{
-  padding:8px 12px;
-  border-radius:8px;
-  background:#fff;
-  color: var(--primary);       /* Contact 버튼은 반전 스타일 */
-  font-weight:700;
-}
-.nav-cta:hover{
-  opacity:.9;
-}
+/* 1단 메뉴 */
+.nav > ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
+.nav > ul > li{position:relative}
+.nav > ul > li > a{padding:8px 10px;border-radius:10px;color:var(--text);display:inline-block}
+.nav > ul > li > a.active,
+.nav > ul > li > a:hover{background:var(--primary-weak)}
+.nav > ul > li > a.active{color:var(--primary);box-shadow:inset 0 -2px 0 var(--primary)}
+.nav-cta{padding:10px 14px;border:1px solid transparent;border-radius:12px;background:var(--primary);color:#fff}
+.menu-btn{display:none}
 
+/* 모바일 네비 */
+@media (max-width:860px){
+  .menu-btn{display:block;border:1px solid var(--line);background:#fff;border-radius:12px;padding:8px 10px}
+  .nav > ul{display:none}
+  .nav.open > ul{display:flex;position:absolute;left:20px;right:20px;top:60px;flex-direction:column;background:#fff;
+    border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-lg);padding:10px}
 
 /* ===== Nav Dropdown ===== */
 .has-dd > a::after{content:"▾";font-size:11px;margin-left:6px;opacity:.7}
