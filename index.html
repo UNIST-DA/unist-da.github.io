@@ -8,9 +8,10 @@ description: Data Analytics Lab at UNIST (Industrial Engineering). Industrial St
 <section class="hero" aria-label="Lab highlights">
   <div class="carousel" id="carousel" aria-roledescription="carousel" aria-label="Hero carousel" tabindex="0">
     <div class="slides" id="slides">
-      <div class="slide"><img src="https://picsum.photos/1400/800?random=11" alt="Lab activity photo 1"></div>
-      <div class="slide"><img src="https://picsum.photos/1400/800?random=12" alt="Lab activity photo 2"></div>
-      <div class="slide"><img src="https://picsum.photos/1400/800?random=13" alt="Lab activity photo 3"></div>
+      <!-- Replace the src with your local images under /assets/hero/ -->
+      <div class="slide"><img src="{{ '/assets/hero/slide-1.jpg' | relative_url }}" alt="Lab activity photo 1"></div>
+      <div class="slide"><img src="{{ '/assets/hero/slide-2.jpg' | relative_url }}" alt="Lab activity photo 2"></div>
+      <div class="slide"><img src="{{ '/assets/hero/slide-3.jpg' | relative_url }}" alt="Lab activity photo 3"></div>
     </div>
     <div class="nav-arrows">
       <button class="arrow" aria-label="Previous" onclick="prevSlide()">‹</button>
@@ -20,7 +21,7 @@ description: Data Analytics Lab at UNIST (Industrial Engineering). Industrial St
       <div class="hero-copy">
         <div class="hero-kicker">Data Analytics Lab @ UNIST</div>
         <h1 class="hero-title">Industrial Statistics · Quality Engineering · Machine Learning</h1>
-        <p class="hero-desc">Data Analytics Lab at the Ulsan National Institute of Science and Technology (UNIST). We research AI for Quality Engineering, System Monitoring & Anomaly Detection, and Time-Series Representation.</p>
+        <p class="hero-desc">We research AI for Quality Engineering, System Monitoring &amp; Anomaly Detection, and Time‑Series Representation.</p>
       </div>
     </div>
     <div class="hero-ctrl" id="dots" aria-label="Slide controls"></div>
@@ -40,170 +41,99 @@ description: Data Analytics Lab at UNIST (Industrial Engineering). Industrial St
         <div class="pill">UNIST · Industrial Engineering</div>
         <h3 style="margin:10px 0 6px">Data Analytics Lab</h3>
         <p>UNIST 산업공학과 데이터애널리틱스 연구실은 데이터 기반 품질향상과 지능형 제조를 위한 통계적·기계학습 방법론을 연구합니다. 실제 산업 데이터를 통해 실효성 있는 모델을 만들고, 신뢰 가능한 의사결정을 지원합니다.</p>
-        <p class="muted">We build interpretable, reliable AI systems for quality engineering, process monitoring, and time-series understanding.</p>
+        <p class="muted">We build interpretable, reliable AI systems for quality engineering, process monitoring, and time‑series understanding.</p>
       </div>
       <div class="card card-pad" style="grid-column: span 5">
         <h4 style="margin:0 0 10px">Interests</h4>
         <div class="list">
           <div class="chip">Industrial Statistics</div>
-          <div class="chip">Quality Engineering & Management</div>
-          <div class="chip">Machine Learning & Data Mining</div>
+          <div class="chip">Quality Engineering &amp; Management</div>
+          <div class="chip">Machine Learning &amp; Data Mining</div>
         </div>
         <h4 style="margin:16px 0 10px">Research Areas</h4>
         <div class="area">
           <div>• Artificial Intelligence in Quality Engineering</div>
-          <div>• System Monitoring & Anomaly Detection</div>
-          <div>• Time-Series Representation</div>
+          <div>• System Monitoring &amp; Anomaly Detection</div>
+          <div>• Time‑Series Representation</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===================== Members ===================== -->
-<section id="members">
-  <div class="container">
-    <div class="head">
-      <h2>Members</h2>
-      <div class="muted">교수 · 대학원생 · 학부연구생 · 동문</div>
-    </div>
-
-    <div class="grid">
-      <div class="card card-pad" style="grid-column: span 12">
-        <h4 style="margin-top:0">Faculty</h4>
-        <div class="member" style="margin:12px 0 6px">
-          <div class="avatar"><img src="https://picsum.photos/120?random=21" alt="Professor avatar"></div>
-          <div>
-            <div style="font-weight:700">Prof. Your Name</div>
-            <div class="muted">Professor, Industrial Engineering, UNIST · <a href="#">Website</a> · <a href="#">Google Scholar</a></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card card-pad" style="grid-column: span 12">
-        <h4>Graduate Students</h4>
-        <div class="grid">
-          <div class="member" style="grid-column: span 6">
-            <div class="avatar"><img src="https://picsum.photos/120?random=22" alt="Member avatar"></div>
-            <div>
-              <div style="font-weight:600">Student A</div>
-              <div class="muted">Ph.D. student · Anomaly Detection, Time Series</div>
-            </div>
-          </div>
-          <div class="member" style="grid-column: span 6">
-            <div class="avatar"><img src="https://picsum.photos/120?random=23" alt="Member avatar"></div>
-            <div>
-              <div style="font-weight:600">Student B</div>
-              <div class="muted">M.S. student · Quality Engineering</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card card-pad" style="grid-column: span 12">
-        <h4>Alumni</h4>
-        <ul style="margin:6px 0 0; padding-left:18px">
-          <li>Alumnus 1 — Now at Company/Ph.D. program</li>
-          <li>Alumnus 2 — Now at Company/Ph.D. program</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== Research (Publications + Projects inside) ===================== -->
+<!-- ===================== Research (3 Cards) ===================== -->
 <section id="research">
   <div class="container">
     <div class="head">
       <h2>Research</h2>
-      <div class="muted">Publications · Projects · Topics</div>
+      <div class="muted">Overview · Projects · Publications</div>
     </div>
 
-    <div class="grid" style="margin-bottom:18px">
-      <div class="card card-pad" style="grid-column: span 4">
-        <h4 style="margin:0 0 6px">AI in Quality Engineering</h4>
-        <p class="muted">Statistical learning and control for robust manufacturing.</p>
-      </div>
-      <div class="card card-pad" style="grid-column: span 4">
-        <h4 style="margin:0 0 6px">System Monitoring & Anomaly Detection</h4>
-        <p class="muted">Real-time detection for processes and time-series streams.</p>
-      </div>
-      <div class="card card-pad" style="grid-column: span 4">
-        <h4 style="margin:0 0 6px">Time-Series Representation</h4>
-        <p class="muted">Representation learning for irregular & multivariate data.</p>
-      </div>
-    </div>
+    <div class="grid">
+      <!-- Overview -->
+      <a class="card card-pad" href="{{ '/research/' | relative_url }}" style="grid-column: span 4; display:block; text-decoration:none; color:inherit">
+        <img src="{{ '/assets/research/cards/overview.jpg' | relative_url }}" alt="Research overview" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin-bottom:10px">
+        <h4 style="margin:0 0 6px">Overview</h4>
+        <p class="muted">Topics and directions of the lab.</p>
+        <div class="muted" style="font-size:13px">Explore →</div>
+      </a>
 
-    <div class="tabs" role="tablist" aria-label="Research tabs">
-      <button class="tab active" role="tab" aria-selected="true" aria-controls="pubs" id="tab-pubs" onclick="switchTab('pubs')">Publications</button>
-      <button class="tab" role="tab" aria-selected="false" aria-controls="projects" id="tab-projects" onclick="switchTab('projects')">Projects</button>
-    </div>
+      <!-- Projects -->
+      <a class="card card-pad" href="{{ '/research/projects/' | relative_url }}" style="grid-column: span 4; display:block; text-decoration:none; color:inherit">
+        <img src="{{ '/assets/research/cards/projects.jpg' | relative_url }}" alt="Projects" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin-bottom:10px">
+        <h4 style="margin:0 0 6px">Projects</h4>
+        <p class="muted">Sponsored and collaborative projects with industry.</p>
+        <div class="muted" style="font-size:13px">See projects →</div>
+      </a>
 
-    <div id="pubs" role="tabpanel" aria-labelledby="tab-pubs" style="margin-top:14px">
-      <div class="card card-pad">
-        <ol style="margin:0; padding-left:18px">
-          <li><strong>Title,</strong> Authors, <em>Conference/Journal</em>, Year. <a href="#">PDF</a> · <a href="#">Code</a></li>
-          <li><strong>Another Paper,</strong> Authors, <em>Journal</em>, Year. <a href="#">PDF</a></li>
-        </ol>
-      </div>
-    </div>
-
-    <div id="projects" role="tabpanel" aria-labelledby="tab-projects" hidden style="margin-top:14px">
-      <div class="grid">
-        <div class="card card-pad" style="grid-column: span 6">
-          <h4 style="margin-top:0">Project A</h4>
-          <p class="muted">Short description of goals, partners, and outcomes.</p>
-          <a href="#">Learn more →</a>
-        </div>
-        <div class="card card-pad" style="grid-column: span 6">
-          <h4 style="margin-top:0">Project B</h4>
-          <p class="muted">Short description of goals, partners, and outcomes.</p>
-          <a href="#">Learn more →</a>
-        </div>
-      </div>
+      <!-- Publications -->
+      <a class="card card-pad" href="{{ '/research/publications/' | relative_url }}" style="grid-column: span 4; display:block; text-decoration:none; color:inherit">
+        <img src="{{ '/assets/research/cards/pubs.jpg' | relative_url }}" alt="Publications" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin-bottom:10px">
+        <h4 style="margin:0 0 6px">Publications</h4>
+        <p class="muted">Journal and conference papers.</p>
+        <div class="muted" style="font-size:13px">Browse papers →</div>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- ===================== Activity (Lab-news + Tips/Notes) ===================== -->
+<!-- ===================== Activity (Seminar · News · Events) ===================== -->
 <section id="activity">
   <div class="container">
     <div class="head">
       <h2>Activity</h2>
-      <div class="muted">Lab News · Tips & Notes</div>
+      <div class="muted">Lab Seminar · Lab News · Lab Events</div>
     </div>
 
-    <div class="two-col">
-      <div>
-        <h4 style="margin:6px 0">Lab News</h4>
-        <div class="news-item">
-          <div class="news-date">2025-08-01</div>
-          <div>
-            <div style="font-weight:600">Paper accepted to Conference XYZ 🎉</div>
-            <div class="muted">Congrats to Team on the acceptance.</div>
-          </div>
-        </div>
-        <div class="news-item">
-          <div class="news-date">2025-07-15</div>
-          <div>
-            <div style="font-weight:600">Invited talk at Company ABC</div>
-            <div class="muted">Talk on real-time anomaly detection.</div>
-          </div>
-        </div>
+    <div class="grid">
+      <!-- Seminar -->
+      <div class="card card-pad" style="grid-column: span 4">
+        <h4 style="margin:6px 0">Lab Seminar</h4>
+        <ul style="margin:8px 0 12px; padding-left:18px">
+          <li><strong>2025‑09‑10</strong> — Speaker TBA</li>
+          <li><strong>2025‑08‑25</strong> — Deep dive into SPC with ML</li>
+        </ul>
+        <a href="{{ '/activity/seminar/' | relative_url }}">View all →</a>
       </div>
 
-      <div>
-        <h4 style="margin:6px 0">Lab Tips & Notes</h4>
-        <div class="card card-pad" style="margin-bottom:12px">
-          <div style="font-weight:600">Onboarding Tips</div>
-          <p class="muted">초기 세팅, 데이터 접근, 코드 컨벤션, 서버 접속 방법 등을 정리합니다.</p>
-          <a href="#">Read →</a>
-        </div>
-        <div class="card card-pad">
-          <div style="font-weight:600">Research Notes</div>
-          <p class="muted">개인적인 실험 일지, 실패에서 배운 점, 재현성 체크리스트 등.</p>
-          <a href="#">Read →</a>
-        </div>
+      <!-- News -->
+      <div class="card card-pad" style="grid-column: span 4">
+        <h4 style="margin:6px 0">Lab News</h4>
+        <ul style="margin:8px 0 12px; padding-left:18px">
+          <li>Paper accepted to Conference XYZ 🎉</li>
+          <li>Invited talk at Company ABC</li>
+        </ul>
+        <a href="{{ '/activity/news/' | relative_url }}">View all →</a>
+      </div>
+
+      <!-- Events -->
+      <div class="card card-pad" style="grid-column: span 4">
+        <h4 style="margin:6px 0">Lab Events</h4>
+        <ul style="margin:8px 0 12px; padding-left:18px">
+          <li>Open lab day (Fall)</li>
+          <li>Industry workshop with partners</li>
+        </ul>
+        <a href="{{ '/activity/events/' | relative_url }}">View all →</a>
       </div>
     </div>
   </div>
@@ -234,9 +164,9 @@ description: Data Analytics Lab at UNIST (Industrial Engineering). Industrial St
   </div>
 </section>
 
-<!-- ===================== Page-specific Scripts ===================== -->
+<!-- ===================== Scripts ===================== -->
 <script>
-  // Hero carousel
+  // Hero carousel (autoplay + pause-on-hover)
   const slides = document.getElementById('slides');
   const dotsWrap = document.getElementById('dots');
   if (slides && dotsWrap){
@@ -263,24 +193,11 @@ description: Data Analytics Lab at UNIST (Industrial Engineering). Industrial St
     window.nextSlide = nextSlide;
     window.prevSlide = prevSlide;
 
-    document.getElementById('carousel').addEventListener('mouseenter', ()=>{ isHover=true; });
-    document.getElementById('carousel').addEventListener('mouseleave', ()=>{ isHover=false; });
+    const carousel = document.getElementById('carousel');
+    carousel.addEventListener('mouseenter', ()=>{ isHover=true; });
+    carousel.addEventListener('mouseleave', ()=>{ isHover=false; });
 
     function start(){ timer = setInterval(()=>{ if(!isHover) nextSlide(); }, 5000); }
     renderDots(); update(); start();
-  }
-
-  // Research 탭 전환
-  function switchTab(id){
-    const panels = ['pubs','projects'];
-    panels.forEach(pid=>{
-      const panel = document.getElementById(pid);
-      if(panel){ panel.hidden = (pid !== id); }
-    });
-    document.querySelectorAll('.tabs .tab').forEach(btn=>{
-      const on = btn.getAttribute('aria-controls') === id;
-      btn.classList.toggle('active', on);
-      btn.setAttribute('aria-selected', on ? 'true' : 'false');
-    });
   }
 </script>
