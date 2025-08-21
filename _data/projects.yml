@@ -1,0 +1,21 @@
+# 메인 Research 카드(3개)와 /research/projects/가 공통으로 읽음
+- slug: project-a
+  title: Project A
+  summary: Real-time anomaly detection for manufacturing line.
+  period: "2024–2025"
+  image: /assets/research/projects/project-a.jpg
+  url: /research/projects/#project-a
+
+- slug: project-b
+  title: Project B
+  summary: Time-series representation learning for sensor data.
+  period: "2025–"
+  image: /assets/research/projects/project-b.jpg
+  url: /research/projects/#project-b
+
+- slug: project-c
+  title: Project C
+  summary: Quality-driven monitoring with interpretable ML.
+  period: "2025–"
+  image: /assets/research/projects/project-c.jpg
+  url: /research/projects/#project-c
