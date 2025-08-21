@@ -1,7 +1,7 @@
 <header>
   <div class="container nav" id="navbar">
-    <!-- 브랜드: 클릭하면 메인 -->
-    <a class="brand brand-link" href="{{ site.baseurl }}/">
+    <!-- 브랜드: 메인으로 -->
+    <a class="brand brand-link" href="{{ '/' | relative_url }}">
       <div class="brand-logo" aria-hidden="true"></div>
       <div>Data Analytics Lab · <span class="muted">UNIST IE</span></div>
     </a>
@@ -10,50 +10,50 @@
             onclick="document.getElementById('navbar').classList.toggle('open')">☰</button>
 
     <ul>
-      <!-- About -->
+      <!-- About: 첫 하위(Introduction)로 이동 -->
       <li class="has-dd">
-        <a href="{{ site.baseurl }}/#about">About</a>
+        <a href="{{ '/about.html' | relative_url }}">About</a>
         <button class="dd-toggle" aria-label="Open submenu"></button>
         <ul class="dropdown" role="menu" aria-label="About submenu">
-          <li><a href="{{ site.baseurl }}/about.html">Introduction</a></li>
-          <li><a href="{{ site.baseurl }}/location.html">Location</a></li>
+          <li><a href="{{ '/about.html' | relative_url }}">Introduction</a></li>
+          <li><a href="{{ '/location.html' | relative_url }}">Location</a></li>
         </ul>
       </li>
 
-      <!-- Members (홈 섹션 제거했으므로 /members/로 이동) -->
+      <!-- Members: 첫 하위(Professor)로 이동 -->
       <li class="has-dd">
-        <a href="{{ site.baseurl }}/members/">Members</a>
+        <a href="{{ '/members/professor/' | relative_url }}">Members</a>
         <button class="dd-toggle" aria-label="Open submenu"></button>
         <ul class="dropdown" role="menu" aria-label="Members submenu">
-          <li><a href="{{ site.baseurl }}/members/professor/">Professor</a></li>
-          <li><a href="{{ site.baseurl }}/members/students/">Students</a></li>
-          <li><a href="{{ site.baseurl }}/members/alumni/">Alumni</a></li>
+          <li><a href="{{ '/members/professor/' | relative_url }}">Professor</a></li>
+          <li><a href="{{ '/members/students/'  | relative_url }}">Students</a></li>
+          <li><a href="{{ '/members/alumni/'    | relative_url }}">Alumni</a></li>
         </ul>
       </li>
 
-      <!-- Research -->
+      <!-- Research: 첫 하위(Projects)로 이동 -->
       <li class="has-dd">
-        <a href="{{ site.baseurl }}/#research">Research</a>
+        <a href="{{ '/research/projects/' | relative_url }}">Research</a>
         <button class="dd-toggle" aria-label="Open submenu"></button>
         <ul class="dropdown" role="menu" aria-label="Research submenu">
-          <li><a href="{{ site.baseurl }}/research/projects/">Projects</a></li>
-          <li><a href="{{ site.baseurl }}/research/publications/">Publications</a></li>
+          <li><a href="{{ '/research/projects/'     | relative_url }}">Projects</a></li>
+          <li><a href="{{ '/research/publications/' | relative_url }}">Publications</a></li>
         </ul>
       </li>
 
-      <!-- Activity -->
+      <!-- Activity: 첫 하위(Seminar)로 이동 -->
       <li class="has-dd">
-        <a href="{{ site.baseurl }}/activity/">Activity</a>
+        <a href="{{ '/activity/seminar/' | relative_url }}">Activity</a>
         <button class="dd-toggle" aria-label="Open submenu"></button>
         <ul class="dropdown" role="menu" aria-label="Activity submenu">
-          <li><a href="{{ site.baseurl }}/activity/seminar/">Lab Seminar</a></li>
-          <li><a href="{{ site.baseurl }}/activity/news/">Lab News</a></li>
-          <li><a href="{{ site.baseurl }}/activity/events/">Lab Events</a></li>
+          <li><a href="{{ '/activity/seminar/' | relative_url }}">Lab Seminar</a></li>
+          <li><a href="{{ '/activity/news/'    | relative_url }}">Lab News</a></li>
+          <li><a href="{{ '/activity/events/'  | relative_url }}">Lab Events</a></li>
         </ul>
       </li>
 
       <!-- Contact -->
-      <li><a class="nav-cta" href="{{ site.baseurl }}/contact/">Contact</a></li>
+      <li><a class="nav-cta" href="{{ '/contact/' | relative_url }}">Contact</a></li>
     </ul>
   </div>
 </header>
