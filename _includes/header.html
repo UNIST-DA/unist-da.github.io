@@ -1,6 +1,5 @@
 <header>
   <div class="container nav" id="navbar">
-    <!-- Brand: PNG만 사용 (박스 없음) -->
     <a class="brand brand-link" href="{{ '/' | relative_url }}">
       <img class="brand-img"
            src="{{ '/assets/hero/LabSign.png' | relative_url }}"
@@ -12,17 +11,15 @@
             onclick="document.getElementById('navbar').classList.toggle('open')">☰</button>
 
     <ul>
-      <!-- About: 첫 하위 -->
       <li class="has-dd">
         <a href="{{ '/about.html' | relative_url }}">About</a>
         <button class="dd-toggle" aria-label="Open submenu"></button>
         <ul class="dropdown" role="menu">
-          <li><a href="{{ '/about.html'   | relative_url }}">Introduction</a></li>
-          <li><a href="{{ '/location.html'| relative_url }}">Location</a></li>
+          <li><a href="{{ '/about.html' | relative_url }}">Introduction</a></li>
+          <li><a href="{{ '/location.html' | relative_url }}">Location</a></li>
         </ul>
       </li>
 
-      <!-- Members: 첫 하위 -->
       <li class="has-dd">
         <a href="{{ '/members/professor/' | relative_url }}">Members</a>
         <button class="dd-toggle" aria-label="Open submenu"></button>
@@ -33,7 +30,6 @@
         </ul>
       </li>
 
-      <!-- Research: 첫 하위 -->
       <li class="has-dd">
         <a href="{{ '/research/projects/' | relative_url }}">Research</a>
         <button class="dd-toggle" aria-label="Open submenu"></button>
@@ -43,7 +39,6 @@
         </ul>
       </li>
 
-      <!-- Activity: 첫 하위 -->
       <li class="has-dd">
         <a href="{{ '/activity/Lab%20Seminar/' | relative_url }}">Activity</a>
         <button class="dd-toggle" aria-label="Open submenu"></button>
