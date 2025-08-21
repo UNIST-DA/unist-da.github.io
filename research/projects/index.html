@@ -7,7 +7,7 @@ permalink: /research/projects/
 
 <div class="page-hero">
   <div class="container">
-    <div class="breadcrumbs"><a href="{{ '/' | relative_url }}">Home</a> · <a href="{{ '/research/' | relative_url }}">Research</a> · Projects</div>
+    <div class="breadcrumbs"><a href="{{ '/' | relative_url }}">Home</a> · <a href="{{ '/research/projects/' | relative_url }}">Research</a> · Projects</div>
     <h1 class="page-title">Projects</h1>
     <p class="muted">Selected sponsored and collaborative projects.</p>
   </div>
@@ -16,22 +16,16 @@ permalink: /research/projects/
 <main class="container">
   <section>
     <div class="grid">
-      <!-- Project A -->
-      <article class="card card-pad" style="grid-column: span 6">
-        <img src="{{ '/assets/research/projects/project-a.jpg' | relative_url }}" alt="Project A thumbnail" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin-bottom:10px">
-        <h3 style="margin:0 0 6px">Project A</h3>
-        <p class="muted">Real-time anomaly detection for manufacturing line. <em>2024–2025</em></p>
-        <a href="#">Learn more →</a>
+      {% for p in site.data.projects %}
+      <article class="card card-pad" style="grid-column: span 6" id="{{ p.slug }}">
+        {% if p.image %}
+        <img src="{{ p.image | relative_url }}" alt="{{ p.title }}" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin-bottom:10px">
+        {% endif %}
+        <h3 style="margin:0 0 6px">{{ p.title }}</h3>
+        {% if p.period %}<p class="muted" style="margin:0 0 8px">{{ p.period }}</p>{% endif %}
+        <p class="muted">{{ p.summary }}</p>
       </article>
-
-      <!-- Project B -->
-      <article class="card card-pad" style="grid-column: span 6">
-        <img src="{{ '/assets/research/projects/project-b.jpg' | relative_url }}" alt="Project B thumbnail" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin-bottom:10px">
-        <h3 style="margin:0 0 6px">Project B</h3>
-        <p class="muted">Time-series representation learning for sensor data. <em>2025–</em></p>
-        <a href="#">Learn more →</a>
-      </article>
+      {% endfor %}
     </div>
   </section>
 </main>
-
