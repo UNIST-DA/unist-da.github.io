@@ -2,34 +2,14 @@ seminar:
   - slug: sem-2025-09-10
     title: TBA — Lab Seminar
     date: 2025-09-10
-    detail: Speaker TBA.
-    url: /activity/seminar/#sem-2025-09-10
-  - slug: sem-2025-08-25
-    title: Deep dive into SPC with ML
-    date: 2025-08-25
-    detail: Internal seminar on SPC+ML.
-    url: /activity/seminar/#sem-2025-08-25
-
+    url: /activity/Lab%20Seminar/#sem-2025-09-10
 news:
   - slug: news-2025-08-01
     title: Paper accepted to Conference XYZ 🎉
     date: 2025-08-01
-    detail: Congrats to team on the acceptance.
-    url: /activity/news/#news-2025-08-01
-  - slug: news-2025-07-15
-    title: Invited talk at Company ABC
-    date: 2025-07-15
-    detail: Talk on real-time anomaly detection.
-    url: /activity/news/#news-2025-07-15
-
+    url: /activity/Lab%20News/#news-2025-08-01
 events:
   - slug: event-2025-09-01
     title: Open Lab Day (Fall)
     date: 2025-09-01
-    detail: Prospective students welcome.
-    url: /activity/events/#event-2025-09-01
-  - slug: event-2025-10-05
-    title: Industry workshop with partners
-    date: 2025-10-05
-    detail: Joint workshop with industry partners.
-    url: /activity/events/#event-2025-10-05
+    url: /activity/Lab%20Events/#event-2025-09-01
