@@ -3,8 +3,9 @@
     <!-- 브랜드: 메인으로 -->
     <a class="brand brand-link" href="{{ '/' | relative_url }}">
       <a class="brand brand-link" href="{{ '/' | relative_url }}">
+        <!-- ✅ 박스(div.brand-logo) 쓰지 말고 PNG만 -->
         <img class="brand-img"
-             src="{{ '/assets/hero/LabSign.png' | relative_url }}"
+             src="{{ '/assets/hero/LabSign.png?v=' | append: site.github.build_revision | relative_url }}"
              alt="Data Analytics Lab logo" loading="eager" decoding="async">
         <div>Data Analytics Lab · <span class="muted">UNIST IE</span></div>
       </a>
