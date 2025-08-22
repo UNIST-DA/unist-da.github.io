@@ -328,13 +328,14 @@ footer{padding:36px 0}
    GALAXY CANVAS (다크 모드에서만 나타나는 좌우 은하수)
    ========================================================= */
 /* Canvas는 항상 깔려있되, 라이트 모드에선 투명 */
-#galaxy-canvas{
-  position:fixed; inset:0; z-index:-1; pointer-events:none;
-  opacity:0; transition:opacity .35s ease;
-  display:block; width:100vw; height:100vh;
-  /* 다크에서 화면과 부드럽게 섞이도록 */
-  mix-blend-mode:screen; 
-}
+ #galaxy-canvas{
+   position:fixed; inset:0;
+   z-index:0;                 /* <- 핵심: -1 ➜ 0 (배경 위, 콘텐츠 아래) */
+   pointer-events:none;
+   opacity:0; transition:opacity .35s ease;
+   display:block; width:100vw; height:100vh;
+   mix-blend-mode:screen;     /* 어두운 배경 위에서 은은하게 빛남 */
+ }
 html[data-theme="dark"] #galaxy-canvas{ opacity:1; }
 
 /* =========================================================
