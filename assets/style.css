@@ -62,23 +62,38 @@ header{position:sticky; top:0; z-index:50; background:rgba(255,255,255,.8);
   .nav > ul > li.has-dd > .dropdown{transition:opacity .15s ease,visibility .15s ease;opacity:0;visibility:hidden}
   .nav > ul > li.has-dd:hover > .dropdown{opacity:1;visibility:visible;display:block}
 }
+/* 상단 1단 메뉴 글자 굵게 */
+.nav > ul > li > a{ font-weight:700; }
+
+/* 브랜드 텍스트(로고 옆)도 굵게 */
+.brand-text{ font-weight:700; }
+
+/* 드롭다운 항목은 적당히 */
+.nav > ul > li > .dropdown a{ font-weight:500; }
+
+/* 데스크톱 기본: 토글 숨김 */
+.dd-toggle{
+  display:none !important;
+  appearance:none;
+  border:0;
+  background:transparent;
+  padding:0;
+  margin-left:4px;
+}
+
+/* 모바일에서만 노출 (.nav.open 일 때) */
 @media (max-width:860px){
   .dd-toggle{
-    display:none !important;
-    appearance:none;
-    border:none;
-    background:transparent;
-    padding:0;
+    display:inline-flex !important;
+    align-items:center; justify-content:center;
+    padding:6px;
   }
-  
-  /* 모바일에서만 노출 */
-  @media (max-width:860px){
-    .dd-toggle{
-      display:inline-flex !important;
-      align-items:center; justify-content:center;
-      padding:6px; margin-left:4px;
-    }
+  .nav.open > ul .dropdown{
+    position:static; display:none; margin-top:6px; padding:6px;
+    background:var(--bg-soft); border-radius:10px;
   }
+  .nav.open > ul .has-dd.open > .dropdown{ display:block; }
+}
   .nav.open > ul .dropdown{position:static;display:none;margin-top:6px;padding:6px;background:var(--bg-soft);border-radius:10px}
   .nav.open > ul .has-dd.open > .dropdown{display:block}
 }
