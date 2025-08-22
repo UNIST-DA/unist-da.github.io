@@ -242,11 +242,3 @@ footer{padding:36px 0}
 @media (max-width: 480px){
   .slides.auto-fit .slide{ height: 50vh; min-height: 300px; }
 }
-/* 상단 1단 메뉴 글자 굵게 */
-.nav > ul > li > a{ font-weight:700; }
-
-/* 브랜드 텍스트(로고 옆)도 굵게 */
-.brand-text{ font-weight:700; }
-
-/* 드롭다운 항목은 가독성을 위해 기본 굵기(선택) */
-.nav > ul > li > .dropdown a{ font-weight:500; }
