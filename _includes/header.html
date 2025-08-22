@@ -9,9 +9,12 @@
         <span class="brand-main">Data Analytics Lab</span> · <span class="muted">UNIST IE</span>
       </span>
     </a>
+
+    <!-- Mobile menu button -->
     <button class="menu-btn" aria-label="Toggle Menu"
             onclick="document.getElementById('navbar').classList.toggle('open')">☰</button>
 
+    <!-- Main nav -->
     <ul>
       <li class="has-dd">
         <a href="{{ '/about.html' | relative_url }}">About</a>
@@ -46,9 +49,27 @@
           <li><a href="{{ '/activity/Lab%20Events/'  | relative_url }}">Lab Events</a></li>
         </ul>
       </li>
-      <li class="has-dd">
-        <li><a href="{{ '/contact/' | relative_url }}">Contact</a></li>
-        </ul>
-      </li>
+
+      <!-- Contact (단일 항목: 잘못된 중첩 제거) -->
+      <li><a href="{{ '/contact/' | relative_url }}">Contact</a></li>
+    </ul>
+
+    <!-- ✅ Theme toggle button -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle color theme" aria-pressed="false">
+      <!-- Sun / Moon SVG -->
+      <svg class="sun" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 4V2M12 22v-2M4.93 4.93 3.52 3.52M20.48 20.48l-1.41-1.41M4 12H2m20 0h-2M4.93 19.07 3.52 20.48M20.48 3.52 19.07 4.93" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+      </svg>
+    </button>
   </div>
 </header>
+
+<!-- ✅ Galaxy canvas (다크 모드에서 좌우 여백 은하수) -->
+<canvas id="galaxy-canvas"></canvas>
+
+<!-- ✅ Theme & Galaxy JS -->
+<script defer src="{{ '/assets/main/theme.js?v=' | append: site.github.build_revision | relative_url }}"></script>
