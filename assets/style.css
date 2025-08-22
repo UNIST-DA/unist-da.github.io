@@ -236,3 +236,8 @@ footer{padding:36px 0}
   color:#fff;
   text-shadow: 0 2px 6px rgba(0,0,0,.6);
 }
+/* 브랜드 메인 텍스트만 크기 키우기 */
+.brand-main {
+  font-size: 1.15em;   /* 기본보다 15% 크게 */
+  font-weight: 700;    /* 볼드 유지 */
+}
