@@ -15,17 +15,27 @@ permalink: /activity/Lab%20News/
 <main class="container">
   <section>
     <div class="grid">
-      {% for it in site.data.activity.news %}
-      <article class="card card-pad" style="grid-column: span 12" id="{{ it.slug }}">
-        <div class="news-item">
-          <div class="news-date">{{ it.date }}</div>
-          <div>
-            <div style="font-weight:600">{{ it.title }}</div>
-            {% if it.detail %}<p class="muted">{{ it.detail }}</p>{% endif %}
+      {% assign news_items = site.data.activity.news | sort: 'date' | reverse %}
+      {% for it in news_items %}
+        {% capture date_label %}
+          {% if it.start and it.end %}
+            {{ it.start | date: "%Y-%m-%d" }}–{{ it.end | date: "%Y-%m-%d" }}
+          {% else %}
+            {{ it.date | date: "%Y-%m-%d" }}
+          {% endif %}
+        {% endcapture %}
+
+        <article class="card card-pad" style="grid-column: span 12" id="{{ it.slug | default: it.date }}">
+          <div class="news-item">
+            <div class="news-date">{{ date_label | strip }}</div>
+            <div>
+              <div style="font-weight:600">{{ it.title }}</div>
+              {% if it.detail %}<p class="muted">{{ it.detail }}</p>{% endif %}
+            </div>
           </div>
-        </div>
-      </article>
+        </article>
       {% endfor %}
     </div>
   </section>
 </main>
+

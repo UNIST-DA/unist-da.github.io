@@ -15,17 +15,50 @@ permalink: /activity/Lab%20Events/
 <main class="container">
   <section>
     <div class="grid">
-      {% for it in site.data.activity.events %}
-      <article class="card card-pad" style="grid-column: span 12" id="{{ it.slug }}">
-        <div class="news-item">
-          <div class="news-date">{{ it.date }}</div>
-          <div>
-            <div style="font-weight:600">{{ it.title }}</div>
-            {% if it.detail %}<p class="muted">{{ it.detail }}</p>{% endif %}
+      {% assign events = site.data.activity.events | sort: 'start' | reverse %}
+      {% for it in events %}
+        {% capture date_label %}{{ it.start | date: "%Y-%m-%d" }}{% if it.end %}–{{ it.end | date: "%Y-%m-%d" }}{% endif %}{% endcapture %}
+
+        <article class="card card-pad" style="grid-column: span 12" id="{{ it.slug | default: it.start }}">
+          <!-- 텍스트 영역 -->
+          <div class="news-item">
+            <div class="news-date">{{ date_label }}</div>
+            <div>
+              <div style="font-weight:600">{{ it.title }}</div>
+              {% if it.detail %}<p class="muted">{{ it.detail }}</p>{% endif %}
+            </div>
           </div>
-        </div>
-      </article>
+
+          <!-- 이미지: 단일 대표 이미지 -->
+          {% if it.image %}
+          <figure class="photo" style="margin-top:12px">
+            <a href="{{ it.image | relative_url }}" target="_blank" rel="noopener">
+              <img src="{{ it.image | relative_url }}" alt="{{ it.image_alt | default: it.title }}" loading="lazy">
+            </a>
+            {% if it.image_caption %}
+              <figcaption class="small muted" style="padding:8px 4px">{{ it.image_caption }}</figcaption>
+            {% endif %}
+          </figure>
+          {% endif %}
+
+          <!-- 이미지: 여러 장 갤러리 -->
+          {% if it.images %}
+          <div class="grid gallery" style="margin-top:12px">
+            {% for pic in it.images %}
+            <figure class="photo" style="grid-column: span 6">
+              <a href="{{ pic.src | relative_url }}" target="_blank" rel="noopener">
+                <img src="{{ pic.src | relative_url }}" alt="{{ pic.alt | default: it.title }}" loading="lazy">
+              </a>
+              {% if pic.caption %}
+                <figcaption class="small muted" style="padding:8px 4px">{{ pic.caption }}</figcaption>
+              {% endif %}
+            </figure>
+            {% endfor %}
+          </div>
+          {% endif %}
+        </article>
       {% endfor %}
     </div>
   </section>
 </main>
+
