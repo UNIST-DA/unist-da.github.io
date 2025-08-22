@@ -231,3 +231,8 @@ footer{padding:36px 0}
 .slides.no-crop .cover-video::after{
   display:none;
 }
+/* === Hero copy text fix === */
+.hero-copy{
+  color:#fff;
+  text-shadow: 0 2px 6px rgba(0,0,0,.6);
+}
