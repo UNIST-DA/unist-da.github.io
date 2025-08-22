@@ -13,7 +13,11 @@
 
   <!-- CSS (cache-busting) -->
   <link rel="stylesheet" href="{{ '/assets/style.css?v=' | append: site.github.build_revision | relative_url }}">
+
+  <!-- ✅ Favicon (이 부분은 반드시 head 안에 위치) -->
+  <link rel="icon" type="image/png" href="{{ '/assets/hero/LabSign_DA_only.png' | relative_url }}">
 </head>
+  
 <body>
   {% include header.html %}
   {{ content }}
