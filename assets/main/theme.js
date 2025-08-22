@@ -1,5 +1,7 @@
 /* =========================================================
-   DA-LAB Galaxy — FULL-BG (Dramatic preset)
+   DA-LAB Galaxy — FULL-BG (Meteor Shower preset)
+   - No wave/wind wobble
+   - Frequent meteor bursts
    ========================================================= */
 (() => {
   const root = document.documentElement;
@@ -10,8 +12,8 @@
   const DPR = Math.min(2, window.devicePixelRatio || 1);
   const prefersReduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
 
-  // ==== 튜닝값 (강하게) ====
-  const STAR_DENSITY = prefersReduced ? 0.00035 : 0.00070; // px당 별(기존 대비 ↑)
+  /* ===== Stars (드라마틱 유지) ===== */
+  const STAR_DENSITY = prefersReduced ? 0.00035 : 0.00070; // px당 별
   const LAYERS = prefersReduced
     ? [
         { sp:0.030, driftX:0.020, sz:[0.9,1.7], al:[0.55,0.95] },
@@ -22,16 +24,15 @@
         { sp:0.110, driftX:0.090, sz:[1.1,2.3], al:[0.65,1.00] }, // mid
         { sp:0.180, driftX:0.120, sz:[1.2,2.6], al:[0.70,1.00] }, // near
       ];
-  const TWINKLE_SPEED = prefersReduced ? 0.030 : 0.045; // 트윙클 속도 배율(↑)
-  const TWINKLE_AMP   = 0.55;                           // 트윙클 진폭(↑)
+  const TWINKLE_SPEED = prefersReduced ? 0.026 : 0.040;
+  const TWINKLE_AMP   = 0.50;
 
-  const SHOOT_MIN = prefersReduced ? 2200 : 1200;       // 유성 빈도↑
-  const SHOOT_MAX = prefersReduced ? 4200 : 3200;
-  const SHOOT_SPEED = prefersReduced ? 1.2 : 1.8;       // 유성 속도↑
-
-  // 전역 바람(좌우 흔들림) – 느린 사인파
-  const WIND_STRENGTH = prefersReduced ? 0.20 : 0.35;   // px/frame 스케일
-  const WIND_FREQ     = 0.0008;                         // Hz ~ (ms 기준)
+  /* ===== Meteors (유성우) ===== */
+  const SHOOT_MIN = prefersReduced ? 700 : 400;   // 더 자주
+  const SHOOT_MAX = prefersReduced ? 1600 : 1200;
+  const SHOOT_SPEED = prefersReduced ? 1.4 : 2.0; // 더 빠르게
+  const BURST_MIN = 2;                             // 버스트 최소/최대 개수
+  const BURST_MAX = 4;
 
   let running = false, stars = [], meteors = [];
   let rafId = null, nextMeteorAt = 0;
@@ -55,11 +56,11 @@
       const L = LAYERS[i % LAYERS.length];
       const x = Math.random()*w, y = Math.random()*h;
       const sz = L.sz[0] + Math.random()*(L.sz[1]-L.sz[0]);
-      const sp = L.sp*(0.85+Math.random()*0.5);                 // 개별 속도 편차
+      const sp = L.sp*(0.85+Math.random()*0.5);
       const driftX = (Math.random()<0.5 ? -1:1)*L.driftX*(0.7+Math.random()*0.8);
       const a0 = L.al[0] + Math.random()*(L.al[1]-L.al[0]);
-      const tw = 0.6 + Math.random()*1.2;                        // 트윙클 주파수 다양화
-      const hue= 190 + Math.random()*60;                         // 청~청보라
+      const tw = 0.6 + Math.random()*1.2;
+      const hue= 190 + Math.random()*60;
       stars.push({x,y,sz,sp,driftX,a:a0, tw, t:Math.random()*6.283, hue});
     }
   }
@@ -67,7 +68,7 @@
   function drawMilkyWay(t){
     if (!ctx) return;
     const w = window.innerWidth, h = window.innerHeight;
-    const off = (t||0)*0.012; // 살짝 더 빠르게
+    const off = (t||0)*0.012;
 
     let grad = ctx.createRadialGradient(w*0.22+off*28, h*0.28, 20, w*0.22+off*28, h*0.28, Math.max(w,h)*0.62);
     grad.addColorStop(0,'rgba(170,195,255,0.22)');
@@ -89,22 +90,18 @@
     if (!ctx) return;
     const w = window.innerWidth, h = window.innerHeight;
 
-    // 글로벌 바람 (좌우) – time 기반
-    const wind = Math.sin(ts * WIND_FREQ) * WIND_STRENGTH;
-
     for (const s of stars){
-      // 수직 하강 + 수평 드리프트 + 글로벌 바람
       s.y += s.sp;
-      s.x += s.driftX + wind;
+      s.x += s.driftX;
 
-      // 화면 밖 래핑
+      // 화면 래핑
       if (s.x < -3) s.x += (w+6);
       else if (s.x > w+3) s.x -= (w+6);
       if (s.y > h + 4) s.y = -4;
 
-      // 트윙클 (속도/진폭 강화)
+      // 트윙클
       s.t += s.tw * TWINKLE_SPEED;
-      const twinkle = 1 - TWINKLE_AMP + Math.sin(s.t) * TWINKLE_AMP; // (1-amp)~1+amp
+      const twinkle = 1 - TWINKLE_AMP + Math.sin(s.t) * TWINKLE_AMP;
       const a = s.a * twinkle;
 
       ctx.beginPath();
@@ -113,33 +110,52 @@
       ctx.fill();
     }
 
-    // Meteors
+    // 유성 그리기 (꼬리 더 길게/선명하게)
     for (let i=meteors.length-1;i>=0;i--){
       const m = meteors[i];
       m.x += m.vx; m.y += m.vy; m.life -= 1;
-      const grd = ctx.createLinearGradient(m.x, m.y, m.x - m.vx*12, m.y - m.vy*12);
+      const grd = ctx.createLinearGradient(m.x, m.y, m.x - m.vx*18, m.y - m.vy*18);
       grd.addColorStop(0, `rgba(255,255,255,${0.95*m.alpha})`);
       grd.addColorStop(1, `rgba(255,255,255,0)`);
-      ctx.strokeStyle = grd; ctx.lineWidth = 2;
+      ctx.strokeStyle = grd; ctx.lineWidth = 2.2;
       ctx.beginPath(); ctx.moveTo(m.x, m.y);
-      ctx.lineTo(m.x - m.vx*14, m.y - m.vy*14); ctx.stroke();
-      if (m.life <= 0 || m.y < -80 || m.y > h+80 || m.x < -80 || m.x > w+80) {
+      ctx.lineTo(m.x - m.vx*18, m.y - m.vy*18); ctx.stroke();
+      if (m.life <= 0 || m.y < -100 || m.y > h+100 || m.x < -120 || m.x > w+120) {
         meteors.splice(i,1);
       }
     }
   }
 
-  function spawnMeteorIfNeeded(ts){
-    if (ts < nextMeteorAt) return;
-    const w = window.innerWidth;
+  function spawnMeteorBurst(ts){
+    const w = window.innerWidth, h = window.innerHeight;
 
-    // 상단 임의 위치에서 좌/우로 기울어진 하강
-    const x = Math.random()*w, y = -30 - Math.random()*40;
-    const dir = Math.random()<0.5 ? 1 : -1;
-    const angle = (Math.PI/2.5) * dir;
-    const speed = SHOOT_SPEED * (3 + Math.random()*2.2);
-    const vx = Math.cos(angle)*speed, vy = Math.sin(angle)*speed + speed*0.8;
-    meteors.push({x,y,vx,vy,life: 48 + Math.floor(Math.random()*28), alpha: 0.9});
+    // 버스트 개수
+    const k = Math.floor(BURST_MIN + Math.random()*(BURST_MAX - BURST_MIN + 1));
+
+    for (let i=0;i<k;i++){
+      // 70%: 상단에서 내려오는 유형, 30%: 좌/우에서 대각선으로 가로지르는 유형
+      const topType = Math.random() < 0.7;
+
+      if (topType){
+        const x = Math.random()*w, y = -30 - Math.random()*60;
+        const dir = Math.random()<0.5 ? 1 : -1;
+        const angle = (Math.PI/2.6) * dir;
+        const speed = SHOOT_SPEED * (3.2 + Math.random()*2.4);
+        const vx = Math.cos(angle)*speed, vy = Math.sin(angle)*speed + speed*0.9;
+        meteors.push({x,y,vx,vy,life: 52 + Math.floor(Math.random()*30), alpha: 0.95});
+      } else {
+        // 사이드 스윕: 좌/우에서 등장, 화면을 가로지름
+        const fromLeft = Math.random() < 0.5;
+        const x = fromLeft ? -40 : w + 40;
+        const y = Math.random() * (h*0.7);
+        const angle = fromLeft ? (Math.PI * (0.92)) : (Math.PI * (0.08)); // 거의 수평
+        const speed = SHOOT_SPEED * (3.0 + Math.random()*2.0);
+        const vx = Math.cos(angle)*speed * (fromLeft ? 1 : -1);
+        const vy = speed * (0.2 + Math.random()*0.4);
+        meteors.push({x,y,vx,vy,life: 60 + Math.floor(Math.random()*32), alpha: 0.9});
+      }
+    }
+
     nextMeteorAt = ts + (SHOOT_MIN + Math.random()*(SHOOT_MAX - SHOOT_MIN));
   }
 
@@ -148,14 +164,14 @@
     ctx.clearRect(0,0,cvs.width,cvs.height);
     drawMilkyWay(ts);
     drawStars(ts);
-    spawnMeteorIfNeeded(performance.now());
+    if (ts >= nextMeteorAt) spawnMeteorBurst(ts);
     rafId = requestAnimationFrame(loop);
   }
 
   function startGalaxy(){
     if (!cvs || !ctx) return;
     if (running) return; running = true;
-    resize(); makeStars(); meteors = []; nextMeteorAt = performance.now() + 900;
+    resize(); makeStars(); meteors = []; nextMeteorAt = performance.now() + 800;
     rafId = requestAnimationFrame(loop);
   }
   function stopGalaxy(){
@@ -169,7 +185,7 @@
     if (!running && ctx){ drawMilkyWay(0); drawStars(0); }
   });
 
-  // ==== 테마 연결 ====
+  /* ===== Theme wiring ===== */
   const key = 'da_theme';
   const prefersDark = window.matchMedia?.('(prefers-color-scheme: dark)').matches ?? false;
 
