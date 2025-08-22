@@ -2,57 +2,52 @@ seminar:
   - slug: sem-2025-09-10
     title: TBA — Lab Seminar
     date: 2025-09-10
-    url: /activity/Lab%20Seminar/#sem-2025-09-10
+    url: /activity/Lab_Seminar/#sem-2025-09-10
 news:
   - slug: 2025-08-05-cikm-short-paper
     date: "2025-08-05"
     title: "Paper accepted to CIKM 2025 🎉"
     detail: |
       Title: <em>Modeling Irregular Astronomical Time Series with Neural Stochastic Delay Differential Equations</em><br>
-      Authors: 오용경, 감승수, 임동영, 김성일
-    # (선택) 뉴스에도 url을 둘 수 있어요
-    url: "/activity/Lab%20News/#2025-08-05-cikm-short-paper"
+      Authors: Yongkyung Oh, Seungsoo Kam, Dongyoung Lim, Sungil Kim
+    url: "/activity/Lab_News/#2025-08-05-cikm-short-paper"
 
   - slug: 2025-06-18-kiie-spring-2025
-    # 표시는 기간으로, 정렬은 마지막 날 기준으로
-    start: "2025-06-18"
-    end: "2025-06-21"
+    # Display as period, sort by end date
     date: "2025-06-21"
-    title: "대한산업공학회 2025 춘계공동학술대회 참여"
+    title: "Participation in KIIE 2025 Spring Joint Conference"
     detail: |
-      6월 18일–21일, 대한산업공학회 2025 춘계공동학술대회에 참여했습니다.
-    url: "/activity/Lab%20News/#2025-06-18-kiie-spring-2025"
+      Participated in the Korean Institute of Industrial Engineers (KIIE) 2025 Spring Joint Conference from June 18-21.
+    url: "/activity/Lab_News/#2025-06-18-kiie-spring-2025"
 
 events:
-
-
   - slug: 2025-05-01-prof-birthday
     start: "2025-05-01"
-    title: "교수님 생신 축하"
+    title: "Professor's Birthday Celebration"
     detail: |
-      연구실에서 교수님의 생신을 축하했습니다.
-    image: "/assets/Lab Events/Prof_birth.jpg"
-    image_alt: "생신 케이크와 연구실 단체 사진"
+      The lab celebrated our professor's birthday.
+    image: "/assets/Lab_Events/Prof_birth.jpg"
+    image_alt: "Birthday cake and lab group photo"
     image_caption: "Celebration"
-    url: "/activity/Lab%20Events/#2025-05-01-prof-birthday"
+    url: "/activity/Lab_Events/#2025-05-01-prof-birthday"
 
   - slug: 2025-04-08-cherry-blossom-picnic
     start: "2025-04-08"
-    title: "벚꽃 피크닉"
+    title: "Cherry Blossom Picnic"
     detail: |
-      캠퍼스 벚꽃과 함께 야외 피크닉을 진행했습니다.
-    image: "/assets/Lab Events/spring_2025.jpg"
-    image_alt: "벚꽃 아래 연구실 단체 사진"
+      Enjoyed an outdoor picnic among the campus cherry blossoms.
+    image: "/assets/Lab_Events/spring_2025.jpg"
+    image_alt: "Lab group photo under cherry blossoms"
     image_caption: "Cherry blossom picnic"
-    url: "/activity/Lab%20Events/#2025-04-08-cherry-blossom-picnic"
+    url: "/activity/Lab_Events/#2025-04-08-cherry-blossom-picnic"
 
   - slug: 2024-09-06-lab-homecoming
     start: "2024-09-06"
-    title: "연구실 홈커밍데이"
+    title: "Lab Homecoming Day"
     detail: |
-      연구실 홈커밍데이를 진행했습니다.
-    image: "/assets/Lab Events/homecoming_2024.jpg"
-    image_alt: "연구실 홈커밍데이 단체 사진"
+      Held our annual lab homecoming day event.
+    image: "/assets/Lab_Events/homecoming_2024.jpg"
+    image_alt: "Lab homecoming day group photo"
     image_caption: "Lab homecoming day"
-    url: "/activity/Lab%20Events/#2024-09-06-lab-homecoming"
+    url: "/activity/Lab_Events/#2024-09-06-lab-homecoming"
 
