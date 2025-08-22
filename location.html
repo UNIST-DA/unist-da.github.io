@@ -34,7 +34,7 @@ permalink: /location.html
           </li>
 
           <li>
-            <div style="font-weight:700">Professor’s Office <span class="muted">(Room <strong>301-8</strong>)</span></div>
+            <div style="font-weight:700">Professor's Office <span class="muted">(Room <strong>301-8</strong>)</span></div>
             <div class="muted">울산광역시 울주군 언양읍 <strong>유니스트길 50</strong>, <strong>제5공학관 112동 301-8호</strong></div>
             <div class="small muted">UNIST, <strong>Building 112, Room 301-8</strong>, 50 UNIST-gil, Eonyang-eup, Ulju-gun, Ulsan 44919, Republic of Korea</div>
           </li>
@@ -55,13 +55,48 @@ permalink: /location.html
       <!-- Right: Map -->
       <div class="card card-pad" style="grid-column: span 6">
         <h3 style="margin:0 0 8px">Map — UNIST 제5공학관(112동)</h3>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d729.7958112582595!2d129.1867358813372!3d35.57151354849208!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35662fd1cdd3fc1b%3A0x83e4103bbbe213ee!2z7KCcNeqzte2Vmeq0gA!5e0!3m2!1sko!2skr!4v1755876524787!5m2!1sko!2skr" 
-        width="600" height="450" style="border:0;" 
-        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
+        <div class="map-container">
+          <iframe class="map" 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d729.7958112582595!2d129.1867358813372!3d35.57151354849208!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35662fd1cdd3fc1b%3A0x83e4103bbbe213ee!2z7KCcNeqzte2Vmeq0gA!5e0!3m2!1sko!2skr!4v1755876524787!5m2!1sko!2skr" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
       </div>
     </div>
   </section>
 </main>
 
+<style>
+/* 지도 컨테이너 스타일 추가 */
+.map-container {
+  position: relative;
+  width: 100%;
+  height: 300px; /* 원하는 높이로 조정 */
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.map-container iframe.map {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 0; /* 컨테이너가 이미 border-radius를 가지므로 */
+}
+
+/* 모바일에서 더 작은 높이 */
+@media (max-width: 768px) {
+  .map-container {
+    height: 250px;
+  }
+  
+  .grid > div {
+    grid-column: span 12 !important;
+  }
+}
+</style>
 
