@@ -2,7 +2,12 @@
 :root{
   --bg:#ffffff; --bg-soft:#f6f7fb; --surface:#ffffff;
   --text:#0c1323; --muted:#5e6a83; --line:#e8ebf3;
-  --primary:#001B54; --primary-weak:#E6ECF7; --accent:#44C1C4;
+
+  /* Brand */
+  --primary:#001B54;          /* UNIST Navy */
+  --primary-weak:#E6ECF7;     /* Light Navy */
+  --accent:#44C1C4;           /* Emerald */
+
   --warn:#f59e0b; --danger:#ef4444;
   --radius:18px; --shadow-lg:0 12px 30px rgba(16,24,40,.08);
   --w:1100px;
@@ -10,9 +15,11 @@
 
 /* ===== Base ===== */
 *{box-sizing:border-box}
-html,body{margin:0;padding:0;background:var(--bg);color:var(--text);
+html,body{
+  margin:0; padding:0; background:var(--bg); color:var(--text);
   font-family:'Inter','Noto Sans KR',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,'Apple Color Emoji','Segoe UI Emoji';
-  line-height:1.55}
+  line-height:1.55;
+}
 img{max-width:100%;display:block}
 a{color:var(--primary);text-decoration:none}
 a:hover{opacity:.9}
@@ -20,115 +27,141 @@ a:hover{opacity:.9}
 .muted{color:var(--muted)}
 .small{font-size:13px}
 
-/* ===== Header / Navbar ===== */
-header{position:sticky; top:0; z-index:50; background:rgba(255,255,255,.8);
-  backdrop-filter:saturate(180%) blur(10px); border-bottom:1px solid var(--line)}
+/* ===== Header / Navbar (light) ===== */
+header{
+  position:sticky; top:0; z-index:50;
+  background:rgba(255,255,255,.8);
+  backdrop-filter:saturate(180%) blur(10px);
+  border-bottom:1px solid var(--line);
+}
 .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
 .brand{display:flex;gap:12px;align-items:center;white-space:nowrap}
-.brand-text{display:inline-block}
+.brand-link{color:var(--text);text-decoration:none}
+.brand-link:hover{opacity:.9}
+.brand-text{display:inline-block; font-weight:700;}  /* 로고 옆 텍스트 볼드 */
 
-/* PNG 로고(박스 없음) – 한 줄 고정 크기 */
-.brand-img{height:60px;width:auto;display:block;object-fit:contain}
+/* PNG 로고(박스 없음) – 한 줄 고정 크기 (한 곳에서만 정의) */
+.brand-img{
+  height:40px;               /* 필요시 38~42px로 조절 */
+  width:auto; display:block; object-fit:contain;
+}
 @media (max-width:860px){ .brand-img{height:32px} }
 
 /* 1단 메뉴 */
 .nav > ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
 .nav > ul > li{position:relative}
-.nav > ul > li > a{padding:8px 10px;border-radius:10px;color:var(--text);display:inline-block}
+.nav > ul > li > a{
+  padding:8px 10px; border-radius:10px; color:var(--text); display:inline-block;
+  font-weight:700;                /* 상단 메뉴 볼드 */
+}
 .nav > ul > li > a.active,
 .nav > ul > li > a:hover{background:var(--primary-weak)}
-.nav > ul > li > a.active{color:var(--primary);box-shadow:inset 0 -2px 0 var(--primary)}
-.nav-cta{padding:10px 14px;border:1px solid transparent;border-radius:12px;background:var(--primary);color:#fff}
-.menu-btn{display:none}
+.nav > ul > li > a.active{
+  color:var(--primary);
+  box-shadow:inset 0 -2px 0 var(--primary);
+}
 
-/* 모바일 네비 */
+/* 모바일 네비 (햄버거로 전체 메뉴 펼치기) */
+.menu-btn{display:none}
 @media (max-width:860px){
   .menu-btn{display:block;border:1px solid var(--line);background:#fff;border-radius:12px;padding:8px 10px}
   .nav > ul{display:none}
-  .nav.open > ul{display:flex;position:absolute;left:20px;right:20px;top:60px;flex-direction:column;background:#fff;
-    border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-lg);padding:10px}
+  .nav.open > ul{
+    display:flex; position:absolute; left:20px; right:20px; top:60px;
+    flex-direction:column; background:#fff;
+    border:1px solid var(--line); border-radius:14px; box-shadow:var(--shadow-lg); padding:10px;
+  }
 }
 
 /* ===== Nav Dropdown ===== */
-.has-dd > a::after{content:"▾";font-size:11px;margin-left:6px;opacity:.7}
-.nav > ul > li > .dropdown{position:absolute;top:100%;left:0;z-index:60;min-width:220px;padding:8px 8px 10px;
-  background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow-lg);display:none}
-.nav > ul > li > .dropdown::before{content:"";position:absolute;top:-8px;left:0;right:0;height:8px;background:transparent}
+.has-dd > a::after{content:"▾"; font-size:11px; margin-left:6px; opacity:.7}
+.nav > ul > li > .dropdown{
+  position:absolute; top:100%; left:0; z-index:60;
+  min-width:220px; padding:8px 8px 10px;
+  background:#fff; border:1px solid var(--line);
+  border-radius:12px; box-shadow:var(--shadow-lg);
+  display:none;
+}
+.nav > ul > li > .dropdown::before{
+  content:""; position:absolute; top:-8px; left:0; right:0; height:8px; background:transparent;
+}
 .nav > ul > li > .dropdown > li{list-style:none}
-.nav > ul > li > .dropdown a{display:block;padding:10px 12px;border-radius:10px;color:var(--text);white-space:nowrap}
+.nav > ul > li > .dropdown a{
+  display:block; padding:10px 12px; border-radius:10px; color:var(--text); white-space:nowrap;
+  font-weight:500;                 /* 드롭다운은 기본 굵기 */
+}
 .nav > ul > li > .dropdown a:hover{background:var(--primary-weak)}
 @media (hover:hover){
-  .nav > ul > li.has-dd:hover > .dropdown, .nav > ul > li > .dropdown:hover{display:block}
-  .nav > ul > li.has-dd > .dropdown{transition:opacity .15s ease,visibility .15s ease;opacity:0;visibility:hidden}
-  .nav > ul > li.has-dd:hover > .dropdown{opacity:1;visibility:visible;display:block}
+  .nav > ul > li.has-dd:hover > .dropdown,
+  .nav > ul > li > .dropdown:hover{display:block}
+  .nav > ul > li.has-dd > .dropdown{transition:opacity .15s ease, visibility .15s ease; opacity:0; visibility:hidden}
+  .nav > ul > li.has-dd:hover > .dropdown{opacity:1; visibility:visible; display:block}
 }
-/* 상단 1단 메뉴 글자 굵게 */
-.nav > ul > li > a{ font-weight:700; }
-
-/* 브랜드 텍스트(로고 옆)도 굵게 */
-.brand-text{ font-weight:700; }
-
-/* 드롭다운 항목은 적당히 */
-.nav > ul > li > .dropdown a{ font-weight:500; }
-
-/* 데스크톱 기본: 토글 숨김 */
-.dd-toggle{
-  display:none !important;
-  appearance:none;
-  border:0;
-  background:transparent;
-  padding:0;
-  margin-left:4px;
-}
-
-/* 모바일에서만 노출 (.nav.open 일 때) */
-@media (max-width:860px){
-  .dd-toggle{
-    display:inline-flex !important;
-    align-items:center; justify-content:center;
-    padding:6px;
-  }
-  .nav.open > ul .dropdown{
-    position:static; display:none; margin-top:6px; padding:6px;
-    background:var(--bg-soft); border-radius:10px;
-  }
-  .nav.open > ul .has-dd.open > .dropdown{ display:block; }
-}
-  .nav.open > ul .dropdown{position:static;display:none;margin-top:6px;padding:6px;background:var(--bg-soft);border-radius:10px}
-  .nav.open > ul .has-dd.open > .dropdown{display:block}
-}
-.brand-link{color:var(--text);text-decoration:none}
-.brand-link:hover{opacity:.9}
 
 /* ===== Hero Carousel ===== */
 .hero{position:relative}
 .carousel{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+
+/* 박스형 히어로: 본문 컬럼 폭에 맞춤 */
+.hero--boxed .carousel{
+  max-width:var(--w); margin:0 auto;
+  border-radius:18px; overflow:hidden;
+  box-shadow:var(--shadow-lg); border:1px solid var(--line);
+}
+
+/* 트랙/슬라이드 (기본 높이) */
 .slides{display:flex;transition:transform .7s ease}
-.slide{min-width:100%;height:58vh;position:relative;background:#dfe7ff}
-.slide::after{content:"";position:absolute;inset:0;
-  background:linear-gradient(0deg,rgba(0,27,84,.55),rgba(0,27,84,.35) 35%,rgba(0,27,84,0))}
-.slide img{
-  width:100%;
-  height:auto;
-  object-fit:cover;}
-.hero-overlay{position:absolute;inset:0;display:flex;align-items:flex-end}
-.hero-copy{width:100%;max-width:var(--w);margin:0 auto;padding:24px 20px 40px;color:#fff}
+.slide{
+  min-width:100%;
+  height:58vh;                   /* 기본 높이 */
+  position:relative; background:#dfe7ff;
+}
+.slide::after{
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(0deg,rgba(0,27,84,.55),rgba(0,27,84,.35) 35%,rgba(0,27,84,0));
+}
+
+/* 기본: 채우기(cover) — no-crop 모드에서 아래에서 덮어씀 */
+.slide img, .slide video{ width:100%; height:100%; object-fit:cover }
+
+/* 오버레이/컨트롤 클릭 가능 정리 */
+.hero-overlay{position:absolute; inset:0; display:flex; align-items:flex-end; z-index:1; pointer-events:none}
+.hero-copy{width:100%; max-width:var(--w); margin:0 auto; padding:24px 20px 40px; color:#fff}
 .hero-kicker{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.15);
   border:1px solid rgba(255,255,255,.25);padding:6px 10px;border-radius:999px;font-size:12px;font-weight:600;backdrop-filter:blur(6px)}
 .hero-title{font-size:36px;line-height:1.2;margin:12px 0 8px}
 .hero-desc{opacity:.95;max-width:720px}
-.hero-ctrl{position:absolute;inset:auto 0 16px 0;display:flex;justify-content:center;gap:8px}
-.dot{width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.8);cursor:pointer}
+.hero-ctrl{position:absolute; inset:auto 0 16px 0; display:flex; justify-content:center; gap:8px; z-index:2}
+.dot{width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,.6); border:1px solid rgba(255,255,255,.8); cursor:pointer}
 .dot.active{background:#fff}
-.nav-arrows{position:absolute;inset:0;display:flex;justify-content:space-between;align-items:center;padding:0 8px}
+.nav-arrows{position:absolute; inset:0; display:flex; justify-content:space-between; align-items:center; padding:0 8px; z-index:2}
 .arrow{width:40px;height:40px;border-radius:999px;border:1px solid rgba(255,255,255,.6);
   background:rgba(255,255,255,.4);display:grid;place-items:center;cursor:pointer;backdrop-filter:blur(6px)}
+
+/* === NO-CROP 모드: 사진/영상이 절대 잘리지 않도록(레터박스 허용) === */
+.slides.no-crop .slide{
+  height:56vh; min-height:420px;
+  display:grid; place-items:center;
+  background:linear-gradient(0deg, rgba(0,27,84,.08), rgba(0,27,84,0));
+}
+.slides.no-crop .slide img,
+.slides.no-crop .slide video{
+  max-width:100%; max-height:100%;
+  width:auto; height:auto;
+  object-fit:contain;            /* 핵심 */
+  background:#fff;               /* 남는 영역 배경 */
+}
+@media (max-width:860px){
+  .slides.no-crop .slide{ height:50vh; min-height:320px; }
+}
 
 /* ===== Sections / Cards / Grid ===== */
 section{padding:64px 0;border-bottom:1px solid var(--line)}
 section .head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:24px}
 .head h2{font-size:28px;margin:0}
+/* 섹션 타이틀 밑줄을 컬럼 폭 전체로 */
 .head h2::after{content:"";display:block;width:100%;height:3px;background:var(--primary);border-radius:999px;margin-top:8px}
+
 .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-lg)}
 .card-pad{padding:18px}
@@ -172,7 +205,7 @@ section .head{display:flex;align-items:end;justify-content:space-between;gap:16p
 .btn{display:inline-block;padding:10px 14px;border-radius:12px;border:1px solid var(--primary);background:var(--primary);color:#fff;cursor:pointer}
 iframe.map{width:100%;min-height:320px;border:0;border-radius:14px}
 
-/* ===== Page Hero ===== */
+/* ===== Page Hero (subpages) ===== */
 .page-hero{padding:40px 0;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#fff 0%,#f9fbff 100%)}
 .breadcrumbs{font-size:13px;color:var(--muted)}
 .breadcrumbs a{color:inherit}
@@ -183,77 +216,5 @@ footer{padding:36px 0}
 /* ===== Accessibility ===== */
 :focus-visible{outline:3px solid rgba(68,193,196,.6); outline-offset:2px}
 
-
-/* --- override: desktop에서 드롭다운 토글 완전 숨김, 모바일 메뉴 열렸을 때만 표시 --- */
-.dd-toggle{
-  display:none !important;
-  appearance:none;
-  border:0;
-  background:transparent;
-  padding:0;
-  margin-left:4px;
-}
-/* 모바일 햄버거를 눌러 .nav.open 상태일 때만 토글 버튼 노출 */
-.nav.open .dd-toggle{
-  display:inline-flex !important;
-  align-items:center; justify-content:center;
-  padding:6px;
-}
-.dd-toggle::after{ content:"▾"; opacity:.8; font-size:12px; }
-
-/* --- override: 로고 크기 살짝 증가 --- */
-.brand-img{
-  height:40px !important;   /* 필요하면 38~42px 사이로 조정 */
-  width:auto;
-  display:block;
-  object-fit:contain;
-}
-@media (max-width:860px){
-  .brand-img{ height:32px !important; }
-}
-
-.hero-overlay{ z-index:1; pointer-events:none; }
-.nav-arrows, .hero-ctrl{ z-index:2; position:absolute; }
+/* (선택) 섹션 헤더 오른쪽 작은 설명 숨김 – 필요 시 유지 */
 #about .head .muted, #research .head .muted, #activity .head .muted, #contact .head .muted{ display:none; }
-/* === Carousel: no-crop (fit) mode === */
-/* 컨테이너 높이: 화면 60% + 최소 높이 */
-.slides.fit .slide{
-  height: 62vh;
-  min-height: 420px;
-  display: grid;
-  place-items: center;
-  background: linear-gradient(0deg, rgba(0,27,84,.08), rgba(0,27,84,0)); /* 여백 부드럽게 */
-}
-
-/* 기본: 채우기 */
-.slide img, .slide video{ object-fit: cover; }
-
-/* 화면이 세로로 긴 경우(잘릴 위험 ↑): contain으로 전환 */
-@media (max-aspect-ratio: 16/10){
-  .slide img, .slide video{ object-fit: contain; background:#fff; }
-}
-
-/* === Carousel: auto-fit by screen aspect ratio === */
-/* 기본(가로가 충분히 넓을 때): 꽉 채우기 */
-.slides.auto-fit .slide img,
-.slides.auto-fit .slide video{
-  object-fit: cover;
-}
-
-/* 화면이 세로로 긴 경우(가로/세로 비가 16:10 이하): 잘림 없이 contain으로 전환 */
-@media (max-aspect-ratio: 16/10){
-  .slides.auto-fit .slide{
-    height: 56vh;             /* 세로가 긴 화면에서 높이 살짝 줄여 레터박스 최소화 */
-    min-height: 360px;
-  }
-  .slides.auto-fit .slide img,
-  .slides.auto-fit .slide video{
-    object-fit: contain;
-    background:#fff;          /* 남는 여백 배경색 (원하면 transparent/#000 로 변경) */
-  }
-}
-
-/* 아주 좁은 모바일(세로 비율 더 큼)에서는 더 낮게 */
-@media (max-width: 480px){
-  .slides.auto-fit .slide{ height: 50vh; min-height: 300px; }
-}
