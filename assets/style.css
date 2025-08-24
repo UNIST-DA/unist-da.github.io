@@ -355,3 +355,15 @@ html[data-theme="dark"] #galaxy-canvas{ opacity:1; }
   color:var(--text);
 }
 .link-list a:hover { opacity:.9; }
+/* Hero swipe/drag */
+#heroSlides{
+  touch-action: pan-y;   /* 세로 스크롤은 허용, 가로 제스처는 우리 코드가 처리 */
+  cursor: grab;
+  user-select: none;
+}
+#heroSlides:active{ cursor: grabbing; }
+#heroSlides img, #heroSlides video{
+  pointer-events: none;     /* 이미지가 드래그 이벤트 먹지 않게 */
+  -webkit-user-drag: none;  /* 사파리 이미지 드래그 방지 */
+  user-drag: none;
+}
