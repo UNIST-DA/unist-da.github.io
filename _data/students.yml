@@ -2,7 +2,7 @@
   name: SeungSu Kam
   role: Combined Master-Doctor
   period: "—"
-  photo: /assets/people/seungsu-kam.jpg
+  photo: /assets/members/seungsu-kam.jpg
   summary: Neural Differential Equation, Anomaly Detection, Irregularly-Sampled Time Series
   tags: [Neural DE, Anomaly Detection, Irregular TS]
   email:
@@ -18,7 +18,7 @@
   name: Byeonghoon Jeon
   role: Combined Master-Doctor
   period: "—"
-  photo: /assets/people/byeonghoon-jeon.jpg
+  photo: /assets/members/byeonghoon-jeon.jpg
   summary: Multimodal learning, Multivariate Time Series Modeling
   tags: [Multimodal, Multivariate TS]
   email:
@@ -34,7 +34,7 @@
   name: Chanbeom Hur
   role: MS Student
   period: "—"
-  photo: /assets/people/chanbeom-hur.jpg
+  photo: /assets/members/chanbeom-hur.jpg
   summary: Statistical Machine Learning, Data Analysis
   tags: [StatML, Data Analysis]
   email:
@@ -50,7 +50,7 @@
   name: Hyejin Cho
   role: Combined Master-Doctor
   period: "—"
-  photo: /assets/people/hyejin-cho.jpg
+  photo: /assets/members/hyejin-cho.jpg
   summary: Industrial Statistics, Data-driven Business Strategy, Machine Learning and Deep Learning
   tags: [Industrial Statistics, ML, DL]
   email:
@@ -66,7 +66,7 @@
   name: Seongjin Kim
   role: MS Student
   period: "—"
-  photo: /assets/people/seongjin-kim.jpg
+  photo: /assets/members/seongjin-kim.jpg
   summary: Anomaly Detection, Time Series Forecasting, Deep Learning, Data Science
   tags: [Anomaly Detection, Forecasting, DL]
   email:
@@ -82,7 +82,7 @@
   name: Taewon Kang
   role: MS Student
   period: "—"
-  photo: /assets/people/taewon-kang.jpg
+  photo: /assets/members/taewon-kang.jpg
   summary: Data analytics, Anomaly detection, Quality Engineering and Management, Data Mining for Quality Control
   tags: [Analytics, Anomaly Detection, Quality]
   email:
@@ -98,7 +98,7 @@
   name: Yongmin Kim
   role: Combined Master-Doctor
   period: "—"
-  photo: /assets/people/yongmin-kim.jpg
+  photo: /assets/members/yongmin-kim.jpg
   summary: Anomaly Detection, Time Series Classification, Quality Engineering and Management
   tags: [Anomaly Detection, TS Classification, Quality]
   email:
@@ -109,3 +109,101 @@
   cv:
   projects: []
   order: 70
+
+- slug: sieun-lee
+  name: Sieun Lee
+  role: MS Student
+  period: "—"
+  photo: /assets/members/sieun-lee.jpg
+  summary: Anomaly Detection, Time Series Classification
+  tags: [Anomaly Detection, TS Classification]
+  email:
+  website:
+  github:
+  scholar:
+  linkedin:
+  cv:
+  projects: []
+  order: 80
+
+- slug: heeyoon-lee
+  name: Heeyoon Lee
+  role: MS Student
+  period: "—"
+  photo: /assets/members/heeyoon-lee.jpg
+  summary: Anomaly Detection, Time Series Classification
+  tags: [Anomaly Detection, TS Classification]
+  email:
+  website:
+  github:
+  scholar:
+  linkedin:
+  cv:
+  projects: []
+  order: 90
+
+- slug: jungwoo-yoo
+  name: Jungwoo Yoo
+  role: Intern
+  period: "—"
+  photo: /assets/members/jungwoo-yoo.jpg
+  summary: 
+  tags: 
+  email:
+  website:
+  github:
+  scholar:
+  linkedin:
+  cv:
+  projects: []
+  order: 100
+
+- slug: kwanyoon-lee
+  name: Kwanyoon Lee
+  role: Intern
+  period: "—"
+  photo: /assets/members/kwanyoon-lee.jpg
+  summary: 
+  tags: 
+  email:
+  website:
+  github:
+  scholar:
+  linkedin:
+  cv:
+  projects: []
+  order: 110
+
+- slug: yejin-cho
+  name: Yejin-Cho
+  role: Intern
+  period: "—"
+  photo: /assets/members/yejin-cho.jpg
+  summary: 
+  tags: 
+  email:
+  website:
+  github:
+  scholar:
+  linkedin:
+  cv:
+  projects: []
+  order: 120
+
+- slug: jihyun-ko
+  name: Jihyun Ko
+  role: Intern
+  period: "—"
+  photo: /assets/members/jihyun-ko.jpg
+  summary: 
+  tags: 
+  email:
+  website:
+  github:
+  scholar:
+  linkedin:
+  cv:
+  projects: []
+  order: 130
+
+
