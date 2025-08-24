@@ -238,7 +238,7 @@
   authors: ["Sungil Kim", "Heeyoung Kim", "Younghwan Namkoong"]
   venue: "IEEE Intelligent Systems"
   links:
-    pdf: ""
+    pdf: "https://ieeexplore.ieee.org/document/7436665"
     doi: ""
     code: ""
 
@@ -249,7 +249,7 @@
   authors: ["Sungil Kim", "Heeyoung Kim", "Richard W. Lu", "Jye-Chyi Lu", "Michael J. Casciato", "Martha A. Grover"]
   venue: "International Journal of Production Research"
   links:
-    pdf: ""
+    pdf: "https://www.tandfonline.com/doi/abs/10.1080/00207543.2015.1037067"
     doi: ""
     code: ""
 
@@ -260,7 +260,7 @@
   authors: ["Sungil Kim", "Heeyoung Kim", "Richard W. Lu", "Jye-Chyi Lu", "Michael J. Casciato", "Martha A. Grover"]
   venue: "Naval Research Logistics"
   links:
-    pdf: ""
+    pdf: "https://onlinelibrary.wiley.com/doi/abs/10.1002/nav.21618"
     doi: ""
     code: ""
 
@@ -293,6 +293,6 @@
   authors: ["Seung-Kweon Hong", "Sungil Kim"]
   venue: "Journal of Korean Institute of Industrial Engineers"
   links:
-    pdf: ""
+    pdf: "https://koreascience.kr/article/JAKO200510103463043.view"
     doi: ""
     code: ""
