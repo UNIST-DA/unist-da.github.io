@@ -1,0 +1,69 @@
+---
+layout: default
+---
+
+<div class="page-hero">
+  <div class="container">
+    <div class="breadcrumbs">
+      <a href="{{ '/' | relative_url }}">Home</a> ·
+      <a href="{{ '/students/' | relative_url }}">People</a> · Students
+    </div>
+    <h1 class="page-title">{{ page.name }}</h1>
+    {% if page.role or page.period %}
+      <p class="muted">
+        {% if page.role %}{{ page.role }}{% endif %}
+        {% if page.period %}{% if page.role %} · {% endif %}{{ page.period }}{% endif %}
+      </p>
+    {% endif %}
+  </div>
+</div>
+
+<main class="container">
+  <section class="grid" style="grid-template-columns: 280px 1fr; gap: 24px;">
+    <aside>
+      {% if page.photo %}
+        <img src="{{ page.photo | relative_url }}" alt="{{ page.name }}"
+             style="width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:16px; margin-bottom:12px;">
+      {% endif %}
+      {% if page.email %}<p><strong>Email</strong><br><a href="mailto:{{ page.email }}">{{ page.email }}</a></p>{% endif %}
+      <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:8px">
+        {% if page.website %}<a class="muted" href="{{ page.website }}" target="_blank" rel="noreferrer">Website</a>{% endif %}
+        {% if page.github %}<a class="muted" href="{{ page.github }}" target="_blank" rel="noreferrer">GitHub</a>{% endif %}
+        {% if page.scholar %}<a class="muted" href="{{ page.scholar }}" target="_blank" rel="noreferrer">Scholar</a>{% endif %}
+        {% if page.linkedin %}<a class="muted" href="{{ page.linkedin }}" target="_blank" rel="noreferrer">LinkedIn</a>{% endif %}
+        {% if page.cv %}<a class="muted" href="{{ page.cv | relative_url }}" target="_blank" rel="noreferrer">CV</a>{% endif %}
+      </div>
+      {% if page.tags %}
+        <p class="muted" style="margin-top:12px">
+          {% for t in page.tags %}
+            <span style="display:inline-block;border:1px solid #e3e3e3;border-radius:999px;padding:2px 8px;margin:0 6px 6px 0;font-size:12px">{{ t }}</span>
+          {% endfor %}
+        </p>
+      {% endif %}
+    </aside>
+
+    <article class="prose">
+      {% if page.bio %}<p class="lead">{{ page.bio }}</p>{% endif %}
+      {{ content }}
+      {% if page.projects %}
+        <h3>Selected Projects</h3>
+        <ul>
+          {% for pid in page.projects %}
+            {% assign p = site.data.projects | where: "slug", pid | first %}
+            {% if p %}
+              <li><a href="{{ p.url | default: '/research/projects/#' | append: p.slug | relative_url }}">{{ p.title }}</a></li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      {% endif %}
+      {% if page.publications %}
+        <h3>Selected Publications</h3>
+        <ul>
+          {% for pub in page.publications %}
+            <li>{{ pub }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </article>
+  </section>
+</main>
