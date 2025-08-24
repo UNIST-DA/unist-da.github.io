@@ -1,0 +1,231 @@
+---
+layout: default
+title: Projects | Research · Data Analytics Lab
+description: Sponsored and collaborative projects at Data Analytics Lab (UNIST IE).
+permalink: /research/projects/
+---
+
+<div class="page-hero">
+  <div class="container">
+    <div class="breadcrumbs"><a href="{{ '/' | relative_url }}">Home</a> · <a href="{{ '/research/projects/' | relative_url }}">Research</a> · Projects</div>
+    <h1 class="page-title">Projects</h1>
+    <p class="muted">Selected sponsored and collaborative projects.</p>
+  </div>
+</div>
+
+<main class="container">
+  <section>
+    <div class="grid">
+      {% for p in site.data.projects %}
+      {% assign href_url = p.url | default: '' %}
+      {% if href_url == '' %}
+        {% assign href_url = '/research/projects/?project=' | append: p.slug %}
+      {% endif %}
+      <a
+        class="card card-pad"
+        style="grid-column: span 6; display:block; text-decoration:none; color:inherit"
+        id="{{ p.slug }}"
+        href="{{ href_url | relative_url }}"
+        data-slug="{{ p.slug }}"
+      >
+        {% if p.image %}
+          <img src="{{ p.image | relative_url }}" alt="{{ p.title }}"
+               style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin-bottom:10px">
+        {% endif %}
+
+        <h3 style="margin:0 0 6px">{{ p.title }}</h3>
+
+        <!-- 연도(기간) · 분류 -->
+        <p class="muted" style="margin:0 0 6px">
+          {% if p.period %}{{ p.period }}{% endif %}
+          {% if p.category %}{% if p.period %} · {% endif %}{{ p.category }}{% endif %}
+        </p>
+
+        <!-- 태그 칩 -->
+        {% if p.tags %}
+          <p class="muted" style="margin:0 0 8px">
+            {% for tag in p.tags %}
+              <span class="tag" style="display:inline-block;border:1px solid #e3e3e3;border-radius:999px;padding:2px 8px;margin:0 6px 6px 0;font-size:12px">{{ tag }}</span>
+            {% endfor %}
+          </p>
+        {% endif %}
+
+        <!-- 요약 -->
+        {% if p.summary %}
+          <p class="muted">{{ p.summary }}</p>
+        {% endif %}
+      </a>
+      {% endfor %}
+    </div>
+  </section>
+</main>
+
+<!-- (중요) 숨김 상세 섹션: 같은 페이지 안에 상세를 미리 심어둠 -->
+<div id="project-details-pool" style="display:none">
+  {% for p in site.data.projects %}
+  <section id="detail-{{ p.slug }}">
+    <div class="detail-payload">
+      {% if p.image %}
+      <figure style="margin:0 0 16px">
+        <img src="{{ p.image | relative_url }}" alt="{{ p.title }}"
+             style="width:100%;max-height:460px;object-fit:cover;border-radius:12px">
+        {% if p.image_caption %}<figcaption class="muted" style="margin-top:8px">{{ p.image_caption }}</figcaption>{% endif %}
+      </figure>
+      {% endif %}
+
+      {% if p.summary %}
+      <p class="lead" style="margin-bottom:18px">{{ p.summary }}</p>
+      {% endif %}
+
+      <!-- description: projects.yml에 마크다운으로 넣어두면 자동 렌더 -->
+      <article class="prose">
+        {% if p.description %}
+          {{ p.description | markdownify }}
+        {% else %}
+          <p class="muted">Detailed description will be updated.</p>
+        {% endif %}
+      </article>
+    </div>
+
+    <!-- 메타(JSON) -->
+    <script type="application/json" id="meta-{{ p.slug }}">
+    {
+      "title": {{ p.title | jsonify }},
+      "period": {{ p.period | jsonify }},
+      "category": {{ p.category | jsonify }},
+      "tags": {{ p.tags | jsonify }},
+      "image": {{ p.image | jsonify }},
+      "image_caption": {{ p.image_caption | jsonify }}
+    }
+    </script>
+  </section>
+  {% endfor %}
+</div>
+
+<!-- 모달 UI -->
+<div id="project-modal" aria-hidden="true" style="position:fixed;inset:0;display:none;z-index:1000;">
+  <div id="modal-dim" style="position:absolute;inset:0;background:rgba(0,0,0,.45)"></div>
+  <div role="dialog" aria-modal="true"
+       style="position:relative;max-width:980px;margin:40px auto;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.2)">
+    <header style="padding:20px 24px;border-bottom:1px solid #eee;display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+      <div style="flex:1 1 auto;min-width:260px">
+        <h2 id="modal-title" style="margin:0 0 4px;font-size:22px;line-height:1.3"></h2>
+        <p class="muted" id="modal-meta" style="margin:0"></p>
+        <p class="muted" id="modal-tags" style="margin:6px 0 0"></p>
+      </div>
+      <button id="modal-close" aria-label="Close"
+              style="flex:0 0 auto;border:1px solid #e5e7eb;border-radius:10px;padding:8px 12px;background:#fff;cursor:pointer">
+        Close
+      </button>
+    </header>
+    <div id="modal-body" style="padding:20px 24px;max-height:70vh;overflow:auto"></div>
+  </div>
+</div>
+
+<!-- 스크립트: 클릭/해시/쿼리 모두 지원 -->
+<script>
+(function() {
+  const modal = document.getElementById('project-modal');
+  const modalBody = document.getElementById('modal-body');
+  const modalTitle = document.getElementById('modal-title');
+  const modalMeta  = document.getElementById('modal-meta');
+  const modalTags  = document.getElementById('modal-tags');
+  const dim = document.getElementById('modal-dim');
+  const btnClose = document.getElementById('modal-close');
+
+  function openProject(slug, push = true) {
+    const section = document.querySelector('#detail-' + slug);
+    const metaEl  = document.querySelector('#meta-' + slug);
+    if (!section || !metaEl) return;
+
+    const payload = section.querySelector('.detail-payload');
+    modalBody.innerHTML = payload ? payload.innerHTML : '<p class="muted">No detail.</p>';
+
+    try {
+      const meta = JSON.parse(metaEl.textContent);
+      modalTitle.textContent = meta.title || '';
+      const bits = [];
+      if (meta.period)   bits.push(meta.period);
+      if (meta.category) bits.push(meta.category);
+      modalMeta.textContent = bits.join(' · ') || '';
+      if (Array.isArray(meta.tags) && meta.tags.length) {
+        modalTags.innerHTML = meta.tags.map(t =>
+          '<span class="tag" style="display:inline-block;border:1px solid #e3e3e3;border-radius:999px;padding:2px 8px;margin:0 6px 6px 0;font-size:12px">'+t+'</span>'
+        ).join('');
+      } else {
+        modalTags.innerHTML = '';
+      }
+    } catch(e) {
+      modalTitle.textContent = '';
+      modalMeta.textContent = '';
+      modalTags.innerHTML = '';
+    }
+
+    modal.style.display = 'block';
+    modal.setAttribute('aria-hidden', 'false');
+
+    if (push) {
+      // 해시 앵커와 쿼리 둘 다 지원 (해시는 메인/서브 카드가 이미 쓰고 있어 호환성 좋음)
+      const url = new URL(window.location.href);
+      url.searchParams.set('project', slug);
+      url.hash = 'project-' + slug;
+      window.history.pushState({ project: slug }, '', url);
+    }
+  }
+
+  function closeProject(push = true) {
+    modal.style.display = 'none';
+    modal.setAttribute('aria-hidden', 'true');
+    if (push) {
+      const url = new URL(window.location.href);
+      url.searchParams.delete('project');
+      // 해시가 project-xxx이면 제거
+      if (url.hash && url.hash.startsWith('#project-')) url.hash = '';
+      window.history.pushState({}, '', url);
+    }
+  }
+
+  // 카드 클릭 → 모달
+  document.addEventListener('click', function(e) {
+    const a = e.target.closest('a.card');
+    if (!a) return;
+    const slug = a.getAttribute('data-slug');
+    if (!slug) return;
+    // 같은 페이지 내 모달 열기
+    if (a.getAttribute('href') && a.getAttribute('href').includes('#')) {
+      e.preventDefault();
+      openProject(slug);
+    } else if (a.getAttribute('href') && a.getAttribute('href').includes('?project=')) {
+      e.preventDefault();
+      openProject(slug);
+    }
+  });
+
+  // 닫기
+  dim.addEventListener('click', () => closeProject());
+  btnClose.addEventListener('click', () => closeProject());
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeProject(); });
+
+  // popstate (뒤로/앞으로)
+  window.addEventListener('popstate', (ev) => {
+    const url = new URL(location.href);
+    const viaQuery = url.searchParams.get('project');
+    const viaHash  = (url.hash || '').replace(/^#project-/, '').replace(/^#/, '');
+    const slug = viaQuery || viaHash || '';
+    if (slug) {
+      openProject(slug, false);
+    } else {
+      closeProject(false);
+    }
+  });
+
+  // 초기 진입: 쿼리 or 해시로 열기
+  (function initialOpen() {
+    const url = new URL(location.href);
+    const viaQuery = url.searchParams.get('project');
+    const viaHash  = (url.hash || '').replace(/^#project-/, '').replace(/^#/, '');
+    const slug = viaQuery || viaHash || '';
+    if (slug) openProject(slug, false);
+  })();
+})();
+</script>
