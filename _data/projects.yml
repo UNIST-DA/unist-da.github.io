@@ -1,10 +1,11 @@
 # 메인 Research 카드(3개)와 /research/projects/가 공통으로 읽음
+# ── /research/projects/ 에서는 아래 항목들도 전부 노출 ────────────
 - slug: lqc-lg
   title: LG LQC (Line Quality Control)
   summary: Detect latent defects on production lines by fusing domain knowledge with functional outlier detection.
   period: "2021–2024"
   image: /assets/research/projects/lg-lqc-fig6.png
-  url: /research/projects/lg-lqc
+  url: /research/projects/#lqc-lg
   category: Artificial Intelligence in Quality Engineering
   tags:
     - Functional Data Analysis
@@ -15,129 +16,45 @@
     - Refrigerator Compressor
   image_caption: Proposed monitoring framework integrating domain knowledge with functional outlier detection (Figure 2).
   description: >
-    **Overview.** 생산 라인 검사에서 **잠재 결함(latent defects)**을 사전 식별하기 위해,
-    센서 프로파일을 함수형 데이터로 해석하고 **도메인 지식(temporal/directional/structural)**을
-    순차 변환(sequential transformations) 프레임워크에 통합한 이상치 탐지 방법을 개발합니다:contentReference[oaicite:0]{index=0}.
-
-    **Motivation.** 일부 결함은 검사 공정에서는 정상처럼 보이지만, 고객 초기 사용 단계에서 문제로 드러납니다.
-    기존의 범용 이상치 탐지/분류 기법만으로는 이런 **잠재 결함**을 포착하기 어렵습니다:contentReference[oaicite:1]{index=1}.
-
-    **Approach.**
-    - **Data Preprocessing:** 통신 지연·누락 처리 및 **environmental drift 제거**로 프로파일 정렬·정규화.
-    - **Domain-knowledge-informed transforms:**  
-      - *Temporal (Kt):* 결함이 나타나기 쉬운 구간 집중  
-      - *Directional (Kd):* 이상 방향성(상/하) 반영  
-      - *Structural (Ks):* 보조 센서와의 구조적 관계(예: 비율, 역상관) 특징화
-    - **Detection:** 변환으로 **shape → magnitude** 이상으로 바꾼 뒤 **Functional Boxplot(ERLD)**로 판정:contentReference[oaicite:2]{index=2}.
-
-    **Results.** 시뮬레이션과 **LG Smart Park(창원) 실제 냉장고 검사 데이터**에서
-    기존 기법 대비 **높은 검출률(pc)**과 **낮은 오경보율(pf)**을 달성했습니다.
-    특히 컴프레서 관련 **잠재 결함** 유형에서 일관된 성능 향상을 보였습니다:contentReference[oaicite:3]{index=3}.
-
-    **Impact.** 냉장고를 넘어 다양한 제조 품질 검사/고장 예측으로 확장 가능한 **현장 적용형 프레임워크**입니다:contentReference[oaicite:4]{index=4}.
-
+    Overview. 생산 라인 검사에서 잠재 결함을 사전 식별하기 위해,
+    함수형 데이터 해석 + 도메인 지식(temporal/directional/structural)을 통합한
+    이상치 탐지 프레임워크를 개발.
 
 - slug: scsc-fuel-opt
   title: Fuel Consumption Prediction & Optimization (SCSC)
-  summary: AIS·기상·엔진 센서 데이터를 융합해 연료 소비를 예측하고 친환경 최적 운항 전략을 제시합니다.
+  summary: AIS·기상·엔진 센서를 융합해 연료 소비를 예측하고 친환경 최적 운항 전략을 제시합니다.
   period: "2023–"
-  image: /assets/research/projects/scsc-fuel.jpg   # 예: 선박 항적 지도 또는 연료소비 그래프
-  url: /research/projects/scsc-fuel-opt
+  image: /assets/research/projects/scsc-fuel.jpg
+  url: /research/projects/#scsc-fuel-opt
   category: Time-Series Representation
-  tags:
-    - AIS
-    - Fuel Optimization
-    - Machine Learning
-    - Green Logistics
-    - Carbon Neutrality
-    - Maritime Analytics
+  tags: [AIS, Fuel Optimization, Machine Learning, Green Logistics, Carbon Neutrality, Maritime Analytics]
   image_caption: Integrated AIS–weather–engine features for fuel prediction and eco-routing.
   description: >
-    **Overview.** AIS, 기상·해류, 엔진 센서 등 이기종 시계열 데이터를 통합하여
-    선박 **연료 소비 예측 모델**을 구축하고, 탄소 배출을 줄이는 **최적 운항 전략**을 제시합니다.
-
-    **Motivation.** 국제 규제(탄소감축) 대응과 운임 효율화가 동시에 요구되는 환경에서,
-    데이터 기반 **연료 효율 운항 의사결정**의 중요성이 커지고 있습니다.
-
-    **Approach.**
-    - **Data Fusion:** AIS 항로·속도 + 기상/해류 + 엔진 센서 신호의 멀티소스 결합
-    - **Modeling:** 시계열 표현 학습(Feature engineering & 딥러닝) 기반 연료 소비 예측
-    - **Optimization:** 예측 모델을 활용한 속도·코스 **eco-routing** 및 운항 정책 탐색
-
-    **Results.** 실제 항로 구간에서의 백테스트로 기존 룰 기반 대비 **연료 절감 가능성**과
-    일정 지연 최소화를 동시에 확인(케이스 스터디 기준).
-
-    **Impact.** 친환경 해운 및 **탄소중립 로드맵**을 지원하고, 선사 운영의 비용·탄소 **동시 최적화**를 돕습니다.
-
-
+    AIS·기상·해류·엔진 센서를 결합해 연료 소비를 예측하고, eco-routing/속도 정책으로
+    탄소 배출과 비용을 동시 최적화.
 
 - slug: scsc-llm-maritime
   title: LLM Agent for Maritime Data Analysis (SCSC)
   summary: 대용량 AIS·해양 데이터를 자연어로 질의·분석하고, 실시간 리스크·규정 위반을 자동 탐지합니다.
   period: "2024–"
-  image: /assets/research/projects/scsc-llm.jpg   # 예: LLM/RAG 개념 다이어그램 또는 해양 데이터 UI
-  url: /research/projects/scsc-llm-maritime
+  image: /assets/research/projects/scsc-llm.jpg
+  url: /research/projects/#scsc-llm-maritime
   category: System Monitoring & Anomaly Detection
-  tags:
-    - LLM
-    - RAG
-    - AIS
-    - Real-time Monitoring
-    - Anomaly Detection
-    - Compliance
+  tags: [LLM, RAG, AIS, Real-time Monitoring, Anomaly Detection, Compliance]
   image_caption: RAG-enabled maritime data agent for natural-language analytics and monitoring.
   description: >
-    **Overview.** 대용량 AIS·해양 데이터에 대한 **자연어 질의·분석 에이전트**를 구축하고,
-    실시간 스트림에서 **운항 리스크/규정 위반**을 자동 탐지합니다.
-
-    **Motivation.** 해상 안전, 항법 준수, 사고 대응 속도를 높이려면
-    데이터 접근성(자연어 질의)과 **상시 모니터링** 체계가 필수입니다.
-
-    **Approach.**
-    - **RAG Pipeline:** 해양 도메인 지식·규정·메타데이터를 인덱싱하여 **근거 중심 응답**
-    - **Streaming Analytics:** AIS 실시간 피드 기반 **행동 이상/위반 패턴** 감지
-    - **Agent UX:** 자연어 질의 → 시각화·리포트·알림 연동(운항/관제 워크플로우 통합)
-
-    **Results.** 대표 시나리오(속력·침로 급변, 지정해역 침범 등)에서
-    **알림 지연 단축** 및 **오탐 감소**를 확인(파일럿 기준).
-
-    **Impact.** 해양 안전 강화와 **규정 준수 자동화**를 지원하고, 현장 의사결정의 **반응성**을 높입니다.
-
-
+    해양 규정/메타지식 인덱싱(RAG)과 스트리밍 분석으로 자연어 질의·시각화·알림을 지원,
+    운항 이상/위반을 실시간 탐지.
 
 - slug: df-ts-drift
   title: Domain-free Time-Series Drift Management
-  summary: 다양한 도메인에서 공통으로 적용 가능한 시계열 드리프트 모니터링·탐지·보정 기술과 툴킷/플랫폼 SW 개발.
+  summary: 도메인에 독립적인 시계열 드리프트 모니터링·탐지·보정 기술과 툴킷/플랫폼 SW 개발.
   period: "2025.03–2028.02"
-  image: /assets/research/projects/df-ts-drift.jpg   # 대표 이미지(드리프트/모니터링 다이어그램 등) 경로
-  url: /research/projects/df-ts-drift
+  image: /assets/research/projects/df-ts-drift.jpg
+  url: /research/projects/#df-ts-drift
   category: System Monitoring & Anomaly Detection
-  tags:
-    - Time-Series Drift
-    - Concept Drift
-    - Covariate Shift
-    - Domain-free
-    - Robust Learning
-    - Neural DEs
-    - Monitoring
-  image_caption: Domain-free 시계열 드리프트 모니터링·탐지·보정 통합 프레임워크.
+  tags: [Time-Series Drift, Concept Drift, Domain-free, Neural DEs, Monitoring]
+  image_caption: Domain-free 시계열 드리프트 관리 통합 프레임워크.
   description: >
-    **Overview.** 제조·헬스케어·항만물류·교통·금융 등 이기종 환경에서 발생하는
-    **시계열 데이터 드리프트**(분포/개념 변화)를 **도메인에 독립적(domain-free)** 으로
-    모니터링·탐지·보정할 수 있는 이론·알고리즘·툴킷/플랫폼 SW를 개발합니다.
-
-    **Goals.**
-    1) 다변량 시계열 드리프트 **모니터링/탐지 기술** 3건 개발  
-    2) **Domain-free 툴킷** 및 확장 가능한 **플랫폼 SW/서비스** 1건 개발  
-    3) 제조/헬스케어/물류/교통/금융 실제 데이터 및 시뮬레이션으로 **성능·범용성 검증**
-
-    **Approach.**
-    - **Monitoring/Detection:** 개념·공변량 드리프트 검정, 윈도우/스트리밍 기반 적응 임계  
-    - **Robust Learning:** **Neural Differential Equations** 기반 강건 학습/전처리 파이프라인  
-    - **Domain-free Design:** 의존성 최소화 표현(표준화 인터페이스, 메타데이터 스키마)  
-    - **Toolkit/Platform:** 파이썬 SDK + 대시보드(알림/리포팅/시뮬레이터 연동)
-
-    **Impact.** 공개 SW 형태의 **범용 드리프트 관리 스택**을 제시하여, 다양한 산업 도메인에서
-    **데이터 품질 저하·성능 저하 리스크**를 선제적으로 관리합니다.
-
-    **Funding.** NRF(한국연구재단) 중견연구 (Project No. 2710079663) · PI: 김성일.
+    제조·헬스케어·물류·교통·금융 등 이기종 환경에서 분포/개념 변화에 강건한
+    드리프트 모니터링/탐지/보정 알고리즘과 플랫폼 SW 개발.
