@@ -3,7 +3,7 @@
   title: Domain-Knowledge-Informed Outlier Detection for Line Quality Control (LQC)
   summary: Detect latent defects on production lines by fusing domain knowledge with functional outlier detection.
   period: "2023–2025"
-  image: /assets/research/projects/lqc-lg-fig2.jpg   # (권장) Figure 2 이미지 파일을 여기에 두세요
+  image: /assets/research/projects/lqc-lg-fig6.jpg   # (권장) Figure 2 이미지 파일을 여기에 두세요
   url: /research/projects/#lqc-lg
   category: Industry Collaboration · LG Electronics
   tags:
