@@ -21,7 +21,7 @@ description: Data Analytics Lab at UNIST (Industrial Engineering). Industrial St
       <div class="slide"><img src="{{ '/assets/main/혜진_미국학회발표.jpg' | relative_url }}" alt="Lab hero 5"></div>
     </div>
 
-    <!-- 화살표 (JS에서 이벤트 바인딩) -->
+    <!-- 화살표 -->
     <div class="nav-arrows">
       <button class="arrow" id="heroPrev" aria-label="Previous">‹</button>
       <button class="arrow" id="heroNext" aria-label="Next">›</button>
@@ -104,7 +104,7 @@ description: Data Analytics Lab at UNIST (Industrial Engineering). Industrial St
     </div>
 
     <div class="grid">
-      <!-- Seminar (최신 2개) -->
+      <!-- Seminar -->
       <div class="card card-pad" style="grid-column: span 4">
         <h4 style="margin:6px 0">Lab Seminar</h4>
         <ul style="margin:8px 0 12px; padding-left:18px">
@@ -117,7 +117,7 @@ description: Data Analytics Lab at UNIST (Industrial Engineering). Industrial St
         <a href="{{ '/activity/Lab%20Seminar/' | relative_url }}">View all →</a>
       </div>
 
-      <!-- News (최신 2개) -->
+      <!-- News -->
       <div class="card card-pad" style="grid-column: span 4">
         <h4 style="margin:6px 0">Lab News</h4>
         <ul style="margin:8px 0 12px; padding-left:18px">
@@ -130,7 +130,7 @@ description: Data Analytics Lab at UNIST (Industrial Engineering). Industrial St
         <a href="{{ '/activity/Lab%20News/' | relative_url }}">View all →</a>
       </div>
 
-      <!-- Events (최신 2개) -->
+      <!-- Events -->
       <div class="card card-pad" style="grid-column: span 4">
         <h4 style="margin:6px 0">Lab Events</h4>
         <ul style="margin:8px 0 12px; padding-left:18px">
@@ -212,23 +212,26 @@ description: Data Analytics Lab at UNIST (Industrial Engineering). Industrial St
   </div>
 </section>
 
-<!-- === Hero swipe/drag (element-level settings) === -->
+<!-- === Hero swipe/drag (gallery-like: follow + snap) === -->
 <style>
+/* 제스처 우선권 + 드래그 피드백 */
 #heroSlides{
-  touch-action: pan-y;   /* 세로 스크롤은 브라우저, 가로 스와이프는 우리 코드 */
+  touch-action: pan-y;   /* 세로 스크롤은 브라우저, 가로 스와이프는 우리가 처리 */
   cursor: grab;
   user-select: none;
+  transition: transform .35s ease;  /* 스냅 애니메이션 */
 }
+#heroSlides.dragging{ transition: none; } /* 드래그 중 즉시 반응 */
 #heroSlides:active{ cursor: grabbing; }
 #heroSlides img, #heroSlides video{
-  pointer-events: none;     /* 미디어가 드래그 이벤트를 가로채지 않게 */
-  -webkit-user-drag: none;  /* Safari 이미지 드래그 방지 */
+  pointer-events: none;
+  -webkit-user-drag: none;
   user-drag: none;
 }
-/* 혹시 상단 오버레이/화살표가 이벤트를 가로채지 않도록 */
+/* 오버레이가 제스처 가로채지 않게 */
 .hero-overlay{ pointer-events: none; }
 .nav-arrows{ pointer-events: none; }
-.nav-arrows .arrow{ pointer-events: auto; } /* 버튼만 클릭 허용 */
+.nav-arrows .arrow{ pointer-events: auto; }
 </style>
 
 <script>
@@ -257,11 +260,20 @@ description: Data Analytics Lab at UNIST (Industrial Engineering). Industrial St
       dotsEl.appendChild(b);
     }
   }
-  function update(){
-    track.style.transform = `translateX(${-i*100}%)`;
+
+  function percentFor(index){ return -index * 100; }
+
+  function update(offsetPct = 0){
+    track.style.transform = `translateX(${percentFor(i) + offsetPct}%)`;
     [...dotsEl.children].forEach((d,idx)=>d.classList.toggle('active', idx===i));
   }
-  function goto(k){ i = (k+N)%N; update(); }
+
+  function goto(k){
+    i = (k+N)%N;
+    track.classList.remove('dragging');   // 스냅 애니메이션 ON
+    update(0);
+  }
+
   function start(){ stop(); timer = setInterval(()=>{ if(!hover) goto(i+1); }, 5000); }
   function stop(){ if(timer) clearInterval(timer); }
 
@@ -277,43 +289,44 @@ description: Data Analytics Lab at UNIST (Industrial Engineering). Industrial St
     if(e.key==='ArrowRight') goto(i+1);
   });
 
-  // === Swipe/Drag (Pointer Events: 모바일+PC 통합) ===
-  const THRESH = 40;      // 넘김 임계값(px)
-  let dragging = false, startX = 0, startY = 0;
+  // === Swipe/Drag (follow finger + snap) ===
+  const THRESH = 0.18;   // 화면 너비 대비 18% 이상이면 넘김
+  let dragging = false, startX = 0, startY = 0, width = 1;
 
   const onPointerDown = (e) => {
-    // 마우스 오른쪽/중간 버튼은 무시
     if (e.pointerType === 'mouse' && e.button !== 0) return;
+    width = carousel.clientWidth || 1;
     dragging = true;
     startX = e.clientX;
     startY = e.clientY;
-    // 드래그 중에도 move/up 이벤트를 안정적으로 받도록 캡처
+    track.classList.add('dragging');          // transition off
     track.setPointerCapture?.(e.pointerId);
-    // 자동 넘김 잠깐 멈춤
-    hover = true; setTimeout(()=> hover=false, 1200);
+    hover = true; setTimeout(()=>hover=false, 1200);
   };
 
   const onPointerMove = (e) => {
     if (!dragging) return;
     const dx = e.clientX - startX;
     const dy = e.clientY - startY;
+    if (Math.abs(dy) > Math.abs(dx)) return;  // 세로 스크롤 우선
 
-    // 세로로 더 많이 움직이면 스크롤 제스처로 간주 → 슬라이드 넘김 중단
-    if (Math.abs(dy) > Math.abs(dx)) return;
-
-    // 임계값 넘으면 즉시 넘김
-    if (Math.abs(dx) > THRESH) {
-      goto(dx < 0 ? i+1 : i-1);
-      dragging = false;
-      track.releasePointerCapture?.(e.pointerId);
-    }
+    const offsetPct = (dx / width) * 100;     // px → %
+    update(offsetPct);                        // 손가락 따라오기
   };
 
   const onPointerUp = (e) => {
     if (!dragging) return;
     const dx = e.clientX - startX;
-    if (Math.abs(dx) > THRESH) goto(dx < 0 ? i+1 : i-1);
+    const movedRatio = Math.abs(dx) / width;
+
     dragging = false;
+    track.classList.remove('dragging');       // transition on
+
+    if (movedRatio > THRESH) {
+      goto(dx < 0 ? i+1 : i-1);               // 스냅
+    } else {
+      update(0);                              // 원위치 스냅백
+    }
     track.releasePointerCapture?.(e.pointerId);
   };
 
@@ -321,9 +334,9 @@ description: Data Analytics Lab at UNIST (Industrial Engineering). Industrial St
   track.addEventListener('pointermove', onPointerMove);
   window.addEventListener('pointerup', onPointerUp);
 
-  // 이미지 기본 드래그 방지(FF/Chrome)
+  // 이미지 기본 드래그 방지
   track.addEventListener('dragstart', (e) => e.preventDefault());
 
-  buildDots(); update(); start();
+  buildDots(); update(0); start();
 })();
 </script>
