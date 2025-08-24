@@ -50,7 +50,7 @@ permalink: /members/students/
     <div class="student-grid">
       {%- assign items = site.data.students | sort: 'order' -%}
       {%- for s in items -%}
-      {%- assign href_url = s.url | default: '/students/' | append: s.slug | append: '/' -%}
+      {%- assign href_url = s.url | default: '/members/students/' | append: s.slug | append: '/' -%}
       <a href="{{ href_url | relative_url }}" class="card-link" style="text-decoration:none;color:inherit" id="{{ s.slug }}">
         <article class="student-row">
           {% if s.photo %}
