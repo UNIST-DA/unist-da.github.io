@@ -345,3 +345,13 @@ html[data-theme="dark"] #galaxy-canvas{ opacity:1; }
   .dot, .arrow, .slides{ transition:none !important; }
   #galaxy-canvas{ transition:none; }
 }
+
+.link-list li { margin:6px 0; }
+.link-list a {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  text-decoration:none;
+  color:var(--text);
+}
+.link-list a:hover { opacity:.9; }
