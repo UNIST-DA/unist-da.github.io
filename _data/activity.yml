@@ -26,7 +26,7 @@ events:
     title: "Professor's Birthday Celebration"
     detail: |
       The lab celebrated our professor's birthday.
-    image: "/assets/activity/Lab%20Events/Prof_birth.jpg"
+    image: "/assets/activity/Lab_Events/Prof_birth.jpg"
     image_alt: "Birthday cake and lab group photo"
     image_caption: "Celebration"
     url: "/activity/Lab%20Events/#2025-05-01-prof-birthday"
@@ -36,7 +36,7 @@ events:
     title: "Cherry Blossom Picnic"
     detail: |
       Enjoyed an outdoor picnic among the campus cherry blossoms.
-    image: "/assets/activity/Lab%20Events/spring_2025.jpg"
+    image: "/assets/activity/Lab_Events/spring_2025.jpg"
     image_alt: "Lab group photo under cherry blossoms"
     image_caption: "Cherry blossom picnic"
     url: "/activity/Lab%20Events/#2025-04-08-cherry-blossom-picnic"
@@ -46,7 +46,7 @@ events:
     title: "Lab Homecoming Day"
     detail: |
       Held our annual lab homecoming day event.
-    image: "/assets/activity/Lab%20Events/homecoming_2024.jpg"
+    image: "/assets/activity/Lab_Events/homecoming_2024.jpg"
     image_alt: "Lab homecoming day group photo"
     image_caption: "Lab homecoming day"
     url: "/activity/Lab%20Events/#2024-09-06-lab-homecoming"
