@@ -1,10 +1,41 @@
 # 메인 Research 카드(3개)와 /research/projects/가 공통으로 읽음
-- slug: project-a
-  title: Project A
-  summary: Real-time anomaly detection for manufacturing line.
-  period: "2024–2025"
-  image: /assets/research/projects/project-a.jpg
-  url: /research/projects/#project-a
+- slug: lqc-lg
+  title: Domain-Knowledge-Informed Outlier Detection for Line Quality Control (LQC)
+  summary: Detect latent defects on production lines by fusing domain knowledge with functional outlier detection.
+  period: "2023–2025"
+  image: /assets/research/projects/lqc-lg-fig2.jpg   # (권장) Figure 2 이미지 파일을 여기에 두세요
+  url: /research/projects/#lqc-lg
+  category: Industry Collaboration · LG Electronics
+  tags:
+    - Functional Data Analysis
+    - Sequential Transformations
+    - Outlier Detection
+    - Manufacturing AI
+    - Quality Inspection
+    - Refrigerator Compressor
+  image_caption: Proposed monitoring framework integrating domain knowledge with functional outlier detection (Figure 2).
+  description: >
+    **Overview.** 생산 라인 검사에서 **잠재 결함(latent defects)**을 사전 식별하기 위해,
+    센서 프로파일을 함수형 데이터로 해석하고 **도메인 지식(temporal/directional/structural)**을
+    순차 변환(sequential transformations) 프레임워크에 통합한 이상치 탐지 방법을 개발합니다:contentReference[oaicite:0]{index=0}.
+
+    **Motivation.** 일부 결함은 검사 공정에서는 정상처럼 보이지만, 고객 초기 사용 단계에서 문제로 드러납니다.
+    기존의 범용 이상치 탐지/분류 기법만으로는 이런 **잠재 결함**을 포착하기 어렵습니다:contentReference[oaicite:1]{index=1}.
+
+    **Approach.**
+    - **Data Preprocessing:** 통신 지연·누락 처리 및 **environmental drift 제거**로 프로파일 정렬·정규화.
+    - **Domain-knowledge-informed transforms:**  
+      - *Temporal (Kt):* 결함이 나타나기 쉬운 구간 집중  
+      - *Directional (Kd):* 이상 방향성(상/하) 반영  
+      - *Structural (Ks):* 보조 센서와의 구조적 관계(예: 비율, 역상관) 특징화
+    - **Detection:** 변환으로 **shape → magnitude** 이상으로 바꾼 뒤 **Functional Boxplot(ERLD)**로 판정:contentReference[oaicite:2]{index=2}.
+
+    **Results.** 시뮬레이션과 **LG Smart Park(창원) 실제 냉장고 검사 데이터**에서
+    기존 기법 대비 **높은 검출률(pc)**과 **낮은 오경보율(pf)**을 달성했습니다.
+    특히 컴프레서 관련 **잠재 결함** 유형에서 일관된 성능 향상을 보였습니다:contentReference[oaicite:3]{index=3}.
+
+    **Impact.** 냉장고를 넘어 다양한 제조 품질 검사/고장 예측으로 확장 가능한 **현장 적용형 프레임워크**입니다:contentReference[oaicite:4]{index=4}.
+
 
 - slug: project-b
   title: Project B
