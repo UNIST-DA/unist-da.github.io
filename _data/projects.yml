@@ -24,7 +24,7 @@
   title: Fuel Consumption Prediction & Optimization (SCSC)
   summary: AIS·기상·엔진 센서를 융합해 연료 소비를 예측하고 친환경 최적 운항 전략을 제시합니다.
   period: "2023–"
-  image: /assets/research/projects/none.jpg
+  image: /assets/research/projects/none.png
   url: /research/projects/scsc-fuel-opt
   category: Time-Series Representation
   tags:
@@ -43,7 +43,7 @@
   title: LLM Agent for Maritime Data Analysis (SCSC)
   summary: 대용량 AIS·해양 데이터를 자연어로 질의·분석하고, 실시간 리스크·규정 위반을 자동 탐지합니다.
   period: "2024–"
-  image: /assets/research/projects/none.jpg
+  image: /assets/research/projects/none.png
   url: /research/projects/scsc-llm-maritime
   category: System Monitoring & Anomaly Detection
   tags:
@@ -62,7 +62,7 @@
   title: Domain-free Time-Series Drift Management
   summary: 도메인에 독립적인 시계열 드리프트 모니터링·탐지·보정 기술과 툴킷/플랫폼 SW 개발.
   period: "2025.03–2028.02"
-  image: /assets/research/projects/none.jpg
+  image: /assets/research/projects/none.png
   url: /research/projects/df-ts-drift
   category: System Monitoring & Anomaly Detection
   tags:
