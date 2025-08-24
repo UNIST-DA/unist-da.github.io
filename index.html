@@ -258,27 +258,52 @@ description: Data Analytics Lab at UNIST (Industrial Engineering). Industrial St
     if(e.key==='ArrowRight') goto(i+1);
   });
 
-  // 터치 스와이프
-  let startX=0;
-  track.addEventListener('touchstart', e=>{ startX = e.touches[0].clientX; }, {passive:true});
-  track.addEventListener('touchend', e=>{
-    const dx = e.changedTouches[0].clientX - startX;
-    if(Math.abs(dx) > 40){ dx<0 ? goto(i+1) : goto(i-1); }
-  });
-  // 마우스 드래그 (데스크톱 지원)
-let dragStartX = 0, dragging = false;
+    // === Swipe/Drag (Pointer Events: 모바일+PC 통합) ===
+  const THRESH = 40;      // 넘김 임계값(px)
+  let dragging = false, startX = 0, startY = 0;
 
-track.addEventListener('mousedown', e=>{
-  dragging = true;
-  dragStartX = e.clientX;
-});
-track.addEventListener('mouseup', e=>{
-  if(!dragging) return;
-  const dx = e.clientX - dragStartX;
-  if(Math.abs(dx) > 40){ dx<0 ? goto(i+1) : goto(i-1); }
-  dragging = false;
-});
-track.addEventListener('mouseleave', ()=> dragging=false);
+  const onPointerDown = (e) => {
+    // 마우스 오른쪽/중간 버튼은 무시
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+    dragging = true;
+    startX = e.clientX;
+    startY = e.clientY;
+    // move/up 이벤트 안정적으로 받기
+    track.setPointerCapture?.(e.pointerId);
+    // 자동 넘김 잠깐 멈춤
+    hover = true; setTimeout(()=> hover=false, 1200);
+  };
+
+  const onPointerMove = (e) => {
+    if (!dragging) return;
+    const dx = e.clientX - startX;
+    const dy = e.clientY - startY;
+
+    // 세로로 더 많이 움직이면 스크롤로 간주
+    if (Math.abs(dy) > Math.abs(dx)) return;
+
+    if (Math.abs(dx) > THRESH) {
+      goto(dx < 0 ? i+1 : i-1);
+      dragging = false;
+      track.releasePointerCapture?.(e.pointerId);
+    }
+  };
+
+  const onPointerUp = (e) => {
+    if (!dragging) return;
+    const dx = e.clientX - startX;
+    if (Math.abs(dx) > THRESH) goto(dx < 0 ? i+1 : i-1);
+    dragging = false;
+    track.releasePointerCapture?.(e.pointerId);
+  };
+
+  track.addEventListener('pointerdown', onPointerDown);
+  track.addEventListener('pointermove', onPointerMove);
+  window.addEventListener('pointerup', onPointerUp);
+
+  // 이미지 기본 드래그 방지
+  track.addEventListener('dragstart', (e) => e.preventDefault());
+
 
 
   buildDots(); update(); start();
