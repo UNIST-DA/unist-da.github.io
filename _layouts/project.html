@@ -2,7 +2,14 @@
 layout: default
 ---
 
-{% assign project = site.data.projects | where: "slug", page.slug | first %}
+{%- comment -%}
+  Project detail layout.
+  Expects each project page (.md) to set `slug:` in its front matter,
+  which matches an item in `_data/projects.yml`.
+{%- endcomment -%}
+
+{%- assign project = site.data.projects | where: "slug", page.slug | first -%}
+{%- assign title_fallback = page.title | default: (project and project.title) | default: page.slug -%}
 
 <div class="page-hero">
   <div class="container">
@@ -11,27 +18,34 @@ layout: default
       <a href="{{ '/research/projects/' | relative_url }}">Research</a> ·
       Projects
     </div>
-    <h1 class="page-title">
-      {{ project.title | default: page.title | default: page.slug }}
-    </h1>
-    {% if project.summary %}
-    <p class="muted">{{ project.summary }}</p>
-    {% endif %}
+    <h1 class="page-title">{{ title_fallback }}</h1>
+    {%- if project and project.summary -%}
+      <p class="muted">{{ project.summary }}</p>
+    {%- endif -%}
   </div>
 </div>
 
 <main class="container">
+  {%- if project -%}
   <article class="grid" style="row-gap:24px">
     <div style="grid-column: span 8">
-      {% if project.image %}
-      <img src="{{ project.image | relative_url }}" alt="{{ project.title }}" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin-bottom:16px">
-      {% endif %}
+      {%- if project.image -%}
+        <img src="{{ project.image | relative_url }}"
+             alt="{{ project.title | default: title_fallback }}"
+             style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin-bottom:16px">
+        {%- if project.image_caption -%}
+          <p class="muted" style="margin:6px 0 16px">{{ project.image_caption }}</p>
+        {%- endif -%}
+      {%- endif -%}
 
-      {% if project.period %}
-      <p class="muted" style="margin:0 0 12px"><strong>Period:</strong> {{ project.period }}</p>
-      {% endif %}
+      {%- if project.period -%}
+        <p class="muted" style="margin:0 0 12px"><strong>Period:</strong> {{ project.period }}</p>
+      {%- endif -%}
+      {%- if project.category -%}
+        <p class="muted" style="margin:0 0 12px"><strong>Category:</strong> {{ project.category }}</p>
+      {%- endif -%}
 
-      <!-- 프로젝트별 본문 -->
+      <!-- 프로젝트별 .md 본문 -->
       <div class="prose">
         {{ content }}
       </div>
@@ -40,15 +54,46 @@ layout: default
     <aside style="grid-column: span 4">
       <div class="card card-pad">
         <h3 style="margin-top:0">Project Info</h3>
-        {% if project.period %}
-        <p style="margin:0 0 6px"><strong>Period:</strong> {{ project.period }}</p>
-        {% endif %}
-        {% if project.url %}
-        <p style="margin:0 0 6px"><strong>Link:</strong> <a href="{{ project.url | relative_url }}">{{ project.url }}</a></p>
-        {% endif %}
-        {% if project.external %}
-        <p style="margin:0 0 6px"><strong>External:</strong> <a href="{{ project.external }}" target="_blank" rel="noopener">Open</a></p>
-        {% endif %}
+
+        {%- if project.period -%}
+          <p style="margin:0 0 6px"><strong>Period:</strong> {{ project.period }}</p>
+        {%- endif -%}
+
+        {%- if project.category -%}
+          <p style="margin:0 0 6px"><strong>Category:</strong> {{ project.category }}</p>
+        {%- endif -%}
+
+        {%- if project.tags and project.tags.size > 0 -%}
+          <div style="margin:8px 0 6px">
+            <strong>Tags:</strong>
+            <div style="margin-top:6px;display:flex;flex-wrap:wrap;gap:6px">
+              {%- for t in project.tags -%}
+                <span class="badge" style="padding:4px 8px;border-radius:999px;background:#f3f4f6;display:inline-block">
+                  {{ t }}
+                </span>
+              {%- endfor -%}
+            </div>
+          </div>
+        {%- endif -%}
+
+        {%- if project.url -%}
+          {%- assign is_external = project.url contains '://' -%}
+          <p style="margin:8px 0 0">
+            <strong>Link:</strong>
+            {%- if is_external -%}
+              <a href="{{ project.url }}" target="_blank" rel="noopener">{{ project.url }}</a>
+            {%- else -%}
+              <a href="{{ project.url | relative_url }}">{{ project.url }}</a>
+            {%- endif -%}
+          </p>
+        {%- endif -%}
+
+        {%- if project.external -%}
+          <p style="margin:8px 0 0">
+            <strong>External:</strong>
+            <a href="{{ project.external }}" target="_blank" rel="noopener">Open</a>
+          </p>
+        {%- endif -%}
       </div>
 
       <div class="card card-pad" style="margin-top:16px">
@@ -56,10 +101,14 @@ layout: default
       </div>
     </aside>
   </article>
-
-  {% unless project %}
-  <div class="card card-pad" style="margin-top:16px">
-    <strong>Heads up:</strong> This page’s <code>slug</code> ({{ page.slug }}) was not found in <code>_data/projects.yml</code>.
-  </div>
-  {% endunless %}
+  {%- else -%}
+    <div class="card card-pad" style="margin-top:16px">
+      <strong>Heads up:</strong>
+      No project with slug <code>{{ page.slug }}</code> was found in <code>_data/projects.yml</code>.
+      Make sure the page’s front matter has a matching <code>slug</code>.
+    </div>
+    <div class="prose" style="margin-top:12px">
+      {{ content }}
+    </div>
+  {%- endif -%}
 </main>
