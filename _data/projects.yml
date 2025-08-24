@@ -1,11 +1,11 @@
 # 메인 Research 카드(3개)와 /research/projects/가 공통으로 읽음
 - slug: lqc-lg
-  title: Domain-Knowledge-Informed Outlier Detection for Line Quality Control (LQC)
+  title: LG LQC (Line Quality Control)
   summary: Detect latent defects on production lines by fusing domain knowledge with functional outlier detection.
-  period: "2023–2025"
+  period: "2021–2024"
   image: /assets/research/projects/lg-lqc-fig6.png
   url: /research/projects/lg-lqc
-  category: Industry Collaboration · LG Electronics
+  category: Artificial Intelligence in Quality Engineering
   tags:
     - Functional Data Analysis
     - Sequential Transformations
@@ -37,16 +37,68 @@
     **Impact.** 냉장고를 넘어 다양한 제조 품질 검사/고장 예측으로 확장 가능한 **현장 적용형 프레임워크**입니다:contentReference[oaicite:4]{index=4}.
 
 
-- slug: project-b
-  title: Project B
-  summary: Time-series representation learning for sensor data.
-  period: "2025–"
-  image: /assets/research/projects/project-b.jpg
-  url: /research/projects/#project-b
+- slug: scsc-fuel-opt
+  title: Fuel Consumption Prediction & Optimization (SCSC)
+  summary: AIS·기상·엔진 센서 데이터를 융합해 연료 소비를 예측하고 친환경 최적 운항 전략을 제시합니다.
+  period: "2023–"
+  image: /assets/research/projects/scsc-fuel.jpg   # 예: 선박 항적 지도 또는 연료소비 그래프
+  url: /research/projects/#scsc-fuel-opt
+  category: Time-Series Representation
+  tags:
+    - AIS
+    - Fuel Optimization
+    - Machine Learning
+    - Green Logistics
+    - Carbon Neutrality
+    - Maritime Analytics
+  image_caption: Integrated AIS–weather–engine features for fuel prediction and eco-routing.
+  description: >
+    **Overview.** AIS, 기상·해류, 엔진 센서 등 이기종 시계열 데이터를 통합하여
+    선박 **연료 소비 예측 모델**을 구축하고, 탄소 배출을 줄이는 **최적 운항 전략**을 제시합니다.
 
-- slug: project-c
-  title: Project C
-  summary: Quality-driven monitoring with interpretable ML.
-  period: "2025–"
-  image: /assets/research/projects/project-c.jpg
-  url: /research/projects/#project-c
+    **Motivation.** 국제 규제(탄소감축) 대응과 운임 효율화가 동시에 요구되는 환경에서,
+    데이터 기반 **연료 효율 운항 의사결정**의 중요성이 커지고 있습니다.
+
+    **Approach.**
+    - **Data Fusion:** AIS 항로·속도 + 기상/해류 + 엔진 센서 신호의 멀티소스 결합
+    - **Modeling:** 시계열 표현 학습(Feature engineering & 딥러닝) 기반 연료 소비 예측
+    - **Optimization:** 예측 모델을 활용한 속도·코스 **eco-routing** 및 운항 정책 탐색
+
+    **Results.** 실제 항로 구간에서의 백테스트로 기존 룰 기반 대비 **연료 절감 가능성**과
+    일정 지연 최소화를 동시에 확인(케이스 스터디 기준).
+
+    **Impact.** 친환경 해운 및 **탄소중립 로드맵**을 지원하고, 선사 운영의 비용·탄소 **동시 최적화**를 돕습니다.
+
+
+
+- slug: scsc-llm-maritime
+  title: LLM Agent for Maritime Data Analysis (SCSC)
+  summary: 대용량 AIS·해양 데이터를 자연어로 질의·분석하고, 실시간 리스크·규정 위반을 자동 탐지합니다.
+  period: "2024–"
+  image: /assets/research/projects/scsc-llm.jpg   # 예: LLM/RAG 개념 다이어그램 또는 해양 데이터 UI
+  url: /research/projects/#scsc-llm-maritime
+  category: System Monitoring & Anomaly Detection
+  tags:
+    - LLM
+    - RAG
+    - AIS
+    - Real-time Monitoring
+    - Anomaly Detection
+    - Compliance
+  image_caption: RAG-enabled maritime data agent for natural-language analytics and monitoring.
+  description: >
+    **Overview.** 대용량 AIS·해양 데이터에 대한 **자연어 질의·분석 에이전트**를 구축하고,
+    실시간 스트림에서 **운항 리스크/규정 위반**을 자동 탐지합니다.
+
+    **Motivation.** 해상 안전, 항법 준수, 사고 대응 속도를 높이려면
+    데이터 접근성(자연어 질의)과 **상시 모니터링** 체계가 필수입니다.
+
+    **Approach.**
+    - **RAG Pipeline:** 해양 도메인 지식·규정·메타데이터를 인덱싱하여 **근거 중심 응답**
+    - **Streaming Analytics:** AIS 실시간 피드 기반 **행동 이상/위반 패턴** 감지
+    - **Agent UX:** 자연어 질의 → 시각화·리포트·알림 연동(운항/관제 워크플로우 통합)
+
+    **Results.** 대표 시나리오(속력·침로 급변, 지정해역 침범 등)에서
+    **알림 지연 단축** 및 **오탐 감소**를 확인(파일럿 기준).
+
+    **Impact.** 해양 안전 강화와 **규정 준수 자동화**를 지원하고, 현장 의사결정의 **반응성**을 높입니다.
