@@ -42,7 +42,7 @@
   summary: AIS·기상·엔진 센서 데이터를 융합해 연료 소비를 예측하고 친환경 최적 운항 전략을 제시합니다.
   period: "2023–"
   image: /assets/research/projects/scsc-fuel.jpg   # 예: 선박 항적 지도 또는 연료소비 그래프
-  url: /research/projects/#scsc-fuel-opt
+  url: /research/projects/scsc-fuel-opt
   category: Time-Series Representation
   tags:
     - AIS
@@ -76,7 +76,7 @@
   summary: 대용량 AIS·해양 데이터를 자연어로 질의·분석하고, 실시간 리스크·규정 위반을 자동 탐지합니다.
   period: "2024–"
   image: /assets/research/projects/scsc-llm.jpg   # 예: LLM/RAG 개념 다이어그램 또는 해양 데이터 UI
-  url: /research/projects/#scsc-llm-maritime
+  url: /research/projects/scsc-llm-maritime
   category: System Monitoring & Anomaly Detection
   tags:
     - LLM
@@ -102,3 +102,42 @@
     **알림 지연 단축** 및 **오탐 감소**를 확인(파일럿 기준).
 
     **Impact.** 해양 안전 강화와 **규정 준수 자동화**를 지원하고, 현장 의사결정의 **반응성**을 높입니다.
+
+
+
+- slug: df-ts-drift
+  title: Domain-free Time-Series Drift Management
+  summary: 다양한 도메인에서 공통으로 적용 가능한 시계열 드리프트 모니터링·탐지·보정 기술과 툴킷/플랫폼 SW 개발.
+  period: "2025.03–2028.02"
+  image: /assets/research/projects/df-ts-drift.jpg   # 대표 이미지(드리프트/모니터링 다이어그램 등) 경로
+  url: /research/projects/df-ts-drift
+  category: System Monitoring & Anomaly Detection
+  tags:
+    - Time-Series Drift
+    - Concept Drift
+    - Covariate Shift
+    - Domain-free
+    - Robust Learning
+    - Neural DEs
+    - Monitoring
+  image_caption: Domain-free 시계열 드리프트 모니터링·탐지·보정 통합 프레임워크.
+  description: >
+    **Overview.** 제조·헬스케어·항만물류·교통·금융 등 이기종 환경에서 발생하는
+    **시계열 데이터 드리프트**(분포/개념 변화)를 **도메인에 독립적(domain-free)** 으로
+    모니터링·탐지·보정할 수 있는 이론·알고리즘·툴킷/플랫폼 SW를 개발합니다.
+
+    **Goals.**
+    1) 다변량 시계열 드리프트 **모니터링/탐지 기술** 3건 개발  
+    2) **Domain-free 툴킷** 및 확장 가능한 **플랫폼 SW/서비스** 1건 개발  
+    3) 제조/헬스케어/물류/교통/금융 실제 데이터 및 시뮬레이션으로 **성능·범용성 검증**
+
+    **Approach.**
+    - **Monitoring/Detection:** 개념·공변량 드리프트 검정, 윈도우/스트리밍 기반 적응 임계  
+    - **Robust Learning:** **Neural Differential Equations** 기반 강건 학습/전처리 파이프라인  
+    - **Domain-free Design:** 의존성 최소화 표현(표준화 인터페이스, 메타데이터 스키마)  
+    - **Toolkit/Platform:** 파이썬 SDK + 대시보드(알림/리포팅/시뮬레이터 연동)
+
+    **Impact.** 공개 SW 형태의 **범용 드리프트 관리 스택**을 제시하여, 다양한 산업 도메인에서
+    **데이터 품질 저하·성능 저하 리스크**를 선제적으로 관리합니다.
+
+    **Funding.** NRF(한국연구재단) 중견연구 (Project No. 2710079663) · PI: 김성일.
