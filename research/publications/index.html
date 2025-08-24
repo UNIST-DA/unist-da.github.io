@@ -5,7 +5,7 @@ description: Journal and conference publications of the Data Analytics Lab (UNIS
 permalink: /research/publications/
 ---
 
-<!-- ======= Hero ======= -->
+<!-- Hero -->
 <div class="page-hero">
   <div class="container">
     <div class="breadcrumbs">
@@ -17,8 +17,8 @@ permalink: /research/publications/
   </div>
 </div>
 
-<!-- ======= Toolbar (Filter + Search) ======= -->
 <main class="container">
+  <!-- Toolbar -->
   <section>
     <div class="card card-pad" style="margin:16px 0">
       <div class="tabs" role="tablist" aria-label="Publication type tabs" style="margin:0 0 12px">
@@ -28,135 +28,72 @@ permalink: /research/publications/
       </div>
       <input id="pub-search" type="search" placeholder="Search title / authors / venue…" aria-label="Search publications" style="width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px">
     </div>
+  </section>
 
-    <!-- ======= Year 2025 ======= -->
-    <div class="year-block" data-year="2025" style="margin:24px 0">
-      <h3 style="margin:0 0 10px">2025</h3>
+  <!-- Publication List -->
+  <section id="pub-list">
+    {%- assign pubs = site.data.publications | sort: "year" | reverse -%}
+    {%- assign groups = pubs | group_by: "year" -%}
 
+    {%- for g in groups -%}
+    <div class="year-block" data-year="{{ g.name }}" style="margin:24px 0">
+      <h3 style="margin:0 0 10px">{{ g.name }}</h3>
+
+      {%- for p in g.items -%}
+      {%- assign authors_text = p.authors | join: ", " -%}
       <article class="card card-pad pub-item"
-               data-type="journal"
-               data-year="2025"
-               data-text="Robust SPC with Self-Supervised Time-Series Representations Kim H. Yun Y. Journal of Quality Technology 2025">
+               data-type="{{ p.type | default: 'journal' }}"
+               data-year="{{ p.year }}"
+               data-text="{{ p.title | escape }} {{ authors_text | escape }} {{ p.venue | escape }}">
         <div style="display:flex;gap:14px;align-items:flex-start">
           <div style="flex:1">
-            <a class="pub-title" href="{{ '/research/publications/2025-robust-spc/' | relative_url }}" style="font-weight:700; color:inherit; text-decoration:none">
-              Robust SPC with Self‑Supervised Time‑Series Representations
+            <a class="pub-title" href="{{ p.url | default: '#' }}" style="font-weight:700; color:inherit; text-decoration:none">
+              {{ p.title }}
             </a>
-            <div class="muted">Y. Kim, H. Yun, et al.</div>
-            <div class="muted"><em>Journal of Quality Technology</em>, 2025</div>
-            <div style="margin-top:8px">
-              <a class="tag" href="#" aria-label="PDF link">PDF</a>
-              <a class="tag" href="#" aria-label="Code repository">Code</a>
-              <a class="tag" href="#" aria-label="DOI">DOI</a>
-              <button class="tag bib-toggle" data-target="bib-2025-1" aria-expanded="false">BibTeX</button>
+            <div class="muted">{{ authors_text }}</div>
+            <div class="muted"><em>{{ p.venue }}</em>, {{ p.year }}</div>
+
+            <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:8px">
+              {%- if p.links and p.links.pdf -%}
+                <a class="tag" href="{{ p.links.pdf }}" target="_blank" rel="noopener" aria-label="PDF">PDF</a>
+              {%- endif -%}
+              {%- if p.links and p.links.code -%}
+                <a class="tag" href="{{ p.links.code }}" target="_blank" rel="noopener" aria-label="Code">Code</a>
+              {%- endif -%}
+              {%- if p.links and p.links.doi -%}
+                <a class="tag" href="{{ p.links.doi }}" target="_blank" rel="noopener" aria-label="DOI">DOI</a>
+              {%- endif -%}
+              {%- if p.bibtex -%}
+                <button class="tag bib-toggle" data-target="bib-{{ p.id }}" aria-expanded="false">BibTeX</button>
+              {%- endif -%}
             </div>
-            <pre id="bib-2025-1" hidden>@article{kim2025robustspc,
-  title={Robust SPC with Self-Supervised Time-Series Representations},
-  author={Kim, Y. and Yun, H. and others},
-  journal={Journal of Quality Technology},
-  year={2025}
-}</pre>
+
+            {%- if p.bibtex -%}
+            <pre id="bib-{{ p.id }}" hidden>{{ p.bibtex | escape }}</pre>
+            {%- endif -%}
           </div>
-          <div class="muted" style="white-space:nowrap"><span class="tag">journal</span></div>
+
+          <div class="muted" style="white-space:nowrap">
+            <span class="tag">{{ p.type | default: 'journal' }}</span>
+          </div>
         </div>
       </article>
+      {%- endfor -%}
     </div>
-
-    <!-- ======= Year 2024 ======= -->
-    <div class="year-block" data-year="2024" style="margin:24px 0">
-      <h3 style="margin:0 0 10px">2024</h3>
-
-      <article class="card card-pad pub-item"
-               data-type="journal"
-               data-year="2024"
-               data-text="Real-Time Anomaly Detection for Multivariate Sensor Streams Lee J. Park S. IEEE Transactions on Industrial Informatics 2024">
-        <div style="display:flex;gap:14px;align-items:flex-start">
-          <div style="flex:1">
-            <a class="pub-title" href="{{ '/research/publications/2024-rt-anomaly/' | relative_url }}" style="font-weight:700; color:inherit; text-decoration:none">
-              Real‑Time Anomaly Detection for Multivariate Sensor Streams
-            </a>
-            <div class="muted">J. Lee, S. Park, H. Yun</div>
-            <div class="muted"><em>IEEE Transactions on Industrial Informatics</em>, 2024</div>
-            <div style="margin-top:8px">
-              <a class="tag" href="#" aria-label="PDF link">PDF</a>
-              <a class="tag" href="#" aria-label="Code repository">Code</a>
-              <a class="tag" href="#" aria-label="DOI">DOI</a>
-              <button class="tag bib-toggle" data-target="bib-2024-1" aria-expanded="false">BibTeX</button>
-            </div>
-            <pre id="bib-2024-1" hidden>@article{lee2024realtime,
-  title={Real-Time Anomaly Detection for Multivariate Sensor Streams},
-  author={Lee, J. and Park, S. and Yun, H.},
-  journal={IEEE Transactions on Industrial Informatics},
-  year={2024}
-}</pre>
-          </div>
-          <div class="muted" style="white-space:nowrap"><span class="tag">journal</span></div>
-        </div>
-      </article>
-
-      <article class="card card-pad pub-item"
-               data-type="conference"
-               data-year="2024"
-               data-text="Interpretable Monitoring with Shapley-Based SPC Choi M. Yun H. Proc. KIIE Conference 2024">
-        <div style="display:flex;gap:14px;align-items:flex-start">
-          <div style="flex:1">
-            <a class="pub-title" href="{{ '/research/publications/2024-shapley-spc/' | relative_url }}" style="font-weight:700; color:inherit; text-decoration:none">
-              Interpretable Monitoring with Shapley‑Based SPC
-            </a>
-            <div class="muted">M. Choi, H. Yun</div>
-            <div class="muted"><em>Proc. KIIE Conference</em>, 2024</div>
-            <div style="margin-top:8px">
-              <a class="tag" href="#" aria-label="PDF link">PDF</a>
-              <a class="tag" href="#" aria-label="Slides">Slides</a>
-              <button class="tag bib-toggle" data-target="bib-2024-2" aria-expanded="false">BibTeX</button>
-            </div>
-            <pre id="bib-2024-2" hidden>@inproceedings{choi2024shapleyspc,
-  title={Interpretable Monitoring with Shapley-Based SPC},
-  author={Choi, M. and Yun, H.},
-  booktitle={Proceedings of KIIE},
-  year={2024}
-}</pre>
-          </div>
-          <div class="muted" style="white-space:nowrap"><span class="tag">conference</span></div>
-        </div>
-      </article>
-    </div>
-
-    <!-- ======= Year 2023 ======= -->
-    <div class="year-block" data-year="2023" style="margin:24px 0">
-      <h3 style="margin:0 0 10px">2023</h3>
-
-      <article class="card card-pad pub-item"
-               data-type="conference"
-               data-year="2023"
-               data-text="Quality-Driven Representation Learning for Irregular Time Series Park S. Kim Y. Yun H. ICML Workshop 2023">
-        <div style="display:flex;gap:14px;align-items:flex-start">
-          <div style="flex:1">
-            <a class="pub-title" href="{{ '/research/publications/2023-qdr-time-series/' | relative_url }}" style="font-weight:700; color:inherit; text-decoration:none">
-              Quality‑Driven Representation Learning for Irregular Time Series
-            </a>
-            <div class="muted">S. Park, Y. Kim, H. Yun</div>
-            <div class="muted"><em>ICML Workshop</em>, 2023</div>
-            <div style="margin-top:8px">
-              <a class="tag" href="#" aria-label="PDF link">PDF</a>
-              <a class="tag" href="#" aria-label="Poster">Poster</a>
-              <button class="tag bib-toggle" data-target="bib-2023-1" aria-expanded="false">BibTeX</button>
-            </div>
-            <pre id="bib-2023-1" hidden>@inproceedings{park2023qdr,
-  title={Quality-Driven Representation Learning for Irregular Time Series},
-  author={Park, S. and Kim, Y. and Yun, H.},
-  booktitle={ICML Workshop},
-  year={2023}
-}</pre>
-          </div>
-          <div class="muted" style="white-space:nowrap"><span class="tag">conference</span></div>
-        </div>
-      </article>
-    </div>
+    {%- endfor -%}
   </section>
 </main>
 
-<!-- ======= Scripts (Filter/Search/BibTeX) ======= -->
+<!-- Styles (optional: 가벼운 보조 스타일) -->
+<style>
+  .tab { padding:6px 10px; border:1px solid var(--line); border-radius:10px; background:#fff; cursor:pointer; }
+  .tab + .tab { margin-left:6px; }
+  .tab.active { background:#111; color:#fff; border-color:#111; }
+  .tag { display:inline-block; border:1px solid #e3e3e3; border-radius:999px; padding:2px 10px; font-size:12px; color:#374151; text-decoration:none; background:#fff; }
+  .pub-item pre { margin-top:8px; background:#f9fafb; padding:10px; border-radius:8px; overflow:auto; }
+</style>
+
+<!-- Scripts -->
 <script>
   // Tabs (type filter)
   const tabs = document.querySelectorAll('.tabs .tab');
@@ -175,13 +112,14 @@ permalink: /research/publications/
 
   // Search
   const q = document.getElementById('pub-search');
-  q.addEventListener('input', applyFilter);
+  if(q){ q.addEventListener('input', applyFilter); }
 
   function applyFilter(){
-    const term = (q.value || '').toLowerCase().trim();
+    const term = ((q && q.value) ? q.value : '').toLowerCase().trim();
     items.forEach(it=>{
       const matchType = (activeType==='all' || it.dataset.type===activeType);
-      const matchText = it.dataset.text.toLowerCase().includes(term);
+      const text = (it.dataset.text || '').toLowerCase();
+      const matchText = text.indexOf(term) !== -1;
       const visible = matchType && matchText;
       it.style.display = visible ? '' : 'none';
     });
@@ -191,16 +129,16 @@ permalink: /research/publications/
       b.style.display = visibleItems.length ? '' : 'none';
     });
   }
+  applyFilter();
 
   // BibTeX toggle
   document.querySelectorAll('.bib-toggle').forEach(btn=>{
     btn.addEventListener('click', ()=>{
       const id = btn.getAttribute('data-target');
       const pre = document.getElementById(id);
-      const nowHidden = pre.hasAttribute('hidden') ? false : true;
-      if(nowHidden){ pre.setAttribute('hidden', ''); btn.setAttribute('aria-expanded', 'false'); }
-      else { pre.removeAttribute('hidden'); btn.setAttribute('aria-expanded', 'true'); }
+      const isHidden = pre.hasAttribute('hidden');
+      if(isHidden){ pre.removeAttribute('hidden'); btn.setAttribute('aria-expanded','true'); }
+      else { pre.setAttribute('hidden',''); btn.setAttribute('aria-expanded','false'); }
     });
   });
 </script>
-
