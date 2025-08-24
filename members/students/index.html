@@ -13,38 +13,75 @@ permalink: /members/students/
   </div>
 </div>
 
+<!-- 간단 스타일: 가로 카드 + 반응형 -->
+<style>
+  .student-row {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid #eee;
+    background: #fff;
+    transition: box-shadow .15s ease;
+  }
+  .student-row:hover { box-shadow: 0 6px 22px rgba(0,0,0,.06); }
+  .student-photo {
+    width: 160px; height: 160px; flex: 0 0 160px;
+    border-radius: 12px; object-fit: cover; background:#f6f6f6;
+  }
+  .student-meta {
+    margin: 0 0 6px; color: #6b7280; /* muted */
+    font-size: 14px;
+  }
+  .student-tags span {
+    display:inline-block;border:1px solid #e3e3e3;border-radius:999px;
+    padding:2px 8px;margin:0 6px 6px 0;font-size:12px;color:#6b7280;
+  }
+  .student-grid { display: grid; gap: 16px; }
+  @media (max-width: 720px) {
+    .student-row { flex-direction: column; align-items: flex-start; }
+    .student-photo { width: 100%; height: auto; aspect-ratio: 4/3; }
+  }
+</style>
+
 <main class="container">
   <section>
-    <div class="grid">
-      {% assign items = site.data.students | sort: 'order' %}
-      {% for s in items %}
-      {% assign href_url = s.url | default: '/students/' | append: s.slug | append: '/' %}
-      <a href="{{ href_url | relative_url }}" class="card-link" style="text-decoration:none;color:inherit">
-        <article class="card card-pad" style="grid-column: span 6" id="{{ s.slug }}">
+    <div class="student-grid">
+      {%- assign items = site.data.students | sort: 'order' -%}
+      {%- for s in items -%}
+      {%- assign href_url = s.url | default: '/students/' | append: s.slug | append: '/' -%}
+      <a href="{{ href_url | relative_url }}" class="card-link" style="text-decoration:none;color:inherit" id="{{ s.slug }}">
+        <article class="student-row">
           {% if s.photo %}
-            <img src="{{ s.photo | relative_url }}" alt="{{ s.name }}"
-                 style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;margin-bottom:10px">
+            <img src="{{ s.photo | relative_url }}" alt="{{ s.name }}" class="student-photo">
           {% endif %}
-          <h3 style="margin:0 0 6px">{{ s.name }}</h3>
-          {% if s.role or s.period %}
-            <p class="muted" style="margin:0 0 6px">
-              {% if s.role %}{{ s.role }}{% endif %}
-              {% if s.period %}{% if s.role %} · {% endif %}{{ s.period }}{% endif %}
-            </p>
-          {% endif %}
-          {% if s.tags %}
-            <p class="muted" style="margin:0 0 8px">
-              {% for tag in s.tags %}
-                <span style="display:inline-block;border:1px solid #e3e3e3;border-radius:999px;padding:2px 8px;margin:0 6px 6px 0;font-size:12px">{{ tag }}</span>
-              {% endfor %}
-            </p>
-          {% endif %}
-          {% if s.summary %}
-            <p class="muted">{{ s.summary }}</p>
-          {% endif %}
+
+          <div class="student-body">
+            <h3 style="margin:0 0 6px">{{ s.name }}</h3>
+
+            {% if s.role or s.period %}
+              <p class="student-meta">
+                {% if s.role %}{{ s.role }}{% endif %}
+                {% if s.period %}{% if s.role %} · {% endif %}{{ s.period }}{% endif %}
+              </p>
+            {% endif %}
+
+            {% if s.summary %}
+              <p class="muted" style="margin:0 0 8px">{{ s.summary }}</p>
+            {% endif %}
+
+            {% if s.tags %}
+              <p class="student-tags">
+                {% for tag in s.tags %}
+                  <span>{{ tag }}</span>
+                {% endfor %}
+              </p>
+            {% endif %}
+          </div>
         </article>
       </a>
-      {% endfor %}
+      {%- endfor -%}
     </div>
   </section>
 </main>
