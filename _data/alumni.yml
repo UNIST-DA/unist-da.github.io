@@ -4,7 +4,7 @@
   name: "Byungkook Koo"
   role: "MS Student"
   first_position: ""
-  photo: /assets/members/alumni/none.png
+  photo: /assets/members/none.png
   order: 10
   interests:
     - Data analytics
@@ -16,91 +16,91 @@
   name: "Jiln Kwak"
   role: "MS Student"
   first_position: "LG Electronics"
-  photo: "/assets/members/alumni/jiln-kwak.jpg"
+  photo: /assets/members/none.png
   order: 20
 
 - slug: juhui-lee
   name: "Juhui Lee"
   role: "MS Student"
   first_position: "THYROSCOPE Inc."
-  photo: "/assets/members/alumni/juhui-lee.jpg"
+  photo: /assets/members/none.png
   order: 30
 
 - slug: juyeong-lee
   name: "Juyeong Lee"
   role: "MS Student"
   first_position: "QRAFT"
-  photo: "/assets/members/alumni/juyeong-lee.jpg"
+  photo: /assets/members/none.png
   order: 40
 
 - slug: namu-kim
   name: "Namu Kim"
   role: "Intern"
   first_position: "POSCO"
-  photo: "/assets/members/alumni/namu-kim.jpg"
+  photo: /assets/members/none.png
   order: 50
 
 - slug: yongkyung-oh
   name: "YongKyung Oh"
   role: "Postdoc"
   first_position: "Postdoc at UCLA"
-  photo: "/assets/members/alumni/yongkyung-oh.jpg"
+  photo: /assets/members/none.png
   order: 60
 
 - slug: giheon-koh
   name: "Giheon Koh"
   role: "MS Student"
   first_position: "LG Display"
-  photo: "/assets/members/alumni/giheon-koh.jpg"
+  photo: /assets/members/none.png
   order: 70
 
 - slug: gyeongjun-kim
   name: "Gyeongjun Kim"
   role: "MS Student"
   first_position: "CJ Logistics"
-  photo: "/assets/members/alumni/gyeongjun-kim.jpg"
+  photo: /assets/members/none.png
   order: 80
 
 - slug: heesun-kim
   name: "Heesun Kim"
   role: "MS Student"
   first_position: "LG Electronics"
-  photo: "/assets/members/alumni/heesun-kim.jpg"
+  photo: /assets/members/none.png
   order: 90
 
 - slug: jaemin-park
   name: "Jaemin Park"
   role: "MS Student"
   first_position: "THYROSCOPE Inc."
-  photo: "/assets/members/alumni/jaemin-park.jpg"
+  photo: /assets/members/none.png
   order: 100
 
 - slug: jitae-yoo
   name: "Jitae Yoo"
   role: "MS Student"
   first_position: "LX Hausys"
-  photo: "/assets/members/alumni/jitae-yoo.jpg"
+  photo: /assets/members/none.png
   order: 110
 
 - slug: jonghwan-moon
   name: "JongHwan Moon"
   role: "MS Student"
   first_position: "LG Electronics"
-  photo: "/assets/members/alumni/jonghwan-moon.jpg"
+  photo: /assets/members/none.png
   order: 120
 
 - slug: kwonin-yoon
   name: "Kwonin Yoon"
   role: "MS Student"
   first_position: "LG Electronics"
-  photo: "/assets/members/alumni/kwonin-yoon.jpg"
+  photo: /assets/members/none.png
   order: 130
 
 - slug: jae-hun-cho
   name: "Jae Hun Cho"
   role: "MS Student"
   first_position: ""
-  photo: "/assets/members/alumni/jae-hun-cho.jpg"
+  photo: /assets/members/none.png
   order: 140
   interests:
     - Medical image analysis
