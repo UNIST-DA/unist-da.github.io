@@ -1,0 +1,65 @@
+---
+layout: default
+---
+
+{% assign project = site.data.projects | where: "slug", page.slug | first %}
+
+<div class="page-hero">
+  <div class="container">
+    <div class="breadcrumbs">
+      <a href="{{ '/' | relative_url }}">Home</a> ·
+      <a href="{{ '/research/projects/' | relative_url }}">Research</a> ·
+      Projects
+    </div>
+    <h1 class="page-title">
+      {{ project.title | default: page.title | default: page.slug }}
+    </h1>
+    {% if project.summary %}
+    <p class="muted">{{ project.summary }}</p>
+    {% endif %}
+  </div>
+</div>
+
+<main class="container">
+  <article class="grid" style="row-gap:24px">
+    <div style="grid-column: span 8">
+      {% if project.image %}
+      <img src="{{ project.image | relative_url }}" alt="{{ project.title }}" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin-bottom:16px">
+      {% endif %}
+
+      {% if project.period %}
+      <p class="muted" style="margin:0 0 12px"><strong>Period:</strong> {{ project.period }}</p>
+      {% endif %}
+
+      <!-- 프로젝트별 본문 -->
+      <div class="prose">
+        {{ content }}
+      </div>
+    </div>
+
+    <aside style="grid-column: span 4">
+      <div class="card card-pad">
+        <h3 style="margin-top:0">Project Info</h3>
+        {% if project.period %}
+        <p style="margin:0 0 6px"><strong>Period:</strong> {{ project.period }}</p>
+        {% endif %}
+        {% if project.url %}
+        <p style="margin:0 0 6px"><strong>Link:</strong> <a href="{{ project.url | relative_url }}">{{ project.url }}</a></p>
+        {% endif %}
+        {% if project.external %}
+        <p style="margin:0 0 6px"><strong>External:</strong> <a href="{{ project.external }}" target="_blank" rel="noopener">Open</a></p>
+        {% endif %}
+      </div>
+
+      <div class="card card-pad" style="margin-top:16px">
+        <a href="{{ '/research/projects/' | relative_url }}" class="button">← Back to Projects</a>
+      </div>
+    </aside>
+  </article>
+
+  {% unless project %}
+  <div class="card card-pad" style="margin-top:16px">
+    <strong>Heads up:</strong> This page’s <code>slug</code> ({{ page.slug }}) was not found in <code>_data/projects.yml</code>.
+  </div>
+  {% endunless %}
+</main>
