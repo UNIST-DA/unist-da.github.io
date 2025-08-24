@@ -6,9 +6,6 @@
   authors: ["YongKyung Oh", "Sungil Kim"]
   venue: "Information Fusion"
   links:
-    pdf: ""
-    doi: ""
-    code: ""
   bibtex: |
     @article{oh2024lifelog,
       title={Multi-modal lifelog data fusion for improved human activity recognition: A hybrid approach},
@@ -24,9 +21,6 @@
   authors: ["YongKyung Oh", "Dongyouny Lim", "Sungil Kim"]
   venue: "ICLR (spotlight)"
   links:
-    pdf: ""
-    doi: ""
-    code: ""
   bibtex: |
     @inproceedings{oh2024snsde,
       title={Stable Neural Stochastic Differential Equations for Irregular Time Series Classification},
@@ -43,8 +37,6 @@
   venue: "Computers & Industrial Engineering"
   links:
     pdf: "https://www.sciencedirect.com/science/article/abs/pii/S0360835224000573?dgcid=author"
-    doi: ""
-    code: ""
 
 - id: 2023-ais-bbb
   year: 2023
@@ -54,7 +46,6 @@
   venue: "IEEE Transactions on Automation Science and Engineering"
   links:
     pdf: "https://ieeexplore.ieee.org/document/10311542"
-    doi: ""
 
 - id: 2023-sensor-drift-comp
   year: 2023
@@ -63,8 +54,6 @@
   authors: ["YongKyung Oh", "Juhui Lee", "Sunghyee Lee", "Sewon Kim", "Sungil Kim"]
   venue: "Quality and Reliability Engineering International"
   links:
-    pdf: ""
-    doi: ""
 
 - id: 2023-traffic-delay-causality
   year: 2023
@@ -74,7 +63,6 @@
   venue: "Electronic Research Archive"
   links:
     pdf: "https://www.aimspress.com/article/doi/10.3934/era.2023034?viewType=HTML"
-    doi: ""
 
 - id: 2022-mcnn-gas-mixture-aor
   year: 2022
@@ -83,8 +71,6 @@
   authors: ["YongKyung Oh", "Chieheyon Lim", "Junghye Lee", "Sewon Kim", "Sungil Kim"]
   venue: "Annals of Operations Research"
   links:
-    pdf: ""
-    doi: ""
 
 - id: 2022-transport-dynamics
   year: 2022
@@ -94,7 +80,7 @@
   venue: "Transportmetrica B: Transport Dynamics"
   links:
     pdf: "https://www.tandfonline.com/doi/abs/10.1080/21680566.2022.2063205"
-    doi: ""
+ 
 
 - id: 2021-mcnn-icdmw
   year: 2021
@@ -103,8 +89,6 @@
   authors: ["YongKyung Oh", "Sungil Kim"]
   venue: " ICDMW (International Conference on Data Mining Workshops)"
   links:
-    pdf: ""
-    doi: ""
 
 - id: 2021-mfe-informationsciences
   year: 2021
@@ -113,8 +97,7 @@
   authors: ["Sungil Kim"]
   venue: "Information Sciences"
   links:
-    pdf: ""
-    doi: ""
+
 
 - id: 2021-tl-mixture-gas
   year: 2021
@@ -123,8 +106,8 @@
   authors: ["YongKyung Oh", "Namu Kim", "Sungil Kim"]
   venue: "Journal of the Korean Institute of Industrial Engineers"
   links:
-    pdf: ""
-    doi: ""
+
+
 
 - id: 2021-anomaly-nuclear-reactors
   year: 2021
@@ -133,8 +116,7 @@
   authors: ["YongKyung Oh", "Hanjoo Kim", "Deokjung Lee", "Sungil Kim"]
   venue: "Journal of the Korean Institute of Industrial Engineers"
   links:
-    pdf: ""
-    doi: ""
+
 
 - id: 2020-multifidelity-spatial
   year: 2020
@@ -143,8 +125,7 @@
   authors: ["Sungil Kim", "Rong Duan", "Guang-Qin Ma", "Heeyoung Kim"]
   venue: "Spatial Statistics"
   links:
-    pdf: ""
-    doi: ""
+
 
 - id: 2020-vae-cusum
   year: 2020
@@ -153,8 +134,7 @@
   authors: ["Jaemin Park", "Sungil Kim"]
   venue: "Journal of the Korean Institute of Industrial Engineers"
   links:
-    pdf: ""
-    doi: ""
+
 
 - id: 2019-stockouts-impact
   year: 2019
@@ -164,7 +144,7 @@
   venue: "Journal of Business & Industrial Marketing"
   links:
     pdf: "https://www.emerald.com/jbim/article-abstract/34/4/891/193984/A-practical-approach-to-measuring-the-impacts-of?redirectedFrom=fulltext"
-    doi: ""
+
 
 - id: 2019-smart-home-info
   year: 2019
@@ -174,7 +154,7 @@
   venue: "Information Sciences"
   links:
     pdf: "https://www.sciencedirect.com/science/article/abs/pii/S0020025519301434"
-    doi: ""
+
 
 - id: 2019-copula-mobility
   year: 2019
@@ -184,7 +164,7 @@
   venue: "Journal of the Royal Statistical Society: Series C"
   links:
     pdf: "https://rss.onlinelibrary.wiley.com/doi/abs/10.1111/rssc.12307"
-    doi: ""
+
 
 - id: 2017-batch-seq-energy
   year: 2017
@@ -239,8 +219,7 @@
   venue: "IEEE Intelligent Systems"
   links:
     pdf: "https://ieeexplore.ieee.org/document/7436665"
-    doi: ""
-    code: ""
+
 
 - id: 2015-adaptive-combined-spacefilling
   year: 2015
@@ -250,8 +229,7 @@
   venue: "International Journal of Production Research"
   links:
     pdf: "https://www.tandfonline.com/doi/abs/10.1080/00207543.2015.1037067"
-    doi: ""
-    code: ""
+
 
 - id: 2015-layers-adaptive-combined
   year: 2015
@@ -261,8 +239,7 @@
   venue: "Naval Research Logistics"
   links:
     pdf: "https://onlinelibrary.wiley.com/doi/abs/10.1002/nav.21618"
-    doi: ""
-    code: ""
+
 
 - id: 2012-co2-np-sequential-adaptive
   year: 2012
@@ -271,9 +248,7 @@
   authors: ["Michael J. Casciato", "Sungil Kim", "Jye-Chyi Lu", "Dennis W. Hess", "Martha A. Grover"]
   venue: "Industrial & Engineering Chemistry Research"
   links:
-    pdf: ""
-    doi: ""
-    code: ""
+
 
 - id: 2012-co2-np-uncertain-space
   year: 2012
@@ -282,9 +257,7 @@
   authors: ["Michael J. Casciato", "Sungil Kim", "Jye-Chyi Lu", "Dennis W. Hess", "Martha A. Grover"]
   venue: "Computer Aided Chemical Engineering"
   links:
-    pdf: ""
-    doi: ""
-    code: ""
+
 
 - id: 2005-cursor-movement-path-constraints
   year: 2005
@@ -294,5 +267,4 @@
   venue: "Journal of Korean Institute of Industrial Engineers"
   links:
     pdf: "https://koreascience.kr/article/JAKO200510103463043.view"
-    doi: ""
-    code: ""
+
