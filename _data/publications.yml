@@ -42,7 +42,7 @@
   authors: ["Jonghwan Mun", "Jitae Yoo", "Heesun Kim", "Nayi Ryu", "Sungil Kim"]
   venue: "Computers & Industrial Engineering"
   links:
-    pdf: ""
+    pdf: "https://www.sciencedirect.com/science/article/abs/pii/S0360835224000573?dgcid=author"
     doi: ""
     code: ""
 
@@ -53,7 +53,7 @@
   authors: ["YongKyung Oh", "Sungil Kim"]
   venue: "IEEE Transactions on Automation Science and Engineering"
   links:
-    pdf: ""
+    pdf: "https://ieeexplore.ieee.org/document/10311542"
     doi: ""
 
 - id: 2023-sensor-drift-comp
@@ -73,7 +73,7 @@
   authors: ["YongKyung Oh", "Jiin Kwak", "JuYeong Lee", "Sungil Kim"]
   venue: "Electronic Research Archive"
   links:
-    pdf: ""
+    pdf: "https://www.aimspress.com/article/doi/10.3934/era.2023034?viewType=HTML"
     doi: ""
 
 - id: 2022-mcnn-gas-mixture-aor
@@ -93,7 +93,7 @@
   authors: ["JuYeong Lee", "Jiin Kwak", "YongKyung Oh", "Sungil Kim"]
   venue: "Transportmetrica B: Transport Dynamics"
   links:
-    pdf: ""
+    pdf: "https://www.tandfonline.com/doi/abs/10.1080/21680566.2022.2063205"
     doi: ""
 
 - id: 2021-mcnn-icdmw
@@ -163,7 +163,7 @@
   authors: ["Sungil Kim", "Heeyoung Kim", "Jye-Chyi Lu"]
   venue: "Journal of Business & Industrial Marketing"
   links:
-    pdf: ""
+    pdf: "https://www.emerald.com/jbim/article-abstract/34/4/891/193984/A-practical-approach-to-measuring-the-impacts-of?redirectedFrom=fulltext"
     doi: ""
 
 - id: 2019-smart-home-info
@@ -173,7 +173,7 @@
   authors: ["Sungil Kim"]
   venue: "Information Sciences"
   links:
-    pdf: ""
+    pdf: "https://www.sciencedirect.com/science/article/abs/pii/S0020025519301434"
     doi: ""
 
 - id: 2019-copula-mobility
@@ -183,7 +183,7 @@
   authors: ["Heeyoung Kim", "Rong Duan", "Sungil Kim", "Jaehwan Lee", "Guang-Qin Ma"]
   venue: "Journal of the Royal Statistical Society: Series C"
   links:
-    pdf: ""
+    pdf: "https://rss.onlinelibrary.wiley.com/doi/abs/10.1111/rssc.12307"
     doi: ""
 
 - id: 2017-batch-seq-energy
@@ -192,6 +192,8 @@
   title: "Batch sequential minimum energy design with design-region adaptation"
   authors: ["Heeyoung Kim", "Justin T. Vastola", "Sungil Kim", "Jye-Chyi Lu", "Martha A. Grover"]
   venue: "Journal of Quality Technology"
+  links:
+    pdf: "https://www.tandfonline.com/doi/abs/10.1080/00224065.2017.11918182"
 
 - id: 2017-holistic-model
   year: 2017
@@ -199,6 +201,8 @@
   title: "An integrated holistic model of a complex process"
   authors: ["Heeyoung Kim", "Sungil Kim", "Jian Deng", "Jye-Chyi Lu", "K. Wang", "C. Zhang", "Martha A. Grover", "B. Wang"]
   venue: "The International Journal of Advanced Manufacturing Technology"
+  links:
+    pdf: "https://link.springer.com/article/10.1007/s00170-016-9088-0"
 
 - id: 2017-vessel-delay
   year: 2017
@@ -206,6 +210,8 @@
   title: "Early detection of vessel delays using combined historical and real-time information"
   authors: ["Sungil Kim", "Heeyoung Kim", "Yongro Park"]
   venue: "Journal of the Operational Research Society"
+  links:
+    pdf: "https://link.springer.com/article/10.1057/s41274-016-0104-4"
 
 - id: 2017-local-approach
   year: 2017
@@ -213,6 +219,8 @@
   title: "Incorporation of engineering knowledge into the modeling process: a local approach"
   authors: ["Heeyoung Kim", "Justin T. Vastola", "Sungil Kim", "Jye-Chyi Lu", "Martha A. Grover"]
   venue: "International Journal of Production Research"
+  links:
+    pdf: "https://www.tandfonline.com/doi/abs/10.1080/00207543.2016.1278082?journalCode=tprs20"
 
 - id: 2016-mape-intermittent
   year: 2016
@@ -220,3 +228,71 @@
   title: "A new metric of absolute percentage error for intermittent demand forecasts"
   authors: ["Sungil Kim", "Heeyoung Kim"]
   venue: "International Journal of Forecasting"
+  links:
+    pdf: "https://pdf.sciencedirectassets.com/271676/1-s2.0-S0169207016X00027/1-s2.0-S0169207016000121/main.pdf?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEPf%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJIMEYCIQDT3BmeEvV1BKnQCJKI8vSmqRb12W9LeRFXrsyZGu867AIhANPpcHJiGmBxlWBJPGClhUyEJ%2BTX%2BAXl31zw5Dy%2FgvNPKrIFCE8QBRoMMDU5MDAzNTQ2ODY1IgyGW7d%2FxunyJsUNHUoqjwW4RHGuHSlS680g9eBJ2KV4z2Uz%2BpJxecrsywUZ4DKYu1iJ6QnCO2D8zL%2FOraQfwtem4bKUiqCJ3LenVs6R6Le9AGmkPo5Ej7nlwoYrsqjtDdMWhgxX03XU00VL6f9RL6TC8gIiS22ee1B406Eq%2F9DiXH87xnKhQZhOiMbpJngOdtOkNKPiY6tDen%2BwDpk%2BXSCLJdMc0Q%2BG2rc9ID%2BxPtAt8UUTZWMZnMEsffCmhtva1%2BXIZI260S%2B6NNLULJ3bPK%2F3mBDWyR%2BGyY8V%2BB7QfJ0SsQ%2B2XHgL78FyL1wQ%2BDQ6GNrw1JxIaFODT2ldMbrMoc%2BH0Hc9Rbo4mWYdf4qetd3%2FgSbWyCoyPvrAzxftWmGOp1aYsQ1N2Z9kXxqc2%2B9mKbRkWrVePEw2hBzk73MLml1BkONsOgdpWvaQV0MUZeQNgy4DBZNg1xeRTK64nPHYzA8FAIeTSi9kqHPJs3mfj%2Fh4mVNF0b6oSHQI3yhR5C%2Bzaey8OBG0S58%2FloVcz6EPnKOM0IgKX0WjZhbxZiZjn5GoVPdKzceZqXu1z5P6hNdWI%2FHSTGD5tQ47wMfeNp2zst7X3UgDuz15f996c6M63L48ilCHVBfEMORpB8dy392VO%2B5q1H65ZrQbIRzXxddXWmOPffPM9n%2BR0erkFvstyKWxcREZbQz8MsXsEYnNtTY8iLDemOiY%2FJW86tJzEVedabq0fLOfUhSZ7T8sP6DtDIkl8fuWho5JkzkswBM4VKOWF5VNyvpBIsTw2Oeb0NfyOVPKgyrkETFTJ2fZkB88GmH02MZPmxu7g2svoLOZ8DTG7JS%2BOR6Lq6a3iBfmK2l7diCKylF9F%2FZljMkIrXFBQIH4iIDWV5QPaIXWz63Iu0uzMOyarsUGOrABKvhqmJ7BMJs1tRpjB%2F6TKtarXXDseQi6K4SXsXnjFSJVIoIC723mDDhEOi2UKkSPQ6Q0N5256NOrJpS97PAT1HpekAa816aqJI0mHGY3hVZpuAFWm8PkhnjjM5X%2F2IboL2RUYpScBCalw6lpX27caoI86BtHD3uG2T92RGU6w8xZ82MfTTtVcDw7L%2FZyrbAGyd%2FPXcf%2BUXqbDe4CIykwaS3vy7Wa0H1ljVQW9qxiLpg%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250824T221943Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=ASIAQ3PHCVTY2TJ3J36I%2F20250824%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5b498812e98f444918909166b794fbaeafd493192e1ab4523928d27a81a1ef48&hash=61eb1760ac15c71298d47cb8fef3f4cc60af9345c80ce40c2387f9857c4534cd&host=68042c943591013ac2b2430a89b270f6af2c76d8dfd086a07176afe7c76c2c61&pii=S0169207016000121&tid=spdf-d073c04c-2729-41d1-913c-78a7820f5e2b&sid=5f97849d9e70c24a1f299e72a6634393d98cgxrqa&type=client&tsoh=d3d3LnNjaWVuY2VkaXJlY3QuY29t&rh=d3d3LnNjaWVuY2VkaXJlY3QuY29t&ua=11175e5856525002560650&rr=97463b9a7887eaaf&cc=kr"
+
+- id: 2016-ordinal-imbalance
+  year: 2016
+  type: journal
+  title: "Ordinal classification of imbalanced data with application in emergency and disaster information services"
+  authors: ["Sungil Kim", "Heeyoung Kim", "Younghwan Namkoong"]
+  venue: "IEEE Intelligent Systems"
+  links:
+    pdf: ""
+    doi: ""
+    code: ""
+
+- id: 2015-adaptive-combined-spacefilling
+  year: 2015
+  type: journal
+  title: "Adaptive combined space-filling and D-optimal designs"
+  authors: ["Sungil Kim", "Heeyoung Kim", "Richard W. Lu", "Jye-Chyi Lu", "Michael J. Casciato", "Martha A. Grover"]
+  venue: "International Journal of Production Research"
+  links:
+    pdf: ""
+    doi: ""
+    code: ""
+
+- id: 2015-layers-adaptive-combined
+  year: 2015
+  type: journal
+  title: "Layers of experiments with adaptive combined design"
+  authors: ["Sungil Kim", "Heeyoung Kim", "Richard W. Lu", "Jye-Chyi Lu", "Michael J. Casciato", "Martha A. Grover"]
+  venue: "Naval Research Logistics"
+  links:
+    pdf: ""
+    doi: ""
+    code: ""
+
+- id: 2012-co2-np-sequential-adaptive
+  year: 2012
+  type: journal
+  title: "Optimization of a carbon dioxide-assisted nanoparticle deposition process using sequential experimental design with adaptive design space"
+  authors: ["Michael J. Casciato", "Sungil Kim", "Jye-Chyi Lu", "Dennis W. Hess", "Martha A. Grover"]
+  venue: "Industrial & Engineering Chemistry Research"
+  links:
+    pdf: ""
+    doi: ""
+    code: ""
+
+- id: 2012-co2-np-uncertain-space
+  year: 2012
+  type: conference
+  title: "Optimization of carbon dioxide-assisted nanoparticle deposition process with uncertain design space"
+  authors: ["Michael J. Casciato", "Sungil Kim", "Jye-Chyi Lu", "Dennis W. Hess", "Martha A. Grover"]
+  venue: "Computer Aided Chemical Engineering"
+  links:
+    pdf: ""
+    doi: ""
+    code: ""
+
+- id: 2005-cursor-movement-path-constraints
+  year: 2005
+  type: journal
+  title: "A time prediction model of cursor movement with path constraints"
+  authors: ["Seung-Kweon Hong", "Sungil Kim"]
+  venue: "Journal of Korean Institute of Industrial Engineers"
+  links:
+    pdf: ""
+    doi: ""
+    code: ""
