@@ -1,0 +1,111 @@
+- slug: seungsu-kam
+  name: SeungSu Kam
+  role: Combined Master-Doctor
+  period: "—"
+  photo: /assets/people/seungsu-kam.jpg
+  summary: Neural Differential Equation, Anomaly Detection, Irregularly-Sampled Time Series
+  tags: [Neural DE, Anomaly Detection, Irregular TS]
+  email:
+  website:
+  github:
+  scholar:
+  linkedin:
+  cv:
+  projects: []
+  order: 10
+
+- slug: byeonghoon-jeon
+  name: Byeonghoon Jeon
+  role: Combined Master-Doctor
+  period: "—"
+  photo: /assets/people/byeonghoon-jeon.jpg
+  summary: Multimodal learning, Multivariate Time Series Modeling
+  tags: [Multimodal, Multivariate TS]
+  email:
+  website:
+  github:
+  scholar:
+  linkedin:
+  cv:
+  projects: []
+  order: 20
+
+- slug: chanbeom-hur
+  name: Chanbeom Hur
+  role: MS Student
+  period: "—"
+  photo: /assets/people/chanbeom-hur.jpg
+  summary: Statistical Machine Learning, Data Analysis
+  tags: [StatML, Data Analysis]
+  email:
+  website:
+  github:
+  scholar:
+  linkedin:
+  cv:
+  projects: []
+  order: 30
+
+- slug: hyejin-cho
+  name: Hyejin Cho
+  role: Combined Master-Doctor
+  period: "—"
+  photo: /assets/people/hyejin-cho.jpg
+  summary: Industrial Statistics, Data-driven Business Strategy, Machine Learning and Deep Learning
+  tags: [Industrial Statistics, ML, DL]
+  email:
+  website:
+  github:
+  scholar:
+  linkedin:
+  cv:
+  projects: []
+  order: 40
+
+- slug: seongjin-kim
+  name: Seongjin Kim
+  role: MS Student
+  period: "—"
+  photo: /assets/people/seongjin-kim.jpg
+  summary: Anomaly Detection, Time Series Forecasting, Deep Learning, Data Science
+  tags: [Anomaly Detection, Forecasting, DL]
+  email:
+  website:
+  github:
+  scholar:
+  linkedin:
+  cv:
+  projects: []
+  order: 50
+
+- slug: taewon-kang
+  name: Taewon Kang
+  role: MS Student
+  period: "—"
+  photo: /assets/people/taewon-kang.jpg
+  summary: Data analytics, Anomaly detection, Quality Engineering and Management, Data Mining for Quality Control
+  tags: [Analytics, Anomaly Detection, Quality]
+  email:
+  website:
+  github:
+  scholar:
+  linkedin:
+  cv:
+  projects: []
+  order: 60
+
+- slug: yongmin-kim
+  name: Yongmin Kim
+  role: Combined Master-Doctor
+  period: "—"
+  photo: /assets/people/yongmin-kim.jpg
+  summary: Anomaly Detection, Time Series Classification, Quality Engineering and Management
+  tags: [Anomaly Detection, TS Classification, Quality]
+  email:
+  website:
+  github:
+  scholar:
+  linkedin:
+  cv:
+  projects: []
+  order: 70
