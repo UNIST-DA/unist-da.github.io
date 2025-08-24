@@ -1,39 +1,179 @@
 ---
 layout: default
-title: Professor — Data Analytics Lab @ UNIST
-description: Faculty profile for the Data Analytics Lab (UNIST Industrial Engineering).
+title: Professor · Data Analytics Lab
+description: Professor Sungil Kim (UNIST IE) — Data Analytics Lab.
+permalink: /members/professor/
 ---
 
-<section>
+<div class="page-hero">
   <div class="container">
-    <div class="head">
-      <h2>Professor</h2>
-      <div class="muted">교수 소개</div>
+    <div class="breadcrumbs">
+      <a href="{{ '/' | relative_url }}">Home</a> · <a href="{{ '/members/' | relative_url }}">People</a> · Professor
     </div>
-
-    <!-- 본문: 마크다운 로드 (content/members/professor.md) -->
-    <div class="card card-pad">
-      <div class="md">
-        <p><strong>Dr. Sungil Kim</strong> is an Associate Professor in the Department of Industrial Engineering at the Ulsan National Institute of Science and Technology (UNIST).
-        Dr. Kim has dedicated himself to tackling modern challenges in quality engineering within the ongoing era of AI transformation. These challenges include issues such as sensor drift, inefficient data representation, and class imbalances. His works have made significant contributions by effectively addressing these challenges through the utilization of sensor data and real-time log data, ultimately offering practical solutions to real-world problems.</p>
-
-        <p>He earned his <strong>Ph.D. in Industrial Engineering</strong> at the <strong>Georgia Institute of Technology</strong> in 2011. He has served as an <strong>Area Editor</strong> of <em>Computers & Industrial Engineering</em> in the area of Statistics, Quality, Reliability & Maintenance.</p>
-
-        <h3>Interests</h3>
-        <ul>
-          <li>Industrial Statistics</li>
-          <li>Quality Engineering and Management</li>
-          <li>Machine Learning and Data Mining</li>
-        </ul>
-
-        <h3>Education</h3>
-        <ul>
-          <li>Ph.D. in Industrial Engineering, 2011 — <em>Georgia Institute of Technology</em></li>
-          <li>M.S. in Statistics, 2007 — <em>Georgia Institute of Technology</em></li>
-          <li>M.S. in Industrial Engineering, 2007 — <em>Georgia Institute of Technology</em></li>
-          <li>B.Sc. in Industrial Engineering, 2005 — <em>Yonsei University</em></li>
-        </ul>
-      </div>
-    </div>
+    <h1 class="page-title">Professor</h1>
+    <p class="muted">Data Analytics Lab (UNIST IE)</p>
   </div>
-</section>
+</div>
+
+<main class="container" style="max-width: 1100px;">
+  <!-- Profile Header -->
+  <section class="card card-pad" style="display:grid;grid-template-columns:160px 1fr;gap:24px;align-items:center;">
+    <img src="{{ '/assets/img/professor/sungil_kim.jpg' | relative_url }}" alt="Dr. Sungil Kim" style="width:160px;height:160px;object-fit:cover;border-radius:16px;border:1px solid #eee;">
+    <div>
+      <h2 style="margin:0 0 6px;">Dr. Sungil Kim</h2>
+      <p style="margin:0 0 12px;" class="muted">Associate Professor, Department of Industrial Engineering, UNIST</p>
+
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin:8px 0 0;">
+        <a class="btn" href="{{ '/assets/cv/Sungil_Kim_CV.pdf' | relative_url }}" style="padding:8px 12px;border-radius:10px;border:1px solid #e5e7eb;text-decoration:none;">CV</a>
+        <a class="btn" href="https://scholar.google.com/" target="_blank" rel="noopener" style="padding:8px 12px;border-radius:10px;border:1px solid #e5e7eb;text-decoration:none;">Google Scholar</a>
+        <a class="btn" href="mailto:prof@example.ac.kr" style="padding:8px 12px;border-radius:10px;border:1px solid #e5e7eb;text-decoration:none;">Email</a>
+        <a class="btn" href="https://research.unist.ac.kr/post-research/%EA%B9%80%EC%84%B1%EC%9D%BC_data-analytics-lab/" target="_blank" rel="noopener" style="padding:8px 12px;border-radius:10px;border:1px solid #e5e7eb;text-decoration:none;">UNIST Research Page</a>
+      </div>
+
+      <ul style="list-style:none;padding:0;margin:14px 0 0;display:grid;grid-template-columns:repeat(2,minmax(220px,1fr));gap:6px 18px;">
+        <li><strong>Office</strong>: <span class="muted">TBD</span></li>
+        <li><strong>Phone</strong>: <span class="muted">TBD</span></li>
+        <li><strong>Lab</strong>: <a href="{{ '/' | relative_url }}">Data Analytics Lab</a></li>
+        <li><strong>Area Editor</strong>: <span class="muted">Computers &amp; Industrial Engineering (SQRM)</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- About / Bio -->
+  <section class="card card-pad" style="margin-top:16px;">
+    <h3>About</h3>
+    <p>
+      Welcome to the <strong>Data Analytics Lab</strong> at the Ulsan National Institute of Science and Technology (UNIST).
+      UNIST is one of the leading science and technology universities in South Korea, located in the heart of Korea’s largest
+      industrial city, Ulsan. Our research focuses on the development of novel statistical methods for solving complex engineering
+      problems. We pursue leading-edge research in data science and business analytics in collaboration with industry, government,
+      and community partners.
+    </p>
+    <p>
+      Our research can be characterized by three aspects: <em>(i)</em> statistics as a research methodology,
+      <em>(ii)</em> motivation from real data, and <em>(iii)</em> applications to industry.
+    </p>
+    <p>
+      Dr. Sungil Kim is an <strong>Associate Professor</strong> in the Department of Industrial Engineering at UNIST. He is
+      dedicated to tackling modern challenges in quality engineering within the ongoing era of AI transformation—including
+      <em>sensor drift</em>, <em>inefficient data representation</em>, and <em>class imbalance</em>. His work leverages
+      sensor data and real-time log data to provide practical, field-ready solutions.
+    </p>
+  </section>
+
+  <!-- Research Interests & Themes -->
+  <section class="grid" style="margin-top:16px;">
+    <article class="card card-pad" style="grid-column: span 6;">
+      <h3>Research Interests</h3>
+      <ul>
+        <li>Industrial Statistics &amp; Quality Engineering</li>
+        <li>Machine Learning &amp; Data Mining</li>
+        <li>Reliability &amp; Maintenance Analytics</li>
+        <li>Sensor Data Analytics &amp; Real-time Log Mining</li>
+        <li>Robust Modeling under Drift &amp; Imbalance</li>
+      </ul>
+    </article>
+    <article class="card card-pad" style="grid-column: span 6;">
+      <h3>Current Themes</h3>
+      <ul>
+        <li><strong>Methodology-driven Statistics</strong>: principled models and inference for complex systems.</li>
+        <li><strong>Real-world Motivation</strong>: hypotheses and designs grounded in operational data.</li>
+        <li><strong>Industrial Applications</strong>: deployable analytics for manufacturing &amp; service sectors.</li>
+      </ul>
+    </article>
+  </section>
+
+  <!-- Education -->
+  <section class="card card-pad" style="margin-top:16px;">
+    <h3>Education</h3>
+    <ul style="margin:0;">
+      <li><strong>Ph.D.</strong> Industrial Engineering, <em>Georgia Institute of Technology</em>, 2011</li>
+      <li><strong>M.S.</strong> Statistics, <em>Georgia Institute of Technology</em>, 2007</li>
+      <li><strong>M.S.</strong> Industrial Engineering, <em>Georgia Institute of Technology</em>, 2007</li>
+      <li><strong>B.Sc.</strong> Industrial Engineering, <em>Yonsei University</em>, 2005</li>
+    </ul>
+  </section>
+
+  <!-- Editorial / Service -->
+  <section class="card card-pad" style="margin-top:16px;">
+    <h3>Editorial &amp; Professional Service</h3>
+    <ul>
+      <li>Area Editor, <em>Computers &amp; Industrial Engineering</em> — Statistics, Quality, Reliability &amp; Maintenance</li>
+      <!-- <li>Program Committee / Reviewer — (추가 가능)</li> -->
+    </ul>
+  </section>
+
+  <!-- Teaching (optional, keep if you plan to populate) -->
+  <section class="card card-pad" style="margin-top:16px;">
+    <h3>Teaching</h3>
+    <ul>
+      <li>Industrial Statistics (Undergraduate/Graduate)</li>
+      <li>Quality Engineering &amp; Management</li>
+      <li>Machine Learning for Engineers</li>
+      <!-- 실제 개설 과목명으로 교체 가능 -->
+    </ul>
+  </section>
+
+  <!-- Selected Publications (placeholder) -->
+  <section class="card card-pad" style="margin-top:16px;">
+    <h3>Selected Publications</h3>
+    <p class="muted" style="margin-top:-6px">Add 5–10 representative papers. Link to DOI/Scholar.</p>
+    <ol>
+      <li>Author, <em>Title</em>, Journal, Year. <a href="#" target="_blank" rel="noopener">Link</a></li>
+      <li>Author, <em>Title</em>, Journal, Year. <a href="#" target="_blank" rel="noopener">Link</a></li>
+      <li>Author, <em>Title</em>, Journal, Year. <a href="#" target="_blank" rel="noopener">Link</a></li>
+    </ol>
+  </section>
+
+  <!-- Awards (optional) -->
+  <section class="card card-pad" style="margin-top:16px;">
+    <h3>Awards &amp; Honors</h3>
+    <ul>
+      <li>—</li>
+      <!-- 필요 시 보강 -->
+    </ul>
+  </section>
+
+  <!-- Contact -->
+  <section class="card card-pad" style="margin-top:16px;">
+    <h3>Contact</h3>
+    <div style="display:grid;grid-template-columns:repeat(2,minmax(220px,1fr));gap:10px 24px;">
+      <div><strong>Email</strong><br><a href="mailto:prof@example.ac.kr">prof@example.ac.kr</a></div>
+      <div><strong>Phone</strong><br><span class="muted">TBD</span></div>
+      <div><strong>Office</strong><br><span class="muted">TBD</span></div>
+      <div><strong>Address</strong><br>UNIST, Ulsan, South Korea</div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Structured Data (SEO) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Sungil Kim",
+  "jobTitle": "Associate Professor",
+  "affiliation": {
+    "@type": "CollegeOrUniversity",
+    "name": "UNIST (Ulsan National Institute of Science and Technology)"
+  },
+  "department": "Industrial Engineering",
+  "url": "{{ '/members/professor/' | relative_url }}",
+  "image": "{{ '/assets/img/professor/sungil_kim.jpg' | relative_url }}",
+  "email": "mailto:prof@example.ac.kr",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "KR",
+    "addressLocality": "Ulsan"
+  },
+  "alumniOf": [
+    {"@type": "CollegeOrUniversity","name": "Georgia Institute of Technology"},
+    {"@type": "CollegeOrUniversity","name": "Yonsei University"}
+  ],
+  "knowsAbout": [
+    "Industrial Statistics","Quality Engineering","Reliability Analytics",
+    "Machine Learning","Data Mining","Sensor Data Analytics"
+  ]
+}
+</script>
