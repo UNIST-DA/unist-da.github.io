@@ -1,0 +1,222 @@
+# 각 항목: id, year, type(journal|conference), title, authors(list), venue, note(옵션), links(옵션), bibtex(옵션)
+- id: 2024-lifelog-fusion
+  year: 2024
+  type: journal
+  title: "Multi-modal lifelog data fusion for improved human activity recognition: A hybrid approach"
+  authors: ["YongKyung Oh", "Sungil Kim"]
+  venue: "Information Fusion"
+  links:
+    pdf: ""
+    doi: ""
+    code: ""
+  bibtex: |
+    @article{oh2024lifelog,
+      title={Multi-modal lifelog data fusion for improved human activity recognition: A hybrid approach},
+      author={Oh, YongKyung and Kim, Sungil},
+      journal={Information Fusion},
+      year={2024}
+    }
+
+- id: 2024-snsde-itsc
+  year: 2024
+  type: conference
+  title: "Stable Neural Stochastic Differential Equations for Irregular Time Series Classification"
+  authors: ["YongKyung Oh", "Dongyouny Lim", "Sungil Kim"]
+  venue: "ICLR (spotlight)"
+  links:
+    pdf: ""
+    doi: ""
+    code: ""
+  bibtex: |
+    @inproceedings{oh2024snsde,
+      title={Stable Neural Stochastic Differential Equations for Irregular Time Series Classification},
+      author={Oh, YongKyung and Lim, Dongyouny and Kim, Sungil},
+      booktitle={ICLR},
+      year={2024}
+    }
+
+- id: 2024-functional-outlier-cie
+  year: 2024
+  type: journal
+  title: "Domain Knowledge-Informed Functional Outlier Detection in the Refrigerator Inspection Lanes"
+  authors: ["Jonghwan Mun", "Jitae Yoo", "Heesun Kim", "Nayi Ryu", "Sungil Kim"]
+  venue: "Computers & Industrial Engineering"
+  links:
+    pdf: ""
+    doi: ""
+    code: ""
+
+- id: 2023-ais-bbb
+  year: 2023
+  type: journal
+  title: "Grid-Based Bayesian Bootstrap Approach for Real-Time Detection of Abnormal Vessel Behaviors from AIS Data in Maritime Logistics"
+  authors: ["YongKyung Oh", "Sungil Kim"]
+  venue: "IEEE Transactions on Automation Science and Engineering"
+  links:
+    pdf: ""
+    doi: ""
+
+- id: 2023-sensor-drift-comp
+  year: 2023
+  type: journal
+  title: "Sensor Drift Compensation for Gas Mixture Classification in Batch Experiments"
+  authors: ["YongKyung Oh", "Juhui Lee", "Sunghyee Lee", "Sewon Kim", "Sungil Kim"]
+  venue: "Quality and Reliability Engineering International"
+  links:
+    pdf: ""
+    doi: ""
+
+- id: 2023-traffic-delay-causality
+  year: 2023
+  type: journal
+  title: "Time Delay Estimation of Traffic Congestion Propagation due to Accidents based on Statistical Causality"
+  authors: ["YongKyung Oh", "Jiin Kwak", "JuYeong Lee", "Sungil Kim"]
+  venue: "Electronic Research Archive"
+  links:
+    pdf: ""
+    doi: ""
+
+- id: 2022-mcnn-gas-mixture-aor
+  year: 2022
+  type: journal
+  title: "Multichannel Convolution Neural Network for Gas Mixture Classification"
+  authors: ["YongKyung Oh", "Chieheyon Lim", "Junghye Lee", "Sewon Kim", "Sungil Kim"]
+  venue: "Annals of Operations Research"
+  links:
+    pdf: ""
+    doi: ""
+
+- id: 2022-transport-dynamics
+  year: 2022
+  type: journal
+  title: "Quantifying Incident Impacts and Identifying Influential Factors on Urban Traffic Networks"
+  authors: ["JuYeong Lee", "Jiin Kwak", "YongKyung Oh", "Sungil Kim"]
+  venue: "Transportmetrica B: Transport Dynamics"
+  links:
+    pdf: ""
+    doi: ""
+
+- id: 2021-mcnn-icdmw
+  year: 2021
+  type: conference
+  title: "Multi-channel Convolution Neural Network for Gas Mixture Classification"
+  authors: ["YongKyung Oh", "Sungil Kim"]
+  venue: " ICDMW (International Conference on Data Mining Workshops)"
+  links:
+    pdf: ""
+    doi: ""
+
+- id: 2021-mfe-informationsciences
+  year: 2021
+  type: journal
+  title: "Maximum feasibility estimation"
+  authors: ["Sungil Kim"]
+  venue: "Information Sciences"
+  links:
+    pdf: ""
+    doi: ""
+
+- id: 2021-tl-mixture-gas
+  year: 2021
+  type: journal
+  title: "Transfer-Learning based approach for mixture gas classification"
+  authors: ["YongKyung Oh", "Namu Kim", "Sungil Kim"]
+  venue: "Journal of the Korean Institute of Industrial Engineers"
+  links:
+    pdf: ""
+    doi: ""
+
+- id: 2021-anomaly-nuclear-reactors
+  year: 2021
+  type: journal
+  title: "Simulation-based Anomaly Detection in Nuclear Reactors"
+  authors: ["YongKyung Oh", "Hanjoo Kim", "Deokjung Lee", "Sungil Kim"]
+  venue: "Journal of the Korean Institute of Industrial Engineers"
+  links:
+    pdf: ""
+    doi: ""
+
+- id: 2020-multifidelity-spatial
+  year: 2020
+  type: journal
+  title: "Multiresolution spatial generalized linear mixed model for integrating multi-fidelity spatial count data without common identifiers between data source"
+  authors: ["Sungil Kim", "Rong Duan", "Guang-Qin Ma", "Heeyoung Kim"]
+  venue: "Spatial Statistics"
+  links:
+    pdf: ""
+    doi: ""
+
+- id: 2020-vae-cusum
+  year: 2020
+  type: journal
+  title: "Maritime anomaly detection based on VAE–CUSUM monitoring system"
+  authors: ["Jaemin Park", "Sungil Kim"]
+  venue: "Journal of the Korean Institute of Industrial Engineers"
+  links:
+    pdf: ""
+    doi: ""
+
+- id: 2019-stockouts-impact
+  year: 2019
+  type: journal
+  title: "A practical approach to measuring the impacts of stockouts on demand"
+  authors: ["Sungil Kim", "Heeyoung Kim", "Jye-Chyi Lu"]
+  venue: "Journal of Business & Industrial Marketing"
+  links:
+    pdf: ""
+    doi: ""
+
+- id: 2019-smart-home-info
+  year: 2019
+  type: journal
+  title: "Revealing household characteristics using connected home products"
+  authors: ["Sungil Kim"]
+  venue: "Information Sciences"
+  links:
+    pdf: ""
+    doi: ""
+
+- id: 2019-copula-mobility
+  year: 2019
+  type: journal
+  title: "Spatial cluster detection in mobility networks: a copula approach"
+  authors: ["Heeyoung Kim", "Rong Duan", "Sungil Kim", "Jaehwan Lee", "Guang-Qin Ma"]
+  venue: "Journal of the Royal Statistical Society: Series C"
+  links:
+    pdf: ""
+    doi: ""
+
+- id: 2017-batch-seq-energy
+  year: 2017
+  type: journal
+  title: "Batch sequential minimum energy design with design-region adaptation"
+  authors: ["Heeyoung Kim", "Justin T. Vastola", "Sungil Kim", "Jye-Chyi Lu", "Martha A. Grover"]
+  venue: "Journal of Quality Technology"
+
+- id: 2017-holistic-model
+  year: 2017
+  type: journal
+  title: "An integrated holistic model of a complex process"
+  authors: ["Heeyoung Kim", "Sungil Kim", "Jian Deng", "Jye-Chyi Lu", "K. Wang", "C. Zhang", "Martha A. Grover", "B. Wang"]
+  venue: "The International Journal of Advanced Manufacturing Technology"
+
+- id: 2017-vessel-delay
+  year: 2017
+  type: journal
+  title: "Early detection of vessel delays using combined historical and real-time information"
+  authors: ["Sungil Kim", "Heeyoung Kim", "Yongro Park"]
+  venue: "Journal of the Operational Research Society"
+
+- id: 2017-local-approach
+  year: 2017
+  type: journal
+  title: "Incorporation of engineering knowledge into the modeling process: a local approach"
+  authors: ["Heeyoung Kim", "Justin T. Vastola", "Sungil Kim", "Jye-Chyi Lu", "Martha A. Grover"]
+  venue: "International Journal of Production Research"
+
+- id: 2016-mape-intermittent
+  year: 2016
+  type: journal
+  title: "A new metric of absolute percentage error for intermittent demand forecasts"
+  authors: ["Sungil Kim", "Heeyoung Kim"]
+  venue: "International Journal of Forecasting"
