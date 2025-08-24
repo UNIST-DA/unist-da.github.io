@@ -27,7 +27,13 @@
   image: /assets/research/projects/scsc-fuel.jpg
   url: /research/projects/scsc-fuel-opt
   category: Time-Series Representation
-  tags: [AIS, Fuel Optimization, Machine Learning, Green Logistics, Carbon Neutrality, Maritime Analytics]
+  tags:
+    - AIS
+    - Fuel Optimization
+    - Machine Learning
+    - Green Logistics
+    - Carbon Neutrality
+    - Maritime Analytics
   image_caption: Integrated AIS–weather–engine features for fuel prediction and eco-routing.
   description: >
     AIS·기상·해류·엔진 센서를 결합해 연료 소비를 예측하고, eco-routing/속도 정책으로
@@ -40,7 +46,13 @@
   image: /assets/research/projects/scsc-llm.jpg
   url: /research/projects/scsc-llm-maritime
   category: System Monitoring & Anomaly Detection
-  tags: [LLM, RAG, AIS, Real-time Monitoring, Anomaly Detection, Compliance]
+  tags:
+    - LLM
+    - RAG
+    - AIS
+    - Real-time Monitoring
+    - Anomaly Detection
+    - Compliance
   image_caption: RAG-enabled maritime data agent for natural-language analytics and monitoring.
   description: >
     해양 규정/메타지식 인덱싱(RAG)과 스트리밍 분석으로 자연어 질의·시각화·알림을 지원,
@@ -53,7 +65,14 @@
   image: /assets/research/projects/df-ts-drift.jpg
   url: /research/projects/df-ts-drift
   category: System Monitoring & Anomaly Detection
-  tags: [Time-Series Drift, Concept Drift, Domain-free, Neural DEs, Monitoring]
+  tags:
+    - Time-Series Drift
+    - Concept Drift
+    - Covariate Shift
+    - Domain-free
+    - Robust Learning
+    - Neural DEs
+    - Monitoring
   image_caption: Domain-free 시계열 드리프트 관리 통합 프레임워크.
   description: >
     제조·헬스케어·물류·교통·금융 등 이기종 환경에서 분포/개념 변화에 강건한
