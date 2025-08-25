@@ -419,3 +419,17 @@ html[data-theme="dark"] #galaxy-canvas{ opacity:1; }
   text-decoration:underline;
   color:var(--muted);
 }
+/* more-info: 밑줄 제거 */
+.head h2 .more-info{
+  font-size:14px;
+  margin-left:10px;
+  text-decoration: none;      /* ← 밑줄 제거 */
+  border-bottom: 0;           /* 혹시 다른 규칙이 그어도 차단 */
+  color: var(--muted);
+}
+
+/* (선택) 호버 시만 살짝 강조하고 싶다면 */
+.head h2 .more-info:hover{
+  text-decoration: none;      /* 계속 밑줄 없음 */
+  color: color-mix(in oklab, var(--muted) 80%, var(--text));
+}
