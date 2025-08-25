@@ -45,9 +45,28 @@ permalink: /members/students/
   }
 </style>
 
+<!-- ===================== About ===================== -->
+<section id="about" class="about">
+  <div class="container">
+    <div class="head">
+      <h2>
+        <span class="title-text">About</span>
+        <a href="https://unist-da.github.io/about.html" class="more-info">– more info</a>
+      </h2>
+    </div>
+
+
 <main class="container">
   <section id="about" class="about">
-    <div class="student-grid">
+    <div class="container">
+      <div class="head">
+        <h2>
+          <span class="title-text">Doctor</span>
+          <a href="https://unist-da.github.io/about.html" class="more-info">– more info</a>
+        </h2>
+      </div>
+      
+      <div class="student-grid">
         {%- assign items = site.data.students | sort: 'order' -%}
         {%- for s in items -%}
         {%- assign href_url = s.url | default: '/members/students/' | append: s.slug | append: '/' -%}
@@ -82,84 +101,6 @@ permalink: /members/students/
           </article>
         </a>
         {%- endfor -%}
+      </div>
     </div>
   </section>
-
-  <section id="about" class="about">
-    <div class="student-grid">
-        {%- assign items = site.data.students | sort: 'order' -%}
-        {%- for s in items -%}
-        {%- assign href_url = s.url | default: '/members/students/' | append: s.slug | append: '/' -%}
-        <a href="{{ href_url | relative_url }}" class="card-link" style="text-decoration:none;color:inherit" id="{{ s.slug }}">
-          <article class="student-row">
-            {% if s.photo %}
-              <img src="{{ s.photo | relative_url }}" alt="{{ s.name }}" class="student-photo">
-            {% endif %}
-  
-            <div class="student-body">
-              <h3 style="margin:0 0 6px">{{ s.name }}</h3>
-  
-              {% if s.role or s.period %}
-                <p class="student-meta">
-                  {% if s.role %}{{ s.role }}{% endif %}
-                  {% if s.period %}{% if s.role %} · {% endif %}{{ s.period }}{% endif %}
-                </p>
-              {% endif %}
-  
-              {% if s.summary %}
-                <p class="muted" style="margin:0 0 8px">{{ s.summary }}</p>
-              {% endif %}
-  
-              {% if s.tags %}
-                <p class="student-tags">
-                  {% for tag in s.tags %}
-                    <span>{{ tag }}</span>
-                  {% endfor %}
-                </p>
-              {% endif %}
-            </div>
-          </article>
-        </a>
-        {%- endfor -%}
-    </div>
-  </section>
-
-  <section id="about" class="about">
-    <div class="student-grid">
-        {%- assign items = site.data.students | sort: 'order' -%}
-        {%- for s in items -%}
-        {%- assign href_url = s.url | default: '/members/students/' | append: s.slug | append: '/' -%}
-        <a href="{{ href_url | relative_url }}" class="card-link" style="text-decoration:none;color:inherit" id="{{ s.slug }}">
-          <article class="student-row">
-            {% if s.photo %}
-              <img src="{{ s.photo | relative_url }}" alt="{{ s.name }}" class="student-photo">
-            {% endif %}
-  
-            <div class="student-body">
-              <h3 style="margin:0 0 6px">{{ s.name }}</h3>
-  
-              {% if s.role or s.period %}
-                <p class="student-meta">
-                  {% if s.role %}{{ s.role }}{% endif %}
-                  {% if s.period %}{% if s.role %} · {% endif %}{{ s.period }}{% endif %}
-                </p>
-              {% endif %}
-  
-              {% if s.summary %}
-                <p class="muted" style="margin:0 0 8px">{{ s.summary }}</p>
-              {% endif %}
-  
-              {% if s.tags %}
-                <p class="student-tags">
-                  {% for tag in s.tags %}
-                    <span>{{ tag }}</span>
-                  {% endfor %}
-                </p>
-              {% endif %}
-            </div>
-          </article>
-        </a>
-        {%- endfor -%}
-    </div>
-  </section>
-</main>
