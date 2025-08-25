@@ -13,75 +13,123 @@ permalink: /members/students/
   </div>
 </div>
 
-<!-- 간단 스타일: 가로 카드 + 반응형 -->
 <style>
   .student-row {
-    display: flex;
-    gap: 16px;
-    align-items: center;
-    padding: 16px;
-    border-radius: 12px;
-    border: 1px solid #eee;
-    background: #fff;
+    display:flex; gap:16px; align-items:center;
+    padding:16px; border-radius:12px; border:1px solid #eee; background:#fff;
     transition: box-shadow .15s ease;
   }
-  .student-row:hover { box-shadow: 0 6px 22px rgba(0,0,0,.06); }
+  .student-row:hover { box-shadow:0 6px 22px rgba(0,0,0,.06); }
   .student-photo {
-    width: 160px; height: 160px; flex: 0 0 160px;
-    border-radius: 12px; object-fit: cover; background:#f6f6f6;
+    width:160px; height:160px; flex:0 0 160px;
+    border-radius:12px; object-fit:cover; background:#f6f6f6;
   }
-  .student-meta {
-    margin: 0 0 6px; color: #6b7280; /* muted */
-    font-size: 14px;
-  }
+  .student-meta { margin:0 0 6px; color:#6b7280; font-size:14px; }
   .student-tags span {
-    display:inline-block;border:1px solid #e3e3e3;border-radius:999px;
-    padding:2px 8px;margin:0 6px 6px 0;font-size:12px;color:#6b7280;
+    display:inline-block; border:1px solid #e3e3e3; border-radius:999px;
+    padding:2px 8px; margin:0 6px 6px 0; font-size:12px; color:#6b7280;
   }
-  .student-grid { display: grid; gap: 16px; }
-  @media (max-width: 720px) {
-    .student-row { flex-direction: column; align-items: flex-start; }
-    .student-photo { width: 100%; height: auto; aspect-ratio: 4/3; }
+  .student-grid { display:grid; gap:16px; }
+  .section-head { display:flex; align-items:baseline; justify-content:space-between; margin:28px 0 12px; }
+  .section-head h2 { margin:0; font-size:22px; }
+  .section-head .muted { font-size:14px; }
+  @media (max-width:720px){
+    .student-row{ flex-direction:column; align-items:flex-start; }
+    .student-photo{ width:100%; height:auto; aspect-ratio:4/3; }
   }
 </style>
 
 <main class="container">
-  <section>
-    <div class="student-grid">
-      {%- assign items = site.data.students | sort: 'order' -%}
-      {%- for s in items -%}
-      {%- assign href_url = s.url | default: '/members/students/' | append: s.slug | append: '/' -%}
-      <a href="{{ href_url | relative_url }}" class="card-link" style="text-decoration:none;color:inherit" id="{{ s.slug }}">
-        <article class="student-row">
-          {% if s.photo %}
-            <img src="{{ s.photo | relative_url }}" alt="{{ s.name }}" class="student-photo">
+  {% comment %}
+    0) 데이터 로딩 및 정렬
+  {% endcomment %}
+  {%- assign all_items = site.data.students | sort: 'order' -%}
+
+  {% comment %}
+    1) 카테고리 판별 함수(없으면 role로 추론)
+       - s.category 가 있으면 그대로 사용 (ms / combined / intern / phd 등)
+       - 없으면 role 문자열에 포함된 키워드로 추론
+  {% endcomment %}
+  {% assign ms_items = "" | split: "|" %}
+  {% assign combined_items = "" | split: "|" %}
+  {% assign intern_items = "" | split: "|" %}
+  {% assign others_items = "" | split: "|" %}
+
+  {% for s in all_items %}
+    {% assign cat = s.category | downcase %}
+    {% if cat == "" or cat == nil %}
+      {% assign role_lc = s.role | downcase %}
+      {% if role_lc contains "combined" or role_lc contains "ms-phd" or role_lc contains "ms/phd" %}
+        {% assign cat = "combined" %}
+      {% elsif role_lc contains "intern" or role_lc contains "undergraduate" or role_lc contains "ug" %}
+        {% assign cat = "intern" %}
+      {% elsif role_lc contains "ms" or role_lc contains "m.s" or role_lc contains "master" %}
+        {% assign cat = "ms" %}
+      {% else %}
+        {% assign cat = "others" %}
+      {% endif %}
+    {% endif %}
+
+    {% if cat == "ms" %}
+      {% assign ms_items = ms_items | push: s %}
+    {% elsif cat == "combined" %}
+      {% assign combined_items = combined_items | push: s %}
+    {% elsif cat == "intern" %}
+      {% assign intern_items = intern_items | push: s %}
+    {% else %}
+      {% assign others_items = others_items | push: s %}
+    {% endif %}
+  {% endfor %}
+
+  {% comment %}
+    2) 카드 렌더러(재사용)
+  {% endcomment %}
+  {% capture card_renderer %}
+    {%- assign s = include.s -%}
+    {%- assign href_url = s.url | default: '/members/students/' | append: s.slug | append: '/' -%}
+    <a href="{{ href_url | relative_url }}" class="card-link" style="text-decoration:none;color:inherit" id="{{ s.slug }}">
+      <article class="student-row">
+        {% if s.photo %}
+          <img src="{{ s.photo | relative_url }}" alt="{{ s.name }}" class="student-photo" loading="lazy" decoding="async">
+        {% endif %}
+        <div class="student-body">
+          <h3 style="margin:0 0 6px">{{ s.name }}</h3>
+          {% if s.role or s.period %}
+            <p class="student-meta">
+              {% if s.role %}{{ s.role }}{% endif %}
+              {% if s.period %}{% if s.role %} · {% endif %}{{ s.period }}{% endif %}
+            </p>
           {% endif %}
+          {% if s.summary %}<p class="muted" style="margin:0 0 8px">{{ s.summary }}</p>{% endif %}
+          {% if s.tags %}
+            <p class="student-tags">
+              {% for tag in s.tags %}<span>{{ tag }}</span>{% endfor %}
+            </p>
+          {% endif %}
+        </div>
+      </article>
+    </a>
+  {% endcapture %}
 
-          <div class="student-body">
-            <h3 style="margin:0 0 6px">{{ s.name }}</h3>
+  {% comment %}
+    3) 섹션 렌더(비어있으면 섹션 숨김)
+  {% endcomment %}
+  <section>
+    {% if ms_items.size > 0 %}
+      <div class="section-head">
+        <h2>MS Students</h2>
+        <span class="muted">{{ ms_items.size }} member{% if ms_items.size > 1 %}s{% endif %}</span>
+      </div>
+      <div class="student-grid">
+        {% for it in ms_items %}{{ card_renderer | replace: 'include.s', 'include.s' }}{% include_relative ../_partials/void.html s=it %}{% endfor %}
+      </div>
+    {% endif %}
 
-            {% if s.role or s.period %}
-              <p class="student-meta">
-                {% if s.role %}{{ s.role }}{% endif %}
-                {% if s.period %}{% if s.role %} · {% endif %}{{ s.period }}{% endif %}
-              </p>
-            {% endif %}
+    {% if combined_items.size > 0 %}
+      <div class="section-head">
+        <h2>Combined MS–PhD</h2>
+        <span class="muted">{{ combined_items.size }} member{% if combined_items.size > 1 %}s{% endif %}</span>
+      </div>
+      <div class="student-grid">
+        {% for it in combined_items %}{{ card_renderer | replace: 'include.s', 'include.s' }}{% include_relative ../_partials/void.html s=it %}{% endfor %}
 
-            {% if s.summary %}
-              <p class="muted" style="margin:0 0 8px">{{ s.summary }}</p>
-            {% endif %}
-
-            {% if s.tags %}
-              <p class="student-tags">
-                {% for tag in s.tags %}
-                  <span>{{ tag }}</span>
-                {% endfor %}
-              </p>
-            {% endif %}
-          </div>
-        </article>
-      </a>
-      {%- endfor -%}
-    </div>
-  </section>
-</main>
