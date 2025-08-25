@@ -52,9 +52,9 @@ permalink: /members/professor/
     </div>
   </section>
 
-  <!-- Bio -->
+  <!-- (yet) Bio -->
   <section class="card card-pad" style="margin-top:16px;">
-    <h3>Bio</h3>
+    <h3>(yet) Bio</h3>
     <p>
       Dr. Sungil Kim is an <strong>Associate Professor</strong> in the Department of Industrial Engineering at UNIST. He is
       dedicated to tackling modern challenges in quality engineering within the ongoing era of AI transformation—including
@@ -63,7 +63,7 @@ permalink: /members/professor/
     </p>
   </section>
 
-  <!-- (done) Research Field/Research Topics -->
+  <!-- Research Field/Research Topics -->
   <section class="grid" style="margin-top:16px;">
     <article class="card card-pad" style="grid-column: span 6;">
       <h3>Research Field</h3>
@@ -88,7 +88,7 @@ permalink: /members/professor/
     </article>
   </section>
 
-  <!-- (done) Curriculum Vitae -->
+  <!-- Curriculum Vitae -->
   <section class="card card-pad" style="margin-top:16px;">
     <h3>Curriculum Vitae</h3>
     <ul style="margin:0;">
@@ -99,7 +99,7 @@ permalink: /members/professor/
     </ul>
   </section>
 
-  <!-- (done) Academic Credential -->
+  <!-- Academic Credential -->
   <section class="card card-pad" style="margin-top:16px;">
     <h3>Academic Credential</h3>
     <ul style="margin:0;">
@@ -110,12 +110,16 @@ permalink: /members/professor/
     </ul>
   </section>
 
-  <!-- Editorial / Service -->
+  <!-- Patents -->
   <section class="card card-pad" style="margin-top:16px;">
-    <h3>Editorial &amp; Professional Service</h3>
+    <h3>Patents</h3>
     <ul>
-      <li>Area Editor, <em>Computers &amp; Industrial Engineering</em> — Statistics, Quality, Reliability &amp; Maintenance</li>
-      <!-- <li>Program Committee / Reviewer — (추가 가능)</li> -->
+      <li>Kim, Sungil (primary inventor), Method of anomaly detection of vessels applying Bayesian bootstrap. (10-
+2534357, granted May 16, 2023)</li>
+      <li>Kim, Sungil (primary inventor), Sensor drift compensation method and device. (10-2364019, granted
+February 14, 2022)</li>
+      <li>Kim, Sungil (primary inventor), Method and apparatus for determining delay possibility of shipment. (10-
+2250354, granted May 4, 2021)</li>
     </ul>
   </section>
 
@@ -130,7 +134,7 @@ permalink: /members/professor/
     </ul>
   </section>
 
-  <!-- (done) Research Publications -->
+  <!-- Research Publications -->
   <section class="card card-pad" style="margin-top:16px;">
     <h3>Research Publications</h3>
     <p class="muted" style="margin-top:-6px">Add 5–10 representative papers. Link to DOI/Scholar.</p>
@@ -146,7 +150,7 @@ forecasts, International Journal of Forecasting, 32(3), pp 669-679.</li>
     </ol>
     <div style="display:flex;flex-wrap:wrap;gap:12px;margin:8px 0 0;">
       <a class="btn"
-         href="{{ '/assets/cv/Sungil_Kim_CV.pdf' | relative_url }}"
+         href="{{ 'https://scholarworks.unist.ac.kr/researcher/5bf9ae09-967a-43fd-bf12-1b1d5253ff06' | relative_url }}"
          style="padding:6px 14px;
                 border-radius:0; /* 둥글림 제거 */
                 border:none;
@@ -162,7 +166,7 @@ forecasts, International Journal of Forecasting, 32(3), pp 669-679.</li>
     </div>
   </section>
 
-  <!-- (done) Awards/Honors/Memberships -->
+  <!-- Awards/Honors/Memberships -->
   <section class="card card-pad" style="margin-top:16px;">
     <h3>Awards/Honors/Memberships</h3>
     <ul style="margin:0;">
@@ -175,34 +179,3 @@ forecasts, International Journal of Forecasting, 32(3), pp 669-679.</li>
   </section>
 
 </main>
-
-<!-- Structured Data (SEO) -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Sungil Kim",
-  "jobTitle": "Associate Professor",
-  "affiliation": {
-    "@type": "CollegeOrUniversity",
-    "name": "UNIST (Ulsan National Institute of Science and Technology)"
-  },
-  "department": "Industrial Engineering",
-  "url": "{{ '/members/professor/' | relative_url }}",
-  "image": "{{ '/assets/img/professor/sungil_kim.jpg' | relative_url }}",
-  "email": "mailto:prof@example.ac.kr",
-  "address": {
-    "@type": "PostalAddress",
-    "addressCountry": "KR",
-    "addressLocality": "Ulsan"
-  },
-  "alumniOf": [
-    {"@type": "CollegeOrUniversity","name": "Georgia Institute of Technology"},
-    {"@type": "CollegeOrUniversity","name": "Yonsei University"}
-  ],
-  "knowsAbout": [
-    "Industrial Statistics","Quality Engineering","Reliability Analytics",
-    "Machine Learning","Data Mining","Sensor Data Analytics"
-  ]
-}
-</script>
