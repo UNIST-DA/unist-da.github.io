@@ -1,7 +1,7 @@
 ---
 layout: project
 slug: df-ts-drift
-permalink: /research/projects/df-ts-drift/
+permalink: /research/projects/contents/df-ts-drift/
 title: Domain-free Time-Series Drift Management
 ---
 
