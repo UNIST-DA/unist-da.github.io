@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Data Analytics Lab | UNIST Industrial Engineering</title>
+  <meta name="description" content="Data Analytics Lab at UNIST (Industrial Engineering). Industrial Statistics, Quality Engineering & Management, Machine Learning & Data Mining." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS (cache-busting) -->
+  <link rel="stylesheet" href="/assets/style.css?v=">
+
+  <!-- ✅ Favicon (이 부분은 반드시 head 안에 위치) -->
+  <link rel="icon" type="image/png" href="/assets/hero/LabSign_DA_background.png">
+</head>
+  
+<body>
+  <header>
+  <div class="container nav" id="navbar">
+    <!-- Brand -->
+    <a class="brand brand-link" href="/">
+      <img class="brand-img"
+           src="/assets/hero/LabSign_DA_only.png?v="
+           alt="DA-Lab logo" loading="eager" decoding="async">
+      <span class="brand-text">
+        <span class="brand-main">Data Analytics Lab</span> · <span class="muted">UNIST IE</span>
+      </span>
+    </a>
+
+    <!-- Mobile menu button -->
+    <button class="menu-btn" aria-label="Toggle Menu"
+            onclick="document.getElementById('navbar').classList.toggle('open')">☰</button>
+
+    <!-- Main nav -->
+    <ul>
+      <li class="has-dd">
+        <a href="/about.html">About</a>
+        <ul class="dropdown" role="menu">
+          <li><a href="/about.html">Introduction</a></li>
+          <li><a href="/location.html">Location</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dd">
+        <a href="/members/professor/">Members</a>
+        <ul class="dropdown" role="menu">
+          <li><a href="/members/professor/">Professor</a></li>
+          <li><a href="/members/students/">Students</a></li>
+          <li><a href="/members/alumni/">Alumni</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dd">
+        <a href="/research/projects/">Research</a>
+        <ul class="dropdown" role="menu">
+          <li><a href="/research/projects/">Projects</a></li>
+          <li><a href="/research/publications/">Publications</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dd">
+        <a href="/activity/Lab%20News/">Activity</a>
+        <ul class="dropdown" role="menu">
+          <li><a href="/activity/Lab%20News/">Lab News</a></li>
+          <li><a href="/activity/Lab%20Events/">Lab Events</a></li>
+          <li><a href="/activity/Lab%20Seminar/">Lab Seminar</a></li>
+        </ul>
+      </li>
+
+      <!-- Contact (단일 항목: 잘못된 중첩 제거) -->
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+
+    <!-- ✅ Theme toggle button -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle color theme" aria-pressed="false">
+      <!-- Sun / Moon SVG -->
+      <svg class="sun" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 4V2M12 22v-2M4.93 4.93 3.52 3.52M20.48 20.48l-1.41-1.41M4 12H2m20 0h-2M4.93 19.07 3.52 20.48M20.48 3.52 19.07 4.93" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<!-- ✅ Galaxy canvas (다크 모드에서 좌우 여백 은하수) -->
+<canvas id="galaxy-canvas"></canvas>
+
+<!-- ✅ Theme & Galaxy JS -->
+<script defer src="/assets/main/theme.js?v="></script>
+
+  <!-- ===================== Hero ===================== -->
+<section class="hero hero--boxed" aria-label="Lab highlights">
+  <div class="carousel" id="heroCarousel" aria-roledescription="carousel" aria-label="Hero carousel">
+    <div class="slides no-crop" id="heroSlides">
+      <!-- 업로드할 이미지 5장 (없으면 남겨둬도 됨) -->
+      <div class="slide cover-video">
+        <video autoplay loop muted playsinline>
+          <source src="/assets/main/Welcome_DA_LAB.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="slide"><img src="/assets/main/%EA%B5%90%EC%88%98%EB%8B%98_IB_Faculty_crop.png" alt="Lab hero 1"></div>
+      <div class="slide"><img src="/assets/main/%EC%8A%B9%EC%88%98_%EC%82%B0%EA%B3%B5%ED%95%99%ED%9A%8C%EB%B0%9C%ED%91%9C.jpg" alt="Lab hero 2"></div>
+      <div class="slide"><img src="/assets/main/%EC%84%B1%EC%A7%84_%EC%82%B0%EA%B3%B5%ED%95%99%ED%9A%8C%EB%B0%9C%ED%91%9C.jpg" alt="Lab hero 3"></div>
+      <div class="slide"><img src="/assets/main/%EC%B0%AC%EB%B2%94_%EC%82%B0%EA%B3%B5%ED%95%99%ED%9A%8C%EB%B0%9C%ED%91%9C.jpg" alt="Lab hero 4"></div>
+      <div class="slide"><img src="/assets/main/%ED%98%9C%EC%A7%84_%EB%AF%B8%EA%B5%AD%ED%95%99%ED%9A%8C%EB%B0%9C%ED%91%9C.jpg" alt="Lab hero 5"></div>
+    </div>
+
+    <!-- 화살표 -->
+    <div class="nav-arrows">
+      <button class="arrow" id="heroPrev" aria-label="Previous">‹</button>
+      <button class="arrow" id="heroNext" aria-label="Next">›</button>
+    </div>
+
+    <div class="hero-overlay">
+      <div class="hero-copy">
+        <div class="hero-kicker">Data Analytics Lab @ UNIST</div>
+        <h1 class="hero-title">Industrial Statistics · Quality Engineering · Machine Learning</h1>
+        <p class="hero-desc">We research AI for Quality Engineering, System Monitoring &amp; Anomaly Detection, and Time‑Series Representation.</p>
+      </div>
+    </div>
+
+    <div class="hero-ctrl" id="heroDots" aria-label="Slide controls"></div>
+  </div>
+</section>
+
+
+<!-- ===================== About ===================== -->
+<section id="about" class="about">
+  <div class="container">
+    <div class="head">
+      <h2>
+        <span class="title-text">About</span>
+        <a href="https://unist-da.github.io/about.html" class="more-info">– more info</a>
+      </h2>
+    </div>
+
+    <div class="grid">
+      <div class="card card-pad" style="grid-column: span 7">
+        <a class="pill" href="https://ie.unist.ac.kr/" target="_blank" rel="noopener">UNIST · Industrial Engineering</a>
+        <h3 style="margin:10px 0 6px">Data Analytics Lab</h3>
+        <p>UNIST 산업공학과 데이터애널리틱스 연구실은 데이터 기반 품질향상과 지능형 제조를 위한 통계적·기계학습 방법론을 연구합니다. 실제 산업 데이터를 통해 실효성 있는 모델을 만들고, 신뢰 가능한 의사결정을 지원합니다.</p>
+        <p class="muted">We build interpretable, reliable AI systems for quality engineering, process monitoring, and time‑series understanding.</p>
+      </div>
+      <div class="card card-pad" style="grid-column: span 5">
+        <h4 style="margin:0 0 10px">Interests</h4>
+        <div class="list">
+          <div class="chip">Industrial Statistics</div>
+          <div class="chip">Quality Engineering &amp; Management</div>
+          <div class="chip">Machine Learning &amp; Data Mining</div>
+        </div>
+        <h4 style="margin:16px 0 10px">Research Areas</h4>
+        <div class="area">
+          <div>• Artificial Intelligence in Quality Engineering</div>
+          <div>• System Monitoring &amp; Anomaly Detection</div>
+          <div>• Time‑Series Representation</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== Research (Top 3 from Projects) ===================== -->
+<section id="research">
+  <div class="container">
+    <div class="head">
+      <h2>
+        <span class="title-text">Research</span>
+        <a href="https://unist-da.github.io/research/projects/" class="more-info">– more info</a>
+      </h2>
+    </div>
+    <div class="grid">
+      
+      
+      <a class="card card-pad" href="/research/projects/lg-lqc"
+         style="grid-column: span 4; display:block; text-decoration:none; color:inherit" id="home-lqc-lg">
+        
+        <img src="/assets/research/projects/lg-lqc-fig6.png" alt="LG LQC (Line Quality Control)" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin-bottom:10px">
+        
+        <h4 style="margin:0 0 6px">LG LQC (Line Quality Control)</h4>
+        <p class="muted">Detect latent defects on production lines by fusing domain knowledge with functional outlier detection.</p>
+        <div class="muted" style="font-size:13px">2021–2024</div>
+      </a>
+      
+      <a class="card card-pad" href="/research/projects/scsc-fuel-opt"
+         style="grid-column: span 4; display:block; text-decoration:none; color:inherit" id="home-scsc-fuel-opt">
+        
+        <img src="/assets/research/projects/none.png" alt="Fuel Consumption Prediction & Optimization (SCSC)" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin-bottom:10px">
+        
+        <h4 style="margin:0 0 6px">Fuel Consumption Prediction & Optimization (SCSC)</h4>
+        <p class="muted">AIS·기상·엔진 센서를 융합해 연료 소비를 예측하고 친환경 최적 운항 전략을 제시합니다.</p>
+        <div class="muted" style="font-size:13px">2023–</div>
+      </a>
+      
+      <a class="card card-pad" href="/research/projects/scsc-llm-maritime"
+         style="grid-column: span 4; display:block; text-decoration:none; color:inherit" id="home-scsc-llm-maritime">
+        
+        <img src="/assets/research/projects/none.png" alt="LLM Agent for Maritime Data Analysis (SCSC)" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin-bottom:10px">
+        
+        <h4 style="margin:0 0 6px">LLM Agent for Maritime Data Analysis (SCSC)</h4>
+        <p class="muted">대용량 AIS·해양 데이터를 자연어로 질의·분석하고, 실시간 리스크·규정 위반을 자동 탐지합니다.</p>
+        <div class="muted" style="font-size:13px">2024–</div>
+      </a>
+      
+    </div>
+  </div>
+</section>
+
+<!-- ===================== Activity (Seminar · News · Events) ===================== -->
+<section id="activity">
+  <div class="container">
+    <div class="head">
+      <h2>
+        <span class="title-text">Activity</span>
+        <a href="https://unist-da.github.io/activity/Lab%20News/" class="more-info">– more info</a>
+      </h2>
+    </div>
+
+    <div class="grid">
+      <!-- Seminar -->
+      <div class="card card-pad" style="grid-column: span 4">
+        <h4 style="margin:6px 0">Lab Seminar</h4>
+        <ul style="margin:8px 0 12px; padding-left:18px">
+          
+          <li>
+            <strong>2025-09-10</strong> — <a href="/activity/Lab%20Seminar/#sem-2025-09-10">TBA — Lab Seminar</a>
+          </li>
+          
+        </ul>
+        <a href="/activity/Lab%20Seminar/">View all →</a>
+      </div>
+
+      <!-- News -->
+      <div class="card card-pad" style="grid-column: span 4">
+        <h4 style="margin:6px 0">Lab News</h4>
+        <ul style="margin:8px 0 12px; padding-left:18px">
+          
+          <li>
+            <strong>2025-08-05</strong> — <a href="/activity/Lab%20News/#2025-08-05-cikm-short-paper">Paper accepted to CIKM 2025 🎉</a>
+          </li>
+          
+          <li>
+            <strong>2025-06-21</strong> — <a href="/activity/Lab%20News/#2025-06-18-kiie-spring-2025">Participation in KIIE 2025 Spring Joint Conference</a>
+          </li>
+          
+        </ul>
+        <a href="/activity/Lab%20News/">View all →</a>
+      </div>
+
+      <!-- Events -->
+      <div class="card card-pad" style="grid-column: span 4">
+        <h4 style="margin:6px 0">Lab Events</h4>
+        <ul style="margin:8px 0 12px; padding-left:18px">
+          
+          <li>
+            <strong></strong> — <a href="/activity/Lab%20Events/#2025-05-01-prof-birthday">Professor's Birthday Celebration</a>
+          </li>
+          
+          <li>
+            <strong></strong> — <a href="/activity/Lab%20Events/#2025-04-08-cherry-blossom-picnic">Cherry Blossom Picnic</a>
+          </li>
+          
+        </ul>
+        <a href="/activity/Lab%20Events/">View all →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== Contact ===================== -->
+<section id="contact">
+  <div class="container">
+    <div class="head">
+      <h2>
+        <span class="title-text">Contact</span>
+        <a href="https://unist-da.github.io/contact/" class="more-info">– more info</a>
+      </h2>
+    </div>
+    <div class="grid">
+      <div class="card card-pad" style="grid-column: span 7">
+        <h4 style="margin:0 0 8px">Get in touch</h4>
+        <p class="muted">
+          Email:
+          <a href="mailto:sungil.kim@unist.ac.kr">sungil.kim@unist.ac.kr</a>
+          · Address: 유니스트길 50, 112동 302-4
+        </p>
+        <p class="muted">
+          For prospective students: Please email with CV, and interestsed project.
+        </p>
+      </div>
+
+      <div class="card card-pad" style="grid-column: span 5">
+        <h4 style="margin:0 0 8px">Links</h4>
+        <ul class="link-list" style="margin:0; padding-left:0; list-style:none">
+          <li>
+            <a href="https://github.com/UNIST-DA" target="_blank" rel="noopener">
+              <!-- GitHub 로고 -->
+              <svg viewBox="0 0 16 16" width="18" height="18" fill="currentColor" style="flex:0 0 auto">
+                <path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38
+                         0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52
+                         -.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.78-.2-3.64-.89-3.64-3.95
+                         0-.87.31-1.59.82-2.15-.08-.2-.36-1.01.08-2.11 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 2-.27c.68 0 1.36.09 2 .27
+                         1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.91.08 2.11.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48
+                         0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/>
+              </svg>
+              <span>GitHub Organization</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="https://scholar.google.com/citations?user=BISaBGoAAAAJ&hl=ko" target="_blank" rel="noopener">
+              <img src="https://www.google.com/s2/favicons?sz=32&domain=scholar.google.com"
+                   alt="" width="18" height="18" style="flex:0 0 auto">
+              <span>Google Scholar</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="https://ie.unist.ac.kr/" target="_blank" rel="noopener">
+              <!-- 대체: 지구본 아이콘 -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                   style="flex:0 0 auto">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 0 20"></path>
+                <path d="M12 2a15.3 15.3 0 0 0 0 20"></path>
+              </svg>
+              <span>UNIST IE Department</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- === Hero swipe/drag (gallery-like: follow + snap) === -->
+<style>
+/* 제스처 우선권 + 드래그 피드백 */
+#heroSlides{
+  touch-action: pan-y;   /* 세로 스크롤은 브라우저, 가로 스와이프는 우리가 처리 */
+  cursor: grab;
+  user-select: none;
+  transition: transform .35s ease;  /* 스냅 애니메이션 */
+}
+#heroSlides.dragging{ transition: none; } /* 드래그 중 즉시 반응 */
+#heroSlides:active{ cursor: grabbing; }
+#heroSlides img, #heroSlides video{
+  pointer-events: none;
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+/* 오버레이가 제스처 가로채지 않게 */
+.hero-overlay{ pointer-events: none; }
+.nav-arrows{ pointer-events: none; }
+.nav-arrows .arrow{ pointer-events: auto; }
+</style>
+
+<script>
+/* === Hero carousel: arrows + dots + autoplay + 키보드/스와이프 === */
+(function(){
+  const carousel = document.getElementById('heroCarousel');
+  if(!carousel) return;
+
+  const track  = document.getElementById('heroSlides');
+  const prev   = document.getElementById('heroPrev');
+  const next   = document.getElementById('heroNext');
+  const dotsEl = document.getElementById('heroDots');
+  const slides = track ? track.children : [];
+
+  if(!slides || !slides.length) return;
+  let i = 0, N = slides.length, timer = null, hover = false;
+
+  function buildDots(){
+    dotsEl.innerHTML = '';
+    for(let k=0;k<N;k++){
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'dot' + (k===i ? ' active' : '');
+      b.setAttribute('aria-label', `Go to slide ${k+1}`);
+      b.addEventListener('click', ()=>goto(k));
+      dotsEl.appendChild(b);
+    }
+  }
+
+  function percentFor(index){ return -index * 100; }
+
+  function update(offsetPct = 0){
+    track.style.transform = `translateX(${percentFor(i) + offsetPct}%)`;
+    [...dotsEl.children].forEach((d,idx)=>d.classList.toggle('active', idx===i));
+  }
+
+  function goto(k){
+    i = (k+N)%N;
+    track.classList.remove('dragging');   // 스냅 애니메이션 ON
+    update(0);
+  }
+
+  function start(){ stop(); timer = setInterval(()=>{ if(!hover) goto(i+1); }, 5000); }
+  function stop(){ if(timer) clearInterval(timer); }
+
+  prev.addEventListener('click', ()=>{ goto(i-1); hover=true; setTimeout(()=>hover=false, 1200); });
+  next.addEventListener('click', ()=>{ goto(i+1); hover=true; setTimeout(()=>hover=false, 1200); });
+  carousel.addEventListener('mouseenter', ()=>hover=true);
+  carousel.addEventListener('mouseleave', ()=>hover=false);
+
+  // 키보드
+  carousel.setAttribute('tabindex','0');
+  carousel.addEventListener('keydown', (e)=>{
+    if(e.key==='ArrowLeft') goto(i-1);
+    if(e.key==='ArrowRight') goto(i+1);
+  });
+
+  // === Swipe/Drag (follow finger + snap) ===
+  const THRESH = 0.18;   // 화면 너비 대비 18% 이상이면 넘김
+  let dragging = false, startX = 0, startY = 0, width = 1;
+
+  const onPointerDown = (e) => {
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+    width = carousel.clientWidth || 1;
+    dragging = true;
+    startX = e.clientX;
+    startY = e.clientY;
+    track.classList.add('dragging');          // transition off
+    track.setPointerCapture?.(e.pointerId);
+    hover = true; setTimeout(()=>hover=false, 1200);
+  };
+
+  const onPointerMove = (e) => {
+    if (!dragging) return;
+    const dx = e.clientX - startX;
+    const dy = e.clientY - startY;
+    if (Math.abs(dy) > Math.abs(dx)) return;  // 세로 스크롤 우선
+
+    const offsetPct = (dx / width) * 100;     // px → %
+    update(offsetPct);                        // 손가락 따라오기
+  };
+
+  const onPointerUp = (e) => {
+    if (!dragging) return;
+    const dx = e.clientX - startX;
+    const movedRatio = Math.abs(dx) / width;
+
+    dragging = false;
+    track.classList.remove('dragging');       // transition on
+
+    if (movedRatio > THRESH) {
+      goto(dx < 0 ? i+1 : i-1);               // 스냅
+    } else {
+      update(0);                              // 원위치 스냅백
+    }
+    track.releasePointerCapture?.(e.pointerId);
+  };
+
+  track.addEventListener('pointerdown', onPointerDown);
+  track.addEventListener('pointermove', onPointerMove);
+  window.addEventListener('pointerup', onPointerUp);
+
+  // 이미지 기본 드래그 방지
+  track.addEventListener('dragstart', (e) => e.preventDefault());
+
+  buildDots(); update(0); start();
+})();
+</script>
+
+  <footer>
+  <div class="container small muted">
+    © 2025 Data Analytics Lab. All Rights Reserved.
+  </div>
+</footer>
+
+<script>
+  // 모바일 드롭다운 토글 (그대로 유지)
+  document.addEventListener('click', (e) => {
+    if (e.target.classList && e.target.classList.contains('dd-toggle')) {
+      e.preventDefault();
+      e.stopPropagation();
+      const li = e.target.closest('.has-dd');
+      if (li) li.classList.toggle('open');
+    }
+  });
+</script>
+
+
+  <!-- 모바일 드롭다운 토글 -->
+  <script>
+    document.addEventListener('click', function(e){
+      if(e.target.matches('.dd-toggle')){
+        e.preventDefault();
+        const li = e.target.closest('.has-dd');
+        if(li) li.classList.toggle('open');
+      }
+    });
+  </script>
+</body>
+</html>

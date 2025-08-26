@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact | Data Analytics Lab · UNIST IE</title>
+  <meta name="description" content="Contact details and location for Data Analytics Lab at UNIST." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS (cache-busting) -->
+  <link rel="stylesheet" href="/assets/style.css?v=">
+
+  <!-- ✅ Favicon (이 부분은 반드시 head 안에 위치) -->
+  <link rel="icon" type="image/png" href="/assets/hero/LabSign_DA_background.png">
+</head>
+  
+<body>
+  <header>
+  <div class="container nav" id="navbar">
+    <!-- Brand -->
+    <a class="brand brand-link" href="/">
+      <img class="brand-img"
+           src="/assets/hero/LabSign_DA_only.png?v="
+           alt="DA-Lab logo" loading="eager" decoding="async">
+      <span class="brand-text">
+        <span class="brand-main">Data Analytics Lab</span> · <span class="muted">UNIST IE</span>
+      </span>
+    </a>
+
+    <!-- Mobile menu button -->
+    <button class="menu-btn" aria-label="Toggle Menu"
+            onclick="document.getElementById('navbar').classList.toggle('open')">☰</button>
+
+    <!-- Main nav -->
+    <ul>
+      <li class="has-dd">
+        <a href="/about.html">About</a>
+        <ul class="dropdown" role="menu">
+          <li><a href="/about.html">Introduction</a></li>
+          <li><a href="/location.html">Location</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dd">
+        <a href="/members/professor/">Members</a>
+        <ul class="dropdown" role="menu">
+          <li><a href="/members/professor/">Professor</a></li>
+          <li><a href="/members/students/">Students</a></li>
+          <li><a href="/members/alumni/">Alumni</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dd">
+        <a href="/research/projects/">Research</a>
+        <ul class="dropdown" role="menu">
+          <li><a href="/research/projects/">Projects</a></li>
+          <li><a href="/research/publications/">Publications</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dd">
+        <a href="/activity/Lab%20News/">Activity</a>
+        <ul class="dropdown" role="menu">
+          <li><a href="/activity/Lab%20News/">Lab News</a></li>
+          <li><a href="/activity/Lab%20Events/">Lab Events</a></li>
+          <li><a href="/activity/Lab%20Seminar/">Lab Seminar</a></li>
+        </ul>
+      </li>
+
+      <!-- Contact (단일 항목: 잘못된 중첩 제거) -->
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+
+    <!-- ✅ Theme toggle button -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle color theme" aria-pressed="false">
+      <!-- Sun / Moon SVG -->
+      <svg class="sun" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 4V2M12 22v-2M4.93 4.93 3.52 3.52M20.48 20.48l-1.41-1.41M4 12H2m20 0h-2M4.93 19.07 3.52 20.48M20.48 3.52 19.07 4.93" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<!-- ✅ Galaxy canvas (다크 모드에서 좌우 여백 은하수) -->
+<canvas id="galaxy-canvas"></canvas>
+
+<!-- ✅ Theme & Galaxy JS -->
+<script defer src="/assets/main/theme.js?v="></script>
+
+  <!-- Page Hero -->
+<div class="page-hero">
+  <div class="container">
+    <div class="breadcrumbs"><a href="/">Home</a> · Contact</div>
+    <h1 class="page-title">Contact</h1>
+    <p class="muted">연락처, 위치, 그리고 협업/합류 관련 안내</p>
+  </div>
+</div>
+
+<main class="container">
+  <section>
+    <div class="grid">
+      <!-- Contact details -->
+      <div class="card card-pad" style="grid-column: span 6">
+        <h3 style="margin:0 0 8px">Get in touch</h3>
+        <p class="muted">Email: <a href="mailto:lab@unist.ac.kr">lab@unist.ac.kr</a></p>
+        <p class="muted">Address: UNIST, Ulsan, South Korea</p>
+        <hr style="border:none;border-top:1px solid var(--line);margin:14px 0">
+        <h4 style="margin:0 0 6px">Prospective Students</h4>
+        <p class="muted">지원 시, CV/연구관심/프로젝트 포트폴리오 링크를 함께 보내주세요.</p>
+        <h4 style="margin:12px 0 6px">Industry Collaboration</h4>
+        <p class="muted">품질/공정 데이터 분석·이상탐지 PoC, 공동연구·자문 문의 환영합니다.</p>
+      </div>
+
+      <!-- Inquiry form -->
+      <div class="card card-pad" style="grid-column: span 6">
+        <h3 style="margin:0 0 8px">Quick message</h3>
+        <!-- 방법 1) 간단 mailto; 방법 2) Formspree/Netlify endpoint로 action 교체 -->
+        <form action="mailto:lab@unist.ac.kr" method="post" enctype="text/plain">
+          <div class="row">
+            <input class="input" type="text" name="name" placeholder="Your name" required>
+            <input class="input" type="email" name="email" placeholder="Email address" required>
+          </div>
+          <input class="input" type="text" name="subject" placeholder="Subject" style="margin-top:12px">
+          <textarea class="input" name="message" rows="6" placeholder="Your message" style="margin-top:12px"></textarea>
+          <button class="btn" type="submit" style="margin-top:12px">Send</button>
+        </form>
+        <p class="muted small" style="margin-top:8px">
+          ※ 더 안정적인 제출을 원하면 <code>action</code>을 Formspree/Netlify Forms 엔드포인트로 바꾸세요.
+        </p>
+      </div>
+
+      <!-- Map -->
+      <div class="card card-pad" style="grid-column: span 12">
+        <h3 style="margin:0 0 8px">Location</h3>
+        <iframe class="map" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=UNIST&output=embed"
+          title="UNIST on Google Maps"></iframe>
+      </div>
+    </div>
+  </section>
+</main>
+
+  <footer>
+  <div class="container small muted">
+    © 2025 Data Analytics Lab. All Rights Reserved.
+  </div>
+</footer>
+
+<script>
+  // 모바일 드롭다운 토글 (그대로 유지)
+  document.addEventListener('click', (e) => {
+    if (e.target.classList && e.target.classList.contains('dd-toggle')) {
+      e.preventDefault();
+      e.stopPropagation();
+      const li = e.target.closest('.has-dd');
+      if (li) li.classList.toggle('open');
+    }
+  });
+</script>
+
+
+  <!-- 모바일 드롭다운 토글 -->
+  <script>
+    document.addEventListener('click', function(e){
+      if(e.target.matches('.dd-toggle')){
+        e.preventDefault();
+        const li = e.target.closest('.has-dd');
+        if(li) li.classList.toggle('open');
+      }
+    });
+  </script>
+</body>
+</html>

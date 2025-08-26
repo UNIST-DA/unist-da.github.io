@@ -1,0 +1,458 @@
+/* =========================================================
+   DA-LAB – Global Styles (with Theme & Galaxy)
+   - Light/Dark tokens
+   - Header toggle
+   - Dark "Galaxy" background for side gutters
+   - Optional light-mode gutter patterns
+   ========================================================= */
+
+/* ===== Design Tokens (Light) ===== */
+:root{
+  --bg:#ffffff; --bg-soft:#f6f7fb; --surface:#ffffff;
+  --text:#0c1323; --muted:#5e6a83; --line:#e8ebf3;
+
+  /* Brand */
+  --primary:#001B54;          /* UNIST Navy */
+  --primary-weak:#E6ECF7;     /* Light Navy */
+  --accent:#44C1C4;           /* Emerald */
+
+  --warn:#f59e0b; --danger:#ef4444;
+
+  --radius:18px; --shadow-lg:0 12px 30px rgba(16,24,40,.08);
+
+  /* Layout width & gutters */
+  --w:1100px;
+  --page-pad:40px; /* .container 좌/우 padding 합산 가정 (20px + 20px) */
+  /* 좌우 여백(gutter): 최소 16px, 최대 340px */
+  --gutter: clamp(16px, calc((100vw - (var(--w) + var(--page-pad)))/2), 340px);
+
+  /* Light-mode optional gutter patterns (기본 비활성) */
+  --light-gutter-pattern-opacity: 0;    /* 0 = 끔, 1 = 켬 */
+}
+
+/* ===== Design Tokens (Dark) ===== */
+html[data-theme="dark"]{
+  --bg:#0b1020;
+  --bg-soft:#0c152b;
+  --surface:#0f1b33;
+  --text:#e6ecff;
+  --muted:#98a4c9;
+  --line:#1b2a4b;
+
+  --primary:#8fb6ff;      /* 네이비의 라이트톤 */
+  --primary-weak:#0f2048; /* 어두운 네이비 면 */
+  --accent:#49d4d7;       /* 다크에서 조금 더 선명 */
+
+  /* 다크에선 적당히 더 큰 그림자 */
+  --shadow-lg:0 18px 60px rgba(3,10,28,.55);
+}
+
+/* prefers-color-scheme => 초진입 기본값 힌트 (JS가 이후 고정) */
+@media (prefers-color-scheme: dark){
+  html:not([data-theme]){ /* 사용자가 아직 토글로 고정하지 않은 경우 */
+    --bg:#0b1020; --bg-soft:#0c152b; --surface:#0f1b33;
+    --text:#e6ecff; --muted:#98a4c9; --line:#1b2a4b;
+    --primary:#8fb6ff; --primary-weak:#0f2048; --accent:#49d4d7;
+    --shadow-lg:0 18px 60px rgba(3,10,28,.55);
+  }
+}
+
+/* ===== Base ===== */
+*{box-sizing:border-box}
+html,body{
+  margin:0; padding:0; background:var(--bg); color:var(--text);
+  font-family:'Inter','Noto Sans KR',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,'Apple Color Emoji','Segoe UI Emoji';
+  line-height:1.55;
+  /* 라이트 모드 옵션: 좌우 여백 패턴(점 그리드) – 필요시 opacity만 1로 */
+  background-image:
+    /* Option A: 양옆 점 그리드 (투명도 변수로 on/off) */
+    linear-gradient(to right,
+      transparent 0, transparent var(--gutter),
+      rgba(0,27,84, calc(.03 * var(--light-gutter-pattern-opacity))) var(--gutter),
+      rgba(0,27,84, calc(.03 * var(--light-gutter-pattern-opacity))) calc(100% - var(--gutter)),
+      transparent calc(100% - var(--gutter)), transparent 100%
+    ),
+    /* 실제 점 그리드 */
+    radial-gradient(circle at 1px 1px, rgba(0,27,84, calc(.06 * var(--light-gutter-pattern-opacity))) 1px, transparent 1px);
+  background-size:
+    100% 100%,
+    12px 12px;
+  background-repeat: no-repeat, repeat;
+}
+img{max-width:100%;display:block}
+a{color:var(--primary);text-decoration:none}
+a:hover{opacity:.9}
+.container{max-width:var(--w);margin:0 auto;padding:0 20px}
+.muted{color:var(--muted)}
+.small{font-size:13px}
+
+/* ===== Header / Navbar (light/dark) ===== */
+header{
+  position:sticky; top:0; z-index:50;
+  background:color-mix(in oklab, var(--surface) 82%, transparent);
+  backdrop-filter:saturate(180%) blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;gap:12px;align-items:center;white-space:nowrap}
+.brand-link{color:var(--text);text-decoration:none}
+.brand-link:hover{opacity:.9}
+.brand-text{display:inline-block; font-weight:700;}  /* 로고 옆 텍스트 볼드 */
+
+/* PNG 로고(박스 없음) – 한 줄 고정 크기 (한 곳에서만 정의) */
+.brand-img{
+  height:40px;               /* 필요시 38~42px로 조절 */
+  width:auto; display:block; object-fit:contain;
+}
+@media (max-width:860px){ .brand-img{height:32px} }
+
+/* 1단 메뉴 */
+.nav > ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
+.nav > ul > li{position:relative}
+.nav > ul > li > a{
+  padding:8px 10px; border-radius:10px; color:var(--text); display:inline-block;
+  font-weight:700;                /* 상단 메뉴 볼드 */
+}
+.nav > ul > li > a.active,
+.nav > ul > li > a:hover{background:var(--primary-weak)}
+.nav > ul > li > a.active{
+  color:var(--primary);
+  box-shadow:inset 0 -2px 0 var(--primary);
+}
+
+/* 모바일 네비 (햄버거로 전체 메뉴 펼치기) */
+.menu-btn{display:none}
+@media (max-width:860px){
+  .menu-btn{display:block;border:1px solid var(--line);background:var(--surface);color:var(--text);border-radius:12px;padding:8px 10px}
+  .nav > ul{display:none}
+  .nav.open > ul{
+    display:flex; position:absolute; left:20px; right:20px; top:60px;
+    flex-direction:column; background:var(--surface);
+    border:1px solid var(--line); border-radius:14px; box-shadow:var(--shadow-lg); padding:10px;
+  }
+}
+
+/* ===== Nav Dropdown ===== */
+.has-dd > a::after{content:"▾"; font-size:11px; margin-left:6px; opacity:.7}
+.nav > ul > li > .dropdown{
+  position:absolute; top:100%; left:0; z-index:60;
+  min-width:220px; padding:8px 8px 10px;
+  background:var(--surface); border:1px solid var(--line);
+  border-radius:12px; box-shadow:var(--shadow-lg);
+  display:none;
+}
+.nav > ul > li > .dropdown::before{
+  content:""; position:absolute; top:-8px; left:0; right:0; height:8px; background:transparent;
+}
+.nav > ul > li > .dropdown > li{list-style:none}
+.nav > ul > li > .dropdown a{
+  display:block; padding:10px 12px; border-radius:10px; color:var(--text); white-space:nowrap;
+  font-weight:500;                 /* 드롭다운은 기본 굵기 */
+}
+.nav > ul > li > .dropdown a:hover{background:var(--primary-weak)}
+@media (hover:hover){
+  .nav > ul > li.has-dd:hover > .dropdown,
+  .nav > ul > li > .dropdown:hover{display:block}
+  .nav > ul > li.has-dd > .dropdown{transition:opacity .15s ease, visibility .15s ease; opacity:0; visibility:hidden}
+  .nav > ul > li.has-dd:hover > .dropdown{opacity:1; visibility:visible; display:block}
+}
+
+/* =========================================================
+   THEME TOGGLE (Button) – header 오른쪽
+   ========================================================= */
+.theme-toggle{
+  --s: 38px;
+  width:var(--s); height:var(--s);
+  display:grid; place-items:center;
+  border:1px solid var(--line);
+  background:var(--surface);
+  color:var(--text);
+  border-radius:12px; cursor:pointer;
+  margin-left:12px;
+  box-shadow:0 1px 0 rgba(0,0,0,.02);
+}
+.theme-toggle:hover{background:color-mix(in oklab, var(--surface) 92%, var(--primary-weak))}
+.theme-toggle svg{width:20px;height:20px;display:block}
+.theme-toggle .sun{display:block}
+.theme-toggle .moon{display:none}
+html[data-theme="dark"] .theme-toggle .sun{display:none}
+html[data-theme="dark"] .theme-toggle .moon{display:block}
+
+/* =========================================================
+   HERO / CAROUSEL  (변경 없음, 일부 다크 최적화만)
+   ========================================================= */
+.hero{position:relative}
+.carousel{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+
+/* 박스형 히어로: 본문 컬럼 폭에 맞춤 */
+.hero--boxed .carousel{
+  max-width:var(--w); margin:0 auto;
+  border-radius:18px; overflow:hidden;
+  box-shadow:var(--shadow-lg); border:1px solid var(--line);
+}
+
+/* 트랙/슬라이드 (기본 높이) */
+.slides{display:flex;transition:transform .7s ease}
+.slide{
+  min-width:100%;
+  height:58vh;                   /* 기본 높이 */
+  position:relative; background:#dfe7ff;
+}
+.slide::after{
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(0deg,rgba(0,27,84,.55),rgba(0,27,84,.35) 35%,rgba(0,27,84,0));
+}
+
+/* 기본: 채우기(cover) — no-crop 모드에서 아래에서 덮어씀 */
+.slide img, .slide video{ width:100%; height:100%; object-fit:cover }
+
+/* 오버레이/컨트롤 클릭 가능 정리 */
+.hero-overlay{position:absolute; inset:0; display:flex; align-items:flex-end; z-index:1; pointer-events:none}
+.hero-copy{width:100%; max-width:var(--w); margin:0 auto; padding:24px 20px 40px; color:#fff}
+.hero-kicker{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.15);
+  border:1px solid rgba(255,255,255,.25);padding:6px 10px;border-radius:999px;font-size:12px;font-weight:600;backdrop-filter:blur(6px)}
+.hero-title{font-size:36px;line-height:1.2;margin:12px 0 8px}
+.hero-desc{opacity:.95;max-width:720px}
+.hero-ctrl{position:absolute; inset:auto 0 16px 0; display:flex; justify-content:center; gap:8px; z-index:2}
+.dot{width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,.6); border:1px solid rgba(255,255,255,.8); cursor:pointer}
+.dot.active{background:#fff}
+.nav-arrows{position:absolute; inset:0; display:flex; justify-content:space-between; align-items:center; padding:0 8px; z-index:2}
+.arrow{width:40px;height:40px;border-radius:999px;border:1px solid rgba(255,255,255,.6);
+  background:rgba(255,255,255,.4);display:grid;place-items:center;cursor:pointer;backdrop-filter:blur(6px)}
+
+/* === NO-CROP 모드: 사진/영상이 절대 잘리지 않도록(레터박스 허용) === */
+.slides.no-crop .slide{
+  height:56vh; min-height:420px;
+  display:grid; place-items:center;
+  background:linear-gradient(0deg, rgba(0,27,84,.08), rgba(0,27,84,0));
+}
+.slides.no-crop .slide img,
+.slides.no-crop .slide video{
+  max-width:100%; max-height:100%;
+  width:auto; height:auto;
+  object-fit:contain;            /* 핵심 */
+  background:#fff;               /* 남는 영역 배경 */
+}
+@media (max-width:860px){
+  .slides.no-crop .slide{ height:50vh; min-height:320px; }
+}
+
+/* ===== Sections / Cards / Grid ===== */
+section{padding:64px 0;border-bottom:1px solid var(--line)}
+section .head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:24px}
+.head h2{font-size:28px;margin:0}
+/* 섹션 타이틀 밑줄을 컬럼 폭 전체로 */
+.head h2::after{content:"";display:block;width:100%;height:3px;background:var(--primary);border-radius:999px;margin-top:8px}
+
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-lg)}
+.card-pad{padding:18px}
+
+/* ===== About ===== */
+.about p{margin:0 0 12px}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;
+  background:var(--primary-weak);color:var(--primary);border:1px solid #dfe3f5;font-weight:600;font-size:12px}
+.list{display:flex;flex-wrap:wrap;gap:8px}
+.list .chip{padding:8px 12px;border:1px solid var(--line);border-radius:12px;background:var(--bg-soft)}
+.prose p{margin:0 0 12px}
+.photo{border-radius:18px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow-lg)}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-weight:700;color:var(--primary);background:var(--primary-weak);
+  border:1px solid #dfe3f5;border-radius:999px;padding:6px 10px;font-size:12px}
+.title,.page-title{font-size:28px;margin:6px 0 0}
+.divider{width:120px;height:3px;background:var(--primary-weak);border-radius:3px;margin:12px 0 0}
+
+/* ===== Members ===== */
+.member{display:flex;gap:14px;align-items:center}
+.avatar{width:56px;height:56px;border-radius:14px;background:#eef1f8;flex:0 0 auto;overflow:hidden;border:1px solid var(--line)}
+.avatar img{width:100%;height:100%;object-fit:cover}
+
+/* ===== Research ===== */
+.tabs{display:flex;gap:8px;flex-wrap:wrap}
+.tab{padding:8px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);cursor:pointer}
+.tab.active{background:var(--primary);border-color:var(--primary);color:#fff}
+.area{display:flex;flex-direction:column;gap:10px}
+
+/* ===== Activity ===== */
+.news-item{display:grid;grid-template-columns:88px 1fr;gap:12px;align-items:start;
+  padding:12px;border:1px dashed var(--line);border-radius:12px;background:var(--bg-soft)}
+.news-date{font-weight:700}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media (max-width:900px){.two-col{grid-template-columns:1fr}}
+.tag{display:inline-block;padding:4px 8px;border:1px solid var(--line);border-radius:999px;background:var(--surface);font-size:12px;color:#cbd5e1;margin-right:6px}
+
+/* ===== Contact ===== */
+.input{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--text)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:820px){.row{grid-template-columns:1fr}}
+.btn{display:inline-block;padding:10px 14px;border-radius:12px;border:1px solid var(--primary);background:var(--primary);color:#fff;cursor:pointer}
+iframe.map{width:100%;min-height:320px;border:0;border-radius:14px}
+
+/* ===== Page Hero (subpages) ===== */
+.page-hero{padding:40px 0;border-bottom:1px solid var(--line);background:linear-gradient(180deg,var(--surface) 0%,var(--bg) 100%)}
+.breadcrumbs{font-size:13px;color:var(--muted)}
+.breadcrumbs a{color:inherit}
+
+/* ===== Footer ===== */
+footer{padding:36px 0}
+
+/* ===== Accessibility ===== */
+:focus-visible{outline:3px solid rgba(68,193,196,.6); outline-offset:2px}
+
+/* (선택) 섹션 헤더 오른쪽 작은 설명 숨김 – 필요 시 유지 */
+#about .head .muted, #research .head .muted, #activity .head .muted, #contact .head .muted{ display:none; }
+
+/* 히어로 박스 안에서 '영상 슬라이드만' 꽉 채우기 */
+.slides.no-crop .cover-video video{
+  width:100%;
+  height:100%;
+  object-fit:cover;    /* 이 슬라이드에만 cover */
+  background:transparent;
+}
+/* 영상이 박스를 꽉 채우면 상/하 스트립은 필요 없음 */
+.slides.no-crop .cover-video::before,
+.slides.no-crop .cover-video::after{
+  display:none;
+}
+/* === Hero copy text fix === */
+.hero-copy{
+  color:#fff;
+  text-shadow: 0 2px 6px rgba(0,0,0,.6);
+}
+/* 브랜드 메인 텍스트만 크기 키우기 */
+.brand-main {
+  font-size: 1.15em;   /* 기본보다 15% 크게 */
+  font-weight: 700;    /* 볼드 유지 */
+}
+
+/* =========================================================
+   GALAXY CANVAS (다크 모드에서만 나타나는 좌우 은하수)
+   ========================================================= */
+/* Canvas는 항상 깔려있되, 라이트 모드에선 투명 */
+ #galaxy-canvas{
+   position:fixed; inset:0;
+   z-index:0;                 /* <- 핵심: -1 ➜ 0 (배경 위, 콘텐츠 아래) */
+   pointer-events:none;
+   opacity:0; transition:opacity .35s ease;
+   display:block; width:100vw; height:100vh;
+   mix-blend-mode:screen;     /* 어두운 배경 위에서 은은하게 빛남 */
+ }
+html[data-theme="dark"] #galaxy-canvas{ opacity:1; }
+
+/* =========================================================
+   REDUCED MOTION 지원
+   ========================================================= */
+@media (prefers-reduced-motion: reduce){
+  .dot, .arrow, .slides{ transition:none !important; }
+  #galaxy-canvas{ transition:none; }
+}
+
+.link-list li { margin:6px 0; }
+.link-list a {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  text-decoration:none;
+  color:var(--text);
+}
+.link-list a:hover { opacity:.9; }
+/* Hero swipe/drag */
+#heroSlides{
+  touch-action: pan-y;   /* 세로 스크롤은 허용, 가로 제스처는 우리 코드가 처리 */
+  cursor: grab;
+  user-select: none;
+}
+#heroSlides:active{ cursor: grabbing; }
+#heroSlides img, #heroSlides video{
+  pointer-events: none;     /* 이미지가 드래그 이벤트 먹지 않게 */
+  -webkit-user-drag: none;  /* 사파리 이미지 드래그 방지 */
+  user-drag: none;
+}
+/* 섹션 제목 밑줄 (제목 글자에만 적용) */
+.head h2 .title-text {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 4px; /* 밑줄과 글자 간격 */
+}
+
+.head h2 .title-text::after {
+  content:"";
+  position: absolute;
+  left:0;
+  bottom:0;
+  width:100%;
+  height:3px;
+  background:var(--primary);
+  border-radius:999px;
+}
+
+/* more-info 링크 스타일 */
+.head h2 .more-info {
+  font-size:14px;
+  margin-left:10px;
+  text-decoration:underline;
+  color:var(--muted);
+}
+/* 1) 전역 밑줄 제거: 기존 .head h2::after 무효화 */
+.head h2::after{
+  content: none !important;
+  display: none !important;
+}
+
+/* 2) 제목 글자에만 밑줄 */
+.head h2 .title-text{
+  position: relative;
+  display: inline-block;
+  padding-bottom: 4px; /* 밑줄과 글자 간격 */
+}
+.head h2 .title-text::after{
+  content:"";
+  position:absolute; left:0; bottom:0;
+  width:100%; height:3px;
+  background:var(--primary);
+  border-radius:999px;
+}
+
+/* 3) 더보기 링크(작은 글씨) */
+.head h2 .more-info{
+  font-size:14px;
+  margin-left:10px;
+  text-decoration:underline;
+  color:var(--muted);
+}
+/* more-info: 밑줄 제거 */
+.head h2 .more-info{
+  font-size:14px;
+  margin-left:10px;
+  text-decoration: none;      /* ← 밑줄 제거 */
+  border-bottom: 0;           /* 혹시 다른 규칙이 그어도 차단 */
+  color: var(--muted);
+}
+
+/* (선택) 호버 시만 살짝 강조하고 싶다면 */
+.head h2 .more-info:hover{
+  text-decoration: none;      /* 계속 밑줄 없음 */
+  color: color-mix(in oklab, var(--muted) 80%, var(--text));
+}
+
+@media (max-width: 860px){
+  /* 모든 그리드 카드 1열로 */
+  .grid > *{
+    grid-column: 1 / -1 !important;
+  }
+
+  /* 헤더 브랜드: 줄바꿈 허용, 보조 텍스트 간소화 */
+  .brand{ white-space: normal; }
+  .brand-text .muted{ display:inline-block; opacity:.75; font-weight:500; }
+
+  /* 히어로 타이포 축소 */
+  .hero-title{ font-size:26px; line-height:1.25; }
+  .hero-desc{ font-size:14px; }
+
+}
+/* 더 작은 화면에서 살짝 더 타이트하게 */
+@media (max-width: 400px){
+  .hero-kicker{ font-size:10px; margin-bottom:-4px; }
+  .hero-title{ font-size:16px; margin-bottom:-4px; }
+  .hero-desc{ font-size:10px; }
+  .card-pad{display:inline;}
+}

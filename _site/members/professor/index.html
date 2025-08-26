@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Professor · Data Analytics Lab</title>
+  <meta name="description" content="Professor Sungil Kim (UNIST IE) — Data Analytics Lab." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS (cache-busting) -->
+  <link rel="stylesheet" href="/assets/style.css?v=">
+
+  <!-- ✅ Favicon (이 부분은 반드시 head 안에 위치) -->
+  <link rel="icon" type="image/png" href="/assets/hero/LabSign_DA_background.png">
+</head>
+  
+<body>
+  <header>
+  <div class="container nav" id="navbar">
+    <!-- Brand -->
+    <a class="brand brand-link" href="/">
+      <img class="brand-img"
+           src="/assets/hero/LabSign_DA_only.png?v="
+           alt="DA-Lab logo" loading="eager" decoding="async">
+      <span class="brand-text">
+        <span class="brand-main">Data Analytics Lab</span> · <span class="muted">UNIST IE</span>
+      </span>
+    </a>
+
+    <!-- Mobile menu button -->
+    <button class="menu-btn" aria-label="Toggle Menu"
+            onclick="document.getElementById('navbar').classList.toggle('open')">☰</button>
+
+    <!-- Main nav -->
+    <ul>
+      <li class="has-dd">
+        <a href="/about.html">About</a>
+        <ul class="dropdown" role="menu">
+          <li><a href="/about.html">Introduction</a></li>
+          <li><a href="/location.html">Location</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dd">
+        <a href="/members/professor/">Members</a>
+        <ul class="dropdown" role="menu">
+          <li><a href="/members/professor/">Professor</a></li>
+          <li><a href="/members/students/">Students</a></li>
+          <li><a href="/members/alumni/">Alumni</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dd">
+        <a href="/research/projects/">Research</a>
+        <ul class="dropdown" role="menu">
+          <li><a href="/research/projects/">Projects</a></li>
+          <li><a href="/research/publications/">Publications</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dd">
+        <a href="/activity/Lab%20News/">Activity</a>
+        <ul class="dropdown" role="menu">
+          <li><a href="/activity/Lab%20News/">Lab News</a></li>
+          <li><a href="/activity/Lab%20Events/">Lab Events</a></li>
+          <li><a href="/activity/Lab%20Seminar/">Lab Seminar</a></li>
+        </ul>
+      </li>
+
+      <!-- Contact (단일 항목: 잘못된 중첩 제거) -->
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+
+    <!-- ✅ Theme toggle button -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle color theme" aria-pressed="false">
+      <!-- Sun / Moon SVG -->
+      <svg class="sun" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 4V2M12 22v-2M4.93 4.93 3.52 3.52M20.48 20.48l-1.41-1.41M4 12H2m20 0h-2M4.93 19.07 3.52 20.48M20.48 3.52 19.07 4.93" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<!-- ✅ Galaxy canvas (다크 모드에서 좌우 여백 은하수) -->
+<canvas id="galaxy-canvas"></canvas>
+
+<!-- ✅ Theme & Galaxy JS -->
+<script defer src="/assets/main/theme.js?v="></script>
+
+  <div class="page-hero">
+  <div class="container">
+    <div class="breadcrumbs">
+      <a href="/">Home</a> · <a href="/members/">Members</a> · Professor
+    </div>
+    <h1 class="page-title">Professor</h1>
+    <p class="muted">Data Analytics Lab (UNIST IE)</p>
+  </div>
+</div>
+
+<main class="container" style="max-width: 1100px;">
+  <!-- Profile Header -->
+  <section class="card-pad" style="display:grid;grid-template-columns:160px 1fr;gap:24px;align-items:center;">
+    <img src="/assets/members/professor.png" alt="Dr. Sungil Kim" style="width:160px;height:160px;object-fit:cover;border-radius:16px;border:1px solid #eee;">
+    <div>
+      <h2 style="margin:0 0 6px;">Dr. Sungil Kim</h2>
+      <class="muted">
+        <a href="https://ie.unist.ac.kr/" target="_blank" rel="noopener noreferrer">
+    Associate Professor in the Department of Industrial Engineering
+        </a>
+      </p>
+      <class="muted">
+        <a href="https://aigs.unist.ac.kr/web/index.php" target="_blank" rel="noopener noreferrer">
+    Graduate School of Artificial Intelligence
+        </a>
+      </p>
+      <class="muted">
+        <a href="https://unist-kor.unist.ac.kr/" target="_blank" rel="noopener noreferrer">
+    UNIST (Ulsan National Institute of Science and Technology)
+        </a>
+      </p>
+
+      <ul style="list-style:none;padding:0;margin:14px 0 0;display:grid;grid-template-columns:repeat(1,minmax(220px,1fr));gap:6px 18px;">
+        <li><strong>Office</strong>: <span class="muted">Bldg.112 Rm. 301-8</span></li>
+        <li><strong>Tel.</strong>: <span class="muted">+82-52-217-3195</span></li>
+        <li><strong>Mail</strong>: <span class="muted">sungil.kim@unist.ac.kr</span></li>
+      </ul>
+
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin:8px 0 0;">
+        <a class="btn" href="/assets/cv/Sungil_Kim_CV.pdf" style="padding:8px 12px;border-radius:10px;border:1px solid #e5e7eb;text-decoration:none;">CV</a>
+        <a class="btn" href="https://scholar.google.com/" target="_blank" rel="noopener" style="padding:8px 12px;border-radius:10px;border:1px solid #e5e7eb;text-decoration:none;">Google Scholar</a>
+        <a class="btn" href="mailto:prof@example.ac.kr" style="padding:8px 12px;border-radius:10px;border:1px solid #e5e7eb;text-decoration:none;">Email</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- (yet) Bio -->
+  <section class="card card-pad" style="margin-top:16px;">
+    <h3 style="display:flex; align-items:center; font-size:20px; font-weight:600; margin:0 0 12px;">
+      <span style="display:inline-block; width:4px; height:20px; background:#26A7A7; margin-right:8px;"></span>
+      (yet) Bio
+    </h3>
+    <p>
+      Dr. Sungil Kim is an <strong>Associate Professor</strong> in the Department of Industrial Engineering at UNIST. He is
+      dedicated to tackling modern challenges in quality engineering within the ongoing era of AI transformation—including
+      <em>sensor drift</em>, <em>inefficient data representation</em>, and <em>class imbalance</em>. His work leverages
+      sensor data and real-time log data to provide practical, field-ready solutions.
+    </p>
+  </section>
+
+  <!-- Research Field/Research Topics -->
+  <section class="grid" style="margin-top:16px;">
+    <article class="card card-pad" style="grid-column: span 6;">
+      <h3 style="display:flex; align-items:center; font-size:20px; font-weight:600; margin:0 0 12px;">
+      <span style="display:inline-block; width:4px; height:20px; background:#26A7A7; margin-right:8px;"></span>
+        Research Field
+      </h3>
+      <ul>
+        <li>System Monitoring &amp; Anomaly Detection</li>
+        <li>Sequential Learning</li>
+        <li>Neural Differential Equations</li>
+        <li>Uncertainty Quantification</li>
+        <li>Artificial Intelligence in Quality Engineering</li>
+      </ul>
+    </article>
+    <article class="card card-pad" style="grid-column: span 6;">
+      <h3>Research Topics</h3>
+      <ul>
+        <li>Industrial Statistics and Data Analytics</li>
+        <li>Quality Engineering and Management</li>
+        <li>Response surface methodology</li>
+        <li>Demand forecasting</li>
+        <li>Machine learning and Data mining</li>
+        <li>Business Analytics</li>
+      </ul>
+    </article>
+  </section>
+
+  <!-- Curriculum Vitae -->
+  <section class="card card-pad" style="margin-top:16px;">
+    <h3 style="display:flex; align-items:center; font-size:20px; font-weight:600; margin:0 0 12px;">
+      <span style="display:inline-block; width:4px; height:20px; background:#26A7A7; margin-right:8px;"></span>
+      Curriculum Vitae
+    </h3>
+    <ul style="margin:0;">
+      <li><strong>Associate Professor</strong> UNIST, 2020.09-present</li>
+      <li><strong>Assistant Professor</strong> UNIST, 2016.07-2020.08</li>
+      <li><strong>Senior Engineer</strong> Samsung SDS, 2014.01-2016.06</li>
+      <li><strong>Consultant</strong> Terra Technology, 2011.09-2013.12</li>
+    </ul>
+  </section>
+
+  <!-- Academic Credential -->
+  <section class="card card-pad" style="margin-top:16px;">
+    <h3 style="display:flex; align-items:center; font-size:20px; font-weight:600; margin:0 0 12px;">
+      <span style="display:inline-block; width:4px; height:20px; background:#26A7A7; margin-right:8px;"></span>
+      Academic Credential
+    </h3>
+    <ul style="margin:0;">
+      <li><strong>Ph.D.</strong> Industrial Engineering, <em>Georgia Institute of Technology</em>, 2011</li>
+      <li><strong>M.S.</strong> Statistics, <em>Georgia Institute of Technology</em>, 2007</li>
+      <li><strong>M.S.</strong> Industrial Engineering, <em>Georgia Institute of Technology</em>, 2007</li>
+      <li><strong>B.Sc.</strong> Industrial Engineering, <em>Yonsei University</em>, 2005</li>
+    </ul>
+  </section>
+
+  <!-- Patents -->
+  <section class="card card-pad" style="margin-top:16px;">
+    <h3 style="display:flex; align-items:center; font-size:20px; font-weight:600; margin:0 0 12px;">
+      <span style="display:inline-block; width:4px; height:20px; background:#26A7A7; margin-right:8px;"></span>
+      Patents
+    </h3>
+    <ul>
+      <li style="font-size:14px; color:#4b5563;">Kim, Sungil (primary inventor), Method of anomaly detection of vessels applying Bayesian bootstrap. (10-2534357, granted May 16, 2023)</li>
+      <li style="font-size:14px; color:#4b5563;">Kim, Sungil (primary inventor), Sensor drift compensation method and device. (10-2364019, granted February 14, 2022)</li>
+      <li style="font-size:14px; color:#4b5563;">Kim, Sungil (primary inventor), Method and apparatus for determining delay possibility of shipment. (10-2250354, granted May 4, 2021)</li>
+    </ul>
+  </section>
+
+  <!-- (yet)Teaching -->
+  <section class="card card-pad" style="margin-top:16px;">
+    <h3 style="display:flex; align-items:center; font-size:20px; font-weight:600; margin:0 0 12px;">
+      <span style="display:inline-block; width:4px; height:20px; background:#26A7A7; margin-right:8px;"></span>
+      (yet)Teaching
+    </h3>
+    <ul>
+      <li>Statistical Quality Control (Undergraduate)</li>
+    </ul>
+  </section>
+
+  <!-- Research Publications -->
+  <section class="card card-pad" style="margin-top:16px;">
+    <h3 style="display:flex; align-items:center; font-size:20px; font-weight:600; margin:0 0 12px;">
+      <span style="display:inline-block; width:4px; height:20px; background:#26A7A7; margin-right:8px;"></span>
+      Research Publications
+    </h3>
+    <ul>
+      <li style="font-size:14px; color:#4b5563;">YongKyung Oh, Dongyoung Lim, and Sungil Kim (2024), Stable neural stochastic differential equations for irregular time series classification, ICLR (spotlight).</li>
+      <li style="font-size:14px; color:#4b5563;">Jonghwan Mun, Jitae Yoo, Heesun Kim, Nayi Ryu, and Sungil Kim (2024), Domain knowledge-informed</li>
+      <li style="font-size:14px; color:#4b5563;">Sungil Kim (2021), Maximum feasibility estimation, Information Sciences, 575, pp 739-801.</li>
+      <li style="font-size:14px; color:#4b5563;">Sungil Kim (2019), Revealing household characteristics using connected home products, Information Sciences, 486, pp 52-61.</li>
+      <li style="font-size:14px; color:#4b5563;">Sungil Kim and Heeyoung Kim (2016), A new metric of absolute percentage error for intermittent demand forecasts, International Journal of Forecasting, 32(3), pp 669-679.</li>
+    </ul>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;margin:8px 0 0;">
+      <a class="btn"
+         href="https://scholarworks.unist.ac.kr/researcher/5bf9ae09-967a-43fd-bf12-1b1d5253ff06"
+         style="padding:6px 14px;
+                border-radius:0; /* 둥글림 제거 */
+                border:none;
+                background-color:#26A7A7; /* 원하는 색 */
+                color:#fff;
+                text-decoration:none;
+                font-size:14px;
+                font-weight:600;
+                display:inline-block;
+                text-align:center;">
+        MORE
+      </a>
+    </div>
+  </section>
+
+  <!-- Awards/Honors/Memberships -->
+  <section class="card card-pad" style="margin-top:16px;">
+    <h3 style="display:flex; align-items:center; font-size:20px; font-weight:600; margin:0 0 12px;">
+      <span style="display:inline-block; width:4px; height:20px; background:#26A7A7; margin-right:8px;"></span>
+      Awards/Honors/Memberships
+    </h3>
+    <ul style="margin:0;">
+      <li style="font-size:14px; color:#4b5563;">Area editor in Statistics, Quality, Reliability &amp; Maintenance, Computers &amp; Industrial Engineering </li>
+      <li style="font-size:14px; color:#4b5563;">Senior Member, INFORMS</li>
+      <li style="font-size:14px; color:#4b5563;">2023 Excellence in Mentoring Award, College of Information and Biotechnology, UNIST</li>
+      <li style="font-size:14px; color:#4b5563;">2021 IISE Best Paper Award, Logistics and Supply Chain Division, The Institute of Industrial and Systems Engineers</li>
+      <li style="font-size:14px; color:#4b5563;">2019 IISE Best Paper Award, Quality Control &amp; Reliability Engineering Division, The Institute of Industrial and Systems Engineers</li>
+    </ul>
+  </section>
+
+</main>
+
+  <footer>
+  <div class="container small muted">
+    © 2025 Data Analytics Lab. All Rights Reserved.
+  </div>
+</footer>
+
+<script>
+  // 모바일 드롭다운 토글 (그대로 유지)
+  document.addEventListener('click', (e) => {
+    if (e.target.classList && e.target.classList.contains('dd-toggle')) {
+      e.preventDefault();
+      e.stopPropagation();
+      const li = e.target.closest('.has-dd');
+      if (li) li.classList.toggle('open');
+    }
+  });
+</script>
+
+
+  <!-- 모바일 드롭다운 토글 -->
+  <script>
+    document.addEventListener('click', function(e){
+      if(e.target.matches('.dd-toggle')){
+        e.preventDefault();
+        const li = e.target.closest('.has-dd');
+        if(li) li.classList.toggle('open');
+      }
+    });
+  </script>
+</body>
+</html>

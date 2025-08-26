@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Lab Events | Activity · Data Analytics Lab</title>
+  <meta name="description" content="Lab Events from Data Analytics Lab at UNIST." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS (cache-busting) -->
+  <link rel="stylesheet" href="/assets/style.css?v=">
+
+  <!-- ✅ Favicon (이 부분은 반드시 head 안에 위치) -->
+  <link rel="icon" type="image/png" href="/assets/hero/LabSign_DA_background.png">
+</head>
+  
+<body>
+  <header>
+  <div class="container nav" id="navbar">
+    <!-- Brand -->
+    <a class="brand brand-link" href="/">
+      <img class="brand-img"
+           src="/assets/hero/LabSign_DA_only.png?v="
+           alt="DA-Lab logo" loading="eager" decoding="async">
+      <span class="brand-text">
+        <span class="brand-main">Data Analytics Lab</span> · <span class="muted">UNIST IE</span>
+      </span>
+    </a>
+
+    <!-- Mobile menu button -->
+    <button class="menu-btn" aria-label="Toggle Menu"
+            onclick="document.getElementById('navbar').classList.toggle('open')">☰</button>
+
+    <!-- Main nav -->
+    <ul>
+      <li class="has-dd">
+        <a href="/about.html">About</a>
+        <ul class="dropdown" role="menu">
+          <li><a href="/about.html">Introduction</a></li>
+          <li><a href="/location.html">Location</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dd">
+        <a href="/members/professor/">Members</a>
+        <ul class="dropdown" role="menu">
+          <li><a href="/members/professor/">Professor</a></li>
+          <li><a href="/members/students/">Students</a></li>
+          <li><a href="/members/alumni/">Alumni</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dd">
+        <a href="/research/projects/">Research</a>
+        <ul class="dropdown" role="menu">
+          <li><a href="/research/projects/">Projects</a></li>
+          <li><a href="/research/publications/">Publications</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dd">
+        <a href="/activity/Lab%20News/">Activity</a>
+        <ul class="dropdown" role="menu">
+          <li><a href="/activity/Lab%20News/">Lab News</a></li>
+          <li><a href="/activity/Lab%20Events/">Lab Events</a></li>
+          <li><a href="/activity/Lab%20Seminar/">Lab Seminar</a></li>
+        </ul>
+      </li>
+
+      <!-- Contact (단일 항목: 잘못된 중첩 제거) -->
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+
+    <!-- ✅ Theme toggle button -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle color theme" aria-pressed="false">
+      <!-- Sun / Moon SVG -->
+      <svg class="sun" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 4V2M12 22v-2M4.93 4.93 3.52 3.52M20.48 20.48l-1.41-1.41M4 12H2m20 0h-2M4.93 19.07 3.52 20.48M20.48 3.52 19.07 4.93" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<!-- ✅ Galaxy canvas (다크 모드에서 좌우 여백 은하수) -->
+<canvas id="galaxy-canvas"></canvas>
+
+<!-- ✅ Theme & Galaxy JS -->
+<script defer src="/assets/main/theme.js?v="></script>
+
+  <div class="page-hero">
+  <div class="container">
+    <div class="breadcrumbs"><a href="/">Home</a> · <a href="/activity/Lab%20News/">Activity</a> · <a href="/activity/Lab%20Events/">Lab Events</a></div>
+    <h1 class="page-title">Lab Events</h1>
+  </div>
+</div>
+
+<main class="container">
+  <section>
+    <div class="grid">
+      
+      
+        
+
+        <article class="card card-pad" style="grid-column: span 12" id="2025-05-01-prof-birthday">
+          <!-- 텍스트 영역 -->
+          <div class="news-item">
+            <div class="news-date">2025-05-01</div>
+            <div>
+              <div style="font-weight:600">Professor's Birthday Celebration</div>
+              <p class="muted">The lab celebrated our professor's birthday.
+</p>
+            </div>
+          </div>
+
+          <!-- 이미지: 단일 대표 이미지 -->
+          
+          <figure class="photo" style="margin-top:12px">
+            <a href="/assets/activity/Lab_Events/Prof_birth.jpg" target="_blank" rel="noopener">
+              <img src="/assets/activity/Lab_Events/Prof_birth.jpg" alt="Birthday cake and lab group photo" loading="lazy">
+            </a>
+            
+              <figcaption class="small muted" style="padding:8px 4px">Celebration</figcaption>
+            
+          </figure>
+          
+
+          <!-- 이미지: 여러 장 갤러리 -->
+          
+        </article>
+      
+        
+
+        <article class="card card-pad" style="grid-column: span 12" id="2025-04-08-cherry-blossom-picnic">
+          <!-- 텍스트 영역 -->
+          <div class="news-item">
+            <div class="news-date">2025-04-08</div>
+            <div>
+              <div style="font-weight:600">Cherry Blossom Picnic</div>
+              <p class="muted">Enjoyed an outdoor picnic among the campus cherry blossoms.
+</p>
+            </div>
+          </div>
+
+          <!-- 이미지: 단일 대표 이미지 -->
+          
+          <figure class="photo" style="margin-top:12px">
+            <a href="/assets/activity/Lab_Events/spring_2025.jpg" target="_blank" rel="noopener">
+              <img src="/assets/activity/Lab_Events/spring_2025.jpg" alt="Lab group photo under cherry blossoms" loading="lazy">
+            </a>
+            
+              <figcaption class="small muted" style="padding:8px 4px">Cherry blossom picnic</figcaption>
+            
+          </figure>
+          
+
+          <!-- 이미지: 여러 장 갤러리 -->
+          
+        </article>
+      
+        
+
+        <article class="card card-pad" style="grid-column: span 12" id="2024-09-06-lab-homecoming">
+          <!-- 텍스트 영역 -->
+          <div class="news-item">
+            <div class="news-date">2024-09-06</div>
+            <div>
+              <div style="font-weight:600">Lab Homecoming Day</div>
+              <p class="muted">Held our annual lab homecoming day event.
+</p>
+            </div>
+          </div>
+
+          <!-- 이미지: 단일 대표 이미지 -->
+          
+          <figure class="photo" style="margin-top:12px">
+            <a href="/assets/activity/Lab_Events/homecoming_2024.jpg" target="_blank" rel="noopener">
+              <img src="/assets/activity/Lab_Events/homecoming_2024.jpg" alt="Lab homecoming day group photo" loading="lazy">
+            </a>
+            
+              <figcaption class="small muted" style="padding:8px 4px">Lab homecoming day</figcaption>
+            
+          </figure>
+          
+
+          <!-- 이미지: 여러 장 갤러리 -->
+          
+        </article>
+      
+    </div>
+  </section>
+</main>
+
+
+  <footer>
+  <div class="container small muted">
+    © 2025 Data Analytics Lab. All Rights Reserved.
+  </div>
+</footer>
+
+<script>
+  // 모바일 드롭다운 토글 (그대로 유지)
+  document.addEventListener('click', (e) => {
+    if (e.target.classList && e.target.classList.contains('dd-toggle')) {
+      e.preventDefault();
+      e.stopPropagation();
+      const li = e.target.closest('.has-dd');
+      if (li) li.classList.toggle('open');
+    }
+  });
+</script>
+
+
+  <!-- 모바일 드롭다운 토글 -->
+  <script>
+    document.addEventListener('click', function(e){
+      if(e.target.matches('.dd-toggle')){
+        e.preventDefault();
+        const li = e.target.closest('.has-dd');
+        if(li) li.classList.toggle('open');
+      }
+    });
+  </script>
+</body>
+</html>

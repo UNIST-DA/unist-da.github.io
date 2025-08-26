@@ -433,3 +433,26 @@ html[data-theme="dark"] #galaxy-canvas{ opacity:1; }
   text-decoration: none;      /* 계속 밑줄 없음 */
   color: color-mix(in oklab, var(--muted) 80%, var(--text));
 }
+
+@media (max-width: 860px){
+  /* 모든 그리드 카드 1열로 */
+  .grid > *{
+    grid-column: 1 / -1 !important;
+  }
+
+  /* 헤더 브랜드: 줄바꿈 허용, 보조 텍스트 간소화 */
+  .brand{ white-space: normal; }
+  .brand-text .muted{ display:inline-block; opacity:.75; font-weight:500; }
+
+  /* 히어로 타이포 축소 */
+  .hero-title{ font-size:26px; line-height:1.25; }
+  .hero-desc{ font-size:14px; }
+
+}
+/* 더 작은 화면에서 살짝 더 타이트하게 */
+@media (max-width: 400px){
+  .hero-kicker{ font-size:10px; margin-bottom:-4px; }
+  .hero-title{ font-size:16px; margin-bottom:-4px; }
+  .hero-desc{ font-size:10px; }
+  .card-pad{display:inline;}
+}
