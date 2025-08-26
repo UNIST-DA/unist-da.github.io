@@ -1,7 +1,7 @@
 ---
 layout: project
 slug: lg-lqc
-permalink: /research/projects/lg-lqc/
+permalink: /research/projects/contents/lg-lqc/
 title: LG LQC (Line Quality Control)
 ---
 
