@@ -5,7 +5,7 @@
   summary: Detect latent defects on production lines by fusing domain knowledge with functional outlier detection.
   period: "2021–2024"
   image: /assets/research/projects/lg-lqc-fig6.png
-  url: /research/projects/contents/lg-lqc
+  url: /research/projects/contents/lg-lqc/
   category: Artificial Intelligence in Quality Engineering
   tags:
     - Functional Data Analysis
