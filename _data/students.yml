@@ -79,22 +79,6 @@
   projects: []
   order: 50
 
-- slug: taewon-kang
-  name: Taewon Kang
-  role: MS Student
-  period: "—"
-  photo: /assets/members/students/taewon-kang.jpg
-  summary: Data analytics, Anomaly detection, Quality Engineering and Management, Data Mining for Quality Control
-  tags: [Analytics, Anomaly Detection, Quality]
-  email:
-  website:
-  github:
-  scholar:
-  linkedin:
-  cv:
-  projects: []
-  order: 60
-
 - slug: yongmin-kim
   name: Yongmin Kim
   role: Combined Master-Doctor
