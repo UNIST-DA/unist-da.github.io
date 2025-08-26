@@ -1,7 +1,7 @@
 ---
 layout: project
 slug: scsc-fuel-opt
-permalink: /research/projects/scsc-fuel-opt/
+permalink: /research/projects/contents/scsc-fuel-opt/
 title: Fuel Consumption Prediction & Optimization (SCSC)
 ---
 
