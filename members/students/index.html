@@ -65,7 +65,6 @@ permalink: /members/students/
       <div class="head">
         <h2>
           <span class="title-text">Ph.D Students</span>
-          <a href="{{ '/about.html' | relative_url }}" class="more-info">– more info</a>
         </h2>
       </div>
 
@@ -83,3 +82,136 @@ permalink: /members/students/
                   <img src="{{ s.photo | relative_url }}" alt="{{ s.name }}" class="student-photo">
                 {% endif %}
                 <div class="student-body">
+                  <h3 style="margin:0 0 6px">{{ s.name }}</h3>
+                  {% if s.role or s.period %}
+                    <p class="student-meta">
+                      {% if s.role %}{{ s.role }}{% endif %}
+                      {% if s.period %}{% if s.role %} · {% endif %}{{ s.period }}{% endif %}
+                    </p>
+                  {% endif %}
+                  {% if s.summary %}
+                    <p class="muted" style="margin:0 0 8px">{{ s.summary }}</p>
+                  {% endif %}
+                  {% if s.tags %}
+                    <p class="student-tags">
+                      {% for tag in s.tags %}
+                        <span>{{ tag }}</span>
+                      {% endfor %}
+                    </p>
+                  {% endif %}
+                </div>
+              </article>
+            </a>
+          {% endif %}
+        {% endfor %}
+        {% if has_phd == false %}
+          <p class="muted">No Ph.D students listed yet.</p>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+
+  <!-- MS Students -->
+  <section id="ms" class="students-section">
+    <div class="container">
+      <div class="head">
+        <h2>
+          <span class="title-text">MS Students</span>
+        </h2>
+      </div>
+
+      <div class="student-grid">
+        {% assign has_ms = false %}
+        {% for s in items %}
+          {% assign r = s.role | default: '' | downcase %}
+          {% if r contains 'ms' %}
+            {% assign has_ms = true %}
+            {% assign href_url = s.url | default: '/members/students/contents/' | append: s.slug | append: '/' %}
+            {% if href_url != '' and href_url | slice: -1 != '/' %}{% assign href_url = href_url | append: '/' %}{% endif %}
+            <a href="{{ href_url | relative_url }}" class="card-link" style="text-decoration:none;color:inherit" id="{{ s.slug }}">
+              <article class="student-row">
+                {% if s.photo %}
+                  <img src="{{ s.photo | relative_url }}" alt="{{ s.name }}" class="student-photo">
+                {% endif %}
+                <div class="student-body">
+                  <h3 style="margin:0 0 6px">{{ s.name }}</h3>
+                  {% if s.role or s.period %}
+                    <p class="student-meta">
+                      {% if s.role %}{{ s.role }}{% endif %}
+                      {% if s.period %}{% if s.role %} · {% endif %}{{ s.period }}{% endif %}
+                    </p>
+                  {% endif %}
+                  {% if s.summary %}
+                    <p class="muted" style="margin:0 0 8px">{{ s.summary }}</p>
+                  {% endif %}
+                  {% if s.tags %}
+                    <p class="student-tags">
+                      {% for tag in s.tags %}
+                        <span>{{ tag }}</span>
+                      {% endfor %}
+                    </p>
+                  {% endif %}
+                </div>
+              </article>
+            </a>
+          {% endif %}
+        {% endfor %}
+        {% if has_ms == false %}
+          <p class="muted">No MS students listed yet.</p>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+
+  <!-- Interns -->
+  <section id="intern" class="students-section">
+    <div class="container">
+      <div class="head">
+        <h2>
+          <span class="title-text">Interns</span>
+        </h2>
+      </div>
+
+      <div class="student-grid">
+        {% assign has_intern = false %}
+        {% for s in items %}
+          {% assign r = s.role | default: '' | downcase %}
+          {% if r contains 'intern' %}
+            {% assign has_intern = true %}
+            {% assign href_url = s.url | default: '/members/students/contents/' | append: s.slug | append: '/' %}
+            {% if href_url != '' and href_url | slice: -1 != '/' %}{% assign href_url = href_url | append: '/' %}{% endif %}
+            <a href="{{ href_url | relative_url }}" class="card-link" style="text-decoration:none;color:inherit" id="{{ s.slug }}">
+              <article class="student-row">
+                {% if s.photo %}
+                  <img src="{{ s.photo | relative_url }}" alt="{{ s.name }}" class="student-photo">
+                {% endif %}
+                <div class="student-body">
+                  <h3 style="margin:0 0 6px">{{ s.name }}</h3>
+                  {% if s.role or s.period %}
+                    <p class="student-meta">
+                      {% if s.role %}{{ s.role }}{% endif %}
+                      {% if s.period %}{% if s.role %} · {% endif %}{{ s.period }}{% endif %}
+                    </p>
+                  {% endif %}
+                  {% if s.summary %}
+                    <p class="muted" style="margin:0 0 8px">{{ s.summary }}</p>
+                  {% endif %}
+                  {% if s.tags %}
+                    <p class="student-tags">
+                      {% for tag in s.tags %}
+                        <span>{{ tag }}</span>
+                      {% endfor %}
+                    </p>
+                  {% endif %}
+                </div>
+              </article>
+            </a>
+          {% endif %}
+        {% endfor %}
+        {% if has_intern == false %}
+          <p class="muted">No interns listed yet.</p>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+</main>
