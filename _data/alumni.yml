@@ -4,108 +4,97 @@
   name: "Byungkook Koo"
   role: "MS Student"
   first_position: ""
-  photo: /assets/members/none.png
+  photo: /assets/members/alumni/byungkook-koo.png
   order: 10
-  interests:
-    - Data analytics
-    - Machine learning
-    - Data mining
-    - Anomaly detection
 
-- slug: jiln-kwak
-  name: "Jiln Kwak"
+- slug: jiin-kwak
+  name: "Jiin Kwak"
   role: "MS Student"
   first_position: "LG Electronics"
-  photo: /assets/members/none.png
+  photo: /assets/members/alumni/jiin-kwak.png
   order: 20
 
 - slug: juhui-lee
   name: "Juhui Lee"
   role: "MS Student"
   first_position: "THYROSCOPE Inc."
-  photo: /assets/members/none.png
+  photo: /assets/members/alumni/juhui-lee.png
   order: 30
 
 - slug: juyeong-lee
   name: "Juyeong Lee"
   role: "MS Student"
   first_position: "QRAFT"
-  photo: /assets/members/none.png
+  photo: /assets/members/alumni/juyeong-lee.png
   order: 40
 
 - slug: namu-kim
   name: "Namu Kim"
   role: "Intern"
   first_position: "POSCO"
-  photo: /assets/members/none.png
+  photo: /assets/members/alumni/byungkook-koo.png
   order: 50
 
 - slug: yongkyung-oh
   name: "YongKyung Oh"
   role: "Postdoc"
   first_position: "Postdoc at UCLA"
-  photo: /assets/members/none.png
+  photo: /assets/members/alumni/yongkyung-oh.png
   order: 60
 
 - slug: giheon-koh
   name: "Giheon Koh"
   role: "MS Student"
   first_position: "LG Display"
-  photo: /assets/members/none.png
+  photo: /assets/members/alumni/giheon-koh.png
   order: 70
 
 - slug: gyeongjun-kim
   name: "Gyeongjun Kim"
   role: "MS Student"
   first_position: "CJ Logistics"
-  photo: /assets/members/none.png
+  photo: /assets/members/alumni/gyeongjun-kim.png
   order: 80
 
 - slug: heesun-kim
   name: "Heesun Kim"
   role: "MS Student"
   first_position: "LG Electronics"
-  photo: /assets/members/none.png
+  photo: /assets/members/alumni/heesun-kim.png
   order: 90
 
 - slug: jaemin-park
   name: "Jaemin Park"
   role: "MS Student"
   first_position: "THYROSCOPE Inc."
-  photo: /assets/members/none.png
+  photo: /assets/members/alumni/jaemin-park.png
   order: 100
 
 - slug: jitae-yoo
   name: "Jitae Yoo"
   role: "MS Student"
   first_position: "LX Hausys"
-  photo: /assets/members/none.png
+  photo: /assets/members/alumni/jitae-yoo.png
   order: 110
 
 - slug: jonghwan-moon
   name: "JongHwan Moon"
   role: "MS Student"
   first_position: "LG Electronics"
-  photo: /assets/members/none.png
+  photo: /assets/members/alumni/jonghwan-moon.png
   order: 120
 
 - slug: kwonin-yoon
   name: "Kwonin Yoon"
   role: "MS Student"
   first_position: "LG Electronics"
-  photo: /assets/members/none.png
+  photo: /assets/members/alumni/kwonin-yoon.png
   order: 130
 
-- slug: jae-hun-cho
-  name: "Jae Hun Cho"
+- slug: jaehun-cho
+  name: "Jaehun Cho"
   role: "MS Student"
   first_position: ""
-  photo: /assets/members/none.png
+  photo: /assets/members/alumni/jaehun-cho.png
   order: 140
-  interests:
-    - Medical image analysis
-    - Machine learning
-    - Deep learning
-    - Generative model
-    - Computer Vision
-    - Object Detection
+
