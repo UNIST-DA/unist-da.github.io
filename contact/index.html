@@ -16,7 +16,8 @@ description: Contact details and location for Data Analytics Lab at UNIST.
 <main class="container">
   <section>
     <div class="grid">
-      <!-- Left: Contact details -->
+
+      <!-- 1행: Left — Contact details -->
       <div class="card card-pad" style="grid-column: span 6">
         <h3 style="margin:0 0 8px">Get in touch</h3>
         <p class="muted">Email: <a href="mailto:sungil.kim@unist.ac.kr">sungil.kim@unist.ac.kr</a></p>
@@ -24,45 +25,17 @@ description: Contact details and location for Data Analytics Lab at UNIST.
 
         <hr style="border:none;border-top:1px solid var(--line);margin:14px 0">
 
-        <!-- Prospective Students -->
-        <h4 style="margin:0 0 6px">Prospective Students</h4>
-
-        <div style="margin:4px 0 2px;font-weight:600">Graduate Students (M.S./Ph.D.)</div>
-        <p class="muted"><span class="tag">EN</span>
-          Please email your personal statement, CV, research interests, and project portfolio.
-        </p>
-        <p class="muted"><span class="tag">KR</span>
-          대학원(석/박) 지원자는 자기소개서, CV, 관심 연구 주제, 프로젝트 포트폴리오를 이메일로 보내주세요.
-        </p>
-
-        <div style="margin:10px 0 2px;font-weight:600">Research Interns</div>
-        <p class="muted"><span class="tag">EN</span>
-          UNIST students: Email a short personal statement and your research interests.
-          <em>Graduate School Admission and Research Lab Experience: Apply via email anytime.</em>
-        </p>
-        <p class="muted"><span class="tag">KR</span>
-          UNIST 재학생: 자기소개서와 관심 연구 주제를 간단히 작성해 이메일로 지원하세요.
-          <em>대학원 진학/연구실 경험 목적 인턴 지원은 상시 가능합니다.</em>
-        </p>
-        <p class="muted"><span class="tag">EN</span>
-          Students from other universities: you can apply for internships through the U-SURF and U-WURF programs.
-        </p>
-        <p class="muted"><span class="tag">KR</span>
-          타 대학 학생: U-SURF 및 U-WURF 프로그램을 통해 인턴십에 지원 가능합니다.
-        </p>
-
         <!-- Industry Collaboration -->
-        <h4 style="margin:12px 0 6px">Industry Collaboration</h4>
+        <h4 style="margin:0 0 6px">Industry Collaboration</h4>
         <p class="muted"><span class="tag">EN</span>
-          We welcome collaborations on quality/process data analytics, anomaly detection PoC, joint research, and consulting.
+          We collaborate on quality/process data analytics, anomaly detection PoC, joint research, and consulting.
         </p>
         <p class="muted"><span class="tag">KR</span>
           품질·공정 데이터 분석, 이상탐지 PoC, 공동연구 및 자문 협업 가능합니다.
         </p>
       </div>
 
-
-      <!-- Right: Office Address (wrap as a card, span 6) -->
+      <!-- 1행: Right — Office Address -->
       <div class="card card-pad" style="grid-column: span 6">
         <h2 style="margin:0 0 10px">Office Address</h2>
         <ul style="margin:0; padding-left:18px">
@@ -81,18 +54,55 @@ description: Contact details and location for Data Analytics Lab at UNIST.
         </ul>
       </div>
 
-      <!-- Map (keep inside the same grid) -->
+      <!-- 2행: Prospective Students (풀폭 카드) -->
+      <div class="card card-pad" style="grid-column: span 12" id="prospective-students">
+        <h3 style="margin:0 0 8px">Prospective Students</h3>
+
+        <div class="row">
+          <div>
+            <h4 style="margin:8px 0 4px">Graduate Students (M.S./Ph.D.)</h4>
+            <p class="muted"><span class="tag">EN</span>
+              Please email your personal statement, CV, research interests, and project portfolio.
+            </p>
+            <p class="muted"><span class="tag">KR</span>
+              대학원(석/박) 지원자는 자기소개서, CV, 관심 연구 주제, 프로젝트 포트폴리오를 이메일로 보내주세요.
+            </p>
+          </div>
+
+          <div>
+            <h4 style="margin:8px 0 4px">Research Interns</h4>
+            <p class="muted"><span class="tag">EN</span>
+              UNIST students: Email a short personal statement and your research interests.
+              <em>Graduate School Admission and Research Lab Experience: Apply via email anytime.</em>
+            </p>
+            <p class="muted"><span class="tag">KR</span>
+              UNIST 재학생: 자기소개서와 관심 연구 주제를 간단히 작성해 이메일로 지원하세요.
+              <em>대학원 진학/연구실 경험 목적 인턴 지원은 상시 가능합니다.</em>
+            </p>
+            <p class="muted"><span class="tag">EN</span>
+              Students from other universities: you can apply for internships through the U-SURF and U-WURF programs.
+            </p>
+            <p class="muted"><span class="tag">KR</span>
+              타 대학 학생: U-SURF 및 U-WURF 프로그램을 통해 인턴십에 지원 가능합니다.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3행: Map (풀폭 카드) -->
       <div class="card card-pad" style="grid-column: span 12">
         <h3 style="margin:0 0 8px">Location — UNIST 제5공학관(112동)</h3>
         <div class="map-container">
-          <iframe class="map" 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d729.7958112582595!2d129.1867358813372!3d35.57151354849208!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35662fd1cdd3fc1b%3A0x83e4103bbbe213ee!2z7KCcNeqzte2Vmeq0gA!5e0!3m2!1sko!2skr!4v1755876524787!5m2!1sko!2skr" 
+          <iframe class="map"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d729.7958112582595!2d129.1867358813372!3d35.57151354849208!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35662fd1cdd3fc1b%3A0x83e4103bbbe213ee!2z7KCcNeqzte2Vmeq0gA!5e0!3m2!1sko!2skr!4v1755876524787!5m2!1sko!2skr"
             allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </div>
+
     </div>
   </section>
 </main>
+
 
 <style>
 /* 지도 컨테이너 스타일 추가 */
