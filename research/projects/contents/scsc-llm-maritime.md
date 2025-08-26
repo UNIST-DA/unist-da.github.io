@@ -1,7 +1,7 @@
 ---
 layout: project
 slug: scsc-llm-maritime
-permalink: /research/projects/scsc-llm-maritime/
+permalink: /research/projects/contents/scsc-llm-maritime/
 title: LLM Agent for Maritime Data Analysis (SCSC)
 ---
 
