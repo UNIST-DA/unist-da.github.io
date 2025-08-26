@@ -98,3 +98,10 @@
   photo: /assets/members/alumni/jaehun-cho.jpg
   order: 140
 
+- slug: taewon-kang
+  name: "Taewon Kang"
+  role: "MS Student"
+  first_position: ""
+  photo: /assets/members/alumni/taewon-kang.jpg
+  order: 150
+
