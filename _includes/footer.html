@@ -1,12 +1,11 @@
 <footer>
-  <div class="container small muted">© <span id="year"></span> Data Analytics Lab, UNIST IE.</div>
+  <div class="container small muted">
+    © 2025 Data Analytics Lab. All Rights Reserved.
+  </div>
 </footer>
 
 <script>
-  // footer year
-  (function(){ const y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear(); })();
-
-  // 모바일 드롭다운 토글
+  // 모바일 드롭다운 토글 (그대로 유지)
   document.addEventListener('click', (e) => {
     if (e.target.classList && e.target.classList.contains('dd-toggle')) {
       e.preventDefault();
