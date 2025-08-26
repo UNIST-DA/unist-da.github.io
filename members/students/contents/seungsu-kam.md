@@ -1,7 +1,7 @@
 ---
 layout: student
 slug: seungsu-kam
-permalink: /members/students/seungsu-kam/
+permalink: /members/students/contents/seungsu-kam/
 title: SeungSu Kam
 name: SeungSu Kam
 role: Combined Master-Doctor
