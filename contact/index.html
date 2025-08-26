@@ -9,7 +9,7 @@ description: Contact details and location for Data Analytics Lab at UNIST.
   <div class="container">
     <div class="breadcrumbs"><a href="{{ site.baseurl }}/">Home</a> · Contact</div>
     <h1 class="page-title">Contact</h1>
-    <p class="muted">연락처, 위치, 그리고 협업/합류 관련 안내</p>
+    <p class="muted">Contact, Location, and Collaboration/Joining Information</p>
   </div>
 </div>
 
@@ -19,41 +19,78 @@ description: Contact details and location for Data Analytics Lab at UNIST.
       <!-- Contact details -->
       <div class="card card-pad" style="grid-column: span 6">
         <h3 style="margin:0 0 8px">Get in touch</h3>
-        <p class="muted">Email: <a href="mailto:lab@unist.ac.kr">lab@unist.ac.kr</a></p>
-        <p class="muted">Address: UNIST, Ulsan, South Korea</p>
+        <p class="muted">Email: <a href="mailto:lab@unist.ac.kr">sungil.kim@unist.ac.kr</a></p>
+        <p class="muted">Address: 302-5, Building 112, 50, UNIST-gil, Eonyang-eup, Ulju-gun, Ulsan, Republic of Korea</p>
         <hr style="border:none;border-top:1px solid var(--line);margin:14px 0">
         <h4 style="margin:0 0 6px">Prospective Students</h4>
-        <p class="muted">지원 시, CV/연구관심/프로젝트 포트폴리오 링크를 함께 보내주세요.</p>
+        <p class="muted">지원 시, CV/관심연구/프로젝트 포트폴리오 링크를 함께 보내주세요.</p>
         <h4 style="margin:12px 0 6px">Industry Collaboration</h4>
         <p class="muted">품질/공정 데이터 분석·이상탐지 PoC, 공동연구·자문 문의 환영합니다.</p>
       </div>
 
       <!-- Inquiry form -->
-      <div class="card card-pad" style="grid-column: span 6">
-        <h3 style="margin:0 0 8px">Quick message</h3>
-        <!-- 방법 1) 간단 mailto; 방법 2) Formspree/Netlify endpoint로 action 교체 -->
-        <form action="mailto:lab@unist.ac.kr" method="post" enctype="text/plain">
-          <div class="row">
-            <input class="input" type="text" name="name" placeholder="Your name" required>
-            <input class="input" type="email" name="email" placeholder="Email address" required>
-          </div>
-          <input class="input" type="text" name="subject" placeholder="Subject" style="margin-top:12px">
-          <textarea class="input" name="message" rows="6" placeholder="Your message" style="margin-top:12px"></textarea>
-          <button class="btn" type="submit" style="margin-top:12px">Send</button>
-        </form>
-        <p class="muted small" style="margin-top:8px">
-          ※ 더 안정적인 제출을 원하면 <code>action</code>을 Formspree/Netlify Forms 엔드포인트로 바꾸세요.
-        </p>
+        <h2 style="margin:0 0 10px">Office Address</h2>
+
+        <ul style="margin:0; padding-left:18px">
+          <li style="margin-bottom:14px">
+            <div style="font-weight:700">Data Analytics Lab <span class="muted">(Room <strong>302-5</strong>)</span></div>
+            <div class="muted">울산광역시 울주군 언양읍 <strong>유니스트길 50</strong>, <strong>제5공학관 112동 302-5호</strong></div>
+            <div class="small muted">Ulsan National Institute of Science and Technology (UNIST),<br>
+              <strong>Building 112, Room 302-5</strong>, 50 UNIST-gil, Eonyang-eup, Ulju-gun, Ulsan 44919, Republic of Korea
+            </div>
+          </li>
+
+          <li>
+            <div style="font-weight:700">Professor's Office <span class="muted">(Room <strong>301-8</strong>)</span></div>
+            <div class="muted">울산광역시 울주군 언양읍 <strong>유니스트길 50</strong>, <strong>제5공학관 112동 301-8호</strong></div>
+            <div class="small muted">UNIST, <strong>Building 112, Room 301-8</strong>, 50 UNIST-gil, Eonyang-eup, Ulju-gun, Ulsan 44919, Republic of Korea</div>
+          </li>
+        </ul>
       </div>
 
       <!-- Map -->
       <div class="card card-pad" style="grid-column: span 12">
-        <h3 style="margin:0 0 8px">Location</h3>
-        <iframe class="map" loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          src="https://www.google.com/maps?q=UNIST&output=embed"
-          title="UNIST on Google Maps"></iframe>
+        <h3 style="margin:0 0 8px">Location — UNIST 제5공학관(112동)</h3>
+        <div class="map-container">
+          <iframe class="map" 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d729.7958112582595!2d129.1867358813372!3d35.57151354849208!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35662fd1cdd3fc1b%3A0x83e4103bbbe213ee!2z7KCcNeqzte2Vmeq0gA!5e0!3m2!1sko!2skr!4v1755876524787!5m2!1sko!2skr" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
       </div>
     </div>
   </section>
 </main>
+
+<style>
+/* 지도 컨테이너 스타일 추가 */
+.map-container {
+  position: relative;
+  width: 100%;
+  height: 300px; /* 원하는 높이로 조정 */
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.map-container iframe.map {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 0; /* 컨테이너가 이미 border-radius를 가지므로 */
+}
+
+/* 모바일에서 더 작은 높이 */
+@media (max-width: 768px) {
+  .map-container {
+    height: 250px;
+  }
+  
+  .grid > div {
+    grid-column: span 12 !important;
+  }
+}
+</style>
