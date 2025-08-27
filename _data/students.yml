@@ -3,7 +3,7 @@
   role: Combined Master-Doctor
   period: "—"
   photo: /assets/members/students/seungsu-kam.jpg
-  url: /members/students/contents/seungsu-kam/
+  url: /members/students/contents/seungsu-kam.md
   summary: Neural Differential Equation, Anomaly Detection, Irregularly-Sampled Time Series
   tags: [Neural DE, Anomaly Detection, Irregular TS]
   email:
