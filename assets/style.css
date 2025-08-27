@@ -449,8 +449,9 @@ html[data-theme="dark"] #galaxy-canvas{ opacity:1; }
   .hero-desc{ font-size:14px; }
 }
 
-/* 더 작은 화면에서 살짝 더 타이트하게 */
 @media (max-width: 400px){
-  .hero-title{ font-size:22px; }
-  .hero-desc{ font-size:13px; }
+  .hero-kicker{ font-size:10px; margin-bottom:-4px; }
+  .hero-title{ font-size:16px; margin-bottom:-4px; }
+  .hero-desc{ font-size:10px; }
+  .card-pad{display:inline;}
 }
