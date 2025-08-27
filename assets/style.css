@@ -455,3 +455,17 @@ html[data-theme="dark"] #galaxy-canvas{ opacity:1; }
   .hero-desc{ font-size:10px; }
   .card-pad{display:inline;}
 }
+
+/* Mail link icon */
+.email-line{display:flex; align-items:center; gap:8px; flex-wrap:wrap}
+.icon-mail{
+  display:inline-grid; place-items:center;
+  width:28px; height:28px;
+  border:1px solid var(--line); border-radius:8px;
+  background:#fff; transition:transform .08s ease, background .2s;
+}
+.icon-mail:hover{ background:var(--bg-soft); transform:translateY(-1px) }
+.icon-mail svg{ width:16px; height:16px; fill:var(--text) }
+
+/* (선택) 이모지 버전 */
+.icon-emoji{ font-size:18px; line-height:1 }
