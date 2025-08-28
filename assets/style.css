@@ -469,3 +469,7 @@ html[data-theme="dark"] #galaxy-canvas{ opacity:1; }
 
 /* (선택) 이모지 버전 */
 .icon-emoji{ font-size:18px; line-height:1 }
+
+.news-date {
+  white-space: nowrap;
+}
