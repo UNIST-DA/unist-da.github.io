@@ -15,16 +15,34 @@ permalink: /members/professor/
   </div>
 </div>
 
-<!-- 통일된 수직 리듬: 시작 간격 & 섹션 간 간격 -->
+<!-- Spacing + shared section title -->
 <style>
-  /* Students 페이지처럼: 첫 섹션을 페이지 히어로에서 충분히 띄우기 */
+  /* 페이지 시작 여백 & 섹션 간 간격(Students와 톤 맞춤) */
   .prof-section:first-of-type { margin-top: 32px; }
-  /* 그 외 모든 섹션 간격을 동일하게(여유 있게) */
   .prof-section + .prof-section { margin-top: 24px; }
-
   @media (max-width: 720px) {
     .prof-section:first-of-type { margin-top: 24px; }
     .prof-section + .prof-section { margin-top: 20px; }
+  }
+
+  /* 공통 섹션 제목 유틸리티 */
+  .sec-title{
+    display:flex;
+    align-items:center;
+    font-size:20px;
+    font-weight:600;
+    margin:0 0 12px;
+    line-height:1.3;
+    --accent:#26A7A7; /* 필요시 각 섹션에서 override 가능 */
+  }
+  .sec-title::before{
+    content:"";
+    width:4px;
+    height:20px;
+    border-radius:2px;
+    background:var(--accent);
+    margin-right:8px;
+    flex:0 0 4px;
   }
 </style>
 
@@ -37,7 +55,7 @@ permalink: /members/professor/
                   align-items:center;
                   padding:16px 20px;">
     <img src="{{ '/assets/members/professor/professor.jpg' | relative_url }}"
-         alt="Dr. Sungil Kim"
+         alt="Sungil Kim (김성일)"
          style="width:100%;max-width:260px;height:340px;
                 object-fit:cover;border-radius:16px;border:1px solid #eee;">
     <div>
@@ -58,7 +76,8 @@ permalink: /members/professor/
         </a>
       </p>
 
-      <ul style="list-style:none;padding:0;margin:14px 0 0;display:grid;grid-template-columns:repeat(1,minmax(220px,1fr));gap:6px 18px;">
+      <ul style="list-style:none;padding:0;margin:14px 0 0;display:grid;
+                 grid-template-columns:repeat(1,minmax(220px,1fr));gap:6px 18px;">
         <li><strong>Office</strong>: <span class="muted">Bldg.112 Rm. 301-8</span></li>
         <li><strong>Tel.</strong>: <span class="muted">+82-52-217-3195</span></li>
         <li><strong>Mail</strong>: <span class="muted">sungil.kim@unist.ac.kr</span></li>
@@ -77,10 +96,7 @@ permalink: /members/professor/
 
   <!-- (yet) Bio -->
   <section class="card card-pad prof-section">
-    <h3 style="display:flex; align-items:center; font-size:20px; font-weight:600; margin:0 0 12px;">
-      <span style="display:inline-block; width:4px; height:20px; background:#26A7A7; margin-right:8px;"></span>
-      (yet) Bio
-    </h3>
+    <h3 class="sec-title">(yet) Bio</h3>
     <p>
       Dr. Sungil Kim is an <strong>Associate Professor</strong> in the Department of Industrial Engineering at UNIST. He is
       dedicated to tackling modern challenges in quality engineering within the ongoing era of AI transformation—including
@@ -89,13 +105,10 @@ permalink: /members/professor/
     </p>
   </section>
 
-  <!-- Research Field/Research Topics -->
+  <!-- Research Field / Research Topics -->
   <section class="grid prof-section">
     <article class="card card-pad" style="grid-column: span 6;">
-      <h3 style="display:flex; align-items:center; font-size:20px; font-weight:600; margin:0 0 12px;">
-        <span style="display:inline-block; width:4px; height:20px; background:#26A7A7; margin-right:8px;"></span>
-        Research Field
-      </h3>
+      <h3 class="sec-title">Research Field</h3>
       <ul>
         <li>System Monitoring &amp; Anomaly Detection</li>
         <li>Sequential Learning</li>
@@ -105,10 +118,7 @@ permalink: /members/professor/
       </ul>
     </article>
     <article class="card card-pad" style="grid-column: span 6;">
-      <h3 style="display:flex; align-items:center; font-size:20px; font-weight:600; margin:0 0 12px;">
-        <span style="display:inline-block; width:4px; height:20px; background:#26A7A7; margin-right:8px;"></span>
-        Research Topics
-      </h3>
+      <h3 class="sec-title">Research Topics</h3>
       <ul>
         <li>Industrial Statistics and Data Analytics</li>
         <li>Quality Engineering and Management</li>
@@ -122,24 +132,18 @@ permalink: /members/professor/
 
   <!-- Curriculum Vitae -->
   <section class="card card-pad prof-section">
-    <h3 style="display:flex; align-items:center; font-size:20px; font-weight:600; margin:0 0 12px;">
-      <span style="display:inline-block; width:4px; height:20px; background:#26A7A7; margin-right:8px;"></span>
-      Curriculum Vitae
-    </h3>
+    <h3 class="sec-title">Curriculum Vitae</h3>
     <ul style="margin:0;">
-      <li><strong>Associate Professor</strong> UNIST, 2020.09-present</li>
-      <li><strong>Assistant Professor</strong> UNIST, 2016.07-2020.08</li>
-      <li><strong>Senior Engineer</strong> Samsung SDS, 2014.01-2016.06</li>
-      <li><strong>Consultant</strong> Terra Technology, 2011.09-2013.12</li>
+      <li><strong>Associate Professor</strong> UNIST, 2020.09–present</li>
+      <li><strong>Assistant Professor</strong> UNIST, 2016.07–2020.08</li>
+      <li><strong>Senior Engineer</strong> Samsung SDS, 2014.01–2016.06</li>
+      <li><strong>Consultant</strong> Terra Technology, 2011.09–2013.12</li>
     </ul>
   </section>
 
   <!-- Academic Credential -->
   <section class="card card-pad prof-section">
-    <h3 style="display:flex; align-items:center; font-size:20px; font-weight:600; margin:0 0 12px;">
-      <span style="display:inline-block; width:4px; height:20px; background:#26A7A7; margin-right:8px;"></span>
-      Academic Credential
-    </h3>
+    <h3 class="sec-title">Academic Credential</h3>
     <ul style="margin:0;">
       <li><strong>Ph.D.</strong> Industrial Engineering, <em>Georgia Institute of Technology</em>, 2011</li>
       <li><strong>M.S.</strong> Statistics, <em>Georgia Institute of Technology</em>, 2007</li>
@@ -150,10 +154,7 @@ permalink: /members/professor/
 
   <!-- Patents -->
   <section class="card card-pad prof-section">
-    <h3 style="display:flex; align-items:center; font-size:20px; font-weight:600; margin:0 0 12px;">
-      <span style="display:inline-block; width:4px; height:20px; background:#26A7A7; margin-right:8px;"></span>
-      Patents
-    </h3>
+    <h3 class="sec-title">Patents</h3>
     <ul>
       <li style="font-size:14px; color:#4b5563;">Kim, Sungil (primary inventor), Method of anomaly detection of vessels applying Bayesian bootstrap. (10-2534357, granted May 16, 2023)</li>
       <li style="font-size:14px; color:#4b5563;">Kim, Sungil (primary inventor), Sensor drift compensation method and device. (10-2364019, granted February 14, 2022)</li>
@@ -163,10 +164,7 @@ permalink: /members/professor/
 
   <!-- (yet) Teaching -->
   <section class="card card-pad prof-section">
-    <h3 style="display:flex; align-items:center; font-size:20px; font-weight:600; margin:0 0 12px;">
-      <span style="display:inline-block; width:4px; height:20px; background:#26A7A7; margin-right:8px;"></span>
-      (yet) Teaching
-    </h3>
+    <h3 class="sec-title">(yet) Teaching</h3>
     <ul>
       <li>Statistical Quality Control (Undergraduate)</li>
     </ul>
@@ -174,10 +172,7 @@ permalink: /members/professor/
 
   <!-- Research Publications -->
   <section class="card card-pad prof-section">
-    <h3 style="display:flex; align-items:center; font-size:20px; font-weight:600; margin:0 0 12px;">
-      <span style="display:inline-block; width:4px; height:20px; background:#26A7A7; margin-right:8px;"></span>
-      Research Publications
-    </h3>
+    <h3 class="sec-title">Research Publications</h3>
     <ul>
       <li style="font-size:14px; color:#4b5563;">YongKyung Oh, Dongyoung Lim, and Sungil Kim (2024), Stable neural stochastic differential equations for irregular time series classification, ICLR (spotlight).</li>
       <li style="font-size:14px; color:#4b5563;">Jonghwan Mun, Jitae Yoo, Heesun Kim, Nayi Ryu, and Sungil Kim (2024), Domain knowledge-informed</li>
@@ -196,10 +191,7 @@ permalink: /members/professor/
 
   <!-- Awards/Honors/Memberships -->
   <section class="card card-pad prof-section">
-    <h3 style="display:flex; align-items:center; font-size:20px; font-weight:600; margin:0 0 12px;">
-      <span style="display:inline-block; width:4px; height:20px; background:#26A7A7; margin-right:8px;"></span>
-      Awards/Honors/Memberships
-    </h3>
+    <h3 class="sec-title">Awards/Honors/Memberships</h3>
     <ul style="margin:0;">
       <li style="font-size:14px; color:#4b5563;">Area editor in Statistics, Quality, Reliability &amp; Maintenance, Computers &amp; Industrial Engineering</li>
       <li style="font-size:14px; color:#4b5563;">Senior Member, INFORMS</li>
