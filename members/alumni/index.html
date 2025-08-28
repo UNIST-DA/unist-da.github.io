@@ -101,7 +101,7 @@ permalink: /members/alumni/
               {% if a.photo %}<img src="{{ a.photo | relative_url }}" alt="{{ a.name }}" class="alumni-photo" loading="lazy" decoding="async">{% endif %}
               <h3 class="alumni-name">{{ a.name }}</h3>
               {% if a.role %}<p class="alumni-role">{{ a.role }}</p>{% endif %}
-              {% if a.first_position %}<p class="alumni-first"><strong>Current position:</strong> {{ a.first_position }}</p>{% endif %}
+              {% if a.current_position %}<p class="alumni-first"><strong>Current position:</strong> {{ a.current_position }}</p>{% endif %}
               {% if a.interests and a.interests.size > 0 %}
                 <p class="alumni-interests">{{ a.interests | join: ", " }}</p>
               {% endif %}
@@ -129,7 +129,7 @@ permalink: /members/alumni/
               {% if a.photo %}<img src="{{ a.photo | relative_url }}" alt="{{ a.name }}" class="alumni-photo" loading="lazy" decoding="async">{% endif %}
               <h3 class="alumni-name">{{ a.name }}</h3>
               {% if a.role %}<p class="alumni-role">{{ a.role }}</p>{% endif %}
-              {% if a.first_position %}<p class="alumni-first"><strong>Current position:</strong> {{ a.first_position }}</p>{% endif %}
+              {% if a.current_position %}<p class="alumni-first"><strong>Current position:</strong> {{ a.current_position }}</p>{% endif %}
               {% if a.interests and a.interests.size > 0 %}
                 <p class="alumni-interests">{{ a.interests | join: ", " }}</p>
               {% endif %}
@@ -157,7 +157,7 @@ permalink: /members/alumni/
               {% if a.photo %}<img src="{{ a.photo | relative_url }}" alt="{{ a.name }}" class="alumni-photo" loading="lazy" decoding="async">{% endif %}
               <h3 class="alumni-name">{{ a.name }}</h3>
               {% if a.role %}<p class="alumni-role">{{ a.role }}</p>{% endif %}
-              {% if a.first_position %}<p class="alumni-first"><strong>Current position:</strong> {{ a.first_position }}</p>{% endif %}
+              {% if a.current_position %}<p class="alumni-first"><strong>Current position:</strong> {{ a.current_position }}</p>{% endif %}
               {% if a.interests and a.interests.size > 0 %}
                 <p class="alumni-interests">{{ a.interests | join: ", " }}</p>
               {% endif %}
