@@ -17,27 +17,30 @@ nav_order: 30
 </div>
 
 <style>
-  /* 전체 섹션 폭: Students와 동일한 컨테이너 체계 */
+  /* Students와 동일한 좌측 여백 체계(중첩 container 제거) */
   .alumni-wrap { margin-top: 36px; }
 
-  /* 공통 카드 스타일 (세로형 타일) */
+  /* 카드: 세로형 타일 유지 + 옅은 테두리 + 부드러운 그림자 */
   .alumni-grid {
     display: grid;
     gap: 24px;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    justify-content: start; /* 좌측부터 배치하여 양옆 공백 최소화 */
+    /* 고정폭 타일: 240~280px 범위에서만 배치 → 1명이어도 폭이 늘어나지 않음 */
+    grid-template-columns: repeat(auto-fill, minmax(240px, 280px));
+    justify-content: start;           /* 왼쪽부터 차곡차곡 */
   }
+
   .alumni-card {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 16px;
-    border: 1px solid #e5e7eb;         /* 옅은 회색 테두리 */
+    border: 1px solid #e5e7eb;        /* 옅은 회색 테두리 */
     border-radius: 16px;
-    background: #fff;                   /* 그림자가 자연스럽게 보이도록 흰 배경 */
+    background: #fff;                  /* 그림자 자연스럽게 */
     text-align: center;
     box-shadow: 0 1px 2px rgba(0,0,0,.03), 0 1px 1px rgba(0,0,0,.02);
     transition: box-shadow .15s ease, transform .15s ease;
+    width: 100%;
   }
   .alumni-card:hover { box-shadow: 0 6px 22px rgba(0,0,0,.06); }
 
@@ -56,11 +59,11 @@ nav_order: 30
     white-space: pre-line;
   }
 
-  /* 섹션 헤더 간 간격 (Students와 동일 느낌) */
+  /* 섹션 간 거리 */
   .alumni-wrap + .alumni-wrap { margin-top: 36px; }
 
   @media (max-width: 720px) {
-    .alumni-grid { gap: 16px; }
+    .alumni-grid { gap: 16px; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
   }
 </style>
 
@@ -70,10 +73,9 @@ nav_order: 30
   {%- comment -%}
     역할 분류 규칙:
     - Postdoc: role 내 'postdoc' 포함
-    - Ph.D Students: role 내 'ph.d', 'phd', 'doctor', 'combined' 포함
-    - MS Students:   role 내 'ms' 포함
-    - Interns:       role 내 'intern' 포함
-    (대소문자 혼용 대응 위해 downcase 후 contains 처리)
+    - Ph.D Students: 'ph.d', 'phd', 'doctor', 'combined' 포함
+    - MS Students:   'ms' 포함
+    - Interns:       'intern' 포함
   {%- endcomment -%}
 
   <!-- Postdoc -->
@@ -88,9 +90,7 @@ nav_order: 30
         {% if r contains 'postdoc' %}
           {% assign has_postdoc = true %}
           <article class="alumni-card" id="alumni-{{ a.slug }}">
-            {% if a.photo %}
-              <img src="{{ a.photo | relative_url }}" alt="{{ a.name }}" class="alumni-photo" loading="lazy" decoding="async">
-            {% endif %}
+            {% if a.photo %}<img src="{{ a.photo | relative_url }}" alt="{{ a.name }}" class="alumni-photo" loading="lazy" decoding="async">{% endif %}
             <h3 class="alumni-name">{{ a.name }}</h3>
             {% if a.role %}<p class="alumni-role">{{ a.role }}</p>{% endif %}
             {% if a.first_position %}<p class="alumni-first"><strong>First position:</strong> {{ a.first_position }}</p>{% endif %}
@@ -100,9 +100,7 @@ nav_order: 30
           </article>
         {% endif %}
       {% endfor %}
-      {% if has_postdoc == false %}
-        <p class="muted">No postdoctoral alumni listed yet.</p>
-      {% endif %}
+      {% if has_postdoc == false %}<p class="muted">No postdoctoral alumni listed yet.</p>{% endif %}
     </div>
   </section>
 
@@ -118,9 +116,7 @@ nav_order: 30
         {% if r contains 'ph.d' or r contains 'phd' or r contains 'doctor' or r contains 'combined' %}
           {% assign has_phd = true %}
           <article class="alumni-card" id="alumni-{{ a.slug }}">
-            {% if a.photo %}
-              <img src="{{ a.photo | relative_url }}" alt="{{ a.name }}" class="alumni-photo" loading="lazy" decoding="async">
-            {% endif %}
+            {% if a.photo %}<img src="{{ a.photo | relative_url }}" alt="{{ a.name }}" class="alumni-photo" loading="lazy" decoding="async">{% endif %}
             <h3 class="alumni-name">{{ a.name }}</h3>
             {% if a.role %}<p class="alumni-role">{{ a.role }}</p>{% endif %}
             {% if a.first_position %}<p class="alumni-first"><strong>First position:</strong> {{ a.first_position }}</p>{% endif %}
@@ -130,9 +126,7 @@ nav_order: 30
           </article>
         {% endif %}
       {% endfor %}
-      {% if has_phd == false %}
-        <p class="muted">No Ph.D alumni listed yet.</p>
-      {% endif %}
+      {% if has_phd == false %}<p class="muted">No Ph.D alumni listed yet.</p>{% endif %}
     </div>
   </section>
 
@@ -148,9 +142,7 @@ nav_order: 30
         {% if r contains 'ms' %}
           {% assign has_ms = true %}
           <article class="alumni-card" id="alumni-{{ a.slug }}">
-            {% if a.photo %}
-              <img src="{{ a.photo | relative_url }}" alt="{{ a.name }}" class="alumni-photo" loading="lazy" decoding="async">
-            {% endif %}
+            {% if a.photo %}<img src="{{ a.photo | relative_url }}" alt="{{ a.name }}" class="alumni-photo" loading="lazy" decoding="async">{% endif %}
             <h3 class="alumni-name">{{ a.name }}</h3>
             {% if a.role %}<p class="alumni-role">{{ a.role }}</p>{% endif %}
             {% if a.first_position %}<p class="alumni-first"><strong>First position:</strong> {{ a.first_position }}</p>{% endif %}
@@ -160,9 +152,7 @@ nav_order: 30
           </article>
         {% endif %}
       {% endfor %}
-      {% if has_ms == false %}
-        <p class="muted">No MS alumni listed yet.</p>
-      {% endif %}
+      {% if has_ms == false %}<p class="muted">No MS alumni listed yet.</p>{% endif %}
     </div>
   </section>
 
@@ -178,9 +168,7 @@ nav_order: 30
         {% if r contains 'intern' %}
           {% assign has_intern = true %}
           <article class="alumni-card" id="alumni-{{ a.slug }}">
-            {% if a.photo %}
-              <img src="{{ a.photo | relative_url }}" alt="{{ a.name }}" class="alumni-photo" loading="lazy" decoding="async">
-            {% endif %}
+            {% if a.photo %}<img src="{{ a.photo | relative_url }}" alt="{{ a.name }}" class="alumni-photo" loading="lazy" decoding="async">{% endif %}
             <h3 class="alumni-name">{{ a.name }}</h3>
             {% if a.role %}<p class="alumni-role">{{ a.role }}</p>{% endif %}
             {% if a.first_position %}<p class="alumni-first"><strong>First position:</strong> {{ a.first_position }}</p>{% endif %}
@@ -190,9 +178,7 @@ nav_order: 30
           </article>
         {% endif %}
       {% endfor %}
-      {% if has_intern == false %}
-        <p class="muted">No intern alumni listed yet.</p>
-      {% endif %}
+      {% if has_intern == false %}<p class="muted">No intern alumni listed yet.</p>{% endif %}
     </div>
   </section>
 </main>
