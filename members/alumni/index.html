@@ -81,105 +81,113 @@ permalink: /members/alumni/
 
   <!-- Postdoc -->
   <section id="postdoc" class="alumni-wrap">
-    <div class="head">
-      <h2><span class="title-text">Postdoc</span></h2>
-    </div>
-    <div class="alumni-grid">
-      {% assign has_postdoc = false %}
-      {% for a in items %}
-        {% assign r = a.role | default: '' | downcase %}
-        {% if r contains 'postdoc' %}
-          {% assign has_postdoc = true %}
-          <article class="alumni-card" id="alumni-{{ a.slug }}">
-            {% if a.photo %}<img src="{{ a.photo | relative_url }}" alt="{{ a.name }}" class="alumni-photo" loading="lazy" decoding="async">{% endif %}
-            <h3 class="alumni-name">{{ a.name }}</h3>
-            {% if a.role %}<p class="alumni-role">{{ a.role }}</p>{% endif %}
-            {% if a.first_position %}<p class="alumni-first"><strong>First position:</strong> {{ a.first_position }}</p>{% endif %}
-            {% if a.interests and a.interests.size > 0 %}
-              <p class="alumni-interests">{{ a.interests | join: ", " }}</p>
-            {% endif %}
-          </article>
-        {% endif %}
-      {% endfor %}
-      {% if has_postdoc == false %}<p class="muted">No postdoctoral alumni listed yet.</p>{% endif %}
+    <div class="container">
+      <div class="head">
+        <h2><span class="title-text">Postdoc</span></h2>
+      </div>
+      <div class="alumni-grid">
+        {% assign has_postdoc = false %}
+        {% for a in items %}
+          {% assign r = a.role | default: '' | downcase %}
+          {% if r contains 'postdoc' %}
+            {% assign has_postdoc = true %}
+            <article class="alumni-card" id="alumni-{{ a.slug }}">
+              {% if a.photo %}<img src="{{ a.photo | relative_url }}" alt="{{ a.name }}" class="alumni-photo" loading="lazy" decoding="async">{% endif %}
+              <h3 class="alumni-name">{{ a.name }}</h3>
+              {% if a.role %}<p class="alumni-role">{{ a.role }}</p>{% endif %}
+              {% if a.first_position %}<p class="alumni-first"><strong>First position:</strong> {{ a.first_position }}</p>{% endif %}
+              {% if a.interests and a.interests.size > 0 %}
+                <p class="alumni-interests">{{ a.interests | join: ", " }}</p>
+              {% endif %}
+            </article>
+          {% endif %}
+        {% endfor %}
+        {% if has_postdoc == false %}<p class="muted">No postdoctoral alumni listed yet.</p>{% endif %}
+      </div>
     </div>
   </section>
-
+  
   <!-- Ph.D Students -->
   <section id="phd" class="alumni-wrap">
-    <div class="head">
-      <h2><span class="title-text">Ph.D Students</span></h2>
-    </div>
-    <div class="alumni-grid">
-      {% assign has_phd = false %}
-      {% for a in items %}
-        {% assign r = a.role | default: '' | downcase %}
-        {% if r contains 'ph.d' or r contains 'phd' or r contains 'doctor' or r contains 'combined' %}
-          {% assign has_phd = true %}
-          <article class="alumni-card" id="alumni-{{ a.slug }}">
-            {% if a.photo %}<img src="{{ a.photo | relative_url }}" alt="{{ a.name }}" class="alumni-photo" loading="lazy" decoding="async">{% endif %}
-            <h3 class="alumni-name">{{ a.name }}</h3>
-            {% if a.role %}<p class="alumni-role">{{ a.role }}</p>{% endif %}
-            {% if a.first_position %}<p class="alumni-first"><strong>First position:</strong> {{ a.first_position }}</p>{% endif %}
-            {% if a.interests and a.interests.size > 0 %}
-              <p class="alumni-interests">{{ a.interests | join: ", " }}</p>
-            {% endif %}
-          </article>
-        {% endif %}
-      {% endfor %}
-      {% if has_phd == false %}<p class="muted">No Ph.D alumni listed yet.</p>{% endif %}
+    <div class="container">
+      <div class="head">
+        <h2><span class="title-text">Ph.D Students</span></h2>
+      </div>
+      <div class="alumni-grid">
+        {% assign has_phd = false %}
+        {% for a in items %}
+          {% assign r = a.role | default: '' | downcase %}
+          {% if r contains 'ph.d' or r contains 'phd' or r contains 'doctor' or r contains 'combined' %}
+            {% assign has_phd = true %}
+            <article class="alumni-card" id="alumni-{{ a.slug }}">
+              {% if a.photo %}<img src="{{ a.photo | relative_url }}" alt="{{ a.name }}" class="alumni-photo" loading="lazy" decoding="async">{% endif %}
+              <h3 class="alumni-name">{{ a.name }}</h3>
+              {% if a.role %}<p class="alumni-role">{{ a.role }}</p>{% endif %}
+              {% if a.first_position %}<p class="alumni-first"><strong>First position:</strong> {{ a.first_position }}</p>{% endif %}
+              {% if a.interests and a.interests.size > 0 %}
+                <p class="alumni-interests">{{ a.interests | join: ", " }}</p>
+              {% endif %}
+            </article>
+          {% endif %}
+        {% endfor %}
+        {% if has_phd == false %}<p class="muted">No Ph.D alumni listed yet.</p>{% endif %}
+      </div>
     </div>
   </section>
 
   <!-- MS Students -->
   <section id="ms" class="alumni-wrap">
-    <div class="head">
-      <h2><span class="title-text">MS Students</span></h2>
-    </div>
-    <div class="alumni-grid">
-      {% assign has_ms = false %}
-      {% for a in items %}
-        {% assign r = a.role | default: '' | downcase %}
-        {% if r contains 'ms' %}
-          {% assign has_ms = true %}
-          <article class="alumni-card" id="alumni-{{ a.slug }}">
-            {% if a.photo %}<img src="{{ a.photo | relative_url }}" alt="{{ a.name }}" class="alumni-photo" loading="lazy" decoding="async">{% endif %}
-            <h3 class="alumni-name">{{ a.name }}</h3>
-            {% if a.role %}<p class="alumni-role">{{ a.role }}</p>{% endif %}
-            {% if a.first_position %}<p class="alumni-first"><strong>First position:</strong> {{ a.first_position }}</p>{% endif %}
-            {% if a.interests and a.interests.size > 0 %}
-              <p class="alumni-interests">{{ a.interests | join: ", " }}</p>
-            {% endif %}
-          </article>
-        {% endif %}
-      {% endfor %}
-      {% if has_ms == false %}<p class="muted">No MS alumni listed yet.</p>{% endif %}
+    <div class="container">
+      <div class="head">
+        <h2><span class="title-text">MS Students</span></h2>
+      </div>
+      <div class="alumni-grid">
+        {% assign has_ms = false %}
+        {% for a in items %}
+          {% assign r = a.role | default: '' | downcase %}
+          {% if r contains 'ms' %}
+            {% assign has_ms = true %}
+            <article class="alumni-card" id="alumni-{{ a.slug }}">
+              {% if a.photo %}<img src="{{ a.photo | relative_url }}" alt="{{ a.name }}" class="alumni-photo" loading="lazy" decoding="async">{% endif %}
+              <h3 class="alumni-name">{{ a.name }}</h3>
+              {% if a.role %}<p class="alumni-role">{{ a.role }}</p>{% endif %}
+              {% if a.first_position %}<p class="alumni-first"><strong>First position:</strong> {{ a.first_position }}</p>{% endif %}
+              {% if a.interests and a.interests.size > 0 %}
+                <p class="alumni-interests">{{ a.interests | join: ", " }}</p>
+              {% endif %}
+            </article>
+          {% endif %}
+        {% endfor %}
+        {% if has_ms == false %}<p class="muted">No MS alumni listed yet.</p>{% endif %}
+      </div>
     </div>
   </section>
 
   <!-- Interns -->
   <section id="intern" class="alumni-wrap">
-    <div class="head">
-      <h2><span class="title-text">Interns</span></h2>
-    </div>
-    <div class="alumni-grid">
-      {% assign has_intern = false %}
-      {% for a in items %}
-        {% assign r = a.role | default: '' | downcase %}
-        {% if r contains 'intern' %}
-          {% assign has_intern = true %}
-          <article class="alumni-card" id="alumni-{{ a.slug }}">
-            {% if a.photo %}<img src="{{ a.photo | relative_url }}" alt="{{ a.name }}" class="alumni-photo" loading="lazy" decoding="async">{% endif %}
-            <h3 class="alumni-name">{{ a.name }}</h3>
-            {% if a.role %}<p class="alumni-role">{{ a.role }}</p>{% endif %}
-            {% if a.first_position %}<p class="alumni-first"><strong>First position:</strong> {{ a.first_position }}</p>{% endif %}
-            {% if a.interests and a.interests.size > 0 %}
-              <p class="alumni-interests">{{ a.interests | join: ", " }}</p>
-            {% endif %}
-          </article>
-        {% endif %}
-      {% endfor %}
-      {% if has_intern == false %}<p class="muted">No intern alumni listed yet.</p>{% endif %}
+    <div class="container">
+      <div class="head">
+        <h2><span class="title-text">Interns</span></h2>
+      </div>
+      <div class="alumni-grid">
+        {% assign has_intern = false %}
+        {% for a in items %}
+          {% assign r = a.role | default: '' | downcase %}
+          {% if r contains 'intern' %}
+            {% assign has_intern = true %}
+            <article class="alumni-card" id="alumni-{{ a.slug }}">
+              {% if a.photo %}<img src="{{ a.photo | relative_url }}" alt="{{ a.name }}" class="alumni-photo" loading="lazy" decoding="async">{% endif %}
+              <h3 class="alumni-name">{{ a.name }}</h3>
+              {% if a.role %}<p class="alumni-role">{{ a.role }}</p>{% endif %}
+              {% if a.first_position %}<p class="alumni-first"><strong>First position:</strong> {{ a.first_position }}</p>{% endif %}
+              {% if a.interests and a.interests.size > 0 %}
+                <p class="alumni-interests">{{ a.interests | join: ", " }}</p>
+              {% endif %}
+            </article>
+          {% endif %}
+        {% endfor %}
+        {% if has_intern == false %}<p class="muted">No intern alumni listed yet.</p>{% endif %}
+      </div>
     </div>
   </section>
 </main>
