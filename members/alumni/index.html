@@ -16,35 +16,37 @@ permalink: /members/alumni/
 </div>
 
 <style>
-  /* Students와 동일한 좌측 여백 체계(중첩 container 제거) */
-  .alumni-wrap { margin-top: 0px; }
-
-  /* 카드: 세로형 타일 유지 + 옅은 테두리 + 부드러운 그림자 */
+  /* Students와 동일한 좌측 여백 체계(중첩 container 없이) */
+  .alumni-wrap { margin-top: 0; }
+  
+  /* Students와 톤 맞춘 그리드 */
   .alumni-grid {
     display: grid;
-    gap: 16px;
-    /* 고정폭 타일: 240~280px 범위에서만 배치 → 1명이어도 폭이 늘어나지 않음 */
+    gap: 16px;  /* students와 동일 gap */
     grid-template-columns: repeat(auto-fill, minmax(240px, 280px));
-    justify-content: start;           /* 왼쪽부터 차곡차곡 */
+    justify-content: start; /* 왼쪽 정렬로 타일 채우기 */
   }
-
+  
+  /* 카드 전체 hover 효과 + 투명 박스 + 옅은 테두리 */
   .alumni-card {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 16px;
-    border: 0;                   /* 테두리 제거 */
-    border-radius: 16px;
-    background: transparent;     /* 배경 투명 */
+    padding: 16px;                    /* 바깥 카드가 패딩 담당 (students와 동일) */
+    border: 1px solid #e5e7eb;        /* 옅은 회색 테두리 */
+    border-radius: 12px;              /* 동일 라운드 값 */
+    background: transparent;          /* 배경 투명 */
     text-align: center;
-    box-shadow: none;            /* 기본 그림자 없음 */
+    text-decoration: none;            /* 혹시 a로 감쌀 경우 대비 */
+    color: inherit;
+    box-shadow: none;                 /* 기본 그림자 없음 */
     transition: box-shadow .15s ease, transform .15s ease;
   }
-  
   .alumni-card:hover {
-    box-shadow: 0 6px 22px rgba(0,0,0,.06);  /* hover 시만 카드가 떠 보이게 */
+    box-shadow: 0 6px 22px rgba(0,0,0,.06);  /* hover 시 카드 전체가 떠 보이게 */
   }
-
+  
+  /* 내부 요소들은 박스 느낌 없이 그대로 */
   .alumni-photo {
     width: 120px; height: 120px;
     border-radius: 50%;
@@ -59,13 +61,18 @@ permalink: /members/alumni/
     margin: 0; font-size: 13px; color: #4b5563; line-height: 1.5;
     white-space: pre-line;
   }
-
-  /* 섹션 간 거리 */
+  
+  /* 섹션 간 거리 (students와 동일 느낌) */
   section.alumni-wrap + section.alumni-wrap { margin-top: 36px; }
-
+  
+  /* 모바일 */
   @media (max-width: 720px) {
-    .alumni-grid { gap: 16px; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+    .alumni-grid {
+      gap: 16px;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
   }
+
 </style>
 
 <main class="container">
