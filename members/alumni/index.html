@@ -95,7 +95,7 @@ permalink: /members/alumni/
         {% assign has_postdoc = false %}
         {% for a in items %}
           {% assign r = a.role | default: '' | downcase %}
-          {% if r contains 'Ph.D.' %}
+          {% if r contains 'ph.d.' %}
             {% assign has_postdoc = true %}
             <article class="alumni-card" id="alumni-{{ a.slug }}">
               {% if a.photo %}<img src="{{ a.photo | relative_url }}" alt="{{ a.name }}" class="alumni-photo" loading="lazy" decoding="async">{% endif %}
@@ -123,7 +123,7 @@ permalink: /members/alumni/
         {% assign has_ms = false %}
         {% for a in items %}
           {% assign r = a.role | default: '' | downcase %}
-          {% if r contains 'M.S.' %}
+          {% if r contains 'm.s.' %}
             {% assign has_ms = true %}
             <article class="alumni-card" id="alumni-{{ a.slug }}">
               {% if a.photo %}<img src="{{ a.photo | relative_url }}" alt="{{ a.name }}" class="alumni-photo" loading="lazy" decoding="async">{% endif %}
