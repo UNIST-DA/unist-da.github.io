@@ -1,18 +1,18 @@
 - slug: seungsu-kam
   name: SeungSu Kam
   role: Combined Master-Doctor
-  period: "—"
+  period: "2022.02—"
   photo: /assets/members/students/seungsu-kam.jpg
   url: /members/students/contents/seungsu-kam/
   summary: Neural Differential Equation, Anomaly Detection, Irregularly-Sampled Time Series
   tags: [Neural DE, Anomaly Detection, Irregular TS]
-  email:
-  website:
-  github:
-  scholar:
-  linkedin:
+  email: lewki83@unist.ac.kr
+  website: https://seungsukam.github.io/
+  github: https://github.com/SEUNGSUKAM
+  scholar: https://scholar.google.co.kr/citations?hl=ko&user=yP1DmawAAAAJ
+  linkedin: www.linkedin.com/in/seungsu-kam-5b232327b
   cv:
-  projects: []
+  projects: [astronomical time series anomaly detection(AI HUB), Longitudinal Multi-risk Survival Analysis(TIPS)]
   order: 10
 
 - slug: byeonghoon-jeon
