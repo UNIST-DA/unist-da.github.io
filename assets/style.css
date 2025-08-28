@@ -470,6 +470,13 @@ html[data-theme="dark"] #galaxy-canvas{ opacity:1; }
 /* (선택) 이모지 버전 */
 .icon-emoji{ font-size:18px; line-height:1 }
 
+.news-item {
+  display: grid;
+  grid-template-columns: 120px 1fr; /* 왼쪽 날짜, 오른쪽 내용 */
+  align-items: center;              /* 세로 중앙 정렬 */
+}
+
 .news-date {
-  white-space: nowrap;
+  text-align: center; /* 가로 중앙 */
+  font-weight: 600;
 }
