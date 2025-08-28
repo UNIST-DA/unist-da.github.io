@@ -63,7 +63,10 @@ permalink: /members/students/
           {% assign r = s.role | default: '' | downcase %}
           {% if r contains 'ph.d' or r contains 'phd' or r contains 'doctor' or r contains 'combined' %}
             {% assign has_phd = true %}
-            {% assign href_url = s.url | default: '/members/students/contents/' | append: s.slug | append: '/' %}
+            {% assign href_url = s.url | default: '' %}
+            {% if href_url == '' %}
+              {% assign href_url = '/members/students/contents/?student=' | append: s.slug | append: '/' %}
+            {% endif %}
             <a href="{{ href_url | relative_url }}" class="card-link" style="text-decoration:none;color:inherit" id="{{ s.slug }}">
               <article class="student-row">
                 {% if s.photo %}
