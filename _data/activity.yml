@@ -3,7 +3,31 @@ seminar:
     title: TBA — Lab Seminar
     date: 2025-09-10
     url: /activity/Lab%20Seminar/#sem-2025-09-10
+
+
+
+
+
+
+    
 news:
+
+
+
+
+
+
+
+
+  - slug: 2025-09-01-members-joined
+    date: "2025-09-01"
+    title: "M.S. Students Joined — Heeyoon Lee & Sieun Lee"
+    detail: |
+      Heeyoon Lee (이희윤) and Sieun Lee (이시은) joined the Data Analytics Lab as M.S. students.
+      Welcome aboard!
+    url: "/activity/Lab%20News/#2025-09-01-members-joined"
+
+    
   - slug: 2025-08-05-cikm-short-paper
     date: "2025-08-05"
     title: "Paper Accepted to CIKM 2025 🎉"
