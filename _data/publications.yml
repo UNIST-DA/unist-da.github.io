@@ -1,4 +1,4 @@
-# 각 항목: id, year, type(journal|conference), title, authors(list), venue
+# 각 항목: id, year, type(journal|conference), title, authors(list), venue, url
 
 - id: 2024-lifelog-fusion
   year: 2024
@@ -6,10 +6,7 @@
   title: "Multi-modal lifelog data fusion for improved human activity recognition: A hybrid approach"
   authors: ["YongKyung Oh", "Sungil Kim"]
   venue: "Information Fusion"
-  links: 
-    url: "https://doi.org/10.1016/j.inffus.2024.102464"
-    pdf: "https://pdf.sciencedirectassets.com/272144/1-s2.0-S1566253524X00068/1-s2.0-S1566253524002422/main.pdf?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEEkaCXVzLWVhc3QtMSJGMEQCIA8DwSI6JOufJx8lLJW%2BT7%2FO0IxjR1mIdeRWlob9O7tdAiAHfJk9PDR7ytz6MvNgZaq1jfU7MZq6hxeMuG6sY4elpiq7BQih%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAUaDDA1OTAwMzU0Njg2NSIMCMy2S9sSelib9Z8VKo8FV7vfkS3OCsZXkDanz1RPYlh7uZi1M0VUDWspwje60CFyrI3EX%2BxHhii5apVSx86k5A1inxh2M1r6nYrQ28dr4zqXYH6ZuSnf%2BUc6ChpulobtAyRuWytFEZT1vk4XRMeDGIXtAnqvaKQoq0CNaddnm9ZVy%2BXEzz38Afqfwk9Gmd5SG%2Fq%2BvurG7WyIkNyjdknzxxw4KJNJRH4DOTA0gBSd5IDdrEHCrx3nj39BiM0kbMlqyPuicFo63m2Q%2Fd3q%2B0ycwtQQjpj3a8JP%2F3XwNOLeCH3LRE21FjBnW%2BQaD9AD%2BF807CXgTNff%2BwZGvSoW%2FVHXEo9jzULkjiSPUJrvXNHCsF2EA56iXnFj02pXuPivrAE1399CUshSj5QLgRaoCXYGDwrQ8eWkzC0Op2FCKXSRIowirh55TaIaNbRvLFUC4DAyKsulbyTqynT0UcJ4sSgDDEvx8N%2BvuKFvzbC3Q93YYrnVd%2FkM1lhMaUd8NZ4TEROhVaYJKWSL7cjg8TzAHtCp20kBQSzZimSYDGHubs99yVMd8VwsvCj6PxQpk01YQZSwSGRIAtf0czbcI1mbUA%2BQ6vBRlKdkYW7198YxVzEi%2BYEnqsmA4sPOu%2FwT2nXS83Ka9Z1cMEzzlWl705AAW%2BeXvZPCnWJ2qGn1wcjo%2FkQzlhPUzLkJdHF3cc02FY5FneS5Q7EUwwomTme76tmfLJXxQVDT1HUgD9uKC3TaJrHz1Ksci7qcoyfc5zvbhO4Yd5PWLkZdMdI0CWWu6UEjC5Q%2B2baxvy8b9MS9faa8lh9lcxB2lc%2BoOJVNncak%2B85EW4%2BkX0IdY5fY8f6B%2FrjLLPaOOOZc0HBT8vZDxhUGn6GBnNpCQE1Q%2FHP3wQsuVRLgbzCynMDFBjqyAS5YrvKUlTVZs0Q3xU7LEQjhhHyET90Ic4TKdrpa2fekYtgjezd7G5WIQ7E6XeKxEMJGxG3j5S0Yura9uQqBdtkjQL%2FieFlSovvgK5YoYKJ3Vq%2BYN%2F4leTvLVfz6HDfQH%2FPDgcx2b%2FQNKr1EPBm%2By%2BnnmHmKBTXmPr7CpFlgDfX3h6H4pOSAOxnjQEeZsr0ROBOYuX618v8cnCjVo9DH%2FJyRs%2Fof6qDe63tQGgdo%2BlQf9n0%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250828T093538Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=ASIAQ3PHCVTYZ3RP7QQO%2F20250828%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=4ffc6b45daaffea7788c6d592d9e59da1f6240be8a74064149da573b6fdfbc1a&hash=92b290806d1eeb519dd8c8936f8ef936a30ff9629649da303eb2a4a7ad7496fc&host=68042c943591013ac2b2430a89b270f6af2c76d8dfd086a07176afe7c76c2c61&pii=S1566253524002422&tid=spdf-573b5f4b-ee8e-4cb9-a427-741b43f24651&sid=bca426d74d6930430648ae7359e32b2e5004gxrqa&type=client&tsoh=d3d3LnNjaWVuY2VkaXJlY3QuY29t&rh=d3d3LnNjaWVuY2VkaXJlY3QuY29t&ua=11145f5053560654050352&rr=9762d1db484ec450&cc=kr"
-    code:
+  url: "https://doi.org/10.1016/j.inffus.2024.102464"
 
 - id: 2024-snsde-itsc
   year: 2024
@@ -17,10 +14,7 @@
   title: "Stable Neural Stochastic Differential Equations for Irregular Time Series Classification"
   authors: ["YongKyung Oh", "Dongyouny Lim", "Sungil Kim"]
   venue: "ICLR (spotlight)"
-  links:
-    url: "https://doi.org/10.48550/arXiv.2402.14989"
-    pdf: "https://arxiv.org/pdf/2402.14989"
-    code: "https://github.com/yongkyung-oh/Stable-Neural-SDEs"
+  url: "https://doi.org/10.48550/arXiv.2402.14989"
 
 - id: 2024-functional-outlier-cie
   year: 2024
@@ -28,11 +22,7 @@
   title: "Domain Knowledge-Informed Functional Outlier Detection in the Refrigerator Inspection Lanes"
   authors: ["Jonghwan Mun", "Jitae Yoo", "Heesun Kim", "Nayi Ryu", "Sungil Kim"]
   venue: "Computers & Industrial Engineering"
-  links:
-    url: 
-    pdf:
-    code:
-    pdf: "https://www.sciencedirect.com/science/article/abs/pii/S0360835224000573?dgcid=author"
+  url: "https://doi.org/10.1016/j.cie.2024.109936"
 
 - id: 2023-ais-bbb
   year: 2023
@@ -40,6 +30,7 @@
   title: "Grid-Based Bayesian Bootstrap Approach for Real-Time Detection of Abnormal Vessel Behaviors from AIS Data in Maritime Logistics"
   authors: ["YongKyung Oh", "Sungil Kim"]
   venue: "IEEE Transactions on Automation Science and Engineering"
+  url: 
   links:
     url: 
     pdf:
@@ -52,6 +43,7 @@
   title: "Sensor Drift Compensation for Gas Mixture Classification in Batch Experiments"
   authors: ["YongKyung Oh", "Juhui Lee", "Sunghyee Lee", "Sewon Kim", "Sungil Kim"]
   venue: "Quality and Reliability Engineering International"
+  url: 
   links:
     url: 
     pdf:
@@ -63,6 +55,7 @@
   title: "Time Delay Estimation of Traffic Congestion Propagation due to Accidents based on Statistical Causality"
   authors: ["YongKyung Oh", "Jiin Kwak", "JuYeong Lee", "Sungil Kim"]
   venue: "Electronic Research Archive"
+  url: 
   links:
     url: 
     pdf:
@@ -75,6 +68,7 @@
   title: "Multichannel Convolution Neural Network for Gas Mixture Classification"
   authors: ["YongKyung Oh", "Chieheyon Lim", "Junghye Lee", "Sewon Kim", "Sungil Kim"]
   venue: "Annals of Operations Research"
+  url: 
   links:
     url: 
     pdf:
@@ -99,6 +93,7 @@
   title: "Multi-channel Convolution Neural Network for Gas Mixture Classification"
   authors: ["YongKyung Oh", "Sungil Kim"]
   venue: " ICDMW (International Conference on Data Mining Workshops)"
+  url: 
   links:
     url: 
     pdf:
@@ -110,6 +105,7 @@
   title: "Maximum feasibility estimation"
   authors: ["Sungil Kim"]
   venue: "Information Sciences"
+  url: 
   links:
     url: 
     pdf:
@@ -122,6 +118,7 @@
   title: "Transfer-Learning based approach for mixture gas classification"
   authors: ["YongKyung Oh", "Namu Kim", "Sungil Kim"]
   venue: "Journal of the Korean Institute of Industrial Engineers"
+  url: 
   links:
     url: 
     pdf:
@@ -134,6 +131,7 @@
   title: "Simulation-based Anomaly Detection in Nuclear Reactors"
   authors: ["YongKyung Oh", "Hanjoo Kim", "Deokjung Lee", "Sungil Kim"]
   venue: "Journal of the Korean Institute of Industrial Engineers"
+  url: 
   links:
     url: 
     pdf:
@@ -145,6 +143,7 @@
   title: "Multiresolution spatial generalized linear mixed model for integrating multi-fidelity spatial count data without common identifiers between data source"
   authors: ["Sungil Kim", "Rong Duan", "Guang-Qin Ma", "Heeyoung Kim"]
   venue: "Spatial Statistics"
+  url: 
   links:
     url: 
     pdf:
@@ -156,6 +155,7 @@
   title: "Maritime anomaly detection based on VAE–CUSUM monitoring system"
   authors: ["Jaemin Park", "Sungil Kim"]
   venue: "Journal of the Korean Institute of Industrial Engineers"
+  url: 
   links:
     url: 
     pdf:
@@ -167,6 +167,7 @@
   title: "A practical approach to measuring the impacts of stockouts on demand"
   authors: ["Sungil Kim", "Heeyoung Kim", "Jye-Chyi Lu"]
   venue: "Journal of Business & Industrial Marketing"
+  url: 
   links:
     url: 
     pdf:
@@ -179,6 +180,7 @@
   title: "Revealing household characteristics using connected home products"
   authors: ["Sungil Kim"]
   venue: "Information Sciences"
+  url: 
   links:
     url: 
     pdf:
@@ -192,6 +194,7 @@
   title: "Spatial cluster detection in mobility networks: a copula approach"
   authors: ["Heeyoung Kim", "Rong Duan", "Sungil Kim", "Jaehwan Lee", "Guang-Qin Ma"]
   venue: "Journal of the Royal Statistical Society: Series C"
+  url: 
   links:
     url: 
     pdf:
@@ -205,6 +208,7 @@
   title: "Batch sequential minimum energy design with design-region adaptation"
   authors: ["Heeyoung Kim", "Justin T. Vastola", "Sungil Kim", "Jye-Chyi Lu", "Martha A. Grover"]
   venue: "Journal of Quality Technology"
+  url: 
   links:
     url: 
     pdf:
@@ -217,6 +221,7 @@
   title: "An integrated holistic model of a complex process"
   authors: ["Heeyoung Kim", "Sungil Kim", "Jian Deng", "Jye-Chyi Lu", "K. Wang", "C. Zhang", "Martha A. Grover", "B. Wang"]
   venue: "The International Journal of Advanced Manufacturing Technology"
+  url: 
   links:
     url: 
     pdf:
@@ -229,6 +234,7 @@
   title: "Early detection of vessel delays using combined historical and real-time information"
   authors: ["Sungil Kim", "Heeyoung Kim", "Yongro Park"]
   venue: "Journal of the Operational Research Society"
+  url: 
   links:
     pdf: 
     code:
@@ -241,6 +247,7 @@
   title: "Incorporation of engineering knowledge into the modeling process: a local approach"
   authors: ["Heeyoung Kim", "Justin T. Vastola", "Sungil Kim", "Jye-Chyi Lu", "Martha A. Grover"]
   venue: "International Journal of Production Research"
+  url: 
   links:
     url: 
     pdf:
@@ -253,6 +260,7 @@
   title: "A new metric of absolute percentage error for intermittent demand forecasts"
   authors: ["Sungil Kim", "Heeyoung Kim"]
   venue: "International Journal of Forecasting"
+  url: 
   links:
     url: 
     pdf:
@@ -265,6 +273,7 @@
   title: "Ordinal classification of imbalanced data with application in emergency and disaster information services"
   authors: ["Sungil Kim", "Heeyoung Kim", "Younghwan Namkoong"]
   venue: "IEEE Intelligent Systems"
+  url: 
   links:
     url: 
     pdf:
@@ -278,6 +287,7 @@
   title: "Adaptive combined space-filling and D-optimal designs"
   authors: ["Sungil Kim", "Heeyoung Kim", "Richard W. Lu", "Jye-Chyi Lu", "Michael J. Casciato", "Martha A. Grover"]
   venue: "International Journal of Production Research"
+  url: 
   links:
     url: 
     pdf:
@@ -291,6 +301,7 @@
   title: "Layers of experiments with adaptive combined design"
   authors: ["Sungil Kim", "Heeyoung Kim", "Richard W. Lu", "Jye-Chyi Lu", "Michael J. Casciato", "Martha A. Grover"]
   venue: "Naval Research Logistics"
+  url: 
   links:
     url: 
     pdf:
@@ -304,6 +315,7 @@
   title: "Optimization of a carbon dioxide-assisted nanoparticle deposition process using sequential experimental design with adaptive design space"
   authors: ["Michael J. Casciato", "Sungil Kim", "Jye-Chyi Lu", "Dennis W. Hess", "Martha A. Grover"]
   venue: "Industrial & Engineering Chemistry Research"
+  url: 
   links:
     url: 
     pdf:
@@ -315,6 +327,7 @@
   title: "Optimization of carbon dioxide-assisted nanoparticle deposition process with uncertain design space"
   authors: ["Michael J. Casciato", "Sungil Kim", "Jye-Chyi Lu", "Dennis W. Hess", "Martha A. Grover"]
   venue: "Computer Aided Chemical Engineering"
+  url: 
   links:
     pdf: 
     code:
@@ -327,6 +340,7 @@
   title: "A time prediction model of cursor movement with path constraints"
   authors: ["Seung-Kweon Hong", "Sungil Kim"]
   venue: "Journal of Korean Institute of Industrial Engineers"
+  url: 
   links:
     pdf: 
     code:
