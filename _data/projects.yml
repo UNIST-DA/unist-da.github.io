@@ -1,6 +1,6 @@
 # 메인 Research 카드(3개)와 /research/projects/가 공통으로 읽음
 # ── /research/projects/ 에서는 아래 항목들도 전부 노출 ────────────
-- slug: lqc-lg
+- slug: lg-lqc
   title: LG LQC (Line Quality Control)
   summary: Detect latent defects on production lines by fusing domain knowledge with functional outlier detection.
   period: "2021–2024"
