@@ -19,37 +19,37 @@ nav_order: 30
 <!-- ===== Alumni Section ===== -->
 <style>
   .alumni-wrap {
-  max-width: 1100px;     /* 전체 너비는 students와 비슷하게 */
-  margin: 48px auto 0;
-}
-
-.alumni-grid {
-  display: grid;
-  gap: 24px;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  justify-content: start;   /* 좌측부터 차곡차곡 붙게 (공백 최소화) */
-}
-
-.alumni-card {
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  padding:16px;
-  border:1px solid #e3e3e3;
-  border-radius:16px;
-  background:transparent;
-  text-align:center;
-  transition: box-shadow .15s ease;
-}
-.alumni-card:hover { box-shadow:0 6px 22px rgba(0,0,0,.06); }
-
-.alumni-photo {
-  width:120px; height:120px;
-  border-radius:50%;
-  object-fit:cover;
-  background:#f6f6f6;
-  margin-bottom:12px;
-}
+    max-width: 1100px;     /* 전체 너비는 students와 비슷하게 */
+    margin: 48px auto 0;
+  }
+  
+  .alumni-grid {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    justify-content: start;   /* 좌측부터 차곡차곡 붙게 (공백 최소화) */
+  }
+  
+  .alumni-card {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:16px;
+    /* border: 1px solid #e3e3e3; ← 삭제 */
+    border-radius:16px;
+    background:transparent;
+    text-align:center;
+    transition: box-shadow .15s ease;
+  }
+  .alumni-card:hover { box-shadow:0 6px 22px rgba(0,0,0,.06); }
+  
+  .alumni-photo {
+    width:120px; height:120px;
+    border-radius:50%;
+    object-fit:cover;
+    background:#f6f6f6;
+    margin-bottom:12px;
+  }
 
   .alumni-body {
     flex: 1;
