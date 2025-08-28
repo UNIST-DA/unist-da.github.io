@@ -3,105 +3,105 @@
 - slug: byungkook-koo
   name: "Byungkook Koo"
   role: "M.S."
-  first_position: ""
+  current_position: ""
   photo: /assets/members/alumni/byungkook-koo.jpg
   order: 10
 
 - slug: jiin-kwak
   name: "Jiin Kwak"
   role: "M.S."
-  first_position: "LG Electronics"
+  current_position: "LG Electronics"
   photo: /assets/members/alumni/jiin-kwak.jpg
   order: 20
 
 - slug: juhui-lee
   name: "Juhui Lee"
   role: "M.S."
-  first_position: "THYROSCOPE Inc."
+  current_position: "THYROSCOPE Inc."
   photo: /assets/members/alumni/juhui-lee.jpg
   order: 30
 
 - slug: juyeong-lee
   name: "Juyeong Lee"
   role: "M.S."
-  first_position: "QRAFT"
+  current_position: "QRAFT"
   photo: /assets/members/alumni/juyeong-lee.jpg
   order: 40
 
 - slug: namu-kim
   name: "Namu Kim"
   role: "Intern"
-  first_position: "POSCO"
+  current_position: "POSCO"
   photo: /assets/members/alumni/namu-kim.jpg
   order: 50
 
 - slug: yongkyung-oh
   name: "YongKyung Oh"
   role: "Ph.D."
-  first_position: "Postdoc at UCLA"
+  current_position: "Postdoc at UCLA"
   photo: /assets/members/alumni/yongkyung-oh.jpg
   order: 60
 
 - slug: giheon-koh
   name: "Giheon Koh"
   role: "M.S."
-  first_position: "LG Display"
+  current_position: "LG Display"
   photo: /assets/members/alumni/giheon-koh.jpg
   order: 70
 
 - slug: gyeongjun-kim
   name: "Gyeongjun Kim"
   role: "M.S."
-  first_position: "CJ Logistics"
+  current_position: "CJ Logistics"
   photo: /assets/members/alumni/gyeongjun-kim.jpg
   order: 80
 
 - slug: heesun-kim
   name: "Heesun Kim"
   role: "M.S."
-  first_position: "LG Electronics"
+  current_position: "LG Electronics"
   photo: /assets/members/alumni/heesun-kim.jpg
   order: 90
 
 - slug: jaemin-park
   name: "Jaemin Park"
   role: "M.S."
-  first_position: "THYROSCOPE Inc."
+  current_position: "THYROSCOPE Inc."
   photo: /assets/members/alumni/jaemin-park.jpg
   order: 100
 
 - slug: jitae-yoo
   name: "Jitae Yoo"
   role: "M.S."
-  first_position: "LX Hausys"
+  current_position: "LX Hausys"
   photo: /assets/members/alumni/jitae-yoo.jpg
   order: 110
 
 - slug: jonghwan-moon
   name: "JongHwan Moon"
   role: "M.S."
-  first_position: "LG Electronics"
+  current_position: "LG Electronics"
   photo: /assets/members/alumni/jonghwan-moon.jpg
   order: 120
 
 - slug: kwonin-yoon
   name: "Kwonin Yoon"
   role: "M.S."
-  first_position: "LG Electronics"
+  current_position: "LG Electronics"
   photo: /assets/members/alumni/kwonin-yoon.jpg
   order: 130
 
 - slug: jaehun-cho
   name: "Jaehun Cho"
   role: "M.S."
-  first_position: ""
+  current_position: ""
   photo: /assets/members/alumni/jaehun-cho.jpg
   order: 140
 
 - slug: taewon-kang
   name: "Taewon Kang"
   role: "M.S."
-  first_position: ""
+  current_position: ""
   photo: /assets/members/alumni/taewon-kang.jpg
   order: 150
 
