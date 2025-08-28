@@ -13,33 +13,47 @@ permalink: /members/students/
   </div>
 </div>
 
-<!-- 간단 스타일: 가로 카드 + 반응형 -->
 <style>
+  /* 카드 전체가 hover에 반응하도록 (outer) */
+  .students-section a.card.card-pad {
+    display: block;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    background: #fff;
+    padding: 16px;                    /* 바깥 카드가 패딩 담당 */
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow .15s ease, transform .15s ease;
+  }
+  .students-section a.card.card-pad:hover {
+    box-shadow: 0 6px 22px rgba(0,0,0,.06);
+  }
+
+  /* 내부 row는 박스 느낌 없이 컨텐츠 배치만 */
   .student-row {
     display: flex;
     gap: 16px;
     align-items: center;
-    padding: 16px;
+    padding: 0;                        /* 중복 패딩 제거 */
     border-radius: 12px;
-    /* border: 1px solid #e3e3e3; ← 삭제 */
     background: transparent;
-    transition: box-shadow .15s ease;
+    box-shadow: none;                  /* 내부 박스 그림자 제거 */
   }
+  .student-row:hover { box-shadow: none; } /* 혹시 모를 상위 스타일 무효화 */
 
-  .student-row:hover { box-shadow: 0 6px 22px rgba(0,0,0,.06); }
   .student-photo {
     width: 160px; height: 160px; flex: 0 0 160px;
     border-radius: 12px; object-fit: cover; background:#f6f6f6;
   }
   .student-meta {
-    margin: 0 0 6px; color: #6b7280; /* muted */
-    font-size: 14px;
+    margin: 0 0 6px; color: #6b7280; font-size: 14px;
   }
   .student-tags span {
     display:inline-block;border:1px solid #e3e3e3;border-radius:999px;
     padding:2px 8px;margin:0 6px 6px 0;font-size:12px;color:#6b7280;
   }
   .student-grid { display: grid; gap: 16px; }
+
   @media (max-width: 720px) {
     .student-row { flex-direction: column; align-items: flex-start; }
     .student-photo { width: 100%; height: auto; aspect-ratio: 4/3; }
@@ -70,12 +84,11 @@ permalink: /members/students/
             {% endif %}
             <a
               class="card card-pad"
-              style="grid-column: span 6; display:block; text-decoration:none; color:inherit"
+              style="grid-column: span 6;"
               id="{{ s.slug }}"
               href="{{ href_url | relative_url }}"
               data-slug="{{ s.slug }}"
             >
-
               <article class="student-row">
                 {% if s.photo %}
                   <img src="{{ s.photo | relative_url }}" alt="{{ s.name }}" class="student-photo">
@@ -128,7 +141,7 @@ permalink: /members/students/
             {% endif %}
             <a
               class="card card-pad"
-              style="grid-column: span 6; display:block; text-decoration:none; color:inherit"
+              style="grid-column: span 6;"
               id="{{ s.slug }}"
               href="{{ href_url | relative_url }}"
               data-slug="{{ s.slug }}"
@@ -185,11 +198,12 @@ permalink: /members/students/
             {% endif %}
             <a
               class="card card-pad"
-              style="grid-column: span 6; display:block; text-decoration:none; color:inherit"
+              style="grid-column: span 6;"
               id="{{ s.slug }}"
               href="{{ href_url | relative_url }}"
               data-slug="{{ s.slug }}"
-            >              <article class="student-row">
+            >
+              <article class="student-row">
                 {% if s.photo %}
                   <img src="{{ s.photo | relative_url }}" alt="{{ s.name }}" class="student-photo">
                 {% endif %}
