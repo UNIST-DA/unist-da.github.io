@@ -9,7 +9,7 @@ period: "2025.03 —"
 photo: /assets/members/students/chanbeom-hur.jpg
 tags: [StatML, Data Analysis]
 projects: []
-bio: Statistical Machine Learning, Data Analysis
+bio: Statistical Machine Learning
 ---
 
 ## Research Interests
