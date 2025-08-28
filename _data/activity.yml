@@ -6,21 +6,213 @@ seminar:
 news:
   - slug: 2025-08-05-cikm-short-paper
     date: "2025-08-05"
-    title: "Paper accepted to CIKM 2025 🎉"
+    title: "Paper Accepted to CIKM 2025 🎉"
     detail: |
-      Title: <em>Modeling Irregular Astronomical Time Series with Neural Stochastic Delay Differential Equations</em><br>
-      Authors: Yongkyung Oh, Seungsoo Kam, Dongyoung Lim, Sungil Kim
+      Yongkyung Oh, Seungsu Kam, Dongyoung Lim, and Sungil Kim, 
+      <em>Modeling Irregular Astronomical Time Series with Neural Stochastic Delay Differential Equations</em>, 
+      accepted to CIKM 2025 (Short Paper).
     url: "/activity/Lab%20News/#2025-08-05-cikm-short-paper"
 
+  - slug: 2025-07-16-ms-defense-taewon-kang
+    date: "2025-07-16"
+    title: "M.S. Thesis Defense Passed — Taewon Kang (강태원)"
+    detail: |
+      Taewon Kang successfully passed the M.S. thesis defense in Industrial Engineering at UNIST.
+    url: "/activity/Lab%20News/#2025-07-16-ms-defense-taewon-kang"
+
   - slug: 2025-06-18-kiie-spring-2025
-    # Display as period, sort by end date
     date: "2025-06-21"
     title: "Participation in KIIE 2025 Spring Joint Conference"
     detail: |
-      Participated in the Korean Institute of Industrial Engineers (KIIE) 2025 Spring Joint Conference from June 18-21.
+      Participated in the Korean Institute of Industrial Engineers (KIIE) 2025 Spring Joint Conference, held from June 18–21.
     url: "/activity/Lab%20News/#2025-06-18-kiie-spring-2025"
 
+  - slug: 2025-06-03-iise-2025
+    date: "2025-06-03"
+    title: "Participation in IISE 2025 Conference"
+    detail: |
+      Participated in the Institute of Industrial and Systems Engineers (IISE) 2025 Conference, held from June 3–6.
+    url: "/activity/Lab%20News/#2025-06-03-iise-2025"
+
+  - slug: 2025-04-30-IJCAI-survey
+    date: "2025-04-30"
+    title: "Paper Accepted to IJCAI 2025 🎉"
+    detail: |
+      Yongkyung Oh, Seungsu Kam, Jonghun Lee, Dongyoung Lim, Sungil Kim, and Alex A.T. Bui, 
+      <em>Comprehensive Review of Neural Differential Equations for Time Series Analysis</em>, 
+      accepted to IJCAI 2025.
+    url: "/activity/Lab%20News/#2025-04-30-IJCAI-survey"
+
+  - slug: 2025-02-28-CIE
+    date: "2025-02-28"
+    title: "Paper Accepted to Computers & Industrial Engineering 2025 🎉"
+    detail: |
+      Yong Kyung Oh, Giheon Koh, Jiin Kwak, Kyubo Shin, Gi Soo Kim, Min Joung Lee, Hokyung Choung, Namju Kim, 
+      Jae Hoon Moon, and Sungil Kim, 
+      <em>TAOD-Net: Automated Detection and Analysis of Thyroid-Associated Orbitopathy in Facial Imagery</em>, 
+      accepted to <em>Computers & Industrial Engineering</em> (2025).
+    url: "/activity/Lab%20News/#2025-02-28-CIE"
+
+  - slug: 2025-02-26-nrf-midcareer
+    date: "2025-02-26"
+    title: "Prof. Sungil Kim Selected for NRF Mid-career Researcher Program"
+    detail: |
+      The project led by Prof. Sungil Kim (UNIST, Industrial Engineering) was selected for funding under the 
+      National Research Foundation of Korea (NRF) Mid-career Researcher Program.
+    url: "/activity/Lab%20News/#2025-02-26-nrf-midcareer"
+
+  - slug: 2024-12-07-ms-defense-jaehoon-cho
+    date: "2024-12-07"
+    title: "M.S. Thesis Defense Passed — Jaehoon Cho (조재훈)"
+    detail: |
+      Jaehoon Cho successfully passed the M.S. thesis defense in Industrial Engineering at UNIST.
+    url: "/activity/Lab%20News/#2024-12-07-ms-defense-jaehoon-cho"
+
+  - slug: 2024-12-10-AAAI
+    date: "2024-12-10"
+    title: "Paper Accepted to AAAI 2024 🎉"
+    detail: |
+      YongKyung Oh, Dong-Young Lim, and Sungil Kim, 
+      <em>DualDynamics: Synergizing Implicit and Explicit Methods for Robust Irregular Time Series Analysis</em>, 
+      accepted to AAAI 2024.
+    url: "/activity/Lab%20News/#2024-12-10-AAAI"
+
+  - slug: 2024-12-05-AI-summit
+    date: "2024-12-05"
+    title: "Paper Accepted to AI Summit 2024 🎉"
+    detail: |
+      YongKyung Oh, Dong-Young Lim, and Sungil Kim, 
+      <em>DualDynamics: Synergizing Implicit and Explicit Methods for Robust Irregular Time Series Analysis</em>, 
+      accepted to AI Summit 2024.
+    url: "/activity/Lab%20News/#2024-12-05-AI-summit"
+
+  - slug: 2024-12-05-ai-summit-presentation
+    date: "2024-12-05"
+    title: "Presentation at AI Summit 2024 — Seungsu Kam"
+    detail: |
+      Seungsu Kam (UNIST, Industrial Engineering) presented our recent work on neural differential equations 
+      for astronomical time series analysis at AI Summit 2024.
+    url: "/activity/Lab%20News/#2024-12-05-ai-summit-presentation-kam"
+
+  - slug: 2024-11-25-research-interns-lee-sieun-lee-heeyoon
+    date: "2024-11-25"
+    title: "Research Interns Joined — Sieun Lee and Heeyoon Lee"
+    detail: |
+      Sieun Lee and Heeyoon Lee joined the lab as research interns.
+    url: "/activity/Lab%20News/#2024-11-25-research-interns-lee-sieun-lee-heeyoon"
+
+  - slug: 2024-10-25-kiie-conference
+    date: "2024-10-25"
+    title: "Participation in KIIE 2024 Fall Conference"
+    detail: |
+      Participated in the Korean Institute of Industrial Engineers (KIIE) Fall Conference 2024.
+    url: "/activity/Lab%20News/#2024-10-25-kiie-conference"
+
+  - slug: 2024-08-06-dept-chair-sungil-kim
+    date: "2024-08-06"
+    title: "Prof. Sungil Kim Appointed Department Chair (Industrial Engineering, UNIST)"
+    detail: |
+      Prof. Sungil Kim was appointed as the Department Chair of Industrial Engineering at UNIST.
+    url: "/activity/Lab%20News/#2024-08-06-dept-chair-sungil-kim"
+
+  - slug: 2024-06-14-phd-qualification-seungsu-kam
+    date: "2024-06-14"
+    title: "Ph.D. Qualification Exam Passed — Seungsu Kam"
+    detail: |
+      Seungsu Kam successfully passed the Ph.D. qualification exam in Industrial Engineering at UNIST.
+    url: "/activity/Lab%20News/#2024-06-14-phd-qualification-seungsu-kam"
+
+  - slug: 2024-06-12-faculty-award-sungil-kim
+    date: "2024-06-12"
+    title: "Prof. Sungil Kim Received 2023 Faculty Award"
+    detail: |
+      Prof. Sungil Kim received the 2023 Faculty Award at UNIST.
+    url: "/activity/Lab%20News/#2024-06-12-faculty-award-sungil-kim"
+
+  - slug: 2024-06-11-ms-defense-byungkuk-gu
+    date: "2024-06-11"
+    title: "M.S. Thesis Defense Passed — Byungkuk Gu (구병국)"
+    detail: |
+      Byungkuk Gu successfully passed the M.S. thesis defense in Industrial Engineering at UNIST.
+    url: "/activity/Lab%20News/#2024-06-11-ms-defense-byungkuk-gu"
+
+  - slug: 2024-05-30-kdms-conference
+    date: "2024-05-30"
+    title: "Participation and Presentation at KDM Conference 2024"
+    detail: |
+      Attended and presented research at the Korean Data Mining Society (KDM) Conference 2024.
+    url: "/activity/Lab%20News/#2024-05-30-kdms-conference"
+
+  - slug: 2024-05-22-iise-conference
+    date: "2024-05-22"
+    title: "Participation in IISE Annual Conference 2024"
+    detail: |
+      Participated in the IISE (Institute of Industrial and Systems Engineers) Annual Conference 2024.
+    url: "/activity/Lab%20News/#2024-05-22-iise-conference"
+
+  - slug: 2024-information-fusion-accept
+    date: "2024-05-06"
+    title: "Paper Accepted to Information Fusion 🎉"
+    detail: |
+      YongKyung Oh and Sungil Kim (2024), 
+      <em>Multi-modal Lifelog Data Fusion for Improved Human Activity Recognition: A Hybrid Approach</em>, 
+      accepted to <em>Information Fusion</em>.
+    url: "/activity/Lab%20News/#2024-information-fusion-accept"
+
+  - slug: 2024-05-02-kiie-spring-conference
+    date: "2024-05-02"
+    title: "Participation and Presentation at KIIE 2024 Spring Conference"
+    detail: |
+      Attended and presented research at the Korean Institute of Industrial Engineers (KIIE) Spring Conference 2024.
+    url: "/activity/Lab%20News/#2024-05-02-kiie-spring-conference"
+
+  - slug: 2024-computer-ie-accept
+    date: "2024-01-23"
+    title: "Paper Accepted to Computers & Industrial Engineering 🎉"
+    detail: |
+      Jong Hwan Mun, Jitae Yoo, Heesun Kim, Nayi Ryu, and Sungil Kim (2024), 
+      <em>Domain-Knowledge-Informed Functional Outlier Detection for Line Quality Control Systems</em>, 
+      accepted to <em>Computers & Industrial Engineering</em>.
+    url: "/activity/Lab%20News/#2024-computer-ie-accept"
+
+  - slug: 2024-01-17-iclr-spotlight
+    date: "2024-01-17"
+    title: "Paper Accepted to ICLR 2024 Spotlight (Top 5%) 🎉"
+    detail: |
+      YongKyung Oh, Dongyoung Lim, and Sungil Kim (2024), 
+      <em>Stable Neural Stochastic Differential Equations in Analyzing Irregular Time Series Data</em>, 
+      accepted to ICLR 2024 Spotlight (Top 5%).
+    url: "/activity/Lab%20News/#2024-01-17-iclr-spotlight"
+
+  - slug: 2023-06-09-kcc-best-paper
+    date: "2023-06-09"
+    title: "Best Paper Award at KCC 2023 🎉"
+    detail: |
+      Dr. Yong Kyung Oh received the Best Paper Award at the Korea Computer Congress (KCC) 2023, 
+      hosted by the Korea Information Science Society.
+    url: "/activity/Lab%20News/#2023-06-09-kcc-best-paper"
+
+  - slug: 2023-05-24-iise-annual-meeting
+    date: "2023-05-24"
+    title: "Participation and Presentation at IISE Annual Meeting 2023"
+    detail: |
+      Attended and presented research at the IISE (Institute of Industrial and Systems Engineers) Annual Meeting 2023.
+    url: "/activity/Lab%20News/#2023-05-24-iise-annual-meeting"
+
+
 events:
+
+  - slug: 2025-07-11-movie-night
+    start: "2025-07-11"
+    title: "Lab Movie Night"
+    detail: |
+      Enjoyed a movie night with lab members & U-SURF.
+    image: "/assets/activity/Lab_Events/movie_night_2025.jpg"
+    image_alt: "Lab movie night group photo"
+    image_caption: "Movie night"
+    url: "/activity/Lab%20Events/#2025-07-11-movie-night"
+
+
   - slug: 2025-05-01-prof-birthday
     start: "2025-05-01"
     title: "Professor's Birthday Celebration"
@@ -41,6 +233,17 @@ events:
     image_caption: "Cherry blossom picnic"
     url: "/activity/Lab%20Events/#2025-04-08-cherry-blossom-picnic"
 
+  - slug: 2025-02-20-lab-graduation
+    start: "2025-02-20"
+    title: "Lab Graduation Ceremony"
+    detail: |
+      Celebrated the graduation of our lab members.
+    image: "/assets/activity/Lab_Events/graduation_2025.jpg"
+    image_alt: "Lab graduation ceremony group photo"
+    image_caption: "Lab graduation ceremony"
+    url: "/activity/Lab%20Events/#2025-02-20-lab-graduation"
+
+
   - slug: 2024-09-06-lab-homecoming
     start: "2024-09-06"
     title: "Lab Homecoming Day"
@@ -51,3 +254,55 @@ events:
     image_caption: "Lab homecoming day"
     url: "/activity/Lab%20Events/#2024-09-06-lab-homecoming"
 
+  - slug: 2024-02-15-lab-graduation
+    start: "2024-02-15"
+    title: "Lab Graduation Ceremony"
+    detail: |
+      Celebrated the graduation of our lab members.
+    image: "/assets/activity/Lab_Events/graduation_2024.jpg"
+    image_alt: "Lab graduation ceremony group photo"
+    image_caption: "Lab graduation ceremony"
+    url: "/activity/Lab%20Events/#2024-02-15-lab-graduation"  
+
+
+  - slug: 2024-01-13-lab-year-end-party
+    start: "2024-01-13"
+    title: "Lab Year-End Party"
+    detail: |
+      Held our annual lab year-end party.
+    image: "/assets/activity/Lab_Events/year_end_party_2024.jpg"
+    image_alt: "Lab year-end party group photo"
+    image_caption: "Lab year-end party"
+    url: "/activity/Lab%20Events/#2024-01-13-lab-year-end-party"
+
+  - slug: 2023-07-22-lab-membership-training
+    start: "2023-07-22"
+    title: "Lab Membership Training"
+    detail: |
+      Conducted membership training.
+    image: "/assets/activity/Lab_Events/membership_training_2023.png"
+    image_alt: "Lab membership training group photo"
+    image_caption: "Lab membership training"
+    url: "/activity/Lab%20Events/#2023-07-22-lab-membership-training"
+
+  - slug: 2023-02-17-lab-graduation
+    start: "2023-02-17"
+    title: "Lab Graduation Ceremony"
+    detail: |
+      Celebrated the graduation of our lab members.
+    image: "/assets/activity/Lab_Events/graduation_2023.jpg"
+    image_alt: "Lab graduation ceremony group photo"
+    image_caption: "Lab graduation ceremony"
+    url: "/activity/Lab%20Events/#2023-02-17-lab-graduation"
+
+
+
+  - slug: 2022-07-10-lab-membership-training
+    start: "2022-07-10"
+    title: "Lab Membership Training"
+    detail: |
+      Conducted membership training.
+    image: "/assets/activity/Lab_Events/membership_training_2022.jpg"
+    image_alt: "Lab membership training group photo"
+    image_caption: "Lab membership training"
+    url: "/activity/Lab%20Events/#2022-07-10-lab-membership-training"
