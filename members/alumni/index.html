@@ -71,7 +71,10 @@ nav_order: 30
 
 <main class="container">
   <section class="alumni-wrap">
-    <h2><span class="title-text">Alumni</span></h2>
+    <div class="container">
+      <div class="head">
+        <h2><span class="title-text">Ph.D Students</span></h2>
+      </div>
     <div class="alumni-grid">
       {%- assign alumni_items = site.data.alumni | sort: 'order' -%}
       {%- for a in alumni_items -%}
