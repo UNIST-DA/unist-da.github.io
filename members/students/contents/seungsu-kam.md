@@ -6,7 +6,7 @@ title: SeungSu Kam
 name: SeungSu Kam
 role: Combined Master-Doctor
 period: "—"
-photo: /assets/members/studentzs/seungsu-kam.png
+photo: /assets/members/students/seungsu-kam.jpg
 tags: [Neural DE, Anomaly Detection, Irregular TS]
 projects: []
 bio: Neural Differential Equation 기반 이상탐지 및 불규칙 샘플링 시계열을 연구합니다.
