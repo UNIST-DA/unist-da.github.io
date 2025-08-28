@@ -13,41 +13,38 @@ permalink: /members/students/
   </div>
 </div>
 
+<!-- 간단 스타일: 가로 카드 + 반응형 -->
 <style>
-  .student-card {
-    grid-column: span 6;
-    display: block;
-    text-decoration: none;
-    color: inherit;
+  .student-row {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    padding: 16px;
     border-radius: 12px;
+    border: 1px solid #e3e3e3;   /* 테두리 유지 */
+    background: transparent;      /* 배경 투명 (projects와 동일) */
     transition: box-shadow .15s ease;
   }
-  .student-card:hover {
-    box-shadow: 0 6px 22px rgba(0,0,0,.08);
-  }
+  .student-row:hover { box-shadow: 0 6px 22px rgba(0,0,0,.06); }
   .student-photo {
-    width: 100%;
-    aspect-ratio: 4/3;
-    object-fit: cover;
-    border-radius: 12px;
-    background: #f6f6f6;
-    margin-bottom: 10px;
+    width: 160px; height: 160px; flex: 0 0 160px;
+    border-radius: 12px; object-fit: cover; background:#f6f6f6;
   }
   .student-meta {
-    margin: 0 0 6px;
-    color: #6b7280;
+    margin: 0 0 6px; color: #6b7280; /* muted */
     font-size: 14px;
   }
   .student-tags span {
-    display:inline-block;
-    border:1px solid #e3e3e3;
-    border-radius:999px;
-    padding:2px 8px;
-    margin:0 6px 6px 0;
-    font-size:12px;
-    color:#6b7280;
+    display:inline-block;border:1px solid #e3e3e3;border-radius:999px;
+    padding:2px 8px;margin:0 6px 6px 0;font-size:12px;color:#6b7280;
   }
   .student-grid { display: grid; gap: 16px; }
+  @media (max-width: 720px) {
+    .student-row { flex-direction: column; align-items: flex-start; }
+    .student-photo { width: 100%; height: auto; aspect-ratio: 4/3; }
+  }
+
+  /* 섹션 헤더 간 간격 */
   section.students-section + section.students-section { margin-top: 36px; }
 </style>
 
@@ -56,127 +53,145 @@ permalink: /members/students/
 
   <!-- Ph.D Students -->
   <section id="phd" class="students-section">
-    <div class="head">
-      <h2><span class="title-text">Ph.D Students</span></h2>
-    </div>
-    <div class="student-grid">
-      {% assign has_phd = false %}
-      {% for s in items %}
-        {% assign r = s.role | default: '' | downcase %}
-        {% if r contains 'ph.d' or r contains 'phd' or r contains 'doctor' or r contains 'combined' %}
-          {% assign has_phd = true %}
-          {% assign href_url = s.url | default: '/members/students/contents/' | append: s.slug | append: '/' %}
-          <a href="{{ href_url | relative_url }}" class="student-card" id="{{ s.slug }}">
-            {% if s.photo %}
-              <img src="{{ s.photo | relative_url }}" alt="{{ s.name }}" class="student-photo">
-            {% endif %}
-            <h3 style="margin:0 0 6px">{{ s.name }}</h3>
-            {% if s.role or s.period %}
-              <p class="student-meta">
-                {% if s.role %}{{ s.role }}{% endif %}
-                {% if s.period %}{% if s.role %} · {% endif %}{{ s.period }}{% endif %}
-              </p>
-            {% endif %}
-            {% if s.summary %}
-              <p class="muted" style="margin:0 0 8px">{{ s.summary }}</p>
-            {% endif %}
-            {% if s.tags %}
-              <p class="student-tags">
-                {% for tag in s.tags %}
-                  <span>{{ tag }}</span>
-                {% endfor %}
-              </p>
-            {% endif %}
-          </a>
+    <div class="container">
+      <div class="head">
+        <h2><span class="title-text">Ph.D Students</span></h2>
+      </div>
+      <div class="student-grid">
+        {% assign has_phd = false %}
+        {% for s in items %}
+          {% assign r = s.role | default: '' | downcase %}
+          {% if r contains 'ph.d' or r contains 'phd' or r contains 'doctor' or r contains 'combined' %}
+            {% assign has_phd = true %}
+            {% assign href_url = s.url | default: '/members/students/contents/' | append: s.slug | append: '/' %}
+            <a href="{{ href_url | relative_url }}" class="card-link" style="text-decoration:none;color:inherit" id="{{ s.slug }}">
+              <article class="student-row">
+                {% if s.photo %}
+                  <img src="{{ s.photo | relative_url }}" alt="{{ s.name }}" class="student-photo">
+                {% endif %}
+                <div class="student-body">
+                  <h3 style="margin:0 0 6px">{{ s.name }}</h3>
+                  {% if s.role or s.period %}
+                    <p class="student-meta">
+                      {% if s.role %}{{ s.role }}{% endif %}
+                      {% if s.period %}{% if s.role %} · {% endif %}{{ s.period }}{% endif %}
+                    </p>
+                  {% endif %}
+                  {% if s.summary %}
+                    <p class="muted" style="margin:0 0 8px">{{ s.summary }}</p>
+                  {% endif %}
+                  {% if s.tags %}
+                    <p class="student-tags">
+                      {% for tag in s.tags %}
+                        <span>{{ tag }}</span>
+                      {% endfor %}
+                    </p>
+                  {% endif %}
+                </div>
+              </article>
+            </a>
+          {% endif %}
+        {% endfor %}
+        {% if has_phd == false %}
+          <p class="muted">No Ph.D students listed yet.</p>
         {% endif %}
-      {% endfor %}
-      {% if has_phd == false %}
-        <p class="muted">No Ph.D students listed yet.</p>
-      {% endif %}
+      </div>
     </div>
   </section>
 
   <!-- MS Students -->
   <section id="ms" class="students-section">
-    <div class="head">
-      <h2><span class="title-text">MS Students</span></h2>
-    </div>
-    <div class="student-grid">
-      {% assign has_ms = false %}
-      {% for s in items %}
-        {% assign r = s.role | default: '' | downcase %}
-        {% if r contains 'ms' %}
-          {% assign has_ms = true %}
-          {% assign href_url = s.url | default: '/members/students/contents/' | append: s.slug | append: '/' %}
-          <a href="{{ href_url | relative_url }}" class="student-card" id="{{ s.slug }}">
-            {% if s.photo %}
-              <img src="{{ s.photo | relative_url }}" alt="{{ s.name }}" class="student-photo">
-            {% endif %}
-            <h3 style="margin:0 0 6px">{{ s.name }}</h3>
-            {% if s.role or s.period %}
-              <p class="student-meta">
-                {% if s.role %}{{ s.role }}{% endif %}
-                {% if s.period %}{% if s.role %} · {% endif %}{{ s.period }}{% endif %}
-              </p>
-            {% endif %}
-            {% if s.summary %}
-              <p class="muted" style="margin:0 0 8px">{{ s.summary }}</p>
-            {% endif %}
-            {% if s.tags %}
-              <p class="student-tags">
-                {% for tag in s.tags %}
-                  <span>{{ tag }}</span>
-                {% endfor %}
-              </p>
-            {% endif %}
-          </a>
+    <div class="container">
+      <div class="head">
+        <h2><span class="title-text">MS Students</span></h2>
+      </div>
+      <div class="student-grid">
+        {% assign has_ms = false %}
+        {% for s in items %}
+          {% assign r = s.role | default: '' | downcase %}
+          {% if r contains 'ms' %}
+            {% assign has_ms = true %}
+            {% assign href_url = s.url | default: '/members/students/contents/' | append: s.slug | append: '/' %}
+            <a href="{{ href_url | relative_url }}" class="card-link" style="text-decoration:none;color:inherit" id="{{ s.slug }}">
+              <article class="student-row">
+                {% if s.photo %}
+                  <img src="{{ s.photo | relative_url }}" alt="{{ s.name }}" class="student-photo">
+                {% endif %}
+                <div class="student-body">
+                  <h3 style="margin:0 0 6px">{{ s.name }}</h3>
+                  {% if s.role or s.period %}
+                    <p class="student-meta">
+                      {% if s.role %}{{ s.role }}{% endif %}
+                      {% if s.period %}{% if s.role %} · {% endif %}{{ s.period }}{% endif %}
+                    </p>
+                  {% endif %}
+                  {% if s.summary %}
+                    <p class="muted" style="margin:0 0 8px">{{ s.summary }}</p>
+                  {% endif %}
+                  {% if s.tags %}
+                    <p class="student-tags">
+                      {% for tag in s.tags %}
+                        <span>{{ tag }}</span>
+                      {% endfor %}
+                    </p>
+                  {% endif %}
+                </div>
+              </article>
+            </a>
+          {% endif %}
+        {% endfor %}
+        {% if has_ms == false %}
+          <p class="muted">No MS students listed yet.</p>
         {% endif %}
-      {% endfor %}
-      {% if has_ms == false %}
-        <p class="muted">No MS students listed yet.</p>
-      {% endif %}
+      </div>
     </div>
   </section>
 
   <!-- Interns -->
   <section id="intern" class="students-section">
-    <div class="head">
-      <h2><span class="title-text">Interns</span></h2>
-    </div>
-    <div class="student-grid">
-      {% assign has_intern = false %}
-      {% for s in items %}
-        {% assign r = s.role | default: '' | downcase %}
-        {% if r contains 'intern' %}
-          {% assign has_intern = true %}
-          {% assign href_url = s.url | default: '/members/students/contents/' | append: s.slug | append: '/' %}
-          <a href="{{ href_url | relative_url }}" class="student-card" id="{{ s.slug }}">
-            {% if s.photo %}
-              <img src="{{ s.photo | relative_url }}" alt="{{ s.name }}" class="student-photo">
-            {% endif %}
-            <h3 style="margin:0 0 6px">{{ s.name }}</h3>
-            {% if s.role or s.period %}
-              <p class="student-meta">
-                {% if s.role %}{{ s.role }}{% endif %}
-                {% if s.period %}{% if s.role %} · {% endif %}{{ s.period }}{% endif %}
-              </p>
-            {% endif %}
-            {% if s.summary %}
-              <p class="muted" style="margin:0 0 8px">{{ s.summary }}</p>
-            {% endif %}
-            {% if s.tags %}
-              <p class="student-tags">
-                {% for tag in s.tags %}
-                  <span>{{ tag }}</span>
-                {% endfor %}
-              </p>
-            {% endif %}
-          </a>
+    <div class="container">
+      <div class="head">
+        <h2><span class="title-text">Interns</span></h2>
+      </div>
+      <div class="student-grid">
+        {% assign has_intern = false %}
+        {% for s in items %}
+          {% assign r = s.role | default: '' | downcase %}
+          {% if r contains 'intern' %}
+            {% assign has_intern = true %}
+            {% assign href_url = s.url | default: '/members/students/contents/' | append: s.slug | append: '/' %}
+            <a href="{{ href_url | relative_url }}" class="card-link" style="text-decoration:none;color:inherit" id="{{ s.slug }}">
+              <article class="student-row">
+                {% if s.photo %}
+                  <img src="{{ s.photo | relative_url }}" alt="{{ s.name }}" class="student-photo">
+                {% endif %}
+                <div class="student-body">
+                  <h3 style="margin:0 0 6px">{{ s.name }}</h3>
+                  {% if s.role or s.period %}
+                    <p class="student-meta">
+                      {% if s.role %}{{ s.role }}{% endif %}
+                      {% if s.period %}{% if s.role %} · {% endif %}{{ s.period }}{% endif %}
+                    </p>
+                  {% endif %}
+                  {% if s.summary %}
+                    <p class="muted" style="margin:0 0 8px">{{ s.summary }}</p>
+                  {% endif %}
+                  {% if s.tags %}
+                    <p class="student-tags">
+                      {% for tag in s.tags %}
+                        <span>{{ tag }}</span>
+                      {% endfor %}
+                    </p>
+                  {% endif %}
+                </div>
+              </article>
+            </a>
+          {% endif %}
+        {% endfor %}
+        {% if has_intern == false %}
+          <p class="muted">No interns listed yet.</p>
         {% endif %}
-      {% endfor %}
-      {% if has_intern == false %}
-        <p class="muted">No interns listed yet.</p>
-      {% endif %}
+      </div>
     </div>
   </section>
 </main>
