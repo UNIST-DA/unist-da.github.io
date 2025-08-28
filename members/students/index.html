@@ -67,7 +67,14 @@ permalink: /members/students/
             {% if href_url == '' %}
               {% assign href_url = '/members/students/contents/?student=' | append: s.slug | append: '/' %}
             {% endif %}
-            <a href="{{ href_url | relative_url }}" class="card-link" style="text-decoration:none;color:inherit" id="{{ s.slug }}">
+            <a
+              class="card card-pad"
+              style="grid-column: span 6; display:block; text-decoration:none; color:inherit"
+              id="{{ s.slug }}"
+              href="{{ href_url | relative_url }}"
+              data-slug="{{ s.slug }}"
+            >
+
               <article class="student-row">
                 {% if s.photo %}
                   <img src="{{ s.photo | relative_url }}" alt="{{ s.name }}" class="student-photo">
