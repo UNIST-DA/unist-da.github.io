@@ -14,4 +14,4 @@ bio: Statistical Machine Learning
 
 ## Research Interests
 - Statistical machine learning
-- Data analysis
+- Survival Analysis
