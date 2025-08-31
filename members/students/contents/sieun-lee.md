@@ -27,6 +27,28 @@ education:
     title: M.S. in Industrial Engineering
     org: Ulsan National Institute of Science and Technology (UNIST)
     note: Data Analytics Lab, advised by Prof. Sungil Kim
+
+# 새 타임라인(권장)
+works:
+  - start: 2025
+    title: Domain-free Time-Series Drift Management
+    org: DA-Lab
+    note: Representation stability, indicator-driven alarms, long-horizon monitoring
+  - start: 2024
+    title: Fuel Consumption Prediction & Optimization (SCSC)
+    org: SCSC × DA-Lab
+    note: AIS + weather + engine signals; cost & CO₂ reduction
+  - start: 2024
+    title: LLM Agent for Maritime Data Analysis (SCSC)
+    org: SCSC × DA-Lab
+  - start: 2025.05
+    title: Seminar — Missingness Patterns
+    org: DA-Lab Seminar
+    note: Survey on imputation & evaluation for TS with missingness
+  - start: 2024.10
+    title: Seminar — Diffusion-TS (ICLR 2024)
+    org: Paper Reading
+    url: https://openreview.net/...
 projects:
   - samsung-ds-283
   - df-ts-drift
