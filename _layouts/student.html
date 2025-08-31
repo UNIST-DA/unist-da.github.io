@@ -19,48 +19,35 @@ layout: default
 </div>
 
 <style>
-/* ===== Timeline (continuous rail + centered dots) ===== */
+/* ===== Timeline: dot-centered continuous rail (no drift, no gaps) ===== */
 :root{
-  --time-col: 100px;       /* 왼쪽 연도/기간 폭 */
-  --rail-gap: 26px;        /* 도트 열 폭 */
-  --dot: 10px;             /* 도트 지름 */
-  --dot-shift: .30em;      /* 첫 줄 기준 도트 세로 보정 */
-  --rail-x: calc(var(--time-col) + var(--rail-gap)/2); /* 세로선 x좌표(도트 중앙) */
+  --time-col: 100px;   /* left time column width */
+  --rail-gap: 26px;    /* middle column for dot */
+  --dot: 10px;         /* dot diameter */
+  --dot-shift: .30em;  /* vertical tweak so dot sits on first text line */
 }
 
 .timeline{
-  position: relative;
   margin: 6px 0 0;
   padding-left: 0;
   list-style: none;
 }
 
-/* ★ 선은 리스트 전체에서 한 번만 그림 → 끊김 없음 */
-.timeline::before{
-  content: "";
-  position: absolute;
-  left: var(--rail-x);
-  top: 0;                   /* 필요 시 6~8px 정도로 올림/내림 가능 */
-  bottom: 0;
-  width: 2px;
-  background: #e5e7eb;
-}
-
 .timeline-item{
+  position: relative;
   display: grid;
-  grid-template-columns: var(--time-col) var(--rail-gap) 1fr; /* 1: 시간 | 2: 도트 | 3: 본문 */
+  grid-template-columns: var(--time-col) var(--rail-gap) 1fr; /* 1: time | 2: dot | 3: body */
   gap: 12px;
   align-items: start;
   padding: 12px 0;
-  position: relative;
 }
 
-/* 컬럼 고정(본문이 3열에 들어가도록 강제) */
+/* lock columns so body never collapses into col 2 */
 .timeline-item .time{ grid-column: 1; }
 .timeline-item .dot { grid-column: 2; }
 .timeline-item .body{ grid-column: 3; }
 
-/* 시간 */
+/* time cell */
 .timeline-item .time{
   font-size: 14px;
   font-weight: 500;
@@ -69,23 +56,37 @@ layout: default
   white-space: nowrap;
 }
 
-/* 도트: 2열 중앙에 정렬 → 선과 항상 같은 축 */
+/* dot: perfectly centered in column 2 */
 .timeline-item .dot{
   justify-self: center;
   align-self: start;
-  width: var(--dot); height: var(--dot);
+  width: var(--dot);
+  height: var(--dot);
   border-radius: 999px;
-  background: #e5e7eb;      /* 요청한 색상 */
-  box-shadow: 0 0 0 4px #fff; /* 카드 배경 분리 */
+  background: #e5e7eb;        /* requested color */
+  box-shadow: 0 0 0 4px #fff; /* separate from card background */
   margin-top: var(--dot-shift);
   position: relative;
-  z-index: 1;               /* 선 위에 올라오도록 */
+  z-index: 1;
 }
 
-/* 본문 타이포: 본문 크기 + 볼드만 */
+/* draw the vertical rail from the dot itself (over-extended so it looks continuous) */
+.timeline-item .dot::after{
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -1000px;               /* extend far above to overlap previous items */
+  bottom: -1000px;            /* extend far below to overlap next items */
+  width: 2px;
+  background: #e5e7eb;
+  z-index: -1;
+}
+
+/* body text */
 .timeline-item .body .title{
-  font-size: 16px;
-  font-weight: 700;
+  font-size: 16px;            /* same as body size */
+  font-weight: 700;           /* bold only */
   line-height: 1.4;
   margin: 0 0 2px;
 }
@@ -96,7 +97,7 @@ layout: default
   margin: 2px 0 0;
 }
 
-/* 현재 항목 강조(외곽 링만) */
+/* optional: subtle highlight for the newest item */
 .timeline-current .dot{
   box-shadow: 0 0 0 5px rgba(229,231,235,0.6);
 }
