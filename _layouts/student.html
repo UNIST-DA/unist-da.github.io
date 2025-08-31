@@ -19,50 +19,84 @@ layout: default
 </div>
 
 <style>
-/* ===== Timeline (rail & dot perfectly aligned) ===== */
+/* ===== Timeline (grid placement fixed) ===== */
 :root{
-  --time-col: 96px;            /* left time column width */
-  --rail-gap: 24px;            /* middle column for dot */
-  --dot: 10px;                 /* dot size */
-  --dot-offset: .32em;         /* vertical fine-tune of dot vs first text line */
-  --rail-x: calc(var(--time-col) + var(--rail-gap)/2); /* vertical line X */
+  --time-col: 100px;       /* 왼쪽 연도/기간 폭 */
+  --rail-gap: 26px;        /* 점(도트) 컬럼 폭 */
+  --dot: 10px;             /* 도트 크기 */
+  --rail-x: calc(var(--time-col) + var(--rail-gap)/2); /* 수직 라인 x좌표 */
+  --dot-shift: .30em;      /* 첫 줄 기준 도트 세로 보정 */
 }
 
 .timeline{
-  position:relative; margin:6px 0 0; padding-left:0; list-style:none;
+  position: relative;
+  margin: 6px 0 0;
+  padding-left: 0;
+  list-style: none;
 }
 .timeline::before{
-  content:""; position:absolute; left:var(--rail-x); top:0; bottom:0;
-  width:2px; background:#e5e7eb;
+  content: "";
+  position: absolute;
+  left: var(--rail-x);
+  top: 0; bottom: 0;
+  width: 2px;
+  background: #e5e7eb;
 }
+
 .timeline-item{
-  position:relative;
-  display:grid; grid-template-columns: var(--time-col) var(--rail-gap) 1fr;
-  gap:12px; align-items:start; padding:12px 0;
+  display: grid;
+  grid-template-columns: var(--time-col) var(--rail-gap) 1fr; /* 1:시간 | 2:도트 | 3:본문 */
+  gap: 12px;
+  align-items: start;
+  padding: 12px 0;
 }
+
+/* ▶ 각 요소를 명시적으로 그리드 열에 고정 */
+.timeline-item .time{ grid-column: 1; }
+.timeline-item .dot{  grid-column: 2; }
+.timeline-item .body{ grid-column: 3; }
+
+/* 시간표시 */
 .timeline-item .time{
-  font: 500 14px/1.4 system-ui, -apple-system, "Inter", sans-serif;
-  color:#6b7280; text-align:right; white-space:nowrap;
+  font-size: 14px;
+  font-weight: 500;
+  color: #6b7280;
+  text-align: right;
+  white-space: nowrap;
 }
-/* Dot is pinned to the rail center so it always matches the line */
+
+/* 도트: 2열 중앙에 배치 → 라인과 항상 정확히 일치 */
 .timeline-item .dot{
-  position:absolute; left:var(--rail-x);
-  width:var(--dot); height:var(--dot); border-radius:999px;
-  background:#e5e7eb; transform: translate(-50%, 0);
-  top: calc(12px + var(--dot-offset)); /* 12px = item top padding */
+  justify-self: center;
+  align-self: start;
+  width: var(--dot); height: var(--dot);
+  border-radius: 999px;
+  background: #e5e7eb;
   box-shadow: 0 0 0 4px #fff;
+  margin-top: var(--dot-shift);   /* 첫 텍스트 줄과 싱크 미세조정 */
 }
+
+/* 본문 타이포(본문 크기 + 볼드만) */
 .timeline-item .body .title{
-  font-size:16px; font-weight:700; line-height:1.4; margin:0 0 2px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.4;
+  margin: 0 0 2px;
 }
 .timeline-item .body .sub,
 .timeline-item .body p{
-  font-size:14px; color:#6b7280; margin:2px 0 0;
+  font-size: 14px;
+  color: #6b7280;
+  margin: 2px 0 0;
 }
-.timeline-current .dot{ box-shadow:0 0 0 5px rgba(229,231,235,.6); }
 
-@media (max-width:720px){
-  :root{ --time-col: 82px; --rail-gap: 20px; }
+/* 현재 항목 강조(외곽 링만) */
+.timeline-current .dot{
+  box-shadow: 0 0 0 5px rgba(229,231,235,0.6);
+}
+
+@media (max-width: 720px){
+  :root{ --time-col: 86px; --rail-gap: 22px; }
 }
 
 /* ===== Cards & layout rhythm ===== */
