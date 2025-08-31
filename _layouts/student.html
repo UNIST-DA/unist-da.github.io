@@ -81,7 +81,7 @@ layout: default
         <section class="card card-pad" style="margin-top:24px">
           <h3 style="margin-top:0">Education</h3>
           <ol class="timeline">
-            {%- assign edu = page.education | reverse -%} {# 최신이 위로 오도록 #}
+            {%- assign edu = page.education | reverse -%} 
             {% for e in edu %}
               {% assign start = e.start %}
               {% assign end = e.end | default: "—" %}
