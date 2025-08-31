@@ -9,7 +9,6 @@ period: "2025.03 —"
 photo: /assets/members/students/sieun-lee.jpg
 email: sieun5548@unist.ac.kr
 tags: [Missingness, Time-Series, Imputation, Diffusion Models, Anomaly Detection, Manufacturing AI]
-# 선택: 레이아웃이 있으면 자동 렌더링됩니다.
 interests:
   - Missingness analysis & indicators in sensor/trace data
   - Time-series imputation (predictive, generative, diffusion)
@@ -22,6 +21,28 @@ projects:
   - scsc-fuel-opt
   - scsc-llm-maritime
 bio: Graduate researcher at UNIST DA-Lab focusing on missingness-aware time-series modeling (imputation, diffusion, anomaly detection) for semiconductor reliability and maritime analytics.
+education:
+  - start: 2025
+    end: null
+    title: M.S. in Industrial Engineering
+    org: Ulsan National Institute of Science and Technology (UNIST)
+    note: Data Analytics Lab, advised by Prof. Sungil Kim
+  - start: 2018
+    end: 2023
+    title: B.S. in Industrial Engineering
+    org: Ulsan National Institute of Science and Technology (UNIST)
+    note: Minor in Statistics
+experience:
+  - start: 2024.03
+    end: 2025.02
+    title: Research Intern
+    org: Data Analytics Lab, UNIST
+    note: Missingness & diffusion-based imputation for FDC data
+  - start: 2022.07
+    end: 2022.12
+    title: Data Scientist (Intern)
+    org: Korea Marine Big Data Contest (Team Project)
+    note: Developed ML-based CO₂ emission reduction & cost-optimized routing model (Grand Prize)
 ---
 
 ## Overview
@@ -34,15 +55,8 @@ My research centers on **missingness patterns** in multivariate time series and 
 - **Reliability & anomaly analytics** in semiconductor processes (process-to-product risk modeling).
 - **Maritime fuel optimization** prototypes combining AIS, weather, and engine signals.
 
-## Methods & Tooling
-- Modeling: LSTM/TCN, Transformers, **CSDI / SSSD / Diffusion-TS**, KNN/MICE, matrix factorization
-- Analytics: clustering & embedding evaluation (Silhouette etc.), drift detection, ablation on missingness indicators
-- Stack: Python (pandas, PyTorch), Jupyter, GitHub Pages/Jekyll for lab website
-
 ## Selected Highlights
 - 🏆 **Grand Prize**, *2022 Marine & Fisheries Big Data Analysis Contest* — CO₂ reduction & cost-aware routing via ML.
-- 📚 **Seminars**: *Diffusion-TS: Interpretable Diffusion for General Time Series Generation* (ICLR 2024, lab reading); *Missingness Patterns* (DA-Lab seminar, 2025).
-- 👩🏻‍🏫 **Mentoring**: Private math tutoring (high-school), study guidance on model understanding & statistics.
-
-## Notes for Collaboration
-I'm interested in (1) principled missingness modeling for **reliability/quality engineering**, (2) scalable **imputation+downstream** evaluation suites, and (3) cross-domain drift frameworks. Happy to collaborate on semiconductor reliability, healthcare TS, and maritime/logistics data.
+- 📚 **Seminars**: *Diffusion-TS (ICLR 2024)*, *Missingness Patterns* (DA-Lab seminar, 2025).
+- 👩🏻‍🏫 **Mentoring**: Private math tutoring, guidance on ML/statistics foundations.
+- 
