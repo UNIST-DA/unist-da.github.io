@@ -19,83 +19,78 @@ layout: default
 </div>
 
 <style>
-/* ============ Timeline & Typography Fix ============ */
+/* ===== Timeline (rail & dot perfectly aligned) ===== */
 :root{
-  --time-col: 100px;     /* left time column width */
-  --rail-gap: 20px;      /* space for dot column */
-  --dot: 12px;           /* dot size */
-  --rail-x: calc(var(--time-col) + (var(--rail-gap) / 2)); /* vertical line x */
+  --time-col: 96px;            /* left time column width */
+  --rail-gap: 24px;            /* middle column for dot */
+  --dot: 10px;                 /* dot size */
+  --dot-offset: .32em;         /* vertical fine-tune of dot vs first text line */
+  --rail-x: calc(var(--time-col) + var(--rail-gap)/2); /* vertical line X */
 }
 
-.timeline {
-  position: relative;
-  margin: 8px 0 0;
-  padding-left: 0;
-  list-style: none;
+.timeline{
+  position:relative; margin:6px 0 0; padding-left:0; list-style:none;
 }
-.timeline::before {
-  content: "";
-  position: absolute;
-  left: var(--rail-x);
-  top: 0; bottom: 0;
-  width: 2px;
-  background: #e5e7eb;
+.timeline::before{
+  content:""; position:absolute; left:var(--rail-x); top:0; bottom:0;
+  width:2px; background:#e5e7eb;
 }
-.timeline-item {
-  display: grid;
-  grid-template-columns: var(--time-col) var(--rail-gap) 1fr; /* time | dot | content */
-  gap: 12px;
-  align-items: start;                /* multi-line content starts at top */
-  padding: 12px 0;
+.timeline-item{
+  position:relative;
+  display:grid; grid-template-columns: var(--time-col) var(--rail-gap) 1fr;
+  gap:12px; align-items:start; padding:12px 0;
 }
-.timeline-item .time {
-  font-size: 14px;
-  font-weight: 500;
-  color: #6b7280;
-  text-align: right;
-  white-space: nowrap;
+.timeline-item .time{
+  font: 500 14px/1.4 system-ui, -apple-system, "Inter", sans-serif;
+  color:#6b7280; text-align:right; white-space:nowrap;
 }
-.timeline-item .dot {
-  width: var(--dot); height: var(--dot);
-  border-radius: 999px;
-  background: #e5e7eb;              /* requested color */
-  box-shadow: 0 0 0 4px #fff;        /* separate from card bg */
-  margin: calc(0.5em - var(--dot)/2) auto 0; /* center on first text line */
+/* Dot is pinned to the rail center so it always matches the line */
+.timeline-item .dot{
+  position:absolute; left:var(--rail-x);
+  width:var(--dot); height:var(--dot); border-radius:999px;
+  background:#e5e7eb; transform: translate(-50%, 0);
+  top: calc(12px + var(--dot-offset)); /* 12px = item top padding */
+  box-shadow: 0 0 0 4px #fff;
 }
-.timeline-item .body .title {
-  font-size: 16px;                   /* body size */
-  font-weight: 700;                  /* bold only */
-  line-height: 1.4;
-  margin: 0 0 2px;
+.timeline-item .body .title{
+  font-size:16px; font-weight:700; line-height:1.4; margin:0 0 2px;
 }
 .timeline-item .body .sub,
-.timeline-item .body p {
-  font-size: 14px;
-  color: #6b7280;
-  margin: 2px 0 0;
+.timeline-item .body p{
+  font-size:14px; color:#6b7280; margin:2px 0 0;
 }
-.timeline-current .dot {
-  box-shadow: 0 0 0 5px rgba(229,231,235,0.6);
+.timeline-current .dot{ box-shadow:0 0 0 5px rgba(229,231,235,.6); }
+
+@media (max-width:720px){
+  :root{ --time-col: 82px; --rail-gap: 20px; }
 }
 
-@media (max-width: 720px){
-  :root{ --time-col: 84px; --rail-gap: 18px; }
-}
+/* ===== Cards & layout rhythm ===== */
+.section-card{ margin:0; } /* cards are stacked with flex gap */
+.article-wrap{ display:flex; flex-direction:column; gap:16px; margin:0; }
 
-/* Card spacing harmony */
-.section-card { margin-top: 20px; }
-.section-card:first-of-type { margin-top: 32px; }
+/* Sidebar tags */
+.tag{
+  display:inline-block;border:1px solid #e3e3e3;border-radius:999px;
+  padding:2px 8px;margin:0 6px 6px 0;font-size:12px;
+}
 </style>
 
 <main class="container">
   <section class="grid" style="grid-template-columns: 280px 1fr; gap: 24px;">
-    <!-- Sidebar -->
+    <!-- ===== Sidebar ===== -->
     <aside>
       {% if page.photo %}
         <img src="{{ page.photo | relative_url }}" alt="{{ page.name }}"
              style="width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:16px; margin-bottom:12px;">
       {% endif %}
-      {% if page.email %}<p><strong>Email</strong><br><a href="mailto:{{ page.email }}">{{ page.email }}</a></p>{% endif %}
+
+      {% if page.email %}
+        <p><strong>Email</strong><br>
+          <a href="mailto:{{ page.email }}">{{ page.email }}</a>
+        </p>
+      {% endif %}
+
       <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:8px">
         {% if page.website %}<a class="muted" href="{{ page.website }}" target="_blank" rel="noreferrer">Website</a>{% endif %}
         {% if page.github %}<a class="muted" href="{{ page.github }}" target="_blank" rel="noreferrer">GitHub</a>{% endif %}
@@ -103,30 +98,29 @@ layout: default
         {% if page.linkedin %}<a class="muted" href="{{ page.linkedin }}" target="_blank" rel="noreferrer">LinkedIn</a>{% endif %}
         {% if page.cv %}<a class="muted" href="{{ page.cv | relative_url }}" target="_blank" rel="noreferrer">CV</a>{% endif %}
       </div>
+
       {% if page.tags %}
         <p class="muted" style="margin-top:12px">
-          {% for t in page.tags %}
-            <span style="display:inline-block;border:1px solid #e3e3e3;border-radius:999px;padding:2px 8px;margin:0 6px 6px 0;font-size:12px">{{ t }}</span>
-          {% endfor %}
+          {% for t in page.tags %}<span class="tag">{{ t }}</span>{% endfor %}
         </p>
       {% endif %}
     </aside>
 
-    <!-- Main -->
-    <article class="prose">
+    <!-- ===== Main content ===== -->
+    <article class="prose article-wrap">
       <!-- About Me -->
-      {% if page.bio or page.about %}
+      {% if page.about or page.bio %}
       <section class="card card-pad section-card">
-        <h3 style="margin-top:0">About Me</h3>
-        <p class="muted" style="margin-top:4px">{{ page.about | default: page.bio }}</p>
+        <h3 style="margin:0 0 6px;">About Me</h3>
+        <p class="muted" style="margin:0">{{ page.about | default: page.bio }}</p>
       </section>
       {% endif %}
 
       <!-- Research Interests -->
       {% if page.interests %}
       <section class="card card-pad section-card">
-        <h3 style="margin-top:0">Research Interests</h3>
-        <ul style="margin:6px 0 0">
+        <h3 style="margin:0 0 6px;">Research Interests</h3>
+        <ul style="margin:0">
           {% for i in page.interests %}<li>{{ i }}</li>{% endfor %}
         </ul>
       </section>
@@ -135,16 +129,16 @@ layout: default
       <!-- Education (timeline) -->
       {% if page.education %}
       <section class="card card-pad section-card">
-        <h3 style="margin-top:0">Education</h3>
+        <h3 style="margin:0 0 6px;">Education</h3>
         <ol class="timeline">
           {%- assign edu = page.education | reverse -%}
           {% for e in edu %}
             <li class="timeline-item {% if forloop.first %}timeline-current{% endif %}">
-              <div class="time">{{ e.start }}{% if e.end %} – {{ e.end }}{% endif %}</div>
-              <div class="dot"></div>
+              <span class="time">{{ e.start }}{% if e.end %} – {{ e.end }}{% endif %}</span>
+              <span class="dot" aria-hidden="true"></span>
               <div class="body">
                 <div class="title">{{ e.title }}</div>
-                {% if e.org %}<div class="sub muted">in {{ e.org }}</div>{% endif %}
+                {% if e.org %}<div class="sub">in {{ e.org }}</div>{% endif %}
                 {% if e.note %}<p>{{ e.note }}</p>{% endif %}
               </div>
             </li>
@@ -153,35 +147,50 @@ layout: default
       </section>
       {% endif %}
 
-      <!-- Projects & Publications -->
-      {% if page.projects or page.publications %}
+      <!-- Projects & Publications (timeline preferred) -->
+      {% if page.works or page.projects or page.publications %}
       <section class="card card-pad section-card">
-        <h3 style="margin-top:0">Projects & Publications</h3>
+        <h3 style="margin:0 0 6px;">Projects &amp; Publications</h3>
 
-        {% if page.projects %}
-          <h4>Selected Projects</h4>
-          <ul>
-            {% for pid in page.projects %}
-              {% assign p = site.data.projects | where: "slug", pid | first %}
-              {% if p %}
-                <li><a href="{{ p.url | default: '/research/projects/#' | append: p.slug | relative_url }}">{{ p.title }}</a></li>
-              {% else %}
-                <li>{{ pid }}</li>
-              {% endif %}
+        {% if page.works %}
+          <ol class="timeline">
+            {%- assign works = page.works | reverse -%}
+            {% for w in works %}
+              <li class="timeline-item">
+                <span class="time">{{ w.start }}{% if w.end %} – {{ w.end }}{% endif %}</span>
+                <span class="dot" aria-hidden="true"></span>
+                <div class="body">
+                  <div class="title">{{ w.title }}</div>
+                  {% if w.org %}<div class="sub">{{ w.org }}</div>{% endif %}
+                  {% if w.note %}<p>{{ w.note }}</p>{% endif %}
+                  {% if w.url %}<p style="margin-top:2px"><a href="{{ w.url }}" target="_blank" rel="noreferrer">Link</a></p>{% endif %}
+                </div>
+              </li>
             {% endfor %}
-          </ul>
-        {% endif %}
-
-        {% if page.publications %}
-          <h4>Selected Publications</h4>
-          <ul>
-            {% for pub in page.publications %}<li>{{ pub }}</li>{% endfor %}
-          </ul>
+          </ol>
+        {% else %}
+          {% if page.projects %}
+            <h4 style="margin:8px 0 4px;">Selected Projects</h4>
+            <ul style="margin:0">
+              {% for pid in page.projects %}
+                {% assign p = site.data.projects | where: "slug", pid | first %}
+                {% if p %}
+                  <li><a href="{{ p.url | default: '/research/projects/#' | append: p.slug | relative_url }}">{{ p.title }}</a></li>
+                {% else %}
+                  <li>{{ pid }}</li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          {% endif %}
+          {% if page.publications %}
+            <h4 style="margin:12px 0 4px;">Selected Publications</h4>
+            <ul style="margin:0">{% for pub in page.publications %}<li>{{ pub }}</li>{% endfor %}</ul>
+          {% endif %}
         {% endif %}
       </section>
       {% endif %}
 
-      <!-- Freeform content (any markdown the student writes) -->
+      <!-- Freeform (any markdown content from the page) -->
       {% if content and content != "" %}
       <section class="card card-pad section-card">
         {{ content }}
