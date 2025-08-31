@@ -18,8 +18,13 @@ permalink: /members/professor/
 <!-- Spacing + shared section title + timeline styles -->
 <style>
   /* 페이지 시작 여백 & 섹션 간 간격(Students와 톤 맞춤) */
-  .prof-section:first-of-type { margin-top: 32px; }
-  .prof-section + .prof-section { margin-top: 24px; }
+  /* 섹션 간격 통일: 위는 24px, 그 외 16px */
+  .prof-section { margin-top: 16px; }
+  .prof-section:first-of-type { margin-top: 24px; }
+  .grid.prof-section { margin-top: 16px; }
+  
+  /* 카드 내부 마지막 요소 여백 제거로 섹션 사이가 과하게 벌어지지 않게 */
+  .card.card-pad > *:last-child { margin-bottom: 0; }
   @media (max-width: 720px){
     .prof-header{ grid-template-columns:1fr; }
     .prof-photo{ width:100% !important; height:auto !important; aspect-ratio:1/1; }
@@ -101,16 +106,16 @@ permalink: /members/professor/
 <main class="container" style="max-width: 1100px;">
   <!-- Profile Header -->
   <section class="card card-pad prof-section prof-header"
-           style="display:grid;
-                  grid-template-columns:300px 1fr;
-                  gap:20px;
-                  align-items:center;
-                  padding:12px 16px;">
+         style="display:grid;
+                /* 왼쪽(사진) : 오른쪽(텍스트) ≈ 1 : 1.2 → 사진이 카드 가로의 절반 가까이 차지 */
+                grid-template-columns:minmax(340px, 1fr) 1.2fr;
+                gap:20px;
+                align-items:center;
+                padding:12px 16px;">
     <img src="{{ '/assets/members/professor/professor.jpg' | relative_url }}"
          alt="Dr. Sungil Kim"
          class="prof-photo"
-         style="width:300px;height:300px;object-fit:cover;border-radius:16px;border:1px solid #eee;">
-    <div>
+         style="width:100%; aspect-ratio:4/3; height:auto; object-fit:cover; border-radius:16px; border:1px solid #eee;">    <div>
       <h2 style="margin:0 0 4px;">Dr. Sungil Kim</h2>
 
       <!-- 소속/직함 (줄간격 촘촘) -->
