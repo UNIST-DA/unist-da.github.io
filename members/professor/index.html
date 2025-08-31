@@ -1,0 +1,295 @@
+---
+layout: default
+title: Professor · Data Analytics Lab
+description: Professor Sungil Kim (UNIST IE) — Data Analytics Lab.
+permalink: /members/professor/
+---
+
+<div class="page-hero">
+  <div class="container">
+    <div class="breadcrumbs">
+      <a href="{{ '/' | relative_url }}">Home</a> · <a href="{{ '/members/' | relative_url }}">Members</a> · Professor
+    </div>
+    <h1 class="page-title">Professor</h1>
+    <p class="muted">Data Analytics Lab (UNIST IE)</p>
+  </div>
+</div>
+
+<!-- Spacing + shared section title + timeline styles -->
+<style>
+  /* 페이지 시작 여백 & 섹션 간 간격(Students와 톤 맞춤) */
+  .prof-section:first-of-type { margin-top: 32px; }
+  .prof-section + .prof-section { margin-top: 24px; }
+  @media (max-width: 720px){
+    .prof-header{ grid-template-columns:1fr; }
+    .prof-photo{ width:100% !important; height:auto !important; aspect-ratio:1/1; }
+  }
+
+  /* 공통 섹션 제목 유틸리티 */
+  .sec-title{
+    display:flex; align-items:center;
+    font-size:20px; font-weight:600;
+    margin:0 0 12px; line-height:1.3;
+    --accent:#26A7A7;
+  }
+  .sec-title::before{
+    content:""; width:4px; height:20px; border-radius:2px;
+    background:var(--accent); margin-right:8px; flex:0 0 4px;
+  }
+
+  /* ===== Timeline styles ===== */
+  .timeline { position:relative; margin:8px 0 0; padding-left:0; list-style:none; }
+  .timeline::before {
+    content:""; position:absolute; left:110px; top:0; bottom:0; width:2px; background:#ececec;
+  }
+  .timeline-item {
+    display:grid; grid-template-columns:100px 20px 1fr;
+    gap:16px; align-items:start; position:relative; padding:16px 0;
+  }
+  .timeline-item .time { font-weight:600; color:#7a7a7a; text-align:right; white-space:nowrap; }
+  .timeline-item .dot {
+    position: relative;
+    top: 4px;
+    width: 12px; height: 12px;
+    border-radius: 999px;
+    background: #e5e7eb;         /* ← 변경 */
+    box-shadow: 0 0 0 4px #fff;  /* 카드 배경과 분리감 */
+  }
+  .timeline-item .body .title { font-weight:700; margin:0; }
+  .timeline-item .body .sub { margin-top:2px; }
+  .timeline-current .dot {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 5px rgba(229,231,235,0.6); /* 강조 링도 동일 계열 */
+  }
+  @media (max-width: 720px) {
+    .timeline::before { left:90px; }
+    .timeline-item { grid-template-columns:80px 20px 1fr; }
+    .timeline-item .time { font-size:14px; }
+  }
+</style>
+
+<main class="container" style="max-width: 1100px;">
+  <!-- Profile Header -->
+  <section class="card card-pad prof-section prof-header"
+           style="display:grid;
+                  grid-template-columns:300px 1fr;
+                  gap:20px;
+                  align-items:center;
+                  padding:12px 16px;">
+    <img src="{{ '/assets/members/professor/professor.jpg' | relative_url }}"
+         alt="Dr. Sungil Kim"
+         class="prof-photo"
+         style="width:300px;height:300px;object-fit:cover;border-radius:16px;border:1px solid #eee;">
+    <div>
+      <h2 style="margin:0 0 4px;">Dr. Sungil Kim</h2>
+
+      <!-- 소속/직함 (줄간격 촘촘) -->
+      <p class="muted" style="margin:1px 0; line-height:1.3;">
+        <a href="https://ie.unist.ac.kr/" target="_blank" rel="noopener noreferrer">
+          Associate Professor, Department of Industrial Engineering
+        </a>
+      </p>
+      <p class="muted" style="margin:1px 0; line-height:1.3;">
+        <a href="https://aigs.unist.ac.kr/web/index.php" target="_blank" rel="noopener noreferrer">
+          Graduate School of Artificial Intelligence
+        </a>
+      </p>
+      <p class="muted" style="margin:1px 0; line-height:1.3;">
+        <a href="https://unist-kor.unist.ac.kr/" target="_blank" rel="noopener noreferrer">
+          UNIST (Ulsan National Institute of Science and Technology)
+        </a>
+      </p>
+      <!-- 학과장 역할 추가 -->
+      <p class="muted" style="margin:6px 0 0; line-height:1.4;">
+        <strong>Department Chair (UNIST IE), 2024 — present</strong>
+      </p>
+
+      <ul style="list-style:none;padding:0;margin:10px 0 0;
+                 display:grid;grid-template-columns:repeat(1,minmax(220px,1fr));gap:6px 18px;">
+        <li><strong>Office</strong>: <span class="muted">Bldg.112 Rm. 301-8</span></li>
+        <li><strong>Tel.</strong>: <span class="muted">+82-52-217-3195</span></li>
+        <li><strong>Mail</strong>: <span class="muted">sungil.kim@unist.ac.kr</span></li>
+      </ul>
+
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin:10px 0 0;">
+        <a class="btn" href="{{ '/assets/cv/Sungil_Kim_CV.pdf' | relative_url }}"
+           style="padding:8px 16px;border-radius:10px;border:1px solid #e5e7eb;text-decoration:none;">CV</a>
+        <a class="btn" href="https://scholar.google.com/" target="_blank" rel="noopener"
+           style="padding:8px 16px;border-radius:10px;border:1px solid #e5e7eb;text-decoration:none;">Google Scholar</a>
+        <a class="btn" href="mailto:sungil.kim@unist.ac.kr"
+           style="padding:8px 16px;border-radius:10px;border:1px solid #e5e7eb;text-decoration:none;">Email</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bio -->
+  <section class="card card-pad prof-section">
+    <h3 class="sec-title">Bio</h3>
+    <p>
+      Dr. Sungil Kim is an <strong>Associate Professor</strong> in the Department of Industrial Engineering at UNIST.
+      He focuses on modern challenges in quality engineering in the era of AI—such as
+      <em>sensor drift</em>, <em>inefficient data representation</em>, and <em>class imbalance</em>—leveraging
+      sensor and real-time log data to deliver practical, field-ready solutions.
+    </p>
+  </section>
+
+  <!-- Research Field / Research Topics -->
+  <section class="grid prof-section">
+    <article class="card card-pad" style="grid-column: span 6;">
+      <h3 class="sec-title">Research Field</h3>
+      <ul>
+        <li>System Monitoring &amp; Anomaly Detection</li>
+        <li>Sequential Learning</li>
+        <li>Neural Differential Equations</li>
+        <li>Uncertainty Quantification</li>
+        <li>Artificial Intelligence in Quality Engineering</li>
+      </ul>
+    </article>
+    <article class="card card-pad" style="grid-column: span 6;">
+      <h3 class="sec-title">Research Topics</h3>
+      <ul>
+        <li>Industrial Statistics and Data Analytics</li>
+        <li>Quality Engineering and Management</li>
+        <li>Response Surface Methodology</li>
+        <li>Demand Forecasting</li>
+        <li>Machine Learning and Data Mining</li>
+        <li>Business Analytics</li>
+      </ul>
+    </article>
+  </section>
+
+  <!-- Employment (Timeline) -->
+  <section class="card card-pad prof-section">
+    <h3 class="sec-title">Employment</h3>
+    <ol class="timeline">
+      <li class="timeline-item timeline-current">
+        <div class="time">2024 —</div>
+        <div class="dot"></div>
+        <div class="body">
+          <div class="title">Department Chair</div>
+          <div class="sub muted">Department of Industrial Engineering, UNIST</div>
+        </div>
+      </li>
+      <li class="timeline-item">
+        <div class="time">2020 —</div>
+        <div class="dot"></div>
+        <div class="body">
+          <div class="title">Associate Professor</div>
+          <div class="sub muted">UNIST</div>
+        </div>
+      </li>
+      <li class="timeline-item">
+        <div class="time">2016 — 2020</div>
+        <div class="dot"></div>
+        <div class="body">
+          <div class="title">Assistant Professor</div>
+          <div class="sub muted">UNIST</div>
+        </div>
+      </li>
+      <li class="timeline-item">
+        <div class="time">2014 — 2016</div>
+        <div class="dot"></div>
+        <div class="body">
+          <div class="title">Senior Engineer</div>
+          <div class="sub muted">Samsung SDS</div>
+        </div>
+      </li>
+      <li class="timeline-item">
+        <div class="time">2011 — 2013</div>
+        <div class="dot"></div>
+        <div class="body">
+          <div class="title">Consultant</div>
+          <div class="sub muted">Terra Technology</div>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- Education (Timeline) -->
+  <section class="card card-pad prof-section">
+    <h3 class="sec-title">Education</h3>
+    <ol class="timeline">
+      <li class="timeline-item">
+        <div class="time">2011</div>
+        <div class="dot"></div>
+        <div class="body">
+          <div class="title">Ph.D., Industrial &amp; Systems Engineering</div>
+          <div class="sub muted">Georgia Institute of Technology</div>
+        </div>
+      </li>
+      <li class="timeline-item">
+        <div class="time">2007</div>
+        <div class="dot"></div>
+        <div class="body">
+          <div class="title">M.S., Statistics</div>
+          <div class="sub muted">Georgia Institute of Technology</div>
+        </div>
+      </li>
+      <li class="timeline-item">
+        <div class="time">2007</div>
+        <div class="dot"></div>
+        <div class="body">
+          <div class="title">M.S., Industrial &amp; Systems Engineering</div>
+          <div class="sub muted">Georgia Institute of Technology</div>
+        </div>
+      </li>
+      <li class="timeline-item">
+        <div class="time">2005</div>
+        <div class="dot"></div>
+        <div class="body">
+          <div class="title">B.Sc., Industrial Engineering</div>
+          <div class="sub muted">Yonsei University</div>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- Patents -->
+  <section class="card card-pad prof-section">
+    <h3 class="sec-title">Patents</h3>
+    <ul>
+      <li style="font-size:14px; color:#4b5563;">Kim, Sungil (primary inventor), Method of anomaly detection of vessels applying Bayesian bootstrap. (10-2534357, granted May 16, 2023)</li>
+      <li style="font-size:14px; color:#4b5563;">Kim, Sungil (primary inventor), Sensor drift compensation method and device. (10-2364019, granted February 14, 2022)</li>
+      <li style="font-size:14px; color:#4b5563;">Kim, Sungil (primary inventor), Method and apparatus for determining delay possibility of shipment. (10-2250354, granted May 4, 2021)</li>
+    </ul>
+  </section>
+
+  <!-- Teaching -->
+  <section class="card card-pad prof-section">
+    <h3 class="sec-title">Teaching</h3>
+    <ul>
+      <li>Statistical Quality Control (Undergraduate)</li>
+    </ul>
+  </section>
+
+  <!-- Research Publications -->
+  <section class="card card-pad prof-section">
+    <h3 class="sec-title">Research Publications</h3>
+    <ul>
+      <li style="font-size:14px; color:#4b5563;">YongKyung Oh, Dongyoung Lim, and Sungil Kim (2024), Stable neural stochastic differential equations for irregular time series classification, ICLR (spotlight).</li>
+      <li style="font-size:14px; color:#4b5563;">Jonghwan Mun, Jitae Yoo, Heesun Kim, Nayi Ryu, and Sungil Kim (2024), Domain knowledge-informed</li>
+      <li style="font-size:14px; color:#4b5563;">Sungil Kim (2021), Maximum feasibility estimation, Information Sciences, 575, pp 739-801.</li>
+      <li style="font-size:14px; color:#4b5563;">Sungil Kim (2019), Revealing household characteristics using connected home products, Information Sciences, 486, pp 52-61.</li>
+      <li style="font-size:14px; color:#4b5563;">Sungil Kim and Heeyoung Kim (2016), A new metric of absolute percentage error for intermittent demand forecasts, International Journal of Forecasting, 32(3), pp 669-679.</li>
+    </ul>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;margin:8px 0 0;">
+      <a class="btn"
+         href="{{ 'https://scholarworks.unist.ac.kr/researcher/5bf9ae09-967a-43fd-bf12-1b1d5253ff06' | relative_url }}"
+         style="padding:6px 14px;border:none;background-color:#26A7A7;color:#fff;text-decoration:none;font-size:14px;font-weight:600;display:inline-block;text-align:center;">
+        MORE
+      </a>
+    </div>
+  </section>
+
+  <!-- Awards/Honors/Memberships -->
+  <section class="card card-pad prof-section">
+    <h3 class="sec-title">Awards · Honors · Memberships</h3>
+    <ul style="margin:0;">
+      <li style="font-size:14px; color:#4b5563;">Area editor in Statistics, Quality, Reliability &amp; Maintenance, Computers &amp; Industrial Engineering</li>
+      <li style="font-size:14px; color:#4b5563;">Senior Member, INFORMS</li>
+      <li style="font-size:14px; color:#4b5563;">2023 Excellence in Mentoring Award, College of Information and Biotechnology, UNIST</li>
+      <li style="font-size:14px; color:#4b5563;">2021 IISE Best Paper Award, Logistics and Supply Chain Division, The Institute of Industrial and Systems Engineers</li>
+      <li style="font-size:14px; color:#4b5563;">2019 IISE Best Paper Award, Quality Control &amp; Reliability Engineering Division, The Institute of Industrial and Systems Engineers</li>
+    </ul>
+  </section>
+</main>
