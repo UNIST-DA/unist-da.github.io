@@ -25,19 +25,14 @@ layout: default
         <img src="{{ page.photo | relative_url }}" alt="{{ page.name }}"
              style="width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:16px; margin-bottom:12px;">
       {% endif %}
-
-      {% if page.email %}
-        <p><strong>Email</strong><br><a href="mailto:{{ page.email }}">{{ page.email }}</a></p>
-      {% endif %}
-
+      {% if page.email %}<p><strong>Email</strong><br><a href="mailto:{{ page.email }}">{{ page.email }}</a></p>{% endif %}
       <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:8px">
-        {% if page.website %}<a class="muted" href="{{ page.website }}" target="_blank">Website</a>{% endif %}
-        {% if page.github %}<a class="muted" href="{{ page.github }}" target="_blank">GitHub</a>{% endif %}
-        {% if page.scholar %}<a class="muted" href="{{ page.scholar }}" target="_blank">Scholar</a>{% endif %}
-        {% if page.linkedin %}<a class="muted" href="{{ page.linkedin }}" target="_blank">LinkedIn</a>{% endif %}
-        {% if page.cv %}<a class="muted" href="{{ page.cv | relative_url }}" target="_blank">CV</a>{% endif %}
+        {% if page.website %}<a class="muted" href="{{ page.website }}" target="_blank" rel="noreferrer">Website</a>{% endif %}
+        {% if page.github %}<a class="muted" href="{{ page.github }}" target="_blank" rel="noreferrer">GitHub</a>{% endif %}
+        {% if page.scholar %}<a class="muted" href="{{ page.scholar }}" target="_blank" rel="noreferrer">Scholar</a>{% endif %}
+        {% if page.linkedin %}<a class="muted" href="{{ page.linkedin }}" target="_blank" rel="noreferrer">LinkedIn</a>{% endif %}
+        {% if page.cv %}<a class="muted" href="{{ page.cv | relative_url }}" target="_blank" rel="noreferrer">CV</a>{% endif %}
       </div>
-
       {% if page.tags %}
         <p class="muted" style="margin-top:12px">
           {% for t in page.tags %}
@@ -81,32 +76,107 @@ layout: default
         </ul>
       {% endif %}
 
-      {% if page.awards %}
-        <h3>Awards & Honors</h3>
-        <ul>
-          {% for a in page.awards %}
-            <li>{{ a }}</li>
-          {% endfor %}
-        </ul>
+      {%- comment -%} ===================== TIMELINES ===================== {%- endcomment -%}
+      {% if page.education %}
+        <section class="card card-pad" style="margin-top:24px">
+          <h3 style="margin-top:0">Education</h3>
+          <ol class="timeline">
+            {%- assign edu = page.education | reverse -%} {# 최신이 위로 오도록 #}
+            {% for e in edu %}
+              {% assign start = e.start %}
+              {% assign end = e.end | default: "—" %}
+              <li class="timeline-item {% if forloop.first %}timeline-current{% endif %}">
+                <div class="time">{{ start }}</div>
+                <div class="dot"></div>
+                <div class="body">
+                  <div class="title">{{ e.title }}</div>
+                  <div class="sub muted">in {{ e.org }}</div>
+                  {% if e.note %}<p class="muted" style="margin:.4rem 0 0">{{ e.note }}</p>{% endif %}
+                </div>
+              </li>
+            {% endfor %}
+          </ol>
+        </section>
       {% endif %}
 
-      {% if page.teaching %}
-        <h3>Teaching & Mentoring</h3>
-        <ul>
-          {% for t in page.teaching %}
-            <li>{{ t }}</li>
-          {% endfor %}
-        </ul>
+      {% if page.experience %}
+        <section class="card card-pad" style="margin-top:24px">
+          <h3 style="margin-top:0">Employment</h3>
+          <ol class="timeline">
+            {%- assign exp = page.experience | reverse -%}
+            {% for x in exp %}
+              <li class="timeline-item {% if forloop.first %}timeline-current{% endif %}">
+                <div class="time">
+                  {% if x.end %}{{ x.start }} – {{ x.end }}{% else %}{{ x.start }} – —{% endif %}
+                </div>
+                <div class="dot"></div>
+                <div class="body">
+                  <div class="title">{{ x.title }}</div>
+                  <div class="sub muted">{{ x.org }}</div>
+                  {% if x.note %}<p class="muted" style="margin:.4rem 0 0">{{ x.note }}</p>{% endif %}
+                </div>
+              </li>
+            {% endfor %}
+          </ol>
+        </section>
       {% endif %}
-
-      {% if page.talks %}
-        <h3>Talks & Presentations</h3>
-        <ul>
-          {% for talk in page.talks %}
-            <li>{{ talk }}</li>
-          {% endfor %}
-        </ul>
-      {% endif %}
+      {%- comment -%} =================== /TIMELINES ===================== {%- endcomment -%}
     </article>
   </section>
 </main>
+
+<style>
+/* ===== Timeline minimal styles (responsive) ===== */
+.timeline {
+  position: relative;
+  margin: 8px 0 0;
+  padding-left: 0;
+  list-style: none;
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 110px;             /* time column width */
+  top: 0; bottom: 0;
+  width: 2px;
+  background: #ececec;
+}
+.timeline-item {
+  display: grid;
+  grid-template-columns: 100px 20px 1fr; /* time | dot | content */
+  gap: 16px;
+  align-items: start;
+  position: relative;
+  padding: 16px 0;
+}
+.timeline-item .time {
+  font-weight: 600;
+  color: #7a7a7a;
+  text-align: right;
+  white-space: nowrap;
+}
+.timeline-item .dot {
+  position: relative;
+  top: 4px;
+  width: 12px; height: 12px;
+  border-radius: 999px;
+  background: #8a0b1a;     /* DA Lab 포인트 딥레드 느낌 */
+  box-shadow: 0 0 0 4px #fff; /* 카드 배경과 분리감 */
+}
+.timeline-item .body .title {
+  font-weight: 700;
+  margin: 0;
+}
+.timeline-item .body .sub {
+  margin-top: 2px;
+}
+.timeline-current .dot {
+  transform: scale(1.1);
+  box-shadow: 0 0 0 5px rgba(138,11,26,0.12);
+}
+@media (max-width: 720px) {
+  .timeline::before { left: 90px; }
+  .timeline-item { grid-template-columns: 80px 20px 1fr; }
+  .timeline-item .time { font-size: 14px; }
+}
+</style>
