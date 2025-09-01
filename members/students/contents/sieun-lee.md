@@ -11,7 +11,7 @@ email: sieun5548@unist.ac.kr
 tags: [Missingness, Time-Series, Imputation, Diffusion Models, Anomaly Detection, Manufacturing AI]
 links:
   - label: GitHub
-    url: [https://github.com/your-id](https://github.com/sieun-00)
+    url: https://github.com/sieun-00
   - label: Google Scholar
     url: https://scholar.google.com/
   - label: UNIST IE Department
