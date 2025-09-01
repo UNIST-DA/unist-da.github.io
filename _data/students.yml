@@ -15,40 +15,6 @@
   projects: [astronomical time series anomaly detection(AI HUB), Longitudinal Multi-risk Survival Analysis(TIPS)]
   order: 10
 
-- slug: byeonghoon-jeon
-  name: Byeonghoon Jeon
-  role: Combined Master-Doctor
-  period: "2024.09 —"
-  photo: /assets/members/students/byeonghoon-jeon.jpg
-  url: /members/students/contents/byeonghoon-jeon/
-  summary: Multimodal learning, Multivariate Time Series Modeling
-  tags: [Multimodal, Multivariate TS]
-  email:
-  website: 
-  github:
-  scholar:
-  linkedin:
-  cv:
-  projects: []
-  order: 20
-
-- slug: chanbeom-hur
-  name: Chanbeom Hur
-  role: MS Student
-  period: "2025.03 —"
-  photo: /assets/members/students/chanbeom-hur.jpg
-  url: /members/students/contents/chanbeom-hur/
-  summary: Statistical Machine Learning, Data Analysis
-  tags: [StatML, Data Analysis]
-  email:
-  website:
-  github:
-  scholar:
-  linkedin:
-  cv:
-  projects: []
-  order: 30
-
 - slug: hyejin-cho
   name: Hyejin Cho
   role: MS Student
@@ -64,7 +30,7 @@
   linkedin:
   cv:
   projects: []
-  order: 40
+  order: 20
 
 - slug: seongjin-kim
   name: Seongjin Kim
@@ -81,9 +47,9 @@
   linkedin:
   cv:
   projects: []
-  order: 50
+  order: 30
 
-- slug: yongmin-kim
+  - slug: yongmin-kim
   name: Yongmin Kim
   role: Combined Master-Doctor
   period: "2024.09 —"
@@ -98,7 +64,41 @@
   linkedin:
   cv:
   projects: []
-  order: 70
+  order: 40
+
+- slug: byeonghoon-jeon
+  name: Byeonghoon Jeon
+  role: Combined Master-Doctor
+  period: "2024.09 —"
+  photo: /assets/members/students/byeonghoon-jeon.jpg
+  url: /members/students/contents/byeonghoon-jeon/
+  summary: Multimodal learning, Multivariate Time Series Modeling
+  tags: [Multimodal, Multivariate TS]
+  email:
+  website: 
+  github:
+  scholar:
+  linkedin:
+  cv:
+  projects: []
+  order: 50
+
+- slug: chanbeom-hur
+  name: Chanbeom Hur
+  role: MS Student
+  period: "2025.03 —"
+  photo: /assets/members/students/chanbeom-hur.jpg
+  url: /members/students/contents/chanbeom-hur/
+  summary: Statistical Machine Learning, Data Analysis
+  tags: [StatML, Data Analysis]
+  email:
+  website:
+  github:
+  scholar:
+  linkedin:
+  cv:
+  projects: []
+  order: 60
 
 - slug: sieun-lee
   name: Sieun Lee
@@ -115,7 +115,7 @@
   linkedin:
   cv:
   projects: []
-  order: 80
+  order: 70
 
 - slug: heeyoon-lee
   name: Heeyoon Lee
@@ -132,7 +132,7 @@
   linkedin:
   cv:
   projects: []
-  order: 90
+  order: 80
 
 - slug: jungwoo-yoo
   name: Jungwoo Yoo
@@ -166,7 +166,7 @@
   linkedin:
   cv:
   projects: []
-  order: 120
+  order: 110
 
 - slug: jihyun-ko
   name: Jihyun Ko
@@ -183,6 +183,6 @@
   linkedin:
   cv:
   projects: []
-  order: 130
+  order: 120
 
 
