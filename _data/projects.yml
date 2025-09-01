@@ -1,12 +1,13 @@
 # 메인 Research 카드(3개)와 /research/projects/가 공통으로 읽음
 # ── /research/projects/ 에서는 아래 항목들도 전부 노출 ────────────
+# ── /research/projects/contents/lg-lqc/ ────────────
 - slug: lg-lqc
-  title: LG LQC (Line Quality Control)
-  summary: Detect latent defects on production lines by fusing domain knowledge with functional outlier detection.
+  title: "LG LQC (Line Quality Control)"
+  summary: "Detect latent defects on production lines by fusing domain knowledge with functional outlier detection."
+  organizer: "LG Electronics"
+  participants: ["학생1", "학생2"]
   period: "2021–2024"
-  image: /assets/research/projects/lg-lqc-fig6.png
-  url: /research/projects/contents/lg-lqc/
-  category: Artificial Intelligence in Quality Engineering
+  category: "Artificial Intelligence in Quality Engineering"
   tags:
     - Functional Data Analysis
     - Sequential Transformations
@@ -14,7 +15,9 @@
     - Manufacturing AI
     - Quality Inspection
     - Refrigerator Compressor
+  image: /assets/research/projects/lg-lqc-fig6.png
   image_caption: Proposed monitoring framework integrating domain knowledge with functional outlier detection (Figure 2).
+  url: /research/projects/contents/lg-lqc/
   description: >
     Overview. 생산 라인 검사에서 잠재 결함을 사전 식별하기 위해,
     함수형 데이터 해석 + 도메인 지식(temporal/directional/structural)을 통합한
