@@ -3,9 +3,9 @@ layout: default
 ---
 
 {%- comment -%}
-  Project detail layout (readable).
-  Each project page (.md) must set `slug:` in its front matter,
-  matching an item in `_data/projects.yml`.
+  Project detail layout (clean vertical version).
+  Each project page (.md) should set `slug:` in front matter,
+  which matches an item in `_data/projects.yml`.
 {%- endcomment -%}
 
 {%- assign project = site.data.projects | where: "slug", page.slug | first -%}
@@ -15,135 +15,135 @@ layout: default
   <div class="container">
     <div class="breadcrumbs">
       <a href="{{ '/' | relative_url }}">Home</a> ·
-      <a href="{{ '/research/projects/' | relative_url }}">Research</a> ·
-      Projects
+      <a href="{{ '/research/projects/' | relative_url }}">Projects</a>
     </div>
-    <h1 class="page-title">{{ title_fallback }}</h1>
+    <h1 class="page-title" style="margin-bottom:4px">{{ title_fallback }}</h1>
     {%- if project and project.summary -%}
-      <p class="muted">{{ project.summary }}</p>
+      <p class="muted" style="margin:0">{{ project.summary }}</p>
     {%- endif -%}
   </div>
 </div>
 
+<style>
+  /* ===== minimal project page ===== */
+  .proj-wrap{ max-width:900px; margin:0 auto; }
+  .proj-meta{ margin:10px 0 18px; display:flex; flex-wrap:wrap; gap:10px 14px; align-items:center; }
+  .proj-meta .pill{ display:inline-flex; align-items:center; gap:6px; padding:2px 8px; border:1px solid #e5e7eb; border-radius:999px; font-size:12px; color:#374151; }
+  .proj-meta .muted{ color:#6b7280; }
+  .proj-sep{ height:1px; background:#f0f2f5; border:0; margin:14px 0 24px; }
+  .proj-hero-img{ width:100%; height:auto; border-radius:10px; object-fit:cover; margin:0 0 8px; }
+  .proj-caption{ margin:4px 0 18px; color:#6b7280; font-size:14px; }
+  .proj-links{ margin:22px 0 0; padding:0; list-style:none; }
+  .proj-links li+li{ margin-top:6px; }
+  .proj-links a{ text-decoration:none; color:inherit; display:inline-flex; align-items:center; gap:8px; }
+  .proj-links svg{ flex:0 0 auto }
+  @media (max-width: 720px){
+    .proj-wrap{ padding:0 2px; }
+  }
+</style>
+
 <main class="container">
   {%- if project -%}
-  <article class="grid" style="row-gap:24px">
-    <!-- ===== Main column ===== -->
-    <div style="grid-column: span 8">
-
-      <!-- Meta bar (moved to top; image removed) -->
-      <section class="card card-pad" style="margin-bottom:12px">
-        <div class="proj-meta">
-          {%- if project.period -%}
-            <div class="meta-item">
-              <div class="meta-label">Period</div>
-              <div class="meta-value">{{ project.period }}</div>
-            </div>
-          {%- endif -%}
-
-          {%- if project.category -%}
-            <div class="meta-item">
-              <div class="meta-label">Category</div>
-              <div class="meta-value">{{ project.category }}</div>
-            </div>
-          {%- endif -%}
-
-          {%- if project.tags and project.tags.size > 0 -%}
-            <div class="meta-item">
-              <div class="meta-label">Tags</div>
-              <div class="meta-chips">
-                {%- for t in project.tags -%}
-                  <span class="chip">{{ t }}</span>
-                {%- endfor -%}
-              </div>
-            </div>
-          {%- endif -%}
-
-          {%- if project.url or project.external -%}
-            <div class="meta-item meta-actions">
-              {%- if project.url -%}
-                {%- assign is_external = project.url contains '://' -%}
-                <a class="btn-link"
-                   href="{{ is_external | default: false | ternary: project.url, project.url | relative_url }}"
-                   target="{{ is_external | default: false | ternary: '_blank','_self' }}"
-                   rel="noopener">Project Link</a>
-              {%- endif -%}
-              {%- if project.external -%}
-                <a class="btn-link" href="{{ project.external }}" target="_blank" rel="noopener">External</a>
-              {%- endif -%}
-            </div>
-          {%- endif -%}
-        </div>
-      </section>
-
-      <!-- 프로젝트별 .md 본문 -->
-      <div class="prose">
-        {{ content }}
-      </div>
+  <article class="proj-wrap">
+    <!-- Meta (partner / period / category / tags) -->
+    <div class="proj-meta">
+      {%- if project.partner or project.with -%}
+        <span class="muted">With</span>
+        <span class="pill">{{ project.partner | default: project.with }}</span>
+      {%- endif -%}
+      {%- if project.period -%}
+        <span class="muted">·</span>
+        <span class="muted">{{ project.period }}</span>
+      {%- endif -%}
+      {%- if project.category -%}
+        <span class="muted">·</span>
+        <span class="pill">{{ project.category }}</span>
+      {%- endif -%}
+      {%- if project.tags and project.tags.size > 0 -%}
+        <span class="muted">·</span>
+        {%- for t in project.tags -%}
+          <span class="pill">{{ t }}</span>
+        {%- endfor -%}
+      {%- endif -%}
     </div>
 
-    <!-- ===== Sidebar ===== -->
-    <aside style="grid-column: span 4">
-      <div class="card card-pad" style="margin-top:0">
-        <a href="{{ '/research/projects/' | relative_url }}" class="button">← Back to Projects</a>
-      </div>
-    </aside>
+    <hr class="proj-sep">
+
+    {%- if project.image -%}
+      <img class="proj-hero-img"
+           src="{{ project.image | relative_url }}"
+           alt="{{ project.title | default: title_fallback }}">
+      {%- if project.image_caption -%}
+        <p class="proj-caption">{{ project.image_caption }}</p>
+      {%- endif -%}
+    {%- endif -%}
+
+    <!-- Project body (.md content) -->
+    <div class="prose">
+      {{ content }}
+    </div>
+
+    {%- if project.url or project.external or project.repo or project.links -%}
+      <ul class="proj-links">
+        {%- if project.url -%}
+          {%- assign is_external = project.url contains '://' -%}
+          <li>
+            <a href="{{ is_external | default: false | if true project.url else project.url | relative_url }}"
+               target="_blank" rel="noopener">
+              <!-- link icon -->
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10 13a5 5 0 0 1 7 0l1 1a5 5 0 0 1-7 7l-1-1"/>
+                <path d="M14 11a5 5 0 0 1-7 0l-1-1a5 5 0 0 1 7-7l1 1"/>
+              </svg>
+              <span>Project Link</span>
+            </a>
+          </li>
+        {%- endif -%}
+        {%- if project.external -%}
+          <li>
+            <a href="{{ project.external }}" target="_blank" rel="noopener">
+              <!-- external icon -->
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                <path d="M15 3h6v6"/>
+                <path d="M10 14L21 3"/>
+              </svg>
+              <span>External</span>
+            </a>
+          </li>
+        {%- endif -%}
+        {%- if project.repo -%}
+          <li>
+            <a href="{{ project.repo }}" target="_blank" rel="noopener">
+              <!-- GitHub -->
+              <svg viewBox="0 0 16 16" width="18" height="18" fill="currentColor">
+                <path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 005.47 7.59c.4.07.55-.17.55-.38
+                  0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53
+                  .63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.5-1.07C3.77 10.98 2 10.29 2 7.23
+                  c0-.87.31-1.59.82-2.15-.08-.2-.36-1.01.08-2.11 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27
+                  c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.91.08 2.11.51.56.82 1.27.82 2.15 0 3.06-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48
+                  0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8 8 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+              </svg>
+              <span>Source</span>
+            </a>
+          </li>
+        {%- endif -%}
+        {%- if project.links and project.links.size > 0 -%}
+          {%- for l in project.links -%}
+            <li><a href="{{ l.url }}" target="_blank" rel="noopener">{{ l.label | default: l.url }}</a></li>
+          {%- endfor -%}
+        {%- endif -%}
+      </ul>
+    {%- endif -%}
   </article>
 
   {%- else -%}
-    <div class="card card-pad" style="margin-top:16px">
-      <strong>Heads up:</strong>
-      No project with slug <code>{{ page.slug }}</code> was found in <code>_data/projects.yml</code>.
-      Make sure the page’s front matter has a matching <code>slug</code>.
-    </div>
-    <div class="prose" style="margin-top:12px">
-      {{ content }}
-    </div>
+  <article class="proj-wrap">
+    <p><strong>Heads up:</strong> No project with slug <code>{{ page.slug }}</code> was found in <code>_data/projects.yml</code>.
+    Make sure the page’s front matter has a matching <code>slug</code>.</p>
+    <div class="prose">{{ content }}</div>
+  </article>
   {%- endif -%}
 </main>
-
-<!-- Minimal styles for readable meta -->
-<style>
-  .proj-meta{
-    display:grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap:12px;
-  }
-  .meta-item{
-    border:1px solid var(--line);
-    border-radius:10px;
-    padding:8px 10px;
-    background:#fff;
-    min-height:48px;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-  }
-  .meta-label{ font-size:12px; color:#6b7280; line-height:1.2; }
-  .meta-value{ font-size:14px; font-weight:600; line-height:1.3; }
-
-  .meta-chips{ display:flex; flex-wrap:wrap; gap:6px; }
-  .chip{
-    display:inline-block; border:1px solid #e3e3e3; border-radius:999px;
-    padding:2px 8px; font-size:12px; background:#fff;
-  }
-
-  /* placement */
-  .proj-meta > .meta-item:nth-child(1){ grid-column: span 3; min-width:160px; }
-  .proj-meta > .meta-item:nth-child(2){ grid-column: span 3; min-width:160px; }
-  .proj-meta > .meta-item:nth-child(3){ grid-column: span 5; }
-  .proj-meta > .meta-item.meta-actions{
-    grid-column: span 1; display:flex; align-items:center; justify-content:flex-end; gap:8px;
-  }
-
-  .btn-link{
-    display:inline-block; padding:6px 10px; border-radius:10px; border:1px solid var(--line);
-    text-decoration:none; font-size:14px; line-height:1.2; background:#fff;
-  }
-
-  @media (max-width: 1000px){
-    .proj-meta{ grid-template-columns: 1fr 1fr; }
-    .proj-meta > .meta-item,
-    .proj-meta > .meta-item.meta-actions{ grid-column: span 1 !important; justify-content:flex-start; }
-  }
-</style>
