@@ -3,14 +3,14 @@ layout: default
 ---
 
 {%- comment -%}
-  Project detail (clean, title-first).
-  Requires each project page (.md) to set `slug:` that matches `_data/projects.yml`.
+  Project detail layout (vertical).
+  Each project page (.md) must set `slug:` in its front matter,
+  matching an item in `_data/projects.yml`.
 {%- endcomment -%}
 
 {%- assign project = site.data.projects | where: "slug", page.slug | first -%}
 {%- assign title_fallback = page.title | default: (project and project.title) | default: page.slug -%}
 
-<!-- Hero: Title first, compact meta -->
 <div class="page-hero">
   <div class="container">
     <div class="breadcrumbs">
@@ -25,76 +25,78 @@ layout: default
   </div>
 </div>
 
-<main class="container">
+<main class="container" style="max-width: 800px;">
   {%- if project -%}
+  <article class="project-detail">
 
-  <!-- Top meta row -->
-  <section class="card card-pad" style="margin-top:8px">
-    <div class="proj-meta">
-      {%- if project.period -%}
-        <div class="meta-item">
-          <div class="meta-label">Period</div>
-          <div class="meta-value">{{ project.period }}</div>
-        </div>
-      {%- endif -%}
-
-      {%- if project.category -%}
-        <div class="meta-item">
-          <div class="meta-label">Category</div>
-          <div class="meta-value">{{ project.category }}</div>
-        </div>
-      {%- endif -%}
-
-      {%- if project.tags and project.tags.size > 0 -%}
-        <div class="meta-item" style="min-width:220px">
-          <div class="meta-label">Tags</div>
-          <div class="meta-chips">
-            {%- for t in project.tags -%}
-              <span class="chip">{{ t }}</span>
-            {%- endfor -%}
-          </div>
-        </div>
-      {%- endif -%}
-
-      {%- if project.url or project.external -%}
-        <div class="meta-item meta-actions">
-          {%- if project.url -%}
+    <!-- Project Meta -->
+    <section class="card card-pad" style="margin-top:16px">
+      <h3 class="sec-title">Project Info</h3>
+      <ul style="margin:0; padding:0; list-style:none; line-height:1.6">
+        {%- if project.period -%}
+          <li><strong>Period:</strong> {{ project.period }}</li>
+        {%- endif -%}
+        {%- if project.category -%}
+          <li><strong>Category:</strong> {{ project.category }}</li>
+        {%- endif -%}
+        {%- if project.tags and project.tags.size > 0 -%}
+          <li>
+            <strong>Tags:</strong>
+            <span style="margin-left:6px">
+              {%- for t in project.tags -%}
+                <span style="display:inline-block;
+                             border:1px solid #e3e3e3;
+                             border-radius:999px;
+                             padding:2px 8px;
+                             margin-right:6px;
+                             font-size:12px">{{ t }}</span>
+              {%- endfor -%}
+            </span>
+          </li>
+        {%- endif -%}
+        {%- if project.url -%}
+          <li>
+            <strong>Link:</strong>
             {%- assign is_external = project.url contains '://' -%}
-            <a class="btn-link" href="{{ is_external | default: false | ternary: project.url, project.url | relative_url }}" target="{{ is_external | default: false | ternary: '_blank','_self' }}" rel="noopener">Project Link</a>
-          {%- endif -%}
-          {%- if project.external -%}
-            <a class="btn-link" href="{{ project.external }}" target="_blank" rel="noopener">External</a>
-          {%- endif -%}
-        </div>
-      {%- endif -%}
+            {%- if is_external -%}
+              <a href="{{ project.url }}" target="_blank" rel="noopener">{{ project.url }}</a>
+            {%- else -%}
+              <a href="{{ project.url | relative_url }}">{{ project.url }}</a>
+            {%- endif -%}
+          </li>
+        {%- endif -%}
+      </ul>
+    </section>
+
+    <!-- Project Image -->
+    {%- if project.image -%}
+      <div style="margin-top:20px">
+        <img src="{{ project.image | relative_url }}"
+             alt="{{ project.title | default: title_fallback }}"
+             style="width:100%;border-radius:12px;object-fit:cover">
+        {%- if project.image_caption -%}
+          <p class="muted" style="margin:6px 0 0; text-align:center">
+            {{ project.image_caption }}
+          </p>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <!-- Project Content -->
+    <section class="prose" style="margin-top:24px">
+      {{ content }}
+    </section>
+
+    <!-- Back link -->
+    <div style="margin-top:24px">
+      <a href="{{ '/research/projects/' | relative_url }}" class="button">← Back to Projects</a>
     </div>
-  </section>
-
-  <!-- Optional compact hero image -->
-  {%- if project.image -%}
-    <figure class="proj-hero">
-      <img src="{{ project.image | relative_url }}" alt="{{ project.title | default: title_fallback }}">
-      {%- if project.image_caption -%}
-        <figcaption class="muted">{{ project.image_caption }}</figcaption>
-      {%- endif -%}
-    </figure>
-  {%- endif -%}
-
-  <!-- Body -->
-  <article class="prose" style="margin-top:8px">
-    {{ content }}
   </article>
-
-  <!-- Back link -->
-  <div style="margin:16px 0 0">
-    <a href="{{ '/research/projects/' | relative_url }}" class="button">← Back to Projects</a>
-  </div>
 
   {%- else -%}
     <div class="card card-pad" style="margin-top:16px">
       <strong>Heads up:</strong>
       No project with slug <code>{{ page.slug }}</code> was found in <code>_data/projects.yml</code>.
-      Make sure the page’s front matter has a matching <code>slug</code>.
     </div>
     <div class="prose" style="margin-top:12px">
       {{ content }}
@@ -102,54 +104,24 @@ layout: default
   {%- endif -%}
 </main>
 
-<!-- Styles -->
+<!-- Mint-colored section title (same as professor/student) -->
 <style>
-  /* Section title (mint accent) — if you use headings in content */
-  .sec-title{
-    display:flex; align-items:center; font-size:20px; font-weight:600;
-    margin:0 0 12px; line-height:1.3; --accent:#26A7A7;
+  .sec-title {
+    display:flex;
+    align-items:center;
+    font-size:20px;
+    font-weight:600;
+    margin:0 0 12px;
+    line-height:1.3;
+    --accent:#26A7A7;
   }
-  .sec-title::before{
-    content:""; width:4px; height:20px; border-radius:2px; background:var(--accent);
-    margin-right:8px; flex:0 0 4px;
-  }
-
-  /* Meta row */
-  .proj-meta{
-    display:grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap:12px;
-  }
-  .meta-item{ border:1px solid var(--line); border-radius:10px; padding:8px 10px; background:#fff; }
-  .meta-label{ font-size:12px; color:#6b7280; margin-bottom:2px; }
-  .meta-value{ font-size:14px; font-weight:600; }
-  .meta-chips{ display:flex; flex-wrap:wrap; gap:6px; }
-  .chip{ display:inline-block; border:1px solid #e3e3e3; border-radius:999px; padding:2px 8px; font-size:12px; }
-
-  /* Place meta cells responsively */
-  .proj-meta > .meta-item:nth-child(1){ grid-column: span 3; min-width:160px; }
-  .proj-meta > .meta-item:nth-child(2){ grid-column: span 3; min-width:160px; }
-  .proj-meta > .meta-item:nth-child(3){ grid-column: span 5; }
-  .proj-meta > .meta-item.meta-actions{ grid-column: span 1; display:flex; align-items:center; gap:8px; justify-content:flex-end; }
-
-  .btn-link{
-    display:inline-block; padding:6px 10px; border-radius:10px; border:1px solid var(--line);
-    text-decoration:none; font-size:14px; line-height:1.2; background:#fff;
-  }
-
-  /* Compact hero image */
-  .proj-hero{ margin:12px 0 4px; }
-  .proj-hero img{
-    width:100%; max-height:280px; aspect-ratio: 16/9; object-fit:cover; border-radius:12px; border:1px solid #eee;
-  }
-  .proj-hero figcaption{ margin-top:6px; font-size:13px; }
-
-  @media (max-width: 880px){
-    .proj-meta{ grid-template-columns: 1fr 1fr; }
-    .proj-meta > .meta-item{ grid-column: span 1 !important; }
-    .proj-meta > .meta-item.meta-actions{ justify-content:flex-start; }
-  }
-  @media (max-width: 560px){
-    .proj-hero img{ max-height:220px; aspect-ratio: 4/3; }
+  .sec-title::before {
+    content:"";
+    width:4px;
+    height:20px;
+    border-radius:2px;
+    background:var(--accent);
+    margin-right:8px;
+    flex:0 0 4px;
   }
 </style>
