@@ -166,51 +166,6 @@ layout: default
       {% endif %}
     </aside>
 
-    {% if page.links and page.links.size > 0 %}
-    <div class="card card-pad" style="margin-top:12px">
-      <h4 style="margin:0 0 8px">Links</h4>
-      <ul class="link-list">
-        {% for l in page.links %}
-          {% assign domain = l.url | replace: 'https://','' | replace:'http://','' | split:'/' | first %}
-          <li>
-            <a href="{{ l.url }}" target="_blank" rel="noopener">
-              {%- case l.icon -%}
-                {%- when 'github' -%}
-                  <svg class="link-icon" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38
-                    0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52
-                    -.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.78-.2-3.64-.89-3.64-3.95
-                    0-.87.31-1.59.82-2.15-.08-.2-.36-1.01.08-2.11 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 2-.27c.68 0 1.36.09 2 .27
-                    1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.91.08 2.11.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48
-                    0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/>
-                  </svg>
-                {%- when 'scholar' -%}
-                  <!-- simple scholar cap icon -->
-                  <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                       stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M22 10L12 4 2 10l10 6 10-6z"></path>
-                    <path d="M6 12v5c0 1.1 2.7 2 6 2s6-.9 6-2v-5"></path>
-                  </svg>
-                {%- when 'globe' -%}
-                  <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                       stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <line x1="2" y1="12" x2="22" y2="12"></line>
-                    <path d="M12 2a15.3 15.3 0 0 1 0 20"></path>
-                    <path d="M12 2a15.3 15.3 0 0 0 0 20"></path>
-                  </svg>
-                {%- else -%}
-                  <!-- icon이 없을 땐 favicon 자동 -->
-                  <img class="link-icon" src="https://www.google.com/s2/favicons?sz=32&domain={{ domain }}" alt="">
-                {%- endcase -%}
-              <span>{{ l.label }}</span>
-            </a>
-          </li>
-        {% endfor %}
-      </ul>
-    </div>
-  {% endif %}
-
     <!-- ===== Main content ===== -->
     <article class="prose article-wrap">
       <!-- About Me -->
