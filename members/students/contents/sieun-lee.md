@@ -16,7 +16,6 @@ links:
     url: https://scholar.google.com/
   - label: UNIST IE Department
     url: https://ie.unist.ac.kr/
-
 about: Graduate researcher at UNIST DA-Lab focusing on missingness-aware time-series modeling (imputation, diffusion, anomaly detection) for semiconductor reliability and maritime analytics.
 interests:
   - Missingness analysis & indicators in sensor/trace data
