@@ -1,15 +1,15 @@
 name: "Seminar List Sync"
 
 on:
-  workflow_dispatch: {}        # 수동 실행
+  workflow_dispatch: {}
   schedule:
-    - cron: "0 0 * * *"        # 매일 09:00 KST
+    - cron: "0 0 * * *"     # 매일 09:00 KST
 
 jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: write          # auto-commit에 필요
+      contents: write       # auto-commit
 
     steps:
       - uses: actions/checkout@v4
@@ -21,7 +21,7 @@ jobs:
       - name: Install deps
         run: npm install
 
-      - name: Build seminar data (_data/seminar.json)
+      - name: Build _data/activity/seminar.json
         env:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
           NOTION_SEMINAR_DB_ID: ${{ secrets.NOTION_SEMINAR_DB_ID }}
@@ -32,3 +32,4 @@ jobs:
         with:
           commit_message: "chore(seminar): sync from Notion"
           branch: ${{ github.ref_name }}
+
