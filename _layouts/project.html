@@ -3,7 +3,7 @@ layout: default
 ---
 
 {%- comment -%}
-  Project detail layout (clean vertical version).
+  Project detail layout (clean vertical; organizer/participants + tags split).
   Each project page (.md) should set `slug:` in front matter,
   which matches an item in `_data/projects.yml`.
 {%- endcomment -%}
@@ -27,9 +27,15 @@ layout: default
 <style>
   /* ===== minimal project page ===== */
   .proj-wrap{ max-width:900px; margin:0 auto; }
-  .proj-meta{ margin:10px 0 18px; display:flex; flex-wrap:wrap; gap:10px 14px; align-items:center; }
-  .proj-meta .pill{ display:inline-flex; align-items:center; gap:6px; padding:2px 8px; border:1px solid #e5e7eb; border-radius:999px; font-size:12px; color:#374151; }
-  .proj-meta .muted{ color:#6b7280; }
+  .proj-meta{ margin:10px 0 0; display:flex; flex-wrap:wrap; gap:10px 14px; align-items:center; }
+  .pill{ display:inline-flex; align-items:center; gap:6px; padding:2px 10px; border:1px solid #e5e7eb; border-radius:999px; font-size:12px; color:#374151; background:#fff; }
+  .pill-label{ color:#6b7280; font-weight:500; margin-right:-2px; }
+  .pill-compact{ padding:2px 8px; }
+  .proj-period{ color:#6b7280; font-size:13px; }
+  /* tags line (ghost/transparent chips) */
+  .proj-tags{ margin:6px 0 18px; display:flex; flex-wrap:wrap; gap:6px; }
+  .tag-ghost{ display:inline-flex; align-items:center; padding:2px 8px; border:1px solid #e5e7eb; border-radius:999px; font-size:12px; color:#6b7280; background:transparent; }
+
   .proj-sep{ height:1px; background:#f0f2f5; border:0; margin:14px 0 24px; }
   .proj-hero-img{ width:100%; height:auto; border-radius:10px; object-fit:cover; margin:0 0 8px; }
   .proj-caption{ margin:4px 0 18px; color:#6b7280; font-size:14px; }
@@ -45,36 +51,52 @@ layout: default
 <main class="container">
   {%- if project -%}
   <article class="proj-wrap">
-    <!-- Meta (partner / period / category / tags) -->
+
+    <!-- Meta row 1: Organizer / Participants / Category / Period -->
     <div class="proj-meta">
-      {%- if project.partner or project.with -%}
-        <span class="muted">With</span>
-        <span class="pill">{{ project.partner | default: project.with }}</span>
+      {%- assign organizer = page.organizer | default: project.organizer -%}
+      {%- assign participants = page.participants | default: project.participants -%}
+      {%- assign category = page.category   | default: project.category -%}
+      {%- assign period   = page.period     | default: project.period -%}
+
+      {%- if organizer -%}
+        <span class="pill"><span class="pill-label">Organizer</span>{{ organizer }}</span>
       {%- endif -%}
-      {%- if project.period -%}
-        <span class="muted">·</span>
-        <span class="muted">{{ project.period }}</span>
+
+      {%- if participants and participants.size -%}
+        <span class="pill">
+          <span class="pill-label">Participants</span>
+          {{ participants | join: ", " }}
+        </span>
       {%- endif -%}
-      {%- if project.category -%}
-        <span class="muted">·</span>
-        <span class="pill">{{ project.category }}</span>
+
+      {%- if category -%}
+        <span class="pill pill-compact">{{ category }}</span>
       {%- endif -%}
-      {%- if project.tags and project.tags.size > 0 -%}
-        <span class="muted">·</span>
-        {%- for t in project.tags -%}
-          <span class="pill">{{ t }}</span>
-        {%- endfor -%}
+
+      {%- if period -%}
+        <span class="proj-period">{{ period }}</span>
       {%- endif -%}
     </div>
 
+    <!-- Meta row 2: Tags (transparent chips) -->
+    {%- assign tags = page.tags | default: project.tags -%}
+    {%- if tags and tags.size > 0 -%}
+      <div class="proj-tags">
+        {%- for t in tags -%}
+          <span class="tag-ghost">{{ t }}</span>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
     <hr class="proj-sep">
 
-    {%- if project.image -%}
+    {%- if project.image or page.image -%}
       <img class="proj-hero-img"
-           src="{{ project.image | relative_url }}"
+           src="{{ (page.image | default: project.image) | relative_url }}"
            alt="{{ project.title | default: title_fallback }}">
-      {%- if project.image_caption -%}
-        <p class="proj-caption">{{ project.image_caption }}</p>
+      {%- if project.image_caption or page.image_caption -%}
+        <p class="proj-caption">{{ page.image_caption | default: project.image_caption }}</p>
       {%- endif -%}
     {%- endif -%}
 
@@ -90,7 +112,6 @@ layout: default
           <li>
             <a href="{{ is_external | default: false | if true project.url else project.url | relative_url }}"
                target="_blank" rel="noopener">
-              <!-- link icon -->
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M10 13a5 5 0 0 1 7 0l1 1a5 5 0 0 1-7 7l-1-1"/>
@@ -103,7 +124,6 @@ layout: default
         {%- if project.external -%}
           <li>
             <a href="{{ project.external }}" target="_blank" rel="noopener">
-              <!-- external icon -->
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M18 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
@@ -117,14 +137,8 @@ layout: default
         {%- if project.repo -%}
           <li>
             <a href="{{ project.repo }}" target="_blank" rel="noopener">
-              <!-- GitHub -->
               <svg viewBox="0 0 16 16" width="18" height="18" fill="currentColor">
-                <path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 005.47 7.59c.4.07.55-.17.55-.38
-                  0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53
-                  .63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.5-1.07C3.77 10.98 2 10.29 2 7.23
-                  c0-.87.31-1.59.82-2.15-.08-.2-.36-1.01.08-2.11 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27
-                  c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.91.08 2.11.51.56.82 1.27.82 2.15 0 3.06-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48
-                  0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8 8 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                <path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 005.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.5-1.07C3.77 10.98 2 10.29 2 7.23c0-.87.31-1.59.82-2.15-.08-.2-.36-1.01.08-2.11 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.91.08 2.11.51.56.82 1.27.82 2.15 0 3.06-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8 8 0 0016 8c0-4.42-3.58-8-8-8z"/>
               </svg>
               <span>Source</span>
             </a>
