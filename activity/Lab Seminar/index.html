@@ -15,12 +15,15 @@ permalink: /activity/Lab%20Seminar/
 <main class="container">
   <section>
     <div class="grid">
-      {% for it in site.data.activity.seminar %}
+      {% assign items = site.data.activity.seminar | sort: "date" | reverse %}
+      {% for it in items %}
       <article class="card card-pad" style="grid-column: span 12" id="{{ it.slug }}">
         <div class="news-item">
           <div class="news-date">{{ it.date }}</div>
           <div>
-            <div style="font-weight:600">{{ it.title }}</div>
+            <a href="{{ it.url }}" target="_blank" rel="noopener" style="font-weight:600">
+              {{ it.title }}
+            </a>
             {% if it.detail %}<p class="muted">{{ it.detail }}</p>{% endif %}
           </div>
         </div>
