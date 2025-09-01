@@ -230,6 +230,10 @@ layout: default
       </section>
       {% endif %}
 
+      <!-- Freeform (any markdown content from the page) -->
+      {% if content and content != "" %}
+        {{ content }}
+      {% endif %}
       
     </article>
   </section>
