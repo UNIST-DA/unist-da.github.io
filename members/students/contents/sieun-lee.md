@@ -67,7 +67,6 @@ publications:
 - Prototyping **maritime fuel optimization** combining AIS, weather, and engine signals.
 
 ### Notes for Collaboration
-I’m particularly interested in:
 1. Principled missingness modeling for **reliability/quality engineering**  
 2. Scalable **imputation + downstream** evaluation frameworks  
 3. Cross-domain drift management and maritime/logistics analytics.
