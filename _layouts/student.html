@@ -25,7 +25,7 @@ layout: default
   --rail-gap: 26px;        /* 도트 열 폭 */
   --dot: 10px;             /* 도트 지름 */
   --dot-shift: .30em;      /* 첫 줄 기준 도트 세로 보정 */
-  --rail-x: calc(var(--time-col) + var(--rail-gap)/2 + 11px); /* 세로선 x좌표(도트 중앙) */
+  --rail-x: calc(var(--time-col) + var(--rail-gap)/2 + 11px); /* 세로선 x좌표(도트 중앙, 미세보정) */
 }
 
 .timeline{
@@ -34,18 +34,15 @@ layout: default
   padding-left: 0;
   list-style: none;
 }
-
-/* ★ 선은 리스트 전체에서 한 번만 그림 → 끊김 없음 */
 .timeline::before{
   content: "";
   position: absolute;
   left: var(--rail-x);
-  top: 0;                   /* 필요 시 6~8px 정도로 올림/내림 가능 */
+  top: 0;
   bottom: 0;
   width: 2px;
   background: #e5e7eb;
 }
-
 .timeline-item{
   display: grid;
   grid-template-columns: var(--time-col) var(--rail-gap) 1fr; /* 1: 시간 | 2: 도트 | 3: 본문 */
@@ -54,13 +51,9 @@ layout: default
   padding: 12px 0;
   position: relative;
 }
-
-/* 컬럼 고정(본문이 3열에 들어가도록 강제) */
 .timeline-item .time{ grid-column: 1; }
 .timeline-item .dot { grid-column: 2; }
 .timeline-item .body{ grid-column: 3; }
-
-/* 시간 */
 .timeline-item .time{
   font-size: 14px;
   font-weight: 500;
@@ -68,21 +61,17 @@ layout: default
   text-align: right;
   white-space: nowrap;
 }
-
-/* 도트: 2열 중앙에 정렬 → 선과 항상 같은 축 */
 .timeline-item .dot{
   justify-self: center;
   align-self: start;
   width: var(--dot); height: var(--dot);
   border-radius: 999px;
-  background: #e5e7eb;      /* 요청한 색상 */
-  box-shadow: 0 0 0 4px #fff; /* 카드 배경 분리 */
+  background: #e5e7eb;
+  box-shadow: 0 0 0 4px #fff;
   margin-top: var(--dot-shift);
   position: relative;
-  z-index: 1;               /* 선 위에 올라오도록 */
+  z-index: 1;
 }
-
-/* 본문 타이포: 본문 크기 + 볼드만 */
 .timeline-item .body .title{
   font-size: 16px;
   font-weight: 700;
@@ -95,18 +84,14 @@ layout: default
   color: #6b7280;
   margin: 2px 0 0;
 }
-
-/* 현재 항목 강조(외곽 링만) */
-.timeline-current .dot{
-  box-shadow: 0 0 0 5px rgba(229,231,235,0.6);
-}
+.timeline-current .dot{ box-shadow: 0 0 0 5px rgba(229,231,235,0.6); }
 
 @media (max-width: 720px){
   :root{ --time-col: 86px; --rail-gap: 22px; }
 }
 
 /* ===== Cards & layout rhythm ===== */
-.section-card{ margin:0; } /* cards are stacked with flex gap */
+.section-card{ margin:0; }
 .article-wrap{ display:flex; flex-direction:column; gap:16px; margin:0; }
 
 /* Sidebar tags */
@@ -123,7 +108,7 @@ layout: default
   font-weight:600;
   margin:0 0 12px;
   line-height:1.3;
-  --accent:#26A7A7; /* 민트색 */
+  --accent:#26A7A7;
 }
 .sec-title::before{
   content:"";
@@ -133,7 +118,17 @@ layout: default
   background:var(--accent);
   margin-right:8px;
   flex:0 0 4px;
-}  
+}
+
+/* ===== Sidebar Links card ===== */
+.link-list { margin:0; padding-left:0; list-style:none; }
+.link-list li + li { margin-top:12px; }
+.link-list a{
+  display:flex; align-items:center; gap:10px;
+  text-decoration:none; color:inherit;
+}
+.link-list a:hover{ text-decoration:underline; }
+.link-icon{ width:18px; height:18px; flex:0 0 auto; display:inline-block; }
 </style>
 
 <main class="container">
@@ -164,11 +159,54 @@ layout: default
           {% for t in page.tags %}<span class="tag">{{ t }}</span>{% endfor %}
         </p>
       {% endif %}
+
+      {# ===== Links card (photo 아래) ===== #}
+      {% if page.links and page.links.size > 0 %}
+        <div class="card card-pad" style="margin-top:12px">
+          <h4 style="margin:0 0 8px">Links</h4>
+          <ul class="link-list">
+            {% for l in page.links %}
+              {% assign domain = l.url | replace: 'https://','' | replace:'http://','' | split:'/' | first %}
+              <li>
+                <a href="{{ l.url }}" target="_blank" rel="noopener">
+                  {%- case l.icon -%}
+                    {%- when 'github' -%}
+                      <svg class="link-icon" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38
+                        0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52
+                        -.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.78-.2-3.64-.89-3.64-3.95
+                        0-.87.31-1.59.82-2.15-.08-.2-.36-1.01.08-2.11 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 2-.27c.68 0 1.36.09 2 .27
+                        1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.91.08 2.11.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48
+                        0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/>
+                      </svg>
+                    {%- when 'scholar' -%}
+                      <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M22 10L12 4 2 10l10 6 10-6z"></path>
+                        <path d="M6 12v5c0 1.1 2.7 2 6 2s6-.9 6-2v-5"></path>
+                      </svg>
+                    {%- when 'globe' -%}
+                      <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="2" y1="12" x2="22" y2="12"></line>
+                        <path d="M12 2a15.3 15.3 0 0 1 0 20"></path>
+                        <path d="M12 2a15.3 15.3 0 0 0 0 20"></path>
+                      </svg>
+                    {%- else -%}
+                      <img class="link-icon" src="https://www.google.com/s2/favicons?sz=32&domain={{ domain }}" alt="">
+                  {%- endcase -%}
+                  <span>{{ l.label }}</span>
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
     </aside>
 
     <!-- ===== Main content ===== -->
     <article class="prose article-wrap">
-      <!-- About Me -->
       {% if page.about or page.bio %}
       <section class="card card-pad section-card">
         <h3 class="sec-title">About Me</h3>
@@ -176,7 +214,6 @@ layout: default
       </section>
       {% endif %}
 
-      <!-- Research Interests -->
       {% if page.interests %}
       <section class="card card-pad section-card">
         <h3 class="sec-title">Research Interests</h3>
@@ -186,7 +223,6 @@ layout: default
       </section>
       {% endif %}
 
-      <!-- Education (timeline) -->
       {% if page.education %}
       <section class="card card-pad section-card">
         <h3 class="sec-title">Education</h3>
@@ -207,11 +243,9 @@ layout: default
       </section>
       {% endif %}
 
-      <!-- Projects & Publications (timeline preferred) -->
       {% if page.works or page.projects or page.publications %}
       <section class="card card-pad section-card">
         <h3 class="sec-title">Projects &amp; Publications</h3>
-
         {% if page.works %}
           <ol class="timeline">
             {%- assign works = page.works | reverse -%}
@@ -250,11 +284,10 @@ layout: default
       </section>
       {% endif %}
 
-      <!-- Freeform (any markdown content from the page) -->
+      <!-- Freeform (markdown as-is, no card) -->
       {% if content and content != "" %}
         {{ content }}
       {% endif %}
-      
     </article>
   </section>
 </main>
