@@ -7,7 +7,17 @@ name: SeungSu Kam
 role: Combined Master-Doctor
 period: "—"
 photo: /assets/members/students/seungsu-kam.jpg
+email: sieun5548@unist.ac.kr
 tags: [Neural DE, Anomaly Detection, Irregular TS]
+links:
+  - label: GitHub
+    url: https://github.com/sieun-00
+  - label: Google Scholar
+    url: 
+  - label: CV
+    url:
+  - label: Linkedin
+    url: 
 about: 자기소개
 interests:
   - 관심분야1
