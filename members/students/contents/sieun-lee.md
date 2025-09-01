@@ -9,6 +9,14 @@ period: "2025.03 —"
 photo: /assets/members/students/sieun-lee.jpg
 email: sieun5548@unist.ac.kr
 tags: [Missingness, Time-Series, Imputation, Diffusion Models, Anomaly Detection, Manufacturing AI]
+links:
+  - label: GitHub
+    url: [https://github.com/your-id](https://github.com/sieun-00)
+  - label: Google Scholar
+    url: https://scholar.google.com/
+  - label: UNIST IE Department
+    url: https://ie.unist.ac.kr/
+
 about: Graduate researcher at UNIST DA-Lab focusing on missingness-aware time-series modeling (imputation, diffusion, anomaly detection) for semiconductor reliability and maritime analytics.
 interests:
   - Missingness analysis & indicators in sensor/trace data
