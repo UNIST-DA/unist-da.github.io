@@ -19,7 +19,7 @@ permalink: /research/projects/
       {% for p in site.data.projects %}
       {% assign href_url = p.url | default: '' %}
       {% if href_url == '' %}
-        {% assign href_url = '/research/projects/contents/?project=' | append: p.slug | append: '/' %}
+        {% assign href_url = '/research/projects/contents/?project=' | append: p.slug %}
       {% endif %}
       <a
         class="card card-pad"
