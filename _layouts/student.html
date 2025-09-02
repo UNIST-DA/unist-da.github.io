@@ -192,8 +192,20 @@ layout: default
         <ol class="timeline">
           {% assign milestones_desc = page.milestone | reverse %}
           {% for e in milestones_desc %}
-            <li class="timeline-item {% if e.end == nil or e.end == "" %}timeline-current{% endif %}">
-              <span class="time">{{ e.start }}{% if e.end %} – {{ e.end }}{% endif %}</span>
+            {% assign s   = e.start | append: "" | strip %}
+            {% assign en  = e.end   | append: "" | strip %}
+            {% assign has_end = en != "" %}
+            {% assign en_lc   = en | downcase %}
+            {% assign is_present = has_end and en_lc == "present" %}
+            {% assign end_equals_start = has_end and (en == s) %}
+            {% assign is_current = (is_present or has_end == false) %}
+      
+            <li class="timeline-item {% if is_current %}timeline-current{% endif %}">
+              <span class="time">
+                {{ s }}{% if has_end and (is_present or en != s) %} – {{ en }}{% endif %}
+                {# end가 present면 '– present' 표기 + 강조 유지
+                   end가 start와 같으면 하이픈/끝날짜 숨김 + 강조 없음 #}
+              </span>
               <span class="dot" aria-hidden="true"></span>
               <div class="body">
                 <div class="title">{{ e.title }}</div>
