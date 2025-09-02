@@ -104,13 +104,6 @@ permalink: /members/students/
                   {% if s.summary %}
                     <p class="muted" style="margin:0 0 8px">{{ s.summary }}</p>
                   {% endif %}
-                  {% if s.tags %}
-                    <p class="student-tags">
-                      {% for tag in s.tags %}
-                        <span>{{ tag }}</span>
-                      {% endfor %}
-                    </p>
-                  {% endif %}
                 </div>
               </article>
             </a>
