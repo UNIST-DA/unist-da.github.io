@@ -34,7 +34,7 @@ interests:
   - AI industry–academia collaboration & new model development
     
 milestone:
-  - start: 2022
+  - start: 2022 - 
     title: M.S. in Industrial Engineering
     org: Ulsan National Institute of Science and Technology (UNIST)
     note: Data Analytics Lab, advised by Prof. Sungil Kim
