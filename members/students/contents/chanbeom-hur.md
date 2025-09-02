@@ -22,13 +22,14 @@ links:
 tags:
   - "Statistical Machine Learning"
   - "Survival Analysis"
+  - "Applied Data Science"
 
 about: My academic and research interests lie at the intersection of statistics and machine learning. I am particularly interested in applying statistical principles to deep learning models to uncover latent structures and patterns within empirical data.
 
 interests:
   - Statistical Machine Learning
   - Survival Analysis
-  - Applied Data Scoemce
+  - Applied Data Science
     
 milestone:
   - start: 2025.06
