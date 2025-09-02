@@ -155,7 +155,8 @@ layout: default
       <section class="card card-pad section-card">
         <h3 class="sec-title">Milestones</h3>
         <ol class="timeline">
-          {% for e in page.milestone %}
+          {% assign milestones_desc = page.milestone | reverse %}
+          {% for e in milestones_desc %}
             <li class="timeline-item {% if e.end == nil or e.end == "" %}timeline-current{% endif %}">
               <span class="time">{{ e.start }}{% if e.end %} – {{ e.end }}{% endif %}</span>
               <span class="dot" aria-hidden="true"></span>
