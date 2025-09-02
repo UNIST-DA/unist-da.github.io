@@ -45,8 +45,19 @@ layout: default
 .section-card{ margin:0; }
 .article-wrap{ display:flex; flex-direction:column; gap:16px; margin:0; }
 
-/* Sidebar tags */
-.tag{ display:inline-block;border:1px solid #e3e3e3;border-radius:999px;padding:2px 8px;margin:0 6px 6px 0;font-size:12px; }
+/* Sidebar tags — text color == border color (specificity boosted) */
+aside .tag{
+  --tag-color:#6b7280;
+  display:inline-block;
+  color:var(--tag-color);
+  border:1px solid var(--tag-color);
+  border-radius:999px;
+  padding:2px 8px;
+  margin:0 6px 6px 0;
+  font-size:12px;
+}
+aside .tag a{ color:inherit; text-decoration:none; }
+aside a.tag{ color:var(--tag-color); }
 
 /* Section title (mint accent) */
 .sec-title{
@@ -79,26 +90,26 @@ layout: default
         <div style="margin-top:12px;">
           <strong>Links</strong>
           <ul style="list-style:none;padding:0;margin:6px 0 0;display:flex;flex-direction:column;gap:6px;">
-      
-            {%- comment -%} 카테고리별 버퍼 {%- endcomment -%}
+
+            {%- comment -%} Buckets for ordered output {%- endcomment -%}
             {% capture out_scholar %}{% endcapture %}
             {% capture out_github %}{% endcapture %}
             {% capture out_linkedin %}{% endcapture %}
             {% capture out_cv %}{% endcapture %}
             {% capture out_others %}{% endcapture %}
-      
-            {%- comment -%} 아이콘 (data URI) {%- endcomment -%}
+
+            {%- comment -%} Icons {%- endcomment -%}
             {% assign globe_icon = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M2 12h20M12 2a15.3 15.3 0 0 1 0 20M12 2a15.3 15.3 0 0 0 0 20'/%3E%3C/svg%3E" %}
             {% assign house_icon = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 10.5 12 3l9 7.5'/%3E%3Cpath d='M5 10v10h14V10'/%3E%3Cpath d='M9 20v-5h6v5'/%3E%3C/svg%3E" %}
-      
-            {%- comment -%} 한 번만 순회해서 분류 (URL 없으면 건너뜀) {%- endcomment -%}
+
+            {%- comment -%} Single pass; skip empty URLs {%- endcomment -%}
             {% for link in page.links %}
-              {% assign url = link.url | default: "" %}
+              {% assign url = link.url | default: "" | strip %}
               {% unless url == "" %}
-                {% assign label_lc = link.label | default: '' | downcase %}
-                {% assign host = url | replace: 'https://','' | replace:'http://','' | split:'/' | first | downcase %}
-      
-                {%- comment -%} 1) Scholar {%- endcomment -%}
+                {% assign label_lc = link.label | default: "" | downcase %}
+                {% assign host = url | replace:'https://','' | replace:'http://','' | split:'/' | first | downcase %}
+
+                {%- comment -%} Scholar {%- endcomment -%}
                 {% if (label_lc contains 'scholar') or (host contains 'scholar.google.') %}
                   {% capture out_scholar %}
                     {{ out_scholar }}
@@ -107,8 +118,8 @@ layout: default
                       <a href="{{ url }}" target="_blank" rel="noopener">{{ link.label | default: url }}</a>
                     </li>
                   {% endcapture %}
-      
-                {%- comment -%} 2) GitHub {%- endcomment -%}
+
+                {%- comment -%} GitHub {%- endcomment -%}
                 {% elsif (label_lc contains 'github') or (host contains 'github.com') %}
                   {% capture out_github %}
                     {{ out_github }}
@@ -117,8 +128,8 @@ layout: default
                       <a href="{{ url }}" target="_blank" rel="noopener">{{ link.label | default: url }}</a>
                     </li>
                   {% endcapture %}
-      
-                {%- comment -%} 3) LinkedIn {%- endcomment -%}
+
+                {%- comment -%} LinkedIn {%- endcomment -%}
                 {% elsif (label_lc contains 'linkedin') or (host contains 'linkedin.com') %}
                   {% capture out_linkedin %}
                     {{ out_linkedin }}
@@ -127,8 +138,8 @@ layout: default
                       <a href="{{ url }}" target="_blank" rel="noopener">{{ link.label | default: url }}</a>
                     </li>
                   {% endcapture %}
-      
-                {%- comment -%} 4) CV (집 아이콘 고정) {%- endcomment -%}
+
+                {%- comment -%} CV = fixed house icon {%- endcomment -%}
                 {% elsif (label_lc == 'cv') or (label_lc contains 'curriculum') or (label_lc contains 'vita') %}
                   {% capture out_cv %}
                     {{ out_cv }}
@@ -137,8 +148,8 @@ layout: default
                       <a href="{{ url }}" target="_blank" rel="noopener">{{ link.label | default: url }}</a>
                     </li>
                   {% endcapture %}
-      
-                {%- comment -%} 5) 기타 = 항상 글로브 {%- endcomment -%}
+
+                {%- comment -%} Others = globe {%- endcomment -%}
                 {% else %}
                   {% capture out_others %}
                     {{ out_others }}
@@ -150,8 +161,8 @@ layout: default
                 {% endif %}
               {% endunless %}
             {% endfor %}
-      
-            {%- comment -%} 출력 순서: Scholar → GitHub → LinkedIn → CV → 기타 {%- endcomment -%}
+
+            {%- comment -%} Order: Scholar → GitHub → LinkedIn → CV → Others {%- endcomment -%}
             {{ out_scholar }}
             {{ out_github }}
             {{ out_linkedin }}
@@ -195,8 +206,22 @@ layout: default
         <ol class="timeline">
           {% assign milestones_desc = page.milestone | reverse %}
           {% for e in milestones_desc %}
-            <li class="timeline-item {% if e.end == nil or e.end == "" %}timeline-current{% endif %}">
-              <span class="time">{{ e.start }}{% if e.end %} – {{ e.end }}{% endif %}</span>
+            {% assign s  = e.start | append: "" | strip %}
+            {% assign en = e.end   | append: "" | strip %}
+            {% assign has_end = en != "" %}
+            {% assign same_day = has_end and (en == s) %}
+            {% assign is_current = (has_end == false) %}
+      
+            <li class="timeline-item {% if is_current %}timeline-current{% endif %}">
+              <span class="time">
+                {% if same_day %}
+                  {{ s }}
+                {% elsif has_end %}
+                  {{ s }}<br><span class="time-end">– {{ en }}</span>
+                {% else %}
+                  {{ s }} –
+                {% endif %}
+              </span>
               <span class="dot" aria-hidden="true"></span>
               <div class="body">
                 <div class="title">{{ e.title }}</div>
