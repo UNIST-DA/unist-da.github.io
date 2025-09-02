@@ -86,7 +86,9 @@ permalink: /activity/Lab%20Seminar/
                     {% if it.keywords and it.keywords.size > 0 %}
                       {% if it.presenter %} · {% endif %}
                       Keywords:
-                      {{ it.keywords | join: ", " }}   <!-- # 없이 텍스트로 표시 -->
+                      {% for kw in it.keywords %}
+                        <span class="kw">#{{ kw }}</span>{% unless forloop.last %} {% endunless %}
+                      {% endfor %}
                     {% endif %}
                   </p>
                 {% endif %}
@@ -108,3 +110,4 @@ permalink: /activity/Lab%20Seminar/
     </div>
   </section>
 </main>
+
