@@ -5,38 +5,36 @@ permalink: /members/students/contents/sieun-lee/
 title: Sieun Lee
 name: Sieun Lee
 role: MS Student
-period: "2025.03 —"
 photo: /assets/members/students/sieun-lee.jpg
+period: "2025.03 —"
+
 email: sieun5548@unist.ac.kr
+links:
+  - label: Google Scholar
+    url: 
+  - label: GitHub
+    url: https://github.com/sieun-00
+  - label: LinkedIn
+    url: https://www.linkedin.com/in/sieun-lee-5ba02b345/
+  - label: CV
+    url: 
 
 tags:
   - "Missingness"
   - "Time-Series Imputation"
   - "Diffusion Models"
-  - 
-links:
-  - label: GitHub
-    url: https://github.com/sieun-00
-  - label: Google Scholar
-    url: https://scholar.google.com/
-  - label: Linkedin
-    url: https://www.linkedin.com/in/byungkook-koo/
-  - label: UNIST IE Department
-    url: https://ie.unist.ac.kr/
-  - label: CV
-    url: https://yongkyung-oh.github.io/
-    
-about: Graduate researcher at UNIST DA-Lab focusing on missingness-aware time-series modeling (imputation, diffusion, anomaly detection) for semiconductor reliability and maritime analytics.
+
+about: I'm interested in missingness-aware time-series modeling (imputation, diffusion, downstream) across manufacturing and healthcare, as well as AI industry–academia projects and new model development.
 
 interests:
-  - Missingness analysis & indicators in sensor/trace data
+  - Missingness analysis & indicators in sensor/clinical data
   - Time-series imputation (predictive, generative, diffusion)
-  - Anomaly detection & reliability analytics in manufacturing
-  - Domain-free time-series drift monitoring
-  - Maritime/logistics analytics with multimodal data
-  - 
+  - Anomaly detection & reliability analytics in manufacturing & healthcare
+  - Downstream task evaluation and integration
+  - AI industry–academia collaboration & new model development
+    
 milestone:
-  - start: 2022
+  - start: 2022 - 
     title: M.S. in Industrial Engineering
     org: Ulsan National Institute of Science and Technology (UNIST)
     note: Data Analytics Lab, advised by Prof. Sungil Kim
@@ -46,6 +44,7 @@ milestone:
     org: Ulsan National Institute of Science and Technology (UNIST)
     note: Minor in Statistics
   - start: 2025
+    end: 2025
     title: M.S. in Industrial Engineering
     org: Ulsan National Institute of Science and Technology (UNIST)
     note: Data Analytics Lab, advised by Prof. Sungil Kim
