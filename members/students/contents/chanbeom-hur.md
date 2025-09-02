@@ -48,7 +48,7 @@ milestone:
     end: 
     title: 2024 Spring Korea Data Mining Society
     note: |
-      Developing user satisfaction metrics in LG Upgradable home appliances
+      Assessing User Retention of Connected Home Appliances: Survival Analysis
 
   - start: 2023.10
     end: 2025.02
