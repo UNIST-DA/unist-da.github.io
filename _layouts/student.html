@@ -220,13 +220,12 @@ aside a.tag{ color:var(--tag-color); }
             {% assign en = e.end   | append: "" | strip %}
             {% assign has_end  = en != "" %}
             {% assign same_day = has_end and (en == s) %}
-            {% assign is_current = (has_end == false) %}  {# end 없음 = 진행 중 강조 #}
+            {% assign is_current = (has_end == false) %} 
           
             <li class="timeline-item {% if is_current %}timeline-current{% endif %}">
               <span class="time">
                 <span class="time-start">{{ s }}</span>
                 {% if same_day %}
-                  {# start == end → start만 표시 (아무 것도 안 붙임) #}
                 {% elsif has_end %}
                   <span class="time-end">– {{ en }}</span>
                 {% else %}
