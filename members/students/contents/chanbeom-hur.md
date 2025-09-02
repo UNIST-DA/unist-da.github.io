@@ -33,10 +33,14 @@ interests:
     
 milestone:
   - start: 2025.06
-    end: 
     title: 2025 Spring Joint Academic Conference (대한산업공학회)
     note: |
       Statistical Modeling of Rolling Retention via Recurrent Survival Analysis
+
+  - start: 2025.02
+    title: M.S. in Industrial Engineering
+    note: |
+      Ulsan National Institute of Science and Technology (UNIST)
 
   - start: 2019.02
     end: 2025.02
@@ -45,7 +49,6 @@ milestone:
       Ulsan National Institute of Science and Technology (UNIST)
 
   - start: 2024.05
-    end: 
     title: 2024 Spring Korea Data Mining Society
     note: |
       Assessing User Retention of Connected Home Appliances: Survival Analysis
