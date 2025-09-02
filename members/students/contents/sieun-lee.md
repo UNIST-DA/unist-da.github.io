@@ -36,13 +36,15 @@ interests:
 milestone:
   - start: 2022 - 
     title: M.S. in Industrial Engineering
-    org: Ulsan National Institute of Science and Technology (UNIST)
-    note: Data Analytics Lab, advised by Prof. Sungil Kim
+    note: |
+      Ulsan National Institute of Science and Technology (UNIST)
+      Data Analytics Lab, advised by Prof. Sungil Kim
   - start: 2018
     end: 2023
     title: B.S. in Industrial Engineering
-    org: Ulsan National Institute of Science and Technology (UNIST)
-    note: Minor in Statistics
+    note: |
+      Ulsan National Institute of Science and Technology (UNIST)
+      Minor in Statistics
   - start: 2025
     end: 2025
     title: M.S. in Industrial Engineering
