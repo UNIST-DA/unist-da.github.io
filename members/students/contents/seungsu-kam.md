@@ -7,45 +7,39 @@ name: SeungSu Kam
 role: Combined Master-Doctor
 period: "—"
 photo: /assets/members/students/seungsu-kam.jpg
-email: sieun5548@unist.ac.kr
-tags: [Neural DE, Anomaly Detection, Irregular TS]
+
+email: 
 links:
-  - label: GitHub
-    url: https://github.com/sieun-00
   - label: Google Scholar
     url: 
-  - label: CV
-    url:
-  - label: Linkedin
+  - label: GitHub
     url: 
-about: 자기소개
+  - label: LinkedIn
+    url: 
+  - label: CV
+    url: 
+
+tags:
+  - tags
+
+about: I'm 
+
 interests:
-  - 관심분야1
-  - 관심분야2
-education:
-  - start: 2025
-    end: 2025
-    title: 산업공학과
-    org: UNIST
-    note: (적는 거에 거꾸로 타임라인 생김)
-works:
-  - start: 2024
-    title: 학회 참여
-    org: DA-Lab
-    note: 시계열분석
-  - start: 2025
-    title: 학회 참여
-    org: DA-Lab
-    note: IE 특강
-projects:
-  - 프로젝트1
-  - 프로젝트2
-publications:
-  - 논문1
+  - interests
+    
+milestone:
+  - start: 2025.09
+    end: 2025.09
+    title: title
+    note: |
+      notes
+      notes
 ---
 
 ### Current Work
-- 마크다운으로 들어가는 자유공간!!!
-
+- This is an **example!!** 
+  
 ### Notes for Collaboration
-연락주세요!!!
+1. This is an **example!!** 
+2. This is an **example!!** 
+3. This is an **example!!** 

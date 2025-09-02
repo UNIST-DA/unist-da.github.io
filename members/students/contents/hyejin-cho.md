@@ -7,12 +7,39 @@ name: Hyejin Cho
 role: MS Student
 period: "2023.03 —"
 photo: /assets/members/students/hyejin-cho.jpg
-tags: [Industrial Statistics, ML, DL]
-projects: []
-bio: Industrial Statistics, Data-driven Business Strategy, Machine Learning and Deep Learning
+
+email: 
+links:
+  - label: Google Scholar
+    url: 
+  - label: GitHub
+    url: 
+  - label: LinkedIn
+    url: 
+  - label: CV
+    url: 
+
+tags:
+  - tags
+
+about: I'm 
+
+interests:
+  - interests
+    
+milestone:
+  - start: 2025.09
+    end: 2025.09
+    title: title
+    note: |
+      notes
+      notes
 ---
 
-## Research Interests
-- Industrial statistics
-- Data-driven business strategy
-- Machine learning and deep learning
+### Current Work
+- This is an **example!!** 
+  
+### Notes for Collaboration
+1. This is an **example!!** 
+2. This is an **example!!** 
+3. This is an **example!!** 
