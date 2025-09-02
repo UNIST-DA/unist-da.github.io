@@ -8,11 +8,12 @@ role: MS Student
 period: "2025.03 —"
 photo: /assets/members/students/sieun-lee.jpg
 email: sieun5548@unist.ac.kr
+
 tags:
   - "Missingness"
-  - "Time-Series"
-  - "Imputation"
+  - "Time-Series Imputation"
   - "Diffusion Models"
+  - 
 links:
   - label: GitHub
     url: https://github.com/sieun-00
@@ -22,13 +23,16 @@ links:
     url: https://ie.unist.ac.kr/
   - label: CV
     url: https://yongkyung-oh.github.io/
+    
 about: Graduate researcher at UNIST DA-Lab focusing on missingness-aware time-series modeling (imputation, diffusion, anomaly detection) for semiconductor reliability and maritime analytics.
+
 interests:
   - Missingness analysis & indicators in sensor/trace data
   - Time-series imputation (predictive, generative, diffusion)
   - Anomaly detection & reliability analytics in manufacturing
   - Domain-free time-series drift monitoring
   - Maritime/logistics analytics with multimodal data
+  - 
 milestone:
   - start: 2018
     end: 2023
