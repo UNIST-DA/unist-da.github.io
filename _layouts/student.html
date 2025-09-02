@@ -33,7 +33,17 @@ layout: default
   display:grid; grid-template-columns:var(--time-col) var(--rail-gap) 1fr;
   gap:12px; align-items:start; padding:12px 0; position:relative;
 }
-.timeline-item .time{ grid-column:1; font-size:14px; font-weight:500; color:#6b7280; text-align:right; white-space:nowrap; }
+/* 기존 .timeline-item .time 를 이걸로 교체 */
+.timeline-item .time{
+  grid-column:1;
+  font-size:14px; font-weight:500; color:#6b7280;
+  text-align:right;
+  display:flex;                 /* 세로로 쌓기 */
+  flex-direction:column;
+  align-items:flex-end;
+  white-space:normal;           /* 줄바꿈 허용 */
+}
+.time-end{ opacity:.9; }
 .timeline-item .dot{ grid-column:2; justify-self:center; align-self:start; width:var(--dot); height:var(--dot); border-radius:999px; background:#e5e7eb; box-shadow:0 0 0 4px #fff; margin-top:var(--dot-shift); position:relative; z-index:1; }
 .timeline-item .body{ grid-column:3; }
 .timeline-item .body .title{ font-size:16px; font-weight:700; line-height:1.4; margin:0 0 2px; }
@@ -208,20 +218,32 @@ aside a.tag{ color:var(--tag-color); }
           {% for e in milestones_desc %}
             {% assign s  = e.start | append: "" | strip %}
             {% assign en = e.end   | append: "" | strip %}
-            {% assign has_end = en != "" %}
-            {% assign same_day = has_end and (en == s) %}
-            {% assign is_current = (has_end == false) %}
+      
+            {% assign has_end = false %}
+            {% if en != "" %}{% assign has_end = true %}{% endif %}
+      
+            {% assign same_day = false %}
+            {% if has_end and en == s %}{% assign same_day = true %}{% endif %}
+      
+            {% assign is_current = false %}
+            {% if has_end == false %}{% assign is_current = true %}{% endif %}
       
             <li class="timeline-item {% if is_current %}timeline-current{% endif %}">
               <span class="time">
                 {% if same_day %}
-                  {{ s }}
+                  {% comment %} start == end → start만 (강조 X) {% endcomment %}
+                  <span class="time-start">{{ s }}</span>
                 {% elsif has_end %}
-                  {{ s }}<br><span class="time-end">– {{ en }}</span>
+                  {% comment %} 일반 구간 → 줄바꿈해서 start / – end (강조 X) {% endcomment %}
+                  <span class="time-start">{{ s }}</span>
+                  <span class="time-end">– {{ en }}</span>
                 {% else %}
-                  {{ s }} –
+                  {% comment %} end 없음 → start – (강조 O: .timeline-current로 dot 강조) {% endcomment %}
+                  <span class="time-start">{{ s }}</span>
+                  <span class="time-end">–</span>
                 {% endif %}
               </span>
+      
               <span class="dot" aria-hidden="true"></span>
               <div class="body">
                 <div class="title">{{ e.title }}</div>
@@ -232,6 +254,8 @@ aside a.tag{ color:var(--tag-color); }
         </ol>
       </section>
       {% endif %}
+
+
 
       <!-- Freeform markdown (no card) -->
       {% if content and content != "" %}
