@@ -49,7 +49,7 @@ milestone:
       Ulsan National Institute of Science and Technology (UNIST)
 
   - start: 2024.05
-    title: 2024 Spring Korea Data Mining Society
+    title: 2024 Spring Korea Data Mining Society (한국데이터마이닝학회)
     note: |
       Assessing User Retention of Connected Home Appliances: Survival Analysis
 
