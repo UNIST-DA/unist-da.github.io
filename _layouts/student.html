@@ -203,8 +203,6 @@ layout: default
             <li class="timeline-item {% if is_current %}timeline-current{% endif %}">
               <span class="time">
                 {{ s }}{% if has_end and (is_present or en != s) %} – {{ en }}{% endif %}
-                {# end가 present면 '– present' 표기 + 강조 유지
-                   end가 start와 같으면 하이픈/끝날짜 숨김 + 강조 없음 #}
               </span>
               <span class="dot" aria-hidden="true"></span>
               <div class="body">
