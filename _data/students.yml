@@ -5,7 +5,6 @@
   photo: /assets/members/students/seungsu-kam.jpg
   url: /members/students/contents/seungsu-kam/
   summary: Neural Differential Equation, Anomaly Detection, Irregularly-Sampled Time Series
-  tags: [Neural DE, Anomaly Detection, Irregular TS]
   email: lewki83@unist.ac.kr
   website: https://seungsukam.github.io/
   github: https://github.com/SEUNGSUKAM
@@ -22,7 +21,6 @@
   photo: /assets/members/students/hyejin-cho.jpg
   url: /members/students/contents/hyejin-cho/
   summary: Industrial Statistics, Data-driven Business Strategy, Machine Learning and Deep Learning
-  tags: [Industrial Statistics, ML, DL]
   email:
   website:
   github:
@@ -39,7 +37,6 @@
   photo: /assets/members/students/seongjin-kim.jpg
   url: /members/students/contents/seongjin-kim/
   summary: Anomaly Detection, Time Series Forecasting, Deep Learning, Data Science
-  tags: [Anomaly Detection, Forecasting, DL]
   email:
   website:
   github:
@@ -56,7 +53,6 @@
   photo: /assets/members/students/yongmin-kim.jpg
   url: /members/students/contents/yongmin-kim/
   summary: Anomaly Detection, Time Series Classification, Quality Engineering and Management
-  tags: [Anomaly Detection, TS Classification, Quality]
   email:
   website:
   github:
@@ -73,7 +69,6 @@
   photo: /assets/members/students/byeonghoon-jeon.jpg
   url: /members/students/contents/byeonghoon-jeon/
   summary: Multimodal learning, Multivariate Time Series Modeling
-  tags: [Multimodal, Multivariate TS]
   email:
   website: 
   github:
@@ -90,7 +85,6 @@
   photo: /assets/members/students/chanbeom-hur.jpg
   url: /members/students/contents/chanbeom-hur/
   summary: Statistical Machine Learning, Data Analysis
-  tags: [StatML, Data Analysis]
   email:
   website:
   github:
@@ -107,7 +101,6 @@
   photo: /assets/members/students/sieun-lee.jpg
   url: /members/students/contents/sieun-lee/
   summary: Anomaly Detection, Time Series Classification
-  tags: [Anomaly Detection, TS Classification]
   email:
   website:
   github:
@@ -124,7 +117,6 @@
   photo: /assets/members/students/heeyoon-lee.jpg
   url: /members/students/contents/heeyoon-lee/
   summary: Anomaly Detection, Time Series Classification
-  tags: [Anomaly Detection, TS Classification]
   email:
   website:
   github:
@@ -141,7 +133,6 @@
   photo: /assets/members/students/jungwoo-yoo.jpg
   url: /members/students/contents/jungwoo-yoo/
   summary: 
-  tags: 
   email:
   website:
   github:
@@ -158,7 +149,6 @@
   photo: /assets/members/students/yejin-cho.jpg
   url: /members/students/contents/yejin-cho/
   summary: 
-  tags: 
   email:
   website:
   github:
@@ -175,7 +165,6 @@
   photo: /assets/members/students/jihyun-ko.jpg
   url: /members/students/contents/jihyun-ko/
   summary: 
-  tags: 
   email:
   website:
   github:
