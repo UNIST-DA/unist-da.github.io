@@ -57,7 +57,7 @@ milestone:
     end: 2025.02
     title: Research Intern in Data Analytics Lab
     note: |
-      Developing user satisfaction metrics in LG Upgradable home appliances
+      Project: Developing user satisfaction metrics in LG Upgradable home appliances
     
 ---
 
