@@ -99,4 +99,144 @@ aside a.tag{ color:var(--tag-color); }
             {% capture out_others %}{% endcapture %}
 
             {%- comment -%} Icons {%- endcomment -%}
-            {% assign globe_icon = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M2 12h20M1_
+            {% assign globe_icon = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M2 12h20M12 2a15.3 15.3 0 0 1 0 20M12 2a15.3 15.3 0 0 0 0 20'/%3E%3C/svg%3E" %}
+            {% assign house_icon = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 10.5 12 3l9 7.5'/%3E%3Cpath d='M5 10v10h14V10'/%3E%3Cpath d='M9 20v-5h6v5'/%3E%3C/svg%3E" %}
+
+            {%- comment -%} Single pass; skip empty URLs {%- endcomment -%}
+            {% for link in page.links %}
+              {% assign url = link.url | default: "" | strip %}
+              {% unless url == "" %}
+                {% assign label_lc = link.label | default: "" | downcase %}
+                {% assign host = url | replace:'https://','' | replace:'http://','' | split:'/' | first | downcase %}
+
+                {%- comment -%} Scholar {%- endcomment -%}
+                {% if (label_lc contains 'scholar') or (host contains 'scholar.google.') %}
+                  {% capture out_scholar %}
+                    {{ out_scholar }}
+                    <li style="display:flex;align-items:center;gap:6px;">
+                      <img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" width="18" height="18" style="flex:0 0 18px">
+                      <a href="{{ url }}" target="_blank" rel="noopener">{{ link.label | default: url }}</a>
+                    </li>
+                  {% endcapture %}
+
+                {%- comment -%} GitHub {%- endcomment -%}
+                {% elsif (label_lc contains 'github') or (host contains 'github.com') %}
+                  {% capture out_github %}
+                    {{ out_github }}
+                    <li style="display:flex;align-items:center;gap:6px;">
+                      <img src="https://github.com/favicon.ico" alt="GitHub" width="18" height="18" style="flex:0 0 18px">
+                      <a href="{{ url }}" target="_blank" rel="noopener">{{ link.label | default: url }}</a>
+                    </li>
+                  {% endcapture %}
+
+                {%- comment -%} LinkedIn {%- endcomment -%}
+                {% elsif (label_lc contains 'linkedin') or (host contains 'linkedin.com') %}
+                  {% capture out_linkedin %}
+                    {{ out_linkedin }}
+                    <li style="display:flex;align-items:center;gap:6px;">
+                      <img src="https://www.linkedin.com/favicon.ico" alt="LinkedIn" width="18" height="18" style="flex:0 0 18px">
+                      <a href="{{ url }}" target="_blank" rel="noopener">{{ link.label | default: url }}</a>
+                    </li>
+                  {% endcapture %}
+
+                {%- comment -%} CV = fixed house icon {%- endcomment -%}
+                {% elsif (label_lc == 'cv') or (label_lc contains 'curriculum') or (label_lc contains 'vita') %}
+                  {% capture out_cv %}
+                    {{ out_cv }}
+                    <li style="display:flex;align-items:center;gap:6px;">
+                      <img src="{{ house_icon }}" alt="CV" width="18" height="18" style="flex:0 0 18px">
+                      <a href="{{ url }}" target="_blank" rel="noopener">{{ link.label | default: url }}</a>
+                    </li>
+                  {% endcapture %}
+
+                {%- comment -%} Others = globe {%- endcomment -%}
+                {% else %}
+                  {% capture out_others %}
+                    {{ out_others }}
+                    <li style="display:flex;align-items:center;gap:6px;">
+                      <img src="{{ globe_icon }}" alt="" width="18" height="18" style="flex:0 0 18px">
+                      <a href="{{ url }}" target="_blank" rel="noopener">{{ link.label | default: url }}</a>
+                    </li>
+                  {% endcapture %}
+                {% endif %}
+              {% endunless %}
+            {% endfor %}
+
+            {%- comment -%} Order: Scholar → GitHub → LinkedIn → CV → Others {%- endcomment -%}
+            {{ out_scholar }}
+            {{ out_github }}
+            {{ out_linkedin }}
+            {{ out_cv }}
+            {{ out_others }}
+          </ul>
+        </div>
+      {% endif %}
+
+      {% if page.tags %}
+        <div style="margin-top:8px">
+          {% for t in page.tags %}<span class="tag">{{ t }}</span>{% endfor %}
+        </div>
+      {% endif %}
+    </aside>
+
+    <!-- ===== Main content ===== -->
+    <article class="prose article-wrap">
+      <!-- About Me -->
+      {% if page.about or page.bio %}
+      <section class="card card-pad section-card">
+        <h3 class="sec-title">About Me</h3>
+        <p class="muted" style="margin:0">{{ page.about | default: page.bio }}</p>
+      </section>
+      {% endif %}
+
+      <!-- Research Interests -->
+      {% if page.interests %}
+      <section class="card card-pad section-card">
+        <h3 class="sec-title">Research Interests</h3>
+        <ul style="margin:0">
+          {% for i in page.interests %}<li>{{ i }}</li>{% endfor %}
+        </ul>
+      </section>
+      {% endif %}
+
+      <!-- Milestones (timeline) -->
+      {% if page.milestone %}
+      <section class="card card-pad section-card">
+        <h3 class="sec-title">Milestones</h3>
+        <ol class="timeline">
+          {% assign milestones_desc = page.milestone | reverse %}
+          {% for e in milestones_desc %}
+            {% assign s  = e.start | append: "" | strip %}
+            {% assign en = e.end   | append: "" | strip %}
+            {% assign has_end = en != "" %}
+            {% assign same_day = has_end and (en == s) %}
+            {% assign is_current = (has_end == false) %}
+      
+            <li class="timeline-item {% if is_current %}timeline-current{% endif %}">
+              <span class="time">
+                {% if same_day %}
+                  {{ s }}
+                {% elsif has_end %}
+                  {{ s }}<br><span class="time-end">– {{ en }}</span>
+                {% else %}
+                  {{ s }} –
+                {% endif %}
+              </span>
+              <span class="dot" aria-hidden="true"></span>
+              <div class="body">
+                <div class="title">{{ e.title }}</div>
+                {% if e.note %}<p>{{ e.note | newline_to_br }}</p>{% endif %}
+              </div>
+            </li>
+          {% endfor %}
+        </ol>
+      </section>
+      {% endif %}
+
+      <!-- Freeform markdown (no card) -->
+      {% if content and content != "" %}
+        {{ content }}
+      {% endif %}
+    </article>
+  </section>
+</main>
