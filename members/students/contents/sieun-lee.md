@@ -38,13 +38,13 @@ milestone:
     end: 2024.08
     title: B.S. in Industrial Engineering
     note: |
-      Ulsan National Institute of Science and Technology (UNIST).
+      Ulsan National Institute of Science and Technology (UNIST)
   - start: 2024.12
     end: 2025.08
     title: Research Intern — Data Analytics Lab
     note: |
-      Worked on time-series imputation/diffusion baselines
-      and data pipelines for manufacturing & healthcare problems.
+      Time-series imputation/diffusion baselines
+      Data pipelines for manufacturing & healthcare problems
   - start: "2024.12"
     title: IITP Project — ECG biosignal dataset construction
     note: |
@@ -53,13 +53,13 @@ milestone:
     end: present
     title: M.S. in Industrial Engineering
     note: |
-      Data Analytics Lab (UNIST).
-      Research on missingness-aware time-series modeling (imputation, diffusion, downstream) across manufacturing & healthcare; advised by Prof. Sungil Kim.
+      Ulsan National Institute of Science and Technology (UNIST)
+      Data Analytics Lab
   - start: 2025.09
     end: 2025.09
-    title: "Redesigned and rebuilt the lab website"
+    title: Redesigned the lab website
     note: |
-      Participate in a full refresh of the lab’s website, covering information architecture, visual design, and component  system. Improved performance, accessibility, and SEO, and set up automated build & deploy.
+      Participate in a full refresh of the lab’s website
 
 
 ---
