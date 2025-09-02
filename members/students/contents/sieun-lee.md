@@ -55,11 +55,11 @@ milestone:
     note: |
       Data Analytics Lab (UNIST).
       Research on missingness-aware time-series modeling (imputation, diffusion, downstream) across manufacturing & healthcare; advised by Prof. Sungil Kim.
-    - start: 2025.09
-      end: 2025.09
-      title: "Redesigned and rebuilt the lab website"
-      note: |
-        Participate in a full refresh of the lab’s website, covering information architecture, visual design, and component  system. Improved performance, accessibility, and SEO, and set up automated build & deploy.
+  - start: 2025.09
+    end: 2025.09
+    title: "Redesigned and rebuilt the lab website"
+    note: |
+      Participate in a full refresh of the lab’s website, covering information architecture, visual design, and component  system. Improved performance, accessibility, and SEO, and set up automated build & deploy.
 
 
 ---
