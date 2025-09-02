@@ -47,13 +47,14 @@ milestone:
       Time-series imputation/diffusion baselines
       Data pipelines for manufacturing & healthcare problems
     
-  - start: "2024.12"
+  - start: 2024.12
+    end:
     title: IITP Project — ECG biosignal dataset construction
     note: |
       Building a large-scale ECG dataset (curation, preprocessing, labeling protocol)
     
   - start: 2025.09
-    end: present
+    end: 
     title: M.S. in Industrial Engineering
     note: |
       Ulsan National Institute of Science and Technology (UNIST)
