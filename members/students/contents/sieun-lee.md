@@ -19,6 +19,8 @@ links:
     url: https://github.com/sieun-00
   - label: Google Scholar
     url: https://scholar.google.com/
+  - label: Linkedin
+    url: https://www.linkedin.com/in/byungkook-koo/
   - label: UNIST IE Department
     url: https://ie.unist.ac.kr/
   - label: CV
@@ -34,6 +36,10 @@ interests:
   - Maritime/logistics analytics with multimodal data
   - 
 milestone:
+  - start: 2022
+    title: M.S. in Industrial Engineering
+    org: Ulsan National Institute of Science and Technology (UNIST)
+    note: Data Analytics Lab, advised by Prof. Sungil Kim
   - start: 2018
     end: 2023
     title: B.S. in Industrial Engineering
@@ -43,6 +49,7 @@ milestone:
     title: M.S. in Industrial Engineering
     org: Ulsan National Institute of Science and Technology (UNIST)
     note: Data Analytics Lab, advised by Prof. Sungil Kim
+
 ---
 
 ### Current Work
