@@ -15,7 +15,7 @@ permalink: /activity/Lab%20Seminar/
 <main class="container">
   <section>
     <div class="grid">
-      {% assign items = site.data.activity.seminar | sort: "date" | reverse %}
+      {% assign items = site.data.seminar | sort: "date" | reverse %}
       {% for it in items %}
       <article class="card card-pad" style="grid-column: span 12" id="{{ it.slug }}">
         <div class="news-item">
