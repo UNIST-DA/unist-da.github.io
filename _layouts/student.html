@@ -157,12 +157,15 @@ layout: default
             {{ out_linkedin }}
             {{ out_cv }}
             {{ out_others }}
-      
           </ul>
         </div>
       {% endif %}
 
-
+      {% if page.tags %}
+        <div style="margin-top:8px">
+          {% for t in page.tags %}<span class="tag">{{ t }}</span>{% endfor %}
+        </div>
+      {% endif %}
     </aside>
 
     <!-- ===== Main content ===== -->
