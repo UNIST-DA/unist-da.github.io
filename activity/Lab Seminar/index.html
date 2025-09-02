@@ -6,104 +6,88 @@ permalink: /activity/Lab%20Seminar/
 ---
 
 <style>
-  /* ====== 세미나 카드 스타일 ====== */
-  .seminar-card{
-    border:1px solid var(--glass-border, rgba(255,255,255,.18));
-    background:var(--glass, rgba(255,255,255,.06));
-    border-radius:18px; padding:18px 20px; margin:14px 0;
-    box-shadow: var(--shadow-lg, 0 10px 40px rgba(0,0,0,.08));
-    transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  /* ===== 리스트형 세미나 행 ===== */
+  .seminar-list{margin:0;padding:0;list-style:none}
+  .seminar-row{
+    display:grid; align-items:center;
+    grid-template-columns: 120px 1fr 44px;  /* 날짜 | 본문 | 아이콘 */
+    gap:16px; padding:14px 18px; border-bottom:1px solid rgba(0,0,0,.06);
   }
-  .seminar-card:hover{
-    transform: translateY(-1px);
-    border-color: var(--ring, rgba(124,150,255,.35));
-    box-shadow: 0 10px 45px rgba(0,0,0,.12);
-  }
+  .seminar-row:last-child{border-bottom:none}
 
-  /* 3열 그리드: 날짜 | 중앙 타이틀 | 우측 태그 */
-  .seminar-grid{
-    display:grid; align-items:center; gap:16px;
-    grid-template-columns: 120px 1fr 320px;
-  }
-  .seminar-date{
-    font-weight:600; color:var(--muted,#7a869a); letter-spacing:.2px;
-    white-space:nowrap;
-  }
+  .s-date{font-weight:600;color:#6b7280;letter-spacing:.2px;white-space:nowrap}
 
-  .seminar-title-wrap{display:flex; flex-direction:column; align-items:center; gap:6px; min-width:0;}
-  .seminar-title{
-    margin:0; text-align:center; font-weight:800; line-height:1.35;
-  }
-  .seminar-title a{color:inherit; text-decoration:none;}
-  .seminar-title a:hover{ text-decoration:underline; text-underline-offset:3px; }
+  .s-main{min-width:0; display:flex; flex-direction:column; gap:6px}
+  .s-title{margin:0; font-weight:800; line-height:1.35}
+  .s-title .pill{display:inline-block;margin-right:8px;padding:2px 8px;border-radius:999px;
+                 font-size:.78rem;border:1px solid rgba(99,102,241,.35);background:rgba(99,102,241,.10)}
+  .s-title span.title-text{display:inline;word-break:keep-all}
 
-  .pill{
-    display:inline-block; margin-right:8px; padding:2px 10px; font-size:.82rem; border-radius:999px;
-    border:1px solid var(--ring, rgba(124,150,255,.35));
-    background: rgba(124,150,255,.10);
-  }
-  .seminar-presenter{ margin:0; color:var(--muted,#7a869a); font-size:.95rem;}
+  .s-meta{margin:0; color:#6b7280; font-size:.95rem; display:flex; gap:8px; flex-wrap:wrap}
+  .s-meta .dot::before{content:"·"; margin:0 6px; color:#9ca3af}
+  .tag{white-space:nowrap}
 
-  .seminar-tags{display:flex; justify-content:flex-end; gap:8px; flex-wrap:wrap;}
-  .tag{
-    border:1px solid var(--glass-border, rgba(255,255,255,.18));
-    background:rgba(255,255,255,.04);
-    padding:4px 10px; border-radius:999px; font-size:.86rem; white-space:nowrap;
-    color:var(--muted,#7a869a);
+  .s-actions{display:flex; justify-content:flex-end}
+  .notion-link{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:36px; height:36px; border-radius:10px; border:1px solid rgba(0,0,0,.08);
+    background:#fff; transition: all .15s ease;
   }
-
-  /* 반응형: 태그칩이 아래로 내려가고 제목은 좌측 정렬 */
-  @media (max-width: 900px){
-    .seminar-grid{ grid-template-columns: 100px 1fr; gap:12px; }
-    .seminar-title{ text-align:left; }
-    .seminar-title-wrap{ align-items:flex-start; }
-    .seminar-tags{ grid-column: 1 / -1; justify-content:flex-start; }
+  .notion-link:hover{transform:translateY(-1px); box-shadow:0 6px 18px rgba(0,0,0,.08)}
+  .notion-icon{width:20px;height:20px;display:block}
+  /* 모바일: 아이콘 줄이고 여백 조정 */
+  @media (max-width: 720px){
+    .seminar-row{grid-template-columns: 90px 1fr 36px; padding:12px 12px; gap:12px}
+    .s-title{font-size:1.02rem}
   }
 </style>
 
-<div class="page-hero">
-  <div class="container">
-    <div class="breadcrumbs"><a href="{{ '/' | relative_url }}">Home</a> · <a href="{{ '/activity/' | relative_url }}">Activity</a> · Lab Seminar</div>
-    <h1 class="page-title">Lab Seminar</h1>
-  </div>
-</div>
-
 <main class="container">
   <section>
-    <div class="grid">
+    <ul class="seminar-list">
       {% assign items = site.data.seminar %}
       {% if items and items.size > 0 %}
         {% assign items = items | sort: "date" | reverse %}
         {% for it in items %}
-        <article class="seminar-card" id="{{ it.slug }}">
-          <div class="seminar-grid">
-            <time class="seminar-date" datetime="{{ it.date }}">{{ it.date }}</time>
+        <li class="seminar-row" id="{{ it.slug }}">
+          <!-- 날짜 -->
+          <time class="s-date" datetime="{{ it.date }}">{{ it.date }}</time>
 
-            <div class="seminar-title-wrap">
-              <h3 class="seminar-title">
-                <a href="{{ it.url }}" target="_blank" rel="noopener">
-                  {% if it.category %}<span class="pill">{{ it.category }}</span>{% endif %}
-                  {{ it.title }}
-                </a>
-              </h3>
-              {% if it.presenter %}
-                <p class="seminar-presenter">Presenter: {{ it.presenter }}</p>
-              {% endif %}
-            </div>
-
-            <div class="seminar-tags">
+          <!-- 본문(제목/메타) : 제목은 좌측 정렬, 링크 없음 -->
+          <div class="s-main">
+            <h3 class="s-title">
+              {% if it.category %}<span class="pill">{{ it.category }}</span>{% endif %}
+              <span class="title-text">{{ it.title }}</span>
+            </h3>
+            <p class="s-meta">
+              {% if it.presenter %}Presenter: {{ it.presenter }}{% endif %}
               {% if it.keywords and it.keywords.size > 0 %}
+                <span class="dot"></span>
                 {% for kw in it.keywords %}
                   <span class="tag">#{{ kw }}</span>
                 {% endfor %}
               {% endif %}
-            </div>
+            </p>
           </div>
-        </article>
+
+          <!-- 오른쪽 액션: Notion 아이콘만 클릭 -->
+          <div class="s-actions">
+            {% if it.url %}
+            <a class="notion-link" href="{{ it.url }}" target="_blank" rel="noopener"
+               aria-label="Open in Notion: {{ it.title }}">
+              <!-- 미니멀 Notion 아이콘 (SVG) -->
+              <svg class="notion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <rect x="3.5" y="3.5" width="17" height="17" rx="3" ry="3" stroke-width="1.5"/>
+                <path d="M8 7.5v9h2v-5.8h.1L14 16.5h2v-9h-2v5.7h-.1L10 7.5H8z" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+            {% endif %}
+          </div>
+        </li>
         {% endfor %}
       {% else %}
-        <p class="muted">No seminar data yet.</p>
+        <li class="seminar-row"><span class="s-date">—</span><div class="s-main"><p class="s-title">No seminar data yet.</p></div><div></div></li>
       {% endif %}
-    </div>
+    </ul>
   </section>
 </main>
