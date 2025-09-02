@@ -5,41 +5,51 @@ permalink: /members/students/contents/seungsu-kam/
 title: SeungSu Kam
 name: SeungSu Kam
 role: Combined Master-Doctor
-period: "—"
+period: "2022.02—"
 photo: /assets/members/students/seungsu-kam.jpg
 
 email: 
 links:
   - label: Google Scholar
-    url: 
+    url: https://scholar.google.co.kr/citations?hl=ko&user=yP1DmawAAAAJ
   - label: GitHub
-    url: 
+    url: https://github.com/SEUNGSUKAM
   - label: LinkedIn
-    url: 
-  - label: CV
-    url: 
+    url: www.linkedin.com/in/seungsu-kam-5b232327b
+  - label: homepage
+    url: https://seungsukam.github.io/
 
 tags:
-  - tags
+  - Irregularly sampled time series
+  - Neural differential equations
+  - Anomaly detection
+  - Longitudinal survival analysis
 
-about: I'm 
+about: I am a Ph.D. student in Industrial Engineering at UNIST under the supervision of Professor Sungil Kim. My work involves Neural Differential Equations, Conditional Density Estimation, and Survival Analysis, which I apply to problems such as real-time anomaly detection, astronomical object anomaly detection, longitudinal patient outcome prediction, and personalized thyroid hormone dosage recommendation.
 
 interests:
-  - interests
+  - Irregularly sampled time series analysis
+  - Time series anomaly detection & reliability analytics in manufacturing & healthcare
+  - Multi-risk longitudinal survival analysis in healthcare
+  - Irregular astronomical time series anomaly detection
+    
     
 milestone:
-  - start: 2025.09
-    end: 2025.09
-    title: title
+  - start: 2022.02
+    title: M.S.-Ph. D. in Industrial Engineering
     note: |
-      notes
-      notes
+      Ulsan National Institute of Science and Technology UNIST, Data Analytics Lab
+  - start: 2024.06
+    title: Ph. D. Candidate in Industrial Engineering
+    note: |
+      Passed Qualifying Exam
+
 ---
 
 ### Current Work
-- This is an **example!!** 
+- Real-Time Quasar Anomaly Detection
+- Irregular Astronomical Time Series Anomaly Detection
+- Longitudinal Multi-risk Survival Analysis
+- Thyroid Hormone Dosage Recommendation
   
-### Notes for Collaboration
-1. This is an **example!!** 
-2. This is an **example!!** 
-3. This is an **example!!** 
+For more information, please visit my website.
