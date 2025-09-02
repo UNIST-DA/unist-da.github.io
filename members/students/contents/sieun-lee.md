@@ -50,7 +50,7 @@ milestone:
   - start: "2024.12"
     title: IITP Project — ECG biosignal dataset construction
     note: |
-      Building a large-scale ECG dataset (curation, preprocessing, labeling protocol).
+      Building a large-scale ECG dataset (curation, preprocessing, labeling protocol)
     
   - start: 2025.09
     end: present
