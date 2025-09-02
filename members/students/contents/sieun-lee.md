@@ -65,12 +65,9 @@ milestone:
 ---
 
 ### Current Work
-- Building **missingness-aware imputation pipelines** for FDC/metrology data (multiple imputation vs. diffusion-based baselines).
-- Developing **domain-free time-series drift monitoring** for long-horizon deployments.
-- Researching **reliability & anomaly analytics** in semiconductor processes.
-- Prototyping **maritime fuel optimization** combining AIS, weather, and engine signals.
-
+- This is an **example!!** 
+  
 ### Notes for Collaboration
-1. Principled missingness modeling for **reliability/quality engineering**  
-2. Scalable **imputation + downstream** evaluation frameworks  
-3. Cross-domain drift management and maritime/logistics analytics.
+1. This is an **example!!** 
+2. This is an **example!!** 
+3. This is an **example!!** 
