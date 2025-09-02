@@ -6,64 +6,70 @@ permalink: /activity/Lab%20Seminar/
 ---
 
 <style>
-  /* 리스트 전체 */
+  /* ===== Compact list ===== */
+  :root{ --row-pad:12px; --gap:12px; --title-lines:2; }
+
   .seminar-list{margin:0;padding:0;list-style:none}
 
-  /* 👉 바깥 카드(구분감) */
+  /* 바깥 카드: 분리감만 담당 */
   .row-card{
-    margin:18px 0; padding:12px;
-    border:1px solid rgba(2,6,23,.08);
-    border-radius:20px; background:#fff;
-    box-shadow:0 10px 28px rgba(2,6,23,.06);
+    margin:12px 0; padding:0;
+    border:1px solid rgba(2,6,23,.10);
+    border-radius:14px; background:#fff;
+    box-shadow:0 6px 18px rgba(2,6,23,.06);
   }
 
-  /* 안쪽 행(내용 영역) */
+  /* 안쪽 행: 레이아웃만 (배경/보더 X) */
   .seminar-row{
-    display:grid; align-items:center; gap:16px;
-    grid-template-columns: 120px 1fr 52px; /* 날짜 | 본문 | 아이콘 */
-    padding:16px 18px;
-    border-radius:14px;
-    background:rgba(99,102,241,.06);
-    border:1px solid rgba(99,102,241,.16);
+    display:grid; align-items:center; gap:var(--gap);
+    grid-template-columns: 100px 1fr 40px;   /* 날짜 | 본문 | 아이콘 */
+    padding:var(--row-pad) 12px;
   }
 
-  .s-date{font-weight:600;color:#6b7280;letter-spacing:.2px;white-space:nowrap}
+  .s-date{font-weight:600;color:#667085;white-space:nowrap;letter-spacing:.2px}
 
-  .s-main{min-width:0;display:flex;flex-direction:column;gap:6px}
-  .s-title{margin:0;font-weight:800;line-height:1.35;text-align:left}
+  .s-main{min-width:0}
+  .s-title{
+    margin:0 0 4px; font-weight:750; font-size:1.02rem; line-height:1.25;
+    display:-webkit-box; -webkit-line-clamp:var(--title-lines); -webkit-box-orient:vertical;
+    overflow:hidden; /* 너무 길면 2줄로 자르고 고정 */
+  }
   .s-title .pill{
-    display:inline-block;margin-right:8px;padding:2px 8px;border-radius:999px;
-    font-size:.78rem;border:1px solid rgba(99,102,241,.35);background:rgba(99,102,241,.10)
+    display:inline-block;margin-right:8px;padding:1px 8px;border-radius:999px;
+    font-size:.74rem;border:1px solid rgba(99,102,241,.30);background:rgba(99,102,241,.12)
   }
-  .s-title .title-text{word-break:keep-all}
 
-  .s-meta{margin:0;color:#6b7280;font-size:.95rem;display:flex;gap:8px;flex-wrap:wrap}
+  /* 메타 한 줄, 넘치면 … */
+  .s-meta{
+    margin:0;color:#667085;font-size:.9rem;display:flex;gap:8px;align-items:center;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-height:1.5em;
+  }
   .s-meta .dot::before{content:"·";margin:0 6px;color:#9ca3af}
 
-  /* 👉 태그 선명도 업(투명도 낮춤) */
+  /* 키워드 칩: 선명하지만 부담스럽지 않게 */
   .tag{
-    white-space:nowrap;
-    padding:2px 8px;border-radius:999px;
-    background:rgba(99,102,241,.18);          /* 0.10 → 0.18 */
-    border:1px solid rgba(99,102,241,.40);     /* 0.35 → 0.40 */
-    color:#475569;
+    padding:1px 8px;border-radius:999px;white-space:nowrap;
+    background:rgba(99,102,241,.12);      /* 과했던 배경 낮춤 */
+    border:1px solid rgba(99,102,241,.28);
+    color:#475569;font-weight:500;font-size:.82rem;
   }
 
-  /* 👉 Notion 아이콘 크게 */
+  /* 오른쪽 액션: 아이콘은 40px로 균형 */
   .s-actions{display:flex;justify-content:flex-end}
   .notion-link{
-    width:44px;height:44px;                    /* 36 → 44 */
+    width:40px;height:40px;
     display:inline-flex;align-items:center;justify-content:center;
-    border-radius:12px;border:1px solid rgba(2,6,23,.12); background:#fff;
+    border-radius:10px;border:1px solid rgba(2,6,23,.12); background:#fff;
     transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;
   }
-  .notion-link:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(2,6,23,.10);border-color:rgba(99,102,241,.35)}
-  .notion-icon{width:26px;height:26px}         /* 20 → 26 */
+  .notion-link:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(2,6,23,.10);border-color:rgba(99,102,241,.32)}
+  .notion-icon{width:22px;height:22px}
 
-  /* 반응형 */
-  @media (max-width: 720px){
-    .seminar-row{grid-template-columns: 90px 1fr 44px;gap:12px;padding:12px}
-    .s-title{font-size:1.02rem}
+  /* 반응형: 모바일은 날짜/아이콘 줄이고 제목 3줄 허용 */
+  @media (max-width: 900px){
+    :root{ --title-lines:3; }
+    .seminar-row{grid-template-columns: 86px 1fr 40px;gap:10px;padding:10px}
+    .s-title{font-size:1rem}
   }
 </style>
 
@@ -77,9 +83,9 @@ permalink: /activity/Lab%20Seminar/
         <time class="s-date" datetime="{{ it.date }}">{{ it.date }}</time>
 
         <div class="s-main">
-          <h3 class="s-title">
+          <h3 class="s-title" title="{{ it.title }}">   <!-- 전체제목은 툴팁으로 -->
             {% if it.category %}<span class="pill">{{ it.category }}</span>{% endif %}
-            <span class="title-text">{{ it.title }}</span>  <!-- 제목 링크 없음 -->
+            {{ it.title }}                                <!-- 제목 링크 없음 -->
           </h3>
           <p class="s-meta">
             {% if it.presenter %}Presenter: {{ it.presenter }}{% endif %}
