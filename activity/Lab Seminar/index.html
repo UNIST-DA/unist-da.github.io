@@ -6,22 +6,58 @@ permalink: /activity/Lab%20Seminar/
 ---
 
 <style>
-  .seminar-row{display:flex;align-items:center;gap:16px}
-  .seminar-date{width:120px;font-weight:600;color:var(--muted)}
-  .seminar-mid{flex:1;min-width:0}
-  .seminar-title{margin:0 0 6px;text-align:center;font-weight:700}
-  .seminar-title a{text-decoration:none}
-  .seminar-presenter{margin:0;color:var(--muted)}
+  /* ====== 세미나 카드 스타일 ====== */
+  .seminar-card{
+    border:1px solid var(--glass-border, rgba(255,255,255,.18));
+    background:var(--glass, rgba(255,255,255,.06));
+    border-radius:18px; padding:18px 20px; margin:14px 0;
+    box-shadow: var(--shadow-lg, 0 10px 40px rgba(0,0,0,.08));
+    transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  }
+  .seminar-card:hover{
+    transform: translateY(-1px);
+    border-color: var(--ring, rgba(124,150,255,.35));
+    box-shadow: 0 10px 45px rgba(0,0,0,.12);
+  }
 
-  .seminar-tags{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;max-width:40%}
-  .seminar-tag{padding:4px 10px;border-radius:999px;border:1px solid rgba(124,150,255,.35);
-               background:rgba(124,150,255,.12);font-size:.9rem;white-space:nowrap}
+  /* 3열 그리드: 날짜 | 중앙 타이틀 | 우측 태그 */
+  .seminar-grid{
+    display:grid; align-items:center; gap:16px;
+    grid-template-columns: 120px 1fr 320px;
+  }
+  .seminar-date{
+    font-weight:600; color:var(--muted,#7a869a); letter-spacing:.2px;
+    white-space:nowrap;
+  }
 
-  @media (max-width: 720px){
-    .seminar-row{align-items:flex-start;gap:10px}
-    .seminar-date{width:auto;min-width:82px}
-    .seminar-title{text-align:left}          /* 모바일에선 왼쪽 정렬이 더 자연스러우면 유지 */
-    .seminar-tags{max-width:100%;justify-content:flex-start}
+  .seminar-title-wrap{display:flex; flex-direction:column; align-items:center; gap:6px; min-width:0;}
+  .seminar-title{
+    margin:0; text-align:center; font-weight:800; line-height:1.35;
+  }
+  .seminar-title a{color:inherit; text-decoration:none;}
+  .seminar-title a:hover{ text-decoration:underline; text-underline-offset:3px; }
+
+  .pill{
+    display:inline-block; margin-right:8px; padding:2px 10px; font-size:.82rem; border-radius:999px;
+    border:1px solid var(--ring, rgba(124,150,255,.35));
+    background: rgba(124,150,255,.10);
+  }
+  .seminar-presenter{ margin:0; color:var(--muted,#7a869a); font-size:.95rem;}
+
+  .seminar-tags{display:flex; justify-content:flex-end; gap:8px; flex-wrap:wrap;}
+  .tag{
+    border:1px solid var(--glass-border, rgba(255,255,255,.18));
+    background:rgba(255,255,255,.04);
+    padding:4px 10px; border-radius:999px; font-size:.86rem; white-space:nowrap;
+    color:var(--muted,#7a869a);
+  }
+
+  /* 반응형: 태그칩이 아래로 내려가고 제목은 좌측 정렬 */
+  @media (max-width: 900px){
+    .seminar-grid{ grid-template-columns: 100px 1fr; gap:12px; }
+    .seminar-title{ text-align:left; }
+    .seminar-title-wrap{ align-items:flex-start; }
+    .seminar-tags{ grid-column: 1 / -1; justify-content:flex-start; }
   }
 </style>
 
@@ -39,14 +75,15 @@ permalink: /activity/Lab%20Seminar/
       {% if items and items.size > 0 %}
         {% assign items = items | sort: "date" | reverse %}
         {% for it in items %}
-        <article class="card card-pad" style="grid-column: span 12" id="{{ it.slug }}">
-          <div class="seminar-row">
-            <div class="seminar-date">{{ it.date }}</div>
+        <article class="seminar-card" id="{{ it.slug }}">
+          <div class="seminar-grid">
+            <time class="seminar-date" datetime="{{ it.date }}">{{ it.date }}</time>
 
-            <div class="seminar-mid">
+            <div class="seminar-title-wrap">
               <h3 class="seminar-title">
                 <a href="{{ it.url }}" target="_blank" rel="noopener">
-                  {% if it.category %}[{{ it.category }}] {% endif %}{{ it.title }}
+                  {% if it.category %}<span class="pill">{{ it.category }}</span>{% endif %}
+                  {{ it.title }}
                 </a>
               </h3>
               {% if it.presenter %}
@@ -57,7 +94,7 @@ permalink: /activity/Lab%20Seminar/
             <div class="seminar-tags">
               {% if it.keywords and it.keywords.size > 0 %}
                 {% for kw in it.keywords %}
-                  <span class="seminar-tag">#{{ kw }}</span>
+                  <span class="tag">#{{ kw }}</span>
                 {% endfor %}
               {% endif %}
             </div>
