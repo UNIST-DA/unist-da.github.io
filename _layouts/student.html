@@ -81,54 +81,84 @@ layout: default
           <ul style="list-style:none;padding:0;margin:6px 0 0;display:flex;flex-direction:column;gap:6px;">
       
             {%- comment -%} 카테고리별 버퍼 {%- endcomment -%}
-            {% capture out_github %}{% endcapture %}
             {% capture out_scholar %}{% endcapture %}
-            {% capture out_linkedin %}{% endcapture %}
+            {% capture out_github %}{% endcapture %}
             {% capture out_cv %}{% endcapture %}
+            {% capture out_linkedin %}{% endcapture %}
             {% capture out_others %}{% endcapture %}
       
-            {%- comment -%} favicon 실패 시 대체(퍼센트 인코딩된 작은 글로브) {%- endcomment -%}
-            {% assign globe_fallback = "data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%200%2024%2024%22 fill=%22none%22 stroke=%22%239ca3af%22 stroke-width=%221.8%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Ccircle cx=%2212%22 cy=%2212%22 r=%2210%22/%3E%3Cpath d=%22M2%2012h20M12%202a15.3%2015.3%200%200%201%200%2020M12%202a15.3%2015.3%200%200%200%200%2020%22/%3E%3C/svg%3E" %}      
-            {%- comment -%} 한 번만 순회해서 각 버퍼에 쌓기 {%- endcomment -%}
+            {%- comment -%} 아이콘 (data URI) {%- endcomment -%}
+            {% assign globe_icon = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M2 12h20M12 2a15.3 15.3 0 0 1 0 20M12 2a15.3 15.3 0 0 0 0 20'/%3E%3C/svg%3E" %}
+            {% assign house_icon = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 10.5 12 3l9 7.5'/%3E%3Cpath d='M5 10v10h14V10'/%3E%3Cpath d='M9 20v-5h6v5'/%3E%3C/svg%3E" %}
+      
+            {%- comment -%} 한 번만 순회해서 분류 {%- endcomment -%}
             {% for link in page.links %}
               {% assign label_lc = link.label | default: '' | downcase %}
               {% assign host = link.url | replace: 'https://','' | replace:'http://','' | split:'/' | first | downcase %}
       
-              {% capture li_html %}
-      <li style="display:flex;align-items:center;gap:6px;">
-        <img
-          src="https://www.google.com/s2/favicons?sz=32&domain={{ host | url_encode }}"
-          alt="" width="18" height="18" style="flex:0 0 18px"
-          onerror="this.onerror=null;this.src='{{ globe_fallback }}';">
-        <a href="{{ link.url }}" target="_blank" rel="noopener">{{ link.label | default: link.url }}</a>
-      </li>
-              {% endcapture %}
+              {%- comment -%} 1) Scholar {%- endcomment -%}
+              {% if (label_lc contains 'scholar') or (host contains 'scholar.google.') %}
+                {% capture out_scholar %}
+                  {{ out_scholar }}
+                  <li style="display:flex;align-items:center;gap:6px;">
+                    <img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" width="18" height="18" style="flex:0 0 18px">
+                    <a href="{{ link.url }}" target="_blank" rel="noopener">{{ link.label | default: link.url }}</a>
+                  </li>
+                {% endcapture %}
       
-              {% if (label_lc contains 'github') or (host contains 'github.com') %}
-                {% capture out_github %}{{ out_github }}{{ li_html }}{% endcapture %}
-              {% elsif (label_lc contains 'scholar') or (host contains 'scholar.google.') %}
-                {% capture out_scholar %}{{ out_scholar }}{{ li_html }}{% endcapture %}
-              {% elsif (label_lc contains 'linkedin') or (host contains 'linkedin.com') %}
-                {% capture out_linkedin %}{{ out_linkedin }}{{ li_html }}{% endcapture %}
+              {%- comment -%} 2) GitHub {%- endcomment -%}
+              {% elsif (label_lc contains 'github') or (host contains 'github.com') %}
+                {% capture out_github %}
+                  {{ out_github }}
+                  <li style="display:flex;align-items:center;gap:6px;">
+                    <img src="https://github.com/favicon.ico" alt="GitHub" width="18" height="18" style="flex:0 0 18px">
+                    <a href="{{ link.url }}" target="_blank" rel="noopener">{{ link.label | default: link.url }}</a>
+                  </li>
+                {% endcapture %}
+      
+              {%- comment -%} 3) CV (집 아이콘 고정) {%- endcomment -%}
               {% elsif (label_lc == 'cv') or (label_lc contains 'curriculum') or (label_lc contains 'vita') %}
-                {% capture out_cv %}{{ out_cv }}{{ li_html }}{% endcapture %}
+                {% capture out_cv %}
+                  {{ out_cv }}
+                  <li style="display:flex;align-items:center;gap:6px;">
+                    <img src="{{ house_icon }}" alt="CV" width="18" height="18" style="flex:0 0 18px">
+                    <a href="{{ link.url }}" target="_blank" rel="noopener">{{ link.label | default: link.url }}</a>
+                  </li>
+                {% endcapture %}
+      
+              {%- comment -%} 4) LinkedIn {%- endcomment -%}
+              {% elsif (label_lc contains 'linkedin') or (host contains 'linkedin.com') %}
+                {% capture out_linkedin %}
+                  {{ out_linkedin }}
+                  <li style="display:flex;align-items:center;gap:6px;">
+                    <img src="https://www.linkedin.com/favicon.ico" alt="LinkedIn" width="18" height="18" style="flex:0 0 18px">
+                    <a href="{{ link.url }}" target="_blank" rel="noopener">{{ link.label | default: link.url }}</a>
+                  </li>
+                {% endcapture %}
+      
+              {%- comment -%} 5) 기타 = 항상 글로브 {%- endcomment -%}
               {% else %}
-                {% capture out_others %}{{ out_others }}{{ li_html }}{% endcapture %}
+                {% capture out_others %}
+                  {{ out_others }}
+                  <li style="display:flex;align-items:center;gap:6px;">
+                    <img src="{{ globe_icon }}" alt="" width="18" height="18" style="flex:0 0 18px">
+                    <a href="{{ link.url }}" target="_blank" rel="noopener">{{ link.label | default: link.url }}</a>
+                  </li>
+                {% endcapture %}
               {% endif %}
             {% endfor %}
       
-            {%- comment -%} 원하는 순서대로 단 한 번씩 출력 {%- endcomment -%}
-            {{ out_github }}
+            {%- comment -%} 출력 순서: Scholar → GitHub → CV → LinkedIn → 기타 {%- endcomment -%}
             {{ out_scholar }}
-            {{ out_linkedin }}
+            {{ out_github }}
             {{ out_cv }}
+            {{ out_linkedin }}
             {{ out_others }}
       
           </ul>
         </div>
       {% endif %}
-      
-          </aside>
+    </aside>
 
     <!-- ===== Main content ===== -->
     <article class="prose article-wrap">
