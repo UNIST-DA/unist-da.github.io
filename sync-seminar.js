@@ -8,7 +8,7 @@ const notion = new Client({ auth: process.env.NOTION_TOKEN });
 const DB_ID = process.env.NOTION_SEMINAR_DB_ID;
 
 // === 출력 경로 (페이지가 site.data.activity.seminar를 읽으므로 이 경로로 작성) ===
-const OUT_PATH = "_data/activity/seminar.json";
+const OUT_PATH = "_data/seminar.json";
 
 // === 너희 Notion 속성명에 맞춰 필요시만 바꿔줘 ===
 const F = {
