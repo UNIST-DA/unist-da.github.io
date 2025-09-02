@@ -53,7 +53,7 @@ milestone:
     note: |
       Assessing User Retention of Connected Home Appliances: Survival Analysis
 
-  - start: 2023.10
+  - start: 2023.09
     end: 2025.02
     title: Research Intern in Data Analytics Lab
     note: |
