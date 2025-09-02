@@ -15,20 +15,31 @@ permalink: /activity/Lab%20Seminar/
 <main class="container">
   <section>
     <div class="grid">
-      {% assign items = site.data.seminar | sort: "date" | reverse %}
-      {% for it in items %}
-      <article class="card card-pad" style="grid-column: span 12" id="{{ it.slug }}">
-        <div class="news-item">
-          <div class="news-date">{{ it.date }}</div>
-          <div>
-            <a href="{{ it.url }}" target="_blank" rel="noopener" style="font-weight:600">
-              {{ it.title }}
-            </a>
-            {% if it.detail %}<p class="muted">{{ it.detail }}</p>{% endif %}
+      {% assign items = site.data.seminar %}
+      {% if items and items.size > 0 %}
+        {% assign items = items | sort: "date" | reverse %}
+        {% for it in items %}
+        <article class="card card-pad" style="grid-column: span 12" id="{{ it.slug }}">
+          <div class="news-item">
+            <div class="news-date">{{ it.date }}</div>
+            <div>
+              <a href="{{ it.url }}" target="_blank" rel="noopener" style="font-weight:600">
+                {% if it.category %}[{{ it.category }}] {% endif %}{{ it.title }}
+              </a>
+              {% if it.presenter or it.keywords %}
+                <p class="muted" style="margin-top:4px">
+                  {% if it.presenter %}Presenter: {{ it.presenter }}{% endif %}
+                  {% if it.presenter and it.keywords and it.keywords.size > 0 %} · {% endif %}
+                  {% if it.keywords and it.keywords.size > 0 %}Keywords: {{ it.keywords | join: ", " }}{% endif %}
+                </p>
+              {% endif %}
+            </div>
           </div>
-        </div>
-      </article>
-      {% endfor %}
+        </article>
+        {% endfor %}
+      {% else %}
+        <p class="muted">No seminar data yet.</p>
+      {% endif %}
     </div>
   </section>
 </main>
