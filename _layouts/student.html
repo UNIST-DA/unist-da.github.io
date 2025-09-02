@@ -221,18 +221,20 @@ aside a.tag{ color:var(--tag-color); }
             {% assign has_end  = en != "" %}
             {% assign same_day = has_end and (en == s) %}
             {% assign is_current = (has_end == false) %} 
-          
+      
             <li class="timeline-item {% if is_current %}timeline-current{% endif %}">
               <span class="time">
-                <span class="time-start">{{ s }}</span>
                 {% if same_day %}
+                  <span class="time-start">{{ s }}</span>
                 {% elsif has_end %}
+                  <span class="time-start">{{ s }}</span>
                   <span class="time-end">– {{ en }}</span>
                 {% else %}
+                  <span class="time-start">{{ s }}</span>
                   <span class="time-end">–</span>
                 {% endif %}
               </span>
-          
+      
               <span class="dot" aria-hidden="true"></span>
               <div class="body">
                 <div class="title">{{ e.title }}</div>
@@ -243,6 +245,7 @@ aside a.tag{ color:var(--tag-color); }
         </ol>
       </section>
       {% endif %}
+
 
       <!-- Freeform markdown (no card) -->
       {% if content and content != "" %}
