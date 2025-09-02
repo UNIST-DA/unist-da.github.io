@@ -3,245 +3,428 @@
     "date": "2025-08-25",
     "title": "A Deep-Learning-Based Surrogate Model for Thermal Signature Prediction in Laser Metal Deposition",
     "slug": "2025-08-25-a-deep-learning-based-surrogate-model-for-thermal-signature-prediction-in-laser-metal-deposition",
-    "detail": "",
-    "url": "https://www.notion.so/25a046396f7e80a8a559e4613ee5ac1b"
+    "url": "https://www.notion.so/25a046396f7e80a8a559e4613ee5ac1b",
+    "category": "Paper Review",
+    "presenter": "Yongmin Kim",
+    "keywords": [
+      "DeepLearning",
+      "QualityMonitoring",
+      "GAN"
+    ]
   },
   {
     "date": "2025-08-13",
     "title": "A Neural Network-based Control Chart for Monitoring and Interpreting Autocorrelated Multivariate Processes using Layer-wise Relevance Propagation",
     "slug": "2025-08-13-a-neural-network-based-control-chart-for-monitoring-and-interpreting-autocorrelated-multivariate-processes-using-layer-wise-relevance-propagation",
-    "detail": "",
-    "url": "https://www.notion.so/250046396f7e809397c2f33d41a3e440"
+    "url": "https://www.notion.so/250046396f7e809397c2f33d41a3e440",
+    "category": "Paper Review",
+    "presenter": "유정우",
+    "keywords": [
+      "QualityMonitoring",
+      "ControlChart"
+    ]
   },
   {
     "date": "2025-08-01",
     "title": "Autoencoding Under Normalization Constraints",
     "slug": "2025-08-01-autoencoding-under-normalization-constraints",
-    "detail": "",
-    "url": "https://www.notion.so/23f046396f7e8014b2e5e4d83e1f3c27"
+    "url": "https://www.notion.so/23f046396f7e8014b2e5e4d83e1f3c27",
+    "category": "Paper Review",
+    "presenter": "SeungSu Kam",
+    "keywords": [
+      "Anomaly Detection",
+      "Autoencoder"
+    ]
   },
   {
     "date": "2025-08-01",
     "title": "Uncertainty quantification in digital twin",
     "slug": "2025-08-01-uncertainty-quantification-in-digital-twin",
-    "detail": "",
-    "url": "https://www.notion.so/245046396f7e80779f84c6b7889bed8e"
+    "url": "https://www.notion.so/245046396f7e80779f84c6b7889bed8e",
+    "category": "Paper Review",
+    "presenter": "전병훈",
+    "keywords": [
+      "Uncertainty Estimation"
+    ]
   },
   {
     "date": "2025-07-14",
     "title": "Multimodal Industrial Anomaly Detection via Hybrid Fusion",
     "slug": "2025-07-14-multimodal-industrial-anomaly-detection-via-hybrid-fusion",
-    "detail": "",
-    "url": "https://www.notion.so/230046396f7e801ab004e577c53cf802"
+    "url": "https://www.notion.so/230046396f7e801ab004e577c53cf802",
+    "category": "Paper Review",
+    "presenter": "SeungSu Kam",
+    "keywords": [
+      "Anomaly Detection",
+      "multi-modal learning"
+    ]
   },
   {
     "date": "2025-07-07",
     "title": "Bayesian Calibration of Computer Models",
     "slug": "2025-07-07-bayesian-calibration-of-computer-models",
-    "detail": "",
-    "url": "https://www.notion.so/22d046396f7e804d9f54e4fc4a2e8f02"
+    "url": "https://www.notion.so/22d046396f7e804d9f54e4fc4a2e8f02",
+    "category": "Paper Review",
+    "presenter": "Chanbeom",
+    "keywords": [
+      "Statistics"
+    ]
   },
   {
     "date": "2025-05-30",
     "title": "ANOMALY TRANSFORMER: TIME SERIES ANOMALY DETECTION WITH ASSOCIATION DISCREPANCY",
     "slug": "2025-05-30-anomaly-transformer-time-series-anomaly-detection-with-association-discrepancy",
-    "detail": "",
-    "url": "https://www.notion.so/1ff046396f7e80a091fad7ac557a98ac"
+    "url": "https://www.notion.so/1ff046396f7e80a091fad7ac557a98ac",
+    "category": "Paper Review",
+    "presenter": "SeungSu Kam",
+    "keywords": [
+      "Time-series anomaly detection",
+      "Transformer"
+    ]
   },
   {
     "date": "2025-05-23",
     "title": "Understanding Complex Missingness Mechanisms",
     "slug": "2025-05-23-understanding-complex-missingness-mechanisms",
-    "detail": "",
-    "url": "https://www.notion.so/1fc046396f7e80c488a1f1aa9e7ca435"
+    "url": "https://www.notion.so/1fc046396f7e80c488a1f1aa9e7ca435",
+    "category": "Lab Seminar",
+    "presenter": "이시은",
+    "keywords": [
+      "imputation",
+      "missingness data"
+    ]
   },
   {
     "date": "2025-05-16",
     "title": "Understanding Missingness Data",
     "slug": "2025-05-16-understanding-missingness-data",
-    "detail": "",
-    "url": "https://www.notion.so/1f5046396f7e8002a846c207d8021a74"
+    "url": "https://www.notion.so/1f5046396f7e8002a846c207d8021a74",
+    "category": "Lab Seminar",
+    "presenter": "이시은",
+    "keywords": [
+      "imputation",
+      "missingness data"
+    ]
   },
   {
     "date": "2025-04-25",
     "title": "KAN: Kolmogorov–Arnold Networks",
     "slug": "2025-04-25-kan-kolmogorov-arnold-networks",
-    "detail": "",
-    "url": "https://www.notion.so/1c3046396f7e80edbad2e7d2b890e6fa"
+    "url": "https://www.notion.so/1c3046396f7e80edbad2e7d2b890e6fa",
+    "category": "Lab Seminar",
+    "presenter": "Chanbeom",
+    "keywords": [
+      "Deep Learning"
+    ]
   },
   {
     "date": "2025-04-18",
     "title": "TIME-LLM: Reprogramming LLMs for Time Series\nForecasting",
     "slug": "2025-04-18-time-llm-reprogramming-llms-for-time-series-forecasting",
-    "detail": "",
-    "url": "https://www.notion.so/1e3046396f7e8019a4a1c40e114c8cc5"
+    "url": "https://www.notion.so/1e3046396f7e8019a4a1c40e114c8cc5",
+    "category": "Paper Review",
+    "presenter": "Seongjin",
+    "keywords": [
+      "LLM",
+      "time series"
+    ]
   },
   {
     "date": "2025-04-11",
     "title": "MTSCI: A Conditional Diffusion Model for Multivariate Time Series Consistent Imputation",
     "slug": "2025-04-11-mtsci-a-conditional-diffusion-model-for-multivariate-time-series-consistent-imputation",
-    "detail": "",
-    "url": "https://www.notion.so/1d1046396f7e8080983acdd19473ea9c"
+    "url": "https://www.notion.so/1d1046396f7e8080983acdd19473ea9c",
+    "category": "Lab Seminar",
+    "presenter": "이희윤",
+    "keywords": [
+      "DeepLearning",
+      "time series",
+      "Diffusion Model"
+    ]
   },
   {
     "date": "2025-03-28",
     "title": "Linear-Time Sequence Modeling with Selective State Spaces",
     "slug": "2025-03-28-linear-time-sequence-modeling-with-selective-state-spaces",
-    "detail": "",
-    "url": "https://www.notion.so/1ae046396f7e803c8c56ec9756577d95"
+    "url": "https://www.notion.so/1ae046396f7e803c8c56ec9756577d95",
+    "category": "Paper Review",
+    "presenter": "전병훈",
+    "keywords": [
+      "State space model",
+      "time series",
+      "RNN"
+    ]
   },
   {
     "date": "2025-03-14",
     "title": "CARLA: Self-supervised contrastive representation learning for time series anomaly detection",
     "slug": "2025-03-14-carla-self-supervised-contrastive-representation-learning-for-time-series-anomaly-detection",
-    "detail": "",
-    "url": "https://www.notion.so/1525af7835be4d8a8f2ae5f5a350b9ce"
+    "url": "https://www.notion.so/1525af7835be4d8a8f2ae5f5a350b9ce",
+    "category": "Lab Seminar",
+    "presenter": "Yongmin Kim",
+    "keywords": [
+      "Contrastive learning",
+      "Self-supervised Learning",
+      "Time-series anomaly detection",
+      "Anormaly Injection"
+    ]
   },
   {
     "date": "2025-02-28",
     "title": "Neural SDEs as Infinite-Dimensional GANs",
     "slug": "2025-02-28-neural-sdes-as-infinite-dimensional-gans",
-    "detail": "",
-    "url": "https://www.notion.so/193046396f7e8060ae4df1ff7a564d8d"
+    "url": "https://www.notion.so/193046396f7e8060ae4df1ff7a564d8d",
+    "category": "Paper Review",
+    "presenter": "SeungSu Kam",
+    "keywords": [
+      "Neural Differential Equation",
+      "Generative Model"
+    ]
   },
   {
     "date": "2025-02-13",
     "title": "Root Cause Analysis of anomalies in multivariate time series through granger causal discovery",
     "slug": "2025-02-13-root-cause-analysis-of-anomalies-in-multivariate-time-series-through-granger-causal-discovery",
-    "detail": "",
-    "url": "https://www.notion.so/199046396f7e80afac16f04606f1e35c"
+    "url": "https://www.notion.so/199046396f7e80afac16f04606f1e35c",
+    "category": "Lab Seminar",
+    "presenter": "강태원",
+    "keywords": [
+      "Autoencoder",
+      "Causality",
+      "Anomaly Detection"
+    ]
   },
   {
     "date": "2025-02-07",
     "title": "Current Research Topics in Survival Analysis",
     "slug": "2025-02-07-current-research-topics-in-survival-analysis",
-    "detail": "",
-    "url": "https://www.notion.so/aef251d7efcd402f857d89cd70b6b77e"
+    "url": "https://www.notion.so/aef251d7efcd402f857d89cd70b6b77e",
+    "category": "Lab Seminar",
+    "presenter": "Chanbeom",
+    "keywords": [
+      "Survival Analysis"
+    ]
   },
   {
     "date": "2025-01-24",
     "title": "Trajectory Flow Matching with Applications to Clinical Time Series Modelling",
     "slug": "2025-01-24-trajectory-flow-matching-with-applications-to-clinical-time-series-modelling",
-    "detail": "",
-    "url": "https://www.notion.so/2017013160aa4616a9bbca865c34b07c"
+    "url": "https://www.notion.so/2017013160aa4616a9bbca865c34b07c",
+    "category": "Paper Review",
+    "presenter": "Jae Hun Cho",
+    "keywords": [
+      "Irregular time series",
+      "Flow Matching",
+      "Clinical time series"
+    ]
   },
   {
     "date": "2025-01-17",
     "title": "Warpformer: A Multi-scale Modeling Approach for Irregular Clinical Time Series",
     "slug": "2025-01-17-warpformer-a-multi-scale-modeling-approach-for-irregular-clinical-time-series",
-    "detail": "",
-    "url": "https://www.notion.so/cb135695f2a148bfb39562f4c3b67934"
+    "url": "https://www.notion.so/cb135695f2a148bfb39562f4c3b67934",
+    "category": "Paper Review",
+    "presenter": "Hyejin Cho",
+    "keywords": [
+      "Attention",
+      "Transformer",
+      "Irregular time series",
+      "Warping"
+    ]
   },
   {
     "date": "2025-01-10",
     "title": "Neural Frailty Machine: Beyond proportional hazard\nassumption in neural survival regressions",
     "slug": "2025-01-10-neural-frailty-machine-beyond-proportional-hazard-assumption-in-neural-survival-regressions",
-    "detail": "",
-    "url": "https://www.notion.so/c630db8facbb403db1d516dbde8c71ee"
+    "url": "https://www.notion.so/c630db8facbb403db1d516dbde8c71ee",
+    "category": "Paper Review",
+    "presenter": "Chanbeom",
+    "keywords": [
+      "Survival Analysis",
+      "Deep Learning"
+    ]
   },
   {
     "date": "2024-12-20",
     "title": "ClimODE: Climate and Weather Forecasting with Physics-Informed Neural ODEs",
     "slug": "2024-12-20-climode-climate-and-weather-forecasting-with-physics-informed-neural-odes",
-    "detail": "",
-    "url": "https://www.notion.so/af709ee42967485c81cad818e7666e4e"
+    "url": "https://www.notion.so/af709ee42967485c81cad818e7666e4e",
+    "category": "Paper Review",
+    "presenter": "전병훈",
+    "keywords": [
+      "Neural Differential Equation",
+      "Physics-Informed"
+    ]
   },
   {
     "date": "2024-12-06",
     "title": "Multi-Time Attention Networks for Irregularly Sampled Time Series (mTANs)",
     "slug": "2024-12-06-multi-time-attention-networks-for-irregularly-sampled-time-series-mtans",
-    "detail": "",
-    "url": "https://www.notion.so/153046396f7e804594f3eee2ecdbef1e"
+    "url": "https://www.notion.so/153046396f7e804594f3eee2ecdbef1e",
+    "category": "Lab Seminar",
+    "presenter": "이시은",
+    "keywords": [
+      "Irregular time series",
+      "Attention"
+    ]
   },
   {
     "date": "2024-11-29",
     "title": "Modulated Neural ODEs",
     "slug": "2024-11-29-modulated-neural-odes",
-    "detail": "",
-    "url": "https://www.notion.so/3b92184defb44d7fa3e23500c0bd1acf"
+    "url": "https://www.notion.so/3b92184defb44d7fa3e23500c0bd1acf",
+    "category": "Paper Review",
+    "presenter": "Yongmin Kim",
+    "keywords": [
+      "Neural Differential Equation"
+    ]
   },
   {
     "date": "2024-11-15",
     "title": "Physics-Informed Neural ODE with Heterogeneous Control Inputs (PINOHI) for Quality Prediction of Composite Adhesive Joints",
     "slug": "2024-11-15-physics-informed-neural-ode-with-heterogeneous-control-inputs-pinohi-for-quality-prediction-of-composite-adhesive-joints",
-    "detail": "",
-    "url": "https://www.notion.so/107046396f7e80d9947fee9a193b4012"
+    "url": "https://www.notion.so/107046396f7e80d9947fee9a193b4012",
+    "category": "Paper Review",
+    "presenter": "Seongjin",
+    "keywords": [
+      "Neural Differential Equation",
+      "Physics-Informed"
+    ]
   },
   {
     "date": "2024-11-01",
     "title": "PREVENT : An Unsupervised Approach to Predict Software Failures in Production",
     "slug": "2024-11-01-prevent-an-unsupervised-approach-to-predict-software-failures-in-production",
-    "detail": "",
-    "url": "https://www.notion.so/f6c6ff4589e2469fb18a0c7b14e56cda"
+    "url": "https://www.notion.so/f6c6ff4589e2469fb18a0c7b14e56cda",
+    "category": "Paper Review",
+    "presenter": "강태원",
+    "keywords": [
+      "Anomaly Detection",
+      "Autoencoder",
+      "Causality",
+      "UnsupervisedLearning"
+    ]
   },
   {
     "date": "2024-10-11",
     "title": "Multi-View Integrative Attention-Based Deep Representation Learning for Irregular Clinical Time-Series Data",
     "slug": "2024-10-11-multi-view-integrative-attention-based-deep-representation-learning-for-irregular-clinical-time-series-data",
-    "detail": "",
-    "url": "https://www.notion.so/107046396f7e8084a72fd035f2df3d04"
+    "url": "https://www.notion.so/107046396f7e8084a72fd035f2df3d04",
+    "category": "Paper Review",
+    "presenter": "Hyejin Cho",
+    "keywords": [
+      "Irregular time series",
+      "Attention"
+    ]
   },
   {
     "date": "2024-09-20",
     "title": "Learning with Imbalanced Noisy Data by Preventing Bias in Sample Selection",
     "slug": "2024-09-20-learning-with-imbalanced-noisy-data-by-preventing-bias-in-sample-selection",
-    "detail": "",
-    "url": "https://www.notion.so/360723a523d24f1bbda8ce9ac42badc0"
+    "url": "https://www.notion.so/360723a523d24f1bbda8ce9ac42badc0",
+    "category": "Paper Review",
+    "presenter": "Jae Hun Cho",
+    "keywords": [
+      "classification",
+      "Noisy label learning",
+      "Sample selection",
+      "Class imbalance"
+    ]
   },
   {
     "date": "2024-08-30",
     "title": "Precursor-of-anomaly detection for irregular time series",
     "slug": "2024-08-30-precursor-of-anomaly-detection-for-irregular-time-series",
-    "detail": "",
-    "url": "https://www.notion.so/4487c7a8eef145b2bee224364228e398"
+    "url": "https://www.notion.so/4487c7a8eef145b2bee224364228e398",
+    "category": "Paper Review",
+    "presenter": "SeungSu Kam",
+    "keywords": [
+      "Neural Differential Equation",
+      "Time-series anomaly detection"
+    ]
   },
   {
     "date": "2024-08-16",
     "title": "Co-teaching: Robust Training of Deep Neural Networks with Extremely Noisy Labels",
     "slug": "2024-08-16-co-teaching-robust-training-of-deep-neural-networks-with-extremely-noisy-labels",
-    "detail": "",
-    "url": "https://www.notion.so/ee84b2bb1771409a8ad36a95481e0b97"
+    "url": "https://www.notion.so/ee84b2bb1771409a8ad36a95481e0b97",
+    "category": "Paper Review",
+    "presenter": "Seongjin",
+    "keywords": [
+      "Noisy label learning"
+    ]
   },
   {
     "date": "2024-07-19",
     "title": "Wind Turbine Gearbox Failure Detection Through Cumulative Sum of Multivariate Time Series Data",
     "slug": "2024-07-19-wind-turbine-gearbox-failure-detection-through-cumulative-sum-of-multivariate-time-series-data",
-    "detail": "",
-    "url": "https://www.notion.so/f30971eb69e84bb2b790a481a66dea71"
+    "url": "https://www.notion.so/f30971eb69e84bb2b790a481a66dea71",
+    "category": "Paper Review",
+    "presenter": "강태원",
+    "keywords": [
+      "Anomaly Detection",
+      "Time-series anomaly detection"
+    ]
   },
   {
     "date": "2024-07-05",
     "title": "Machine Learning for Survival Analysis: A Survey",
     "slug": "2024-07-05-machine-learning-for-survival-analysis-a-survey",
-    "detail": "",
-    "url": "https://www.notion.so/de6084377bf84fc3bb66b345c658dbbe"
+    "url": "https://www.notion.so/de6084377bf84fc3bb66b345c658dbbe",
+    "category": "Lab Seminar",
+    "presenter": "Hyejin Cho",
+    "keywords": [
+      "Survival Analysis"
+    ]
   },
   {
     "date": "2024-06-21",
     "title": "QuantTree: Histograms for Change Detection in Multivariate Data Streams",
     "slug": "2024-06-21-quanttree-histograms-for-change-detection-in-multivariate-data-streams",
-    "detail": "",
-    "url": "https://www.notion.so/21e6ef86765544c6acc2591fe3b38c42"
+    "url": "https://www.notion.so/21e6ef86765544c6acc2591fe3b38c42",
+    "category": "Paper Review",
+    "presenter": "Jae Hun Cho",
+    "keywords": [
+      "Change Detection"
+    ]
   },
   {
     "date": "2024-06-07",
     "title": "Attention-based Representation Learning for Time Series with Principal and Residual Space Monitoring",
     "slug": "2024-06-07-attention-based-representation-learning-for-time-series-with-principal-and-residual-space-monitoring",
-    "detail": "",
-    "url": "https://www.notion.so/ecb8b06cbfeb4a87a0cb280995ada3e4"
+    "url": "https://www.notion.so/ecb8b06cbfeb4a87a0cb280995ada3e4",
+    "category": "Paper Review",
+    "presenter": "Seongjin",
+    "keywords": [
+      "Anomaly Detection",
+      "Representation Learning",
+      "Attention",
+      "time series",
+      "residual space"
+    ]
   },
   {
     "date": "2024-05-24",
     "title": "ITRANSFORMER: Inverted Transformers Are Effective for Time Series Forecasting",
     "slug": "2024-05-24-itransformer-inverted-transformers-are-effective-for-time-series-forecasting",
-    "detail": "",
-    "url": "https://www.notion.so/ce64ff05edfb418d887814bc3781424b"
+    "url": "https://www.notion.so/ce64ff05edfb418d887814bc3781424b",
+    "category": "Paper Review",
+    "presenter": "SeungSu Kam",
+    "keywords": [
+      "Transformer",
+      "time-series forecasting"
+    ]
   },
   {
     "date": "2024-04-05",
     "title": "Active Domain Adaptation via Clustering Uncertainty-Weighted Embeddings",
     "slug": "2024-04-05-active-domain-adaptation-via-clustering-uncertainty-weighted-embeddings",
-    "detail": "",
-    "url": "https://www.notion.so/53d45668d7a7432db19c834b9255312d"
+    "url": "https://www.notion.so/53d45668d7a7432db19c834b9255312d",
+    "category": "Paper Review",
+    "presenter": "Byungkook Koo",
+    "keywords": [
+      "Domain adaptation",
+      "Active learning"
+    ]
   }
 ]
