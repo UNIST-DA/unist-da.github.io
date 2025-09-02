@@ -193,8 +193,7 @@ layout: default
               <span class="dot" aria-hidden="true"></span>
               <div class="body">
                 <div class="title">{{ e.title }}</div>
-                {% if e.org %}<div class="sub">in {{ e.org }}</div>{% endif %}
-                {% if e.note %}<p>{{ e.note }}</p>{% endif %}
+                {% if e.note %}<p>{{ e.note | newline_to_br }}</p>{% endif %}
               </div>
             </li>
           {% endfor %}
