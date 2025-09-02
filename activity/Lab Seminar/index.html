@@ -5,6 +5,26 @@ description: Lab Seminar from Data Analytics Lab at UNIST.
 permalink: /activity/Lab%20Seminar/
 ---
 
+<style>
+  .seminar-row{display:flex;align-items:center;gap:16px}
+  .seminar-date{width:120px;font-weight:600;color:var(--muted)}
+  .seminar-mid{flex:1;min-width:0}
+  .seminar-title{margin:0 0 6px;text-align:center;font-weight:700}
+  .seminar-title a{text-decoration:none}
+  .seminar-presenter{margin:0;color:var(--muted)}
+
+  .seminar-tags{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;max-width:40%}
+  .seminar-tag{padding:4px 10px;border-radius:999px;border:1px solid rgba(124,150,255,.35);
+               background:rgba(124,150,255,.12);font-size:.9rem;white-space:nowrap}
+
+  @media (max-width: 720px){
+    .seminar-row{align-items:flex-start;gap:10px}
+    .seminar-date{width:auto;min-width:82px}
+    .seminar-title{text-align:left}          /* 모바일에선 왼쪽 정렬이 더 자연스러우면 유지 */
+    .seminar-tags{max-width:100%;justify-content:flex-start}
+  }
+</style>
+
 <div class="page-hero">
   <div class="container">
     <div class="breadcrumbs"><a href="{{ '/' | relative_url }}">Home</a> · <a href="{{ '/activity/' | relative_url }}">Activity</a> · Lab Seminar</div>
@@ -20,18 +40,25 @@ permalink: /activity/Lab%20Seminar/
         {% assign items = items | sort: "date" | reverse %}
         {% for it in items %}
         <article class="card card-pad" style="grid-column: span 12" id="{{ it.slug }}">
-          <div class="news-item">
-            <div class="news-date">{{ it.date }}</div>
-            <div>
-              <a href="{{ it.url }}" target="_blank" rel="noopener" style="font-weight:600">
-                {% if it.category %}[{{ it.category }}] {% endif %}{{ it.title }}
-              </a>
-              {% if it.presenter or it.keywords %}
-                <p class="muted" style="margin-top:4px">
-                  {% if it.presenter %}Presenter: {{ it.presenter }}{% endif %}
-                  {% if it.presenter and it.keywords and it.keywords.size > 0 %} · {% endif %}
-                  {% if it.keywords and it.keywords.size > 0 %}Keywords: {{ it.keywords | join: ", " }}{% endif %}
-                </p>
+          <div class="seminar-row">
+            <div class="seminar-date">{{ it.date }}</div>
+
+            <div class="seminar-mid">
+              <h3 class="seminar-title">
+                <a href="{{ it.url }}" target="_blank" rel="noopener">
+                  {% if it.category %}[{{ it.category }}] {% endif %}{{ it.title }}
+                </a>
+              </h3>
+              {% if it.presenter %}
+                <p class="seminar-presenter">Presenter: {{ it.presenter }}</p>
+              {% endif %}
+            </div>
+
+            <div class="seminar-tags">
+              {% if it.keywords and it.keywords.size > 0 %}
+                {% for kw in it.keywords %}
+                  <span class="seminar-tag">#{{ kw }}</span>
+                {% endfor %}
               {% endif %}
             </div>
           </div>
