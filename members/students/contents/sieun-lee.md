@@ -19,6 +19,8 @@ links:
     url: https://github.com/sieun-00
   - label: Google Scholar
     url: https://scholar.google.com/
+  - label: Linkedin
+    url: https://www.linkedin.com/in/byungkook-koo/
   - label: UNIST IE Department
     url: https://ie.unist.ac.kr/
   - label: CV
