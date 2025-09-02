@@ -8,7 +8,7 @@ role: MS Student
 period: "2025.03 —"
 photo: /assets/members/students/sieun-lee.jpg
 email: sieun5548@unist.ac.kr
-tags: [Missingness, Time-Series, Imputation, Diffusion Models, Anomaly Detection, Manufacturing AI]
+tags: [Time-Series Imputation, Diffusion Models, Missingness]
 links:
   - label: GitHub
     url: https://github.com/sieun-00
