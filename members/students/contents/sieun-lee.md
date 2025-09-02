@@ -34,20 +34,33 @@ interests:
   - AI industry–academia collaboration & new model development
     
 milestone:
-  - start: 2022 - 
-    title: M.S. in Industrial Engineering
-    org: Ulsan National Institute of Science and Technology (UNIST)
-    note: Data Analytics Lab, advised by Prof. Sungil Kim
-  - start: 2018
-    end: 2023
+  - start: 2019.02
+    end: 2024.08
     title: B.S. in Industrial Engineering
-    org: Ulsan National Institute of Science and Technology (UNIST)
-    note: Minor in Statistics
-  - start: 2025
-    end: 2025
+    note: |
+      Ulsan National Institute of Science and Technology (UNIST).
+  - start: 2024.12
+    end: 2025.08
+    title: Research Intern — Data Analytics Lab
+    note: |
+      Worked on time-series imputation/diffusion baselines
+      and data pipelines for manufacturing & healthcare problems.
+  - start: "2024.12"
+    title: IITP Project — ECG biosignal dataset construction
+    note: |
+      Building a large-scale ECG dataset (curation, preprocessing, labeling protocol).
+  - start: 2025.09
+    end: present
     title: M.S. in Industrial Engineering
-    org: Ulsan National Institute of Science and Technology (UNIST)
-    note: Data Analytics Lab, advised by Prof. Sungil Kim
+    note: |
+      Data Analytics Lab (UNIST).
+      Research on missingness-aware time-series modeling (imputation, diffusion, downstream) across manufacturing & healthcare; advised by Prof. Sungil Kim.
+  - start: 2025.09
+    end: 2025.09
+    title: "Redesigned and rebuilt the lab website"
+    note: |
+      Participate in a full refresh of the lab’s website, covering information architecture, visual design, and component  system. Improved performance, accessibility, and SEO, and set up automated build & deploy.
+
 
 ---
 
