@@ -129,12 +129,12 @@ layout: default
       </section>
       {% endif %}
 
-      <!-- Education (timeline) -->
-      {% if page.education %}
+      <!-- Milestones (timeline) -->
+      {% if page.milestone %}
       <section class="card card-pad section-card">
-        <h3 class="sec-title">Education</h3>
+        <h3 class="sec-title">Milestones</h3>
         <ol class="timeline">
-          {%- assign edu = page.education | reverse -%}
+          {%- assign edu = page.milestone | reverse -%}
           {% for e in edu %}
             <li class="timeline-item {% if forloop.first %}timeline-current{% endif %}">
               <span class="time">{{ e.start }}{% if e.end %} – {{ e.end }}{% endif %}</span>
@@ -147,48 +147,6 @@ layout: default
             </li>
           {% endfor %}
         </ol>
-      </section>
-      {% endif %}
-
-      <!-- Projects & Publications (timeline preferred) -->
-      {% if page.works or page.projects or page.publications %}
-      <section class="card card-pad section-card">
-        <h3 class="sec-title">Projects &amp; Publications</h3>
-        {% if page.works %}
-          <ol class="timeline">
-            {%- assign works = page.works | reverse -%}
-            {% for w in works %}
-              <li class="timeline-item">
-                <span class="time">{{ w.start }}{% if w.end %} – {{ w.end }}{% endif %}</span>
-                <span class="dot" aria-hidden="true"></span>
-                <div class="body">
-                  <div class="title">{{ w.title }}</div>
-                  {% if w.org %}<div class="sub">{{ w.org }}</div>{% endif %}
-                  {% if w.note %}<p>{{ w.note }}</p>{% endif %}
-                  {% if w.url %}<p style="margin-top:2px"><a href="{{ w.url }}" target="_blank" rel="noreferrer">Link</a></p>{% endif %}
-                </div>
-              </li>
-            {% endfor %}
-          </ol>
-        {% else %}
-          {% if page.projects %}
-            <h4 style="margin:8px 0 4px;">Selected Projects</h4>
-            <ul style="margin:0">
-              {% for pid in page.projects %}
-                {% assign p = site.data.projects | where: "slug", pid | first %}
-                {% if p %}
-                  <li><a href="{{ p.url | default: '/research/projects/#' | append: p.slug | relative_url }}">{{ p.title }}</a></li>
-                {% else %}
-                  <li>{{ pid }}</li>
-                {% endif %}
-              {% endfor %}
-            </ul>
-          {% endif %}
-          {% if page.publications %}
-            <h4 style="margin:12px 0 4px;">Selected Publications</h4>
-            <ul style="margin:0">{% for pub in page.publications %}<li>{{ pub }}</li>{% endfor %}</ul>
-          {% endif %}
-        {% endif %}
       </section>
       {% endif %}
 
