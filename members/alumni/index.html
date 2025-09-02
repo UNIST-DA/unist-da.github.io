@@ -41,11 +41,9 @@ permalink: /members/alumni/
     color: inherit;
     transition: box-shadow .15s ease, transform .15s ease;
   }
-  .alumni-card:hover {
-    box-shadow: 0 6px 22px rgba(0,0,0,.06);  /* hover 시 카드 전체가 떠 보이게 */
-  }
+  .alumni-card:hover { box-shadow: 0 6px 22px rgba(0,0,0,.06); }
   
-  /* 내부 요소들은 박스 느낌 없이 그대로 */
+  /* 내부 요소 */
   .alumni-photo {
     width: 120px; height: 120px;
     border-radius: 50%;
@@ -60,8 +58,17 @@ permalink: /members/alumni/
     margin: 0; font-size: 13px; color: #4b5563; line-height: 1.5;
     white-space: pre-line;
   }
-  
-  /* 섹션 간 거리 (students와 동일 느낌) */
+
+  /* Current position 링크 이모지(텍스트 크기) */
+  .link-emoji {
+    margin-left: 6px;
+    text-decoration: none;
+    font-size: 1em;       /* 텍스트 정도 크기 */
+    line-height: 1;
+  }
+  .link-emoji:hover { text-decoration: none; }
+
+  /* 섹션 간 거리 */
   section.alumni-wrap + section.alumni-wrap { margin-top: 36px; }
   
   /* 모바일 */
@@ -71,7 +78,6 @@ permalink: /members/alumni/
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     }
   }
-
 </style>
 
 <main class="container">
@@ -79,10 +85,9 @@ permalink: /members/alumni/
 
   {%- comment -%}
     역할 분류 규칙:
-    - Postdoc: role 내 'postdoc' 포함
-    - Ph.D Students: 'ph.d', 'phd', 'doctor', 'combined' 포함
-    - MS Students:   'ms' 포함
-    - Interns:       'intern' 포함
+    - Ph.D.: role 내 'ph.d.' 포함
+    - M.S.:  role 내 'm.s.' 포함
+    - Interns: 'intern' 포함
   {%- endcomment -%}
 
   <!-- Ph.D. -->
@@ -101,7 +106,14 @@ permalink: /members/alumni/
               {% if a.photo %}<img src="{{ a.photo | relative_url }}" alt="{{ a.name }}" class="alumni-photo" loading="lazy" decoding="async">{% endif %}
               <h3 class="alumni-name">{{ a.name }}</h3>
               {% if a.role %}<p class="alumni-role">{{ a.role }}</p>{% endif %}
-              {% if a.current_position %}<p class="alumni-first"><strong>Current position:</strong> {{ a.current_position }}</p>{% endif %}
+              {% if a.current_position %}
+                <p class="alumni-first">
+                  <strong>Current position:</strong> {{ a.current_position }}
+                  {% if a.current_link %}
+                    <a href="{{ a.current_link }}" class="link-emoji" target="_blank" rel="noopener" aria-label="Open current position link">🔗</a>
+                  {% endif %}
+                </p>
+              {% endif %}
               {% if a.interests and a.interests.size > 0 %}
                 <p class="alumni-interests">{{ a.interests | join: ", " }}</p>
               {% endif %}
@@ -113,7 +125,7 @@ permalink: /members/alumni/
     </div>
   </section>
   
-  <!-- MS -->
+  <!-- M.S. -->
   <section id="ms" class="alumni-wrap">
     <div class="container">
       <div class="head">
@@ -129,7 +141,14 @@ permalink: /members/alumni/
               {% if a.photo %}<img src="{{ a.photo | relative_url }}" alt="{{ a.name }}" class="alumni-photo" loading="lazy" decoding="async">{% endif %}
               <h3 class="alumni-name">{{ a.name }}</h3>
               {% if a.role %}<p class="alumni-role">{{ a.role }}</p>{% endif %}
-              {% if a.current_position %}<p class="alumni-first"><strong>Current position:</strong> {{ a.current_position }}</p>{% endif %}
+              {% if a.current_position %}
+                <p class="alumni-first">
+                  <strong>Current position:</strong> {{ a.current_position }}
+                  {% if a.current_link %}
+                    <a href="{{ a.current_link }}" class="link-emoji" target="_blank" rel="noopener" aria-label="Open current position link">🔗</a>
+                  {% endif %}
+                </p>
+              {% endif %}
               {% if a.interests and a.interests.size > 0 %}
                 <p class="alumni-interests">{{ a.interests | join: ", " }}</p>
               {% endif %}
@@ -157,7 +176,14 @@ permalink: /members/alumni/
               {% if a.photo %}<img src="{{ a.photo | relative_url }}" alt="{{ a.name }}" class="alumni-photo" loading="lazy" decoding="async">{% endif %}
               <h3 class="alumni-name">{{ a.name }}</h3>
               {% if a.role %}<p class="alumni-role">{{ a.role }}</p>{% endif %}
-              {% if a.current_position %}<p class="alumni-first"><strong>Current position:</strong> {{ a.current_position }}</p>{% endif %}
+              {% if a.current_position %}
+                <p class="alumni-first">
+                  <strong>Current position:</strong> {{ a.current_position }}
+                  {% if a.current_link %}
+                    <a href="{{ a.current_link }}" class="link-emoji" target="_blank" rel="noopener" aria-label="Open current position link">🔗</a>
+                  {% endif %}
+                </p>
+              {% endif %}
               {% if a.interests and a.interests.size > 0 %}
                 <p class="alumni-interests">{{ a.interests | join: ", " }}</p>
               {% endif %}
