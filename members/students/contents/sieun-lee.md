@@ -11,15 +11,13 @@ period: "2025.03 —"
 email: sieun5548@unist.ac.kr
 links:
   - label: Google Scholar
-    url: https://scholar.google.co.kr/?hl=ko
+    url: 
   - label: GitHub
     url: https://github.com/sieun-00
   - label: LinkedIn
     url: https://www.linkedin.com/in/sieun-lee-5ba02b345/
   - label: CV
-    url: https://yongkyung-oh.github.io/
-  - label: Blog
-    url: https://ie.unist.ac.kr/
+    url: 
 
 tags:
   - "Missingness"
