@@ -8,7 +8,11 @@ role: MS Student
 period: "2025.03 —"
 photo: /assets/members/students/sieun-lee.jpg
 email: sieun5548@unist.ac.kr
-tags: [Time-Series Imputation, Diffusion Models, Missingness]
+tags:
+  - "Missingness"
+  - "Time-Series"
+  - "Imputation"
+  - "Diffusion Models"
 links:
   - label: GitHub
     url: https://github.com/sieun-00
@@ -30,7 +34,6 @@ milestone:
     org: Ulsan National Institute of Science and Technology (UNIST)
     note: Minor in Statistics
   - start: 2025
-    end: null
     title: M.S. in Industrial Engineering
     org: Ulsan National Institute of Science and Technology (UNIST)
     note: Data Analytics Lab, advised by Prof. Sungil Kim
