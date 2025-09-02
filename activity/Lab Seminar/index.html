@@ -6,18 +6,50 @@ permalink: /activity/Lab%20Seminar/
 ---
 
 <style>
-  /* 카테고리/키워드 작은 칩 */
-  .pill{display:inline-block;margin-right:8px;padding:2px 8px;border-radius:999px;
-        font-size:.78rem;border:1px solid rgba(99,102,241,.30);background:rgba(99,102,241,.10)}
-  .kw{display:inline-block;margin:0 6px 0 0;padding:2px 8px;border-radius:999px;
-      background:rgba(99,102,241,.14);border:1px solid rgba(99,102,241,.32);font-size:.88rem;color:#475569}
-  /* (선택) 우측에 노션 아이콘을 두고 싶다면 .news-item에 space-between 적용 */
-  .news-item{display:flex;gap:16px;align-items:flex-start;justify-content:flex-start}
-  .news-date{min-width:120px}
-  .notion-link{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;
-               border:1px solid rgba(2,6,23,.12);border-radius:10px;background:#fff}
-  .notion-link svg{width:22px;height:22px}
-  @media (max-width: 720px){ .news-date{min-width:90px} }
+  /* 작은 카테고리 칩만 유지 */
+  .pill{
+    display:inline-block; margin-right:8px; padding:2px 8px; border-radius:999px;
+    font-size:.78rem; border:1px solid rgba(99,102,241,.30); background:rgba(99,102,241,.10);
+  }
+
+  /* 행 레이아웃: 좌(날짜+본문) | 우(노션 아이콘) */
+  .news-item{
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+  }
+  .news-body{
+    display:flex; align-items:center; gap:16px; min-width:0; /* date + 본문 묶음 */
+  }
+
+  .news-date{min-width:120px; text-align:left; color:#6b7280; font-weight:600;}
+  .news-title{font-weight:600; margin:0;}
+  .news-meta{margin:6px 0 0; color:#6b7280; font-size:.95rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+/* 기존 .kw 정의를 아래로 교체 */
+  .kw{
+    display:inline;              /* inline-block → inline */
+    margin:0 6px 0 0;            /* 필요시 간격은 유지 */
+    padding:0;                   /* 패딩 제거 */
+    border:0;                    /* 테두리 제거 */
+    border-radius:0;             /* 둥근모서리 제거 */
+    background:none;             /* 배경 제거 */
+    color:inherit;               /* 본문 색 따라감 */
+    font-size:inherit;           /* 크기 본문과 동일 */
+    font-weight:500;             /* 가독성만 살짝 */
+  }
+
+  /* Notion 아이콘 버튼(오른쪽) */
+  .notion-link{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:44px; height:44px; border-radius:10px;
+    border:1px solid rgba(2,6,23,.12); background:#fff;
+    transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+    flex:0 0 auto;
+  }
+  .notion-link:hover{ transform:translateY(-1px); box-shadow:0 8px 22px rgba(2,6,23,.10); border-color:rgba(99,102,241,.32);}
+  .notion-link svg{ width:24px; height:24px; }
+
+  @media (max-width: 720px){
+    .news-date{min-width:90px}
+  }
 </style>
 
 <div class="page-hero">
@@ -38,39 +70,38 @@ permalink: /activity/Lab%20Seminar/
       {% for it in items %}
         <article class="card card-pad" style="grid-column: span 12" id="{{ it.slug | default: it.date }}">
           <div class="news-item">
-            <!-- 날짜 -->
-            <div class="news-date">{{ it.date | date: "%Y-%m-%d" }}</div>
+            <!-- 좌측(날짜 + 본문) -->
+            <div class="news-body">
+              <div class="news-date">{{ it.date | date: "%Y-%m-%d" }}</div>
 
-            <!-- 본문 -->
-            <div>
-              <div style="font-weight:600">
-                {% if it.category %}<span class="pill">{{ it.category }}</span>{% endif %}
-                {{ it.title }}   <!-- 제목에 하이퍼링크 없음 -->
-              </div>
-
-              {% if it.presenter or it.keywords %}
-                <p class="muted" style="margin-top:6px">
-                  {% if it.presenter %}Presenter: {{ it.presenter }}{% endif %}
-                  {% if it.keywords and it.keywords.size > 0 %}
-                    {% if it.presenter %} · {% endif %}
-                    {% for kw in it.keywords %}
-                      <span class="kw">#{{ kw }}</span>
-                    {% endfor %}
-                  {% endif %}
+              <div>
+                <p class="news-title">
+                  {% if it.category %}<span class="pill">{{ it.category }}</span>{% endif %}
+                  {{ it.title }}  <!-- 제목 링크 없음 -->
                 </p>
-              {% endif %}
+
+                {% if it.presenter or it.keywords %}
+                  <p class="news-meta">
+                    {% if it.presenter %}Presenter: {{ it.presenter }}{% endif %}
+                    {% if it.keywords and it.keywords.size > 0 %}
+                      {% if it.presenter %} · {% endif %}
+                      Keywords:
+                      {{ it.keywords | join: ", " }}   <!-- # 없이 텍스트로 표시 -->
+                    {% endif %}
+                  </p>
+                {% endif %}
+              </div>
             </div>
 
-            {%- comment -%} // 선택: 오른쪽에 노션 아이콘 버튼도 추가하려면 아래 주석 해제
+            <!-- 우측(노션 아이콘) -->
             {% if it.url %}
-            <a class="notion-link" href="{{ it.url }}" target="_blank" rel="noopener" title="Open in Notion">
+            <a class="notion-link" href="{{ it.url }}" target="_blank" rel="noopener" aria-label="Open in Notion: {{ it.title }}">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                 <rect x="3.5" y="3.5" width="17" height="17" rx="3" ry="3" stroke-width="1.5"/>
                 <path d="M8 7.5v9h2v-5.8h.1L14 16.5h2v-9h-2v5.7h-.1L10 7.5H8z" fill="currentColor" stroke="none"/>
               </svg>
             </a>
             {% endif %}
-            {%- endcomment -%}
           </div>
         </article>
       {% endfor %}
