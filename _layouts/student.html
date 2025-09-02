@@ -218,18 +218,27 @@ aside a.tag{ color:var(--tag-color); }
           {% for e in milestones_desc %}
             {% assign s  = e.start | append: "" | strip %}
             {% assign en = e.end   | append: "" | strip %}
-            {% assign has_end  = en != "" %}
-            {% assign same_day = has_end and (en == s) %}
-            {% assign is_current = (has_end == false) %} 
+      
+            {% assign has_end = false %}
+            {% if en != "" %}{% assign has_end = true %}{% endif %}
+      
+            {% assign same_day = false %}
+            {% if has_end and en == s %}{% assign same_day = true %}{% endif %}
+      
+            {% assign is_current = false %}
+            {% if has_end == false %}{% assign is_current = true %}{% endif %}
       
             <li class="timeline-item {% if is_current %}timeline-current{% endif %}">
               <span class="time">
                 {% if same_day %}
+                  {% comment %} start == end → start만 (강조 X) {% endcomment %}
                   <span class="time-start">{{ s }}</span>
                 {% elsif has_end %}
+                  {% comment %} 일반 구간 → 줄바꿈해서 start / – end (강조 X) {% endcomment %}
                   <span class="time-start">{{ s }}</span>
                   <span class="time-end">– {{ en }}</span>
                 {% else %}
+                  {% comment %} end 없음 → start – (강조 O: .timeline-current로 dot 강조) {% endcomment %}
                   <span class="time-start">{{ s }}</span>
                   <span class="time-end">–</span>
                 {% endif %}
@@ -245,6 +254,7 @@ aside a.tag{ color:var(--tag-color); }
         </ol>
       </section>
       {% endif %}
+
 
 
       <!-- Freeform markdown (no card) -->
