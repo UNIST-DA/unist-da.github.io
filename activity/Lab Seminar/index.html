@@ -16,31 +16,33 @@ permalink: /activity/Lab%20Seminar/
 /* 행 레이아웃: 좌(날짜+본문) | 우(노션 아이콘) */
   .news-item{
     display:flex;
-    align-items:flex-start;   /* 여러 줄이 될 때 위 기준으로 정렬 */
+    align-items:center;     /* ⬅︎ 세로 중앙 정렬 */
     gap:16px;
-    /* justify-content:space-between 제거 */
+    /* justify-content:space-between;  ← 제거 */
   }
   .news-body{
     display:flex;
-    align-items:flex-start;
+    align-items:center;     /* ⬅︎ 날짜와 본문 블록을 서로 중앙 맞춤 */
     gap:16px;
-    flex:1 1 0%;             /* ← 남는 공간을 차지하면서 필요 시 줄어듦 */
-    min-width:0;             /* ← 줄어들 수 있게(중요) */
+    flex:1 1 0%;            /* 남은 공간을 차지 */
+    min-width:0;            /* 줄바꿈이 필요할 때 폭 줄어들 수 있게 */
   }
 
   
-  .news-date{min-width:120px; text-align:center; color:#6b7280; font-weight:600; }
+  .news-date{min-width:120px; text-align:center; color:#6b7280; font-weight:600; align-self:center;}
+
   .news-title{font-weight:600; margin:0;}
   /* 메타: 줄바꿈 허용 + 여러 줄로 감기 */
+  /* meta는 여러 줄로 자연스럽게 감기도록 유지 */
   .news-meta{
     margin:6px 0 0;
     color:#6b7280;
     font-size:.95rem;
     display:flex;
-    flex-wrap:wrap;          /* ← 키워드가 많으면 다음 줄로 */
+    flex-wrap:wrap;         /* 키워드 많으면 다음 줄로 */
     gap:8px 10px;
-    white-space:normal;      /* ← 줄바꿈 허용 */
-    overflow:visible;        /* ← 잘림/… 제거 */
+    white-space:normal;
+    overflow:visible;
     text-overflow:clip;
   }
 /* 기존 .kw 정의를 아래로 교체 */
@@ -64,6 +66,7 @@ permalink: /activity/Lab%20Seminar/
     border:1px solid rgba(2,6,23,.12); background:#fff;
     transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;
     flex:0 0 auto;
+    align-self:center;               /* 아이콘도 정확히 중앙 */
     margin-left:auto;        /* ← 오른쪽 끝 정렬 */
   }
   .notion-link:hover{ transform:translateY(-1px); box-shadow:0 8px 22px rgba(2,6,23,.10); border-color:rgba(99,102,241,.32);}
