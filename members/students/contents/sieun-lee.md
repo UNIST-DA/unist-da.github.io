@@ -5,8 +5,8 @@ permalink: /members/students/contents/sieun-lee/
 title: Sieun Lee
 name: Sieun Lee
 role: MS Student
-photo: /assets/members/students/sieun-lee.jpg
 period: "2025.03 —"
+photo: /assets/members/students/sieun-lee.jpg
 
 email: sieun5548@unist.ac.kr
 links:
