@@ -36,14 +36,14 @@
   period: "2024.03 —"
   photo: /assets/members/students/seongjin-kim.jpg
   url: /members/students/contents/seongjin-kim/
-  summary: Anomaly Detection, Time Series Forecasting, Deep Learning, Data Science
-  email:
+  summary: Domain-Specific RAG, Time-Series Anomaly Detection, Root Cause Analysis
+  email: kimsj7597@unist.ac.kr
   website:
-  github:
-  scholar:
-  linkedin:
-  cv:
-  projects: []
+  github: https://github.com/Sicari1/SeongJin-Kim
+  scholar: https://scholar.google.com/citations?user=jt983zsAAAAJ&hl=ko&oi=sra
+  linkedin: www.linkedin.com/in/seongjin-kim-3205a2223
+  cv: https://drive.google.com/file/d/1_JLYbniWsPzl-FIYtIhDFPJUnjcgm_Hn/view?usp=drive_link
+  projects: [LG-LQC, SCSC]
   order: 30
 
 - slug: yongmin-kim
