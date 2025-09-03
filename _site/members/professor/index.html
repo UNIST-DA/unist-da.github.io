@@ -1,0 +1,571 @@
+<!doctype html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Professor · Data Analytics Lab</title>
+  <meta name="description" content="Professor Sungil Kim (UNIST IE) — Data Analytics Lab." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS (cache-busting) -->
+  <link rel="stylesheet" href="/assets/style.css?v=">
+
+  <!-- ✅ Favicon (이 부분은 반드시 head 안에 위치) -->
+  <link rel="icon" type="image/png" href="/assets/hero/LabSign_DA_background.png">
+</head>
+  
+<body>
+  <header>
+  <div class="container nav" id="navbar">
+    <!-- Brand -->
+    <a class="brand brand-link" href="/">
+      <img class="brand-img"
+           src="/assets/hero/LabSign_DA_only.png?v="
+           alt="DA-Lab logo" loading="eager" decoding="async">
+      <span class="brand-text">
+        <span class="brand-main">Data Analytics Lab</span> · <span class="muted">UNIST IE</span>
+      </span>
+    </a>
+
+    <!-- Mobile menu button -->
+    <button class="menu-btn" aria-label="Toggle Menu"
+            onclick="document.getElementById('navbar').classList.toggle('open')">☰</button>
+
+    <!-- Main nav -->
+    <ul>
+      <li>
+        <a href="/about.html">About</a>
+      </li>
+
+      <li class="has-dd">
+        <a href="/members/professor/">Members</a>
+        <ul class="dropdown" role="menu">
+          <li><a href="/members/professor/">Professor</a></li>
+          <li><a href="/members/students/">Students</a></li>
+          <li><a href="/members/alumni/">Alumni</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dd">
+        <a href="/research/projects/">Research</a>
+        <ul class="dropdown" role="menu">
+          <li><a href="/research/projects/">Projects</a></li>
+          <li><a href="/research/publications/">Publications</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dd">
+        <a href="/activity/Lab%20News/">Activity</a>
+        <ul class="dropdown" role="menu">
+          <li><a href="/activity/Lab%20News/">Lab News</a></li>
+          <li><a href="/activity/Lab%20Events/">Lab Events</a></li>
+          <li><a href="/activity/Lab%20Seminar/">Lab Seminar</a></li>
+        </ul>
+      </li>
+
+      <!-- Contact (단일 항목: 잘못된 중첩 제거) -->
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+
+    <!-- ✅ Theme toggle button -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle color theme" aria-pressed="false">
+      <!-- Sun / Moon SVG -->
+      <svg class="sun" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 4V2M12 22v-2M4.93 4.93 3.52 3.52M20.48 20.48l-1.41-1.41M4 12H2m20 0h-2M4.93 19.07 3.52 20.48M20.48 3.52 19.07 4.93" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<!-- ✅ Galaxy canvas (다크 모드에서 좌우 여백 은하수) -->
+<canvas id="galaxy-canvas"></canvas>
+
+<!-- ✅ Theme & Galaxy JS -->
+<script defer src="/assets/main/theme.js?v="></script>
+
+  <div class="page-hero">
+  <div class="container">
+    <div class="breadcrumbs">
+      <a href="/">Home</a> · <a href="/members/">Members</a> · Professor
+    </div>
+    <h1 class="page-title">Professor</h1>
+    <p class="muted">Data Analytics Lab (UNIST IE)</p>
+  </div>
+</div>
+
+<!-- Spacing + shared section title + timeline styles -->
+<style>
+  /* 페이지 시작 여백 & 섹션 간 간격(Students와 톤 맞춤) */
+  /* 섹션 간격 통일: 위는 24px, 그 외 16px */
+  .prof-section { margin-top: 16px; }
+  .prof-section:first-of-type { margin-top: 24px; }
+  .grid.prof-section { margin-top: 16px; }
+  
+  /* 카드 내부 마지막 요소 여백 제거로 섹션 사이가 과하게 벌어지지 않게 */
+  .card.card-pad > *:last-child { margin-bottom: 0; }
+  @media (max-width: 720px){
+    .prof-header{ grid-template-columns:1fr; }
+    .prof-photo{ width:100% !important; height:auto !important; aspect-ratio:1/1; }
+  }
+
+  /* 공통 섹션 제목 유틸리티 */
+  .sec-title{
+    display:flex; align-items:center;
+    font-size:20px; font-weight:600;
+    margin:0 0 12px; line-height:1.3;
+    --accent:#26A7A7;
+  }
+  .sec-title::before{
+    content:""; width:4px; height:20px; border-radius:2px;
+    background:var(--accent); margin-right:8px; flex:0 0 4px;
+  }
+
+  /* ===== Timeline styles ===== */
+  .timeline { position:relative; margin:8px 0 0; padding-left:0; list-style:none; }
+  .timeline::before {
+    content:""; position:absolute; left:106px; top:0; bottom:0; width:2px; background:#ececec;
+  }
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 90px 20px 1fr; /* time | dot | content */
+    gap: 12px;
+    align-items: flex-start;
+    padding: 12px 0;
+  }
+  
+  .timeline-item .time {
+    font-size: 14px;
+    font-weight: 500;
+    color: #6b7280; /* gray-500 */
+    text-align: right;
+    white-space: nowrap;
+  }
+  
+  .timeline-item .dot {
+    position: relative;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    background: #e5e7eb;
+    box-shadow: 0 0 0 3px #fff;
+  }
+  
+  .timeline-item .body .title {
+    font-size: 16px;       /* 본문 크기 */
+    font-weight: 600;      /* 볼드 */
+    margin: 0 0 2px;
+    line-height: 1.4;
+  }
+  
+  .timeline-item .body .sub {
+    font-size: 14px;
+    color: #6b7280;
+    margin: 0 0 2px;
+  }
+  
+  .timeline-item .body p {
+    font-size: 14px;
+    margin: 2px 0 0;
+    color: #6b7280;
+  }
+  
+  .timeline-current .dot {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 4px rgba(229,231,235,0.6);
+  }
+
+  @media (max-width: 720px) {
+    .timeline::before { left:96px; }
+    .timeline-item { grid-template-columns:80px 20px 1fr; }
+    .timeline-item .time { font-size:14px; }
+  }
+  
+  /* Two-column research block with center divider */
+  .rt-grid{
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .rt-grid::before{
+    content:"";
+    position:absolute;
+    top:0; bottom:0; left:50%;
+    width:1px; background:#e5e7eb;   /* 중앙 세로선 */
+  }
+  
+  /* Column heading: same visual weight as other big section titles */
+  .rt-title{
+    display:flex; align-items:center;
+    font-size:20px; font-weight:600; line-height:1.3;
+    margin:0 0 8px;
+    --accent:#26A7A7;                /* 필요시 색 변경 */
+  }
+  .rt-title::before{
+    content:""; width:4px; height:20px; border-radius:2px;
+    background:var(--accent); margin-right:8px; flex:0 0 4px;
+  }
+  
+  /* Mobile: stack & remove center divider */
+  @media (max-width: 720px){
+    .rt-grid{ grid-template-columns: 1fr; }
+    .rt-grid::before{ display:none; }
+  }
+
+  /* ===== Professor horizontal links (simple 3-type) ===== */
+  .prof-links{
+    list-style:none; padding:0; margin:8px 0 0;
+    display:flex; flex-wrap:wrap; gap:8px 10px; align-items:center;
+  }
+  .prof-links li{
+    display:inline-flex; align-items:center; gap:6px;
+    border:1px solid #e5e7eb; border-radius:999px;
+    padding:6px 10px; font-size:14px; color:#374151; background:#fff;
+  }
+  .prof-links a{ color:inherit; text-decoration:none; display:inline-flex; align-items:center; gap:6px; }
+  .prof-links img, .prof-links svg{ flex:0 0 auto; width:18px; height:18px; }
+
+  .prof-pill{
+    display:inline-flex; align-items:center; gap:6px;
+    border:1px solid #e5e7eb; border-radius:999px;
+    padding:6px 12px; font-size:14px;
+    color:#374151; background:#fff;
+    text-decoration:none;
+  }
+  .prof-pill img{ width:18px; height:18px; flex:0 0 auto; }
+  .prof-pill:hover{ background:#f9fafb; }
+
+  /* Pill link (메인 About 섹션과 동일 톤) */
+  .pill{
+    display:inline-flex; align-items:center; gap:6px;
+    padding:6px 12px;
+    border:1px solid #26A7A7; border-radius:999px;
+    background:#fff; color:#26A7A7;
+    font-size:14px; font-weight:600; text-decoration:none;
+  }
+  .pill:hover{ background:rgba(38,167,167,0.08); }
+  .pill svg{ width:16px; height:16px; }
+
+  
+</style>
+
+<main class="container" style="max-width: 1100px;">
+  <!-- Profile Header -->
+  <section class="card card-pad prof-section prof-header"
+         style="display:grid;
+                /* 왼쪽(사진) : 오른쪽(텍스트) ≈ 1 : 1.2 → 사진이 카드 가로의 절반 가까이 차지 */
+                grid-template-columns:minmax(340px, 1fr) 1.2fr;
+                gap:20px;
+                align-items:center;
+                padding:12px 16px;">
+    <img src="/assets/members/professor/professor.jpg"
+         alt="Dr. Sungil Kim"
+         class="prof-photo"
+         style="width:100%; aspect-ratio:4/3; height:auto; object-fit:cover; border-radius:16px; border:1px solid #eee;">    <div>
+      <h2 style="margin:0 0 4px;">Dr. Sungil Kim</h2>
+
+      <!-- 소속/직함 (줄간격 촘촘) -->
+      <p class="muted" style="margin:1px 0; line-height:1.3;">
+        <a href="https://ie.unist.ac.kr/" target="_blank" rel="noopener noreferrer">
+          Associate Professor, Department of Industrial Engineering
+        </a>
+      </p>
+      <p class="muted" style="margin:1px 0; line-height:1.3;">
+        <a href="https://aigs.unist.ac.kr/web/index.php" target="_blank" rel="noopener noreferrer">
+          Graduate School of Artificial Intelligence
+        </a>
+      </p>
+      <p class="muted" style="margin:1px 0; line-height:1.3;">
+        <a href="https://unist-kor.unist.ac.kr/" target="_blank" rel="noopener noreferrer">
+          UNIST (Ulsan National Institute of Science and Technology)
+        </a>
+      </p>
+      <!-- 학과장 역할 추가 -->
+      <p class="muted" style="margin:6px 0 0; line-height:1.4;">
+        <strong>The Chair of Department (UNIST IE), 2024 — present</strong>
+      </p>
+
+      <ul style="list-style:none;padding:0;margin:10px 0 0;
+           display:grid;grid-template-columns:repeat(1,minmax(220px,1fr));gap:6px 18px;">
+        <li><strong>Office</strong>: <span class="muted">Bldg.112 Rm. 301-8</span></li>
+        <li><strong>Tel.</strong>: <span class="muted">+82-52-217-3195</span></li>
+        <li>
+          <strong>Email</strong>: 
+          <a href="mailto:sungil.kim@unist.ac.kr" class="muted">sungil.kim@unist.ac.kr</a>
+        </li>
+      </ul>
+
+
+      
+      
+        
+        
+        
+      
+        
+          
+          
+          
+          
+          
+      
+          
+        
+          
+          
+          
+          
+          
+      
+          
+        
+          
+          
+          
+          
+          
+      
+          
+        
+      
+        <div style="margin-top:12px; display:flex; flex-wrap:wrap; gap:10px;">
+          
+              
+              <a href="https://analytics.unist.ac.kr" target="_blank" rel="noopener" class="prof-pill">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 10.5 12 3l9 7.5'/%3E%3Cpath d='M5 10v10h14V10'/%3E%3Cpath d='M9 20v-5h6v5'/%3E%3C/svg%3E" alt="CV">CV
+              </a>
+            
+          
+              
+              <a href="https://scholar.google.com/citations?user=BISaBGoAAAAJ&hl=ko" target="_blank" rel="noopener" class="prof-pill">
+                <img src="https://scholar.google.com/favicon.ico" alt="Google Scholar">Google Scholar
+              </a>
+            
+          
+        </div>
+      
+
+    </div>
+  </section>
+
+  <!-- Biography -->
+  <section class="card card-pad prof-section">
+    <h3 class="sec-title">Biography</h3>
+    <p>
+      Dr. Sungil Kim is an <strong>Associate Professor</strong> in the Department of Industrial Engineering at UNIST.
+      He focuses on modern challenges in quality engineering in the era of AI—such as
+      <em>sensor drift</em>, <em>inefficient data representation</em>, and <em>class imbalance</em>—leveraging
+      sensor and real-time log data to deliver practical, field-ready solutions.
+    </p>
+  </section>
+
+  <!-- Research Field & Research Topics (two-column in one card) -->
+  <section class="card card-pad prof-section">
+    <div class="rt-grid">
+      <div class="rt-col">
+        <h3 class="rt-title">Research Field</h3>
+        <ul>
+          <li>System Monitoring &amp; Anomaly Detection</li>
+          <li>Sequential Learning</li>
+          <li>Neural Differential Equations</li>
+          <li>Uncertainty Quantification</li>
+          <li>Artificial Intelligence in Quality Engineering</li>
+        </ul>
+      </div>
+  
+      <div class="rt-col">
+        <h3 class="rt-title">Research Topics</h3>
+        <ul>
+          <li>Industrial Statistics and Data Analytics</li>
+          <li>Quality Engineering and Management</li>
+          <li>Response Surface Methodology</li>
+          <li>Demand Forecasting</li>
+          <li>Machine Learning and Data Mining</li>
+          <li>Business Analytics</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Employment (Timeline) -->
+  <section class="card card-pad prof-section">
+    <h3 class="sec-title">Employment</h3>
+    <ol class="timeline">
+      <li class="timeline-item timeline-current">
+        <div class="time">2024 —</div>
+        <div class="dot"></div>
+        <div class="body">
+          <div class="title">The Chair of Department</div>
+          <div class="sub muted">Department of Industrial Engineering, UNIST</div>
+        </div>
+      </li>
+      <li class="timeline-item">
+        <div class="time">2020 —</div>
+        <div class="dot"></div>
+        <div class="body">
+          <div class="title">Associate Professor</div>
+          <div class="sub muted">UNIST</div>
+        </div>
+      </li>
+      <li class="timeline-item">
+        <div class="time">2016 — 2020</div>
+        <div class="dot"></div>
+        <div class="body">
+          <div class="title">Assistant Professor</div>
+          <div class="sub muted">UNIST</div>
+        </div>
+      </li>
+      <li class="timeline-item">
+        <div class="time">2014 — 2016</div>
+        <div class="dot"></div>
+        <div class="body">
+          <div class="title">Senior Engineer</div>
+          <div class="sub muted">Samsung SDS</div>
+        </div>
+      </li>
+      <li class="timeline-item">
+        <div class="time">2011 — 2013</div>
+        <div class="dot"></div>
+        <div class="body">
+          <div class="title">Consultant</div>
+          <div class="sub muted">Terra Technology</div>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- Education (Timeline) -->
+  <section class="card card-pad prof-section">
+    <h3 class="sec-title">Education</h3>
+    <ol class="timeline">
+      <li class="timeline-item">
+        <div class="time">2011</div>
+        <div class="dot"></div>
+        <div class="body">
+          <div class="title">Ph.D., Industrial &amp; Systems Engineering</div>
+          <div class="sub muted">Georgia Institute of Technology</div>
+        </div>
+      </li>
+      <li class="timeline-item">
+        <div class="time">2007</div>
+        <div class="dot"></div>
+        <div class="body">
+          <div class="title">M.S., Statistics</div>
+          <div class="sub muted">Georgia Institute of Technology</div>
+        </div>
+      </li>
+      <li class="timeline-item">
+        <div class="time">2007</div>
+        <div class="dot"></div>
+        <div class="body">
+          <div class="title">M.S., Industrial &amp; Systems Engineering</div>
+          <div class="sub muted">Georgia Institute of Technology</div>
+        </div>
+      </li>
+      <li class="timeline-item">
+        <div class="time">2005</div>
+        <div class="dot"></div>
+        <div class="body">
+          <div class="title">B.Sc., Industrial Engineering</div>
+          <div class="sub muted">Yonsei University</div>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- Patents -->
+  <section class="card card-pad prof-section">
+    <h3 class="sec-title">Patents</h3>
+    <ul>
+      <li style="font-size:14px; color:#4b5563;">Kim, Sungil (primary inventor), Method of anomaly detection of vessels applying Bayesian bootstrap. (10-2534357, granted May 16, 2023)</li>
+      <li style="font-size:14px; color:#4b5563;">Kim, Sungil (primary inventor), Sensor drift compensation method and device. (10-2364019, granted February 14, 2022)</li>
+      <li style="font-size:14px; color:#4b5563;">Kim, Sungil (primary inventor), Method and apparatus for determining delay possibility of shipment. (10-2250354, granted May 4, 2021)</li>
+    </ul>
+  </section>
+
+  <!-- Teaching -->
+  <section class="card card-pad prof-section">
+    <h3 class="sec-title">Teaching</h3>
+    <ul>
+      <li>Statistical Quality Control (Undergraduate)</li>
+    </ul>
+  </section>
+
+  <!-- Research Publications -->
+  <section class="card card-pad prof-section">
+    <h3 class="sec-title">Research Publications</h3>
+    <ul>
+      <li style="font-size:14px; color:#4b5563;">YongKyung Oh, Dongyoung Lim, and Sungil Kim (2024), Stable neural stochastic differential equations for irregular time series classification, ICLR (spotlight).</li>
+      <li style="font-size:14px; color:#4b5563;">Jonghwan Mun, Jitae Yoo, Heesun Kim, Nayi Ryu, and Sungil Kim (2024), Domain knowledge-informed</li>
+      <li style="font-size:14px; color:#4b5563;">Sungil Kim (2021), Maximum feasibility estimation, Information Sciences, 575, pp 739-801.</li>
+      <li style="font-size:14px; color:#4b5563;">Sungil Kim (2019), Revealing household characteristics using connected home products, Information Sciences, 486, pp 52-61.</li>
+      <li style="font-size:14px; color:#4b5563;">Sungil Kim and Heeyoung Kim (2016), A new metric of absolute percentage error for intermittent demand forecasts, International Journal of Forecasting, 32(3), pp 669-679.</li>
+    </ul>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;margin:8px 0 0;">
+      <a class="pill"
+         href="https://scholarworks.unist.ac.kr/researcher/5bf9ae09-967a-43fd-bf12-1b1d5253ff06"
+         target="_blank" rel="noopener">
+        MORE
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+             aria-hidden="true">
+          <path d="M9 18l6-6-6-6"></path>
+        </svg>
+      </a>
+    </div>
+
+  </section>
+
+  <!-- Awards/Honors/Memberships -->
+  <section class="card card-pad prof-section">
+    <h3 class="sec-title">Awards · Honors · Memberships</h3>
+    <ul style="margin:0;">
+      <li style="font-size:14px; color:#4b5563;">Area editor in Statistics, Quality, Reliability &amp; Maintenance, Computers &amp; Industrial Engineering</li>
+      <li style="font-size:14px; color:#4b5563;">Senior Member, INFORMS</li>
+      <li style="font-size:14px; color:#4b5563;">2023 Excellence in Mentoring Award, College of Information and Biotechnology, UNIST</li>
+      <li style="font-size:14px; color:#4b5563;">2021 IISE Best Paper Award, Logistics and Supply Chain Division, The Institute of Industrial and Systems Engineers</li>
+      <li style="font-size:14px; color:#4b5563;">2019 IISE Best Paper Award, Quality Control &amp; Reliability Engineering Division, The Institute of Industrial and Systems Engineers</li>
+    </ul>
+  </section>
+</main>
+
+  <footer>
+  <div class="container small muted">
+    © 2025 Data Analytics Lab. All Rights Reserved.
+  </div>
+</footer>
+
+<script>
+  // 모바일 드롭다운 토글 (그대로 유지)
+  document.addEventListener('click', (e) => {
+    if (e.target.classList && e.target.classList.contains('dd-toggle')) {
+      e.preventDefault();
+      e.stopPropagation();
+      const li = e.target.closest('.has-dd');
+      if (li) li.classList.toggle('open');
+    }
+  });
+</script>
+
+
+  <!-- 모바일 드롭다운 토글 -->
+  <script>
+    document.addEventListener('click', function(e){
+      if(e.target.matches('.dd-toggle')){
+        e.preventDefault();
+        const li = e.target.closest('.has-dd');
+        if(li) li.classList.toggle('open');
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Lab News | Activity · Data Analytics Lab</title>
+  <meta name="description" content="Lab News from Data Analytics Lab at UNIST." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS (cache-busting) -->
+  <link rel="stylesheet" href="/assets/style.css?v=">
+
+  <!-- ✅ Favicon (이 부분은 반드시 head 안에 위치) -->
+  <link rel="icon" type="image/png" href="/assets/hero/LabSign_DA_background.png">
+</head>
+  
+<body>
+  <header>
+  <div class="container nav" id="navbar">
+    <!-- Brand -->
+    <a class="brand brand-link" href="/">
+      <img class="brand-img"
+           src="/assets/hero/LabSign_DA_only.png?v="
+           alt="DA-Lab logo" loading="eager" decoding="async">
+      <span class="brand-text">
+        <span class="brand-main">Data Analytics Lab</span> · <span class="muted">UNIST IE</span>
+      </span>
+    </a>
+
+    <!-- Mobile menu button -->
+    <button class="menu-btn" aria-label="Toggle Menu"
+            onclick="document.getElementById('navbar').classList.toggle('open')">☰</button>
+
+    <!-- Main nav -->
+    <ul>
+      <li>
+        <a href="/about.html">About</a>
+      </li>
+
+      <li class="has-dd">
+        <a href="/members/professor/">Members</a>
+        <ul class="dropdown" role="menu">
+          <li><a href="/members/professor/">Professor</a></li>
+          <li><a href="/members/students/">Students</a></li>
+          <li><a href="/members/alumni/">Alumni</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dd">
+        <a href="/research/projects/">Research</a>
+        <ul class="dropdown" role="menu">
+          <li><a href="/research/projects/">Projects</a></li>
+          <li><a href="/research/publications/">Publications</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dd">
+        <a href="/activity/Lab%20News/">Activity</a>
+        <ul class="dropdown" role="menu">
+          <li><a href="/activity/Lab%20News/">Lab News</a></li>
+          <li><a href="/activity/Lab%20Events/">Lab Events</a></li>
+          <li><a href="/activity/Lab%20Seminar/">Lab Seminar</a></li>
+        </ul>
+      </li>
+
+      <!-- Contact (단일 항목: 잘못된 중첩 제거) -->
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+
+    <!-- ✅ Theme toggle button -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle color theme" aria-pressed="false">
+      <!-- Sun / Moon SVG -->
+      <svg class="sun" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 4V2M12 22v-2M4.93 4.93 3.52 3.52M20.48 20.48l-1.41-1.41M4 12H2m20 0h-2M4.93 19.07 3.52 20.48M20.48 3.52 19.07 4.93" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<!-- ✅ Galaxy canvas (다크 모드에서 좌우 여백 은하수) -->
+<canvas id="galaxy-canvas"></canvas>
+
+<!-- ✅ Theme & Galaxy JS -->
+<script defer src="/assets/main/theme.js?v="></script>
+
+  <div class="page-hero">
+  <div class="container">
+    <div class="breadcrumbs"><a href="/">Home</a> · <a href="/activity/Lab%20News/">Activity</a> · <a href="/activity/Lab%20News/">Lab News</a></div>
+    <h1 class="page-title">Lab News</h1>
+  </div>
+</div>
+
+<main class="container">
+  <section>
+    <div class="grid">
+      
+      
+        
+
+        <article class="card card-pad" style="grid-column: span 12" id="2025-09-01-members-joined">
+          <div class="news-item">
+            <div class="news-date">2025-09-01</div>
+            <div>
+              <div style="font-weight:600">M.S. Students Joined — Heeyoon Lee & Sieun Lee</div>
+              <p class="muted">Heeyoon Lee (이희윤) and Sieun Lee (이시은) joined the Data Analytics Lab as M.S. students.
+Welcome aboard!
+</p>
+            </div>
+          </div>
+        </article>
+      
+        
+
+        <article class="card card-pad" style="grid-column: span 12" id="2025-08-05-cikm-short-paper">
+          <div class="news-item">
+            <div class="news-date">2025-08-05</div>
+            <div>
+              <div style="font-weight:600">Paper Accepted to CIKM 2025 🎉</div>
+              <p class="muted">Yongkyung Oh, Seungsu Kam, Dongyoung Lim, and Sungil Kim, 
+<em>Modeling Irregular Astronomical Time Series with Neural Stochastic Delay Differential Equations</em>, 
+accepted to CIKM 2025 (Short Paper).
+</p>
+            </div>
+          </div>
+        </article>
+      
+        
+
+        <article class="card card-pad" style="grid-column: span 12" id="2025-07-16-ms-defense-taewon-kang">
+          <div class="news-item">
+            <div class="news-date">2025-07-16</div>
+            <div>
+              <div style="font-weight:600">M.S. Thesis Defense Passed — Taewon Kang (강태원)</div>
+              <p class="muted">Taewon Kang successfully passed the M.S. thesis defense in Industrial Engineering at UNIST.
+</p>
+            </div>
+          </div>
+        </article>
+      
+        
+
+        <article class="card card-pad" style="grid-column: span 12" id="2025-06-18-kiie-spring-2025">
+          <div class="news-item">
+            <div class="news-date">2025-06-21</div>
+            <div>
+              <div style="font-weight:600">Participation in KIIE 2025 Spring Joint Conference</div>
+              <p class="muted">Participated in the Korean Institute of Industrial Engineers (KIIE) 2025 Spring Joint Conference, held from June 18–21.
+</p>
+            </div>
+          </div>
+        </article>
+      
+        
+
+        <article class="card card-pad" style="grid-column: span 12" id="2025-06-03-iise-2025">
+          <div class="news-item">
+            <div class="news-date">2025-06-03</div>
+            <div>
+              <div style="font-weight:600">Participation in IISE 2025 Conference</div>
+              <p class="muted">Participated in the Institute of Industrial and Systems Engineers (IISE) 2025 Conference, held from June 3–6.
+</p>
+            </div>
+          </div>
+        </article>
+      
+        
+
+        <article class="card card-pad" style="grid-column: span 12" id="2025-04-30-IJCAI-survey">
+          <div class="news-item">
+            <div class="news-date">2025-04-30</div>
+            <div>
+              <div style="font-weight:600">Paper Accepted to IJCAI 2025 🎉</div>
+              <p class="muted">Yongkyung Oh, Seungsu Kam, Jonghun Lee, Dongyoung Lim, Sungil Kim, and Alex A.T. Bui, 
+<em>Comprehensive Review of Neural Differential Equations for Time Series Analysis</em>, 
+accepted to IJCAI 2025.
+</p>
+            </div>
+          </div>
+        </article>
+      
+        
+
+        <article class="card card-pad" style="grid-column: span 12" id="2025-02-28-CIE">
+          <div class="news-item">
+            <div class="news-date">2025-02-28</div>
+            <div>
+              <div style="font-weight:600">Paper Accepted to Computers & Industrial Engineering 2025 🎉</div>
+              <p class="muted">Yong Kyung Oh, Giheon Koh, Jiin Kwak, Kyubo Shin, Gi Soo Kim, Min Joung Lee, Hokyung Choung, Namju Kim, 
+Jae Hoon Moon, and Sungil Kim, 
+<em>TAOD-Net: Automated Detection and Analysis of Thyroid-Associated Orbitopathy in Facial Imagery</em>, 
+accepted to <em>Computers & Industrial Engineering</em> (2025).
+</p>
+            </div>
+          </div>
+        </article>
+      
+        
+
+        <article class="card card-pad" style="grid-column: span 12" id="2025-02-26-nrf-midcareer">
+          <div class="news-item">
+            <div class="news-date">2025-02-26</div>
+            <div>
+              <div style="font-weight:600">Prof. Sungil Kim Selected for NRF Mid-career Researcher Program</div>
+              <p class="muted">The project led by Prof. Sungil Kim (UNIST, Industrial Engineering) was selected for funding under the 
+National Research Foundation of Korea (NRF) Mid-career Researcher Program.
+</p>
+            </div>
+          </div>
+        </article>
+      
+        
+
+        <article class="card card-pad" style="grid-column: span 12" id="2024-12-10-AAAI">
+          <div class="news-item">
+            <div class="news-date">2024-12-10</div>
+            <div>
+              <div style="font-weight:600">Paper Accepted to AAAI 2024 🎉</div>
+              <p class="muted">YongKyung Oh, Dong-Young Lim, and Sungil Kim, 
+<em>DualDynamics: Synergizing Implicit and Explicit Methods for Robust Irregular Time Series Analysis</em>, 
+accepted to AAAI 2024.
+</p>
+            </div>
+          </div>
+        </article>
+      
+        
+
+        <article class="card card-pad" style="grid-column: span 12" id="2024-12-07-ms-defense-jaehoon-cho">
+          <div class="news-item">
+            <div class="news-date">2024-12-07</div>
+            <div>
+              <div style="font-weight:600">M.S. Thesis Defense Passed — Jaehoon Cho (조재훈)</div>
+              <p class="muted">Jaehoon Cho successfully passed the M.S. thesis defense in Industrial Engineering at UNIST.
+</p>
+            </div>
+          </div>
+        </article>
+      
+        
+
+        <article class="card card-pad" style="grid-column: span 12" id="2024-12-05-AI-summit">
+          <div class="news-item">
+            <div class="news-date">2024-12-05</div>
+            <div>
+              <div style="font-weight:600">Paper Accepted to AI Summit 2024 🎉</div>
+              <p class="muted">YongKyung Oh, Dong-Young Lim, and Sungil Kim, 
+<em>DualDynamics: Synergizing Implicit and Explicit Methods for Robust Irregular Time Series Analysis</em>, 
+accepted to AI Summit 2024.
+</p>
+            </div>
+          </div>
+        </article>
+      
+        
+
+        <article class="card card-pad" style="grid-column: span 12" id="2024-12-05-ai-summit-presentation">
+          <div class="news-item">
+            <div class="news-date">2024-12-05</div>
+            <div>
+              <div style="font-weight:600">Presentation at AI Summit 2024 — Seungsu Kam</div>
+              <p class="muted">Seungsu Kam (UNIST, Industrial Engineering) presented our recent work on neural differential equations 
+for astronomical time series analysis at AI Summit 2024.
+</p>
+            </div>
+          </div>
+        </article>
+      
+        
+
+        <article class="card card-pad" style="grid-column: span 12" id="2024-11-25-research-interns-lee-sieun-lee-heeyoon">
+          <div class="news-item">
+            <div class="news-date">2024-11-25</div>
+            <div>
+              <div style="font-weight:600">Research Interns Joined — Sieun Lee and Heeyoon Lee</div>
+              <p class="muted">Sieun Lee and Heeyoon Lee joined the lab as research interns.
+</p>
+            </div>
+          </div>
+        </article>
+      
+        
+
+        <article class="card card-pad" style="grid-column: span 12" id="2024-10-25-kiie-conference">
+          <div class="news-item">
+            <div class="news-date">2024-10-25</div>
+            <div>
+              <div style="font-weight:600">Participation in KIIE 2024 Fall Conference</div>
+              <p class="muted">Participated in the Korean Institute of Industrial Engineers (KIIE) Fall Conference 2024.
+</p>
+            </div>
+          </div>
+        </article>
+      
+        
+
+        <article class="card card-pad" style="grid-column: span 12" id="2024-08-06-dept-chair-sungil-kim">
+          <div class="news-item">
+            <div class="news-date">2024-08-06</div>
+            <div>
+              <div style="font-weight:600">Prof. Sungil Kim Appointed Department Chair (Industrial Engineering, UNIST)</div>
+              <p class="muted">Prof. Sungil Kim was appointed as the Department Chair of Industrial Engineering at UNIST.
+</p>
+            </div>
+          </div>
+        </article>
+      
+        
+
+        <article class="card card-pad" style="grid-column: span 12" id="2024-06-14-phd-qualification-seungsu-kam">
+          <div class="news-item">
+            <div class="news-date">2024-06-14</div>
+            <div>
+              <div style="font-weight:600">Ph.D. Qualification Exam Passed — Seungsu Kam</div>
+              <p class="muted">Seungsu Kam successfully passed the Ph.D. qualification exam in Industrial Engineering at UNIST.
+</p>
+            </div>
+          </div>
+        </article>
+      
+        
+
+        <article class="card card-pad" style="grid-column: span 12" id="2024-06-12-faculty-award-sungil-kim">
+          <div class="news-item">
+            <div class="news-date">2024-06-12</div>
+            <div>
+              <div style="font-weight:600">Prof. Sungil Kim Received 2023 Faculty Award</div>
+              <p class="muted">Prof. Sungil Kim received the 2023 Faculty Award at UNIST.
+</p>
+            </div>
+          </div>
+        </article>
+      
+        
+
+        <article class="card card-pad" style="grid-column: span 12" id="2024-06-11-ms-defense-byungkuk-gu">
+          <div class="news-item">
+            <div class="news-date">2024-06-11</div>
+            <div>
+              <div style="font-weight:600">M.S. Thesis Defense Passed — Byungkuk Gu (구병국)</div>
+              <p class="muted">Byungkuk Gu successfully passed the M.S. thesis defense in Industrial Engineering at UNIST.
+</p>
+            </div>
+          </div>
+        </article>
+      
+        
+
+        <article class="card card-pad" style="grid-column: span 12" id="2024-05-30-kdms-conference">
+          <div class="news-item">
+            <div class="news-date">2024-05-30</div>
+            <div>
+              <div style="font-weight:600">Participation and Presentation at KDM Conference 2024</div>
+              <p class="muted">Attended and presented research at the Korean Data Mining Society (KDM) Conference 2024.
+</p>
+            </div>
+          </div>
+        </article>
+      
+        
+
+        <article class="card card-pad" style="grid-column: span 12" id="2024-05-22-iise-conference">
+          <div class="news-item">
+            <div class="news-date">2024-05-22</div>
+            <div>
+              <div style="font-weight:600">Participation in IISE Annual Conference 2024</div>
+              <p class="muted">Participated in the IISE (Institute of Industrial and Systems Engineers) Annual Conference 2024.
+</p>
+            </div>
+          </div>
+        </article>
+      
+        
+
+        <article class="card card-pad" style="grid-column: span 12" id="2024-information-fusion-accept">
+          <div class="news-item">
+            <div class="news-date">2024-05-06</div>
+            <div>
+              <div style="font-weight:600">Paper Accepted to Information Fusion 🎉</div>
+              <p class="muted">YongKyung Oh and Sungil Kim (2024), 
+<em>Multi-modal Lifelog Data Fusion for Improved Human Activity Recognition: A Hybrid Approach</em>, 
+accepted to <em>Information Fusion</em>.
+</p>
+            </div>
+          </div>
+        </article>
+      
+        
+
+        <article class="card card-pad" style="grid-column: span 12" id="2024-05-02-kiie-spring-conference">
+          <div class="news-item">
+            <div class="news-date">2024-05-02</div>
+            <div>
+              <div style="font-weight:600">Participation and Presentation at KIIE 2024 Spring Conference</div>
+              <p class="muted">Attended and presented research at the Korean Institute of Industrial Engineers (KIIE) Spring Conference 2024.
+</p>
+            </div>
+          </div>
+        </article>
+      
+        
+
+        <article class="card card-pad" style="grid-column: span 12" id="2024-computer-ie-accept">
+          <div class="news-item">
+            <div class="news-date">2024-01-23</div>
+            <div>
+              <div style="font-weight:600">Paper Accepted to Computers & Industrial Engineering 🎉</div>
+              <p class="muted">Jong Hwan Mun, Jitae Yoo, Heesun Kim, Nayi Ryu, and Sungil Kim (2024), 
+<em>Domain-Knowledge-Informed Functional Outlier Detection for Line Quality Control Systems</em>, 
+accepted to <em>Computers & Industrial Engineering</em>.
+</p>
+            </div>
+          </div>
+        </article>
+      
+        
+
+        <article class="card card-pad" style="grid-column: span 12" id="2024-01-17-iclr-spotlight">
+          <div class="news-item">
+            <div class="news-date">2024-01-17</div>
+            <div>
+              <div style="font-weight:600">Paper Accepted to ICLR 2024 Spotlight (Top 5%) 🎉</div>
+              <p class="muted">YongKyung Oh, Dongyoung Lim, and Sungil Kim (2024), 
+<em>Stable Neural Stochastic Differential Equations in Analyzing Irregular Time Series Data</em>, 
+accepted to ICLR 2024 Spotlight (Top 5%).
+</p>
+            </div>
+          </div>
+        </article>
+      
+        
+
+        <article class="card card-pad" style="grid-column: span 12" id="2023-06-09-kcc-best-paper">
+          <div class="news-item">
+            <div class="news-date">2023-06-09</div>
+            <div>
+              <div style="font-weight:600">Best Paper Award at KCC 2023 🎉</div>
+              <p class="muted">Dr. Yong Kyung Oh received the Best Paper Award at the Korea Computer Congress (KCC) 2023, 
+hosted by the Korea Information Science Society.
+</p>
+            </div>
+          </div>
+        </article>
+      
+        
+
+        <article class="card card-pad" style="grid-column: span 12" id="2023-05-24-iise-annual-meeting">
+          <div class="news-item">
+            <div class="news-date">2023-05-24</div>
+            <div>
+              <div style="font-weight:600">Participation and Presentation at IISE Annual Meeting 2023</div>
+              <p class="muted">Attended and presented research at the IISE (Institute of Industrial and Systems Engineers) Annual Meeting 2023.
+</p>
+            </div>
+          </div>
+        </article>
+      
+    </div>
+  </section>
+</main>
+
+
+  <footer>
+  <div class="container small muted">
+    © 2025 Data Analytics Lab. All Rights Reserved.
+  </div>
+</footer>
+
+<script>
+  // 모바일 드롭다운 토글 (그대로 유지)
+  document.addEventListener('click', (e) => {
+    if (e.target.classList && e.target.classList.contains('dd-toggle')) {
+      e.preventDefault();
+      e.stopPropagation();
+      const li = e.target.closest('.has-dd');
+      if (li) li.classList.toggle('open');
+    }
+  });
+</script>
+
+
+  <!-- 모바일 드롭다운 토글 -->
+  <script>
+    document.addEventListener('click', function(e){
+      if(e.target.matches('.dd-toggle')){
+        e.preventDefault();
+        const li = e.target.closest('.has-dd');
+        if(li) li.classList.toggle('open');
+      }
+    });
+  </script>
+</body>
+</html>

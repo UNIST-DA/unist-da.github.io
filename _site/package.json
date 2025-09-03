@@ -1,0 +1,13 @@
+{
+  "name": "lab-seminar-sync",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:seminar": "node sync-seminar.js"
+  },
+  "dependencies": {
+    "@notionhq/client": "^2.2.14",
+    "fs-extra": "^11.2.0",
+    "slugify": "^1.6.6"
+  }
+}

@@ -1,0 +1,648 @@
+<!doctype html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Students · Data Analytics Lab</title>
+  <meta name="description" content="Students at Data Analytics Lab (UNIST IE)." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS (cache-busting) -->
+  <link rel="stylesheet" href="/assets/style.css?v=">
+
+  <!-- ✅ Favicon (이 부분은 반드시 head 안에 위치) -->
+  <link rel="icon" type="image/png" href="/assets/hero/LabSign_DA_background.png">
+</head>
+  
+<body>
+  <header>
+  <div class="container nav" id="navbar">
+    <!-- Brand -->
+    <a class="brand brand-link" href="/">
+      <img class="brand-img"
+           src="/assets/hero/LabSign_DA_only.png?v="
+           alt="DA-Lab logo" loading="eager" decoding="async">
+      <span class="brand-text">
+        <span class="brand-main">Data Analytics Lab</span> · <span class="muted">UNIST IE</span>
+      </span>
+    </a>
+
+    <!-- Mobile menu button -->
+    <button class="menu-btn" aria-label="Toggle Menu"
+            onclick="document.getElementById('navbar').classList.toggle('open')">☰</button>
+
+    <!-- Main nav -->
+    <ul>
+      <li>
+        <a href="/about.html">About</a>
+      </li>
+
+      <li class="has-dd">
+        <a href="/members/professor/">Members</a>
+        <ul class="dropdown" role="menu">
+          <li><a href="/members/professor/">Professor</a></li>
+          <li><a href="/members/students/">Students</a></li>
+          <li><a href="/members/alumni/">Alumni</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dd">
+        <a href="/research/projects/">Research</a>
+        <ul class="dropdown" role="menu">
+          <li><a href="/research/projects/">Projects</a></li>
+          <li><a href="/research/publications/">Publications</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dd">
+        <a href="/activity/Lab%20News/">Activity</a>
+        <ul class="dropdown" role="menu">
+          <li><a href="/activity/Lab%20News/">Lab News</a></li>
+          <li><a href="/activity/Lab%20Events/">Lab Events</a></li>
+          <li><a href="/activity/Lab%20Seminar/">Lab Seminar</a></li>
+        </ul>
+      </li>
+
+      <!-- Contact (단일 항목: 잘못된 중첩 제거) -->
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+
+    <!-- ✅ Theme toggle button -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle color theme" aria-pressed="false">
+      <!-- Sun / Moon SVG -->
+      <svg class="sun" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 4V2M12 22v-2M4.93 4.93 3.52 3.52M20.48 20.48l-1.41-1.41M4 12H2m20 0h-2M4.93 19.07 3.52 20.48M20.48 3.52 19.07 4.93" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<!-- ✅ Galaxy canvas (다크 모드에서 좌우 여백 은하수) -->
+<canvas id="galaxy-canvas"></canvas>
+
+<!-- ✅ Theme & Galaxy JS -->
+<script defer src="/assets/main/theme.js?v="></script>
+
+  <div class="page-hero">
+  <div class="container">
+    <div class="breadcrumbs"><a href="/">Home</a> · Members · Students</div>
+    <h1 class="page-title">Students</h1>
+    <p class="muted">Meet our students and their work.</p>
+  </div>
+</div>
+
+<style>
+  /* 카드 전체가 hover에 반응하도록 (outer) */
+  .students-section a.card.card-pad {
+    display: block;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    background: transparent;   /* 배경 투명 */
+    padding: 16px;                    /* 바깥 카드가 패딩 담당 */
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow .15s ease, transform .15s ease;
+  }
+  
+  .students-section a.card.card-pad:hover {
+    box-shadow: 0 6px 22px rgba(0,0,0,.06);  /* hover 시 카드 전체가 떠 보이게 */
+  }
+  /* 내부 row는 박스 느낌 없이 컨텐츠 배치만 */
+  .student-row {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    padding: 0;                        /* 중복 패딩 제거 */
+    border-radius: 12px;
+    background: transparent;
+    box-shadow: none;                  /* 내부 박스 그림자 제거 */
+  }
+  .student-row:hover { box-shadow: none; } /* 혹시 모를 상위 스타일 무효화 */
+
+  .student-photo {
+    width: 160px; height: 160px; flex: 0 0 160px;
+    border-radius: 12px; object-fit: cover; background:#f6f6f6;
+  }
+  .student-meta {
+    margin: 0 0 6px; color: #6b7280; font-size: 14px;
+  }
+  .student-tags span {
+    display:inline-block;border:1px solid #e3e3e3;border-radius:999px;
+    padding:2px 8px;margin:0 6px 6px 0;font-size:12px;color:#6b7280;
+  }
+  .student-grid { display: grid; gap: 16px; }
+
+  @media (max-width: 720px) {
+    .student-row { flex-direction: column; align-items: flex-start; }
+    .student-photo { width: 100%; height: auto; aspect-ratio: 4/3; }
+  }
+
+  /* 섹션 헤더 간 간격 */
+  section.students-section + section.students-section { margin-top: 36px; }
+</style>
+
+<main class="container">
+  
+
+  <!-- Ph.D Students -->
+  <section id="phd" class="students-section">
+    <div class="container">
+      <div class="head">
+        <h2><span class="title-text">Ph.D Students</span></h2>
+      </div>
+      <div class="student-grid">
+        
+        
+          
+          
+            
+            
+            
+            <a
+              class="card card-pad"
+              style="grid-column: span 6;"
+              id="seungsu-kam"
+              href="/members/students/contents/seungsu-kam/"
+              data-slug="seungsu-kam"
+            >
+              <article class="student-row">
+                
+                  <img src="/assets/members/students/seungsu-kam.jpg" alt="SeungSu Kam" class="student-photo">
+                
+                <div class="student-body">
+                  <h3 style="margin:0 0 6px">SeungSu Kam</h3>
+                  
+                    <p class="student-meta">
+                      Combined Master-Doctor
+                       · 2022.02—
+                    </p>
+                  
+                  
+                    <p class="muted" style="margin:0 0 8px">Neural Differential Equation, Anomaly Detection, Irregularly-Sampled Time Series</p>
+                  
+                </div>
+              </article>
+            </a>
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+            
+            
+            <a
+              class="card card-pad"
+              style="grid-column: span 6;"
+              id="yongmin-kim"
+              href="/members/students/contents/yongmin-kim/"
+              data-slug="yongmin-kim"
+            >
+              <article class="student-row">
+                
+                  <img src="/assets/members/students/yongmin-kim.jpg" alt="Yongmin Kim" class="student-photo">
+                
+                <div class="student-body">
+                  <h3 style="margin:0 0 6px">Yongmin Kim</h3>
+                  
+                    <p class="student-meta">
+                      Combined Master-Doctor
+                       · 2024.09 —
+                    </p>
+                  
+                  
+                    <p class="muted" style="margin:0 0 8px">Anomaly Detection, Time Series Classification, Quality Engineering and Management</p>
+                  
+                </div>
+              </article>
+            </a>
+          
+        
+          
+          
+            
+            
+            
+            <a
+              class="card card-pad"
+              style="grid-column: span 6;"
+              id="byeonghoon-jeon"
+              href="/members/students/contents/byeonghoon-jeon/"
+              data-slug="byeonghoon-jeon"
+            >
+              <article class="student-row">
+                
+                  <img src="/assets/members/students/byeonghoon-jeon.jpg" alt="Byeonghoon Jeon" class="student-photo">
+                
+                <div class="student-body">
+                  <h3 style="margin:0 0 6px">Byeonghoon Jeon</h3>
+                  
+                    <p class="student-meta">
+                      Combined Master-Doctor
+                       · 2024.09 —
+                    </p>
+                  
+                  
+                    <p class="muted" style="margin:0 0 8px">Multimodal learning, Multivariate Time Series Modeling</p>
+                  
+                </div>
+              </article>
+            </a>
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- MS Students -->
+  <section id="ms" class="students-section">
+    <div class="container">
+      <div class="head">
+        <h2><span class="title-text">MS Students</span></h2>
+      </div>
+      <div class="student-grid">
+        
+        
+          
+          
+        
+          
+          
+            
+            
+            
+            <a
+              class="card card-pad"
+              style="grid-column: span 6;"
+              id="hyejin-cho"
+              href="/members/students/contents/hyejin-cho/"
+              data-slug="hyejin-cho"
+            >
+              <article class="student-row">
+                
+                  <img src="/assets/members/students/hyejin-cho.jpg" alt="Hyejin Cho" class="student-photo">
+                
+                <div class="student-body">
+                  <h3 style="margin:0 0 6px">Hyejin Cho</h3>
+                  
+                    <p class="student-meta">
+                      MS Student
+                       · 2023.03 —
+                    </p>
+                  
+                  
+                    <p class="muted" style="margin:0 0 8px">Industrial Statistics, Data-driven Business Strategy, Machine Learning and Deep Learning</p>
+                  
+                  
+                </div>
+              </article>
+            </a>
+          
+        
+          
+          
+            
+            
+            
+            <a
+              class="card card-pad"
+              style="grid-column: span 6;"
+              id="seongjin-kim"
+              href="/members/students/contents/seongjin-kim/"
+              data-slug="seongjin-kim"
+            >
+              <article class="student-row">
+                
+                  <img src="/assets/members/students/seongjin-kim.jpg" alt="Seongjin Kim" class="student-photo">
+                
+                <div class="student-body">
+                  <h3 style="margin:0 0 6px">Seongjin Kim</h3>
+                  
+                    <p class="student-meta">
+                      MS Student
+                       · 2024.03 —
+                    </p>
+                  
+                  
+                    <p class="muted" style="margin:0 0 8px">Domain-Specific RAG, Time-Series Anomaly Detection, Root Cause Analysis</p>
+                  
+                  
+                </div>
+              </article>
+            </a>
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+            
+            
+            <a
+              class="card card-pad"
+              style="grid-column: span 6;"
+              id="chanbeom-hur"
+              href="/members/students/contents/chanbeom-hur/"
+              data-slug="chanbeom-hur"
+            >
+              <article class="student-row">
+                
+                  <img src="/assets/members/students/chanbeom-hur.jpg" alt="Chanbeom Hur" class="student-photo">
+                
+                <div class="student-body">
+                  <h3 style="margin:0 0 6px">Chanbeom Hur</h3>
+                  
+                    <p class="student-meta">
+                      MS Student
+                       · 2025.03 —
+                    </p>
+                  
+                  
+                    <p class="muted" style="margin:0 0 8px">Statistical Machine Learning, Data Analysis</p>
+                  
+                  
+                </div>
+              </article>
+            </a>
+          
+        
+          
+          
+            
+            
+            
+            <a
+              class="card card-pad"
+              style="grid-column: span 6;"
+              id="sieun-lee"
+              href="/members/students/contents/sieun-lee/"
+              data-slug="sieun-lee"
+            >
+              <article class="student-row">
+                
+                  <img src="/assets/members/students/sieun-lee.jpg" alt="Sieun Lee" class="student-photo">
+                
+                <div class="student-body">
+                  <h3 style="margin:0 0 6px">Sieun Lee</h3>
+                  
+                    <p class="student-meta">
+                      MS Student
+                       · 2025.09 —
+                    </p>
+                  
+                  
+                    <p class="muted" style="margin:0 0 8px">Anomaly Detection, Time Series Classification</p>
+                  
+                  
+                </div>
+              </article>
+            </a>
+          
+        
+          
+          
+            
+            
+            
+            <a
+              class="card card-pad"
+              style="grid-column: span 6;"
+              id="heeyoon-lee"
+              href="/members/students/contents/heeyoon-lee/"
+              data-slug="heeyoon-lee"
+            >
+              <article class="student-row">
+                
+                  <img src="/assets/members/students/heeyoon-lee.jpg" alt="Heeyoon Lee" class="student-photo">
+                
+                <div class="student-body">
+                  <h3 style="margin:0 0 6px">Heeyoon Lee</h3>
+                  
+                    <p class="student-meta">
+                      MS Student
+                       · 2025.09 —
+                    </p>
+                  
+                  
+                    <p class="muted" style="margin:0 0 8px">Anomaly Detection, Time Series Classification</p>
+                  
+                  
+                </div>
+              </article>
+            </a>
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Interns -->
+  <section id="intern" class="students-section">
+    <div class="container">
+      <div class="head">
+        <h2><span class="title-text">Interns</span></h2>
+      </div>
+      <div class="student-grid">
+        
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+            
+            
+            <a
+              class="card card-pad"
+              style="grid-column: span 6;"
+              id="jungwoo-yoo"
+              href="/members/students/contents/jungwoo-yoo/"
+              data-slug="jungwoo-yoo"
+            >
+              <article class="student-row">
+                
+                  <img src="/assets/members/students/jungwoo-yoo.jpg" alt="Jungwoo Yoo" class="student-photo">
+                
+                <div class="student-body">
+                  <h3 style="margin:0 0 6px">Jungwoo Yoo</h3>
+                  
+                    <p class="student-meta">
+                      Intern
+                       · 2025.04 —
+                    </p>
+                  
+                  
+                  
+                </div>
+              </article>
+            </a>
+          
+        
+          
+          
+            
+            
+            
+            <a
+              class="card card-pad"
+              style="grid-column: span 6;"
+              id="yejin-cho"
+              href="/members/students/contents/yejin-cho/"
+              data-slug="yejin-cho"
+            >
+              <article class="student-row">
+                
+                  <img src="/assets/members/students/yejin-cho.jpg" alt="Yejin-Cho" class="student-photo">
+                
+                <div class="student-body">
+                  <h3 style="margin:0 0 6px">Yejin-Cho</h3>
+                  
+                    <p class="student-meta">
+                      Intern
+                       · 2025.07 —
+                    </p>
+                  
+                  
+                  
+                </div>
+              </article>
+            </a>
+          
+        
+          
+          
+            
+            
+            
+            <a
+              class="card card-pad"
+              style="grid-column: span 6;"
+              id="jihyun-ko"
+              href="/members/students/contents/jihyun-ko/"
+              data-slug="jihyun-ko"
+            >
+              <article class="student-row">
+                
+                  <img src="/assets/members/students/jihyun-ko.jpg" alt="Jihyun Ko" class="student-photo">
+                
+                <div class="student-body">
+                  <h3 style="margin:0 0 6px">Jihyun Ko</h3>
+                  
+                    <p class="student-meta">
+                      Intern
+                       · 2025.08 —
+                    </p>
+                  
+                  
+                  
+                </div>
+              </article>
+            </a>
+          
+        
+        
+      </div>
+    </div>
+  </section>
+</main>
+
+  <footer>
+  <div class="container small muted">
+    © 2025 Data Analytics Lab. All Rights Reserved.
+  </div>
+</footer>
+
+<script>
+  // 모바일 드롭다운 토글 (그대로 유지)
+  document.addEventListener('click', (e) => {
+    if (e.target.classList && e.target.classList.contains('dd-toggle')) {
+      e.preventDefault();
+      e.stopPropagation();
+      const li = e.target.closest('.has-dd');
+      if (li) li.classList.toggle('open');
+    }
+  });
+</script>
+
+
+  <!-- 모바일 드롭다운 토글 -->
+  <script>
+    document.addEventListener('click', function(e){
+      if(e.target.matches('.dd-toggle')){
+        e.preventDefault();
+        const li = e.target.closest('.has-dd');
+        if(li) li.classList.toggle('open');
+      }
+    });
+  </script>
+</body>
+</html>

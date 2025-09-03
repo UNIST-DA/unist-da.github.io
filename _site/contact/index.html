@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact | Data Analytics Lab · UNIST IE</title>
+  <meta name="description" content="Contact details and location for Data Analytics Lab at UNIST." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS (cache-busting) -->
+  <link rel="stylesheet" href="/assets/style.css?v=">
+
+  <!-- ✅ Favicon (이 부분은 반드시 head 안에 위치) -->
+  <link rel="icon" type="image/png" href="/assets/hero/LabSign_DA_background.png">
+</head>
+  
+<body>
+  <header>
+  <div class="container nav" id="navbar">
+    <!-- Brand -->
+    <a class="brand brand-link" href="/">
+      <img class="brand-img"
+           src="/assets/hero/LabSign_DA_only.png?v="
+           alt="DA-Lab logo" loading="eager" decoding="async">
+      <span class="brand-text">
+        <span class="brand-main">Data Analytics Lab</span> · <span class="muted">UNIST IE</span>
+      </span>
+    </a>
+
+    <!-- Mobile menu button -->
+    <button class="menu-btn" aria-label="Toggle Menu"
+            onclick="document.getElementById('navbar').classList.toggle('open')">☰</button>
+
+    <!-- Main nav -->
+    <ul>
+      <li>
+        <a href="/about.html">About</a>
+      </li>
+
+      <li class="has-dd">
+        <a href="/members/professor/">Members</a>
+        <ul class="dropdown" role="menu">
+          <li><a href="/members/professor/">Professor</a></li>
+          <li><a href="/members/students/">Students</a></li>
+          <li><a href="/members/alumni/">Alumni</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dd">
+        <a href="/research/projects/">Research</a>
+        <ul class="dropdown" role="menu">
+          <li><a href="/research/projects/">Projects</a></li>
+          <li><a href="/research/publications/">Publications</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dd">
+        <a href="/activity/Lab%20News/">Activity</a>
+        <ul class="dropdown" role="menu">
+          <li><a href="/activity/Lab%20News/">Lab News</a></li>
+          <li><a href="/activity/Lab%20Events/">Lab Events</a></li>
+          <li><a href="/activity/Lab%20Seminar/">Lab Seminar</a></li>
+        </ul>
+      </li>
+
+      <!-- Contact (단일 항목: 잘못된 중첩 제거) -->
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+
+    <!-- ✅ Theme toggle button -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle color theme" aria-pressed="false">
+      <!-- Sun / Moon SVG -->
+      <svg class="sun" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 4V2M12 22v-2M4.93 4.93 3.52 3.52M20.48 20.48l-1.41-1.41M4 12H2m20 0h-2M4.93 19.07 3.52 20.48M20.48 3.52 19.07 4.93" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<!-- ✅ Galaxy canvas (다크 모드에서 좌우 여백 은하수) -->
+<canvas id="galaxy-canvas"></canvas>
+
+<!-- ✅ Theme & Galaxy JS -->
+<script defer src="/assets/main/theme.js?v="></script>
+
+  <!-- Page Hero -->
+<div class="page-hero">
+  <div class="container">
+    <div class="breadcrumbs"><a href="/">Home</a> · Contact</div>
+    <h1 class="page-title">Contact</h1>
+    <p class="muted">Contact, Location, and Collaboration/Joining Information</p>
+  </div>
+</div>
+
+<main class="container contact">
+  <section>
+    <div class="grid">
+
+      <!-- Left: Contact details -->
+      <div class="card card-pad stack" style="grid-column: span 6">
+        <h3 class="section-title">Get in touch</h3>
+
+        <p class="muted email-line">
+          Email:
+          <a href="mailto:sungil.kim@unist.ac.kr">sungil.kim@unist.ac.kr</a>
+          <!-- 아이콘 버튼 (SVG) -->
+          <a class="icon-mail" href="mailto:sungil.kim@unist.ac.kr"
+            aria-label="Send email to sungil.kim@unist.ac.kr">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M22 6v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6l10 7L22 6zm-10 5L4 6h16l-8 5z"/>
+            </svg>
+          </a>
+        </p>
+        <p class="muted">Address: 301-8, Building 112, 50 UNIST-gil, Eonyang-eup, Ulju-gun, Ulsan, Republic of Korea</p>
+
+        <hr class="divider">
+
+        <h4 class="subsection-title">Industry Collaboration</h4>
+        <p class="muted" style="white-space:nowrap;">
+          품질·공정 데이터 분석, 이상탐지 PoC, 공동연구 및 자문 협업 가능합니다.
+        </p>
+        <p class="en">We collaborate on quality/process data analytics, anomaly detection PoC, joint research, and consulting.</p>
+      </div>
+
+      <!-- Right: Office Address -->
+      <div class="card card-pad stack" style="grid-column: span 6">
+        <h3 class="section-title">Office Address</h3>
+        <div>
+          <div class="subsection-title">Data Analytics Lab <span class="muted">(Room <strong>302-4</strong>)</span></div>
+          <p class="muted">울산광역시 울주군 언양읍 <strong>유니스트길 50</strong>, <strong>제5공학관 112동 302-4호</strong></p>
+          <p class="en">Ulsan National Institute of Science and Technology (UNIST), Building 112, Room 302-4, 50 UNIST-gil, Eonyang-eup, Ulju-gun, Ulsan 44919, Republic of Korea</p>
+        </div>
+
+        <div>
+          <div class="subsection-title">Professor's Office <span class="muted">(Room <strong>301-8</strong>)</span></div>
+          <p class="muted">울산광역시 울주군 언양읍 <strong>유니스트길 50</strong>, <strong>제5공학관 112동 301-8호</strong></p>
+          <p class="en">UNIST, Building 112, Room 301-8, 50 UNIST-gil, Eonyang-eup, Ulju-gun, Ulsan 44919, Republic of Korea</p>
+        </div>
+      </div>
+
+      <!-- Prospective Students (full width) -->
+      <div class="card card-pad stack" style="grid-column: span 12" id="prospective-students">
+        <h3 class="section-title">Prospective Students</h3>
+
+        <div class="stack">
+          <div class="subsection-title">Graduate Students (M.S./Ph.D.)</div>
+          <p class="muted">대학원(석/박) 지원자는 자기소개서, CV, 관심 연구 주제, 프로젝트 포트폴리오를 이메일로 보내주세요.</p>
+          <p class="en" style="white-space:nowrap;">Please email your personal statement, CV, research interests, and project portfolio.</p>
+        </div>
+
+        <hr class="divider">
+
+        <div class="stack">
+          <div class="subsection-title">Research Interns</div>
+          <p class="muted">UNIST 재학생: 자기소개서와 관심 연구 주제를 간단히 작성해 이메일로 지원하세요. <em>대학원 진학/연구실 경험 목적 인턴 지원은 상시 가능합니다.</em></p>
+          <p class="en" style="white-space:nowrap;">UNIST students: Email a short personal statement and your research interests.</p>
+
+          <p class="muted">타 대학 학생: U-SURF 및 U-WURF 프로그램을 통해 인턴십 지원이 가능합니다.</p>
+          <p class="en">Students from other universities: you can apply for internships through the U-SURF and U-WURF programs.</p>
+        </div>
+      </div>
+
+      <!-- Map (full width) -->
+      <div class="card card-pad" style="grid-column: span 12">
+        <h3 class="section-title">Location — UNIST 제5공학관(112동)</h3>
+        <div class="map-container">
+          <iframe
+            class="map"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d729.7958112582595!2d129.1867358813372!3d35.57151354849208!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35662fd1cdd3fc1b%3A0x83e4103bbbe213ee!2z7KCcNeqzte2Vmeq0gA!5e0!3m2!1sko!2skr!4v1755876524787!5m2!1sko!2skr"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+
+
+<style>
+  /* ===== Contact page rhythm ===== */
+.contact .section-title{font-size:22px;margin:0 0 10px}
+.contact .subsection-title{font-weight:600;margin:10px 0 6px}
+
+/* 문단 기본 간격(위→아래로 흐르는 리듬) */
+.contact p{margin:6px 0 0}
+.contact .en{font-size:14px;color:var(--muted);margin-top:4px} /* 영어 라인은 살짝 작고 옅게 */
+
+/* 구분선 공통 */
+.contact .divider{border:0;border-top:1px solid var(--line);margin:16px 0}
+
+/* 카드 내부 수직 간격: 형제 요소 사이에만 간격 */
+.contact .stack > * + *{margin-top:12px}
+
+/* 지도 컨테이너(공통 사용 가능) */
+.map-container{position:relative;width:100%;height:300px;border-radius:14px;overflow:hidden}
+.map-container iframe.map{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+@media (max-width:820px){
+  .map-container{height:250px}
+  .grid > div{grid-column:span 12 !important}
+}
+
+/* 지도 컨테이너 스타일 추가 */
+.map-container {
+  position: relative;
+  width: 100%;
+  height: 300px; /* 원하는 높이로 조정 */
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.map-container iframe.map {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 0; /* 컨테이너가 이미 border-radius를 가지므로 */
+}
+
+/* 모바일에서 더 작은 높이 */
+@media (max-width: 768px) {
+  .map-container {
+    height: 250px;
+  }
+  
+  .grid > div {
+    grid-column: span 12 !important;
+  }
+}
+</style>
+
+  <footer>
+  <div class="container small muted">
+    © 2025 Data Analytics Lab. All Rights Reserved.
+  </div>
+</footer>
+
+<script>
+  // 모바일 드롭다운 토글 (그대로 유지)
+  document.addEventListener('click', (e) => {
+    if (e.target.classList && e.target.classList.contains('dd-toggle')) {
+      e.preventDefault();
+      e.stopPropagation();
+      const li = e.target.closest('.has-dd');
+      if (li) li.classList.toggle('open');
+    }
+  });
+</script>
+
+
+  <!-- 모바일 드롭다운 토글 -->
+  <script>
+    document.addEventListener('click', function(e){
+      if(e.target.matches('.dd-toggle')){
+        e.preventDefault();
+        const li = e.target.closest('.has-dd');
+        if(li) li.classList.toggle('open');
+      }
+    });
+  </script>
+</body>
+</html>

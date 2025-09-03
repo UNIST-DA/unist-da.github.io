@@ -1,0 +1,1711 @@
+<!doctype html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Lab Seminar | Activity · Data Analytics Lab</title>
+  <meta name="description" content="Lab Seminar from Data Analytics Lab at UNIST." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS (cache-busting) -->
+  <link rel="stylesheet" href="/assets/style.css?v=">
+
+  <!-- ✅ Favicon (이 부분은 반드시 head 안에 위치) -->
+  <link rel="icon" type="image/png" href="/assets/hero/LabSign_DA_background.png">
+</head>
+  
+<body>
+  <header>
+  <div class="container nav" id="navbar">
+    <!-- Brand -->
+    <a class="brand brand-link" href="/">
+      <img class="brand-img"
+           src="/assets/hero/LabSign_DA_only.png?v="
+           alt="DA-Lab logo" loading="eager" decoding="async">
+      <span class="brand-text">
+        <span class="brand-main">Data Analytics Lab</span> · <span class="muted">UNIST IE</span>
+      </span>
+    </a>
+
+    <!-- Mobile menu button -->
+    <button class="menu-btn" aria-label="Toggle Menu"
+            onclick="document.getElementById('navbar').classList.toggle('open')">☰</button>
+
+    <!-- Main nav -->
+    <ul>
+      <li>
+        <a href="/about.html">About</a>
+      </li>
+
+      <li class="has-dd">
+        <a href="/members/professor/">Members</a>
+        <ul class="dropdown" role="menu">
+          <li><a href="/members/professor/">Professor</a></li>
+          <li><a href="/members/students/">Students</a></li>
+          <li><a href="/members/alumni/">Alumni</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dd">
+        <a href="/research/projects/">Research</a>
+        <ul class="dropdown" role="menu">
+          <li><a href="/research/projects/">Projects</a></li>
+          <li><a href="/research/publications/">Publications</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dd">
+        <a href="/activity/Lab%20News/">Activity</a>
+        <ul class="dropdown" role="menu">
+          <li><a href="/activity/Lab%20News/">Lab News</a></li>
+          <li><a href="/activity/Lab%20Events/">Lab Events</a></li>
+          <li><a href="/activity/Lab%20Seminar/">Lab Seminar</a></li>
+        </ul>
+      </li>
+
+      <!-- Contact (단일 항목: 잘못된 중첩 제거) -->
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+
+    <!-- ✅ Theme toggle button -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle color theme" aria-pressed="false">
+      <!-- Sun / Moon SVG -->
+      <svg class="sun" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 4V2M12 22v-2M4.93 4.93 3.52 3.52M20.48 20.48l-1.41-1.41M4 12H2m20 0h-2M4.93 19.07 3.52 20.48M20.48 3.52 19.07 4.93" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<!-- ✅ Galaxy canvas (다크 모드에서 좌우 여백 은하수) -->
+<canvas id="galaxy-canvas"></canvas>
+
+<!-- ✅ Theme & Galaxy JS -->
+<script defer src="/assets/main/theme.js?v="></script>
+
+  <style>
+  /* 작은 카테고리 칩만 유지 */
+  .pill{
+    display:inline-block; margin-right:8px; padding:2px 8px; border-radius:999px;
+    font-size:.78rem; border:1px solid rgba(99,102,241,.30); background:rgba(99,102,241,.10);
+  }
+
+  /* 행 레이아웃: 좌(날짜+본문) | 우(노션 아이콘) */
+/* 행 레이아웃: 좌(날짜+본문) | 우(노션 아이콘) */
+  .news-item{
+    display:flex;
+    align-items:center;     /* ⬅︎ 세로 중앙 정렬 */
+    gap:16px;
+    /* justify-content:space-between;  ← 제거 */
+  }
+  .news-body{
+    display:flex;
+    align-items:center;     /* ⬅︎ 날짜와 본문 블록을 서로 중앙 맞춤 */
+    gap:16px;
+    flex:1 1 0%;            /* 남은 공간을 차지 */
+    min-width:0;            /* 줄바꿈이 필요할 때 폭 줄어들 수 있게 */
+  }
+
+  
+  .news-date{min-width:120px; text-align:center; color:#6b7280; font-weight:600; align-self:center;}
+
+  .news-title{font-weight:600; margin:0;}
+  /* 메타: 줄바꿈 허용 + 여러 줄로 감기 */
+  /* meta는 여러 줄로 자연스럽게 감기도록 유지 */
+  .news-meta{
+    margin:6px 0 0;
+    color:#6b7280;
+    font-size:.95rem;
+    display:flex;
+    flex-wrap:wrap;         /* 키워드 많으면 다음 줄로 */
+    gap:8px 10px;
+    white-space:normal;
+    overflow:visible;
+    text-overflow:clip;
+  }
+/* 기존 .kw 정의를 아래로 교체 */
+  .kw{
+    display:inline;              /* inline-block → inline */
+    margin:0 6px 0 0;            /* 필요시 간격은 유지 */
+    padding:0;                   /* 패딩 제거 */
+    border:0;                    /* 테두리 제거 */
+    border-radius:0;             /* 둥근모서리 제거 */
+    background:none;             /* 배경 제거 */
+    color:inherit;               /* 본문 색 따라감 */
+    font-size:inherit;           /* 크기 본문과 동일 */
+    font-weight:500;             /* 가독성만 살짝 */
+  }
+
+  /* Notion 아이콘 버튼(오른쪽) */
+  /* Notion 아이콘: 항상 오른쪽 끝으로 밀기 */
+  .notion-link{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:44px; height:44px; border-radius:10px;
+    border:1px solid rgba(2,6,23,.12); background:#fff;
+    transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+    flex:0 0 auto;
+    align-self:center;               /* 아이콘도 정확히 중앙 */
+    margin-left:auto;        /* ← 오른쪽 끝 정렬 */
+  }
+  .notion-link:hover{ transform:translateY(-1px); box-shadow:0 8px 22px rgba(2,6,23,.10); border-color:rgba(99,102,241,.32);}
+  .notion-link svg{ width:24px; height:24px; }
+
+  @media (max-width: 720px){
+    .news-date{min-width:90px}
+  }
+</style>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="breadcrumbs">
+      <a href="/">Home</a> ·
+      <a href="/activity/">Activity</a> ·
+      Lab Seminar
+    </div>
+    <h1 class="page-title">Lab Seminar</h1>
+  </div>
+</div>
+
+<main class="container">
+  <section>
+    <div class="grid">
+      
+      
+        <article class="card card-pad" style="grid-column: span 12" id="2025-08-25-a-deep-learning-based-surrogate-model-for-thermal-signature-prediction-in-laser-metal-deposition">
+          <div class="news-item">
+            <!-- 좌측(날짜 + 본문) -->
+            <div class="news-body">
+              <div class="news-date">2025-08-25</div>
+
+              <div>
+                <p class="news-title">
+                  <span class="pill">Paper Review</span>
+                  A Deep-Learning-Based Surrogate Model for Thermal Signature Prediction in Laser Metal Deposition  <!-- 제목 링크 없음 -->
+                </p>
+
+                
+                  <p class="news-meta">
+                    Presenter: Yongmin Kim
+                    
+                       · 
+                      Keywords:
+                      
+                        <span class="kw">#DeepLearning</span>
+                      
+                        <span class="kw">#QualityMonitoring</span>
+                      
+                        <span class="kw">#GAN</span>
+                      
+                    
+                  </p>
+                
+              </div>
+            </div>
+
+            <!-- 우측(노션 아이콘) -->
+            
+            <a class="notion-link" href="https://www.notion.so/25a046396f7e80a8a559e4613ee5ac1b" target="_blank" rel="noopener" aria-label="Open in Notion: A Deep-Learning-Based Surrogate Model for Thermal Signature Prediction in Laser Metal Deposition">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <rect x="3.5" y="3.5" width="17" height="17" rx="3" ry="3" stroke-width="1.5"/>
+                <path d="M8 7.5v9h2v-5.8h.1L14 16.5h2v-9h-2v5.7h-.1L10 7.5H8z" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+            
+          </div>
+        </article>
+      
+        <article class="card card-pad" style="grid-column: span 12" id="2025-08-13-quality-engineering-neural-network-control-chart-for-autocorrelated-multivariate-data">
+          <div class="news-item">
+            <!-- 좌측(날짜 + 본문) -->
+            <div class="news-body">
+              <div class="news-date">2025-08-13</div>
+
+              <div>
+                <p class="news-title">
+                  <span class="pill">Paper Review</span>
+                  (Quality Engineering) Neural Network Control Chart for Autocorrelated Multivariate Data  <!-- 제목 링크 없음 -->
+                </p>
+
+                
+                  <p class="news-meta">
+                    Presenter: 유정우
+                    
+                       · 
+                      Keywords:
+                      
+                        <span class="kw">#QualityMonitoring</span>
+                      
+                        <span class="kw">#ControlChart</span>
+                      
+                    
+                  </p>
+                
+              </div>
+            </div>
+
+            <!-- 우측(노션 아이콘) -->
+            
+            <a class="notion-link" href="https://www.notion.so/250046396f7e809397c2f33d41a3e440" target="_blank" rel="noopener" aria-label="Open in Notion: (Quality Engineering) Neural Network Control Chart for Autocorrelated Multivariate Data">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <rect x="3.5" y="3.5" width="17" height="17" rx="3" ry="3" stroke-width="1.5"/>
+                <path d="M8 7.5v9h2v-5.8h.1L14 16.5h2v-9h-2v5.7h-.1L10 7.5H8z" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+            
+          </div>
+        </article>
+      
+        <article class="card card-pad" style="grid-column: span 12" id="2025-08-01-autoencoding-under-normalization-constraints">
+          <div class="news-item">
+            <!-- 좌측(날짜 + 본문) -->
+            <div class="news-body">
+              <div class="news-date">2025-08-01</div>
+
+              <div>
+                <p class="news-title">
+                  <span class="pill">Paper Review</span>
+                  Autoencoding Under Normalization Constraints  <!-- 제목 링크 없음 -->
+                </p>
+
+                
+                  <p class="news-meta">
+                    Presenter: SeungSu Kam
+                    
+                       · 
+                      Keywords:
+                      
+                        <span class="kw">#Anomaly Detection</span>
+                      
+                        <span class="kw">#Autoencoder</span>
+                      
+                    
+                  </p>
+                
+              </div>
+            </div>
+
+            <!-- 우측(노션 아이콘) -->
+            
+            <a class="notion-link" href="https://www.notion.so/23f046396f7e8014b2e5e4d83e1f3c27" target="_blank" rel="noopener" aria-label="Open in Notion: Autoencoding Under Normalization Constraints">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <rect x="3.5" y="3.5" width="17" height="17" rx="3" ry="3" stroke-width="1.5"/>
+                <path d="M8 7.5v9h2v-5.8h.1L14 16.5h2v-9h-2v5.7h-.1L10 7.5H8z" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+            
+          </div>
+        </article>
+      
+        <article class="card card-pad" style="grid-column: span 12" id="2025-08-01-smo-2023-uncertainty-quantification-in-digital-twin">
+          <div class="news-item">
+            <!-- 좌측(날짜 + 본문) -->
+            <div class="news-body">
+              <div class="news-date">2025-08-01</div>
+
+              <div>
+                <p class="news-title">
+                  <span class="pill">Paper Review</span>
+                  (SMO 2023) Uncertainty quantification in digital twin  <!-- 제목 링크 없음 -->
+                </p>
+
+                
+                  <p class="news-meta">
+                    Presenter: 전병훈
+                    
+                       · 
+                      Keywords:
+                      
+                        <span class="kw">#Uncertainty Estimation</span>
+                      
+                    
+                  </p>
+                
+              </div>
+            </div>
+
+            <!-- 우측(노션 아이콘) -->
+            
+            <a class="notion-link" href="https://www.notion.so/245046396f7e80779f84c6b7889bed8e" target="_blank" rel="noopener" aria-label="Open in Notion: (SMO 2023) Uncertainty quantification in digital twin">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <rect x="3.5" y="3.5" width="17" height="17" rx="3" ry="3" stroke-width="1.5"/>
+                <path d="M8 7.5v9h2v-5.8h.1L14 16.5h2v-9h-2v5.7h-.1L10 7.5H8z" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+            
+          </div>
+        </article>
+      
+        <article class="card card-pad" style="grid-column: span 12" id="2025-07-14-multimodal-industrial-anomaly-detection-via-hybrid-fusion">
+          <div class="news-item">
+            <!-- 좌측(날짜 + 본문) -->
+            <div class="news-body">
+              <div class="news-date">2025-07-14</div>
+
+              <div>
+                <p class="news-title">
+                  <span class="pill">Paper Review</span>
+                  Multimodal Industrial Anomaly Detection via Hybrid Fusion  <!-- 제목 링크 없음 -->
+                </p>
+
+                
+                  <p class="news-meta">
+                    Presenter: SeungSu Kam
+                    
+                       · 
+                      Keywords:
+                      
+                        <span class="kw">#Anomaly Detection</span>
+                      
+                        <span class="kw">#multi-modal learning</span>
+                      
+                    
+                  </p>
+                
+              </div>
+            </div>
+
+            <!-- 우측(노션 아이콘) -->
+            
+            <a class="notion-link" href="https://www.notion.so/230046396f7e801ab004e577c53cf802" target="_blank" rel="noopener" aria-label="Open in Notion: Multimodal Industrial Anomaly Detection via Hybrid Fusion">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <rect x="3.5" y="3.5" width="17" height="17" rx="3" ry="3" stroke-width="1.5"/>
+                <path d="M8 7.5v9h2v-5.8h.1L14 16.5h2v-9h-2v5.7h-.1L10 7.5H8z" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+            
+          </div>
+        </article>
+      
+        <article class="card card-pad" style="grid-column: span 12" id="2025-07-07-jrssb-2001-bayesian-calibration-of-computer-models">
+          <div class="news-item">
+            <!-- 좌측(날짜 + 본문) -->
+            <div class="news-body">
+              <div class="news-date">2025-07-07</div>
+
+              <div>
+                <p class="news-title">
+                  <span class="pill">Paper Review</span>
+                  (JRSS:B 2001) Bayesian Calibration of Computer Models  <!-- 제목 링크 없음 -->
+                </p>
+
+                
+                  <p class="news-meta">
+                    Presenter: Chanbeom
+                    
+                       · 
+                      Keywords:
+                      
+                        <span class="kw">#Statistics</span>
+                      
+                    
+                  </p>
+                
+              </div>
+            </div>
+
+            <!-- 우측(노션 아이콘) -->
+            
+            <a class="notion-link" href="https://www.notion.so/22d046396f7e804d9f54e4fc4a2e8f02" target="_blank" rel="noopener" aria-label="Open in Notion: (JRSS:B 2001) Bayesian Calibration of Computer Models">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <rect x="3.5" y="3.5" width="17" height="17" rx="3" ry="3" stroke-width="1.5"/>
+                <path d="M8 7.5v9h2v-5.8h.1L14 16.5h2v-9h-2v5.7h-.1L10 7.5H8z" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+            
+          </div>
+        </article>
+      
+        <article class="card card-pad" style="grid-column: span 12" id="2025-05-30-anomaly-transformer-time-series-anomaly-detection-with-association-discrepancy">
+          <div class="news-item">
+            <!-- 좌측(날짜 + 본문) -->
+            <div class="news-body">
+              <div class="news-date">2025-05-30</div>
+
+              <div>
+                <p class="news-title">
+                  <span class="pill">Paper Review</span>
+                  ANOMALY TRANSFORMER: TIME SERIES ANOMALY DETECTION WITH ASSOCIATION DISCREPANCY  <!-- 제목 링크 없음 -->
+                </p>
+
+                
+                  <p class="news-meta">
+                    Presenter: SeungSu Kam
+                    
+                       · 
+                      Keywords:
+                      
+                        <span class="kw">#Time-series anomaly detection</span>
+                      
+                        <span class="kw">#Transformer</span>
+                      
+                    
+                  </p>
+                
+              </div>
+            </div>
+
+            <!-- 우측(노션 아이콘) -->
+            
+            <a class="notion-link" href="https://www.notion.so/1ff046396f7e80a091fad7ac557a98ac" target="_blank" rel="noopener" aria-label="Open in Notion: ANOMALY TRANSFORMER: TIME SERIES ANOMALY DETECTION WITH ASSOCIATION DISCREPANCY">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <rect x="3.5" y="3.5" width="17" height="17" rx="3" ry="3" stroke-width="1.5"/>
+                <path d="M8 7.5v9h2v-5.8h.1L14 16.5h2v-9h-2v5.7h-.1L10 7.5H8z" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+            
+          </div>
+        </article>
+      
+        <article class="card card-pad" style="grid-column: span 12" id="2025-05-23-understanding-complex-missingness-mechanisms">
+          <div class="news-item">
+            <!-- 좌측(날짜 + 본문) -->
+            <div class="news-body">
+              <div class="news-date">2025-05-23</div>
+
+              <div>
+                <p class="news-title">
+                  <span class="pill">Lab Seminar</span>
+                  Understanding Complex Missingness Mechanisms  <!-- 제목 링크 없음 -->
+                </p>
+
+                
+                  <p class="news-meta">
+                    Presenter: 이시은
+                    
+                       · 
+                      Keywords:
+                      
+                        <span class="kw">#imputation</span>
+                      
+                        <span class="kw">#missingness data</span>
+                      
+                    
+                  </p>
+                
+              </div>
+            </div>
+
+            <!-- 우측(노션 아이콘) -->
+            
+            <a class="notion-link" href="https://www.notion.so/1fc046396f7e80c488a1f1aa9e7ca435" target="_blank" rel="noopener" aria-label="Open in Notion: Understanding Complex Missingness Mechanisms">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <rect x="3.5" y="3.5" width="17" height="17" rx="3" ry="3" stroke-width="1.5"/>
+                <path d="M8 7.5v9h2v-5.8h.1L14 16.5h2v-9h-2v5.7h-.1L10 7.5H8z" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+            
+          </div>
+        </article>
+      
+        <article class="card card-pad" style="grid-column: span 12" id="2025-05-16-understanding-missingness-data">
+          <div class="news-item">
+            <!-- 좌측(날짜 + 본문) -->
+            <div class="news-body">
+              <div class="news-date">2025-05-16</div>
+
+              <div>
+                <p class="news-title">
+                  <span class="pill">Lab Seminar</span>
+                  Understanding Missingness Data  <!-- 제목 링크 없음 -->
+                </p>
+
+                
+                  <p class="news-meta">
+                    Presenter: 이시은
+                    
+                       · 
+                      Keywords:
+                      
+                        <span class="kw">#imputation</span>
+                      
+                        <span class="kw">#missingness data</span>
+                      
+                    
+                  </p>
+                
+              </div>
+            </div>
+
+            <!-- 우측(노션 아이콘) -->
+            
+            <a class="notion-link" href="https://www.notion.so/1f5046396f7e8002a846c207d8021a74" target="_blank" rel="noopener" aria-label="Open in Notion: Understanding Missingness Data">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <rect x="3.5" y="3.5" width="17" height="17" rx="3" ry="3" stroke-width="1.5"/>
+                <path d="M8 7.5v9h2v-5.8h.1L14 16.5h2v-9h-2v5.7h-.1L10 7.5H8z" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+            
+          </div>
+        </article>
+      
+        <article class="card card-pad" style="grid-column: span 12" id="2025-04-25-iclr-2025-kan-kolmogorov-arnold-networks">
+          <div class="news-item">
+            <!-- 좌측(날짜 + 본문) -->
+            <div class="news-body">
+              <div class="news-date">2025-04-25</div>
+
+              <div>
+                <p class="news-title">
+                  <span class="pill">Lab Seminar</span>
+                  (ICLR 2025) KAN: Kolmogorov–Arnold Networks  <!-- 제목 링크 없음 -->
+                </p>
+
+                
+                  <p class="news-meta">
+                    Presenter: Chanbeom
+                    
+                       · 
+                      Keywords:
+                      
+                        <span class="kw">#Deep Learning</span>
+                      
+                    
+                  </p>
+                
+              </div>
+            </div>
+
+            <!-- 우측(노션 아이콘) -->
+            
+            <a class="notion-link" href="https://www.notion.so/1c3046396f7e80edbad2e7d2b890e6fa" target="_blank" rel="noopener" aria-label="Open in Notion: (ICLR 2025) KAN: Kolmogorov–Arnold Networks">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <rect x="3.5" y="3.5" width="17" height="17" rx="3" ry="3" stroke-width="1.5"/>
+                <path d="M8 7.5v9h2v-5.8h.1L14 16.5h2v-9h-2v5.7h-.1L10 7.5H8z" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+            
+          </div>
+        </article>
+      
+        <article class="card card-pad" style="grid-column: span 12" id="2025-04-18-time-llm-reprogramming-llms-for-time-series-forecasting">
+          <div class="news-item">
+            <!-- 좌측(날짜 + 본문) -->
+            <div class="news-body">
+              <div class="news-date">2025-04-18</div>
+
+              <div>
+                <p class="news-title">
+                  <span class="pill">Paper Review</span>
+                  TIME-LLM: Reprogramming LLMs for Time Series
+Forecasting  <!-- 제목 링크 없음 -->
+                </p>
+
+                
+                  <p class="news-meta">
+                    Presenter: Seongjin
+                    
+                       · 
+                      Keywords:
+                      
+                        <span class="kw">#LLM</span>
+                      
+                        <span class="kw">#time series</span>
+                      
+                    
+                  </p>
+                
+              </div>
+            </div>
+
+            <!-- 우측(노션 아이콘) -->
+            
+            <a class="notion-link" href="https://www.notion.so/1e3046396f7e8019a4a1c40e114c8cc5" target="_blank" rel="noopener" aria-label="Open in Notion: TIME-LLM: Reprogramming LLMs for Time Series
+Forecasting">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <rect x="3.5" y="3.5" width="17" height="17" rx="3" ry="3" stroke-width="1.5"/>
+                <path d="M8 7.5v9h2v-5.8h.1L14 16.5h2v-9h-2v5.7h-.1L10 7.5H8z" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+            
+          </div>
+        </article>
+      
+        <article class="card card-pad" style="grid-column: span 12" id="2025-04-11-cikm-2024-mtsci-a-conditional-diffusion-model-for-multivariate-time-series-consistent-imputation">
+          <div class="news-item">
+            <!-- 좌측(날짜 + 본문) -->
+            <div class="news-body">
+              <div class="news-date">2025-04-11</div>
+
+              <div>
+                <p class="news-title">
+                  <span class="pill">Lab Seminar</span>
+                  (CIKM 2024) MTSCI: A Conditional Diffusion Model for Multivariate Time Series Consistent Imputation  <!-- 제목 링크 없음 -->
+                </p>
+
+                
+                  <p class="news-meta">
+                    Presenter: 이희윤
+                    
+                       · 
+                      Keywords:
+                      
+                        <span class="kw">#DeepLearning</span>
+                      
+                        <span class="kw">#time series</span>
+                      
+                        <span class="kw">#Diffusion Model</span>
+                      
+                    
+                  </p>
+                
+              </div>
+            </div>
+
+            <!-- 우측(노션 아이콘) -->
+            
+            <a class="notion-link" href="https://www.notion.so/1d1046396f7e8080983acdd19473ea9c" target="_blank" rel="noopener" aria-label="Open in Notion: (CIKM 2024) MTSCI: A Conditional Diffusion Model for Multivariate Time Series Consistent Imputation">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <rect x="3.5" y="3.5" width="17" height="17" rx="3" ry="3" stroke-width="1.5"/>
+                <path d="M8 7.5v9h2v-5.8h.1L14 16.5h2v-9h-2v5.7h-.1L10 7.5H8z" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+            
+          </div>
+        </article>
+      
+        <article class="card card-pad" style="grid-column: span 12" id="2025-03-28-colm-2024-linear-time-sequence-modeling-with-selective-state-spaces">
+          <div class="news-item">
+            <!-- 좌측(날짜 + 본문) -->
+            <div class="news-body">
+              <div class="news-date">2025-03-28</div>
+
+              <div>
+                <p class="news-title">
+                  <span class="pill">Paper Review</span>
+                  (COLM 2024) Linear-Time Sequence Modeling with Selective State Spaces  <!-- 제목 링크 없음 -->
+                </p>
+
+                
+                  <p class="news-meta">
+                    Presenter: 전병훈
+                    
+                       · 
+                      Keywords:
+                      
+                        <span class="kw">#State space model</span>
+                      
+                        <span class="kw">#time series</span>
+                      
+                        <span class="kw">#RNN</span>
+                      
+                    
+                  </p>
+                
+              </div>
+            </div>
+
+            <!-- 우측(노션 아이콘) -->
+            
+            <a class="notion-link" href="https://www.notion.so/1ae046396f7e803c8c56ec9756577d95" target="_blank" rel="noopener" aria-label="Open in Notion: (COLM 2024) Linear-Time Sequence Modeling with Selective State Spaces">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <rect x="3.5" y="3.5" width="17" height="17" rx="3" ry="3" stroke-width="1.5"/>
+                <path d="M8 7.5v9h2v-5.8h.1L14 16.5h2v-9h-2v5.7h-.1L10 7.5H8z" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+            
+          </div>
+        </article>
+      
+        <article class="card card-pad" style="grid-column: span 12" id="2025-03-14-carla-self-supervised-contrastive-representation-learning-for-time-series-anomaly-detection">
+          <div class="news-item">
+            <!-- 좌측(날짜 + 본문) -->
+            <div class="news-body">
+              <div class="news-date">2025-03-14</div>
+
+              <div>
+                <p class="news-title">
+                  <span class="pill">Lab Seminar</span>
+                  CARLA: Self-supervised contrastive representation learning for time series anomaly detection  <!-- 제목 링크 없음 -->
+                </p>
+
+                
+                  <p class="news-meta">
+                    Presenter: Yongmin Kim
+                    
+                       · 
+                      Keywords:
+                      
+                        <span class="kw">#Contrastive learning</span>
+                      
+                        <span class="kw">#Self-supervised Learning</span>
+                      
+                        <span class="kw">#Time-series anomaly detection</span>
+                      
+                        <span class="kw">#Anormaly Injection</span>
+                      
+                    
+                  </p>
+                
+              </div>
+            </div>
+
+            <!-- 우측(노션 아이콘) -->
+            
+            <a class="notion-link" href="https://www.notion.so/1525af7835be4d8a8f2ae5f5a350b9ce" target="_blank" rel="noopener" aria-label="Open in Notion: CARLA: Self-supervised contrastive representation learning for time series anomaly detection">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <rect x="3.5" y="3.5" width="17" height="17" rx="3" ry="3" stroke-width="1.5"/>
+                <path d="M8 7.5v9h2v-5.8h.1L14 16.5h2v-9h-2v5.7h-.1L10 7.5H8z" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+            
+          </div>
+        </article>
+      
+        <article class="card card-pad" style="grid-column: span 12" id="2025-02-28-neural-sdes-as-infinite-dimensional-gans">
+          <div class="news-item">
+            <!-- 좌측(날짜 + 본문) -->
+            <div class="news-body">
+              <div class="news-date">2025-02-28</div>
+
+              <div>
+                <p class="news-title">
+                  <span class="pill">Paper Review</span>
+                  Neural SDEs as Infinite-Dimensional GANs  <!-- 제목 링크 없음 -->
+                </p>
+
+                
+                  <p class="news-meta">
+                    Presenter: SeungSu Kam
+                    
+                       · 
+                      Keywords:
+                      
+                        <span class="kw">#Neural Differential Equation</span>
+                      
+                        <span class="kw">#Generative Model</span>
+                      
+                    
+                  </p>
+                
+              </div>
+            </div>
+
+            <!-- 우측(노션 아이콘) -->
+            
+            <a class="notion-link" href="https://www.notion.so/193046396f7e8060ae4df1ff7a564d8d" target="_blank" rel="noopener" aria-label="Open in Notion: Neural SDEs as Infinite-Dimensional GANs">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <rect x="3.5" y="3.5" width="17" height="17" rx="3" ry="3" stroke-width="1.5"/>
+                <path d="M8 7.5v9h2v-5.8h.1L14 16.5h2v-9h-2v5.7h-.1L10 7.5H8z" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+            
+          </div>
+        </article>
+      
+        <article class="card card-pad" style="grid-column: span 12" id="2025-02-13-iclr-2025-root-cause-analysis-of-anomalies-in-multivariate-time-series-through-granger-causal-discovery">
+          <div class="news-item">
+            <!-- 좌측(날짜 + 본문) -->
+            <div class="news-body">
+              <div class="news-date">2025-02-13</div>
+
+              <div>
+                <p class="news-title">
+                  <span class="pill">Lab Seminar</span>
+                  (ICLR 2025) Root Cause Analysis of anomalies in multivariate time series through granger causal discovery  <!-- 제목 링크 없음 -->
+                </p>
+
+                
+                  <p class="news-meta">
+                    Presenter: 강태원
+                    
+                       · 
+                      Keywords:
+                      
+                        <span class="kw">#Autoencoder</span>
+                      
+                        <span class="kw">#Causality</span>
+                      
+                        <span class="kw">#Anomaly Detection</span>
+                      
+                    
+                  </p>
+                
+              </div>
+            </div>
+
+            <!-- 우측(노션 아이콘) -->
+            
+            <a class="notion-link" href="https://www.notion.so/199046396f7e80afac16f04606f1e35c" target="_blank" rel="noopener" aria-label="Open in Notion: (ICLR 2025) Root Cause Analysis of anomalies in multivariate time series through granger causal discovery">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <rect x="3.5" y="3.5" width="17" height="17" rx="3" ry="3" stroke-width="1.5"/>
+                <path d="M8 7.5v9h2v-5.8h.1L14 16.5h2v-9h-2v5.7h-.1L10 7.5H8z" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+            
+          </div>
+        </article>
+      
+        <article class="card card-pad" style="grid-column: span 12" id="2025-02-07-current-research-topics-in-survival-analysis">
+          <div class="news-item">
+            <!-- 좌측(날짜 + 본문) -->
+            <div class="news-body">
+              <div class="news-date">2025-02-07</div>
+
+              <div>
+                <p class="news-title">
+                  <span class="pill">Lab Seminar</span>
+                  Current Research Topics in Survival Analysis  <!-- 제목 링크 없음 -->
+                </p>
+
+                
+                  <p class="news-meta">
+                    Presenter: Chanbeom
+                    
+                       · 
+                      Keywords:
+                      
+                        <span class="kw">#Survival Analysis</span>
+                      
+                    
+                  </p>
+                
+              </div>
+            </div>
+
+            <!-- 우측(노션 아이콘) -->
+            
+            <a class="notion-link" href="https://www.notion.so/aef251d7efcd402f857d89cd70b6b77e" target="_blank" rel="noopener" aria-label="Open in Notion: Current Research Topics in Survival Analysis">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <rect x="3.5" y="3.5" width="17" height="17" rx="3" ry="3" stroke-width="1.5"/>
+                <path d="M8 7.5v9h2v-5.8h.1L14 16.5h2v-9h-2v5.7h-.1L10 7.5H8z" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+            
+          </div>
+        </article>
+      
+        <article class="card card-pad" style="grid-column: span 12" id="2025-01-24-trajectory-flow-matching-with-applications-to-clinical-time-series-modelling">
+          <div class="news-item">
+            <!-- 좌측(날짜 + 본문) -->
+            <div class="news-body">
+              <div class="news-date">2025-01-24</div>
+
+              <div>
+                <p class="news-title">
+                  <span class="pill">Paper Review</span>
+                  Trajectory Flow Matching with Applications to Clinical Time Series Modelling  <!-- 제목 링크 없음 -->
+                </p>
+
+                
+                  <p class="news-meta">
+                    Presenter: Jae Hun Cho
+                    
+                       · 
+                      Keywords:
+                      
+                        <span class="kw">#Irregular time series</span>
+                      
+                        <span class="kw">#Flow Matching</span>
+                      
+                        <span class="kw">#Clinical time series</span>
+                      
+                    
+                  </p>
+                
+              </div>
+            </div>
+
+            <!-- 우측(노션 아이콘) -->
+            
+            <a class="notion-link" href="https://www.notion.so/2017013160aa4616a9bbca865c34b07c" target="_blank" rel="noopener" aria-label="Open in Notion: Trajectory Flow Matching with Applications to Clinical Time Series Modelling">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <rect x="3.5" y="3.5" width="17" height="17" rx="3" ry="3" stroke-width="1.5"/>
+                <path d="M8 7.5v9h2v-5.8h.1L14 16.5h2v-9h-2v5.7h-.1L10 7.5H8z" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+            
+          </div>
+        </article>
+      
+        <article class="card card-pad" style="grid-column: span 12" id="2025-01-17-warpformer-a-multi-scale-modeling-approach-for-irregular-clinical-time-series">
+          <div class="news-item">
+            <!-- 좌측(날짜 + 본문) -->
+            <div class="news-body">
+              <div class="news-date">2025-01-17</div>
+
+              <div>
+                <p class="news-title">
+                  <span class="pill">Paper Review</span>
+                  Warpformer: A Multi-scale Modeling Approach for Irregular Clinical Time Series  <!-- 제목 링크 없음 -->
+                </p>
+
+                
+                  <p class="news-meta">
+                    Presenter: Hyejin Cho
+                    
+                       · 
+                      Keywords:
+                      
+                        <span class="kw">#Attention</span>
+                      
+                        <span class="kw">#Transformer</span>
+                      
+                        <span class="kw">#Irregular time series</span>
+                      
+                        <span class="kw">#Warping</span>
+                      
+                    
+                  </p>
+                
+              </div>
+            </div>
+
+            <!-- 우측(노션 아이콘) -->
+            
+            <a class="notion-link" href="https://www.notion.so/cb135695f2a148bfb39562f4c3b67934" target="_blank" rel="noopener" aria-label="Open in Notion: Warpformer: A Multi-scale Modeling Approach for Irregular Clinical Time Series">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <rect x="3.5" y="3.5" width="17" height="17" rx="3" ry="3" stroke-width="1.5"/>
+                <path d="M8 7.5v9h2v-5.8h.1L14 16.5h2v-9h-2v5.7h-.1L10 7.5H8z" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+            
+          </div>
+        </article>
+      
+        <article class="card card-pad" style="grid-column: span 12" id="2025-01-10-neurips-2023-neural-frailty-machine-beyond-proportional-hazard-assumption-in-neural-survival-regressions">
+          <div class="news-item">
+            <!-- 좌측(날짜 + 본문) -->
+            <div class="news-body">
+              <div class="news-date">2025-01-10</div>
+
+              <div>
+                <p class="news-title">
+                  <span class="pill">Paper Review</span>
+                  (NeurIPS 2023) Neural Frailty Machine: Beyond proportional hazard
+assumption in neural survival regressions  <!-- 제목 링크 없음 -->
+                </p>
+
+                
+                  <p class="news-meta">
+                    Presenter: Chanbeom
+                    
+                       · 
+                      Keywords:
+                      
+                        <span class="kw">#Survival Analysis</span>
+                      
+                        <span class="kw">#Deep Learning</span>
+                      
+                    
+                  </p>
+                
+              </div>
+            </div>
+
+            <!-- 우측(노션 아이콘) -->
+            
+            <a class="notion-link" href="https://www.notion.so/c630db8facbb403db1d516dbde8c71ee" target="_blank" rel="noopener" aria-label="Open in Notion: (NeurIPS 2023) Neural Frailty Machine: Beyond proportional hazard
+assumption in neural survival regressions">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <rect x="3.5" y="3.5" width="17" height="17" rx="3" ry="3" stroke-width="1.5"/>
+                <path d="M8 7.5v9h2v-5.8h.1L14 16.5h2v-9h-2v5.7h-.1L10 7.5H8z" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+            
+          </div>
+        </article>
+      
+        <article class="card card-pad" style="grid-column: span 12" id="2024-12-20-climode-climate-and-weather-forecasting-with-physics-informed-neural-odes">
+          <div class="news-item">
+            <!-- 좌측(날짜 + 본문) -->
+            <div class="news-body">
+              <div class="news-date">2024-12-20</div>
+
+              <div>
+                <p class="news-title">
+                  <span class="pill">Paper Review</span>
+                  ClimODE: Climate and Weather Forecasting with Physics-Informed Neural ODEs  <!-- 제목 링크 없음 -->
+                </p>
+
+                
+                  <p class="news-meta">
+                    Presenter: 전병훈
+                    
+                       · 
+                      Keywords:
+                      
+                        <span class="kw">#Neural Differential Equation</span>
+                      
+                        <span class="kw">#Physics-Informed</span>
+                      
+                    
+                  </p>
+                
+              </div>
+            </div>
+
+            <!-- 우측(노션 아이콘) -->
+            
+            <a class="notion-link" href="https://www.notion.so/af709ee42967485c81cad818e7666e4e" target="_blank" rel="noopener" aria-label="Open in Notion: ClimODE: Climate and Weather Forecasting with Physics-Informed Neural ODEs">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <rect x="3.5" y="3.5" width="17" height="17" rx="3" ry="3" stroke-width="1.5"/>
+                <path d="M8 7.5v9h2v-5.8h.1L14 16.5h2v-9h-2v5.7h-.1L10 7.5H8z" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+            
+          </div>
+        </article>
+      
+        <article class="card card-pad" style="grid-column: span 12" id="2024-12-06-multi-time-attention-networks-for-irregularly-sampled-time-series-mtans">
+          <div class="news-item">
+            <!-- 좌측(날짜 + 본문) -->
+            <div class="news-body">
+              <div class="news-date">2024-12-06</div>
+
+              <div>
+                <p class="news-title">
+                  <span class="pill">Lab Seminar</span>
+                  Multi-Time Attention Networks for Irregularly Sampled Time Series (mTANs)  <!-- 제목 링크 없음 -->
+                </p>
+
+                
+                  <p class="news-meta">
+                    Presenter: 이시은
+                    
+                       · 
+                      Keywords:
+                      
+                        <span class="kw">#Irregular time series</span>
+                      
+                        <span class="kw">#Attention</span>
+                      
+                    
+                  </p>
+                
+              </div>
+            </div>
+
+            <!-- 우측(노션 아이콘) -->
+            
+            <a class="notion-link" href="https://www.notion.so/153046396f7e804594f3eee2ecdbef1e" target="_blank" rel="noopener" aria-label="Open in Notion: Multi-Time Attention Networks for Irregularly Sampled Time Series (mTANs)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <rect x="3.5" y="3.5" width="17" height="17" rx="3" ry="3" stroke-width="1.5"/>
+                <path d="M8 7.5v9h2v-5.8h.1L14 16.5h2v-9h-2v5.7h-.1L10 7.5H8z" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+            
+          </div>
+        </article>
+      
+        <article class="card card-pad" style="grid-column: span 12" id="2024-11-29-modulated-neural-odes">
+          <div class="news-item">
+            <!-- 좌측(날짜 + 본문) -->
+            <div class="news-body">
+              <div class="news-date">2024-11-29</div>
+
+              <div>
+                <p class="news-title">
+                  <span class="pill">Paper Review</span>
+                  Modulated Neural ODEs  <!-- 제목 링크 없음 -->
+                </p>
+
+                
+                  <p class="news-meta">
+                    Presenter: Yongmin Kim
+                    
+                       · 
+                      Keywords:
+                      
+                        <span class="kw">#Neural Differential Equation</span>
+                      
+                    
+                  </p>
+                
+              </div>
+            </div>
+
+            <!-- 우측(노션 아이콘) -->
+            
+            <a class="notion-link" href="https://www.notion.so/3b92184defb44d7fa3e23500c0bd1acf" target="_blank" rel="noopener" aria-label="Open in Notion: Modulated Neural ODEs">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <rect x="3.5" y="3.5" width="17" height="17" rx="3" ry="3" stroke-width="1.5"/>
+                <path d="M8 7.5v9h2v-5.8h.1L14 16.5h2v-9h-2v5.7h-.1L10 7.5H8z" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+            
+          </div>
+        </article>
+      
+        <article class="card card-pad" style="grid-column: span 12" id="2024-11-15-physics-informed-neural-ode-with-heterogeneous-control-inputs-pinohi-for-quality-prediction-of-composite-adhesive-joints">
+          <div class="news-item">
+            <!-- 좌측(날짜 + 본문) -->
+            <div class="news-body">
+              <div class="news-date">2024-11-15</div>
+
+              <div>
+                <p class="news-title">
+                  <span class="pill">Paper Review</span>
+                  Physics-Informed Neural ODE with Heterogeneous Control Inputs (PINOHI) for Quality Prediction of Composite Adhesive Joints  <!-- 제목 링크 없음 -->
+                </p>
+
+                
+                  <p class="news-meta">
+                    Presenter: Seongjin
+                    
+                       · 
+                      Keywords:
+                      
+                        <span class="kw">#Neural Differential Equation</span>
+                      
+                        <span class="kw">#Physics-Informed</span>
+                      
+                    
+                  </p>
+                
+              </div>
+            </div>
+
+            <!-- 우측(노션 아이콘) -->
+            
+            <a class="notion-link" href="https://www.notion.so/107046396f7e80d9947fee9a193b4012" target="_blank" rel="noopener" aria-label="Open in Notion: Physics-Informed Neural ODE with Heterogeneous Control Inputs (PINOHI) for Quality Prediction of Composite Adhesive Joints">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <rect x="3.5" y="3.5" width="17" height="17" rx="3" ry="3" stroke-width="1.5"/>
+                <path d="M8 7.5v9h2v-5.8h.1L14 16.5h2v-9h-2v5.7h-.1L10 7.5H8z" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+            
+          </div>
+        </article>
+      
+        <article class="card card-pad" style="grid-column: span 12" id="2024-11-01-prevent-an-unsupervised-approach-to-predict-software-failures-in-production">
+          <div class="news-item">
+            <!-- 좌측(날짜 + 본문) -->
+            <div class="news-body">
+              <div class="news-date">2024-11-01</div>
+
+              <div>
+                <p class="news-title">
+                  <span class="pill">Paper Review</span>
+                  PREVENT : An Unsupervised Approach to Predict Software Failures in Production  <!-- 제목 링크 없음 -->
+                </p>
+
+                
+                  <p class="news-meta">
+                    Presenter: 강태원
+                    
+                       · 
+                      Keywords:
+                      
+                        <span class="kw">#Anomaly Detection</span>
+                      
+                        <span class="kw">#Autoencoder</span>
+                      
+                        <span class="kw">#Causality</span>
+                      
+                        <span class="kw">#UnsupervisedLearning</span>
+                      
+                    
+                  </p>
+                
+              </div>
+            </div>
+
+            <!-- 우측(노션 아이콘) -->
+            
+            <a class="notion-link" href="https://www.notion.so/f6c6ff4589e2469fb18a0c7b14e56cda" target="_blank" rel="noopener" aria-label="Open in Notion: PREVENT : An Unsupervised Approach to Predict Software Failures in Production">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <rect x="3.5" y="3.5" width="17" height="17" rx="3" ry="3" stroke-width="1.5"/>
+                <path d="M8 7.5v9h2v-5.8h.1L14 16.5h2v-9h-2v5.7h-.1L10 7.5H8z" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+            
+          </div>
+        </article>
+      
+        <article class="card card-pad" style="grid-column: span 12" id="2024-10-11-multi-view-integrative-attention-based-deep-representation-learning-for-irregular-clinical-time-series-data">
+          <div class="news-item">
+            <!-- 좌측(날짜 + 본문) -->
+            <div class="news-body">
+              <div class="news-date">2024-10-11</div>
+
+              <div>
+                <p class="news-title">
+                  <span class="pill">Paper Review</span>
+                  Multi-View Integrative Attention-Based Deep Representation Learning for Irregular Clinical Time-Series Data  <!-- 제목 링크 없음 -->
+                </p>
+
+                
+                  <p class="news-meta">
+                    Presenter: Hyejin Cho
+                    
+                       · 
+                      Keywords:
+                      
+                        <span class="kw">#Irregular time series</span>
+                      
+                        <span class="kw">#Attention</span>
+                      
+                    
+                  </p>
+                
+              </div>
+            </div>
+
+            <!-- 우측(노션 아이콘) -->
+            
+            <a class="notion-link" href="https://www.notion.so/107046396f7e8084a72fd035f2df3d04" target="_blank" rel="noopener" aria-label="Open in Notion: Multi-View Integrative Attention-Based Deep Representation Learning for Irregular Clinical Time-Series Data">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <rect x="3.5" y="3.5" width="17" height="17" rx="3" ry="3" stroke-width="1.5"/>
+                <path d="M8 7.5v9h2v-5.8h.1L14 16.5h2v-9h-2v5.7h-.1L10 7.5H8z" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+            
+          </div>
+        </article>
+      
+        <article class="card card-pad" style="grid-column: span 12" id="2024-09-20-learning-with-imbalanced-noisy-data-by-preventing-bias-in-sample-selection">
+          <div class="news-item">
+            <!-- 좌측(날짜 + 본문) -->
+            <div class="news-body">
+              <div class="news-date">2024-09-20</div>
+
+              <div>
+                <p class="news-title">
+                  <span class="pill">Paper Review</span>
+                  Learning with Imbalanced Noisy Data by Preventing Bias in Sample Selection  <!-- 제목 링크 없음 -->
+                </p>
+
+                
+                  <p class="news-meta">
+                    Presenter: Jae Hun Cho
+                    
+                       · 
+                      Keywords:
+                      
+                        <span class="kw">#classification</span>
+                      
+                        <span class="kw">#Noisy label learning</span>
+                      
+                        <span class="kw">#Sample selection</span>
+                      
+                        <span class="kw">#Class imbalance</span>
+                      
+                    
+                  </p>
+                
+              </div>
+            </div>
+
+            <!-- 우측(노션 아이콘) -->
+            
+            <a class="notion-link" href="https://www.notion.so/360723a523d24f1bbda8ce9ac42badc0" target="_blank" rel="noopener" aria-label="Open in Notion: Learning with Imbalanced Noisy Data by Preventing Bias in Sample Selection">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <rect x="3.5" y="3.5" width="17" height="17" rx="3" ry="3" stroke-width="1.5"/>
+                <path d="M8 7.5v9h2v-5.8h.1L14 16.5h2v-9h-2v5.7h-.1L10 7.5H8z" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+            
+          </div>
+        </article>
+      
+        <article class="card card-pad" style="grid-column: span 12" id="2024-08-30-precursor-of-anomaly-detection-for-irregular-time-series">
+          <div class="news-item">
+            <!-- 좌측(날짜 + 본문) -->
+            <div class="news-body">
+              <div class="news-date">2024-08-30</div>
+
+              <div>
+                <p class="news-title">
+                  <span class="pill">Paper Review</span>
+                  Precursor-of-anomaly detection for irregular time series  <!-- 제목 링크 없음 -->
+                </p>
+
+                
+                  <p class="news-meta">
+                    Presenter: SeungSu Kam
+                    
+                       · 
+                      Keywords:
+                      
+                        <span class="kw">#Neural Differential Equation</span>
+                      
+                        <span class="kw">#Time-series anomaly detection</span>
+                      
+                    
+                  </p>
+                
+              </div>
+            </div>
+
+            <!-- 우측(노션 아이콘) -->
+            
+            <a class="notion-link" href="https://www.notion.so/4487c7a8eef145b2bee224364228e398" target="_blank" rel="noopener" aria-label="Open in Notion: Precursor-of-anomaly detection for irregular time series">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <rect x="3.5" y="3.5" width="17" height="17" rx="3" ry="3" stroke-width="1.5"/>
+                <path d="M8 7.5v9h2v-5.8h.1L14 16.5h2v-9h-2v5.7h-.1L10 7.5H8z" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+            
+          </div>
+        </article>
+      
+        <article class="card card-pad" style="grid-column: span 12" id="2024-08-16-co-teaching-robust-training-of-deep-neural-networks-with-extremely-noisy-labels">
+          <div class="news-item">
+            <!-- 좌측(날짜 + 본문) -->
+            <div class="news-body">
+              <div class="news-date">2024-08-16</div>
+
+              <div>
+                <p class="news-title">
+                  <span class="pill">Paper Review</span>
+                  Co-teaching: Robust Training of Deep Neural Networks with Extremely Noisy Labels  <!-- 제목 링크 없음 -->
+                </p>
+
+                
+                  <p class="news-meta">
+                    Presenter: Seongjin
+                    
+                       · 
+                      Keywords:
+                      
+                        <span class="kw">#Noisy label learning</span>
+                      
+                    
+                  </p>
+                
+              </div>
+            </div>
+
+            <!-- 우측(노션 아이콘) -->
+            
+            <a class="notion-link" href="https://www.notion.so/ee84b2bb1771409a8ad36a95481e0b97" target="_blank" rel="noopener" aria-label="Open in Notion: Co-teaching: Robust Training of Deep Neural Networks with Extremely Noisy Labels">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <rect x="3.5" y="3.5" width="17" height="17" rx="3" ry="3" stroke-width="1.5"/>
+                <path d="M8 7.5v9h2v-5.8h.1L14 16.5h2v-9h-2v5.7h-.1L10 7.5H8z" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+            
+          </div>
+        </article>
+      
+        <article class="card card-pad" style="grid-column: span 12" id="2024-07-19-wind-turbine-gearbox-failure-detection-through-cumulative-sum-of-multivariate-time-series-data">
+          <div class="news-item">
+            <!-- 좌측(날짜 + 본문) -->
+            <div class="news-body">
+              <div class="news-date">2024-07-19</div>
+
+              <div>
+                <p class="news-title">
+                  <span class="pill">Paper Review</span>
+                  Wind Turbine Gearbox Failure Detection Through Cumulative Sum of Multivariate Time Series Data  <!-- 제목 링크 없음 -->
+                </p>
+
+                
+                  <p class="news-meta">
+                    Presenter: 강태원
+                    
+                       · 
+                      Keywords:
+                      
+                        <span class="kw">#Anomaly Detection</span>
+                      
+                        <span class="kw">#Time-series anomaly detection</span>
+                      
+                    
+                  </p>
+                
+              </div>
+            </div>
+
+            <!-- 우측(노션 아이콘) -->
+            
+            <a class="notion-link" href="https://www.notion.so/f30971eb69e84bb2b790a481a66dea71" target="_blank" rel="noopener" aria-label="Open in Notion: Wind Turbine Gearbox Failure Detection Through Cumulative Sum of Multivariate Time Series Data">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <rect x="3.5" y="3.5" width="17" height="17" rx="3" ry="3" stroke-width="1.5"/>
+                <path d="M8 7.5v9h2v-5.8h.1L14 16.5h2v-9h-2v5.7h-.1L10 7.5H8z" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+            
+          </div>
+        </article>
+      
+        <article class="card card-pad" style="grid-column: span 12" id="2024-07-05-machine-learning-for-survival-analysis-a-survey">
+          <div class="news-item">
+            <!-- 좌측(날짜 + 본문) -->
+            <div class="news-body">
+              <div class="news-date">2024-07-05</div>
+
+              <div>
+                <p class="news-title">
+                  <span class="pill">Lab Seminar</span>
+                  Machine Learning for Survival Analysis: A Survey  <!-- 제목 링크 없음 -->
+                </p>
+
+                
+                  <p class="news-meta">
+                    Presenter: Hyejin Cho
+                    
+                       · 
+                      Keywords:
+                      
+                        <span class="kw">#Survival Analysis</span>
+                      
+                    
+                  </p>
+                
+              </div>
+            </div>
+
+            <!-- 우측(노션 아이콘) -->
+            
+            <a class="notion-link" href="https://www.notion.so/de6084377bf84fc3bb66b345c658dbbe" target="_blank" rel="noopener" aria-label="Open in Notion: Machine Learning for Survival Analysis: A Survey">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <rect x="3.5" y="3.5" width="17" height="17" rx="3" ry="3" stroke-width="1.5"/>
+                <path d="M8 7.5v9h2v-5.8h.1L14 16.5h2v-9h-2v5.7h-.1L10 7.5H8z" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+            
+          </div>
+        </article>
+      
+        <article class="card card-pad" style="grid-column: span 12" id="2024-06-21-quanttree-histograms-for-change-detection-in-multivariate-data-streams">
+          <div class="news-item">
+            <!-- 좌측(날짜 + 본문) -->
+            <div class="news-body">
+              <div class="news-date">2024-06-21</div>
+
+              <div>
+                <p class="news-title">
+                  <span class="pill">Paper Review</span>
+                  QuantTree: Histograms for Change Detection in Multivariate Data Streams  <!-- 제목 링크 없음 -->
+                </p>
+
+                
+                  <p class="news-meta">
+                    Presenter: Jae Hun Cho
+                    
+                       · 
+                      Keywords:
+                      
+                        <span class="kw">#Change Detection</span>
+                      
+                    
+                  </p>
+                
+              </div>
+            </div>
+
+            <!-- 우측(노션 아이콘) -->
+            
+            <a class="notion-link" href="https://www.notion.so/21e6ef86765544c6acc2591fe3b38c42" target="_blank" rel="noopener" aria-label="Open in Notion: QuantTree: Histograms for Change Detection in Multivariate Data Streams">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <rect x="3.5" y="3.5" width="17" height="17" rx="3" ry="3" stroke-width="1.5"/>
+                <path d="M8 7.5v9h2v-5.8h.1L14 16.5h2v-9h-2v5.7h-.1L10 7.5H8z" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+            
+          </div>
+        </article>
+      
+        <article class="card card-pad" style="grid-column: span 12" id="2024-06-07-attention-based-representation-learning-for-time-series-with-principal-and-residual-space-monitoring">
+          <div class="news-item">
+            <!-- 좌측(날짜 + 본문) -->
+            <div class="news-body">
+              <div class="news-date">2024-06-07</div>
+
+              <div>
+                <p class="news-title">
+                  <span class="pill">Paper Review</span>
+                  Attention-based Representation Learning for Time Series with Principal and Residual Space Monitoring  <!-- 제목 링크 없음 -->
+                </p>
+
+                
+                  <p class="news-meta">
+                    Presenter: Seongjin
+                    
+                       · 
+                      Keywords:
+                      
+                        <span class="kw">#Anomaly Detection</span>
+                      
+                        <span class="kw">#Representation Learning</span>
+                      
+                        <span class="kw">#Attention</span>
+                      
+                        <span class="kw">#time series</span>
+                      
+                        <span class="kw">#residual space</span>
+                      
+                    
+                  </p>
+                
+              </div>
+            </div>
+
+            <!-- 우측(노션 아이콘) -->
+            
+            <a class="notion-link" href="https://www.notion.so/ecb8b06cbfeb4a87a0cb280995ada3e4" target="_blank" rel="noopener" aria-label="Open in Notion: Attention-based Representation Learning for Time Series with Principal and Residual Space Monitoring">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <rect x="3.5" y="3.5" width="17" height="17" rx="3" ry="3" stroke-width="1.5"/>
+                <path d="M8 7.5v9h2v-5.8h.1L14 16.5h2v-9h-2v5.7h-.1L10 7.5H8z" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+            
+          </div>
+        </article>
+      
+        <article class="card card-pad" style="grid-column: span 12" id="2024-05-24-itransformer-inverted-transformers-are-effective-for-time-series-forecasting">
+          <div class="news-item">
+            <!-- 좌측(날짜 + 본문) -->
+            <div class="news-body">
+              <div class="news-date">2024-05-24</div>
+
+              <div>
+                <p class="news-title">
+                  <span class="pill">Paper Review</span>
+                  ITRANSFORMER: Inverted Transformers Are Effective for Time Series Forecasting  <!-- 제목 링크 없음 -->
+                </p>
+
+                
+                  <p class="news-meta">
+                    Presenter: SeungSu Kam
+                    
+                       · 
+                      Keywords:
+                      
+                        <span class="kw">#Transformer</span>
+                      
+                        <span class="kw">#time-series forecasting</span>
+                      
+                    
+                  </p>
+                
+              </div>
+            </div>
+
+            <!-- 우측(노션 아이콘) -->
+            
+            <a class="notion-link" href="https://www.notion.so/ce64ff05edfb418d887814bc3781424b" target="_blank" rel="noopener" aria-label="Open in Notion: ITRANSFORMER: Inverted Transformers Are Effective for Time Series Forecasting">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <rect x="3.5" y="3.5" width="17" height="17" rx="3" ry="3" stroke-width="1.5"/>
+                <path d="M8 7.5v9h2v-5.8h.1L14 16.5h2v-9h-2v5.7h-.1L10 7.5H8z" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+            
+          </div>
+        </article>
+      
+        <article class="card card-pad" style="grid-column: span 12" id="2024-04-05-active-domain-adaptation-via-clustering-uncertainty-weighted-embeddings">
+          <div class="news-item">
+            <!-- 좌측(날짜 + 본문) -->
+            <div class="news-body">
+              <div class="news-date">2024-04-05</div>
+
+              <div>
+                <p class="news-title">
+                  <span class="pill">Paper Review</span>
+                  Active Domain Adaptation via Clustering Uncertainty-Weighted Embeddings  <!-- 제목 링크 없음 -->
+                </p>
+
+                
+                  <p class="news-meta">
+                    Presenter: Byungkook Koo
+                    
+                       · 
+                      Keywords:
+                      
+                        <span class="kw">#Domain adaptation</span>
+                      
+                        <span class="kw">#Active learning</span>
+                      
+                    
+                  </p>
+                
+              </div>
+            </div>
+
+            <!-- 우측(노션 아이콘) -->
+            
+            <a class="notion-link" href="https://www.notion.so/53d45668d7a7432db19c834b9255312d" target="_blank" rel="noopener" aria-label="Open in Notion: Active Domain Adaptation via Clustering Uncertainty-Weighted Embeddings">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <rect x="3.5" y="3.5" width="17" height="17" rx="3" ry="3" stroke-width="1.5"/>
+                <path d="M8 7.5v9h2v-5.8h.1L14 16.5h2v-9h-2v5.7h-.1L10 7.5H8z" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+            
+          </div>
+        </article>
+      
+        <article class="card card-pad" style="grid-column: span 12" id="2023-12-01-cvpr-2019-efficient-parameter-free-clustering-using-first-neighbor-relations">
+          <div class="news-item">
+            <!-- 좌측(날짜 + 본문) -->
+            <div class="news-body">
+              <div class="news-date">2023-12-01</div>
+
+              <div>
+                <p class="news-title">
+                  <span class="pill">Paper Review</span>
+                  (CVPR 2019) Efficient Parameter-free Clustering Using First Neighbor Relations  <!-- 제목 링크 없음 -->
+                </p>
+
+                
+                  <p class="news-meta">
+                    Presenter: Chanbeom
+                    
+                       · 
+                      Keywords:
+                      
+                        <span class="kw">#Clustering</span>
+                      
+                    
+                  </p>
+                
+              </div>
+            </div>
+
+            <!-- 우측(노션 아이콘) -->
+            
+            <a class="notion-link" href="https://www.notion.so/21cb9046df9c42949e613aa3362dfde1" target="_blank" rel="noopener" aria-label="Open in Notion: (CVPR 2019) Efficient Parameter-free Clustering Using First Neighbor Relations">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <rect x="3.5" y="3.5" width="17" height="17" rx="3" ry="3" stroke-width="1.5"/>
+                <path d="M8 7.5v9h2v-5.8h.1L14 16.5h2v-9h-2v5.7h-.1L10 7.5H8z" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+            
+          </div>
+        </article>
+      
+    </div>
+  </section>
+</main>
+
+
+  <footer>
+  <div class="container small muted">
+    © 2025 Data Analytics Lab. All Rights Reserved.
+  </div>
+</footer>
+
+<script>
+  // 모바일 드롭다운 토글 (그대로 유지)
+  document.addEventListener('click', (e) => {
+    if (e.target.classList && e.target.classList.contains('dd-toggle')) {
+      e.preventDefault();
+      e.stopPropagation();
+      const li = e.target.closest('.has-dd');
+      if (li) li.classList.toggle('open');
+    }
+  });
+</script>
+
+
+  <!-- 모바일 드롭다운 토글 -->
+  <script>
+    document.addEventListener('click', function(e){
+      if(e.target.matches('.dd-toggle')){
+        e.preventDefault();
+        const li = e.target.closest('.has-dd');
+        if(li) li.classList.toggle('open');
+      }
+    });
+  </script>
+</body>
+</html>

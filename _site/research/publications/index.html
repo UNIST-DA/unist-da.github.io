@@ -1,0 +1,831 @@
+<!doctype html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Publications | Research · Data Analytics Lab</title>
+  <meta name="description" content="Journal and conference publications of the Data Analytics Lab (UNIST IE)." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS (cache-busting) -->
+  <link rel="stylesheet" href="/assets/style.css?v=">
+
+  <!-- ✅ Favicon (이 부분은 반드시 head 안에 위치) -->
+  <link rel="icon" type="image/png" href="/assets/hero/LabSign_DA_background.png">
+</head>
+  
+<body>
+  <header>
+  <div class="container nav" id="navbar">
+    <!-- Brand -->
+    <a class="brand brand-link" href="/">
+      <img class="brand-img"
+           src="/assets/hero/LabSign_DA_only.png?v="
+           alt="DA-Lab logo" loading="eager" decoding="async">
+      <span class="brand-text">
+        <span class="brand-main">Data Analytics Lab</span> · <span class="muted">UNIST IE</span>
+      </span>
+    </a>
+
+    <!-- Mobile menu button -->
+    <button class="menu-btn" aria-label="Toggle Menu"
+            onclick="document.getElementById('navbar').classList.toggle('open')">☰</button>
+
+    <!-- Main nav -->
+    <ul>
+      <li>
+        <a href="/about.html">About</a>
+      </li>
+
+      <li class="has-dd">
+        <a href="/members/professor/">Members</a>
+        <ul class="dropdown" role="menu">
+          <li><a href="/members/professor/">Professor</a></li>
+          <li><a href="/members/students/">Students</a></li>
+          <li><a href="/members/alumni/">Alumni</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dd">
+        <a href="/research/projects/">Research</a>
+        <ul class="dropdown" role="menu">
+          <li><a href="/research/projects/">Projects</a></li>
+          <li><a href="/research/publications/">Publications</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dd">
+        <a href="/activity/Lab%20News/">Activity</a>
+        <ul class="dropdown" role="menu">
+          <li><a href="/activity/Lab%20News/">Lab News</a></li>
+          <li><a href="/activity/Lab%20Events/">Lab Events</a></li>
+          <li><a href="/activity/Lab%20Seminar/">Lab Seminar</a></li>
+        </ul>
+      </li>
+
+      <!-- Contact (단일 항목: 잘못된 중첩 제거) -->
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+
+    <!-- ✅ Theme toggle button -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle color theme" aria-pressed="false">
+      <!-- Sun / Moon SVG -->
+      <svg class="sun" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 4V2M12 22v-2M4.93 4.93 3.52 3.52M20.48 20.48l-1.41-1.41M4 12H2m20 0h-2M4.93 19.07 3.52 20.48M20.48 3.52 19.07 4.93" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<!-- ✅ Galaxy canvas (다크 모드에서 좌우 여백 은하수) -->
+<canvas id="galaxy-canvas"></canvas>
+
+<!-- ✅ Theme & Galaxy JS -->
+<script defer src="/assets/main/theme.js?v="></script>
+
+  <!-- Hero -->
+<div class="page-hero">
+  <div class="container">
+    <div class="breadcrumbs">
+      <a href="/">Home</a> ·
+      <a href="/research/">Research</a> · Publications
+    </div>
+    <h1 class="page-title">Publications</h1>
+    <p class="muted">Selected journal and conference papers.</p>
+  </div>
+</div>
+
+<main class="container">
+  <!-- Toolbar -->
+  <section class="pub-section">
+    <div class="card card-pad toolbar-card">
+      <div class="tabs" role="tablist" aria-label="Publication type tabs" style="margin:0 0 8px">
+        <button class="tab active" data-filter="all" role="tab" aria-selected="true">All</button>
+        <button class="tab" data-filter="journal" role="tab" aria-selected="false">Journal</button>
+        <button class="tab" data-filter="conference" role="tab" aria-selected="false">Conference</button>
+      </div>
+      <input id="pub-search" type="search" placeholder="Search title / authors / venue…" aria-label="Search publications">
+    </div>
+  </section>
+
+  <!-- Publication List -->
+  <section id="pub-list" class="pub-section"><div class="year-block" data-year="2024">
+      <h3 style="margin:0 0 10px">2024</h3><article class="card card-pad pub-item"
+               role="link"
+               tabindex="0"
+               aria-label="Open publication: Multi-modal lifelog data fusion for improved human activity recognition: A hybrid approach"
+               data-type="journal"
+               data-year="2024"
+               data-text="Multi-modal lifelog data fusion for improved human activity recognition: A hybrid approach YongKyung Oh, Sungil Kim Information Fusion"
+               data-url="https://doi.org/10.1016/j.inffus.2024.102464">
+        <div style="display:flex;gap:14px;align-items:flex-start">
+          <div style="flex:1">
+            <div class="pub-title" style="font-weight:700;">
+              Multi-modal lifelog data fusion for improved human activity recognition: A hybrid approach
+            </div>
+            <div class="muted">YongKyung Oh, Sungil Kim</div>
+            <div class="muted"><em>Information Fusion</em>, 2024</div>
+          </div>
+          <div class="muted" style="white-space:nowrap">
+            <span class="tag">journal</span>
+          </div>
+        </div>
+      </article><article class="card card-pad pub-item"
+               role="link"
+               tabindex="0"
+               aria-label="Open publication: Stable Neural Stochastic Differential Equations for Irregular Time Series Classification"
+               data-type="conference"
+               data-year="2024"
+               data-text="Stable Neural Stochastic Differential Equations for Irregular Time Series Classification YongKyung Oh, Dongyouny Lim, Sungil Kim ICLR (spotlight)"
+               data-url="https://doi.org/10.48550/arXiv.2402.14989">
+        <div style="display:flex;gap:14px;align-items:flex-start">
+          <div style="flex:1">
+            <div class="pub-title" style="font-weight:700;">
+              Stable Neural Stochastic Differential Equations for Irregular Time Series Classification
+            </div>
+            <div class="muted">YongKyung Oh, Dongyouny Lim, Sungil Kim</div>
+            <div class="muted"><em>ICLR (spotlight)</em>, 2024</div>
+          </div>
+          <div class="muted" style="white-space:nowrap">
+            <span class="tag">conference</span>
+          </div>
+        </div>
+      </article><article class="card card-pad pub-item"
+               role="link"
+               tabindex="0"
+               aria-label="Open publication: Domain Knowledge-Informed Functional Outlier Detection in the Refrigerator Inspection Lanes"
+               data-type="journal"
+               data-year="2024"
+               data-text="Domain Knowledge-Informed Functional Outlier Detection in the Refrigerator Inspection Lanes Jonghwan Mun, Jitae Yoo, Heesun Kim, Nayi Ryu, Sungil Kim Computers &amp; Industrial Engineering"
+               data-url="https://doi.org/10.1016/j.cie.2024.109936">
+        <div style="display:flex;gap:14px;align-items:flex-start">
+          <div style="flex:1">
+            <div class="pub-title" style="font-weight:700;">
+              Domain Knowledge-Informed Functional Outlier Detection in the Refrigerator Inspection Lanes
+            </div>
+            <div class="muted">Jonghwan Mun, Jitae Yoo, Heesun Kim, Nayi Ryu, Sungil Kim</div>
+            <div class="muted"><em>Computers & Industrial Engineering</em>, 2024</div>
+          </div>
+          <div class="muted" style="white-space:nowrap">
+            <span class="tag">journal</span>
+          </div>
+        </div>
+      </article></div><div class="year-block" data-year="2023">
+      <h3 style="margin:0 0 10px">2023</h3><article class="card card-pad pub-item"
+               role="link"
+               tabindex="0"
+               aria-label="Open publication: Grid-Based Bayesian Bootstrap Approach for Real-Time Detection of Abnormal Vessel Behaviors from AIS Data in Maritime Logistics"
+               data-type="journal"
+               data-year="2023"
+               data-text="Grid-Based Bayesian Bootstrap Approach for Real-Time Detection of Abnormal Vessel Behaviors from AIS Data in Maritime Logistics YongKyung Oh, Sungil Kim IEEE Transactions on Automation Science and Engineering"
+               data-url="https://doi.org/10.1109/TASE.2023.3329041">
+        <div style="display:flex;gap:14px;align-items:flex-start">
+          <div style="flex:1">
+            <div class="pub-title" style="font-weight:700;">
+              Grid-Based Bayesian Bootstrap Approach for Real-Time Detection of Abnormal Vessel Behaviors from AIS Data in Maritime Logistics
+            </div>
+            <div class="muted">YongKyung Oh, Sungil Kim</div>
+            <div class="muted"><em>IEEE Transactions on Automation Science and Engineering</em>, 2023</div>
+          </div>
+          <div class="muted" style="white-space:nowrap">
+            <span class="tag">journal</span>
+          </div>
+        </div>
+      </article><article class="card card-pad pub-item"
+               role="link"
+               tabindex="0"
+               aria-label="Open publication: Sensor Drift Compensation for Gas Mixture Classification in Batch Experiments"
+               data-type="journal"
+               data-year="2023"
+               data-text="Sensor Drift Compensation for Gas Mixture Classification in Batch Experiments YongKyung Oh, Juhui Lee, Sunghyee Lee, Sewon Kim, Sungil Kim Quality and Reliability Engineering International"
+               data-url="https://doi.org/10.1002/qre.3354">
+        <div style="display:flex;gap:14px;align-items:flex-start">
+          <div style="flex:1">
+            <div class="pub-title" style="font-weight:700;">
+              Sensor Drift Compensation for Gas Mixture Classification in Batch Experiments
+            </div>
+            <div class="muted">YongKyung Oh, Juhui Lee, Sunghyee Lee, Sewon Kim, Sungil Kim</div>
+            <div class="muted"><em>Quality and Reliability Engineering International</em>, 2023</div>
+          </div>
+          <div class="muted" style="white-space:nowrap">
+            <span class="tag">journal</span>
+          </div>
+        </div>
+      </article><article class="card card-pad pub-item"
+               role="link"
+               tabindex="0"
+               aria-label="Open publication: Time Delay Estimation of Traffic Congestion Propagation due to Accidents based on Statistical Causality"
+               data-type="journal"
+               data-year="2023"
+               data-text="Time Delay Estimation of Traffic Congestion Propagation due to Accidents based on Statistical Causality YongKyung Oh, Jiin Kwak, JuYeong Lee, Sungil Kim Electronic Research Archive"
+               data-url="https://doi.org/10.48550/arXiv.2108.06717">
+        <div style="display:flex;gap:14px;align-items:flex-start">
+          <div style="flex:1">
+            <div class="pub-title" style="font-weight:700;">
+              Time Delay Estimation of Traffic Congestion Propagation due to Accidents based on Statistical Causality
+            </div>
+            <div class="muted">YongKyung Oh, Jiin Kwak, JuYeong Lee, Sungil Kim</div>
+            <div class="muted"><em>Electronic Research Archive</em>, 2023</div>
+          </div>
+          <div class="muted" style="white-space:nowrap">
+            <span class="tag">journal</span>
+          </div>
+        </div>
+      </article></div><div class="year-block" data-year="2022">
+      <h3 style="margin:0 0 10px">2022</h3><article class="card card-pad pub-item"
+               role="link"
+               tabindex="0"
+               aria-label="Open publication: Multichannel Convolution Neural Network for Gas Mixture Classification"
+               data-type="journal"
+               data-year="2022"
+               data-text="Multichannel Convolution Neural Network for Gas Mixture Classification YongKyung Oh, Chieheyon Lim, Junghye Lee, Sewon Kim, Sungil Kim Annals of Operations Research"
+               data-url="https://doi.org/10.1007/s10479-022-04715-2">
+        <div style="display:flex;gap:14px;align-items:flex-start">
+          <div style="flex:1">
+            <div class="pub-title" style="font-weight:700;">
+              Multichannel Convolution Neural Network for Gas Mixture Classification
+            </div>
+            <div class="muted">YongKyung Oh, Chieheyon Lim, Junghye Lee, Sewon Kim, Sungil Kim</div>
+            <div class="muted"><em>Annals of Operations Research</em>, 2022</div>
+          </div>
+          <div class="muted" style="white-space:nowrap">
+            <span class="tag">journal</span>
+          </div>
+        </div>
+      </article><article class="card card-pad pub-item"
+               role="link"
+               tabindex="0"
+               aria-label="Open publication: Quantifying Incident Impacts and Identifying Influential Factors on Urban Traffic Networks"
+               data-type="journal"
+               data-year="2022"
+               data-text="Quantifying Incident Impacts and Identifying Influential Factors on Urban Traffic Networks JuYeong Lee, Jiin Kwak, YongKyung Oh, Sungil Kim Transportmetrica B: Transport Dynamics"
+               data-url="https://doi.org/10.1080/21680566.2022.2063205">
+        <div style="display:flex;gap:14px;align-items:flex-start">
+          <div style="flex:1">
+            <div class="pub-title" style="font-weight:700;">
+              Quantifying Incident Impacts and Identifying Influential Factors on Urban Traffic Networks
+            </div>
+            <div class="muted">JuYeong Lee, Jiin Kwak, YongKyung Oh, Sungil Kim</div>
+            <div class="muted"><em>Transportmetrica B: Transport Dynamics</em>, 2022</div>
+          </div>
+          <div class="muted" style="white-space:nowrap">
+            <span class="tag">journal</span>
+          </div>
+        </div>
+      </article></div><div class="year-block" data-year="2021">
+      <h3 style="margin:0 0 10px">2021</h3><article class="card card-pad pub-item"
+               role="link"
+               tabindex="0"
+               aria-label="Open publication: Maximum feasibility estimation"
+               data-type="journal"
+               data-year="2021"
+               data-text="Maximum feasibility estimation Sungil Kim Information Sciences"
+               data-url="https://doi.org/10.1016/j.ins.2021.04.012">
+        <div style="display:flex;gap:14px;align-items:flex-start">
+          <div style="flex:1">
+            <div class="pub-title" style="font-weight:700;">
+              Maximum feasibility estimation
+            </div>
+            <div class="muted">Sungil Kim</div>
+            <div class="muted"><em>Information Sciences</em>, 2021</div>
+          </div>
+          <div class="muted" style="white-space:nowrap">
+            <span class="tag">journal</span>
+          </div>
+        </div>
+      </article><article class="card card-pad pub-item"
+               role="link"
+               tabindex="0"
+               aria-label="Open publication: Transfer-Learning based approach for mixture gas classification"
+               data-type="journal"
+               data-year="2021"
+               data-text="Transfer-Learning based approach for mixture gas classification YongKyung Oh, Namu Kim, Sungil Kim Journal of the Korean Institute of Industrial Engineers"
+               data-url="https://doi.org/10.7232/JKIIE.2021.47.2.144">
+        <div style="display:flex;gap:14px;align-items:flex-start">
+          <div style="flex:1">
+            <div class="pub-title" style="font-weight:700;">
+              Transfer-Learning based approach for mixture gas classification
+            </div>
+            <div class="muted">YongKyung Oh, Namu Kim, Sungil Kim</div>
+            <div class="muted"><em>Journal of the Korean Institute of Industrial Engineers</em>, 2021</div>
+          </div>
+          <div class="muted" style="white-space:nowrap">
+            <span class="tag">journal</span>
+          </div>
+        </div>
+      </article><article class="card card-pad pub-item"
+               role="link"
+               tabindex="0"
+               aria-label="Open publication: Simulation-based Anomaly Detection in Nuclear Reactors"
+               data-type="journal"
+               data-year="2021"
+               data-text="Simulation-based Anomaly Detection in Nuclear Reactors YongKyung Oh, Hanjoo Kim, Deokjung Lee, Sungil Kim Journal of the Korean Institute of Industrial Engineers"
+               data-url="https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE10505830">
+        <div style="display:flex;gap:14px;align-items:flex-start">
+          <div style="flex:1">
+            <div class="pub-title" style="font-weight:700;">
+              Simulation-based Anomaly Detection in Nuclear Reactors
+            </div>
+            <div class="muted">YongKyung Oh, Hanjoo Kim, Deokjung Lee, Sungil Kim</div>
+            <div class="muted"><em>Journal of the Korean Institute of Industrial Engineers</em>, 2021</div>
+          </div>
+          <div class="muted" style="white-space:nowrap">
+            <span class="tag">journal</span>
+          </div>
+        </div>
+      </article><article class="card card-pad pub-item"
+               role="link"
+               tabindex="0"
+               aria-label="Open publication: Multi-channel Convolution Neural Network for Gas Mixture Classification"
+               data-type="conference"
+               data-year="2021"
+               data-text="Multi-channel Convolution Neural Network for Gas Mixture Classification YongKyung Oh, Sungil Kim  ICDMW (International Conference on Data Mining Workshops)"
+               data-url="https://doi.org/10.1109/ICDMW53433.2021.00143">
+        <div style="display:flex;gap:14px;align-items:flex-start">
+          <div style="flex:1">
+            <div class="pub-title" style="font-weight:700;">
+              Multi-channel Convolution Neural Network for Gas Mixture Classification
+            </div>
+            <div class="muted">YongKyung Oh, Sungil Kim</div>
+            <div class="muted"><em> ICDMW (International Conference on Data Mining Workshops)</em>, 2021</div>
+          </div>
+          <div class="muted" style="white-space:nowrap">
+            <span class="tag">conference</span>
+          </div>
+        </div>
+      </article></div><div class="year-block" data-year="2020">
+      <h3 style="margin:0 0 10px">2020</h3><article class="card card-pad pub-item"
+               role="link"
+               tabindex="0"
+               aria-label="Open publication: Multiresolution spatial generalized linear mixed model for integrating multi-fidelity spatial count data without common identifiers between data sources"
+               data-type="journal"
+               data-year="2020"
+               data-text="Multiresolution spatial generalized linear mixed model for integrating multi-fidelity spatial count data without common identifiers between data sources Sungil Kim, Rong Duan, Guang-Qin Ma, Heeyoung Kim Spatial Statistics"
+               data-url="https://doi.org/10.1016/j.spasta.2020.100467">
+        <div style="display:flex;gap:14px;align-items:flex-start">
+          <div style="flex:1">
+            <div class="pub-title" style="font-weight:700;">
+              Multiresolution spatial generalized linear mixed model for integrating multi-fidelity spatial count data without common identifiers between data sources
+            </div>
+            <div class="muted">Sungil Kim, Rong Duan, Guang-Qin Ma, Heeyoung Kim</div>
+            <div class="muted"><em>Spatial Statistics</em>, 2020</div>
+          </div>
+          <div class="muted" style="white-space:nowrap">
+            <span class="tag">journal</span>
+          </div>
+        </div>
+      </article><article class="card card-pad pub-item"
+               role="link"
+               tabindex="0"
+               aria-label="Open publication: Maritime anomaly detection based on VAE–CUSUM monitoring system"
+               data-type="journal"
+               data-year="2020"
+               data-text="Maritime anomaly detection based on VAE–CUSUM monitoring system Jaemin Park, Sungil Kim Journal of the Korean Institute of Industrial Engineers"
+               data-url="http://doi.org/10.7232/JKIIE.2020.46.4.432">
+        <div style="display:flex;gap:14px;align-items:flex-start">
+          <div style="flex:1">
+            <div class="pub-title" style="font-weight:700;">
+              Maritime anomaly detection based on VAE–CUSUM monitoring system
+            </div>
+            <div class="muted">Jaemin Park, Sungil Kim</div>
+            <div class="muted"><em>Journal of the Korean Institute of Industrial Engineers</em>, 2020</div>
+          </div>
+          <div class="muted" style="white-space:nowrap">
+            <span class="tag">journal</span>
+          </div>
+        </div>
+      </article></div><div class="year-block" data-year="2019">
+      <h3 style="margin:0 0 10px">2019</h3><article class="card card-pad pub-item"
+               role="link"
+               tabindex="0"
+               aria-label="Open publication: Spatial cluster detection in mobility networks: a copula approach"
+               data-type="journal"
+               data-year="2019"
+               data-text="Spatial cluster detection in mobility networks: a copula approach Heeyoung Kim, Rong Duan, Sungil Kim, Jaehwan Lee, Guang-Qin Ma Journal of the Royal Statistical Society: Series C"
+               data-url="https://doi.org/10.1111/rssc.12307">
+        <div style="display:flex;gap:14px;align-items:flex-start">
+          <div style="flex:1">
+            <div class="pub-title" style="font-weight:700;">
+              Spatial cluster detection in mobility networks: a copula approach
+            </div>
+            <div class="muted">Heeyoung Kim, Rong Duan, Sungil Kim, Jaehwan Lee, Guang-Qin Ma</div>
+            <div class="muted"><em>Journal of the Royal Statistical Society: Series C</em>, 2019</div>
+          </div>
+          <div class="muted" style="white-space:nowrap">
+            <span class="tag">journal</span>
+          </div>
+        </div>
+      </article><article class="card card-pad pub-item"
+               role="link"
+               tabindex="0"
+               aria-label="Open publication: Revealing household characteristics using connected home products"
+               data-type="journal"
+               data-year="2019"
+               data-text="Revealing household characteristics using connected home products Sungil Kim Information Sciences"
+               data-url="https://doi.org/10.1016/j.ins.2019.02.033">
+        <div style="display:flex;gap:14px;align-items:flex-start">
+          <div style="flex:1">
+            <div class="pub-title" style="font-weight:700;">
+              Revealing household characteristics using connected home products
+            </div>
+            <div class="muted">Sungil Kim</div>
+            <div class="muted"><em>Information Sciences</em>, 2019</div>
+          </div>
+          <div class="muted" style="white-space:nowrap">
+            <span class="tag">journal</span>
+          </div>
+        </div>
+      </article><article class="card card-pad pub-item"
+               role="link"
+               tabindex="0"
+               aria-label="Open publication: A practical approach to measuring the impacts of stockouts on demand"
+               data-type="journal"
+               data-year="2019"
+               data-text="A practical approach to measuring the impacts of stockouts on demand Sungil Kim, Heeyoung Kim, Jye-Chyi Lu Journal of Business &amp; Industrial Marketing"
+               data-url="https://doi.org/10.1108/JBIM-04-2018-0126">
+        <div style="display:flex;gap:14px;align-items:flex-start">
+          <div style="flex:1">
+            <div class="pub-title" style="font-weight:700;">
+              A practical approach to measuring the impacts of stockouts on demand
+            </div>
+            <div class="muted">Sungil Kim, Heeyoung Kim, Jye-Chyi Lu</div>
+            <div class="muted"><em>Journal of Business & Industrial Marketing</em>, 2019</div>
+          </div>
+          <div class="muted" style="white-space:nowrap">
+            <span class="tag">journal</span>
+          </div>
+        </div>
+      </article></div><div class="year-block" data-year="2017">
+      <h3 style="margin:0 0 10px">2017</h3><article class="card card-pad pub-item"
+               role="link"
+               tabindex="0"
+               aria-label="Open publication: Batch sequential minimum energy design with design-region adaptation"
+               data-type="journal"
+               data-year="2017"
+               data-text="Batch sequential minimum energy design with design-region adaptation Heeyoung Kim, Justin T. Vastola, Sungil Kim, Jye-Chyi Lu, Martha A. Grover Journal of Quality Technology"
+               data-url="https://doi.org/10.1080/00224065.2017.11918182">
+        <div style="display:flex;gap:14px;align-items:flex-start">
+          <div style="flex:1">
+            <div class="pub-title" style="font-weight:700;">
+              Batch sequential minimum energy design with design-region adaptation
+            </div>
+            <div class="muted">Heeyoung Kim, Justin T. Vastola, Sungil Kim, Jye-Chyi Lu, Martha A. Grover</div>
+            <div class="muted"><em>Journal of Quality Technology</em>, 2017</div>
+          </div>
+          <div class="muted" style="white-space:nowrap">
+            <span class="tag">journal</span>
+          </div>
+        </div>
+      </article><article class="card card-pad pub-item"
+               role="link"
+               tabindex="0"
+               aria-label="Open publication: Early detection of vessel delays using combined historical and real-time information"
+               data-type="journal"
+               data-year="2017"
+               data-text="Early detection of vessel delays using combined historical and real-time information Sungil Kim, Heeyoung Kim, Yongro Park Journal of the Operational Research Society"
+               data-url="https://link.springer.com/article/10.1057/s41274-016-0104-4">
+        <div style="display:flex;gap:14px;align-items:flex-start">
+          <div style="flex:1">
+            <div class="pub-title" style="font-weight:700;">
+              Early detection of vessel delays using combined historical and real-time information
+            </div>
+            <div class="muted">Sungil Kim, Heeyoung Kim, Yongro Park</div>
+            <div class="muted"><em>Journal of the Operational Research Society</em>, 2017</div>
+          </div>
+          <div class="muted" style="white-space:nowrap">
+            <span class="tag">journal</span>
+          </div>
+        </div>
+      </article><article class="card card-pad pub-item"
+               role="link"
+               tabindex="0"
+               aria-label="Open publication: Incorporation of engineering knowledge into the modeling process: a local approach"
+               data-type="journal"
+               data-year="2017"
+               data-text="Incorporation of engineering knowledge into the modeling process: a local approach Heeyoung Kim, Justin T. Vastola, Sungil Kim, Jye-Chyi Lu, Martha A. Grover International Journal of Production Research"
+               data-url="https://doi.org/10.1080/00207543.2016.1278082">
+        <div style="display:flex;gap:14px;align-items:flex-start">
+          <div style="flex:1">
+            <div class="pub-title" style="font-weight:700;">
+              Incorporation of engineering knowledge into the modeling process: a local approach
+            </div>
+            <div class="muted">Heeyoung Kim, Justin T. Vastola, Sungil Kim, Jye-Chyi Lu, Martha A. Grover</div>
+            <div class="muted"><em>International Journal of Production Research</em>, 2017</div>
+          </div>
+          <div class="muted" style="white-space:nowrap">
+            <span class="tag">journal</span>
+          </div>
+        </div>
+      </article><article class="card card-pad pub-item"
+               role="link"
+               tabindex="0"
+               aria-label="Open publication: An integrated holistic model of a complex process"
+               data-type="journal"
+               data-year="2017"
+               data-text="An integrated holistic model of a complex process Heeyoung Kim, Sungil Kim, Jian Deng, Jye-Chyi Lu, K. Wang, C. Zhang, Martha A. Grover, B. Wang The International Journal of Advanced Manufacturing Technology"
+               data-url="https://link.springer.com/article/10.1007/s00170-016-9088-0">
+        <div style="display:flex;gap:14px;align-items:flex-start">
+          <div style="flex:1">
+            <div class="pub-title" style="font-weight:700;">
+              An integrated holistic model of a complex process
+            </div>
+            <div class="muted">Heeyoung Kim, Sungil Kim, Jian Deng, Jye-Chyi Lu, K. Wang, C. Zhang, Martha A. Grover, B. Wang</div>
+            <div class="muted"><em>The International Journal of Advanced Manufacturing Technology</em>, 2017</div>
+          </div>
+          <div class="muted" style="white-space:nowrap">
+            <span class="tag">journal</span>
+          </div>
+        </div>
+      </article></div><div class="year-block" data-year="2016">
+      <h3 style="margin:0 0 10px">2016</h3><article class="card card-pad pub-item"
+               role="link"
+               tabindex="0"
+               aria-label="Open publication: Ordinal classification of imbalanced data with application in emergency and disaster information services"
+               data-type="journal"
+               data-year="2016"
+               data-text="Ordinal classification of imbalanced data with application in emergency and disaster information services Sungil Kim, Heeyoung Kim, Younghwan Namkoong IEEE Intelligent Systems"
+               data-url="https://doi.org/10.1109/MIS.2016.27">
+        <div style="display:flex;gap:14px;align-items:flex-start">
+          <div style="flex:1">
+            <div class="pub-title" style="font-weight:700;">
+              Ordinal classification of imbalanced data with application in emergency and disaster information services
+            </div>
+            <div class="muted">Sungil Kim, Heeyoung Kim, Younghwan Namkoong</div>
+            <div class="muted"><em>IEEE Intelligent Systems</em>, 2016</div>
+          </div>
+          <div class="muted" style="white-space:nowrap">
+            <span class="tag">journal</span>
+          </div>
+        </div>
+      </article><article class="card card-pad pub-item"
+               role="link"
+               tabindex="0"
+               aria-label="Open publication: A new metric of absolute percentage error for intermittent demand forecasts"
+               data-type="journal"
+               data-year="2016"
+               data-text="A new metric of absolute percentage error for intermittent demand forecasts Sungil Kim, Heeyoung Kim International Journal of Forecasting"
+               data-url="https://doi.org/10.1016/j.ijforecast.2015.12.003">
+        <div style="display:flex;gap:14px;align-items:flex-start">
+          <div style="flex:1">
+            <div class="pub-title" style="font-weight:700;">
+              A new metric of absolute percentage error for intermittent demand forecasts
+            </div>
+            <div class="muted">Sungil Kim, Heeyoung Kim</div>
+            <div class="muted"><em>International Journal of Forecasting</em>, 2016</div>
+          </div>
+          <div class="muted" style="white-space:nowrap">
+            <span class="tag">journal</span>
+          </div>
+        </div>
+      </article></div><div class="year-block" data-year="2015">
+      <h3 style="margin:0 0 10px">2015</h3><article class="card card-pad pub-item"
+               role="link"
+               tabindex="0"
+               aria-label="Open publication: Adaptive combined space-filling and D-optimal designs"
+               data-type="journal"
+               data-year="2015"
+               data-text="Adaptive combined space-filling and D-optimal designs Sungil Kim, Heeyoung Kim, Richard W. Lu, Jye-Chyi Lu, Michael J. Casciato, Martha A. Grover International Journal of Production Research"
+               data-url="https://doi.org/10.1080/00207543.2015.1037067">
+        <div style="display:flex;gap:14px;align-items:flex-start">
+          <div style="flex:1">
+            <div class="pub-title" style="font-weight:700;">
+              Adaptive combined space-filling and D-optimal designs
+            </div>
+            <div class="muted">Sungil Kim, Heeyoung Kim, Richard W. Lu, Jye-Chyi Lu, Michael J. Casciato, Martha A. Grover</div>
+            <div class="muted"><em>International Journal of Production Research</em>, 2015</div>
+          </div>
+          <div class="muted" style="white-space:nowrap">
+            <span class="tag">journal</span>
+          </div>
+        </div>
+      </article><article class="card card-pad pub-item"
+               role="link"
+               tabindex="0"
+               aria-label="Open publication: Layers of experiments with adaptive combined design"
+               data-type="journal"
+               data-year="2015"
+               data-text="Layers of experiments with adaptive combined design Sungil Kim, Heeyoung Kim, Richard W. Lu, Jye-Chyi Lu, Michael J. Casciato, Martha A. Grover Naval Research Logistics"
+               data-url="https://doi.org/10.1002/nav.21618">
+        <div style="display:flex;gap:14px;align-items:flex-start">
+          <div style="flex:1">
+            <div class="pub-title" style="font-weight:700;">
+              Layers of experiments with adaptive combined design
+            </div>
+            <div class="muted">Sungil Kim, Heeyoung Kim, Richard W. Lu, Jye-Chyi Lu, Michael J. Casciato, Martha A. Grover</div>
+            <div class="muted"><em>Naval Research Logistics</em>, 2015</div>
+          </div>
+          <div class="muted" style="white-space:nowrap">
+            <span class="tag">journal</span>
+          </div>
+        </div>
+      </article></div><div class="year-block" data-year="2012">
+      <h3 style="margin:0 0 10px">2012</h3><article class="card card-pad pub-item"
+               role="link"
+               tabindex="0"
+               aria-label="Open publication: Optimization of a carbon dioxide-assisted nanoparticle deposition process using sequential experimental design with adaptive design space"
+               data-type="journal"
+               data-year="2012"
+               data-text="Optimization of a carbon dioxide-assisted nanoparticle deposition process using sequential experimental design with adaptive design space Michael J. Casciato, Sungil Kim, Jye-Chyi Lu, Dennis W. Hess, Martha A. Grover Industrial &amp; Engineering Chemistry Research"
+               data-url="http://dx.doi.org/10.1021/ie2028574">
+        <div style="display:flex;gap:14px;align-items:flex-start">
+          <div style="flex:1">
+            <div class="pub-title" style="font-weight:700;">
+              Optimization of a carbon dioxide-assisted nanoparticle deposition process using sequential experimental design with adaptive design space
+            </div>
+            <div class="muted">Michael J. Casciato, Sungil Kim, Jye-Chyi Lu, Dennis W. Hess, Martha A. Grover</div>
+            <div class="muted"><em>Industrial & Engineering Chemistry Research</em>, 2012</div>
+          </div>
+          <div class="muted" style="white-space:nowrap">
+            <span class="tag">journal</span>
+          </div>
+        </div>
+      </article><article class="card card-pad pub-item"
+               role="link"
+               tabindex="0"
+               aria-label="Open publication: Optimization of carbon dioxide-assisted nanoparticle deposition process with uncertain design space"
+               data-type="conference"
+               data-year="2012"
+               data-text="Optimization of carbon dioxide-assisted nanoparticle deposition process with uncertain design space Michael J. Casciato, Sungil Kim, Jye-Chyi Lu, Dennis W. Hess, Martha A. Grover Computer Aided Chemical Engineering"
+               data-url="http://dx.doi.org/10.1016/B978-0-444-59506-5.50069-9">
+        <div style="display:flex;gap:14px;align-items:flex-start">
+          <div style="flex:1">
+            <div class="pub-title" style="font-weight:700;">
+              Optimization of carbon dioxide-assisted nanoparticle deposition process with uncertain design space
+            </div>
+            <div class="muted">Michael J. Casciato, Sungil Kim, Jye-Chyi Lu, Dennis W. Hess, Martha A. Grover</div>
+            <div class="muted"><em>Computer Aided Chemical Engineering</em>, 2012</div>
+          </div>
+          <div class="muted" style="white-space:nowrap">
+            <span class="tag">conference</span>
+          </div>
+        </div>
+      </article></div><div class="year-block" data-year="2005">
+      <h3 style="margin:0 0 10px">2005</h3><article class="card card-pad pub-item"
+               role="link"
+               tabindex="0"
+               aria-label="Open publication: A time prediction model of cursor movement with path constraints"
+               data-type="journal"
+               data-year="2005"
+               data-text="A time prediction model of cursor movement with path constraints Seung-Kweon Hong, Sungil Kim Journal of Korean Institute of Industrial Engineers"
+               data-url="https://koreascience.kr/article/JAKO200510103463043.view">
+        <div style="display:flex;gap:14px;align-items:flex-start">
+          <div style="flex:1">
+            <div class="pub-title" style="font-weight:700;">
+              A time prediction model of cursor movement with path constraints
+            </div>
+            <div class="muted">Seung-Kweon Hong, Sungil Kim</div>
+            <div class="muted"><em>Journal of Korean Institute of Industrial Engineers</em>, 2005</div>
+          </div>
+          <div class="muted" style="white-space:nowrap">
+            <span class="tag">journal</span>
+          </div>
+        </div>
+      </article></div></section>
+</main>
+
+<!-- Styles -->
+<style>
+  /* 섹션 간격 */
+  .pub-section:first-of-type { margin-top: 0px; }
+  .pub-section + .pub-section { margin-top: 0px; }
+
+  /* 툴바 카드 */
+  .toolbar-card { padding: 10px 12px; border-radius: 12px; }
+
+  /* 탭 */
+  .tab { padding:6px 10px; border:1px solid var(--line); border-radius:10px; background:#fff; cursor:pointer; font-size:14px; }
+  .tab + .tab { margin-left:6px; }
+  .tab.active { background:#111; color:#fff; border-color:#111; }
+
+  /* 검색창 */
+  #pub-search{
+    width:100%;
+    padding:8px 10px;
+    border:1px solid var(--line);
+    border-radius:10px;
+    font-size:14px;
+    line-height:1.4;
+  }
+
+  /* 연도 블록 간격 */
+  .year-block { margin: 16px 0 0; }
+  #pub-list .year-block:first-child { margin-top: 8px; }
+
+  /* 같은 해 내 카드 간격 */
+  .year-block .pub-item + .pub-item { margin-top: 12px; }
+
+  /* 태그 pill */
+  .tag { display:inline-block; border:1px solid #e3e3e3; border-radius:999px; padding:2px 10px; font-size:12px; color:#374151; background:#fff; }
+
+  /* 카드 전체 클릭 스타일 */
+  .pub-item { cursor: pointer; transition: box-shadow .15s ease, transform .05s ease; }
+  .pub-item:hover { box-shadow: 0 6px 20px rgba(0,0,0,.06); }
+  .pub-item:active { transform: translateY(1px); }
+  .pub-item .pub-title { color: inherit; text-decoration: none; }
+
+  @media (max-width: 720px){
+    .pub-section:first-of-type { margin-top: 24px; }
+    .pub-section + .pub-section { margin-top: 12px; }
+  }
+</style>
+
+<!-- Scripts -->
+<script>
+  // Tabs (type filter)
+  const tabs = document.querySelectorAll('.tabs .tab');
+  const items = document.querySelectorAll('.pub-item');
+  const yearBlocks = document.querySelectorAll('.year-block');
+  let activeType = 'all';
+
+  tabs.forEach(t=>{
+    t.addEventListener('click', ()=>{
+      tabs.forEach(x=>x.classList.remove('active'));
+      t.classList.add('active');
+      activeType = t.dataset.filter;
+      applyFilter();
+    });
+  });
+
+  // Search
+  const q = document.getElementById('pub-search');
+  if(q){ q.addEventListener('input', applyFilter); }
+
+  function applyFilter(){
+    const term = ((q && q.value) ? q.value : '').toLowerCase().trim();
+    items.forEach(it=>{
+      const matchType = (activeType==='all' || it.dataset.type===activeType);
+      const text = (it.dataset.text || '').toLowerCase();
+      const matchText = text.indexOf(term) !== -1;
+      const visible = matchType && matchText;
+      it.style.display = visible ? '' : 'none';
+    });
+    // hide empty year blocks
+    yearBlocks.forEach(b=>{
+      const visibleItems = b.querySelectorAll('.pub-item:not([style*="display: none"])');
+      b.style.display = visibleItems.length ? '' : 'none';
+    });
+  }
+  applyFilter();
+
+  // 카드 전체 클릭 → url로 이동 (새 탭)
+  items.forEach(it=>{
+    const url = it.dataset.url;
+    if(url){
+      it.addEventListener('click', (e)=>{
+        // 내부의 링크 요소를 따로 두지 않으므로 바로 이동
+        window.open(url, '_blank', 'noopener');
+      });
+      // 키보드 접근성(Enter/Space)
+      it.addEventListener('keydown', (e)=>{
+        if(e.key === 'Enter' || e.key === ' '){
+          e.preventDefault();
+          window.open(url, '_blank', 'noopener');
+        }
+      });
+    } else {
+      // URL이 없으면 클릭 비활성화
+      it.style.cursor = 'default';
+      it.setAttribute('aria-disabled', 'true');
+    }
+  });
+</script>
+
+  <footer>
+  <div class="container small muted">
+    © 2025 Data Analytics Lab. All Rights Reserved.
+  </div>
+</footer>
+
+<script>
+  // 모바일 드롭다운 토글 (그대로 유지)
+  document.addEventListener('click', (e) => {
+    if (e.target.classList && e.target.classList.contains('dd-toggle')) {
+      e.preventDefault();
+      e.stopPropagation();
+      const li = e.target.closest('.has-dd');
+      if (li) li.classList.toggle('open');
+    }
+  });
+</script>
+
+
+  <!-- 모바일 드롭다운 토글 -->
+  <script>
+    document.addEventListener('click', function(e){
+      if(e.target.matches('.dd-toggle')){
+        e.preventDefault();
+        const li = e.target.closest('.has-dd');
+        if(li) li.classList.toggle('open');
+      }
+    });
+  </script>
+</body>
+</html>

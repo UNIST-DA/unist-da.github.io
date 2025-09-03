@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>LG LQC (Line Quality Control)</title>
+  <meta name="description" content="Data Analytics Lab" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS (cache-busting) -->
+  <link rel="stylesheet" href="/assets/style.css?v=">
+
+  <!-- ✅ Favicon (이 부분은 반드시 head 안에 위치) -->
+  <link rel="icon" type="image/png" href="/assets/hero/LabSign_DA_background.png">
+</head>
+  
+<body>
+  <header>
+  <div class="container nav" id="navbar">
+    <!-- Brand -->
+    <a class="brand brand-link" href="/">
+      <img class="brand-img"
+           src="/assets/hero/LabSign_DA_only.png?v="
+           alt="DA-Lab logo" loading="eager" decoding="async">
+      <span class="brand-text">
+        <span class="brand-main">Data Analytics Lab</span> · <span class="muted">UNIST IE</span>
+      </span>
+    </a>
+
+    <!-- Mobile menu button -->
+    <button class="menu-btn" aria-label="Toggle Menu"
+            onclick="document.getElementById('navbar').classList.toggle('open')">☰</button>
+
+    <!-- Main nav -->
+    <ul>
+      <li>
+        <a href="/about.html">About</a>
+      </li>
+
+      <li class="has-dd">
+        <a href="/members/professor/">Members</a>
+        <ul class="dropdown" role="menu">
+          <li><a href="/members/professor/">Professor</a></li>
+          <li><a href="/members/students/">Students</a></li>
+          <li><a href="/members/alumni/">Alumni</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dd">
+        <a href="/research/projects/">Research</a>
+        <ul class="dropdown" role="menu">
+          <li><a href="/research/projects/">Projects</a></li>
+          <li><a href="/research/publications/">Publications</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dd">
+        <a href="/activity/Lab%20News/">Activity</a>
+        <ul class="dropdown" role="menu">
+          <li><a href="/activity/Lab%20News/">Lab News</a></li>
+          <li><a href="/activity/Lab%20Events/">Lab Events</a></li>
+          <li><a href="/activity/Lab%20Seminar/">Lab Seminar</a></li>
+        </ul>
+      </li>
+
+      <!-- Contact (단일 항목: 잘못된 중첩 제거) -->
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+
+    <!-- ✅ Theme toggle button -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle color theme" aria-pressed="false">
+      <!-- Sun / Moon SVG -->
+      <svg class="sun" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 4V2M12 22v-2M4.93 4.93 3.52 3.52M20.48 20.48l-1.41-1.41M4 12H2m20 0h-2M4.93 19.07 3.52 20.48M20.48 3.52 19.07 4.93" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<!-- ✅ Galaxy canvas (다크 모드에서 좌우 여백 은하수) -->
+<canvas id="galaxy-canvas"></canvas>
+
+<!-- ✅ Theme & Galaxy JS -->
+<script defer src="/assets/main/theme.js?v="></script>
+
+  <div class="page-hero">
+  <div class="container">
+    <div class="breadcrumbs">
+      <a href="/">Home</a> ·
+      <a href="/research/projects/">Projects</a>
+    </div>
+    <h1 class="page-title" style="margin-bottom:4px">LG LQC (Line Quality Control)</h1><p class="muted" style="margin:0">Detect latent defects on production lines by fusing domain knowledge with functional outlier detection.</p></div>
+</div>
+
+<style>
+  /* ===== minimal project page ===== */
+  .proj-wrap{ max-width:900px; margin:0 auto; }
+  .proj-meta{ margin:10px 0 0; display:flex; flex-wrap:wrap; gap:10px 14px; align-items:center; }
+  .pill{ display:inline-flex; align-items:center; gap:6px; padding:2px 10px; border:1px solid #e5e7eb; border-radius:999px; font-size:12px; color:#374151; background:#fff; }
+  .pill-label{ color:#6b7280; font-weight:500; margin-right:-2px; }
+  .pill-compact{ padding:2px 8px; }
+  .proj-period{ color:#6b7280; font-size:13px; }
+  /* tags line (ghost/transparent chips) */
+  .proj-tags{ margin:6px 0 18px; display:flex; flex-wrap:wrap; gap:6px; }
+  .tag-ghost{ display:inline-flex; align-items:center; padding:2px 8px; border:1px solid #e5e7eb; border-radius:999px; font-size:12px; color:#6b7280; background:transparent; }
+
+  .proj-sep{ height:1px; background:#f0f2f5; border:0; margin:14px 0 24px; }
+  .proj-hero-img{ width:100%; height:auto; border-radius:10px; object-fit:cover; margin:0 0 8px; }
+  .proj-caption{ margin:4px 0 18px; color:#6b7280; font-size:14px; }
+  .proj-links{ margin:22px 0 0; padding:0; list-style:none; }
+  .proj-links li+li{ margin-top:6px; }
+  .proj-links a{ text-decoration:none; color:inherit; display:inline-flex; align-items:center; gap:8px; }
+  .proj-links svg{ flex:0 0 auto }
+  @media (max-width: 720px){
+    .proj-wrap{ padding:0 2px; }
+  }
+</style>
+
+<main class="container"><article class="proj-wrap">
+
+    <!-- Meta row 1: Organizer / Participants / Category / Period -->
+    <div class="proj-meta"><span class="pill"><span class="pill-label">Organizer</span>LG Electronics</span><span class="pill">
+          <span class="pill-label">Participants</span>
+          학생1, 학생2
+        </span><span class="pill pill-compact">Artificial Intelligence in Quality Engineering</span><span class="proj-period">2021–2024</span></div>
+
+    <!-- Meta row 2: Tags (transparent chips) --><div class="proj-tags"><span class="tag-ghost">Functional Data Analysis</span><span class="tag-ghost">Sequential Transformations</span><span class="tag-ghost">Outlier Detection</span><span class="tag-ghost">Manufacturing AI</span><span class="tag-ghost">Quality Inspection</span><span class="tag-ghost">Refrigerator Compressor</span></div><hr class="proj-sep"><img class="proj-hero-img"
+           src="/assets/research/projects/lg-lqc-fig6.png"
+           alt="LG LQC (Line Quality Control)"><p class="proj-caption">Proposed monitoring framework integrating domain knowledge with functional outlier detection (Figure 2).</p><!-- Project body (.md content) -->
+    <div class="prose">
+      <p>LG LQC 프로젝트 상세 내용:</p>
+
+<h2 id="background">Background</h2>
+<p>라인 품질 지표(LQC) 기반의 공정 이상 탐지 및 원인 규명.</p>
+
+<h2 id="goals">Goals</h2>
+<ul>
+  <li>결측·이상 패턴 자동 탐지</li>
+  <li>원인 후보(혐의 인자) 도출 및 우선순위화</li>
+  <li>공정 조건 변경 시 품질 영향 예측</li>
+</ul>
+
+<h2 id="methods">Methods</h2>
+<ul>
+  <li>시계열 임퓨테이션 &amp; 디퓨전 기반 생성/복원</li>
+  <li>인터프리터블 피처 중요도(Shapley/Counterfactual)</li>
+  <li>도메인 적응(공정/장비 이식)</li>
+</ul>
+
+<h2 id="deliverables">Deliverables</h2>
+<ul>
+  <li>PoC 대시보드, 내부 리포트, 특허/논문 초안</li>
+</ul>
+
+    </div><ul class="proj-links"><li>
+            <a href="/research/projects/contents/lg-lqc/"
+               target="_blank" rel="noopener">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10 13a5 5 0 0 1 7 0l1 1a5 5 0 0 1-7 7l-1-1"/>
+                <path d="M14 11a5 5 0 0 1-7 0l-1-1a5 5 0 0 1 7-7l1 1"/>
+              </svg>
+              <span>Project Link</span>
+            </a>
+          </li></ul></article></main>
+
+  <footer>
+  <div class="container small muted">
+    © 2025 Data Analytics Lab. All Rights Reserved.
+  </div>
+</footer>
+
+<script>
+  // 모바일 드롭다운 토글 (그대로 유지)
+  document.addEventListener('click', (e) => {
+    if (e.target.classList && e.target.classList.contains('dd-toggle')) {
+      e.preventDefault();
+      e.stopPropagation();
+      const li = e.target.closest('.has-dd');
+      if (li) li.classList.toggle('open');
+    }
+  });
+</script>
+
+
+  <!-- 모바일 드롭다운 토글 -->
+  <script>
+    document.addEventListener('click', function(e){
+      if(e.target.matches('.dd-toggle')){
+        e.preventDefault();
+        const li = e.target.closest('.has-dd');
+        if(li) li.classList.toggle('open');
+      }
+    });
+  </script>
+</body>
+</html>

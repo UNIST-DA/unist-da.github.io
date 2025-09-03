@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>About</title>
+  <meta name="description" content="Data Analytics Lab at UNIST Industrial Engineering — 소개 페이지" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS (cache-busting) -->
+  <link rel="stylesheet" href="/assets/style.css?v=">
+
+  <!-- ✅ Favicon (이 부분은 반드시 head 안에 위치) -->
+  <link rel="icon" type="image/png" href="/assets/hero/LabSign_DA_background.png">
+</head>
+  
+<body>
+  <header>
+  <div class="container nav" id="navbar">
+    <!-- Brand -->
+    <a class="brand brand-link" href="/">
+      <img class="brand-img"
+           src="/assets/hero/LabSign_DA_only.png?v="
+           alt="DA-Lab logo" loading="eager" decoding="async">
+      <span class="brand-text">
+        <span class="brand-main">Data Analytics Lab</span> · <span class="muted">UNIST IE</span>
+      </span>
+    </a>
+
+    <!-- Mobile menu button -->
+    <button class="menu-btn" aria-label="Toggle Menu"
+            onclick="document.getElementById('navbar').classList.toggle('open')">☰</button>
+
+    <!-- Main nav -->
+    <ul>
+      <li>
+        <a href="/about.html">About</a>
+      </li>
+
+      <li class="has-dd">
+        <a href="/members/professor/">Members</a>
+        <ul class="dropdown" role="menu">
+          <li><a href="/members/professor/">Professor</a></li>
+          <li><a href="/members/students/">Students</a></li>
+          <li><a href="/members/alumni/">Alumni</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dd">
+        <a href="/research/projects/">Research</a>
+        <ul class="dropdown" role="menu">
+          <li><a href="/research/projects/">Projects</a></li>
+          <li><a href="/research/publications/">Publications</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dd">
+        <a href="/activity/Lab%20News/">Activity</a>
+        <ul class="dropdown" role="menu">
+          <li><a href="/activity/Lab%20News/">Lab News</a></li>
+          <li><a href="/activity/Lab%20Events/">Lab Events</a></li>
+          <li><a href="/activity/Lab%20Seminar/">Lab Seminar</a></li>
+        </ul>
+      </li>
+
+      <!-- Contact (단일 항목: 잘못된 중첩 제거) -->
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+
+    <!-- ✅ Theme toggle button -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle color theme" aria-pressed="false">
+      <!-- Sun / Moon SVG -->
+      <svg class="sun" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 4V2M12 22v-2M4.93 4.93 3.52 3.52M20.48 20.48l-1.41-1.41M4 12H2m20 0h-2M4.93 19.07 3.52 20.48M20.48 3.52 19.07 4.93" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<!-- ✅ Galaxy canvas (다크 모드에서 좌우 여백 은하수) -->
+<canvas id="galaxy-canvas"></canvas>
+
+<!-- ✅ Theme & Galaxy JS -->
+<script defer src="/assets/main/theme.js?v="></script>
+
+  <!-- Page Hero -->
+<div class="page-hero">
+  <div class="container">
+    <div class="breadcrumbs"><a href="/">Home</a> · About</div>
+    <h1 class="page-title">UNIST Data Analytics Lab.</h1>
+    <p class="muted">연구실 소개</p>
+  </div>
+</div>
+
+<main class="container">
+  <section class="prose">
+    <div class="grid">
+      <!-- Lab Intro (KR/EN) -->
+      <div class="card card-pad" style="grid-column: span 12">
+        <div class="pill">UNIST · Industrial Engineering</div>
+        <h2 class="title" style="margin:10px 0 6px">Data Analytics Lab</h2>
+
+        <!-- 한국어 소개 -->
+        <p>
+          UNIST 산업공학과 데이터 애널리틱스 연구실은 <strong>산업 통계</strong>와 <strong>딥러닝/기계학습</strong>을 기반으로 
+          다양한 산업 현장에서 발생하는 복잡한 공학 문제를 해결하는 새로운 <strong>통계 및 데이터 사이언스 방법론</strong>을 연구합니다. 
+          특히 제조와 물류 분야에서 발생하는 <strong>품질 향상</strong>, <strong>시스템 모니터링·이상 탐지</strong>, 
+          <strong>시계열 표현학습</strong>을 중심으로 <strong>품질 공학</strong>의 실제 문제 해결에 집중하고 있습니다. 
+          4차 산업혁명 시대에 산업 현장에 <strong>인공지능 기술</strong>을 접목하여 혁신적인 변화를 이끌어내는 
+          연구에 관심을 가지고 있습니다.
+        </p>
+
+        <!-- 영어 소개 -->
+        <p>
+          Welcome to the Data Analytics Lab in the Department of Industrial Engineering at the Ulsan National Institute of Science and Technology (UNIST).
+          Our research focuses on developing <strong>novel statistical and data science methodologies</strong> based on <strong>industrial statistics</strong> and <strong>deep learning/machine learning</strong> to solve complex engineering problems across various industrial domains.
+          Our team pursues leading-edge research in <strong>quality engineering</strong>, with particular emphasis on <strong>quality improvement</strong>, <strong>system monitoring and anomaly detection</strong>, and <strong>time series representation learning</strong> in manufacturing and logistics sectors.
+          Our research is characterized by three key aspects: (i) <strong>artificial intelligence technologies</strong> as core research methodologies, (ii) motivation from real industrial challenges, and (iii) applications that drive innovative transformation in the era of Industry 4.0.
+        </p>
+      </div>
+
+      <!-- Interests -->
+      <div class="card card-pad" style="grid-column: span 6">
+        <h3 style="margin:0 0 10px">Interests</h3>
+        <div class="list">
+          <span class="chip">Industrial Statistics</span>
+          <span class="chip">Quality Engineering &amp; Management</span>
+          <span class="chip">Machine Learning &amp; Data Mining</span>
+          <span class="chip">Time-Series Analytics</span>
+        </div>
+      </div>
+
+      <!-- Research Areas -->
+      <div class="card card-pad" style="grid-column: span 6">
+        <h3 style="margin:0 0 10px">Research Areas</h3>
+        <ul style="margin:0; padding-left:18px">
+          <li>AI in Quality Engineering</li>
+          <li>System Monitoring &amp; Anomaly Detection</li>
+          <li>Time-Series Representation</li>
+        </ul>
+      </div>
+
+      <!-- Approach / Values -->
+      <div class="card card-pad" style="grid-column: span 12">
+        <h3 style="margin:0 0 10px">Our Approach</h3>
+        <ol style="margin:0; padding-left:18px">
+          <li>Statistics as a research methodology</li>
+          <li>Motivation from real data</li>
+          <li>Applications to industry</li>
+        </ol>
+      </div>
+
+      <!-- Gallery: 두 장 -->
+      <div class="card card-pad" style="grid-column: span 12">
+        <h3 style="margin:0 0 10px">Lab in Photos</h3>
+        <div class="grid">
+          <figure class="photo" style="grid-column: span 6">
+            <!-- 이미지 교체: /assets/images/about-1.jpg -->
+            <img src="/assets/about/homecoming_2024.jpg" alt="Data Analytics Lab Homecoming 2024 photo">
+            <figcaption class="small muted" style="padding:8px 4px">Lab Homecoming</figcaption>
+          </figure>
+          <figure class="photo" style="grid-column: span 6">
+            <!-- 이미지 교체: /assets/images/about-2.jpg -->
+            <img src="/assets/about/spring_2025.jpg" alt="Data Analytics Lab UNIST spring campus photo">
+            <figcaption class="small muted" style="padding:8px 4px">UNIST Spring</figcaption>
+          </figure>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+  <footer>
+  <div class="container small muted">
+    © 2025 Data Analytics Lab. All Rights Reserved.
+  </div>
+</footer>
+
+<script>
+  // 모바일 드롭다운 토글 (그대로 유지)
+  document.addEventListener('click', (e) => {
+    if (e.target.classList && e.target.classList.contains('dd-toggle')) {
+      e.preventDefault();
+      e.stopPropagation();
+      const li = e.target.closest('.has-dd');
+      if (li) li.classList.toggle('open');
+    }
+  });
+</script>
+
+
+  <!-- 모바일 드롭다운 토글 -->
+  <script>
+    document.addEventListener('click', function(e){
+      if(e.target.matches('.dd-toggle')){
+        e.preventDefault();
+        const li = e.target.closest('.has-dd');
+        if(li) li.classList.toggle('open');
+      }
+    });
+  </script>
+</body>
+</html>

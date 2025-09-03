@@ -1,0 +1,588 @@
+<!doctype html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Alumni</title>
+  <meta name="description" content="Alumni of the Data Analytics Lab (UNIST IE)." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS (cache-busting) -->
+  <link rel="stylesheet" href="/assets/style.css?v=">
+
+  <!-- ✅ Favicon (이 부분은 반드시 head 안에 위치) -->
+  <link rel="icon" type="image/png" href="/assets/hero/LabSign_DA_background.png">
+</head>
+  
+<body>
+  <header>
+  <div class="container nav" id="navbar">
+    <!-- Brand -->
+    <a class="brand brand-link" href="/">
+      <img class="brand-img"
+           src="/assets/hero/LabSign_DA_only.png?v="
+           alt="DA-Lab logo" loading="eager" decoding="async">
+      <span class="brand-text">
+        <span class="brand-main">Data Analytics Lab</span> · <span class="muted">UNIST IE</span>
+      </span>
+    </a>
+
+    <!-- Mobile menu button -->
+    <button class="menu-btn" aria-label="Toggle Menu"
+            onclick="document.getElementById('navbar').classList.toggle('open')">☰</button>
+
+    <!-- Main nav -->
+    <ul>
+      <li>
+        <a href="/about.html">About</a>
+      </li>
+
+      <li class="has-dd">
+        <a href="/members/professor/">Members</a>
+        <ul class="dropdown" role="menu">
+          <li><a href="/members/professor/">Professor</a></li>
+          <li><a href="/members/students/">Students</a></li>
+          <li><a href="/members/alumni/">Alumni</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dd">
+        <a href="/research/projects/">Research</a>
+        <ul class="dropdown" role="menu">
+          <li><a href="/research/projects/">Projects</a></li>
+          <li><a href="/research/publications/">Publications</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dd">
+        <a href="/activity/Lab%20News/">Activity</a>
+        <ul class="dropdown" role="menu">
+          <li><a href="/activity/Lab%20News/">Lab News</a></li>
+          <li><a href="/activity/Lab%20Events/">Lab Events</a></li>
+          <li><a href="/activity/Lab%20Seminar/">Lab Seminar</a></li>
+        </ul>
+      </li>
+
+      <!-- Contact (단일 항목: 잘못된 중첩 제거) -->
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+
+    <!-- ✅ Theme toggle button -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle color theme" aria-pressed="false">
+      <!-- Sun / Moon SVG -->
+      <svg class="sun" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 4V2M12 22v-2M4.93 4.93 3.52 3.52M20.48 20.48l-1.41-1.41M4 12H2m20 0h-2M4.93 19.07 3.52 20.48M20.48 3.52 19.07 4.93" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<!-- ✅ Galaxy canvas (다크 모드에서 좌우 여백 은하수) -->
+<canvas id="galaxy-canvas"></canvas>
+
+<!-- ✅ Theme & Galaxy JS -->
+<script defer src="/assets/main/theme.js?v="></script>
+
+  <div class="page-hero">
+  <div class="container">
+    <div class="breadcrumbs">
+      <a href="/">Home</a> · <a href="/members/">Members</a> · Alumni
+    </div>
+    <h1 class="page-title">Alumni</h1>
+    <p class="muted">Where our alumni are now.</p>
+  </div>
+</div>
+
+<style>
+  /* Students와 동일한 좌측 여백 체계(중첩 container 없이) */
+  .alumni-wrap { margin-top: 0; }
+  
+  /* Students와 톤 맞춘 그리드 */
+  .alumni-grid {
+    display: grid;
+    gap: 16px;  /* students와 동일 gap */
+    grid-template-columns: repeat(auto-fill, minmax(240px, 280px));
+    justify-content: start; /* 왼쪽 정렬로 타일 채우기 */
+  }
+  
+  /* 카드 전체 hover 효과 + 투명 박스 + 옅은 테두리 */
+  .alumni-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px;                    /* 바깥 카드가 패딩 담당 (students와 동일) */
+    border: 1px solid #e5e7eb;        /* 옅은 회색 테두리 */
+    border-radius: 12px;              /* 동일 라운드 값 */
+    background: transparent;          /* 배경 투명 */
+    text-align: center;
+    text-decoration: none;            /* 혹시 a로 감쌀 경우 대비 */
+    color: inherit;
+    transition: box-shadow .15s ease, transform .15s ease;
+  }
+  .alumni-card:hover { box-shadow: 0 6px 22px rgba(0,0,0,.06); }
+  
+  /* 내부 요소 */
+  .alumni-photo {
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #f6f6f6;
+    margin-bottom: 12px;
+  }
+  .alumni-name  { margin: 0 0 6px; font-size: 18px; font-weight: 600; }
+  .alumni-role  { margin: 0 0 6px; font-size: 14px; color: #9ca3af; }
+  .alumni-first { margin: 0 0 6px; font-size: 14px; color: #4b5563; }
+  .alumni-interests {
+    margin: 0; font-size: 13px; color: #4b5563; line-height: 1.5;
+    white-space: pre-line;
+  }
+
+  /* Current position 링크 이모지(텍스트 크기) */
+  .link-emoji {
+    margin-left: 6px;
+    text-decoration: none;
+    font-size: 1em;       /* 텍스트 정도 크기 */
+    line-height: 1;
+  }
+  .link-emoji:hover { text-decoration: none; }
+
+  /* 섹션 간 거리 */
+  section.alumni-wrap + section.alumni-wrap { margin-top: 36px; }
+  
+  /* 모바일 */
+  @media (max-width: 720px) {
+    .alumni-grid {
+      gap: 16px;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+  }
+</style>
+
+<main class="container">
+  <!-- Ph.D. -->
+  <section id="postdoc" class="alumni-wrap">
+    <div class="container">
+      <div class="head">
+        <h2><span class="title-text">Ph.D.</span></h2>
+      </div>
+      <div class="alumni-grid">
+        
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+            <article class="alumni-card" id="alumni-yongkyung-oh">
+              <img src="/assets/members/alumni/yongkyung-oh.jpg" alt="YongKyung Oh" class="alumni-photo" loading="lazy" decoding="async">
+              <h3 class="alumni-name">YongKyung Oh</h3>
+              <p class="alumni-role">Ph.D.</p>
+              
+                <p class="alumni-first">
+                  <strong>Current position:</strong> Postdoc at UCLA
+                  
+                </p>
+              
+              
+            </article>
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+        
+      </div>
+    </div>
+  </section>
+  
+  <!-- M.S. -->
+  <section id="ms" class="alumni-wrap">
+    <div class="container">
+      <div class="head">
+        <h2><span class="title-text">M.S.</span></h2>
+      </div>
+      <div class="alumni-grid">
+        
+        
+          
+          
+            
+            <article class="alumni-card" id="alumni-byungkook-koo">
+              <img src="/assets/members/alumni/byungkook-koo.jpg" alt="Byungkook Koo" class="alumni-photo" loading="lazy" decoding="async">
+              <h3 class="alumni-name">Byungkook Koo</h3>
+              <p class="alumni-role">M.S.</p>
+              
+                <p class="alumni-first">
+                  <strong>Current position:</strong> 
+                  
+                </p>
+              
+              
+            </article>
+          
+        
+          
+          
+            
+            <article class="alumni-card" id="alumni-jiin-kwak">
+              <img src="/assets/members/alumni/jiin-kwak.jpg" alt="Jiin Kwak" class="alumni-photo" loading="lazy" decoding="async">
+              <h3 class="alumni-name">Jiin Kwak</h3>
+              <p class="alumni-role">M.S.</p>
+              
+                <p class="alumni-first">
+                  <strong>Current position:</strong> LG Electronics
+                  
+                </p>
+              
+              
+            </article>
+          
+        
+          
+          
+            
+            <article class="alumni-card" id="alumni-juhui-lee">
+              <img src="/assets/members/alumni/juhui-lee.jpg" alt="Juhui Lee" class="alumni-photo" loading="lazy" decoding="async">
+              <h3 class="alumni-name">Juhui Lee</h3>
+              <p class="alumni-role">M.S.</p>
+              
+                <p class="alumni-first">
+                  <strong>Current position:</strong> THYROSCOPE Inc.
+                  
+                </p>
+              
+              
+            </article>
+          
+        
+          
+          
+            
+            <article class="alumni-card" id="alumni-juyeong-lee">
+              <img src="/assets/members/alumni/juyeong-lee.jpg" alt="Juyeong Lee" class="alumni-photo" loading="lazy" decoding="async">
+              <h3 class="alumni-name">Juyeong Lee</h3>
+              <p class="alumni-role">M.S.</p>
+              
+                <p class="alumni-first">
+                  <strong>Current position:</strong> QRAFT
+                  
+                </p>
+              
+              
+            </article>
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+            <article class="alumni-card" id="alumni-giheon-koh">
+              <img src="/assets/members/alumni/giheon-koh.jpg" alt="Giheon Koh" class="alumni-photo" loading="lazy" decoding="async">
+              <h3 class="alumni-name">Giheon Koh</h3>
+              <p class="alumni-role">M.S.</p>
+              
+                <p class="alumni-first">
+                  <strong>Current position:</strong> LG Display
+                  
+                </p>
+              
+              
+            </article>
+          
+        
+          
+          
+            
+            <article class="alumni-card" id="alumni-gyeongjun-kim">
+              <img src="/assets/members/alumni/gyeongjun-kim.jpg" alt="Gyeongjun Kim" class="alumni-photo" loading="lazy" decoding="async">
+              <h3 class="alumni-name">Gyeongjun Kim</h3>
+              <p class="alumni-role">M.S.</p>
+              
+                <p class="alumni-first">
+                  <strong>Current position:</strong> CJ Logistics
+                  
+                </p>
+              
+              
+            </article>
+          
+        
+          
+          
+            
+            <article class="alumni-card" id="alumni-heesun-kim">
+              <img src="/assets/members/alumni/heesun-kim.jpg" alt="Heesun Kim" class="alumni-photo" loading="lazy" decoding="async">
+              <h3 class="alumni-name">Heesun Kim</h3>
+              <p class="alumni-role">M.S.</p>
+              
+                <p class="alumni-first">
+                  <strong>Current position:</strong> LG Electronics
+                  
+                </p>
+              
+              
+            </article>
+          
+        
+          
+          
+            
+            <article class="alumni-card" id="alumni-jaemin-park">
+              <img src="/assets/members/alumni/jaemin-park.jpg" alt="Jaemin Park" class="alumni-photo" loading="lazy" decoding="async">
+              <h3 class="alumni-name">Jaemin Park</h3>
+              <p class="alumni-role">M.S.</p>
+              
+                <p class="alumni-first">
+                  <strong>Current position:</strong> THYROSCOPE Inc.
+                  
+                </p>
+              
+              
+            </article>
+          
+        
+          
+          
+            
+            <article class="alumni-card" id="alumni-jitae-yoo">
+              <img src="/assets/members/alumni/jitae-yoo.jpg" alt="Jitae Yoo" class="alumni-photo" loading="lazy" decoding="async">
+              <h3 class="alumni-name">Jitae Yoo</h3>
+              <p class="alumni-role">M.S.</p>
+              
+                <p class="alumni-first">
+                  <strong>Current position:</strong> LX Hausys
+                  
+                </p>
+              
+              
+            </article>
+          
+        
+          
+          
+            
+            <article class="alumni-card" id="alumni-jonghwan-moon">
+              <img src="/assets/members/alumni/jonghwan-moon.jpg" alt="JongHwan Moon" class="alumni-photo" loading="lazy" decoding="async">
+              <h3 class="alumni-name">JongHwan Moon</h3>
+              <p class="alumni-role">M.S.</p>
+              
+                <p class="alumni-first">
+                  <strong>Current position:</strong> LG Electronics
+                  
+                </p>
+              
+              
+            </article>
+          
+        
+          
+          
+            
+            <article class="alumni-card" id="alumni-kwonin-yoon">
+              <img src="/assets/members/alumni/kwonin-yoon.jpg" alt="Kwonin Yoon" class="alumni-photo" loading="lazy" decoding="async">
+              <h3 class="alumni-name">Kwonin Yoon</h3>
+              <p class="alumni-role">M.S.</p>
+              
+                <p class="alumni-first">
+                  <strong>Current position:</strong> LG Electronics
+                  
+                </p>
+              
+              
+            </article>
+          
+        
+          
+          
+            
+            <article class="alumni-card" id="alumni-jaehun-cho">
+              <img src="/assets/members/alumni/jaehun-cho.jpg" alt="Jaehun Cho" class="alumni-photo" loading="lazy" decoding="async">
+              <h3 class="alumni-name">Jaehun Cho</h3>
+              <p class="alumni-role">M.S.</p>
+              
+                <p class="alumni-first">
+                  <strong>Current position:</strong> 
+                  
+                </p>
+              
+              
+            </article>
+          
+        
+          
+          
+            
+            <article class="alumni-card" id="alumni-taewon-kang">
+              <img src="/assets/members/alumni/taewon-kang.jpg" alt="Taewon Kang" class="alumni-photo" loading="lazy" decoding="async">
+              <h3 class="alumni-name">Taewon Kang</h3>
+              <p class="alumni-role">M.S.</p>
+              
+                <p class="alumni-first">
+                  <strong>Current position:</strong> 
+                  
+                </p>
+              
+              
+            </article>
+          
+        
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Interns -->
+  <section id="intern" class="alumni-wrap">
+    <div class="container">
+      <div class="head">
+        <h2><span class="title-text">Interns</span></h2>
+      </div>
+      <div class="alumni-grid">
+        
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+            <article class="alumni-card" id="alumni-namu-kim">
+              <img src="/assets/members/alumni/namu-kim.jpg" alt="Namu Kim" class="alumni-photo" loading="lazy" decoding="async">
+              <h3 class="alumni-name">Namu Kim</h3>
+              <p class="alumni-role">Intern</p>
+              
+                <p class="alumni-first">
+                  <strong>Current position:</strong> POSCO
+                  
+                </p>
+              
+              
+            </article>
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+        
+      </div>
+    </div>
+  </section>
+</main>
+
+  <footer>
+  <div class="container small muted">
+    © 2025 Data Analytics Lab. All Rights Reserved.
+  </div>
+</footer>
+
+<script>
+  // 모바일 드롭다운 토글 (그대로 유지)
+  document.addEventListener('click', (e) => {
+    if (e.target.classList && e.target.classList.contains('dd-toggle')) {
+      e.preventDefault();
+      e.stopPropagation();
+      const li = e.target.closest('.has-dd');
+      if (li) li.classList.toggle('open');
+    }
+  });
+</script>
+
+
+  <!-- 모바일 드롭다운 토글 -->
+  <script>
+    document.addEventListener('click', function(e){
+      if(e.target.matches('.dd-toggle')){
+        e.preventDefault();
+        const li = e.target.closest('.has-dd');
+        if(li) li.classList.toggle('open');
+      }
+    });
+  </script>
+</body>
+</html>
