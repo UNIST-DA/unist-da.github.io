@@ -15,7 +15,7 @@ links:
   - label: GitHub
     url: https://github.com/Sicari1/SeongJin-Kim
   - label: LinkedIn
-    url: www.linkedin.com/in/seongjin-kim-3205a2223
+    url: https://www.linkedin.com/in/seongjin-kim-3205a2223
   - label: CV
     url: https://drive.google.com/file/d/1_JLYbniWsPzl-FIYtIhDFPJUnjcgm_Hn/view?usp=drive_link
 
