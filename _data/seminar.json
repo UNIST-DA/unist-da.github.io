@@ -14,8 +14,8 @@
   },
   {
     "date": "2025-08-13",
-    "title": "A Neural Network-based Control Chart for Monitoring and Interpreting Autocorrelated Multivariate Processes using Layer-wise Relevance Propagation",
-    "slug": "2025-08-13-a-neural-network-based-control-chart-for-monitoring-and-interpreting-autocorrelated-multivariate-processes-using-layer-wise-relevance-propagation",
+    "title": "(Quality Engineering) Neural Network Control Chart for Autocorrelated Multivariate Data",
+    "slug": "2025-08-13-quality-engineering-neural-network-control-chart-for-autocorrelated-multivariate-data",
     "url": "https://www.notion.so/250046396f7e809397c2f33d41a3e440",
     "category": "Paper Review",
     "presenter": "유정우",
@@ -38,8 +38,8 @@
   },
   {
     "date": "2025-08-01",
-    "title": "Uncertainty quantification in digital twin",
-    "slug": "2025-08-01-uncertainty-quantification-in-digital-twin",
+    "title": "(SMO 2023) Uncertainty quantification in digital twin",
+    "slug": "2025-08-01-smo-2023-uncertainty-quantification-in-digital-twin",
     "url": "https://www.notion.so/245046396f7e80779f84c6b7889bed8e",
     "category": "Paper Review",
     "presenter": "전병훈",
@@ -61,8 +61,8 @@
   },
   {
     "date": "2025-07-07",
-    "title": "Bayesian Calibration of Computer Models",
-    "slug": "2025-07-07-bayesian-calibration-of-computer-models",
+    "title": "(JRSS:B 2001) Bayesian Calibration of Computer Models",
+    "slug": "2025-07-07-jrssb-2001-bayesian-calibration-of-computer-models",
     "url": "https://www.notion.so/22d046396f7e804d9f54e4fc4a2e8f02",
     "category": "Paper Review",
     "presenter": "Chanbeom",
@@ -108,8 +108,8 @@
   },
   {
     "date": "2025-04-25",
-    "title": "KAN: Kolmogorov–Arnold Networks",
-    "slug": "2025-04-25-kan-kolmogorov-arnold-networks",
+    "title": "(ICLR 2025) KAN: Kolmogorov–Arnold Networks",
+    "slug": "2025-04-25-iclr-2025-kan-kolmogorov-arnold-networks",
     "url": "https://www.notion.so/1c3046396f7e80edbad2e7d2b890e6fa",
     "category": "Lab Seminar",
     "presenter": "Chanbeom",
@@ -131,8 +131,8 @@
   },
   {
     "date": "2025-04-11",
-    "title": "MTSCI: A Conditional Diffusion Model for Multivariate Time Series Consistent Imputation",
-    "slug": "2025-04-11-mtsci-a-conditional-diffusion-model-for-multivariate-time-series-consistent-imputation",
+    "title": "(CIKM 2024) MTSCI: A Conditional Diffusion Model for Multivariate Time Series Consistent Imputation",
+    "slug": "2025-04-11-cikm-2024-mtsci-a-conditional-diffusion-model-for-multivariate-time-series-consistent-imputation",
     "url": "https://www.notion.so/1d1046396f7e8080983acdd19473ea9c",
     "category": "Lab Seminar",
     "presenter": "이희윤",
@@ -144,8 +144,8 @@
   },
   {
     "date": "2025-03-28",
-    "title": "Linear-Time Sequence Modeling with Selective State Spaces",
-    "slug": "2025-03-28-linear-time-sequence-modeling-with-selective-state-spaces",
+    "title": "(COLM 2024) Linear-Time Sequence Modeling with Selective State Spaces",
+    "slug": "2025-03-28-colm-2024-linear-time-sequence-modeling-with-selective-state-spaces",
     "url": "https://www.notion.so/1ae046396f7e803c8c56ec9756577d95",
     "category": "Paper Review",
     "presenter": "전병훈",
@@ -183,8 +183,8 @@
   },
   {
     "date": "2025-02-13",
-    "title": "Root Cause Analysis of anomalies in multivariate time series through granger causal discovery",
-    "slug": "2025-02-13-root-cause-analysis-of-anomalies-in-multivariate-time-series-through-granger-causal-discovery",
+    "title": "(ICLR 2025) Root Cause Analysis of anomalies in multivariate time series through granger causal discovery",
+    "slug": "2025-02-13-iclr-2025-root-cause-analysis-of-anomalies-in-multivariate-time-series-through-granger-causal-discovery",
     "url": "https://www.notion.so/199046396f7e80afac16f04606f1e35c",
     "category": "Lab Seminar",
     "presenter": "강태원",
@@ -234,8 +234,8 @@
   },
   {
     "date": "2025-01-10",
-    "title": "Neural Frailty Machine: Beyond proportional hazard\nassumption in neural survival regressions",
-    "slug": "2025-01-10-neural-frailty-machine-beyond-proportional-hazard-assumption-in-neural-survival-regressions",
+    "title": "(NeurIPS 2023) Neural Frailty Machine: Beyond proportional hazard\nassumption in neural survival regressions",
+    "slug": "2025-01-10-neurips-2023-neural-frailty-machine-beyond-proportional-hazard-assumption-in-neural-survival-regressions",
     "url": "https://www.notion.so/c630db8facbb403db1d516dbde8c71ee",
     "category": "Paper Review",
     "presenter": "Chanbeom",
@@ -425,6 +425,17 @@
     "keywords": [
       "Domain adaptation",
       "Active learning"
+    ]
+  },
+  {
+    "date": "2023-12-01",
+    "title": "(CVPR 2019) Efficient Parameter-free Clustering Using First Neighbor Relations",
+    "slug": "2023-12-01-cvpr-2019-efficient-parameter-free-clustering-using-first-neighbor-relations",
+    "url": "https://www.notion.so/21cb9046df9c42949e613aa3362dfde1",
+    "category": "Paper Review",
+    "presenter": "Chanbeom",
+    "keywords": [
+      "Clustering"
     ]
   }
 ]
