@@ -34,21 +34,21 @@ interests:
 
     
 milestone:
-  - start: 2024.09
+  - start: 2025.09
     end: 
     title: RCA RAG for Maritime Accident Analysis (planned)
     note: |
       Building RAG-based maritime accident root cause analysis system
     
-  - start: 2024.05
-    end: 
+  - start: 2025.05
+    end: 2025.09
     title: Maritime Chatbot System
     note: |
       Built RAG framework using LangChain to answer AIS data and maritime regulation queries
       Designed hybrid prompting strategies and evaluation pipeline
     
   - start: 2025.01
-    end: 
+    end: 2025.06
     title: SCSC Center Project · Human-Centered Carbon-Neutral Supply Chain
     note: |
       Maritime fuel consumption prediction with environmental resistance modeling
