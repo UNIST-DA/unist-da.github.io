@@ -267,6 +267,17 @@ events:
     image_caption: "Lab graduation ceremony"
     url: "/activity/Lab%20Events/#2025-02-20-lab-graduation"
 
+  - slug: 2024-11-12-bbq-party
+    start: "2024-11-12"
+    title: "Lab BBQ Party"
+    detail: |
+      Held lab BBQ party.
+    image: "/assets/activity/Lab_Events/bbq_2024.jpg"
+    image_alt: "Lab BBQ party group photo"
+    image_caption: "Lab BBQ party"
+    url: "/activity/Lab%20Events/#2024-11-12-bbq-party"
+
+
 
   - slug: 2024-09-06-lab-homecoming
     start: "2024-09-06"
@@ -309,6 +320,18 @@ events:
     image_caption: "Lab membership training"
     url: "/activity/Lab%20Events/#2023-07-22-lab-membership-training"
 
+
+  - slug: 2023-04-03-lab-cherry-blossom-picnic
+    start: "2023-04-03"
+    title: "Lab Cherry Blossom Picnic"
+    detail: |
+      Enjoyed a picnic under the cherry blossoms.
+    image: "/assets/activity/Lab_Events/blossom_2023.jpg"
+    image_alt: "Lab cherry blossom picnic group photo"
+    image_caption: "Lab cherry blossom picnic"
+    url: "/activity/Lab%20Events/#2023-04-03-lab-cherry-blossom-picnic"
+
+
   - slug: 2023-02-17-lab-graduation
     start: "2023-02-17"
     title: "Lab Graduation Ceremony"
@@ -330,3 +353,38 @@ events:
     image_alt: "Lab membership training group photo"
     image_caption: "Lab membership training"
     url: "/activity/Lab%20Events/#2022-07-10-lab-membership-training"
+
+
+  - slug: 2022-06-01-KIIE-conference
+    start: "2022-06-01"
+    title: "KIIE Conference"
+    detail: |
+      Attended the KIIE conference.
+    image: "/assets/activity/Lab_Events/KIIE_2022.jpg"
+    image_alt: "KIIE conference group photo"
+    image_caption: "KIIE conference"
+    url: "/activity/Lab%20Events/#2022-06-01-KIIE-conference"
+
+
+  - slug: 2022-04-20-lab-picnic
+    start: "2022-04-20"
+    title: "Lab Picnic"
+    detail: |
+      Enjoyed a Picnic with lab members.
+    image: "/assets/activity/Lab_Events/picnic_2022.jpg"
+    image_alt: "Lab picnic group photo"
+    image_caption: "Lab picnic"
+    url: "/activity/Lab%20Events/#2022-04-20-lab-picnic"
+
+
+
+
+  - slug: 2021-04-lab-cherry-blossom-picnic
+    start: "2021-04"
+    title: "Lab Cherry Blossom Picnic"
+    detail: |
+      Enjoyed a picnic under the cherry blossoms.
+    image: "/assets/activity/Lab_Events/blossom_2021.jpg"
+    image_alt: "Lab cherry blossom picnic group photo"
+    image_caption: "Lab cherry blossom picnic"
+    url: "/activity/Lab%20Events/#2021-04-lab-cherry-blossom-picnic"
