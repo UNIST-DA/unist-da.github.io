@@ -248,7 +248,7 @@ description: Data Analytics Lab at UNIST (Industrial Engineering). Industrial St
 </style>
 
 <script>
-/* === Hero carousel: arrows + dots + autoplay + 키보드/스와이프 === */
+/* === Hero carousel: arrows + dots + autoplay(+video-once), swipe/drag === */
 (function(){
   const carousel = document.getElementById('heroCarousel');
   if(!carousel) return;
@@ -258,9 +258,13 @@ description: Data Analytics Lab at UNIST (Industrial Engineering). Industrial St
   const next   = document.getElementById('heroNext');
   const dotsEl = document.getElementById('heroDots');
   const slides = track ? track.children : [];
-
   if(!slides || !slides.length) return;
+
   let i = 0, N = slides.length, timer = null, hover = false;
+
+  // 현재 슬라이드의 <video> 핸들링을 위해 참조 저장
+  let currentVideo = null;
+  let currentVideoEndedHandler = null;
 
   function buildDots(){
     dotsEl.innerHTML = '';
@@ -281,21 +285,65 @@ description: Data Analytics Lab at UNIST (Industrial Engineering). Industrial St
     [...dotsEl.children].forEach((d,idx)=>d.classList.toggle('active', idx===i));
   }
 
+  function cleanupVideo(){
+    if (!currentVideo) return;
+    try {
+      currentVideo.pause();
+      currentVideo.currentTime = 0;
+      if (currentVideoEndedHandler) {
+        currentVideo.removeEventListener('ended', currentVideoEndedHandler);
+        currentVideoEndedHandler = null;
+      }
+    } catch(e){}
+    currentVideo = null;
+  }
+
+  function scheduleNext(){
+    // 비디오는 한 번만 재생 → 끝나고 2초 후 다음 슬라이드
+    const vid = slides[i].querySelector('video');
+    cleanupVideo();
+    stop(); // 기존 일반 타이머 제거
+
+    if (vid) {
+      currentVideo = vid;
+      // 일부 브라우저에서 수동 이동 시 재생 지점 보정
+      try { vid.currentTime = 0; } catch(e){}
+      // 자동재생 시도(무음이면 대체로 허용)
+      vid.play().catch(()=>{ /* autoplay 제한 시 그냥 정지 상태 유지 */ });
+
+      currentVideoEndedHandler = () => {
+        // 비디오가 끝나면 2초 대기 후 다음 슬라이드
+        setTimeout(() => { goto(i+1); }, 2000);
+      };
+      vid.addEventListener('ended', currentVideoEndedHandler);
+    } else {
+      // 일반 이미지 슬라이드: 5초마다 자동 이동
+      start();
+    }
+  }
+
   function goto(k){
-    i = (k+N)%N;
+    // 슬라이드 바꾸기 전에 비디오 정리
+    cleanupVideo();
+
+    i = (k+N) % N;
     track.classList.remove('dragging');   // 스냅 애니메이션 ON
     update(0);
+
+    // 새 슬라이드 상황에 맞게 다음 이동 예약
+    scheduleNext();
   }
 
   function start(){ stop(); timer = setInterval(()=>{ if(!hover) goto(i+1); }, 5000); }
-  function stop(){ if(timer) clearInterval(timer); }
+  function stop(){ if(timer) { clearInterval(timer); timer = null; } }
 
+  // 화살표
   prev.addEventListener('click', ()=>{ goto(i-1); hover=true; setTimeout(()=>hover=false, 1200); });
   next.addEventListener('click', ()=>{ goto(i+1); hover=true; setTimeout(()=>hover=false, 1200); });
   carousel.addEventListener('mouseenter', ()=>hover=true);
   carousel.addEventListener('mouseleave', ()=>hover=false);
 
-  // 키보드
+  // 키보드 내비
   carousel.setAttribute('tabindex','0');
   carousel.addEventListener('keydown', (e)=>{
     if(e.key==='ArrowLeft') goto(i-1);
@@ -315,6 +363,7 @@ description: Data Analytics Lab at UNIST (Industrial Engineering). Industrial St
     track.classList.add('dragging');          // transition off
     track.setPointerCapture?.(e.pointerId);
     hover = true; setTimeout(()=>hover=false, 1200);
+    stop(); // 드래그 중에는 자동이동 멈춤
   };
 
   const onPointerMove = (e) => {
@@ -322,7 +371,6 @@ description: Data Analytics Lab at UNIST (Industrial Engineering). Industrial St
     const dx = e.clientX - startX;
     const dy = e.clientY - startY;
     if (Math.abs(dy) > Math.abs(dx)) return;  // 세로 스크롤 우선
-
     const offsetPct = (dx / width) * 100;     // px → %
     update(offsetPct);                        // 손가락 따라오기
   };
@@ -339,6 +387,8 @@ description: Data Analytics Lab at UNIST (Industrial Engineering). Industrial St
       goto(dx < 0 ? i+1 : i-1);               // 스냅
     } else {
       update(0);                              // 원위치 스냅백
+      // 드래그 취소 시에도 현재 슬라이드 타입(비디오/이미지)에 맞게 다시 예약
+      scheduleNext();
     }
     track.releasePointerCapture?.(e.pointerId);
   };
@@ -350,6 +400,7 @@ description: Data Analytics Lab at UNIST (Industrial Engineering). Industrial St
   // 이미지 기본 드래그 방지
   track.addEventListener('dragstart', (e) => e.preventDefault());
 
-  buildDots(); update(0); start();
+  // 초기 렌더링 및 예약
+  buildDots(); update(0); scheduleNext();
 })();
 </script>
