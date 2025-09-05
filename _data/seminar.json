@@ -208,8 +208,8 @@
   },
   {
     "date": "2025-01-17",
-    "title": "Warpformer: A Multi-scale Modeling Approach for Irregular Clinical Time Series",
-    "slug": "2025-01-17-warpformer-a-multi-scale-modeling-approach-for-irregular-clinical-time-series",
+    "title": "Warpformer: A Multi-scale Modeling Approach for Irregular Clinical Time Series (KDD 2023)",
+    "slug": "2025-01-17-warpformer-a-multi-scale-modeling-approach-for-irregular-clinical-time-series-kdd-2023",
     "url": "https://www.notion.so/cb135695f2a148bfb39562f4c3b67934",
     "category": "Paper Review",
     "presenter": "Hyejin Cho",
@@ -295,8 +295,8 @@
   },
   {
     "date": "2024-10-11",
-    "title": "Multi-View Integrative Attention-Based Deep Representation Learning for Irregular Clinical Time-Series Data",
-    "slug": "2024-10-11-multi-view-integrative-attention-based-deep-representation-learning-for-irregular-clinical-time-series-data",
+    "title": "Multi-View Integrative Attention-Based Deep Representation Learning for Irregular Clinical Time-Series Data (2022)",
+    "slug": "2024-10-11-multi-view-integrative-attention-based-deep-representation-learning-for-irregular-clinical-time-series-data-2022",
     "url": "https://www.notion.so/107046396f7e8084a72fd035f2df3d04",
     "category": "Paper Review",
     "presenter": "Hyejin Cho",
@@ -356,8 +356,8 @@
   },
   {
     "date": "2024-07-05",
-    "title": "Machine Learning for Survival Analysis: A Survey",
-    "slug": "2024-07-05-machine-learning-for-survival-analysis-a-survey",
+    "title": "Machine Learning for Survival Analysis: A Survey (2019)",
+    "slug": "2024-07-05-machine-learning-for-survival-analysis-a-survey-2019",
     "url": "https://www.notion.so/de6084377bf84fc3bb66b345c658dbbe",
     "category": "Lab Seminar",
     "presenter": "Hyejin Cho",
@@ -416,6 +416,19 @@
     ]
   },
   {
+    "date": "2024-03-08",
+    "title": "ABC: Auxiliary Balanced Classifier for Class-imbalanced Semi-supervised Learning (NeurIPS 2021)",
+    "slug": "2024-03-08-abc-auxiliary-balanced-classifier-for-class-imbalanced-semi-supervised-learning-neurips-2021",
+    "url": "https://www.notion.so/daf0cb83b9e448e590e9f97b05ac63df",
+    "category": "Paper Review",
+    "presenter": "Hyejin Cho",
+    "keywords": [
+      "semi-supervised learning",
+      "Imbalanced Data",
+      "Decoupled Training"
+    ]
+  },
+  {
     "date": "2023-12-01",
     "title": "Efficient Parameter-free Clustering Using First Neighbor Relations (CVPR 2019)",
     "slug": "2023-12-01-efficient-parameter-free-clustering-using-first-neighbor-relations-cvpr-2019",
@@ -424,6 +437,56 @@
     "presenter": "Chanbeom",
     "keywords": [
       "Clustering"
+    ]
+  },
+  {
+    "date": "2023-10-13",
+    "title": "DCdetector: Dual Attention Contrastive Representation Learning for Time Series Anomaly Detection (KDD 2023)",
+    "slug": "2023-10-13-dcdetector-dual-attention-contrastive-representation-learning-for-time-series-anomaly-detection-kdd-2023",
+    "url": "https://www.notion.so/d781095fb55444249782941872b4f779",
+    "category": "Paper Review",
+    "presenter": "Hyejin Cho",
+    "keywords": [
+      "Time-series anomaly detection",
+      "Attention",
+      "Contrastive learning"
+    ]
+  },
+  {
+    "date": "2023-08-18",
+    "title": "Introduction to Gaussian Mixture Model(GMM) & EM Algorithm",
+    "slug": "2023-08-18-introduction-to-gaussian-mixture-modelgmm-and-em-algorithm",
+    "url": "https://www.notion.so/8edbb35e58c84c39a912f006d7e9e12a",
+    "category": "Lab Seminar",
+    "presenter": "Hyejin Cho",
+    "keywords": [
+      "Gaussian Mixture Model",
+      "EM Algorithm",
+      "UnsupervisedLearning"
+    ]
+  },
+  {
+    "date": "2023-06-23",
+    "title": "Loyalty Formation for Different Customer Journey Segments (2019)",
+    "slug": "2023-06-23-loyalty-formation-for-different-customer-journey-segments-2019",
+    "url": "https://www.notion.so/082eb055f16c46329cc0e52147944480",
+    "category": "Paper Review",
+    "presenter": "Hyejin Cho",
+    "keywords": [
+      "Latent Class Analysis",
+      "UnsupervisedLearning"
+    ]
+  },
+  {
+    "date": "2023-04-28",
+    "title": "Attention Bottlenecks for Multimodal Fusion (NeurIPS 2021)",
+    "slug": "2023-04-28-attention-bottlenecks-for-multimodal-fusion-neurips-2021",
+    "url": "https://www.notion.so/f49d29b3e51c4dc59ecb14ec7089c18f",
+    "category": "Paper Review",
+    "presenter": "Hyejin Cho",
+    "keywords": [
+      "multi-modal learning",
+      "Transformer"
     ]
   }
 ]
