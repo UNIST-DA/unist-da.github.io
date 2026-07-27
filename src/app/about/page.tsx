@@ -35,19 +35,19 @@ const domains = [
     title: "Manufacturing AI",
     image: "/assets/about/ManufacturingAI.webp",
     desc: "제조 공정의 품질 관리와 고차원 시계열 신호의 이상 탐지를 연구합니다.",
-    keywords: ["Quality Engineering", "Time Series Analysis"],
+    keywords: ["Quality Engineering", "Statistical Process Control", "Time Series Analysis", "Anomaly Detection"],
   },
   {
     title: "Healthcare AI",
     image: "/assets/about/healthcareAI.webp",
-    desc: "생존 분석과 멀티모달 학습을 통해 의료 데이터를 분석합니다.",
-    keywords: ["Survival Analysis", "Multimodal AI"],
+    desc: "생존 분석과 시계열·불확실성 모델링으로 의료 데이터를 분석합니다.",
+    keywords: ["Survival Analysis", "Irregular Time Series", "Uncertainty Quantification", "Domain Adaptation"],
   },
   {
     title: "Service AI",
     image: "/assets/about/serviceAI.webp",
-    desc: "LLM 기반 에이전트와 추천 시스템을 통해 서비스 데이터를 분석하고 의사결정을 지원합니다.",
-    keywords: ["Agentic AI", "Recommendation System"],
+    desc: "LLM 기반 에이전트와 추천 시스템, 서비스 품질 지표 개발로 의사결정을 지원합니다.",
+    keywords: ["Agentic AI", "Large Language Models", "Recommendation System", "Quality Metrics"],
   },
 ];
 

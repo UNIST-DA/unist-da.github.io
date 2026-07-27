@@ -45,7 +45,7 @@ export default function Home() {
     },
     {
       title: "Healthcare AI",
-      keywords: ["Survival Analysis", "Multimodal AI"],
+      keywords: ["Survival Analysis", "Irregular Time Series"],
       image: "/assets/about/healthcareAI.webp",
     },
     {
