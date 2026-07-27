@@ -113,7 +113,7 @@ function fixMath(md) {
     .map((line) => {
       const t = line.trim();
       if (t === "$$" || /^\$\$[^$]+\$\$$/.test(t)) return line; // keep standalone display math
-      return line.replace(/\$\$([^$\n]+?)\$\$/g, "$$$1$$");
+      return line.replace(/\${2,}/g, "$"); // collapse stray inline double-dollars to inline `$`
     })
     .join("\n");
 }
@@ -152,9 +152,10 @@ function selftest() {
   assert(parsed.body.includes("line two"), "body preserved incl. --- rule");
 
   // math normalization
-  assert(fixMath("- $$z(t_1)$$ , $$z(t_0)$$: x").includes("$z(t_1)$ , $z(t_0)$"), "inline $$ collapse");
+  assert(fixMath("- $z(t_1)$$ , $$z(t_0)$$: x").includes("$z(t_1)$ , $z(t_0)$: x"), "inline $$ collapse (malformed)");
   assert(fixMath("$$\nE=mc^2\n$$") === "$$\nE=mc^2\n$$", "display block preserved");
   assert(fixMath("$$a=b$$").trim() === "$$a=b$$", "one-line display preserved");
+  assert(fixMath("plain $x$ text").includes("plain $x$ text"), "single inline math untouched");
 
   console.log("✓ selftest passed");
 }
