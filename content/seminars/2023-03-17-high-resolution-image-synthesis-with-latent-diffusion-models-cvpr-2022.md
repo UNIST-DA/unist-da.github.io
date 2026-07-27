@@ -190,9 +190,11 @@ Perceptual compression model is based on VQGAN and consists of an autoencoder tr
 ![](/assets/seminars/high-resolution-image-synthesis-with-latent-diffusion-models-cvpr-2022/7.png)
 
 
+
 $$
 x\in \mathbb{R}^{H*W*3}, z\in \mathbb{R}^{h*w*3}, f = H/h = W/w = 2^m
 $$
+
 
 
 Explored two types of regularization in autoencoder training to avoid arbitrarily high-variance in the latent spaces
@@ -213,9 +215,11 @@ Explored two types of regularization in autoencoder training to avoid arbitraril
 
 - Diffusion process
 
-    $$
+    
+$$
     D_{KL}(q_\phi(z|x)||p_\theta(z))+ \mathbb{E}_{q_\phi(z|x)}[log \;p_\theta(x|z)
     $$
+    
 
 
 ![](/assets/seminars/high-resolution-image-synthesis-with-latent-diffusion-models-cvpr-2022/9.png)
@@ -231,10 +235,12 @@ Explored two types of regularization in autoencoder training to avoid arbitraril
 q(forward) process
 
 
+
 $$
 q(X_{1:T}|X_0) = \prod_{t=1}^{T}q(X_t|X_{t-1}),
 \;\;\;\;\;\;\; q(X_t|X_{t-1}) = N(X_t;\sqrt{1-\beta_t}X_{t-1}, \beta_t I)
 $$
+
 
 - 이전 값에 대해서 gaussian noise를 취해주는 형태
 - beta: parameter, 0에 가깝게 설정할수록 노이즈 정도가 줄어듦. 각 단계마다 beta 값은 다름
@@ -242,10 +248,12 @@ $$
 p(reverse) process
 
 
+
 $$
 p_\theta(X_{0:T}) = p(X_T)\prod_{t=1}^Tp_\theta(X_{t-1}|X_t), \;\;\;\;\;\;\;\;\;
 p_\theta(X_{t-1}|X_t)=N(X_{t-1}; \mu_\theta(X_t, t), \sum_\theta(X_t, t))
 $$
+
 
 - gaussian noise를 제거해가는 과정
 - Noise의 mean, variance function을 학습
@@ -256,11 +264,13 @@ Diffusion loss(ELBO loss) ⇒ NLL(Negative Log-Likelihood)
 Regularization + Denoising Process + Reconstruction 
 
 
+
 $$
 D_{KL}(q(\bold{x_T}|x_0)||p(\bold{x}_T))
 + \sum_{t>1}D_{KL}(q(\bold{x_{t-1}}|\bold{x}_t, x_0)||p_\theta(\bold{x}_{t-1}|\bold{x}_t))
 - log\; p_\theta(\bold{x}_0 | \bold{x}_1)
 $$
+
 
 - Denoising term: reverse process의 conditional gaussian distr(p), forward process의 posterior prob의 KL-divergence의 합
 

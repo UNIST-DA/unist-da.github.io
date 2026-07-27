@@ -89,9 +89,11 @@ Anomalies
 ![](/assets/seminars/anomaly-transformer-time-series-anomaly-detection-with-association-discrepancy-i/3.png)
 
 
+
 $$
 \begin{aligned}& \mathcal{Z}^l=\text { Layer-Norm }\left(\text { Anomaly-Attention }\left(\mathcal{X}^{l-1}\right)+\mathcal{X}^{l-1}\right) \\& \mathcal{X}^l=\text { Layer-Norm }\left(\text { Feed-Forward }\left(\mathcal{Z}^l\right)+\mathcal{Z}^l\right)\end{aligned}
 $$
+
 
 
 ### Anomaly Attention
@@ -100,9 +102,11 @@ $$
 ![](/assets/seminars/anomaly-transformer-time-series-anomaly-detection-with-association-discrepancy-i/4.png)
 
 
+
 $$
 \text{Initialization}: \mathcal{Q}, \mathcal{K}, \mathcal{V}, \sigma=\mathcal{X}^{l-1} W_{\mathcal{Q}}^l, \mathcal{X}^{l-1} W_{\mathcal{K}}^l, \mathcal{X}^{l-1} W_{\mathcal{V}}^l, \mathcal{X}^{l-1} W_\sigma^l
 $$
+
 
 
 ### Prior-Association
@@ -114,14 +118,18 @@ $$
 ⇒ pay more attention to the **adjacent horizon** constitutionally
 
 
+
 $$
 \text{Prior-Association}: \mathcal{P}^l=\operatorname{Rescale}\left(\left[\frac{1}{\sqrt{2 \pi} \sigma_i} \exp \left(-\frac{|j-i|^2}{2 \sigma_i^2}\right)\right]_{i, j \in\{1, \cdots, N\}}\right)
 $$
 
 
+
+
 $$
 \begin{equation}G\left(|j-i| ; \sigma_i\right)=\frac{1}{\sqrt{2 \pi} \sigma_i} \exp \left(-\frac{|j-i|^2}{2 \sigma_i^2}\right)\end{equation}
 $$
+
 
 
 ### Series-Association
@@ -133,9 +141,12 @@ $$
 ⇒ pay more attention to **whole horizon** 
 
 
+
 $$
- \text{Series-Association}: \mathcal{S}^l=\operatorname{Softmax}\left(\frac{\mathcal{Q} \mathcal{K}^{\mathrm{T}}}{\sqrt{d_{\text {model }}}}\right)
+\text{Series-Association}: \mathcal{S}^l=\operatorname{Softmax}\left(\frac{\mathcal{Q} \mathcal{K}^{\mathrm{T}}}{\sqrt{d_{\text {model }}}}\right)
 $$
+
+
 
 
 $$
@@ -143,12 +154,15 @@ $$
 $$
 
 
+
 ### Association Discrepancy
+
 
 
 $$
 \begin{equation}\operatorname{AssDis}(\mathcal{P}, \mathcal{S} ; \mathcal{X})=\left[\frac{1}{L} \sum_{l=1}^L\left(\operatorname{KL}\left(\mathcal{P}_{i,:}^l \| \mathcal{S}_{i,:}^l\right)+\operatorname{KL}\left(\mathcal{S}_{i,:}^l \| \mathcal{P}_{i,:}^l\right)\right)\right]_{i=1, \cdots, N}\end{equation}
 $$
+
 
 
 Anomaly → smaller AssDis
@@ -160,9 +174,11 @@ Normal → bigger AssDis
 ### MinMax Strategy
 
 
+
 $$
 \begin{equation}\mathcal{L}_{\text {Total }}(\widehat{\mathcal{X}}, \mathcal{P}, \mathcal{S}, \lambda ; \mathcal{X})=\|\mathcal{X}-\widehat{\mathcal{X}}\|_{\mathrm{F}}^2-\lambda \times\|\operatorname{AssDis}(\mathcal{P}, \mathcal{S} ; \mathcal{X})\|_1\end{equation}
 $$
+
 
 
 ![](/assets/seminars/anomaly-transformer-time-series-anomaly-detection-with-association-discrepancy-i/5.png)
@@ -196,9 +212,11 @@ loss2 = rec_loss + self.k * prior_loss   ## Minimize Step
 ### Anomaly Score
 
 
+
 $$
 \begin{equation}\operatorname{AnomalyScore}(\mathcal{X})=\operatorname{Softmax}(-\operatorname{AssDis}(\mathcal{P}, \mathcal{S} ; \mathcal{X})) \odot\left[\left\|\mathcal{X}_{i,:}-\widehat{\mathcal{X}}_{i,:}\right\|_2^2\right]_{i=1, \cdots, N}\end{equation}
 $$
+
 
 
 ## Experiments
@@ -236,6 +254,7 @@ $$
 
 > 😀 **YongKyung Oh**  
 > Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
 
 
 $$

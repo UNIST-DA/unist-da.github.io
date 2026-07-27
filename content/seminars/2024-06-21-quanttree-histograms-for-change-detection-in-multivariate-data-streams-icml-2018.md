@@ -116,18 +116,22 @@ $W = \{x_1, \ldots, x_\nu\}$ : $\nu$ 개 의 샘플로 구성된 배치
 Change 감지 : $TR$에서 학습된 histogram $h$와 $W$의 data가 일치하는지 평가하는  hypothesis test (HT)를 진행
 
 
+
 $$
 H_0: W \sim \phi_0 \quad \text{vs} \quad H_1: W \sim \phi_1 \neq \phi_0
 $$
+
 
 - $\phi_1$ 은 알 수 없는 사후 변화 분포를 의미
 - HT은 히스토그램 $h$ 를 기준으로 정의된 통계량 $T_h$에 기반 (예시 : Pearson 통계량)
     - 통계량  $T_h$는 $\{y_k\}_{k=1, \ldots, K}$에 따라 달라짐
         - $y_k$ : $W$에서 $S_k$에 속하는 샘플 수
 
+    
+$$
+    T_h(W) = T_h(y_1, \ldots, y_K) > \tau
     $$
-     T_h(W) = T_h(y_1, \ldots, y_K) > \tau
-    $$
+    
 
     - $\tau \in \mathbb{R}$ : False Positive Rate (FPR)를 제어하는 임계값
 
@@ -136,9 +140,11 @@ $$
 1. 변화 감지 목적을 위해 훈련 세트 $TR$에서 히스토그램 $h$를 학습
 2. 주어진 테스트 통계량 $T_h$와 **FPR 값** $\alpha$에 대해, 다음을 만족하는 임계값 $\tau$를 정의
 
-    $$
+    
+$$
     P_{\phi_0}(T_h(W) > \tau) \leq \alpha
     $$
+    
 
 - $P_{\phi_0}$는 $W$가 $\phi_0$에서 생성된 샘플을 포함한다는 가설 하에서의 확률
 
@@ -249,9 +255,11 @@ Theorem 1. Let $\mathcal{T}_{h}(\cdot)$ _be defined as in (3) over the histogram
 - **임계값** $\tau$ **추정**:
     - 생성된 통계량 값들의 집합 $T_{B}=\left\{t_{1}, \ldots, t_{B}\right\}$에서 경험적 분포의 $1-\alpha$ 분위로 임계값 $\tau$를 추정
 
-        $$
+        
+    $$
         \tau = \min \left\{t \in T_{B}: \#\left\{v \in T_{B}: v>t\right\} \leq \alpha B\right\}
         $$
+        
 
     - $\#A$는 집합 $A$의 원소 개수
     - $T_B$의 $1-α$ 분위에 해당하는 값을 계산하여 임계값 $τ$를 결정
@@ -296,17 +304,21 @@ def estimate_quanttree_sim(self):
 1. Pearson 통계량
 
 
+
 $$
-\mathcal{T}_{h}^{P}(W) = \sum_{k=1}^{K} \frac{\left(y_{k}-\nu \pi_{k}\right)^{2}}{\nu \pi_{k}} 
+\mathcal{T}_{h}^{P}(W) = \sum_{k=1}^{K} \frac{\left(y_{k}-\nu \pi_{k}\right)^{2}}{\nu \pi_{k}}
 $$
+
 
 
 2. 총 변동 통계량
 
 
+
 $$
 \mathcal{T}_{h}^{T V}(W) = \frac{1}{2} \sum_{k=1}^{K}\left|y_{k}-\nu \pi_{k}\right|
 $$
+
 
 - $y_{k}$는 배치 $W$에서 $S_{k}$ 빈에 속하는 샘플의 수를 의미
 
@@ -326,11 +338,13 @@ Theorem 1. Let $\mathcal{T}_{h}(\cdot)$ _be defined as in (3) over the histogram
 $\phi_{0}$ 에서 각 빈 $S_{k}$의 실제 확률의 분포에 대한 3 가지 명제
 
 
+
 $$
 \begin{equation*}
 p_{k}=P=P_{\phi_{0}}\left(S_{k}\right) \tag{8}
 \end{equation*}
 $$
+
 
 - $P$ : 부분 집합 $S_k$가 $\phi_0$에서 생성될 확률
 
@@ -355,6 +369,7 @@ Proof :
 $p$ : uniform disbtribution의 순서 통계량(order statistic)
 
 
+
 $$
 \begin{align*}
 p & =P_{\mathbf{X}}\left(Q_{i, L}\right)=P_{\mathbf{X}}\left(\mathbf{x} \in \mathbb{R}^{d}:[\mathbf{x}]_{i} \leq z_{(L)}\right)  \tag{10}\\
@@ -362,8 +377,10 @@ p & =P_{\mathbf{X}}\left(Q_{i, L}\right)=P_{\mathbf{X}}\left(\mathbf{x} \in \mat
 \end{align*}
 $$
 
+
 - $F_{Z}$ : $Z$의 누적 분포 함수(cumulative distribution function)
 - $U=F_{Z}^{-1}(Z)$ 및 $\ u_{n}=F_{Z}^{-1}\left(z_{n}\right)\ ( n=1, \ldots, M\ )$을 정의
+
 
 $$
 \begin{equation*}
@@ -371,7 +388,9 @@ F_{Z}^{-1}(z)=\inf \left\{t \in \mathbb{R}: F_{Z}(t)>z\right\} \tag{11}
 \end{equation*}
 $$
 
+
 - $F_{Z}^{-1}(\cdot)$는 단조 증가 함수이므로 순서를 유지,  $\left\{u_{n}\right\}$의 $L$-번째 정렬된 값은 $u_{(L)}=F_{Z}^{-1}\left(z_{(L)}\right)$로 계산
+
 
 $$
 \begin{align*}
@@ -381,23 +400,27 @@ p & =P_{Z}\left(z \in \mathbb{R}: z \leq z_{(L)}\right)=  \tag{12}\\
 $$
 
 
+
 ⇒ $p$는 균등 분포의 $L$-번째 순서 통계량임을 알 수 있으며, 이는 $\text{Beta} (L, M-L+1)$ 분포를 따릅
 
 
 $p_{k}, k \geq 2$**의 분포를 유도**
 
 
-    $$
+    
+$$
     \begin{equation*}
     P_{S_{1}}(\mathbf{x} \in A)=P_{\phi_{0}}\left(\mathbf{x} \in A \mid \mathbf{x} \notin S_{1}\right) \tag{13}
     \end{equation*}
     $$
+    
 
 
  ⇒ $\widetilde{p}_{2}=P_{S_{1}}\left(S_{2}\right)$는 $Beta \left(L_{2}, N_{2}-L_{2}+1\right)$ 분포를 따름 ($N_{2}=N-N_{1}$)
 
 
 이 과정을 반복하여 모든 확률 변수 $\widetilde{p}_{k}, k=1, \ldots, K$에 대해 다음과 같이 정의
+
 
 
 $$
@@ -407,6 +430,7 @@ $$
 $$
 
 
+
 이는 $Beta \left(L_{k}, N_{k}-L_{k}+1\right)$ 분포를 따름 ($N_{k}=N-\sum_{j=1}^{k-1} N_{j}$)
 
 
@@ -414,6 +438,7 @@ $$
 
 
 **Proof**
+
 
 
 $$
@@ -428,17 +453,20 @@ $$
 \end{align*}
 $$
 
+
 - QuantTree에 의해 정의된 집합 $\left\{S_{k}\right\}$는 서로 교차하지 않으므로, $S_{k}$와 $\bigcup_{j=1}^{k-1} S_{j}$도 교차하지 않음
 - $\widetilde{p}_{k}=P_{\phi_{0}}(\mathbf{x} \in S_{k} \mid \mathbf{x} \notin \bigcup_{j=1}^{k-1} S_{j})$ 와 $P_{\phi_{0}}\left(\mathbf{x} \notin \bigcup_{j=1}^{k-1} S_{j}\right)=1-\sum_{j=1}^{k-1} p_{j}$
 - $k = 1$일 때,  $p_1 = \widetilde{p}_1$
 - $k = 2$일 때, $p_2 = \widetilde{p}_2 \cdot (1 - p_1)$
 - $k = 3$ 일 때, $p_3 = \widetilde{p}_3 \cdot (1 - p_1 - p_2)$
 
-    $$
+    
+$$
     \begin{align*}p_3 &= \widetilde{p}_3 \cdot \left(1 - p_1 - \widetilde{p}_2 \cdot (1 - p_1)\right) 
      \\ &= \widetilde{p}_3 \cdot \left(1 - p_1 - \widetilde{p}_2 + \widetilde{p}_2 p_1\right)
      \\ &= \widetilde{p}_3 \cdot \left((1 - p_1)(1 - \widetilde{p}_2)\right) \\ &= \widetilde{p}_3 \cdot \left((1 - \widetilde{p}_1)(1 - \widetilde{p}_2)\right)\end{align*}
     $$
+    
 
 
 ![](/assets/seminars/quanttree-histograms-for-change-detection-in-multivariate-data-streams-icml-2018/7.png)
@@ -447,15 +475,18 @@ $$
 **Proof :**  $\widetilde{p}_{k}$_가_ $\widetilde{p}_{j}\  (j = 1, \ldots, k-1)$ 와 독립적임을 보여줌
 
 
+
 $$
 P_{\phi_{0}}\left(\widetilde{p}_{k} \leq t_{k} \mid \widetilde{p}_{j}=t_{j}, j=1, \ldots, k-1\right) = P_{\phi_{0}}\left(\widetilde{p}_{k} \leq t_{k}\right)
 $$
+
 
 - $k$번째 반복에서 QuantTree는 무작위로 차원 $i_{k}$를 선택하고, 남은 $N_{k}$ point의 $i_{k}$ 구성 요소의 $L_{k}$번째 순서 통계량에 따라 분할
     - $\left\{z_{n}=\left[\mathbf{x}_{n}\right]_{i_{k}}, n=1, \ldots, N\right\}$의 정렬된 $i_{k}$ 구성 요소 시퀀스에서 분할점의 위치  $\widetilde{L}_{k}$_로 정의_
     - $\widetilde{L}_{k}$의 값은 $\mathbf{x}_{1}, \ldots, \mathbf{x}_{N}$의 realizations에 따라 달라지며, $\left\{L_{k}, \ldots, M_{k}\right\}$ 범위 내의 확률 변수
     - 첫 번째 반복에서는 $L_{1}=\widetilde{L}_{1}$_이지만, 그 이후에는 두 값이 다를 수 있음_
 - 명제 1의 증명과 같이, $Z=[\mathbf{X}]_{i_{k}}$의 누적 분포 함수 $F_{Z}$를 나타내고, $U=F_{Z}^{-1}(Z)$를 정의하며, 이는 $[0,1]$에서 균등 분포를 따름
+
 
 $$
 \begin{align*}
@@ -464,8 +495,10 @@ $$
 \end{align*}
 $$
 
+
 - 간단한 표기를 위해 이후의 설명에서는 $(j=1, \ldots, k-1)$ 표현을 생략
 - $\{\widetilde{L}_k=a\}, $$a \in\{L_k, \ldots, M_k\}$
+
 
 $$
 \begin{align*}
@@ -476,7 +509,9 @@ $$
 $$
 
 
+
 $u_{(a)}$의 분포 (균등분포)가 $\widetilde{p}_{j}$_에 의존하지 않으므로,_ $P_{\phi_{0}}\left(u_{(a)} \leq t_{k} \mid \widetilde{p}_{j}=t_{j}\right)=P_{\phi_{0}}\left(u_{(a)} \leq t_{k}\right)$
+
 
 
 $$
@@ -487,6 +522,7 @@ $$
 & =P_{\phi_{0}}\left(u_{\left(\widetilde{L}_{k}\right)} \leq t_{k}\right)=P_{\phi_{0}}\left(\widetilde{p}_{k} \leq t_{k}\right) \tag{21}
 \end{align*}
 $$
+
 
 
 **정리 1의 증명**. 

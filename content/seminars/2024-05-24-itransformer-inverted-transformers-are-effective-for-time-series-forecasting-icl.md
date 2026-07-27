@@ -162,9 +162,11 @@ $\mathbf{X}_{:, n}$: whole time series of each variate indexed by $n$.
 - Attention doesn't work well with time series (increasing applications of Patching)
 - Given the high performance of linear forecasters, there is no need to use heavy models
 
+
 $$
 \begin{aligned}\mathbf{h}_n^0 & =\operatorname{Embedding}\left(\mathbf{X}_{:, n}\right), \\\mathbf{H}^{l+1} & =\operatorname{TrmBlock}\left(\mathbf{H}^l\right), l=0, \ldots, L-1, \\\hat{\mathbf{Y}}_{:, n} & =\operatorname{Projection}\left(\mathbf{h}_n^L\right),\end{aligned}
 $$
+
 
 
 ![](/assets/seminars/itransformer-inverted-transformers-are-effective-for-time-series-forecasting-icl/15.png)
@@ -202,9 +204,11 @@ $$
 ![](/assets/seminars/itransformer-inverted-transformers-are-effective-for-time-series-forecasting-icl/18.png)
 
 
+
 $$
 \operatorname{LayerNorm}(\mathbf{H})=\left\{\left.\frac{\mathbf{h}_n-\operatorname{Mean}\left(\mathbf{h}_n\right)}{\sqrt{\operatorname{Var}\left(\mathbf{h}_n\right)}} \right\rvert\, n=1, \ldots, N\right\}
 $$
+
 
 
 ![](/assets/seminars/itransformer-inverted-transformers-are-effective-for-time-series-forecasting-icl/19.png)

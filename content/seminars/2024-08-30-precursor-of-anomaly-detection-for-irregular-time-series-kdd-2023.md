@@ -120,14 +120,18 @@ parameter 𝜃𝑐 for multi-task learning**
 
 - co-evolving NCDEs are used to derive the two hidden vectors
 
+
 $$
 \begin{aligned}& \mathbf{h}(T)=\mathbf{h}(0)+\int_0^T f\left(\mathbf{h}(t) ; \theta_f, \theta_c\right) \frac{d X(t)}{d t} d t \\& \mathbf{z}(T)=\mathbf{z}(0)+\int_0^T g\left(\mathbf{z}(t) ; \theta_g, \theta_c\right) \frac{d X(t)}{d t} d t\end{aligned}
 $$
 
 
+
+
 $$
 \begin{aligned}&\begin{aligned}& f\left(\mathbf{h}(t) ; \theta_f, \theta_c\right)=\underbrace{\rho(\mathrm{FC}(\phi(\mathrm{FC}(\mathbf{h}(t)))))}_{\theta_f}+\underbrace{\rho(\mathrm{FC}(\phi(\mathrm{FC}(\mathbf{h}(t)))))}_{\theta_c} \\& g\left(\mathbf{z}(t) ; \theta_g, \theta_c\right)=\underbrace{\rho(\mathrm{FC}(\phi(\mathrm{FC}(\mathbf{z}(t)))))}_{\theta_c}+\underbrace{\rho(\mathrm{FC}(\phi(\mathrm{FC}(\mathbf{z}(t)))))}_{\theta_c}\end{aligned}\\\end{aligned}
 $$
+
 
 - 𝑓 and 𝑔 have their own parameter and shared parameter $c$
 
@@ -138,10 +142,12 @@ $\hat{y}_i^p=\sigma\left(\mathrm{FC}{\theta_p}(\mathbf{z}(T))\right)$, for the p
 ![](/assets/seminars/precursor-of-anomaly-detection-for-irregular-time-series-kdd-2023/5.png)
 
 
+
 $$
 L_{KD} = CE(\hat{y}_{i+1}^a,\hat{y}_{i+1}^p) \\
 L_{a} = CE(\hat{y}_{i+1}^a,y_{i})
 $$
+
 
 
 $L_{KD}$: CE loss for the knowledge distillation

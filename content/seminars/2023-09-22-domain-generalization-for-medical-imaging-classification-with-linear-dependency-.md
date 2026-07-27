@@ -182,9 +182,11 @@ $z_{i_j, c}^j=\alpha_1 z_{i_1, c}^1+\alpha_2 z_{i_2, c}^2+\ldots+\alpha_{j-1} z_
 Setting the rank of $\mathbf{Z}$ to $C$ is equivalent to minimize the $(C+1)$ th singular value(특이값) of $\mathbf{Z}$ 
 
 
+
 $$
 \mathcal{L}_{\text {rank }}=\sigma_{C+1}
 $$
+
 
 
 ```python
@@ -249,12 +251,14 @@ cross-entropy loss 포함 다양한 loss functions은 이를 만족함
 **Proof**. For simplicity, we first denote **the distribution on latent variables as** $q_i(z), i=\{1,2, \ldots, K, T\}$ as well as the **Gaussian prior** $\mathcal{N} \sim(0,1)$ **as** $q_*(z)$_. We can obtain the following upper bound,_
 
 
+
 $$
 \begin{aligned}
 \small & K L\left(q_T(z) \| q_*(z)\right)=\sum_{j=1}^K \beta_j \int_z q_j(z) \log \frac{q_T(z)}{q_*(z)} d z \\
 = & \sum_{j=1}^K \beta_j \int_z q_j(z) \log \frac{q_j(z)\left[1+\left(q_T(z) / q_j(z)-1\right)\right]}{q_*(z)} d z \\ =& \sum_{j=1}^K \beta_j \int_z q_j(z) (\log \frac{q_j(z)} {q_*(z)}+\log \left[1+\left(q_T(z) / q_j(z)-1\right)\right]) d z  \\ \leq & \sum_{j=1}^K \beta_j   K L\left(q_j(z) \| q_*(z)\right)=\sum_{j=1}^K \beta_j \int_z q_j(z) (\log \frac{q_j(z)}{q_*(z)} + q_T(z) / q_j(z)-1)   d z
-\end{aligned} 
+\end{aligned}
 $$
+
 
 
 
@@ -308,9 +312,11 @@ Only adopt a linear module without any non-linear processing
 
 3. Classification network $T_\phi$ outputs the corresponding prediction $\left\{\hat{y}i^k\right\}$
 
+
 $$
 \mathcal{L}_{\text {obj }}=\sum_{i, k} \mathcal{L}_c\left(\hat{y}i^k, y_i^k\right)+\lambda_1 \mathcal{L}_{\text {rank }}+\lambda_2 K L(q(\mathcal{Z} \mid \mathcal{X}) \| \mathcal{N} \sim(0,1))
 $$
+
 
 
 # Experiments
@@ -360,24 +366,30 @@ Two-strategy
     - IoU와 같이 두 개의 영역 A, B가 얼마나 겹쳐지는 지를 나타내는 지표
     - GT와 예측된 영역 Pred를 비교
 
-    $$
+    
+$$
     \begin{equation}D S C=\frac{2|X \cap Y|}{|X|+|Y|}\end{equation}
     $$
+    
 
 - Jaccard Index (JI)
 
-    $$
+    
+$$
     \begin{equation}J(A, B)=\frac{|A \cap B|}{|A \cup B|}=\frac{|A \cap B|}{|A|+|B|-|A \cap B|}\end{equation}
     $$
+    
 
 - Conformity Coefficient (CC)
 
     measures the ratio between missegmented voxels and correctly segmented voxels
 
 
-    $$
+    
+$$
     \frac{1-(FP +FN)}{TP}
     $$
+    
 
 - Average surface distance (ASD)
 
@@ -385,9 +397,11 @@ Two-strategy
 
 - Sensitivity (TPR)
 
-    $$
+    
+$$
     \frac{TP}{TP + FN}
     $$
+    
 
 
 </details>

@@ -107,13 +107,16 @@ Statistical properties such as mean and variance often change over time in time 
 
 - have non-distribution consistency
 
+
 $$
 \mathcal{X} = \{ x^{(i)} \}_{i=1}^{N}, \\ \mathcal{Y} = \{ y^{(i)} \}_{i=1}^{N},
 $$
 
+
 - $N, K, T_x, T_y$: number of sequecne, feature, input sequence length, output sequence length
 
 ![](/assets/seminars/reversible-instance-normalization-for-accurate-time-series-forecasting-against-d/7.png)
+
 
 
 $$
@@ -121,9 +124,12 @@ $$
 $$
 
 
+
+
 $$
 \operatorname{Var}\big[x^{(i)}_{kt}\big]= \frac{1}{T_x} \sum_{j=1}^{T_x}\Big( x^{(i)}_{kj} - \mathbb{E}_t[x^{(i)}_{kt}] \Big)^2.
 $$
+
 
 
 > 💡 Reducing non-stantionary proerties
@@ -132,9 +138,11 @@ $$
 ### RevIN Normalization
 
 
+
 $$
 \hat{x}^{(i)}_{kt}= \gamma_k \,\frac{x^{(i)}_{kt} - \mathbb{E}_t[x^{(i)}_{kt}]}{\sqrt{\operatorname{Var}[x^{(i)}_{kt}] + \epsilon}}+ \beta_k,
 $$
+
 
 
 $\gamma, \beta$: learnable affine parameter vectors
@@ -143,17 +151,21 @@ $\gamma, \beta$: learnable affine parameter vectors
 ### RevIN Denormalization
 
 
+
 $$
 \hat{y}^{(i)}_{kt}= \sqrt{\operatorname{Var}\big[x^{(i)}_{kt}\big] + \epsilon}\cdot\frac{\tilde{y}^{(i)}_{kt} - \beta_k}{\gamma_k}+ \mathbb{E}_t\big[x^{(i)}_{kt}\big].
 $$
 
 
+
 **Procedure**
+
 
 
 $$
 x^{(i)}_{kt} \xrightarrow[\text{norm}]{} \hat{x}^{(i)}_{kt} \xrightarrow[\text{model}]{} \tilde{y}^{(i)}_{kt} \xrightarrow[\text{denorm}]{} \hat{y}^{(i)}_{kt}
 $$
+
 
 
 ## Results

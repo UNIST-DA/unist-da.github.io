@@ -72,17 +72,21 @@ Notation
 Empirical risk
 
 
+
 $$
 \hat{\mathcal{E}}_{\mathcal{D}}(\theta):=\frac{1}{I n} \sum_{i=1}^{I} \sum_{j=1}^{n} \ell\left(f\left(x^{i} ; \theta\right), y^{i}\right)
 $$
 
 
+
 Robust empirical risk
+
 
 
 $$
 \hat{\mathcal{E}}_{\mathcal{D}}^{\gamma}(\theta):=\max _{\|\Delta\| \leq \gamma} \hat{\mathcal{E}}_{\mathcal{D}}(\theta+\Delta)
 $$
+
 
 
 ![relationship b/w empirical & robust risk](/assets/seminars/swad-domain-generalization-by-seeking-flat-minima-neurips-2021/2.png)
@@ -95,18 +99,22 @@ $$
 
 - $ \operatorname{diam}(\Theta):=\sup _{\theta, \theta^{\prime} \in \Theta}\left\|\theta-\theta^{\prime}\right\|_{2}, N:=\left\lceil(\operatorname{diam}(\Theta) / \gamma)^{d}\right\rceil$
 
+
 $$
 \mathcal{E}_{\mathcal{T}}(\theta)<\hat{\mathcal{E}}_{\mathcal{D}}^{\gamma}(\theta)+\frac{1}{2 I} \sum_{i=1}^{I} \operatorname{Div}\left(\mathcal{D}_{i}, \mathcal{T}\right)+\max _{k \in[1, N]} \sqrt{\frac{v_{k} \ln \left(m / v_{k}\right)+\ln (N / \delta)}{m}}
 $$
+
 
 
 **Theorem 2 (**minimizing robust empirical loss → DG gap**)**
 
     - Optimal solution of the RRM)  $\hat{\theta}^{\gamma}:=\arg \min _{\theta}\hat{\mathcal{E}}_{\mathcal{D}}^{\gamma}(\theta)$
 
+
 $$
 \begin{aligned}\mathcal{E}_{\mathcal{T}}\left(\hat{\theta}^{\gamma}\right)-\min _{\theta^{\prime}} \mathcal{E}_{\mathcal{T}}\left(\theta^{\prime}\right) \leq & \hat{\mathcal{E}}_{\mathcal{D}}^{\gamma}\left(\hat{\theta}^{\gamma}\right)-\min _{\theta^{\prime \prime}} \hat{\mathcal{E}}_{\mathcal{D}}\left(\theta^{\prime \prime}\right)+\frac{1}{I} \sum_{i=1}^{I} \operatorname{Div}\left(\mathcal{D}_{i}, \mathcal{T}\right) \\& +\max _{k \in[1, N]} \sqrt{\frac{v_{k} \ln \left(m / v_{k}\right)+\ln (2 N / \delta)}{m}}+\sqrt{\frac{v \ln (m / v)+\ln (2 / \delta)}{m}}\end{aligned}
 $$
+
 
 - Choose a proper γ, the optimal solution of the RRM will find a point near a flat optimum of ERM
 
@@ -233,9 +241,11 @@ $$
     **Theorem 1** (minimizing robust empirical loss → generalization performances in test domain)
 
 
-    $$
+    
+$$
     \mathcal{E}_{\mathcal{T}}(\theta)<\hat{\mathcal{E}}_{\mathcal{D}}^{\gamma}(\theta)+\frac{1}{2 I} \sum_{i=1}^{I} \operatorname{Div}\left(\mathcal{D}_{i}, \mathcal{T}\right)+\max _{k \in[1, N]} \sqrt{\frac{v_{k} \ln \left(m / v_{k}\right)+\ln (N / \delta)}{m}}
     $$
+    
 
     - Confidence bound diverges to infinity when $\gamma$ goes to zero
     - Caused by the looseness of the union bound

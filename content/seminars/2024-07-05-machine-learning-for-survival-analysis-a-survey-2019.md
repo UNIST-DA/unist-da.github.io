@@ -88,9 +88,11 @@ Ping Wang, Yan Li, and Chandan K. Reddy. 2019. Machine Learning for Survival Ana
 # Definition of Survival Analysis 
 
 
+
 $$
 y_i=\left\{\begin{array}{ll}T_i & \text { if } \delta_i=1 \\ C_i & \text { if } \delta_i=0\end{array}\right.
 $$
+
 
 - $y_i$: 인스턴스 i에 대해 관찰된 시간
 - $T_i$:  인스턴스 i의 실제 생존 시간(survival time). 이벤트(예: 사망, 고장 등)가 발생한 시점
@@ -114,10 +116,11 @@ $$
 ### **생존 함수** $S(t)$ **:** 특정 시간 t 까지 생존할 확률. 
 
 
+
 $$
-					S(t)=Pr(T ≥t) 
-	
+S(t)=Pr(T ≥t)
 $$
+
 
 
  시간이 지남에 따라 감소. 초기값 1에서 0에 가까워짐.
@@ -134,9 +137,11 @@ $$
 시간이 t까지 생존한 조건 하에, 시간 t에서 이벤트가 발생할 확률 밀도
 
 
+
 $$
 h(t)=\lim _{\Delta t \rightarrow 0} \frac{\operatorname{Pr}(t \leq T<t+\Delta t \mid T \geq t)}{\Delta t} \\= \lim _{\Delta t \rightarrow 0} \frac{F(t+\Delta t)-F(t)}{\Delta t \cdot S(t)}=\frac{f(t)}{S(t)}
 $$
+
 
 - ${Pr}(t \leq T<t+\Delta t \mid T \geq t)$ : 시간 t 에서 $t+\Delta t$ 사이에 사건이 발생할 조건부 확률
     - 시간 t 까지 생존한 인스턴스가  t 에서 $t+\Delta t$ 사이에 사건을 경험할 확률
@@ -144,9 +149,11 @@ $$
 - $\Delta t$ : 매우 작은 시간 간격. 작을수록, 해저드 함수는 더 정확하게 특정 시간 t에서의 즉시 위험도를 반영
 - $f(t)$ : 특정 시간에 이벤트가 발생할 확률 밀도.
 
+
 $$
 h(t) = -\frac{d}{dt}[\ln{S(t)}]
 $$
+
 
 
 <u>⇒</u> $h(t)$ <u>는</u> $S(t)$ <u>의 로그를 시간에 따라 미분한 값의 음수를 취하여 구함.</u>
@@ -155,10 +162,12 @@ $$
 ### cumulative hazard function H(t)  : 시간 0에서부터 시간 t까지의 hazard function 의 적분값. 
 
 
+
 $$
 S(t) = \exp(-H(t)) \\
 H(t) = \int_0^th(u) du
 $$
+
 
 - 시간 t까지의 누적된 위험
 
@@ -279,9 +288,11 @@ $h(t)=\frac{S(t)}{f(t)}$
 ### Kaplan-Meier estimator 를 통한 논문의 설명
 
 
+
 $$
 p(T_j) = \frac{r_j−d_j}{r_j}
 $$
+
 
 
 $p(T_j)$ : 시간 $T_j$ 에서 사건이 발생하지 않을 확률(생존할 확률)
@@ -296,9 +307,11 @@ $d_j$ : 시간 $T_j$ 에 관찰된 사건의 수( $T_j$ 시점에 사건이 발�
 ⇒ 사건이 발생할 위험이 있는 전체 인스턴스 중에서 사건이 발생하지 않은 인스턴스의 비율
 
 
+
 $$
-\hat{S}(t) = \prod_{j:T_j<t}p(T_j) = \prod_{j:T_j<t}(1-\frac{d_j}{r_j}) 
+\hat{S}(t) = \prod_{j:T_j<t}p(T_j) = \prod_{j:T_j<t}(1-\frac{d_j}{r_j})
 $$
+
 
 
 특정 시간 t까지 생존할 누적 확률 : 각 시간  $T_j$ 에서의 조건부 생존 확률을 단계적으로 모두 곱한 값. 
@@ -377,17 +390,21 @@ H_t = np.cumsum(hazard_probs)
 Nelson-Aalen 추정법은 각 사건 발생 시점에서 누적 위험 함수(CHF)를 추정한 다음, 이를 사용하여 생존 함수를 계산
 
 
+
 $$
 \hat{H}(t)=∑_{t_i\leq t}\frac{d_i}{r_i}
 $$
+
 
 - 각 사건 발생 시점에서 누적 위험 함수를 계산
 - $r_j$는 사건이 발생할 위험에 노출된 인스턴스 수(시간 $t_i$ 에서 위험에 처한 사람들의 수)
 - $d_j$는 사건 발생 수(사망자 수)
 
+
 $$
 \hat{S}(t)=\exp(−\hat{H}(t))
 $$
+
 
 - $\hat{H}(t)$ 를 활용해 S(t) 계산
 - KM 보다 더 부드러운 생존 함수
@@ -404,9 +421,11 @@ $$
 <details>
 <summary>extra</summary>
 
+
 $$
 P_j=S\left(t_j\right)=P\left(T \geq t_j\right) \\p_j=P\left(T \geq t_j \mid T \geq t_{j-1}\right)=\frac{S\left(t_j\right)}{S\left(t_{j-1}\right)}=\frac{P_j}{P_{j-1}} \\q_j=P\left(t_{j-1} \leq T<t_j \mid T \geq t_{j-1}\right)=1-p_j
 $$
+
 
 - $P_j$ : 시간 $t_j$에서 생존할 확률
 - 조건부 생존 확률 $p_j$ : 시간 $t_{j−1}$에서 생존한 사람들이 시간 $t_j$까지 생존할 조건부 확률
@@ -415,9 +434,11 @@ $$
 for $j=2, \ldots, J+1$. Thus, we have
 
 
+
 $$
 S\left(t_j\right)=p_j S\left(t_{j-1}\right)=\cdots=p_j p_{j-1} \cdots p_2 p_1 P_0=\prod_{i=1}^j p_i
 $$
+
 
 - $S(t_j)$: 시간 $t_j$에서의 생존 함수
 - $P_0=P(T≥0)=1$: 초기 시점에서 생존 확률은 1
@@ -438,18 +459,22 @@ Thus,in the standard LT method, $r_j =r’_j−c_j/2$ is assumed to be the numbe
     - $d_j$: j번째 구간 내의 사망자 수
 1. **구간 내 생존 확률 추정 :  구간 내 사망자 수와 생존자 수를 사용**
 
+
 $$
 \hat{p}_j=1−\frac{d_j}{r_j}
 $$
+
 
 - $\hat{p}_j$: j번째 구간의 조건부 생존 확률
 - $d_j$: j번째 구간 내의 사망자 수
 - $r_j$: j번째 구간의 생존자 수 (보정된 값)
 1. **생존 함수 추정 : 각 구간의 조건부 생존 확률을 곱하여 생존 확률을 추정**
 
+
 $$
 \hat{S}(t_j)=∏_{i:i<j}(1−\frac{d_i}{r_i}) = ∏_{i:i=1}^j\hat{p}_i
 $$
+
 
 - $\hat{S}(t_j)$ : 시간 $t_j$ 에서의 생존 함수
 
@@ -459,15 +484,19 @@ $$
 $\hat{S}(t_{j−1})$ * $p_j$ = $\hat{S}(t_{j−1})$ * $(1-\hat{q}_j)$ 
 
 
+
 $$
 \hat{S}(t_{mj}) =  \hat{S}(t_{j−1})(1−\hat{q}_j)
 $$
 
+
 1. **사망 밀도 함수 추정 : 구간의 생존 확률과 사망 확률을 사용하여 구간의 중간점에서 사망 밀도를 계산**
+
 
 $$
 \hat{f}(t_{mj})=\frac{\hat{S}(t_{j−1})\hat{q}_j}{b_j}
 $$
+
 
 
 j번째 구간의 중간점에서의 사망 밀도를 계산. j−1번째 구간의 생존 확률과 j번째 구간의 사망 확률을 곱한 값을 구간의 길이로 나눔.
@@ -480,9 +509,12 @@ j번째 구간의 중간점에서의 사망 밀도를 계산. j−1번째 구간
 1. **위험 함수 추정 : 구간의 사망 확률을 구간의 길이와 생존 확률로 나눠 위험 함수를 계산**
 - j번째 구간의 중간점에서의 위험 함수를 계산. 구간의 사망 확률을 구간의 길이와 조건부 생존 확률로 나눔
 
+
 $$
 h(t) = \frac{f(t)}{S(t)}
 $$
+
+
 
 
 $$
@@ -490,12 +522,15 @@ $$
 $$
 
 
+
 ⇒ 생<u>명표 방법에서는 아래와 같이 단순화하여 사용</u>
+
 
 
 $$
 \hat{h}(t_{mj}) =\frac{2\hat{q}_j}{b_j(1+\hat{p}_j)}
 $$
+
 
 - $\hat{h}(t_{mj})$: $t_{mj}$에서의 위험 함수
 - $\hat{q}_j$: j번째 구간의 사망 확률
@@ -536,9 +571,11 @@ $$
 ### 수식 8: Cox Proportional Hazards Model
 
 
+
 $$
 h(t,Xi)=h_0(t)\exp(X_iβ)
 $$
+
 
 - $h(t,Xi)$: 시간 t에서 공변량 $X_i$를 가진 인스턴스의 위험 함수 (hazard function)
 - $h_0(t)$: 기준 위험 함수 (baseline hazard function)
@@ -552,9 +589,11 @@ $$
 
 - 수식 8의 위험도를 활용, 두 인스턴스 간 상대적 위험도 계산
 
+
 $$
 \frac{h(t,X1)}{h(t,X2)}=\frac{h_0(t)\exp⁡(X_1β)}{h_0(t)\exp⁡(X_2β)}=\exp⁡[(X_1−X_2)β]
 $$
+
 
 - $h(t,X)$: 시간 $t$ 에서 공변량 $X$ 를 가진 인스턴스의 위험 함수
     - $h(t,X_1)$ : 인스턴스 1의 위험 함수
@@ -582,9 +621,11 @@ $\exp⁡[(X_1−X_2)β]\\=\exp⁡[(1,0)−(0,1)]⋅[0.5,−0.2]\\=\exp⁡[1⋅0.
 ### 수식 10: 생존 함수 (Survival Function)
 
 
+
 $$
 S(t)=\exp⁡(−H_0(t)\exp⁡(Xβ))=S_0(t)^{\exp⁡(Xβ)}
 $$
+
 
 - S(t): 시간 t에서의 생존 확률 (survival probability)
     - 사건이 시간 t까지 발생하지 않을 확률
@@ -658,9 +699,11 @@ $S(t,X)=\exp(−\exp(Xβ)H_0(t))=(\exp(−H_0(t)))^{\exp(Xβ)}=S_0(t)^{\exp(Xβ)
 Breslow의 추정량은 기준 위험 함수를 추정하기 위해 사용
 
 
+
 $$
 \hat{H}_0(t)=∑_{t_i≤t}\hat{h}_0(t_i)
 $$
+
 
 
 **설명**:
@@ -693,9 +736,11 @@ $$
 - 해당 시간에 위험에 노출된 모든 인스턴스의 사건 발생 위험 중에서 인스턴스 j가 차지하는 비율
 - 특정 시간 $T_j$에서 인스턴스 $j$가 사건을 겪을 확률
 
+
 $$
 \frac{h(T_j,X_j)dt}{∑_{i∈R_j}h(T_j,X_i)dt}
 $$
+
 
 - $h(T_j,X_j)$: 사건 발생 시간 $T_j$에서 공변량 $X_j$ 를 가진 인스턴스 j의 위험 함수
     - 그 시점에서 인스턴스 j 가 사건을 겪을 가능성
@@ -724,9 +769,11 @@ $\frac{h(T_j,X_j)dt}{∑_{i∈R_j}h(T_j,X_i)dt}$
 각 데이터 포인트의 기여도 계산, 이를 모두 곱해줌으로써 공변량의 계수 $\beta$ 를 추정하는 데 사용
 
 
+
 $$
 L(β)=∏_{j=1}^N[\frac{\exp⁡(X_jβ)}{∑_{i∈R_j}\exp⁡(X_iβ)}]^{δ_j}
 $$
+
 
 - $δ_j$: 사건이 발생했는지를 나타내는 지시 변수 (발생 시 1, 아니면 0)
 - 부분 우도 함수 $L(\beta)$ : 모델의 적합도 측정.  공변량에 대한 계수 β를 추정하기 위해 사용.
@@ -749,9 +796,11 @@ $$
 ### 수식 14: 음의 로그 부분 우도 함수 (Negative Log-Partial Likelihood Function)
 
 
+
 $$
 LL(β)=−∑_{j=1}^Nδ_j(X_jβ−\log⁡[∑_{i∈R_j}\exp⁡(X_iβ)])
 $$
+
 
 - LL(β): 음의 로그 부분 우도 함수
     - 부분 우도 함수를 로그 변환, 음수로 만든 값
@@ -887,9 +936,11 @@ S_t = np.exp(-baseline_hazard[:, np.newaxis] * np.exp(risk_scores_sorted))
     - Lasso 처럼 변수 선택을 하면서도 Ridge 처럼 변수 간의 상관관계 조정
 - Lasso-Cox와 달리 N≤P인 경우에도 N개 이상의 특징을 선택할 수 있음
 
+
 $$
 \lambda\left[\alpha \sum_{p=1}^P\left|\beta_p\right|+\frac{1}{2}(1-\alpha) \sum_{p=1}^P \beta_p^2\right]
 $$
+
 
 
 ### **OSCAR-Cox**:
@@ -953,9 +1004,11 @@ Cox 비례 위험 모델을 기반으로 한 부스팅(boosting) 방법
 ### 수식 15: TD Cox Model 의 Hazard Function
 
 
+
 $$
 h(t,X(t))=h_0(t)\exp(∑_{j=1}^{P_1}δ_jX.j(t)+∑_{i=1}^{P_2}β_iX.i)
 $$
+
 
 - **수식 15**는 시간 종속 공변량과 비종속 공변량을 모두 포함한 Cox 모델의 위험 함수를 나타냄. 이는 시간에 따라 변할 수 있는 공변량을 고려하여 인스턴스의 위험도를 계산
     - 시간 종속 공변량의 합과 시간 비종속 공변량의 합을 활용
@@ -963,9 +1016,11 @@ $$
 ### 수식 16: Hazard Ratio
 
 
+
 $$
 \hat{HR}(t)=\frac{\hat{h}(t,X(t))}{\hat{h}(t,X^∗(t))}\\=\exp(∑{j=1}^{P_1}δ_j[X_{.j}^∗(t)−X_{.j}(t)]+∑_{i=1}^{P_2}β_i[X_{.i}^∗−X_{.i}])
 $$
+
 
 - **수식 16**은 두 인스턴스의 위험 함수를 비교하여 위험 비를 계산. 시간 종속 및 비종속 공변량의 차이를 반영하여 상대적인 위험도를 나타냄.
     - 시간 종속 공변량의 차이에 따른 위험비와 시간 비종속 공변량의 차이에 따른 위험비를 모두 고려
@@ -994,9 +1049,11 @@ $$
 ### Parametric model 에서 MLE(Maximum Likelihood Estimation) 
 
 
+
 $$
 L(\beta)=\prod_{\delta_i=1} f\left(T_i, \beta\right) \prod_{\delta_i=0} S\left(T_i, \beta\right) .
 $$
+
 
 - $L(\beta)$ : 주어진 파라미터 β에 대해 관측된 데이터가 나타날 확률. 우도 함수는 파라미터 β를 최대화하여 추정
 - $∏_{δ_i=1}f(T_i,β)$ : 모든 uncensored observations 의 결합 확률
@@ -1041,12 +1098,15 @@ $$
 PDF $f(t)$ 에서 Survival Function S(t) 유도
 
 
+
 $$
 S(t)=1−∫_0^tf(u)du
 $$
 
 
+
 S(t) 에서 cumulative hazard function H(t) 유도
+
 
 
 $$
@@ -1054,12 +1114,15 @@ H(t)=−\log S(t)
 $$
 
 
+
 H(t) 에서 h(t) 유도 : 미분
+
 
 
 $$
 h(t)=\frac{dH(t)}{dt}
 $$
+
 
 
 </details>
@@ -1095,9 +1158,11 @@ $$
         - 특정 인스턴스에 더 높은 가중치를 부여하여 더 중요한 데이터에 더 큰 영향
         - $∑_{i=1}^nw_i(y_i−X_iβ)^2$
 
-            $$
+            
+        $$
             \text{Objective: } \sum_{i=1}^{n} (Y_i - X_i \beta)^2 + \lambda \sum_{j=1}^{p} w_j |\beta_j|
             $$
+            
 
     - **Structured**: 트리 기반 계층 구조와 그래프 기반 관계를 통해 데이터의 구조적 특성을 반영하여 가중치를 부여.
 <details>
@@ -1387,9 +1452,11 @@ Multitask Learning Model for Survival Analysis (MTLSA) : 여러 생존 문제를
 ### 수식 19: Concordance Probability 
 
 
+
 $$
 c=Pr(\hat{y}_1>\hat{y}_2∣y_1≥y_2)
 $$
+
 
 - $\hat{y}_1,\hat{y}_2$: 모델이 예측한 생존 시간
 - $y_1, y_2$: 실제 관측된 생존 시간
@@ -1405,9 +1472,11 @@ $$
 사건이 발생한 인스턴스 i와 그렇지 않은 인스턴스 j 간의 비교에서, 모델의 예측이 실제 순서와 일치하는지 평가함.
 
 
+
 $$
 \hat{c}=\frac{1}{num}∑_{i:δ_i=1}∑_{j:y_i<y_j}I[X_i\hat{β}>X_j\hat{β}]
 $$
+
 
 - num: 비교 가능한 모든 쌍의 수
 - $δ_i$: 인스턴스 i 의 사건 발생 여부 (1: 사건 발생, 0: 사건 미발생)
@@ -1420,9 +1489,11 @@ $$
 **수식 21: 생존 시간을 활용하는 C-index**
 
 
+
 $$
 \hat{c}=\frac{1}{num}∑_{i:δ_i=1}∑_{j:y_i<y_j}I[S(\hat{y}_j∣X_j)>S(\hat{y}_i∣X_i)]
 $$
+
 
 - S(⋅): 생존 확률 함수. 모델이 특정 시간까지 생존할 확률을 예측.
     - 사건이 발생한 인스턴스 i와 그렇지 않은 인스턴스 j 간의 비교에서, 예측된 생존 확률이 실제 순서와 일치하는지 평가
@@ -1431,9 +1502,11 @@ $$
 ### Supplemental : 시간 의존적 AUC
 
 
+
 $$
 AUC(t)=P(\hat{y}_i<\hat{y}_j∣y_i<t,y_j>t)=\frac{1}{num(t)}∑_{i:y_i<t}∑_{j:y_j>t}I(\hat{y}_i<\hat{y}_j)
 $$
+
 
 - t: 특정 생존 시간
 - num(t): 시간 t에서 비교 가능한 쌍의 수
@@ -1444,9 +1517,11 @@ $$
 ### Supplemental : 시간 의존적 C-Index
 
 
+
 $$
 c_{t∗}=\frac{1}{num}∑_{i:δ_i=1}∑_{j:y_i<y_j}I(\hat{y}_i<\hat{y}_j)=\frac{∑_{t∈T_s}AUC(t)⋅num(t)}{num}
 $$
+
 
 - Ts: 모든 가능한 생존 시간의 집합
 - 시간 의존적인 AUC 값을 사용하여 전체 기간에 걸친 C-index를 계산. 이는 주어진 기간 동안의 예측 일치도를 나타낸다.
@@ -1463,9 +1538,11 @@ $$
 - 모델이 특정 시간까지 생존할 확률을 얼마나 정확하게 예측하는지를 평가
 - 주어진 시점에서 예측된 확률과 실제 결과 간의 제곱 오차를 기반으로 함.
 
+
 $$
 BS(t)=\frac{1}{N}∑_{i=1}^N[\hat{y}_i(t)−y_i(t)]^2
 $$
+
 
 - N: 전체 인스턴스의 수
 - $\hat{y}_i(t)$: 시간 t에서의 예측된 결과. 특정 시점까지 생존할 확률
@@ -1475,9 +1552,11 @@ $$
 ### 수식 23: censored data 가 포함된 Brier Score
 
 
+
 $$
 BS(t)=\frac{1}{N}∑_{i=1}^Nw_i(t)[\hat{y}_i(t)−y_i(t)]^2
 $$
+
 
 - $w_i(t)$: 각 인스턴스 i에 대한 가중치. 검열 정보를 반영하여 계산
     - 각 인스턴스의 기여도를 조정하여 검열된 데이터가 예측 평가에 미치는 영향을 고려
@@ -1485,9 +1564,11 @@ $$
 ### 수식 24: 가중치 $w_i(t)$
 
 
+
 $$
 w_i(t)= \begin{cases}\delta_i / G\left(y_i\right) & \text { if } y_i \leq t \\ 1 / G\left(y_i\right) & \text { if } y_i>t\end{cases}
 $$
+
 
 - $δ_i$ : 사건 발생 여부를 나타내는 지표. 사건이 발생한 경우 1, 발생하지 않은 경우 0
 - $G(y_i)$: 검열 분포 G의 Kaplan-Meier 추정치. 각 시간 $y_i$에서 검열된 데이터의 분포
@@ -1501,9 +1582,11 @@ $$
 ### Supplemental: IBS (Integrated Brier Score)
 
 
+
 $$
 IBS=\frac{1}{N}∑_{i=1}^N \int_0^{t*} w_i(t)[\hat{y}_i(t)−y_i(t)]^2 dW(t)
 $$
+
 
 
 **IBS (Integrated Brier Score)**: 주어진 시간 간격(0,t∗) 동안 예측 오류를 평균화한 값.
@@ -1517,9 +1600,11 @@ $$
 - 예측된 시간 값과 실제 관측된 시간 값 간의 차이의 평균
 - 사건이 발생한 데이터에만 초점을 맞추어 계산
 
+
 $$
 MAE=\frac{1}{N}∑_{i=1}^N(δ_i∣y_i−\hat{y}_i∣)
 $$
+
 
 - **사건이 발생한 데이터 포인트만 고려 :** $δ_i=1$인 데이터 포인트만 고려
 - 각 데이터 포인트에 대해 예측된 시간과 실제 시간 간의 차이를 절대값으로 계산
@@ -1588,17 +1673,21 @@ $$
 
 - CIF (Cumulative Incidence Function) : 특정 시간까지 특정 유형의 사건이 발생할 누적 확률을 계산하는 함수. 각 사건 유형별로 발생 확률을 추정
 
+
 $$
 CIF_k(t)=Pr(T≤t,event \ type=k)
 $$
+
 
 - Subdistribution Hazard : 특정 유형의 사건이 발생할 위험을 직접 모델링
     - 각 사건 유형별로 별도의 위험 비율을 계산
     - 각 사건의 상대적인 위험을 파악
 
+
 $$
 λ_k(t)=lim_{Δt→0}\frac{Pr(t≤T<t+Δt,event \ type=k∣T≥t)}{Δt}
 $$
+
 
 
 ### Supplemental : Cumulative Incidence Curve (CIC)
@@ -1607,9 +1696,11 @@ $$
 경쟁 위험을 고려한 마진 확률을 추정하기 위해 사용
 
 
+
 $$
 CIC_q(t)=∑_{j:t_j≤t}\hat{S}(t_{j−1})\hat{h}_q(t_j)=∑_{j:t_j≤t}\hat{S}(t_{j−1})\frac{n_{qj}}{n_j}
 $$
+
 
 - $\hat{S}(t_{j−1})$: 이전 시간 $t_{j−1}$에서의 생존 확률.
 - $\hat{h}_q(t_j)$: 시간 $t_j$에서 이벤트 q에 대한 위험 추정치.

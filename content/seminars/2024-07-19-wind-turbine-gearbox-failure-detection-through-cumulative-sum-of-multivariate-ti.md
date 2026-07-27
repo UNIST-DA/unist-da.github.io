@@ -50,17 +50,21 @@ keywords: Anomaly Detection, Time-series anomaly detection
             - 두 점 $i,j$ 연결 시 : $d_G(i,j)$로 셋팅, 비 연결 시 : $d_G(i,j)$ 무한대 초기화
                 - Floyd-Warshall 알고리즘을 통한 최단 경로 계산$(k = 1,2,…,N)$
 
-                    $$
+                    
+                $$
                     d_G(i,j) = \text{min} (d_G(i,j), d_G(i,k) + d_G(k,j))
                     $$
+                    
 
                 - 최단 경로 행렬 생성 : $D_g = {d_G(i,j)}$
         3. **Construct** $d$**-dimensional embedding**
             - $D_G$에 대한 $\tau$ 연산으로 $\tau(D_G)$ 계산 : $S$ 행렬에 대한 $H$ 곱으로 중심화 거리 계산
 
-                $$
+                
+            $$
                 \tau(D) = -\frac{1}{2}HSH,\text{ } S_{ij} = D^2_{ij},\text{ }  H_{ij} = \delta_{ ij} - \frac{1}{N}
                 $$
+                
 
             - 고유값 분해 : $\tau(D_G)$ 행렬을 고유값 $\lambda_p$와 고유 벡터 $v_p$로 분해
             - 각 데이터 포인트 $i$에 대해 d-차원의 좌표 $y_i$를 $y_i = \sqrt(\lambda_p)v_p^i$로 embedding
@@ -100,31 +104,38 @@ keywords: Anomaly Detection, Time-series anomaly detection
         - 시계열 데이터 $X_t$는 독립이며, 확률 밀도 함수 $p_\theta(x)$ 확률 분포를 산출
         - 변화가 생긴 시점 $t_c$에 대해 변화 전 $\theta = \theta_0$, 변화 후 $ \theta = \theta_1$로 설정 시
 
-            $$
+            
+        $$
             p_{H_0}(\tilde{\mathbf{x}}) = p_{H_0}(x_1,...,x_k) = \prod_{t=1}^{t_c} p_{\theta_0}(x_t)\text{ }\text{ }\text{ }\text{ }\text{ }\text{ }\text{ }(1)
             $$
+            
 
 
-            $$
+            
+        $$
             p_{H_a}(\tilde{\mathbf{x}}) = p_{H_a}(x_1,...,x_k) = \prod_{t=1}^{t_c} p_{\theta_0}(x_t)\prod_{t=t_c+1}^{k} p_{\theta_1}(x_t)\text{ }\text{ }\text{ }\text{ }\text{ }\text{ }\text{ }(2)
             $$
+            
 
     - 개별 LLR $s(n)$은 가설 분포 $p_{\theta_1}$와 $p_{\theta_0}$ 간 LLR로, 현재 관측값 $x_n$이 두 가설 중 가까움 평가
     - 누적합 $S(k)$ : 시점 $k$까지의 개별 LLR $s(n)$의 합
         - 대부분의 경우는 정상일 가능성이 높음에 따라, $s(n)$은 대부분 음수
 
-        $$
+        
+    $$
         s(n) = \text{log}\frac{p_{\theta_1}(x_n)}{p_{\theta_0}(x_n)}, \text{ }S(k) = \sum^k_{n=1}s(n)\text{ }\text{ }\text{ }\text{ }\text{ }\text{ }\text{ }(3)
         $$
+        
 
     - $G(k)$, CUSUM Score : $S(k)$에서 최소 누적합 $\underset{1 \leq t \leq k}{\min} S(t)$ 뺀 값(현재 시점까지 변동 측정)
         - $\underset{1 \leq t \leq k}{\min} S(t)$ = $m(k)$ : $s(n)$이 양수로 바뀌기 직전(비정상 상태가 발생하기 직전)의 값
         - $m(k)$는 누적합의 최소값이고 항상 $m(k) ≤ m(k-1)$이 성립되므로, $G(k) ≥0$
 
-        $$
-        G(k) = S(k) -m(k)\text{ }\text{ }\text{ }\text{ }\text{ }\text{ }\text{ }(4)
         
+    $$
+        G(k) = S(k) -m(k)\text{ }\text{ }\text{ }\text{ }\text{ }\text{ }\text{ }(4)
         $$
+        
 
     - Case1) 변경 시점이 없는 경우 : 정상 지속
 
@@ -139,9 +150,11 @@ keywords: Anomaly Detection, Time-series anomaly detection
 
     - 재귀형 CUSUM : 이전 시점의 $G(k-1)$에 현재 시점 LLR $s(k)$를 더한 값과 0 중 큰 값 택
 
-    $$
+    
+$$
     G(k) = \text{max}(G(k-1) + s(k), 0)
     $$
+    
 
 <details>
 <summary>$G(k-1) + s(k) > 0 :$ $G(k)$</summary>
@@ -556,9 +569,11 @@ plot_mst_with_anomalies(data, mst, global_anomalous_edges, local_anomalies)
 - Anomaly Score : LoMST 기법을 사용하여 계산
 - CUSUM 및 LoMST를 사용하여 프로세스 평균의 변화를 탐지(multivariate data 특성)
 
-    $$
+    
+$$
     C_t = \text{max}(0, C_{t-1}+[{x_t} - \mu_0 - K]), \text{ } K : 오프셋
     $$
+    
 
     - $C_t$가 Control Limit $H$를 초과할 시 alarm 발생
     - $K$ : 프로세스의 작은 변화에 민감하지 않도록 설정된 값, 거짓 경보를 줄이는 역할
@@ -569,9 +584,11 @@ plot_mst_with_anomalies(data, mst, global_anomalous_edges, local_anomalies)
 <details>
 <summary>**2~3. How long to Accumulate and Set the Offset?**</summary>
 
+
 $$
 C_t = \text{max}(0, C_{t-1}+[z_t - K])
 $$
+
 
 - 증상 누적(Accumulation)과 오프셋($K$)을 설정하는 방법에 대해 설명
 - 풍력 터빈 고장 탐지는 단순한 평균 이동보다 복잡하기 때문에, 기존 CUSUM이 부적합
@@ -594,25 +611,30 @@ $$
 - Failure detection을 금전적 이득, 손실과 연결하는 utility 함수를 사용
 1. **True Positive(TP) : early warning에 따른 잠재적 절감액**
 
-    $$
+    
+$$
     TP_{saving} = \sum_{i=1,...,\text{TP}_\#}(R_{cost}-M_{cost})(\frac{\Delta t_i}{60})
     $$
+    
 
     - $\text{TP}_\#$ : TP 수, $R_{cost}$ : 교체 비용, $M_{cost}$ : 유지보수 비용, $\Delta t_i$ : 고장 시간 전 경고 발행 
     일수, 60 : 고장 발생 60일 전이 최대 절감액을 달성할 수 있는 시점으로 가정
 1. **False Negative(FN) 및 False Positive(FP) : miss detection 및 false detection 시 발생 비용**
 
-    $$
+    
+$$
     FN_{cost} = \#\text{FN} \times R_{cost}, \text{ } FP_{cost} = \#\text{FP}\times I_{cost}
     $$
+    
 
     - $\#\text{FN}$ : FN 수, $\#\text{FP}$ : FP 수, $I_{cost}$ : 검사 비용
 1. **최종 함수 : 모든 절감액과 비용 요소를 통합하여** $U(H)$**의 값을 최대화하는 것이 목표**
 
-    $$
-    U(H) = TP_{saving} - FN_{cost}-FP_{cost}, \text{ }\max_H U(H)
     
+$$
+    U(H) = TP_{saving} - FN_{cost}-FP_{cost}, \text{ }\max_H U(H)
     $$
+    
 
     - $H$ : Control limit이자 Threshold
 

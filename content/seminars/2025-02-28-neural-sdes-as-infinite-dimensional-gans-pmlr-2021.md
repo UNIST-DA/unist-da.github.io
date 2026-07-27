@@ -36,9 +36,11 @@ Stochastic differential equations (SDEs) are a staple of mathematical modelling 
 ### GANs (D: Discriminator, G: Generator)
 
 
+
 $$
 \min_G \max_D \; \mathbb{E}_{x \sim p_{\text{data}}} \left[ \log D(x) \right] + \mathbb{E}_{z \sim p_z} \left[ \log \left( 1 - D\left( G(z) \right) \right) \right]
 $$
+
 
 
 ⇒ limitation: local minimum
@@ -47,9 +49,11 @@ $$
 ### Wasserstein GANs
 
 
+
 $$
 \min_G \max_{D \in \mathcal{D}} \; \mathbb{E}_{x \sim p_{\text{data}}} \left[ D(x) \right] - \mathbb{E}_{z \sim p_z} \left[ D\left( G(z) \right) \right]
 $$
+
 
 
 # Paper Review
@@ -62,9 +66,11 @@ $$
 
 
 
+
 $$
 {dX_t} = f(t, X_t){dt}
 $$
+
 
 
 ⇒ limitation: Lack of stochasticity, uncertainty
@@ -73,9 +79,11 @@ $$
 ### Stochastic differential equations
 
 
+
 $$
-dX_t = f(t, X_t)\,dt + g(t, X_t) \circ dW_t, 
+dX_t = f(t, X_t)\,dt + g(t, X_t) \circ dW_t,
 $$
+
 
 
 ### Conventional **SDE modelling:**
@@ -112,9 +120,11 @@ motion) to some **solution distribution**
 - GANs examine the statistics of samples from $G_θ(µ)$,  and **seek to match the statistics
 of the model to the statistics of the data**  using Discriminator
 
+
 $$
 \mathbb{E}_{X \sim \text{model}} \left[ F_i(X) \right] = \mathbb{E}_{X \sim \text{data}} \left[ F_i(X \right)]
 $$
+
 
 
 ### **What GANs and SDEs have in common**
@@ -151,14 +161,17 @@ $\hat{z}: [0, T] \to \mathbb{R}^y$ such that $\hat{z}(t_i) = z_i, $
 **Generator Loss**
 
 
+
 $$
 \begin{equation}
 \min_\theta \; \mathbb{E}_{V,W}\left[ D_\phi\left(Y_\theta(V, W)\right) \right]
-\end{equation} 
+\end{equation}
 $$
 
 
+
 **Discriminator Loss**
+
 
 
 $$
@@ -166,6 +179,7 @@ $$
 \max_\phi \; \left[ \mathbb{E}_{V,W}\left[ D\phi\left(Y_\theta(V, W)\right) \right] - \mathbb{E}_z\left[ D_\phi\left(\hat{z}\right) \right] \right]
 \end{equation}
 $$
+
 
 
 > 💡 - Wasserstein GANs need a **Lipschitz discriminator**  
@@ -184,9 +198,11 @@ $$
 ### Time-dependent Ornstein–Uhlenbeck process
 
 
+
 $$
 dz_t = (\mu t - \theta_{z_{t}})dt + \sigma \circ dW_t
 $$
+
 
 
 ![](/assets/seminars/neural-sdes-as-infinite-dimensional-gans-pmlr-2021/2.png)

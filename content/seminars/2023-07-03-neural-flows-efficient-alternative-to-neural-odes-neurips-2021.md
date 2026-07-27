@@ -61,6 +61,7 @@ Biloš, M., Sommer, J., Rangapuram, S. S., Januschowski, T., & Günnemann, S. (2
 **Neural ODE**
 
 
+
 $$
 \begin{align*}
 \bm{x}(t_1) &= \bm{x}(t_0) + \int_{t_0}^{t_1}  f(t, \bm{x}(t)) \textrm{d}t \\ 
@@ -69,7 +70,9 @@ $$
 $$
 
 
+
 **Neural Flow**
+
 
 
 $$
@@ -78,6 +81,7 @@ $$
 \text{where }\dot{\bm{x}} &= f(t,\bm{x}(t)), \quad \bm{x}_0 = \bm{x}(0)
 \end{align*}
 $$
+
 
 
 ![](/assets/seminars/neural-flows-efficient-alternative-to-neural-odes-neurips-2021/4.png)
@@ -187,11 +191,13 @@ The given sequence of observations $(\bm{X}, \bm{t})$ is modeled with latent var
 Since the exact inference on the initial state $\bm{z}_0$, $p(\bm{z}_0 | \bm{X}, \bm{t})$is intractable, we proceed by doing approximate inference following the variational auto-encoder approach. We use an LSTM-based neural flow encoder that processes$(\bm{X}, \bm{t})$ and outputs the approximate posterior parameters $\bm{\mu}$ and $\bm{\sigma}$ from the last state, $q(\bm{z}_0 | \bm{X}, \bm{t}) = \mathcal{N}(\bm{\mu}, \bm{\sigma})$. The decoder returns all $z_i$ deterministically at times $\bm{t}$ with $F(t, z_0)$, with initial condition $z_0 \sim q(\bm{z}_0 | \bm{X}, \bm{t})$. For the latent state at an arbitrary $t_i$, the target is generated according to the model $\bm{x}_i \sim p(\bm{x}_i | \bm{z}_i)$. Given $p(\bm{z}_0) = \mathcal{N}(\bm{0}, \bm{1})$, the overall model is trained by maximizing the evidence lower bound:
 
 
+
 $$
 \begin{align*}
 \mathrm{ELBO} = \mathbb{E}_{z_0 \sim q_0(\bm{z}| \bm{X}, \bm{t}))}[\log p(\bm{X})] - \mathrm{KL}[q(\bm{z}_0 | \bm{X}, \bm{t}) || p(\bm{z}_0)].
 \end{align*}
 $$
+
 
 
 Using continuous time models brings up multiple advantages, from handling irregular time points automatically to making predictions at any, and as many time points as required, allowing us to do reconstruction, missing value imputation and forecasting. This holds whether we use neural flows or ODEs, but our approach is more computationally efficient, which matters as we scale to bigger data.
@@ -239,9 +245,11 @@ Here, the prediction for future time steps is done by evolving the posterior cor
 A realization of a TPP on an interval $[0, T]$ is an increasing sequence of arrival times $\bm{t} = (t_1, \dots, t_n)$, $t_i \in [0, T]$, where $n$ is a random variable. The model is defined with an intensity function $\lambda(t)$ that tells us how many events we expect to see in some bounded area. The intensity has to be positive. We define the history $\mathcal{H}_{t_i}$ as the events that precede $t_i$, and further define the conditional intensity function $\lambda^*(t)$ which depends on history. For convenience, we can also work with inter-event times $\tau_i = t_i - t_{i-1}$, without losing generality. We train the model by maximizing the log-likelihood:
 
 
+
 $$
 \log p(\bm{t}) = \sum_i^n \log \lambda^{*}(t_i) - \int_0^T \lambda^{*}(s) \mathrm{d} s .
 $$
+
 
 
 Previous works used autoregressive models (e.g., RNNs) to represent the history with a fixed-size vector $\bm{h}_i$. The intensity function can correspond to a simple distribution or a mixture of distributions. Then the integral in Equation 8 can be computed exactly. Another possibility is modeling $\lambda(t)$ with an arbitrary neural network which requires Monte Carlo integration.
@@ -265,9 +273,11 @@ Normalizing flows (NFs) define densities with invertible transformations of rand
 In contrast to this, , Chen et al. define the transformation with an ODE: $f(t, \bm{z}(t)) = \frac{\partial}{\partial t} \bm{z}(t)$. This allows them to define the instantaneous change in log-density as well as the continuous equivalent to the change of variables formula, giving rise to the continuous normalizing flow (CNF):
 
 
+
 $$
 \frac{\partial}{\partial t}\log p(\bm{z}(t)) = -\mathrm{tr}\left( \frac{\partial f}{\partial \bm{z}(t)} \right),\quad    \log p(\bm{x}) = \log q(\bm{z}(t_0)) - \int_{t_0}^{t_1} \mathrm{tr} \left( \frac{\partial f}{\partial \bm{z}(t)} \right) \rm{d} t,
 $$
+
 
 
 where $t_0 = 0$ and $t_1 = 1$ are usually fixed. The neural network $f$ can be arbitrary as long as it gives unique ODE solutions. This offers an advantage when we need special structure of $f$ that cannot be easily implemented with the discrete NFs, e.g., in physics we often require equivariant transformations. 
@@ -282,10 +292,11 @@ However, we are not interested in comparison between different normalizing flows
 Values $\bm{x}_i$ often correspond to locations of events, e.g., earthquakes or disease outbreaks. We use the temporal point processes from Section 3.2 to model $p(\bm{t})$, and are only left with the conditional density $p(\bm{X} | \bm{t})$. Chen et al propose several models for this, the first one being the time-varying CNF where $p(\bm{x}_i | t_i)$ is estimated by integrating Equation 9 from $t_0 = 0$ to observed $t_i$. Using our affine coupling flow as defined in Equation 6 we can write:
 
 
-$$
-p(\bm{x}_i | t_i) = q(F^{-1}(t_i, \bm{x}_i)) | \det J_{F^{-1}}(\bm{x}_i) |,
 
 $$
+p(\bm{x}_i | t_i) = q(F^{-1}(t_i, \bm{x}_i)) | \det J_{F^{-1}}(\bm{x}_i) |,
+$$
+
 
 
 where $q$ is the base density (defined with any NF) and the determinant is the product of the diagonal values of the Jacobian w.r.t.\ $\bm{x}_i$, which are simply $\exp$ terms from Equation 6. The density $p$ evolves with time, the same way as in the CNF model, but without using the solver or trace estimation. To generate new realizations at $t_i$, we first sample from $q$ to get $\bm{x}_0 \sim q(\bm{x}_0)$, then evaluate $F(t_i, \bm{x}_0)$.

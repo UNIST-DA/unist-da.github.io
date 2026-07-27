@@ -64,9 +64,11 @@ $ \emptyset(\cdot ; \boldsymbol{w})$ : neural network with $L$ hidden layers, $\
 ### One-Class Deep SVDD
 
 
+
 $$
 \min_{\boldsymbol{W}} +\frac{1}{\boldsymbol{n}} \sum_i \left\{\left\|\emptyset\left(x_i ; \mathcal{W}\right)-c\right\|^2\right\}+\frac{\lambda}{2} \sum{\ell}\left\|\boldsymbol{W}^{\ell}\right\|_{\boldsymbol{F}}^2
 $$
+
 
 - 1st term: 구의 중심과 데이터 point 사이의 거리를 최소화
 - 2nd term: weight decay regularizer
@@ -81,9 +83,11 @@ Objective 최적화를 통해 $W$는 각 데이터 point를 구의 중심 $c$에
 ![](/assets/seminars/deep-semi-supervised-anomaly-detection-iclr-2020/2.png)
 
 
+
 $$
 \mathcal{H}(X)=\mathbb{E}[I(X)]=\mathbb{E}[-\log p(X)]=-\int p(x) \log p(x)
 $$
+
 
 
 where $I$ is information content which means a basic quantity derived from the probability
@@ -95,9 +99,11 @@ where $I$ is information content which means a basic quantity derived from the 
 - Measure of the mutual dependence  between the two probability  variables.
 - The bigger the dependency of the two probability variables, the bigger the amount of mutual information.
 
+
 $$
 \mathcal{I}(X; Y)=D_{K L}(p(x, y) \| p(x) p(y))
 $$
+
 
 
 # Introduction
@@ -126,9 +132,11 @@ $$
 Supervised deep learning seeks to minimize the mutual information $\mathcal{I}(X ; Z)$ between the input $X$ and the latent representation $Z$ while maximizing the mutual information $\mathcal{I}(Z ; Y)$ between $Z$ and the classification task $Y$,
 
 
+
 $$
 \min _{p(z \mid x)} \quad \mathcal{I}(X ; Z)-\alpha \mathcal{I}(Z ; Y)
 $$
+
 
 
 where $p(z\mid x)$ is modeled by a deep network and the hyperparameter $α$ > 0 controls the trade-off between compression (i.e., complexity) and classification accuracy.
@@ -139,9 +147,11 @@ In Unsupervised deep learning, the objective of Infomax is to maximize the mutua
 
 
 
+
 $$
-\max _{p(z \mid x)} \mathcal{I}(X ; Z)+\beta \mathcal{R}(Z) 
+\max _{p(z \mid x)} \mathcal{I}(X ; Z)+\beta \mathcal{R}(Z)
 $$
+
 
 
 
@@ -158,21 +168,26 @@ In Deep SAD build upon _Infomax principle_[ ](notion://www.notion.so/unistda/DEE
 
 - Deep SVDD objective:
 
+
 $$
 \min _{\mathcal{W}} \frac{1}{n} \sum_{i=1}^n\left\|\phi\left(\boldsymbol{x}_i ; \mathcal{W}\right)-\boldsymbol{c}\right\|^2+\frac{\lambda}{2} \sum_{\ell=1}^L\left\|\boldsymbol{W}^{\ell}\right\|_F^2, \quad \lambda>0
 $$
 
+
 - Deep SVDD Score:
+
 
 $$
 s(\boldsymbol{x})=\|\phi(\boldsymbol{x} ; \mathcal{W})-\boldsymbol{c}\|
 $$
 
 
+
 **Deep SVDD may not only be interpreted in geometric terms as minimum volume estimation , but also in probabilistic terms as entropy minimization over the latent distribution.** 
 
 
 For a latent random variable $Z$ with covariance $\Sigma$, $\operatorname{pdf} p(\boldsymbol{z})$, and support$ \mathcal{Z} \subseteq \mathbb{R}^d$, 
+
 
 
 
@@ -183,13 +198,16 @@ $$
 
 
 
+
 which holds with equality iff $Z$ is jointly Gaussian. Assuming the latent distribution $Z$ follows an isotropic Gaussian, $Z \sim N\left(\boldsymbol{\mu}, \sigma^2 I\right)$ with $\sigma>0$, we get
+
 
 
 
 $$
 \mathcal{H}(Z)=\frac{1}{2} \log \left((2 \pi e)^d \operatorname{det} \sigma^2 I\right)=\frac{1}{2} \log \left(\left(2 \pi e \sigma^2\right)^d \cdot 1\right)\\=\frac{d}{2}\left(1+\log \left(2 \pi \sigma^2\right)\right) \propto \log \sigma^2
 $$
+
 
 
 Deep SVDD objective is equivalent to minimizing the empirical variance and thus minimizes an upper bound on the entropy of a latent Gaussian.
@@ -209,9 +227,11 @@ Deep SVDD objective is equivalent to minimizing the empirical variance and thus 
 **Define our Deep SAD objective as follows:**
 
 
+
 $$
 \min _{\mathcal{W}} \frac{1}{n+m} \sum_{i=1}^n\left\|\phi\left(\boldsymbol{x}_i ; \mathcal{W}\right)-\boldsymbol{c}\right\|^2+\frac{\eta}{n+m} \sum_{j=1}^m\left(\left\|\phi\left(\tilde{\boldsymbol{x}}_j ; \mathcal{W}\right)-\boldsymbol{c}\right\|^2\right)^{\tilde{y}_j}+\frac{\lambda}{2} \sum_{\ell=1}^L\left\|\boldsymbol{W}^{\ell}\right\|_F^2 .
 $$
+
 
 
 Hyperparameter _η >_ 0 which controls the balance between the labeled and the unlabeled term 
@@ -222,9 +242,11 @@ Hyperparameter _η >_ 0 which controls the balance between the labeled and the u
 Can express this interpretation in terms of Infomax principle with an entropy regularization objective on the latent distribution
 
 
+
 $$
 \max _{p(z \mid x)} \mathcal{I}(X ; Z)+\beta\left(\mathcal{H}\left(Z^{-}\right)-\mathcal{H}\left(Z^{+}\right)\right) .
 $$
+
 
 
 # Experiments & Results

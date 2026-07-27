@@ -164,10 +164,11 @@ Multivariate GP Modeling enables **more accurate inference** on such physically 
 ### Univariate damped random walk process (Kelly et al. 2009)
 
 
-$$
-d X(t)=-\frac{1}{\tau}(X(t)-\mu) d t+\sigma d B(t),
 
 $$
+d X(t)=-\frac{1}{\tau}(X(t)-\mu) d t+\sigma d B(t),
+$$
+
 
 
 
@@ -190,11 +191,13 @@ $B(t)$: the standard Brownian motion.
 
 
 
+
 $$
 \begin{equation}
 d \boldsymbol{X}(t)=-D_\tau^{-1}(\boldsymbol{X}(t)-\boldsymbol{\mu}) d t+D_\sigma d \boldsymbol{B}(t),
 \end{equation}
 $$
+
 
 
 $\boldsymbol{X}(t)=\left\{X_1(t), \ldots, X_k(t)\right\}$:  vector of length $k$ that denotes magnitudes of the $k$ bands at time $t \in \mathbb{R}$, 
@@ -224,6 +227,7 @@ The solution of the stochastic differential equation in (1) is Gaussian, Markovi
 i.e., given $\boldsymbol{X}(s)$ and for $t \geqslant s$,
 
 
+
 $$
 \begin{equation}
 \boldsymbol{X}(t) \mid \boldsymbol{X}(s), \boldsymbol{\mu}, \boldsymbol{\sigma}, \boldsymbol{\tau}, \boldsymbol{\rho} \\
@@ -232,10 +236,12 @@ $$
 $$
 
 
+
 $\operatorname{MVN}k(a, b)$: represents a $k$-dimensional multivariate Gaussian distribution with mean vector $a$ and covariance matrix $b$. 
 
 
 $(j, l)$ _entry of the covariance matrix_ $Q(t-s)$ _is defined as_
+
 
 
 $$
@@ -248,7 +254,9 @@ $$
 
 
 
+
 **joint probability density function** of $\boldsymbol{X}(\boldsymbol{t})=\left\{\boldsymbol{X}\left(t_1\right), \ldots, \boldsymbol{X}\left(t_n\right)\right\}$
+
 
 
 
@@ -258,8 +266,9 @@ $$
 & f_1(\boldsymbol{X}(\boldsymbol{t}) \mid \boldsymbol{\mu}, \boldsymbol{\sigma}, \boldsymbol{\tau}, \boldsymbol{\rho}) \\
 & =\prod_{i=1}^n f_2\left(\boldsymbol{X}\left(t_i\right) \mid \boldsymbol{X}\left(t_{i-1}\right), \boldsymbol{\mu}, \boldsymbol{\sigma}, \boldsymbol{\tau}, \boldsymbol{\rho}\right),
 \end{aligned} 
-\end{equation} 
+\end{equation}
 $$
+
 
 
 $f_2$: the density function of the multivariate Gaussian distribution defined in (2),
@@ -277,13 +286,15 @@ $\boldsymbol{X}(\bold{t}) = \{\boldsymbol{X}({t_1}), \dots, \boldsymbol{X}({t_n}
 $\boldsymbol{x} = \{x_1, \dots, x_n \}$: observed data are realizations of the latent multifilter light curves $\boldsymbol{X}(\bold{t})$
 
 
+
 $$
 \begin{equation}
 \begin{aligned}
 \boldsymbol{x}_i \mid \boldsymbol{X}\left(t_i\right) \sim \operatorname{MVN}{k_i}\left(\boldsymbol{X}^*\left(t_i\right), D_{\delta_i}^2\right)
 \end{aligned} 
-\end{equation} 
+\end{equation}
 $$
+
 
 
 $\boldsymbol{X}^*(t_i)$ _: a subvector of_ $\boldsymbol{X}\left(t_i\right)$ _corresponding to the bands that are used to observe_ $\boldsymbol{x}_i$_._
@@ -293,13 +304,15 @@ $\boldsymbol{X}^*(t_i)$ _: a subvector of_ $\boldsymbol{X}\left(t_i\right)$ _cor
 _**J**_**oint probability density function of the observed data given the latent data**
 
 
+
 $$
 \begin{equation}
 \begin{aligned}
 h_1(\boldsymbol{x} \mid \boldsymbol{X}(\boldsymbol{t}))=\prod_{i=1}^n h_2\left(\boldsymbol{x}_i \mid \boldsymbol{X}\left(t_i\right)\right),
 \end{aligned} 
-\end{equation} 
+\end{equation}
 $$
+
 
 
 $h_2$: the multivariate Gaussian density function defined in (5).
@@ -316,6 +329,7 @@ $h_2$: the multivariate Gaussian density function defined in (5).
 **Likelihood function of the model parameters with the latent process integrated out**
 
 
+
 $$
 \begin{equation}
 \begin{aligned}
@@ -324,8 +338,9 @@ $$
 & =\int h_1(\boldsymbol{x} \mid \boldsymbol{X}(\boldsymbol{t})) f_1(\boldsymbol{X}(\boldsymbol{t}) \mid \boldsymbol{\mu}, \boldsymbol{\sigma}, \boldsymbol{\tau}, \boldsymbol{\rho}) d \boldsymbol{X}(\boldsymbol{t}) .
 \end{aligned}
 \end{aligned} 
-\end{equation} 
+\end{equation}
 $$
+
 
 
 # Computation of the Likelihood Function vai Kalman Filtering
@@ -349,6 +364,7 @@ i.e., all of the information about the observed data available until time $t_i$.
 Define the following predictive mean vector and covariance matrix at $t_{i-1}$
 
 
+
 $$
 \begin{equation}
 \begin{aligned}
@@ -357,11 +373,13 @@ $$
 \Sigma_{i \mid i-1} & =\operatorname{Cov}\left(\boldsymbol{X}\left(\mathrm{t}_i\right) \mid \mathcal{F}\left(\mathrm{t}_{i-1}\right), \boldsymbol{\mu}, \boldsymbol{\sigma}, \boldsymbol{\tau}, \boldsymbol{\rho}\right) \\
 & =e^{-\Delta t_i D_\tau^{-1}\left(\Sigma_{i-1 \mid i-1}\right) e^{-\Delta t_i D_\tau^{-1}}+Q\left(\Delta t_i\right) .}
 \end{aligned}
-\end{equation} 
+\end{equation}
 $$
 
 
+
 assume
+
 
 
 $$
@@ -369,10 +387,12 @@ $$
 $$
 
 
+
 ### Update
 
 
 the updated mean vector and covariance matrix (after observing data at $t_i$)
+
 
 
 $$
@@ -385,10 +405,12 @@ $$
 $$
 
 
+
 The notation $\Sigma_{i \mid i-1}^{* *}$ _:a submatrix of_ $\Sigma_{i \mid i-1}$ _restricted to the bands used for observing_ $\boldsymbol{x}_i$
 
 
 Consequently, the likelihood function in (7) can be computed as follows:
+
 
 
 
@@ -397,12 +419,14 @@ $$
 \begin{aligned}
 L(\boldsymbol{\mu}, \boldsymbol{\sigma}, \boldsymbol{\tau}, \boldsymbol{\rho})=\prod_{i=1}^n p\left(\boldsymbol{x}_i \mid \mathcal{F}\left(t{i-1}\right), \boldsymbol{\mu}, \boldsymbol{\sigma}, \boldsymbol{\tau}, \boldsymbol{\rho}\right),
 \end{aligned}
-\end{equation} 
+\end{equation}
 $$
 
 
 
+
 where $p$ is another multivariate Gaussian density of
+
 
 
 
@@ -412,11 +436,13 @@ $$
 & \boldsymbol{x}_i \mid \mathcal{F}\left(t{i-1}\right), \boldsymbol{\mu}, \boldsymbol{\sigma}, \boldsymbol{\tau}, \boldsymbol{\rho} \\
 & \sim \operatorname{MVN}{k_i}\left(\boldsymbol{\mu}_{i \mid i-1}^{*}, \Sigma_{i \mid i-1}^{*, *}+D_{\delta_i}^2\right) .
 \end{aligned}
-\end{equation} 
+\end{equation}
 $$
 
 
+
 # Baysian Inference
+
 
 
 $$
@@ -427,8 +453,9 @@ $$
 \rho_{j l} & \sim \operatorname{Unif}(-1,1), \quad \sigma_j^2 \sim \operatorname{inv-Gamma}(1, \mathrm{c}),
 \end{aligned}
 \end{aligned}
-\end{equation} 
+\end{equation}
 $$
+
 
 
 inv-Gamma $(a, b)$ : the inverse-Gamma distribution with shape parameter $a$ and scale parameter $b$. 
@@ -449,19 +476,22 @@ $q$: **joint prior density function** of  $\mu, \sigma, \tau, \rho$
 **Full posterior density function** $π$
 
 
+
 $$
 \begin{equation}
 \begin{aligned}
 \pi(\mu, \sigma, \tau, \rho \mid x) \propto L(\mu, \sigma, \tau, \rho) \times q(\mu, \sigma, \tau, \rho) .
 \end{aligned}
-\end{equation} 
+\end{equation}
 $$
+
 
 
 We adopt a **Metropolis-Hastings within Gibbs sampler** (Tierney 1994) to draw (dependent) posterior samples from the full posterior distribution $\pi(\mu, \sigma, \tau, \rho \mid \boldsymbol{x})$. 
 
 
 **Initial values of the model parameters are set to their maximum likelihood estimates.** Then, it sequentially updates each parameter given the observed data and all the other parameters at each iteration.
+
 
 
 $$
@@ -473,6 +503,7 @@ $$
 \newline & \text{sample }\pi_3\left(\theta_3 \mid \theta_1^{(s)}, \theta_2^{(s)}, \boldsymbol{x}\right), \quad \text{setting it to }  \theta_3^{(s)}.
 \end{aligned}
 $$
+
 
 
 # Experiments & Results

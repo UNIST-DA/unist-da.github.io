@@ -146,17 +146,21 @@ K : 변수 개수, $T_x$ : input sequence 길이, $T_y$ : output sequence 길이
 because of the channnel independence, 차원 d는 batch 로 빠지게 됨.
 
 
+
 $$
-\chi \in \mathbb{R}^{P\times N \times d}   \rightarrow \chi \in \mathbb{R}^{P\times N} 
+\chi \in \mathbb{R}^{P\times N \times d}   \rightarrow \chi \in \mathbb{R}^{P\times N}
 $$
+
 
 
 That is,
 
 
+
 $$
-\chi\prime \in \mathbb{R}^{B \times P\times N \times d}   \rightarrow \chi\prime \in \mathbb{R}^{(B \times d) \times P\times N} 
+\chi\prime \in \mathbb{R}^{B \times P\times N \times d}   \rightarrow \chi\prime \in \mathbb{R}^{(B \times d) \times P\times N}
 $$
+
 
 
 ## Dual Attention
@@ -174,51 +178,67 @@ $$
 
 - Input shape
 
+
 $$
-\chi \in \mathbb{R}^{P\times N}   \rightarrow \chi \in \mathbb{R}^{N\times P} 
+\chi \in \mathbb{R}^{P\times N}   \rightarrow \chi \in \mathbb{R}^{N\times P}
 $$
 
+
 - Initialized the query and key
+
 
 $$
 Q_{\Nu_i}, K_{\Nu_i} = W_{Q_i}\Chi_{\Nu_i}, W_{K_i}\Chi_{\Nu_i} \quad\quad 1\leq i \leq H
 $$
 
+
 - Compute the attention weights
+
 
 $$
 Attn_{\Nu_i} = Softmax(\frac{Q_{\Nu_i} K_{\Nu_i}^T}{d_{model}})
 $$
 
+
 - Contact the multi-head and get the final patch-wise representation
 
-    $$
+    
+$$
     Attn_{\Nu}=Concat(Attn_{\Nu_1}, \dots,Attn_{\Nu_H})W_N^O
     $$
+    
 
 - Input shape
 
+
 $$
-\chi \in \mathbb{R}^{P\times N}   
+\chi \in \mathbb{R}^{P\times N}
 $$
 
+
 - Initialized the query and key
+
 
 $$
 Q_{P_i}, K_{P_i} = W_{Q_i}\Chi_{P_i}, W_{K_i}\Chi_{P_i} \quad\quad 1\leq i \leq H
 $$
 
+
 - Compute the attention weights
+
 
 $$
 Attn_{P_i} = Softmax(\frac{Q_{P_i} K_{P_i}^T}{d_{model}})
 $$
 
+
 - Contact the multi-head and get the final patch-wise representation
+
 
 $$
 Attn_{P} = Concat(Attn_{P_1}, \dots,Attn_{P_H})W_P^O
 $$
+
 
 
 ⇒ **같은 input을 가지고 있지만 view가 서로 다르다!**
@@ -231,14 +251,18 @@ $$
 - In-patch attention은 patch 간의 관련성을 무시
 - 업샘플링 및 멀티 스케일 설계를 통해 원본 데이터의 정보를 더 잘 보존하면서 표현을 개선
 
+
 $$
 N = \sum_{Patch\,list} Upsampling(Attn_N)
 $$
 
 
+
+
 $$
 P = \sum_{Patch\,list} Upsampling(Attn_P)
 $$
+
 
 
 ![A simple example of how up-sampling is done. For patch-wise branch, repeating is done in patches (from patch to points). For in-patch branch, repeating is done from "one" patch to a full number of patches (from points to patches).](/assets/seminars/dcdetector-dual-attention-contrastive-representation-learning-for-time-series-an/10.png)
@@ -368,9 +392,11 @@ class DAC_structure(nn.Module):
 ## Loss function
 
 
+
 $$
 L \{ P, N; X\} = \frac{1}{2}D(P,Stopgrad(N)) + \frac{1}{2}D(N, Stopgrad(P))
 $$
+
 
 - 두 가지 branch 를 비동기적으로 학습하기 위해 **stop-gradient** 연산 사용
 - KL divergence distance을 기반으로 하는 similarity metric D, $D(P.N) = KL(P||N)$
@@ -467,14 +493,18 @@ class Solver(object): #학습 및 테스트를 관리하는 주요 클래스
 ## The final anomaly score
 
 
+
 $$
 AnomalyScore(X) = \frac{1}{2}D(P,N) + \frac{1}{2}D(N, P)
 $$
 
 
+
+
 $$
 output \; y_i = \begin{Bmatrix}1:anomaly \quad AnomalyScore(X_i)\geq \delta\\0:normal \quad AnomalyScore(X_i) \leq \delta \end{Bmatrix}
 $$
+
 
 
 # Experiments

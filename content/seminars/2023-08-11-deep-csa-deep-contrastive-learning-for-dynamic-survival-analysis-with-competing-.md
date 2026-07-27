@@ -204,11 +204,13 @@ Random mask
 The shared encoder composed of **LSTM network** is used **to transform the longitudinal observational data of subjects to latent representations**.
 
 
+
 $$
 \begin{equation*}
 h_{\mathrm{k}}^{\mathrm{i}}=LSTM\left(x_{\mathrm{k}}^{\mathrm{i}}, h_{\mathrm{k}-1}^{\mathrm{i}}\right)\left(1 \leq \mathrm{k} \leq \mathrm{T}_{\mathrm{i}}\right) 
 \end{equation*}
 $$
+
 
 
 we input the **shuffled, masked, and real samples** into the shared-encoder layer, **to optimize the latent representation of a target subject** $i$, which encoded as $h_{s,k}^{i}$, $h_{M,k}^{i}$ and $h_{r,k}^{i}$, respectively.
@@ -220,6 +222,7 @@ we input the **shuffled, masked, and real samples** into the shared-encoder laye
 Considering that the time interval between visits contains time information in the longitudinal observational data of a target subject $i$, we utilize a state-of-the-art timed-LSTM model as the decoder <u>to reconstruct the masked visit</u>. Of note, there are three variants of timed-LSTM presented in, and **Time-LSTM 2** achieved the best performance among all three variants in the experiments. 
 
 
+
 $$
 \begin{align*}
 \begin{split} \widehat{x}_{m,\mathrm{k}}^{\mathrm{i}}= \text{Time-LSTM2}\left(H^{i}_{k}\right) \end{split} 
@@ -227,7 +230,9 @@ $$
 $$
 
 
+
 where $H^{i}_{k}=[(h_{1}^{i}, t_{2}^{i} - t_{1}^{i}), (h_{2}^{i}, t_{3}^{i} - t_{2}^{i}),\ldots, (h_{k}^{i}, t_{k+1}^{i} - t_{k}^{i})]$, $h_k^i$ is the latent state of the masked sample at time $t_{k}^{i}$.
+
 
 
 $$
@@ -237,7 +242,9 @@ $$
 $$
 
 
+
 ### F. Contrative Learning
+
 
 
 $$
@@ -246,6 +253,7 @@ $$
 &=-\sum _{i=1}^{N} \frac{1}{E} \sum _{j \in \Omega (i)} \log \frac{\exp \left(h_{r, T_{i}}^{i}\left(h_{r, T_{i}}^{j}\right)^{T}\right)}{\sum _{k \in A(i)} \exp \left(h_{r, T_{i}}^{i} \cdot \left(h_{r, T_{i}}^{k}\right)^{T}\right)} 
 \end{align*}
 $$
+
 
 
 $\small \Omega (i)=\lbrace j \mid \delta ^{j} \in \mathcal {D}, e_{i}=e_{j} \wedge e_{i} \ne \emptyset \rbrace$
@@ -257,6 +265,7 @@ $\small A(i)=\lbrace j \mid \delta ^{j} \in \mathcal {D}, e_{i} \ne e_{j}\rbrace
 We regard the learned representations of the real subject and the shuffled/masked one corresponding to the real subject as a positive pair, and consider the representations of the real subject and the shuffled/masked one corresponding to another subject as a negative pair.
 
 
+
 $$
 \begin{align*}\small
 \mathcal {L}_{\text{cl}-\text{sh}}=-\sum _{i=1}^{N} \log \frac{\exp \left(h_{r, T_{i}}^{i}\left(\tilde{h}_{s, T_{i}}^{i}\right)^{T}\right)}{\sum _{j=1}^{N} \exp \left(h_{r, T_{i}}^{i} \cdot \left(\tilde{h}_{s, T_{i}}^{j}\right)^{T}\right)} 
@@ -264,6 +273,7 @@ $$
 \mathcal {L}_{\text{cl}-\text{mask}}=-\sum _{i=1}^{N} \log \frac{\exp \left(h_{r, T_{i}}^{i}\left(\tilde{h}_{m, T_{i}}^{i}\right)^{T}\right)}{\sum _{j=1}^{N} \exp \left(h_{r, T_{i}}^{i} \cdot \left(\tilde{h}_{m, T_{i}}^{j}\right)^{T}\right)} 
 \end{align*}
 $$
+
 
 
 ### G. Cause-Specific Subnetworks
@@ -279,15 +289,18 @@ The cumulative incidence function (CIF)
 
 - Probability that a competing event $e^*$ occurs on or before time $t_{T_{i}}^{i}+T_{w}$ conditioned on the latent representation $h_{r,T_{i}}^{i}$ of $\delta _{i}$
 
-    $$
+    
+$$
     \begin{equation*} \small
     \begin{split} F_{e}^{i}(t_{\mathrm{T}_{\mathrm{i}}}^{\mathrm{i}}+T_{w} \mid h_{\mathrm{r}, \mathrm{T}_{\mathrm{i}}}^{\mathrm{i}})=P(t \leq t_{\mathrm{T}_{\mathrm{i}}}^{\mathrm{i}}+T_{w}, e=e^{*} \mid h_{\mathrm{r}, \mathrm{T}_{\mathrm{i}}}^{\mathrm{i}}, \\
      t>T_{i})=\sum _{\tau \leq t_{\mathrm{T}_{\mathrm{i}}}^{\mathrm{i}}+T_{w}} P(t=\tau, e=e^{*} \mid h_{\mathrm{r}, \mathrm{T}_{\mathrm{i}}^{\mathrm{i}}}^{\mathrm{i}}, t>T_{i}) \end{split} 
     \end{equation*}
     $$
+    
 
 
 Estimated CIF
+
 
 
 $$
@@ -297,7 +310,9 @@ $$
 $$
 
 
+
 Survival probability of a subject at time $\tau ^*$
+
 
 
 $$
@@ -307,7 +322,9 @@ S\left(t_{\mathrm{T}_{\mathrm{i}}}^{\mathrm{i}}+T_{w} \mid h_{\mathrm{r}, \mathr
 $$
 
 
+
 Negative log-likelihood loss
+
 
 
 $$
@@ -318,7 +335,9 @@ $$
 $$
 
 
+
 ### H. Loss Function
+
 
 
 $$
@@ -327,6 +346,7 @@ $$
  &\quad+\lambda _{cl-mask} \mathcal {L}_{cl-mask}+\lambda _{sur} \mathcal {L}_{sur} 
 \end{align*}
 $$
+
 
 
 $\lambda _{\text{cl}-risk},\ \lambda _{\text{rec}},\ \lambda _{\text{cl}-\text{sh}},\ \lambda _{cl-mask},\ \lambda _{\text{sur}}$ : Hyperparameters
@@ -397,6 +417,7 @@ Performance Comparison on the Experimental eICU Dataset. (Mean ± Std)
 ### E. **Ablation Study**
 
 
+
 $$
 \begin{align*} \small
  \mathcal {L}_{total}&=\lambda _{cl-risk} \mathcal {L}_{cl-risk}+\lambda _{rec} \mathcal {L}_{rec}+\lambda _{cl-sh} \mathcal {L}_{cl-sh} \\
@@ -405,15 +426,19 @@ $$
 $$
 
 
+
 _Model_v0:_ We remove the **contrastive loss** of competing risks from the model.
 
 
+
 $$
- \small \lambda _{\text{rec }} \mathcal {L}_{\text{rec }}+\lambda _{\text{cl-sh }} \mathcal {L}_{\text{cl-sh }}+\lambda _{\text{cl-mask }} \mathcal {L}_{\text{cl-mask }}+\lambda _{\text{sur }} \mathcal {L}_{\text{sur }}
+\small \lambda _{\text{rec }} \mathcal {L}_{\text{rec }}+\lambda _{\text{cl-sh }} \mathcal {L}_{\text{cl-sh }}+\lambda _{\text{cl-mask }} \mathcal {L}_{\text{cl-mask }}+\lambda _{\text{sur }} \mathcal {L}_{\text{sur }}
 $$
+
 
 
 _Model_v1:_ We remove the **mask-generation strategy and the corresponding contrastive learning** compound between the generated trajectories and real ones.
+
 
 
 $$
@@ -421,7 +446,9 @@ $$
 $$
 
 
+
 _Model_v2:_ We remove the **corresponding contrastive learning loss of between the augmented trajectories** using the mask-generation strategy and real ones.
+
 
 
 $$
@@ -429,7 +456,9 @@ $$
 $$
 
 
+
 _Model_v3:_ We remove the corresponding <u>contrastive learning between shuffle-generation strategies and real ones</u>.
+
 
 
 $$
@@ -437,7 +466,9 @@ $$
 $$
 
 
+
 _Model_v4:_ The model only has **the basic modules** which include the shared encoder, cause-specific subnetworks and the survival prediction layer.
+
 
 
 $$
@@ -445,7 +476,9 @@ $$
 $$
 
 
+
 _Model_v5:_ The model has **the basic modules and the contrastive learning losses of between generated trajectories and real ones**.
+
 
 
 $$
@@ -453,12 +486,15 @@ $$
 $$
 
 
+
 _Model_v6:_ The model has **the basic modules and the corresponding contrastive learning between shuffled trajectories and real ones**.
+
 
 
 $$
 \lambda _{\text{cl}-\text{sh}} \mathcal {L}_{\text{cl}-\text{sh}}+\lambda _{\text{sur}} \mathcal {L}_{\text{sur}}
 $$
+
 
 
 Ablation Study on MIMIC-III Dataset. (Mean ± Std)
@@ -479,11 +515,13 @@ Ablation Study on eICU Dataset. (Mean ± Std)
 We utilized a post-processing statistic that can be used by clinicians to interpret predictions issued by the proposed model and to understand the associations of covariates and time to event.
 
 
+
 $$
 \begin{equation*}
 \gamma \mathrm{k}\left(\Delta \mathrm{t}, x_{d}=x_{d, \max }\right)-\gamma \mathrm{k}\left(\Delta \mathrm{t}, x_{d}=x_{d, \min }\right) 
 \end{equation*}
 $$
+
 
 
 where $\gamma \mathrm{k}(\Delta \mathrm{t}, x_{d})$ is the estimated CIF

@@ -95,9 +95,11 @@ GLCM이란, 통계적 질감 분석방법으로 현 재 픽셀과 그 이웃하�
 The learning procedures of POEM are based on the most straightforward framework called Empirical Risk Minimization (ERM) (Vapnik 1998; Gulrajani and Lopez-Paz 2021) that minimizes the empirical risk, which is the average of category-classification losses $\mathcal{L}$ over the source domains
 
 
+
 $$
 \begin{equation}	\mathcal{\hat{E}}_{\mathcal{B}}(\theta) \triangleq \frac{1}{|\mathcal{B}|}\sum_{(\mathbf{x},y)\in\mathcal{B}}\mathcal{L}(f(\mathbf{x};\theta),y),\end{equation}
 $$
+
 
 
 where $\mathcal{B}=\{\mathcal{B}_{k}\}_{k=1}^{K}$ is a mini-batch, and $\mathcal{B}_{k}$ _is a sampled mini-batch from_  $\mathcal{D}_{k}$ of domain $k$. $f(\cdot\:;\theta)$ is an embedding parameterized by $\theta$, and $y$ is the image category label.
@@ -140,11 +142,13 @@ set of training domains as $\mathcal{D}=\{\mathcal{D}_{k}\}_{k=1}^{K}$ where $D_
 For a classification model $f(x;\theta)$ and the loss function $\mathcal{L}$, the objective of the DG task is **to find the model parameter** $\theta$ **which is generalized well on the target domain** $\mathcal{T}$**,** i.e.,
 
 
+
 $$
- \begin{equation}
+\begin{equation}
 \theta^{*} = \argmin_{\theta}{\mathcal{L}\big(f(\mathbf{x};\theta),y \: ; \mathcal{D} \big)}
 \end{equation}
 $$
+
 
 
 where $(\mathbf{x},y)$ is a pair of input and class label from $\mathcal{T}$.
@@ -159,11 +163,13 @@ Let us denote the set of elementary embedding as $\mathfrak{F}$: $\mathbb{R}^{D}
 
 
 
+
 $$
 \begin{equation}
 \mathfrak{F}(\mathbf{x}\:;\mathrm{\Theta}) \triangleq \big\{ f_{i}(\mathbf{x}\:;\theta_{i})\big\}_{i=1}^{N},
 \end{equation}
 $$
+
 
 
 _where_ $N$ _is the number of elementary embeddings.
@@ -177,6 +183,7 @@ Each elementary embedding_ $f_{i}$ that is parameterized by $\theta_{i}$ maps an
 For a given input $\mathbf{x}$ and $i$-th elementary embedding, the classification loss $\mathcal{L}_{c}$ _is calculated with cross-entropy_ $\mathcal{H}$ _with the probability from the Softmax computation and target label_ $y^{(i)}$_:_
 
 
+
 $$
 \begin{equation}
 	\mathcal{L}_{c}^{(i)}(\mathbf{x},y) = \mathcal{H}\Big(\text{Softmax}\big\{ f_{i}(\mathbf{x}\:;\theta_{i})\mathrm{\Phi}_{i} \big\}, y^{(i)}\Big)
@@ -184,7 +191,9 @@ $$
 $$
 
 
+
 **Disentangling loss:**
+
 
 
 $$
@@ -192,6 +201,7 @@ $$
 \mathcal{L}_{s}^{(i,j)}(\mathbf{x}) = \lvert K\big( f_{i}(\mathbf{x}\:;\theta_{i}), f_{j}(\mathbf{x}\:;\theta_{j}) \big)\rvert,
 \end{equation}
 $$
+
 
 
 where $K(\cdot,\cdot)$ is the cosine similarity function of two vectors. The absolute operation $\lvert \cdot \rvert$ is for making the similarity be positive. We select cosine similarity for the disentangler to **orthogonalize two embedded features**.
@@ -205,12 +215,14 @@ For a given input $\mathbf{x}$, the disentangling loss $\mathcal{L}_{s}^{(i,j)}(
 **Discrimination loss:**
 
 
+
 $$
 \begin{equation} 
 %\mathcal{L}{d}(\mathbf{x},i,y) = - f{i}(\mathbf{x}\:;\theta_{i})\cdot w_{i} + \log\displaystyle\sum_{k=1}^{N}{f_{i}(\mathbf{x}\:;\theta_{i})}\cdot w_{k}.
 \mathcal{L}_{d}^{(i)}(\mathbf{x}) = \mathcal{H}\Big( \text{Softmax}\big\{ f_{i}(\mathbf{x};\theta_i)\mathbf{W} \big\}, i\Big)
 \end{equation}
 $$
+
 
 
 
@@ -227,13 +239,16 @@ For a given_ $\mathbf{x}$ _and_ $i$_-th elementary embedding, discrimination los
 ERM
 
 
+
 $$
 \begin{equation}	\mathcal{\hat{E}}_{\mathcal{B}}(\theta) \triangleq \frac{1}{|\mathcal{B}|}\sum_{(\mathbf{x},y)\in\mathcal{B}}\mathcal{L}(f(\mathbf{x};\theta),y),\end{equation}
 $$
 
 
 
+
 Similarly, POEM trains learnable parameters including $\mathrm{\Theta}$, $\mathrm{\Phi}$ and $\mathbf{W}$ to minimize the empirical risk as follows:
+
 
 
 $$
@@ -241,7 +256,9 @@ $$
 $$
 
 
+
 The particular loss term $\mathcal{L}$ is computed by considering the classification loss of elementary tasks $\mathcal{L}_{c}$_, the disentangling loss_ $\mathcal{L}_{s}$ between different embeddings, and the discrimination loss $\mathcal{L}_{d}$ for each embedding which are aforementioned:
+
 
 
 $$
@@ -249,7 +266,9 @@ $$
 $$
 
 
+
 Then the set of parameters $\mathrm{\Theta}$, $\mathrm{\Phi}$ and $\mathbf{W}$ are updated by computing the gradients of the empirical risk, i.e., $\mathcal{\hat{E}}_{\mathcal{B}}(\mathrm{\Theta}, \mathrm{\Phi}, \mathbf{W})$_:_
+
 
 
 $$
@@ -259,6 +278,7 @@ $$
 \end{split}
 \end{equation}
 $$
+
 
 
 ![](/assets/seminars/poem-polarization-of-embeddings-for-domain-invariant-representations-aaai-2023/6.png)
@@ -293,11 +313,13 @@ Based on the notations, let us describe the following desirable properties of th
 **Property 1**. (from the discrimination loss $\mathcal{L}_{d}^{(i)}$_) When the feature_ $\mathbf{z}_{i}^{*}$ _is extracted by_  $i^{th}$ _embedding, i.e.,_ $\mathbf{z}_{i}^{*} \sim \mathcal{Z}_{i}^{*}$_, then_
 
 
+
 $$
 \begin{equation}
 \mathbf{z}_{i}^{*}\cdot\mathbf{w}_{i}  \ge \displaystyle \max_{j\neq i}(\mathbf{z}_{i}^{*}\cdot\mathbf{w}_{j}).
 \end{equation}
 $$
+
 
 
 Based on the discrimination loss, POEM is trained **to identify the index of embedding where a given feature is extracted**. Thus the property is desirable. POEM tries to **separate the feature distribution of each embedding** so that the distributions are not overlapped.
@@ -306,11 +328,13 @@ Based on the discrimination loss, POEM is trained **to identify the index of emb
 **Property 2**. (from the disentangling loss $\mathcal{L}_{s}^{(i,j)}$_)} When two feature vectors are extracted from different_  $i^{th}$ _and_ $j^{th}$ _embeddings for a single input_ $\mathbf{x}$_, then_
 
 
+
 $$
 \begin{equation}
 \big|K\big(f_{i}(\mathbf{x};\theta_{i}^*), f_{j}(\mathbf{x};\theta_{j}^*\big)\big| \simeq 0.
 \end{equation}
 $$
+
 
 
 Based on the disentangling loss for a given input, POEM is trained **to minimize the cosine similarity between two features that are extracted from different embeddings**. Thus the property is also desirable.
@@ -339,11 +363,13 @@ _Then the power of the projected feature vector will be zero-forced because the 
 **Claim 1**. (Information separation of embeddings) When feature vector $\mathbf{z}_{i}^{*}\sim \mathcal{Z}_{i}^{*}$ _is projected to the space formed by the features from different_ $j^{th}$ _embedding, then the power of the projected feature is minimized to zero:_
 
 
+
 $$
 \begin{equation}
 ||\mathbf{z}_{i}^{*}\mathbf{U}_{j}\boldsymbol{\Sigma}_{j}||^{2} \simeq 0.
 \end{equation}
 $$
+
 
 
 It implies the information separation between embeddings, i.e., for the DG task, the features for the domain-classifying embedding are zero-forced in the category-classifying embedding space.
@@ -402,11 +428,13 @@ For the category embedding of POEM, the classifiers for domains are not prepared
 After obtaining the domain centroids, the c**ross-entropy loss is calculated by measuring the probability based on the Euclidean distance between feature vectors and centroids**, i.e.,
 
 
+
 $$
 \begin{equation}
 P(y = k \: | \: \mathbf{x}) = \frac{\exp\big(-d(f_z(\mathbf{x}\:;\theta_z), \mathbf{c}_k)\big)}{\sum_{l=1}^{N} \exp\big(-d(f_{z}(\mathbf{x}\:;\theta_z), \mathbf{c}_{l})\big)},
 \end{equation}
 $$
+
 
 
 

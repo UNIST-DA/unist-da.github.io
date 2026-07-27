@@ -185,9 +185,11 @@ We define the problem of data selection in data-efficient deep learning. Formall
 Given a well-trained deep model denoted by $f(\cdot)=g(h(\cdot))$, where $h(\cdot)$ denotes the part of the model mapping input data to hidden representations at the penultimate layer, and $g(\cdot)$ is the part mapping such hidden representations to the output $f(\cdot)$ for classification. Namely, for a data point $\mathbf{s}=(\mathbf{x}, y)$, its hidden representation is $h(\mathbf{x})$. Therefore, with the trained deep model $f(\cdot)$ and full training data $\mathcal{S}=\left\{\mathbf{s}_1, \ldots, \mathbf{s}_n\right\}$, the hidden representations of all data points are acquired as $\left\{\mathbf{z}_1=h\left(\mathbf{x}_1\right), \ldots, \mathbf{z}_n=h\left(\mathbf{x}_n\right)\right\}$_. At the representational level,_ _**the class center**_ _of each class is_
 
 
+
 $$
 \left\{\mathbf{z}^j=\frac{\sum_{i=1}^n \mathbb{I}\left[y_i=j\right] \mathbf{z}_i}{\sum_{i=1}^n \mathbb{I}\left[y_i=j\right]}\right\}_{j=1}^k,
 $$
+
 
 
 

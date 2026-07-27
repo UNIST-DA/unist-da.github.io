@@ -68,9 +68,11 @@ Hard labels → resulting in models being less-calibrated and too overconfident 
 Label smoothing ⇒ **“smooth” labels** by encouraging small logit gaps 
 
 
+
 $$
 y=(1-\alpha) * y_{k}+\frac{\alpha}{K} .
 $$
+
 
 
 ![x-axis: model confidence / y-axis: corresponding target label
@@ -159,9 +161,11 @@ Propose three types of agreement-aware label smoothing paradigms
 - Examine the sole effect of including annotator agreement data without changing the format of vanilla label smoothing
 - Hyper-parameter $\alpha \in(0,1]$
 
+
 $$
 y=(1-\alpha) * \frac{n_{k}}{N}+\frac{\alpha}{K}
 $$
+
 
 
 ![x-axis: agreement level / y-axis: corresponding target label](/assets/seminars/calibrating-histopathology-image-classifiers-using-label-smoothing-aime-2022/2.png)
@@ -174,9 +178,11 @@ $$
 - Hyper-parameter $\Omega \in(0,0.5]$
 - Number of annotators needed for a majority $n_{m}=\left\lceil\frac{N}{K}\right\rceil$
 
+
 $$
 \left\{\begin{array}{ll}y=(1-\Omega)+\Omega\left(\frac{n_{k}-n_{m}}{n_{m}-1}\right), & \text { if } n_{k}>n_{m} \\y=0.5, & \text { if } n_{k}=n_{m} \\y=\Omega\left(\frac{n_{k}}{n_{m}-1}\right), & \text { if } n_{k}<n_{m}\end{array} .\right.
 $$
+
 
 
 ![](/assets/seminars/calibrating-histopathology-image-classifiers-using-label-smoothing-aime-2022/3.png)
@@ -188,9 +194,11 @@ $$
 - Address more-heavily penalizing images with higher disagreement can produce better-calibrated models.
 - Uses sigmoid non-linear function as f, hyperparameter $\Phi>0$
 
+
 $$
 y=f\left(\Phi\left(\frac{n_{k}}{N}-\frac{1}{2}\right)\right)
 $$
+
 
 
 ![](/assets/seminars/calibrating-histopathology-image-classifiers-using-label-smoothing-aime-2022/4.png)
@@ -218,30 +226,38 @@ Use the **confidence outputs** of a baseline model as a **proxy** for example di
 1. Vanilla
 - Obtaining from vanilla smoothing by substituting model confidence for annotator agreement level.
 
+
 $$
-y=(1-\alpha) *\left\lfloor c_{k}\right\rceil+\frac{\alpha}{K} 
+y=(1-\alpha) *\left\lfloor c_{k}\right\rceil+\frac{\alpha}{K}
 $$
+
 
 1. Linear
 - simply replace $\frac{n_k}{N}$ with $c_k$
+
 
 $$
 y=(1-\alpha) * c_k +\frac{\alpha}{K}
 $$
 
+
 1. Non-linear
 - simply replace $\frac{n_k}{N}$ with $c_k$
+
 
 $$
 y=f\left(\Phi\left(c_k-\frac{1}{2}\right)\right)
 $$
 
+
 1. Piecewise
 - Modified version of agreement-aware smoothing
+
 
 $$
 \begin{cases}y=(1-\Omega)+\left(\frac{c_{k}-0.5}{0.5}\right) * \Omega, & \text { if } c_{k}>0.5 \\ y=0.5, & \text { if } c_{k}=0.5 \\ y=\left(\frac{c_{k}}{0.5}\right) * \Omega, & \text { if } c_{k}<0.5\end{cases}
 $$
+
 
 
 ## Experiments

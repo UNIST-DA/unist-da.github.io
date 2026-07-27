@@ -102,9 +102,11 @@ A denoising diffusion probabilistic model (DDPM) makes use of two Markov chains:
 Formally, given a data distribution $\mathbf{x}_0 \sim q(\mathbf{x}_0)$, the forward Markov process generates a sequence of random variables $\mathbf{x}_1, \mathbf{x}_2 \dots \mathbf{x}_T$ with transition kernel $q(\mathbf{x}_t \mid\mathbf{x}_{t-1})$. Using the chain rule of probability and the Markov property, we can factorize the joint distribution of $\mathbf{x}_1, \mathbf{x}_2 \dots \mathbf{x}_T$ conditioned on $\mathbf{x}_0$, denoted as $q(\mathbf{x}_1, \ldots, \mathbf{x}_T\mid\mathbf{x}_0)$, into
 
 
+
 $$
 q(\mathbf{x}_1, \ldots, \mathbf{x}_T\mid\mathbf{x}_0) = \prod_{t=1}^{T} q(\mathbf{x}_t\mid\mathbf{x}_{t-1})
 $$
+
 
 
 In DDPMs, we handcraft the transition kernel $q(\mathbf{x}_t \mid \mathbf{x}_{t-1})$ to incrementally transform the data distribution $q(\mathbf{x}_0)$ into a tractable prior distribution.
@@ -113,9 +115,11 @@ In DDPMs, we handcraft the transition kernel $q(\mathbf{x}_t \mid \mathbf{x}_{t-
 One typical design for the transition kernel is Gaussian perturbation, and the most common choice for the transition kernel is
 
 
+
 $$
 q(\mathbf{x}_t\mid\mathbf{x}_{t-1}) = \mathcal{N}(\mathbf{x}_t; \sqrt{1-\beta_t} \mathbf{x}_{t-1}, \beta_t \mathbf{I})
 $$
+
 
 
 where $\beta_t \in (0,1)$ is a hyperparameter chosen ahead of model training.
@@ -124,12 +128,15 @@ where $\beta_t \in (0,1)$ is a hyperparameter chosen ahead of model training.
 Specifically, with $\alpha_t \coloneqq 1 - \beta_t$ and $\bar{\alpha}_t \coloneqq \prod_{s=0}^{t} \alpha_s$, we have
 
 
+
 $$
-q(\mathbf{x}_t\mid\mathbf{x}_0) = \mathcal{N}(\mathbf{x}_t; \sqrt{\bar{\alpha}_t} \mathbf{x}_0, (1-\bar{\alpha}_t) \mathbf{I}) 
+q(\mathbf{x}_t\mid\mathbf{x}_0) = \mathcal{N}(\mathbf{x}_t; \sqrt{\bar{\alpha}_t} \mathbf{x}_0, (1-\bar{\alpha}_t) \mathbf{I})
 $$
+
 
 
 Given $\mathbf x_0$, we can easily obtain a sample of $\mathbf{x}_t$ by sampling a Gaussian vector $\epsilon \sim \mathcal{N}(\mathbf{0}, \mathbf{I})$ and applying the transformation
+
 
 
 $$
@@ -137,12 +144,15 @@ $$
 $$
 
 
+
 When $\bar{\alpha}_T \approx 0$, $\mathbf{x}_{T}$ is almost Gaussian in distribution, so we have 
+
 
 
 $$
 q(\mathbf x_T) \coloneqq \int q(\mathbf x_T \mid \mathbf x_0) q(\mathbf x_0) \textrm{d} \mathbf x_0 \approx \mathcal{N}(\mathbf x_T; \mathbf{0}, \mathbf{I})
 $$
+
 
 
 Intuitively speaking, this forward process slowly injects noise to data until all structures are lost. For generating new data samples, DDPMs start by first generating an unstructured noise vector from the prior distribution (which is typically trivial to obtain), then gradually remove noise therein by running a learnable Markov chain in the reverse time direction.
@@ -151,9 +161,11 @@ Intuitively speaking, this forward process slowly injects noise to data until al
 Specifically, the reverse Markov chain is parameterized by a prior distribution $p(\mathbf x_T) = \mathcal{N}(\mathbf x_T; \mathbf{0}, \mathbf{I})$ and a learnable transition kernel $p_\theta(\mathbf{x}_{t-1}\mid\mathbf{x}_t)$_._ We choose the prior distribution $p(\mathbf x_T) = \mathcal{N}(\mathbf x_T; \mathbf 0, \mathbf I)$ because the forward process is constructed such that $q(\mathbf x_T) \approx \mathcal{N}(\mathbf x_T; \mathbf{0}, \mathbf{I})$. The learnable transition kernel $p_\theta(\mathbf{x}_{t-1}\mid\mathbf{x}_t)$ takes the form of
 
 
+
 $$
 p_\theta(\mathbf x_{t-1}\mid\mathbf x_t) = \mathcal{N}(\mathbf x_{t-1}; \mu_{\theta}(\mathbf x_t, t), \Sigma_{\theta}(\mathbf x_t, t))
 $$
+
 
 
 where $\theta$ denotes model parameters, and the mean $\mu_{\theta}(\mathbf x_t, t)$ and variance $\Sigma_{\theta}(\mathbf x_t, t)$ are parameterized by deep neural networks. With this reverse Markov chain in hand, we can generate a data sample $\mathbf x_0$ by first sampling a noise vector $\mathbf x_T \sim p(\mathbf x_T)$, then iteratively sampling from the learnable transition kernel $\mathbf x_{t-1} \sim p_\theta(\mathbf x_{t-1} \mid \mathbf x_t)$ until $t = 1$.
@@ -163,6 +175,7 @@ where $\theta$ denotes model parameters, and the mean $\mu_{\theta}(\mathbf x_t,
 
 
 Key to the success of this sampling process is training the reverse Markov chain to match the actual time reversal of the forward Markov chain. That is, we have to adjust the parameter $\theta$ so that the joint distribution of the reverse Markov chain $p_\theta(\mathbf x_0, \mathbf x_1, \cdots, \mathbf x_T)\coloneqq p(\mathbf x_T)\prod_{t=1}^T p_\theta(\mathbf x_{t-1}\mid\mathbf x_t)$ closely approximates that of the forward process $q(\mathbf x_0, \mathbf x_1, \cdots, \mathbf x_T) \coloneqq q(\mathbf x_0) \prod_{t=1}^T q(\mathbf x_t \mid \mathbf x_{t-1})$. This is achieved by minimizing the Kullback-Leibler (KL) divergence between these two:
+
 
 
 $$
@@ -175,6 +188,7 @@ $$
 $$
 
 
+
 where (i) is from the definition of KL divergence, (ii) is from the fact that $q(\mathbf x_0, \mathbf x_1, \cdots, \mathbf x_T)$ and $p_\theta(\mathbf x_0, \mathbf x_1, \cdots, \mathbf x_T)$ are both products of distributions, and (iii) is from Jensen's inequality. The first term in (ii) is the variational lower bound (VLB) of the log-likelihood of the data $\mathbf x_0$, a common objective for training probabilistic generative models. We use $\text{const}$ to symbolize a constant that does not depend on the model parameter $\theta$ and hence does not affect optimization. 
 
 
@@ -184,9 +198,11 @@ The objective of DDPM training is to maximize the VLB (or equivalently, minimizi
 Ho et al. (2020) propose to reweight various terms in $L_\textrm{VLB}$ for better sample quality and noticed an important equivalence between the resulting loss function and the training objective for noise-conditional score networks (NCSNs), one type of **score-based generative models**, in Song and Ermon (2019). The loss in Ho et al. (2020) takes the form of
 
 
+
 $$
 \mathbb{E}_{t \sim \mathcal{U}\llbracket 1,T \rrbracket, \mathbf x_0 \sim q(\mathbf x_0), \epsilon \sim \mathcal{N}(\mathbf{0},\mathbf{I})}[{ \lambda(t)  \left\| \epsilon - \epsilon_\theta(\mathbf{x}_t, t) \right\|^2}]
 $$
+
 
 
 where $\lambda(t)$ is a positive weighting function, $\mathbf x_t$ is computed from $\mathbf x_0$ and Gaussian vector $\epsilon$, $\mathcal{U}\llbracket 1, T \rrbracket$ is a uniform distribution over the set $\{1, 2, \cdots, T\}$, and $\epsilon_{\theta}$ is a deep neural network with parameter $\theta$ that predicts the noise vector $\epsilon$ given $\mathbf{x}_{t}$ and $t$. This objective reduces to loss function for a particular choice of the weighting function $\lambda(t)$, and has the same form as the loss of denoising score matching over multiple noise scales for training score-based generative models. 
@@ -232,14 +248,18 @@ We focus on the conditional diffusion model with the reverse process in Eq.(5) a
 We define a conditional denoising function $\epsilon_\theta: (\mathcal{X}^{ta} \times \mathbb{R} \mid \mathcal{X}^{co})\rightarrow \mathcal{X}^{ta}$, which takes conditional observations $x_0^{co}$ as inputs.
 
 
+
 $$
 \mu_\theta (\mathbf{x}^{ta}_t, t \mid \mathbf{x}^{co}_0) = \mu^{DDPM} (\mathbf{x}^{ta}_t, t, \epsilon_\theta(\mathbf{x}^{ta}_t, t \mid \mathbf{x}^{co}_0))
 $$
 
 
+
+
 $$
 \sigma_\theta (\mathbf{x}^{ta}_t, t \mid \mathbf{x}^{co}_0) = \sigma^{DDPM} (\mathbf{x}^{ta}_t, t)
 $$
+
 
 
 where $\mu^{DDPM}$ and $\sigma^{DDPM}$ are the functions in DDPM. 
@@ -248,9 +268,11 @@ where $\mu^{DDPM}$ and $\sigma^{DDPM}$ are the functions in DDPM.
 **Training CSDI**
 
 
+
 $$
 \min_{\theta} \mathcal{L} (\theta) := \mathbb{E}_{\mathbf x_0 \sim q(\mathbf x_0), \epsilon \sim \mathcal{N}(\mathbf{0},\mathbf{I}), t}[{  \left\| \epsilon - \epsilon_\theta(\mathbf{x}^{ta}_t, t \mid \mathbf{x}^{co}_0) \right\|^2_2}]
 $$
+
 
 
 ![](/assets/seminars/conditional-score-based-diffusion-models-for-probabilistic-time-series-imputatio/10.png)

@@ -87,9 +87,11 @@ The encoder-decoder network is one of the most common deep learning models for t
 - **목적**: Attention 메커니즘을 사용하여 잔여 공간을 구성하고 입력 데이터의 가장 중요한 부분을 포착함.
 - **응용**: 시계열 분석에서 Attention 메커니즘은 데이터 내의 다양한 측면 간의 상관관계를 모델링함.
 
+
 $$
 A = softmax(\frac{QK^T}{\sqrt{d_k}})V
 $$
+
 
 
 ### **이 연구에서의 배경**
@@ -139,10 +141,11 @@ $$
 - **설명**: 1D-CNN 백본을 사용하여 사전 학습을 진행하고, 각 인코더 블록에 하이퍼파라미터를 공유하는 두 개의 포워드 경로를 가짐. 이는 Attention 점수로 재조정된 주요 공간과 잔여 공간을 생성함.
 - **재구성 손실**: 재구성 손실을 최소화하고 Attention 점수를 통해 중요한 부분을 명확하게 파악함.
 
-    $$
-    J_a = ||x − \hat{x} || + \lambda \Sigma^{n_c}_{i=1} \Sigma_t \frac{1}{S_i(t)} \log S_i(t)
     
+$$
+    J_a = ||x − \hat{x} || + \lambda \Sigma^{n_c}_{i=1} \Sigma_t \frac{1}{S_i(t)} \log S_i(t)
     $$
+    
 
 
     Loss는 MSE + Penalty constant 형태로 구성됨.

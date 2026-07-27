@@ -42,14 +42,18 @@ Likelihood is a standard estimate for outlier detection. The specific role of th
 ![](/assets/seminars/autoencoding-under-normalization-constraints-pmlr-2021/0.png)
 
 
+
 $$
 \begin{aligned}L_{\mathrm{AE}} & =\mathbb{E}_{\mathbf{x} \sim p(\mathbf{x})}\left[l_\theta(\mathbf{x})\right], \\\nabla_\theta L_{\mathrm{AE}} & =\mathbb{E}_{\mathbf{x} \sim p(\mathbf{x})}\left[\nabla_\theta l_\theta(\mathbf{x})\right],\end{aligned}
 $$
 
 
+
+
 $$
 l_\theta(\mathbf{x})=\operatorname{dist}\left(\mathbf{x}, f_d\left(f_e(\mathbf{x})\right)\right)
 $$
+
 
 
 > 💡 Autoencoder reconstruction error **is not a likelihood of a datum**,   
@@ -64,15 +68,19 @@ $$
 - models for a normalized probability distribution
 - represents a probability distribution through the unnormalized negative log probability, also called the energy function $E_θ(x)$ ( $\theta$=model parameter)
 
+
 $$
 p_\theta(\mathbf{x})=\frac{1}{\Omega_\theta} \exp \left(-E_\theta(\mathbf{x}) / T\right)
 $$
 
+
 - $\Omega $: normalization constant
+
 
 $$
 \Omega_\theta=\int_{\mathcal{X}} \exp \left(-E_\theta(\mathbf{x}) / T\right) \mathrm{d} \mathbf{x}<\infty
 $$
+
 
 
 ⇒ It is hard to calculate the $\Omega$, when  $x$ is high dimensional.
@@ -84,12 +92,15 @@ $$
 최대우도 학습(maximum likelihood learning)으로 $\Omega$를 명시적으로 계산하지 않고도 수행
 
 
+
 $$
 \begin{aligned}& \mathbb{E}_{\mathbf{x} \sim p(\mathbf{x})}\left[-\nabla_\theta \log p_\theta(\mathbf{x})\right] \\= & \mathbb{E}_{\mathbf{x} \sim p(\mathbf{x})}\left[\nabla_\theta E_\theta(\mathbf{x})\right] / T+\nabla_\theta \log \Omega_\theta \\= & \mathbb{E}_{\mathbf{x} \sim p(\mathbf{x})}\left[\nabla_\theta E_\theta(\mathbf{x})\right] / T-\mathbb{E}_{\mathbf{x}^{\prime} \sim p_\theta(\mathbf{x})}\left[\nabla_\theta E_\theta\left(\mathbf{x}^{\prime}\right)\right] / T\end{aligned}
 $$
 
 
+
 Taking the logarithm, and Differentiating with respect to $\theta$ :
+
 
 
 $$
@@ -99,8 +110,9 @@ $$
 \nabla_\theta \log p_\theta(x) = -\frac{1}{T} \nabla_\theta E_\theta(x) - \nabla_\theta \log \Omega_\theta
 \\
 - \nabla_\theta \log p_\theta(x) = \frac{1}{T} \nabla_\theta E_\theta(x) + \nabla_\theta \log \Omega_\theta
-
 $$
+
+
 
 
 $$
@@ -108,7 +120,9 @@ $$
 $$
 
 
+
 Differentiate the log partition function:
+
 
 
 $$
@@ -116,8 +130,10 @@ $$
 $$
 
 
+
 Recognizing the integrand as $p_\theta(x)$ we have:
  
+
 
 
 $$
@@ -125,12 +141,15 @@ $$
 $$
 
 
+
 Substituting back into Equation (6), we arrive at the final gradient expression:
+
 
 
 $$
 \begin{equation}\mathbb{E}_{x \sim p(x)} \left[ - \nabla_\theta \log p_\theta(x) \right] = \mathbb{E}_{x \sim p(x)} \left[ \frac{1}{T} \nabla_\theta E_\theta(x) \right] - \mathbb{E}_{x' \sim p_\theta(x)} \left[ \frac{1}{T} \nabla_\theta E_\theta(x') \right] \tag{7}\end{equation}
 $$
+
 
 - $\nabla_\theta \log \Omega_\theta $ is is evaluated from the energy gradients of samples $x'$ generated from the model in Eq. (7).
 - samples from $p_\theta(x)$ are called **negative samples (= 모델이 만든 데이터)**
@@ -145,9 +164,11 @@ $$
 
 - starting point $x_0$ is drawn from a noise distribution $p_0(x)$,  typically a Gaussian or uniform distribution.
 
+
 $$
 \begin{equation}x_{t+1} = x_t + \lambda_x \nabla_x \log p_\theta(x_t) + \sigma_x \epsilon_t\quad \text{where } \epsilon_t \sim \mathcal{N}(0, I)\tag{8}\end{equation}
 $$
+
 
 - $∇_x \log p_θ(x) = −∇_xE(x)/T$,  the step size can be seen as adjusting the temperature T
 
@@ -161,9 +182,11 @@ $$
 
 - It lies in the $\rho$-sublevel set of a data density
 
+
 $$
- \{x|p(x) ≤ ρ\}
+\{x|p(x) ≤ ρ\}
 $$
+
 
 
 확률 밀도p(x)가 ρ보다 작거나 같은 입력들의 집합
@@ -254,21 +277,26 @@ $$
 - normalized **probabilistic model** defined from an **autoencoder**
 - The probability density of NAE $p_θ(x)$ is defined as a Gibbs distribution (Eq. (4))
 
+
 $$
 E_\theta(\mathbf{x}) = l_\theta(\mathbf{x}) \\
 p_\theta(\mathbf{x})=\frac{1}{\Omega_\theta} \exp \left(-l_\theta(\mathbf{x}) / T\right)
 $$
 
 
+
 NAE is trained to maximize the likelihood of data
 
 
+
 $$
-\mathbb{E}_{\mathbf{x} \sim p(\mathbf{x})}\left[- \log p_\theta(\mathbf{x})\right] =  \mathbb{E}_{\mathbf{x} \sim p(\mathbf{x})}\left[l_\theta(\mathbf{x})\right] / T+ \log \Omega_\theta 
+\mathbb{E}_{\mathbf{x} \sim p(\mathbf{x})}\left[- \log p_\theta(\mathbf{x})\right] =  \mathbb{E}_{\mathbf{x} \sim p(\mathbf{x})}\left[l_\theta(\mathbf{x})\right] / T+ \log \Omega_\theta
 $$
+
 
 
 The gradient for the negative log-likelihood
+
 
 
 $$
@@ -276,8 +304,10 @@ $$
 $$
 
 
+
 > 💡 each gradient step **decreases** the reconstruction error of training data $\mathbf{x}$,   
 > while **increasing** the reconstruction error of negative samples $\mathbf{x}'$′ generated from $p_θ(x)$.
+
 
 
 $$
@@ -285,6 +315,7 @@ L
   = \underbrace{L_{AE} + L_{reg}}_{\text{Conventional AE}}
   = \underbrace{L_{AE} + T\,\log \Omega_{\theta}}_{\text{NAE}}
 $$
+
 
 
 ⇒ Normalization as Regularization
@@ -338,19 +369,21 @@ $$
 ⇒ Using energy based model, we run a **preliminary MCMC** (=latent chain) in the latent space Z
 
 
-$$
-\begin{aligned}q_\theta(\mathbf{z}) & =\frac{1}{\Psi_\theta} \exp \left(-H_\theta(\mathbf{z}) / T_{\mathbf{z}}\right) \\H_\theta(\mathbf{z}) & =E_\theta\left(f_d(\mathbf{z})\right)\end{aligned}
 
 $$
+\begin{aligned}q_\theta(\mathbf{z}) & =\frac{1}{\Psi_\theta} \exp \left(-H_\theta(\mathbf{z}) / T_{\mathbf{z}}\right) \\H_\theta(\mathbf{z}) & =E_\theta\left(f_d(\mathbf{z})\right)\end{aligned}
+$$
+
 
 
 Latent-space Langevin dynamics: move $\mathbf{z}$ in the direction that lowers $H_\theta(\mathbf{z})$
 
 
-$$
 
+$$
 \mathbf{z}_{t+1}=\mathbf{z}_t+\lambda_{\mathbf{z}} \nabla_{\mathbf{z}} \log q_\theta\left(\mathbf{z}_t\right)+\sigma_{\mathbf{z}} \epsilon_t,
 $$
+
 
 
 ## Experiments

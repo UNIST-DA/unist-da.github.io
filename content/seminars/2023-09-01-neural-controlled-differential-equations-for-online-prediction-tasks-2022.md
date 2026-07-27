@@ -114,9 +114,11 @@ physical systems
 ### Neural ODE :
 
 
+
 $$
 y(0) = y_0, \qquad y(t) = y(0) + \int_0^t f_\theta(s, y(s)) \,d s.
 $$
+
 
 
 Neural ODE models suffer from the **initial value problem**, where they are overly dependent on initial conditions **due to the nature of differential equations**, and an improved model that learns the input data at each point in time is called **Neural CDE**.
@@ -151,9 +153,11 @@ $w $:  a hyperparameter that describes the size of the hidden state and correspo
 Let $X_\bold{x}$ as the control path, Neural CDE model is defined as the solution $z$ to
 
 
+
 $$
 \begin{equation}z\left(t_0\right)=\zeta_{\theta_2}\left(t_0, x_0\right), \quad z(t)=z\left(t_0\right)+\int_{t_0}^t f_{\theta_1}(z(s)) \frac{\mathrm{d} X_{\mathbf{x}}}{\mathrm{d} s} \mathrm{~d} s \quad \text { for } t \in\left(t_0, t_n\right]\end{equation}
 $$
+
 
 
 model can be interpreted and solved as an ordinary differential equation.
@@ -226,9 +230,11 @@ standard **RNNs**: **discretely online**
 - should not introduce any spurious oscillations or grow unboundedly from bounded data.
 - let $\tau_i = t_{i+1} -t_i$ , Then we require that there exists some continuous $ω$
 
+
 $$
 \begin{equation}\left\|X_{\mathbf{x}}\right\|_{\infty}+\left\|\frac{\mathrm{d} X{\mathbf{x}}}{\mathrm{d} t}\right\|_{\infty}+\left|\frac{\mathrm{d} X{\mathbf{x}}}{\mathrm{d} t}\right|_{B V}<\omega\left(\max _i \tau_i, \min _i \tau_i, \max i\left|x_i\right|\right)\end{equation}
 $$
+
 
 
 _where_ $|\cdot|_{B V}$ denotes the bounded variation seminorm.
@@ -237,9 +243,11 @@ _where_ $|\cdot|_{B V}$ denotes the bounded variation seminorm.
 ### Control signal uniqueness
 
 
+
 $$
 \begin{equation}\mathrm{x} \rightarrow X_{\mathbf{x}} \text { is injective with respect to } \mathcal{X} \text {. }\end{equation}
 $$
+
 
 - require every possible unique set of data to have a unique control path.
 - If the dataset is regularly sampled, then (3) is immediately satisfied

@@ -63,11 +63,13 @@ Equations (NODE). To circumvent this issue, latent variables are typically intro
 ![](/assets/seminars/neural-delay-differential-equations/0.png)
 
 
+
 $$
 z(t_1) = z(t_0) + \int_{t_0}^{t_1} f(z(t), t, \theta) dt
 $$
 
-- $z(t_1)$$ , $$z(t_0)$$: **State**
+
+- $z(t_1)$ , $z(t_0)$$: **State**
 - $f(z(t), t, \theta)$: Neural network
 - $\int_{t_0}^{t_1} (\dots) dt$: **ODE Solver**
 
@@ -92,10 +94,12 @@ $$
 ### What is Neural Delay Differential Equation (NDDE)?
 
 
+
 $$
 \frac{dx_t}{dt} = −2x_{t−τ}  , \text{  } t >= 0, \\
-x(t) = x_0, \text{  } t <= 0. 
+x(t) = x_0, \text{  } t <= 0.
 $$
+
 
 
 ![(Zhu et al,. 2021)](/assets/seminars/neural-delay-differential-equations/3.png)
@@ -126,10 +130,12 @@ $$
 ### **Contribution: Neural SDDDE**
 
 
+
 $$
 dy/dt = f_θ(t, y(t), y(t−τ₁(t,y)), …, y(t−τₖ(t,y))) \\
 y(t < 0) = ϕ(t)
 $$
+
 
 - $ϕ(t)$: history function, $τ_i(t,y)$: delay function
 - The model $f_θ$ is a plain MLP — identical in spirit to **Neural ODE**.
@@ -149,23 +155,29 @@ $$
 ### **Background: how to solve a DDE** 
 
 
+
 $$
 \frac{dy(t)}{dt} = f(t, y(t), y(t − τ )), \\ y(t < 0) = y_0
 $$
 
+
 - On $[0, τ]$: the delayed value y(t−τ) falls inside the known history $φ$ → the DDE becomes a plain ODE.
 
-    $$
+    
+$$
     \frac{dy(t)}{dt} = f(t, y(t), y_0), \\ y(0) = y_0
     $$
+    
 
 - Solve it → obtain the solution on $[0, τ]$; use it as the delayed input on $[τ, 2τ]$ → **another ODE; repeat**.
+
 
 $$
 ϕ′
 (t = 0^−) = y′
 (t = 0^+)
 $$
+
 
 
 > 💡 In general, DDEs possess a derivative jump (discontinuity) 

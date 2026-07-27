@@ -45,16 +45,20 @@ Identifying the **root causes of anomalies in multivariate time series is challe
 
 - Granger causality assumes that **if knowing past values of** $X$ **improves the prediction of** $Y$**, then** $X$ **'Granger causes'** $Y$**.**
 
+
 $$
 x_t^{(j)} :=f^{(j)}(\mathbf{x}^{(1)}_{≤t-1},...,\mathbf{x}^{(d)}_{≤t-1})+u^{(j)}_t,\text{  for } 1 \leq j \leq d, \tag 1
 $$
 
+
 - $\mathbf{x}^{(j)}_{≤t-1}$ :  past of time series $j$, $u^{(j)}_t$ : exogenous variable for time series $j$
 - If time series $i $ granger causes $j$
 
-    $$
+    
+$$
     f^{(j)}(..., \mathbf x_{\leq t-1}^{(i)}, ...) \neq f^{(j)}(..., \mathbf x_{\leq t-1}^{\prime (i)}, ...)
     $$
+    
 
 - Granger causality **assumes no hidden confounding and no instantaneous effects,** which can lead to erroneous conclusions if violated.
 - Granger causality는 **숨겨진 혼란 변수나 즉각적인 영향을 고려하지 않는다는 가정을 가지고 있으며**, 이 가정이 위반되면 잘못된 결론을 초래할 수 있다.
@@ -63,19 +67,21 @@ $$
 
 - In the context of Granger causality, the function $f(\mathbf{x}_{\leq{t-1}})$ predicts the current state $\mathbf{x}_t$ based on past data:
 
+
 $$
-\mathbf x_t=f(\mathbf x_{≤t−1}) 
+\mathbf x_t=f(\mathbf x_{≤t−1})
 $$
+
 
 - However, **perfect prediction is impossible in real-world scenarios.**
     - Some variations in $\mathbf{x}_t$ **can’t be predicted by past values** through Granger causality.
     - This unexplained portion is defined as the **exogenous variable** $\mathbf{u}_t$, capturing unpredictable external influences:
 
-        $$
         
+    $$
         \mathbf u_t=\mathbf x_t−f(\mathbf x_{≤t−1}) \tag3
-        
         $$
+        
 
     - If $\mathbf x_t$ were perfectly predictable through Granger causality, then the exogenous variable would be zero: $\mathbf{u}_t = 0$
 
@@ -92,10 +98,12 @@ $$
     - Sequential Anomaly : An exogenous intervention **propagating through time or continuously occurring over time steps.**
 - **The exogenous variable** $( \hat{u}_t^{(j)})$ **is defined as the sum of the normal value** $( u_t^{(j)})$ **and the anomaly term** $( \epsilon_t^{(j)} )$.
 
-    $$
+    
+$$
     \tilde{x}_t^{(j)} = f^{(j)}\left(x_{\leq t-1}^{(1)}, \cdots, x_{\leq t-1}^{(d)}\right) + \hat{u}_t^{(j)}, \quad \hat{u}_t^{(j)} = u_t^{(j)} + \epsilon_t^{(j)} \text{ for }
     1 \leq j \leq d, \tag{2}
     $$
+    
 
 - The task is to **locate the variables** $j$ **and the time steps** $t$ where exogenous interventions occur.
 - AERCA uses an encoder-decoder structure to explicitly model exogenous variables and distinguish root causes from downstream impacts.
@@ -115,9 +123,11 @@ $$
     - **Extracts exogenous variables** $\mathbf{u}_t$ **by removing the explainable part of** $\mathbf{x}_t$ **using Granger causality.**
     - i.e., **learning Granger causal relationships** $f(⋅)$.
 
-    $$
+    
+$$
     \mathbf u_t: = \mathbf x_t-f(\mathbf x_{\leq{t-1}}), \tag 3
     $$
+    
 
 - Decoder(Deductive Reasoning) : Deductive reasoning **reconstructs the observed data** $\mathbf x_t$ **from the exogenous variables** $\mathbf u_t$.
     - The decoder leverages recursive resolution to **reconstruct the current time step** $\mathbf x_t$ **by iteratively resolving past time steps(t-1, t-2,…, 1) based on exogenous variables** $\mathbf u_t$**.**
@@ -126,9 +136,11 @@ $$
     - Reconstructs the current time step $\mathbf x_t$ using computed exogenous variables $\mathbf u_{\leq t-1}$ from Equation (4).
     - i.e., **predict current times step** $\mathbf x_t$**.**
 
-    $$
+    
+$$
     \mathbf x_t = f(\mathbf u_{\leq{t-1}})+\mathbf u_t. \tag 4
     $$
+    
 
 
 ##  3. Encoder - decoder structure
@@ -137,14 +149,18 @@ $$
     - The sliding window approach enables **capturing local temporal dependencies effectively.**
     - The $k$-th neural network predicts the Granger causality between $\mathbf x_{t-k}$ and $\mathbf  x_t$.
 
-    $$
+    
+$$
     \mathbf X = (\mathbf x_1, ..., \mathbf x_t) → \text{ define }\mathbf W_t = (\mathbf x_{t-K+1},..., \mathbf x_t)
     $$
+    
 
 
-    $$
+    
+$$
     \mathbf W = (\mathbf W_K, \mathbf W_{K+1},...,\mathbf W_T)
     $$
+    
 
 
 ### Encoder: Granger causality learning
@@ -152,30 +168,38 @@ $$
 - $w_{\theta_k}(\mathbf x_{t-k})$ **:** $k$-th neural networks($w_{\theta_k}(·)$) predict weights of past $k$ time series to derive $\mathbf x_t$.
     - **Predict the granger causal relationship between** $\mathbf x_{t-k}$ **and** $\mathbf x_t$**.**
 
-        $$
+        
+    $$
         \mathbf x_t = \sum^K_{k=1}\omega_{\theta_k}(\mathbf x_{t-k})\mathbf x_{t-k}+\mathbf u_t. \tag5
         $$
+        
 
 - The encoder computes exogenous variables $\mathbf U_t$ from each time window.
     - **Calculate** $\mathbf U_t = (\mathbf u_{t-K+1},...,\mathbf u_t) $ **by** $K$ **times encoding**
 
-        $$
+        
+    $$
         \mathbf u_t = \mathbf x_t-\sum^K_{k=1}\omega_{\theta_k}(\mathbf x_{t-k})\mathbf x_{t-k}. \tag6
         $$
+        
 
 - Independence Constraint : **The independence constraint ensures exogenous variables** $\mathbf U_t$ **follows a standard isotropic Gaussian distribution.**
     - The distribution difference is quantified using the KL divergence.
     - The **exogenous variables should be uncorrelated and independent of each other.**
     - So use $\mu_Q = 0$ and $\Sigma_Q = I$ to enforce this property.
 
-    $$
+    
+$$
     D_t^{\text{KL}}(P(\mathbf U_t) \| Q)= \frac{1}{2} \text{tr}(\Sigma_Q^{-1}\Sigma_t) + (\mu_Q -\mu_t)^T\Sigma^{-1}_Q(\mu_Q- \mu_t)- d+\text{log}\frac{\text{det}\Sigma_Q}{\log \det \Sigma_t}.
     $$
+    
 
 
-    $$
+    
+$$
     = \frac{1}{2} \text{tr}(\Sigma_t) + \mu_t^T \mu_t - d - \log \det \Sigma_t.
     $$
+    
 
 
 ### Decoder : Reconstruction
@@ -184,35 +208,42 @@ $$
 - Proposition1 : Autoregressive Model
     - $\mathbf x_t$ **can be reconstructed from exogenous variables(**$\mathbf u_{t-1},...,\mathbf u_{t-K}$**)** and **observed time series in previous windows(**$\mathbf x_{t-K-1},...,\mathbf x_{t-2k})$**.**
 
-    $$
-    \mathbf x_t = \sum_{m=1}^K \alpha_{K-m} \mathbf u_{t-(K-m)} + \alpha_K \mathbf x_{t-K} + \sum_{m=2}^{K+1} \alpha_{K+1-m} \sum_{k=m}^K \omega_k \mathbf x_{t-k-(K+1-m)} \tag{8}
     
+$$
+    \mathbf x_t = \sum_{m=1}^K \alpha_{K-m} \mathbf u_{t-(K-m)} + \alpha_K \mathbf x_{t-K} + \sum_{m=2}^{K+1} \alpha_{K+1-m} \sum_{k=m}^K \omega_k \mathbf x_{t-k-(K+1-m)} \tag{8}
     $$
+    
 
     - $w_k $ : parameter of Granger causality, $\alpha_n $ : Weights defined by recursive relationships.
 - Decoder structure : **The decoder combines observed time series and exogenous variables to reconstruct** $\mathbf x_t$**.**
     - Recursive weights $\alpha_n$ defined in Proposition 1 are used to effectively model the **temporal dependencies across** $K$**-steps, enabling accurate reconstruction of** $\mathbf x_t$**.**
 
-    $$
+    
+$$
     \hat{\mathbf x}_t = \sum_{k=1}^K \bar{\omega}_{\bar{\theta}_k}(\mathbf u_{t-k}) \mathbf u_{t-k} + \sum_{k=1}^K \bar{\omega}'_{\bar{\theta}'_k}(\mathbf x_{t-K-k}) \mathbf x_{t-K-k} + \mathbf u_t \tag{9}
     $$
+    
 
     - $\bar{\omega}_{\bar{\theta}_k}(\mathbf u_{t-k})$ : The impact of the exogenous variable $\mathbf u_{t-k}$ on $\mathbf x_t$.
     - $\bar{\omega'}_{\bar{\theta'}_k}(\mathbf x_{t-K-k})$ : The impact of the observed data $\mathbf x_{t-K-k}$ on $\mathbf x_t$.
 - The entire encoder-decoder structure is defined as follows:
+
 
 $$
 \hat {\mathbf x}_t = AE_{\theta_k, \bar\theta_k, \bar\theta'_k}(\mathbf x_{＜t})
 $$
 
 
+
 ### Encoder-decoder objective fuction 
 
 - The objective function **minimizes reconstruction error while ensuring independence and smoothness.**
 
-    $$
+    
+$$
     \mathcal{L} = \sum_{t=K+1}^T \left(\| \hat{\mathbf x}_t - \mathbf x_t \|_2 + \beta D_t^{\text{KL}} + \lambda_{\text{en}} R(\Omega_t) + \lambda_{\text{de}} R(\bar{\Omega}_t) + \lambda_{\text{de}} R(\bar{\Omega}'_t)\right) + \sum_{t=K+1}^{T-1} \left(\gamma_{\text{en}} S(\Omega_{t+1}, \Omega_t) + \gamma_{\text{de}} S(\bar{\Omega}_{t+1}, \bar{\Omega}_t) + \gamma_{\text{de}} S(\bar{\Omega}'_{t+1}, \bar{\Omega}'_t)\right). \tag{10}
     $$
+    
 
     - $\| \hat{\mathbf x}_t - \mathbf x_t \|_2$ : Minimizing the reconstruction error.
     - $D_t^{KL}$ : Encourages the exogenous variables to be maintained to an **independent distribution**.
@@ -234,14 +265,15 @@ $$
     - Outputs into a **coefficient matrix** $S$ **and deriving the adjacency matrix** $A$ **based on a threshold** $\tau$**.**
     - $S_{i,j}$ : The impact of the variable $i$ on $j$.
 
+
 $$
 S_{i,j} = \max_{1 \leq k \leq K} \left\{ \text{median}_{K+1 \leq t \leq T} \left( |(\omega_{\theta_k}(\mathbf x_{t-k}))_{i,j}| \right) \right\}, A_{i,j} =
 \begin{cases} 
 1 & \text{if } S_{i,j} > \tau, \\
 0 & \text{otherwise}.
 \end{cases}
-
 $$
+
 
 
 ## 5. Root cause localization
@@ -250,9 +282,11 @@ $$
     - SPOT(streamingpeaks-over-threshold) **determines the dynamic threshold** for labeling potential root causes based on z-scores.
     - This enables the method to **precisely identify which time series is affected by an exogenous intervention and from which time step onward.**
 
-        $$
+        
+    $$
         z_{t^*}^{(j)} = \frac{u_{t^*}^{(j)}-\mu^{(j)}}{\sigma^{(j)}}
         $$
+        
 
         - $\mu, \sigma $ : mean and standard deviation of the exogeneous variables.
 
@@ -436,9 +470,11 @@ pred_root_cause_decoder_z_score_pot = pred_root_cause_decoder_z_score_pot.astype
     - AC@K : Evaluates the probability of identifying **the correct root cause within the top** $K$ **ranked variables based on root cause scores.**
         - Ex) If the top-5 ranked variables include 3 out of 4 ground truth root causes, $AC@5 = 0.75$
 
-        $$
+        
+    $$
         AC@K = \frac{1}{|\mathcal{X}|} \sum_{X \in \mathcal{X}} \frac{|V^{(RC)}_X \cap \{R_X[k] \mid k = 1, 2, \ldots, K\}|}{\min(K, |V^{(RC)}_X)|}
         $$
+        
 
         - $R_\mathbf X[k]$ : The variable with the $k$**-th highest predict root cause** score in sequence $X.$
         - $V_\mathbf X(RC)$ : The set of all **real root cause** variables in sequence $X.$
@@ -508,11 +544,14 @@ def topk(z_scores, label, threshold, k_range=500):
 ### Proposition 1
 
 
+
 $$
 \mathbf x_t = \sum_{m=1}^{K} \alpha_{K-m} \mathbf u_{t-(K-m)} + \alpha_K\mathbf  x_{t-K} + \sum_{m=2}^{K+1} \alpha_{K+1-m} \sum_{k=m}^{K} \omega_k \mathbf x_{t-k-(K+1-m)} \tag 8
 $$
 
+
 - 과거의 $\mathbf{x}_{t-k}$들이 특정 가중치 $\omega_k$를 가지고 현재 값에 영향을 미침
+
 
 $$
 \mathbf x_t
@@ -525,6 +564,8 @@ $$
 $$
 
 
+
+
 $$
 \mathbf x_t
 =
@@ -534,8 +575,8 @@ $$
 \omega_k\,\mathbf x_{t-k}
 \;+\;
 \mu_t
-
 $$
+
 
 - 이전 시점 $\mathbf{x}_{t-1}$을 다시 autoregressive equations $\sum_{k=1}^{K}
 \omega_k
@@ -543,12 +584,15 @@ $$
 \;+\;
 \mu_{t-1}$으로 치환 :
 
+
 $$
 \mathbf x_t  = \omega_1 \left(\omega_1 \mathbf x_{t-2} + \sum_{k=2}^{K} \omega_k \mathbf x_{t-1-k} + \mu_{t-1}\right) +\left( \omega_2\mathbf  x_{t-2} + \sum_{k=3}^{K} \omega_k \mathbf x_{t-k} + \mu_t\right)
 $$
 
+
 - $\mathbf{x}_{t-2}$에 대해서도 같은 방식으로 다시 치환 :
     - 과거 데이터가 반복적으로 치환되면서, 시점이 점점 더 멀어진 데이터들까지 영향을 미침을 표현
+
 
 $$
 \mathbf x_t = 
@@ -558,6 +602,7 @@ $$
 \left( \omega_2 \mathbf x_{t-3} + \sum_{k=3}^{K} \omega_k \mathbf x_{t-1-k} + \mu_{t-1} \right)
 + \left( \omega_3 \mathbf x_{t-3} + \sum_{k=4}^{K} \omega_k \mathbf x_{t-k} + \mu_t \right)
 $$
+
 
 - 새로운 계수 정의 : $
 \alpha_n =
@@ -571,6 +616,7 @@ $$
 $
     - 각 $\alpha_n$은 과거 데이터가 현재 시점에 미치는 영향을 weight로 표현
     - $\alpha_n$은 과거 시점에서 현재 시점으로 영향을 주는 누적 가중치로, 모델을 통해 점진적으로 학습됨
+
 
 $$
 \mathbf x_t
@@ -599,7 +645,9 @@ $$
 \mu_{t}\right)
 $$
 
+
 - 일반화 : 외생 변수 $\mathbf{u}$와 관측된 데이터 $\mathbf{x}$를 결합하여 현재 시점의 값을 복원할 수 있음을 보일 수 있음
+
 
 $$
 \mathbf x_t = 
@@ -611,22 +659,28 @@ $$
 \left( \omega_n \mathbf x_{t-n} + \sum_{k=n+1}^{K} \omega_k \mathbf x_{t-k} + \mu_t \right).
 $$
 
+
 - Rearranging the above expression :
+
 
 $$
 \mathbf x_t = \sum_{m=1}^{n} \alpha_{n-m} \mathbf u_{t-(n-m)} + \alpha_n \mathbf x_{t-n} + \sum_{m=2}^{n+1} \alpha_{n+1-m} \sum_{k=m}^{K} \omega_k \mathbf x_{t-k-(n+1-m)}
 $$
 
+
 - rewritten n as K(proposition 1) : $α_n$과 $\omega_k$가 주어진 데이터에서 도출된 고정된 값이 됨
+
 
 $$
 \mathbf x_t = \left(\sum_{m=1}^{K} \alpha_{K-m} \mathbf u_{t-(K-m)}\right) + \left(\alpha_K \mathbf x_{t-K} + \sum_{m=2}^{K+1} \alpha_{K+1-m} \sum_{k=m}^{K} \omega_k \mathbf x_{t-k-(K+1-m)}\right) \tag 8
 $$
 
+
 - Granger 인과 관계를 학습한 가중치 $\alpha_n$과 $\omega_k$를 신경망 기반 가중치$\bar{\omega}_{\bar{\theta}_k}$, $\bar{\omega}'_{\bar{\theta}'_k}$로 변환
     - 신경망이 학습한 가중치 $\bar{\omega}_{\bar{\theta}_k}$와 $\bar{\omega}'_{\bar{\theta}'_k}$로 표현하여 더 유연하게 모델링(기존 $\omega_k$는 고정 값)
     - $\mathbf u$가 직접적인 영향을 미치는 부분과, 과거 $\mathbf{x}$가 영향을 주는 부분을 명확히 분리하여 모델을 구성됨
     - 디코더 모델에서 현재 시점의 **외생 변수(**$\mathbf u$**)를 추가하여 최종적인 값을 보정함**
+
 
 $$
 \hat{\mathbf x}_t = \left(\sum_{k=1}^K \bar{\omega}_{\bar{\theta}_k}(\mathbf u_{t-k}) \mathbf u_{t-k}\right) + \left(\sum_{k=1}^K \bar{\omega}'_{\bar{\theta}'_k}(\mathbf x_{t-K-k}) \mathbf x_{t-K-k}\right) + \mathbf u_t \tag{9}

@@ -90,9 +90,11 @@ This paper presents PREVENT, a fully unsupervised approach to predict and locali
         - Centrality Indices : Indicates the importance of specific KPIs
             - $W_{ij}$ : weight(causality) between node $i$ and node $j$
 
-        $$
+        
+    $$
         \text{Centrality score } c_i = \mu\sum^n_{j=1}W_{ij}c_i
         $$
+        
 
 
 ## Dataset
@@ -135,9 +137,11 @@ This paper presents PREVENT, a fully unsupervised approach to predict and locali
     - **Detects anomalies when the Reconstruction Error exceeds 3 sigma**(concept drift X)
 2. **Calculate each KPI’s reconstruction error(MSE)** the difference between Input and Output
 
-    $$
+    
+$$
     \text{MSE}= \frac{1}{n}\sum^n_{i=1}(x_i-\hat{x}_i)^2
     $$
+    
 
 3. Calculate and **save anomaly score for each KPIs where reconstruction error exceeds the threshold**
 4. **Passed to anoamly ranker**
@@ -279,17 +283,21 @@ for test_data_set_code in test_data_set_codes:
 2. Restricted Boltzmann Machine(RBM) Structure and Energy Function Calculation
     - Visible layer: KPI values as input, Hidden layer: Encodes the joint distribution among KPIs to model their interactions
 
-    $$
+    
+$$
     E({v_i},{h_j}) = \sum_i a_iv_i + \sum_{i,j} v_iw_{ij}h_j + \sum_j b_jh_j
     $$
+    
 
     - $v_i, a_i$ : visible variable & bias, $h_j, b_j$ ; hidden variable & bias, $w_{i,j}$ : visible & hidden weigt
 3. Train the RBM and Calculate Gibbs Free Energy
     - Gibbs Free Energy: Serves as an overall assessment of the **system's state, calculated based on KPI correlations**
 
+
 $$
 G({v_i}) = -\log \sum_{h_j}e^{-E({v_i},{h_j})}
 $$
+
 
 1. Build a Baseline Model for Normal State: Define the baseline as $G_{baseline} ± 3\sigma$
 2. Anomaly Detection: Detect anomalies by comparing Gibbs free energy with the baseline

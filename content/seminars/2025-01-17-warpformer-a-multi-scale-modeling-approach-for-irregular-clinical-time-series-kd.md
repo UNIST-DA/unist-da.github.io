@@ -102,9 +102,11 @@ DTW temporally aligns two time series of data to calculate similarity, even when
 Define irregular time series data for a patient in the following format.
 
 
+
 $$
 \left\{[(t_i^k, x_i^k)]_{i=1}^{L^k}\right\}_{k=1}^K
 $$
+
 
 - K : num of variables
 - $L^k$ : Number of observations in the k-th variable
@@ -298,9 +300,11 @@ output:
 ### Transformation Data to New Scale
 
 
+
 $$
 A^{(n)} \in \R^{K \times L^{(n)} \times L^{(n-1)}}
 $$
+
 
 
 > 💡 A tensor for converting $H(n−1))$ to a new scale
@@ -318,18 +322,22 @@ Converting to
 For each data $H^{(n-1)}$, calculate a weighted score $\bm s_k$
 
 
+
 $$
 \bm{s}_k = f^{\bm{s}}(\bm{h}_k) \odot \bm{m}_k
 $$
 
 
 
+
 Generate a Warping Curve($\bm{\lambda}_{k}$) by **cumulatively summing** the scores.
+
 
 
 $$
 \bm{\lambda}_{k,i} = \dfrac{\sum_{i'=1}^{i} \bm{s}_{k,i'}}{\sum_{i'=1}^{L^{(n-1)}} \bm{s}_{k,i'}}
 $$
+
 
 
 This curve indicates where each data point would be located on the new scale.
@@ -419,9 +427,11 @@ divide $[0, 1]$ into $L^{(n)}$ segments
 Generate a mapping matrix  $\bm{a}_k^m$ by comparing the warping curve $\bm{\lambda}_k$ to the bin boundaries:
 
 
+
 $$
 \bm{a}_k^m = (\Lambda_k - R^1 \ge 0) \texttt{ \& } (R^2 - \Lambda_k \ge 0)
 $$
+
 
 - When upsampling, expand the mapping matrix by copying the boundary values of the Warping Curve.
 - This allows you to generate fine-grained data even when $L^{(n)} > L^{(n-1)}$.
@@ -472,9 +482,11 @@ The mapping matrix ($\bm{a}_k^m$ ) generated based on the warping curve is not d
 ⇒ Convert the mapping matrix to a **continuous function** to make it differentiable. This allows us to compute the **gradient** during training.
 
 
+
 $$
 \bm{a}_k^u = \bm{a}_k^m \odot \left( \max \left(\Lambda_k - R^1, 0\right) + \max \left(R^2 - \Lambda_k, 0\right) \right)
 $$
+
 
 
 $R^1$ $R^2$ : 상수로 간주. 
@@ -635,9 +647,11 @@ First : 심박수 / 혈당 데이터 따로 학습 → 시간에 따른 변화 �
 Second : 특정 시간 : 심박수/ 혈당 관계 학습
 
 
+
 $$
 Z^{(n)}=\left[\begin{array}{cccc}\text { 심박수 }(\text { 시간 1) } & \text { 심박수 }(\text { 시간 } 2) & \cdots & \text { 심박수 }(\text { 시간 } 5) \\\text { 혈당(시간 } 1) & \text { 혈당(시간 } 2) & \cdots & \text { 혈당(시간 } 5)\end{array}\right]
 $$
+
 
 
 </details>
@@ -661,9 +675,11 @@ $$
 ⇒ Use the **Attention mechanism** to compress(aggregate) the time dimension and the variable dimension to create a fixed-size vector
 
 
+
 $$
 f^{\textrm{agg}}(\textrm{Query}, \textrm{Key}, \textrm{Value}) = \text{Softmax}(\textrm{Query} \cdot \textrm{Key}^T) \cdot \textrm{Value}
 $$
+
 
 - Time dimension : $L^{(n)}$ → 1
 - Variable dimension : $K$ → 1
@@ -671,9 +687,11 @@ $$
 ### Final Representation $\bm v$
 
 
+
 $$
 \bm{v} = \sum_{n=1}^N \bm{v}^{(n)}
 $$
+
 
 
 $\{\bm{v}^{(n)}\}_{n=1}^N$ : Fixed-size vectors generated from each layer
@@ -684,9 +702,11 @@ $\{\bm{v}^{(n)}\}_{n=1}^N$ : Fixed-size vectors generated from each layer
 In a multi-class classification problem with C classes, the final output Use $\bm v$ to compute the predicted probability distribution as follows:
 
 
+
 $$
 \hat{\bm{y}} = \texttt{Softmax}( W^y \bm{v} + \bm{b}^y)
 $$
+
 
 - $\hat{\bm{y}} \in \R^{C}$  : predicted probability distribution over $C$ classes
 - $W^y \in \R^{C \times D}, \bm{b}^y \in \R^C$ : task-specific parameters.

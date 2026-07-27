@@ -39,9 +39,11 @@ GMM 에서 최종적으로 계산해야 하는 것: 각 분포에 대한 파라�
     $x_i$ 라는 특정 관측치의 확률 표현은
 
 
+
 $$
-p(x_i) = \pi_{i,1}N(x_i | \mu_1, \sigma_1^2) + \pi_{i,2}N(x_i | \mu_2, \sigma_2^2) + \pi_{i,3}N(x_i | \mu_3, \sigma_2^2) 
+p(x_i) = \pi_{i,1}N(x_i | \mu_1, \sigma_1^2) + \pi_{i,2}N(x_i | \mu_2, \sigma_2^2) + \pi_{i,3}N(x_i | \mu_3, \sigma_2^2)
 $$
+
 
 
 $\pi_{i,1} : x_i$ 가 첫번째 정규분포를 이용해 생성되었을 확률
@@ -78,17 +80,21 @@ GMM 은 다변량 정규분포를 가정 : $N = (\boldsymbol{\mu, \Sigma})$
 결과 값이 가장 커지는 $\theta$ 를 추정값 $\hat{\theta}$ 로 보는 것
 
 
+
 $$
 P(x|\theta) = \Pi_{k=1}^n P(x_k | \theta)
 $$
 
 
+
 계산 편의를 위해 보통 log값을 취함.
+
 
 
 $$
 L(\theta|x) =  \log P(x|\theta) = \Pi_{k=1}^n \log P(x_k | \theta)
 $$
+
 
 - GMM 을 통해 계산해야 하는 파라미터 $\theta$  : $\pi, \boldsymbol{\mu, \Sigma}$
 
@@ -96,9 +102,12 @@ $$
 
 - N개의 관측치가 있는 데이터 X에 대해, likelihood 를 다음과 같은 조건부 확률 형태로 나타낼 수 있음
 
+
 $$
 X = (x_1, x_2, ...,x_N)
 $$
+
+
 
 
 $$
@@ -106,14 +115,17 @@ p(X|\boldsymbol{\pi,\mu, \Sigma}) = \Pi_{i=1}^N p(x_i|\boldsymbol{\pi,\mu, \Sigm
 $$
 
 
+
 이 때 찾고자 하는 군집의 수가 K일 때
+
 
 
 $$
 p(x_i) = \pi_{i,1}N(\boldsymbol{\mu_1, \Sigma_1}) + \pi_{i,2}N(\boldsymbol{\mu_1, \Sigma_1}) + ... + \pi_{i,k}N(\boldsymbol{\mu_k, \Sigma_k}) \\
 = \sum_{k=1}^K \pi_{i,k}N(\boldsymbol{\mu_k, \Sigma_k})
-
 $$
+
+
 
 
 $$
@@ -122,14 +134,17 @@ $$
 = \sum_{i=1}^N \ln \{\sum_{j=1}^K \pi_{i,j}N(\boldsymbol{\mu_j, \Sigma_j}) \}
 $$
 
+
 - GMM의 경우, 직접적인 미분을 통해 파라미터를 알아내는 데 어려움 존재
 
     → $\pi$ 를 모르기 때문
 
 
+
 $$
 \pi_{i,k} = P(z_i = k)
 $$
+
 
 
 $z_i = i$ 번째 관측치가 생성될 때 사용된 분포를 나타내는 잠재변수
@@ -150,9 +165,11 @@ $z$ 는 latent variable
 ![](/assets/seminars/introduction-to-gaussian-mixture-modelgmm-em-algorithm/2.png)
 
 
+
 $$
 P(z_i = k | x_i, \pi_{i,k}, \boldsymbol{\mu_k, \Sigma_k} )
 $$
+
 
 
 임의값에서 시작해, 순차적으로 $z_i$를 업데이트하면서 log-likelihood 를 최대화하는 파라미터를 찾음. 파라미터가 수렴할 때까지 반복
@@ -173,13 +190,13 @@ $$
 GMM 은 세 가지 파라미터에 의해 결정
 
 
+
 $$
 \theta = \{ \pi, \boldsymbol{\mu, \Sigma }\}  \\
 
 \scriptsize{\pi = \{\pi_1, ..., \pi_K \} \space\space \mu = \{\mu_1, ..., \mu_K \}} \space\space \Sigma = \{\Sigma_1, ..., \Sigma_K \}
-
-
 $$
+
 
 
 ### Expectation Step
@@ -191,12 +208,15 @@ $$
 $\gamma(z_k)$ : x가 주어졌을 때 $z_k$ = 1 일 조건부 확률
 
 
+
 $$
 \gamma(z_k) = p(z_{i,k} = 1|x_i)
 $$
 
 
+
 $z_{i,k} \in \{0,1\}$ : $x_i$ 가 주어졌을 때 GMM의 k번째 Gaussian distribution이 선택되면 1, 아니면 0의 값을 갖는 binary variable
+
 
 
 $$
@@ -204,13 +224,16 @@ $$
 $$
 
 
+
 GMM의 경우, 베이즈 정리 통해 다음 식 도출 가능
+
 
 
 $$
 \begin{aligned}\gamma\left(z_k\right) = \pi_{i k} & =p\left(z_i=k \mid x_i\right) 
 & =\frac{\pi_k \mathcal{N}\left(x_i \mid \mu_k, \Sigma_k\right)}{\Sigma_{k=1}^K \pi_k \mathcal{N}\left(x_i\mid \mu_k, \Sigma_k\right)}\end{aligned}
 $$
+
 
 
 $\gamma(z_k)$ : 관측값 x를 설명하는 데에 있어 component k의 **Responsibility** 
@@ -220,12 +243,15 @@ $\gamma(z_k)$ : 관측값 x를 설명하는 데에 있어 component k의 **Resp
 
 - 구한 responsibilities 를 가지고 k 개의 정규분포의 평균, 공분산행렬, $\pi_k$를 업데이트
 
+
 $$
 \begin{gathered}\boldsymbol{\mu}_k^{\text {new }}=\frac{1}{N_k} \sum_{i=1}^n \gamma\left(z_{i k}\right) \mathbf{x}_i \\\boldsymbol{\Sigma}_k^{\text {new }}=\frac{1}{N_k} \sum_{i=1}^n \gamma\left(z_{i k}\right)\left(\mathbf{x}_i-\boldsymbol{\mu}_k\right)\left(\mathbf{x}_i-\boldsymbol{\mu}_k\right)^T \\\pi_k^{\text {new }}=\frac{N_k}{N}\end{gathered}
 $$
 
 
+
 앞서서 log likelihood 를 구하기 위한 식
+
 
 
 $$
@@ -233,7 +259,9 @@ log p(\mathbf{X} | \pi, \mu, \Sigma) = \Sigma_{n=1}^N log (\Sigma_{k=1}^K \pi_k 
 $$
 
 
+
 Gaussian Component의 평균 $\mu_k$ 에 대한 위 식의 미분 값을 0이라고 설정
+
 
 
 $$
@@ -241,7 +269,9 @@ $$
 $$
 
 
+
 이를 정리한다면,
+
 
 
 $$
@@ -249,7 +279,9 @@ $$
 $$
 
 
+
 Gaussian Component의  $\Sigma_k$ 에 대한 식의 미분 값을 0이라고 설정, 유사한 과정 진행
+
 
 
 $$
@@ -257,16 +289,20 @@ $$
 $$
 
 
+
 이 Log Likelihood를 mixing 계수 $\pi_k$ 에 대해 최대화
 
 - Lagrange Multiplier 사용.  $\pi_k$ 의 총합이 1이 되어야 하기 때문
+
 
 $$
 log p(\mathbf{x} | \pi, \mu, \Sigma) + \lambda (\Sigma_{k=1}^K \pi_k - 1 )
 $$
 
 
+
 최대화하면, 
+
 
 
 $$
@@ -274,7 +310,9 @@ $$
 $$
 
 
+
 양변에 $\pi_k$ 를 곱해주면,
+
 
 
 $$
@@ -282,9 +320,13 @@ $$
 $$
 
 
+
+
 $$
 \to 0 = \Sigma_{n=1}^N \gamma(r_{nk}) + \lambda
 $$
+
+
 
 
 $$
@@ -292,9 +334,12 @@ $$
 $$
 
 
+
+
 $$
 \pi_k = \frac{N_k}{N}
 $$
+
 
 
 ---

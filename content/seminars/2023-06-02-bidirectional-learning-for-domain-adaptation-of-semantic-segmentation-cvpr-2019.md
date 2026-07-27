@@ -130,20 +130,26 @@ sequential learning framework로 구성 시 한계점
 Image translation model의 loss
 
 
+
 $$
 \begin{aligned}\ell_{\mathbf{F}} & =\lambda_{G A N}\left[\ell_{G A N}\left(\mathcal{S}^{\prime}, \mathcal{T}\right)+\ell_{G A N}\left(\mathcal{S}, \mathcal{T}^{\prime}\right)\right] \\& +\lambda_{\text {recon }}\left[\ell_{\text {recon }}\left(\mathcal{S}, \mathbf{F}^{-1}\left(\mathcal{S}^{\prime}\right)\right)+\ell_{\text {recon }}\left(\mathcal{T}, \mathbf{F}\left(\mathcal{T}^{\prime}\right)\right]\right. \\& +\ell_{\text {per }}\left(\mathbf{M}(\mathcal{S}), \mathbf{M}\left(\mathcal{S}^{\prime}\right)\right)+\ell_{\text {per }}\left(\mathbf{M}(\mathcal{T}), \mathbf{M}\left(\mathcal{T}^{\prime}\right)\right.\end{aligned}
 $$
 
+
 - Forward direction에서 계산되는 loss(a)
+
 
 $$
 \ell_{G A N}\left(\mathcal{S}^{\prime}, \mathcal{T}\right)=\mathbb{E}_{I_{\mathcal{T}} \sim \mathcal{T}}\left[D_{\mathbf{F}}\left(I_{\mathcal{T}}\right)\right]+\mathbb{E}_{I_{\mathcal{S}} \sim \mathcal{S}}\left[1-D_{\mathbf{F}}\left(\left(I_{\mathcal{S}}^{\prime}\right)\right)\right]
 $$
 
 
+
+
 $$
 \ell_{\text {recon }}\left(\mathcal{S}, \mathbf{F}^{-1}\left(\mathcal{S}^{\prime}\right)\right)=\mathbb{E}_{I_{\mathcal{S}} \sim \mathcal{S}}\left[\left\|\mathbf{F}^{-1}\left(\left(I_{\mathcal{S}}^{\prime}\right)\right)-I_{\mathcal{S}}\right\|_{1}\right]
 $$
+
 
 1. Domain confusion loss
     - $\mathcal{S}^{\prime}, \mathcal{T}$ 또는 $\mathcal{T}^{\prime}, \mathcal{S}$의 domain을 구분하지 못하도록 함
@@ -161,9 +167,12 @@ $$
 Segmentation adaptation model의 loss(unsupervised setting)
 
 
+
 $$
 \ell_{\mathbf{M}}=\lambda_{a d v} \ell_{a d v}\left(\mathbf{M}\left(\mathcal{S}^{\prime}\right), \mathbf{M}(\mathcal{T})\right)+\ell_{s e g}\left(\mathbf{M}\left(\mathcal{S}^{\prime}\right), Y_{\mathcal{S}}\right)
 $$
+
+
 
 
 $$
@@ -171,9 +180,12 @@ $$
 $$
 
 
+
+
 $$
 \ell_{s e g}\left(\mathbf{M}\left(\mathcal{S}^{\prime}\right), Y_{\mathcal{S}}\right)=-\frac{1}{H W} \sum_{H, W} \sum_{c=1}^{C} \mathbb{1}_{\left[c=y_{\mathcal{S}}^{h w}\right]} \log P_{\mathcal{S}}^{h w c}
 $$
+
 
 1. domain confusion loss
     - Segmentation network 학습 시에도 사용하여 source, target을 더욱 align 시키도록 함
@@ -194,17 +206,21 @@ Based on the prediction probability of $T$, we can obtain some pseudo labels $\h
 Segmentation adaptation model의 loss(self-supervised setting)
 
 
+
 $$
 \begin{aligned}\ell_{\mathbf{M}} & =\lambda_{a d v} \ell_{a d v}\left(\mathbf{M}\left(\mathcal{S}^{\prime}\right), \mathbf{M}(\mathcal{T})\right) \\& +\ell_{\text {seg }}\left(\mathbf{M}\left(\mathcal{S}^{\prime}\right), Y_{\mathcal{S}}\right)+\ell_{\text {seg }}\left(\mathbf{M}\left(\mathcal{T}_{s s l}\right), \widehat{Y}_{\mathcal{T}}\right),\end{aligned}
 $$
 
 
+
 self-supervised setting에서는 segmentation loss가 다음과 같이 변경됨 
+
 
 
 $$
 \ell_{\text {seg }}\left(\mathbf{M}\left(\mathcal{T}_{s s l}\right), \widehat{Y}_{\mathcal{T}}\right)=-\frac{1}{H W} \sum_{H, W} m_{\mathcal{T}}^{h w} \sum_{c=1}^{C} \mathbb{1}_{\left[c=y_{\mathcal{T}}^{h w}\right]} \log P_{\mathcal{T}}^{h w c}
 $$
+
 
 - $m_{\mathcal{T}}$: $\mathbb{1}{\text {[argmax }} \mathbf{M}\left(I_{\mathcal{T}}\right)> threshold]$
 

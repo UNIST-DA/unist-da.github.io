@@ -55,9 +55,11 @@ Effective learning from electronic health records (EHR) data for prediction of c
     - Competing Risks
         - 환자가 동시에 위험에 처할 수 있는 여러 경쟁
 
-            $$
+            
+        $$
             \lambda_k(t \mid X)=P(T=t, K=k \mid T \geq t, X),\newline where \space  k \in \mathcal{K}
             $$
+            
 
 - **Neural Ordinary Differential Equation**
     - Neural Ordinary Differential Equation (Neural ODE)은 인공신경망을 통해 state을 유추하는 것이 아닌 state의 미분값을 유추하여 ODE-Solver를 통해 function(신경망)을 근사함
@@ -270,6 +272,7 @@ $\lambda_k\left(t \mid \mathcal{X}_i, Z_i^t\right)=P\left(T^r=t, K=k \mid T^r \g
 ![Overview of the SurvLatent ODE architecture](/assets/seminars/survlatent-ode-a-neural-ode-based-time-to-event-model-with-competing-risks-for-l/8.png)
 
 
+
 $$
 \begin{equation}
 \begin{aligned}
@@ -281,10 +284,12 @@ $$
 $$
 
 
+
 ![Detailed model architecture of SurvLatent ODE.](/assets/seminars/survlatent-ode-a-neural-ode-based-time-to-event-model-with-competing-risks-for-l/9.png)
 
 
 ## Survival function estimation
+
 
 
 $$
@@ -292,12 +297,15 @@ $$
 $$
 
 
+
 where $τ_{i,l }$ is the latest measurement time for the patient.
+
 
 
 $$
 \hat{F}_k\left(t \mid Z_i^t\right)=\hat{P}\left(T^r \leq t, K=k \mid Z_i^t\right)=\sum_{\tau_{i, l}<\tau \leq t} \hat{P}\left(T^r=\tau, K=k \mid Z_i^t\right)=\sum_{\tau_{i, l}<\tau \leq t} \hat{\lambda}_{i, k}^*(\tau) \hat{S}\left(\tau-1 \mid Z_i^t\right) .
 $$
+
 
 
 : the estimated cause-specific cumulative incidence function
@@ -306,12 +314,15 @@ $$
 ## Loss Functions
 
 
+
 $$
 \begin{equation}\operatorname{ELBO}(\mathcal{X} ; \Phi, \zeta)=\mathbb{E}_{q\left(z_0 \mid \mathcal{X} ; \Phi\right)}\left[\log \left(p\left(\mathcal{X} \mid z_0 ; \phi, \zeta\right)\right]-\operatorname{KL}\left[q\left(z_0 \mid \mathcal{X} ; \Phi\right) \| p\left(z_0\right)\right]\right.\end{equation}
 $$
 
 
+
 total survival likelihood $L_{surv}$, which enables handling of right-censored patients, is estimated as follows
+
 
 
 $$
@@ -324,12 +335,15 @@ L_{\text {surv }}(\mathcal{D} ; \Phi, \beta) & =\prod_{i \in \mathcal{D}} \hat{P
 $$
 
 
+
 The total loss we want to minimize is
+
 
 
 $$
 \begin{equation}L_{\text {total }}(\mathcal{D} ; \Phi, \zeta, \beta)=-\operatorname{ELBO}(\mathcal{X} ; \Phi, \zeta)-\log \left(L_{\text {surv }}(\mathcal{D} ; \Phi, \beta)\right)\end{equation}
 $$
+
 
 
 # Experiments & Results

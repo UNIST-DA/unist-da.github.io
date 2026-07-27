@@ -79,9 +79,11 @@ Let $P$ be a set of objects.
     Let $k$ be the number of clusters desired and objects $c_1, \dots,c_k$ (which are not necessarily in $P$) are called **centroids**. Clusters $P_1, \dots , P_k$ are formed as follows:
 
 
-    $$
+    
+$$
     P_i = \{ o \in P \mid dist(o,c_i ) \le dist(o,c_j )\quad \forall j\in[1,k]\}
     $$
+    
 
 
     $P_i$ includes all the objects in $P$ that have $c_i$ as their nearest centroid.
@@ -132,13 +134,15 @@ Let $P$ be a set of objects.
 
 - Clustering Equation
 
-    $$
+    
+$$
     A(i, j) = 
     \begin{cases} 
     1, & \text{if } j = \kappa_i^1 \text{ or } \kappa_j^1 = i \text{ or } \kappa_i^1 = \kappa_j^1 \\
     0, & \text{otherwise} 
     \end{cases}
     $$
+    
 
 
     where $\kappa_i^1$ denotes the first neighbor of point $i$.
@@ -245,17 +249,21 @@ Let $P$ be a set of objects.
     - Measurement similarity between two variables
     - NMI: 0 (no mutual information), 1 (perfect correlation)
 
-    $$
+    
+$$
     \text{NMI}(X, Y) = \frac{2 \times \text{MI}(X, Y)}{H(X) + H(Y)}
     $$
+    
 
 
     where the Mutual information (MI) is defined as
 
 
-    $$
+    
+$$
     \text{MI}(X, Y) = \sum_{x \in X}\sum_{y \in Y} p(x, y) \log \left(\frac{p(x, y)}{p(x)p(y)}\right) \ge 0
     $$
+    
 
 
     Here, $p(x, y)$ is the joint probability distribution function of $X$ and $Y$, and $p(x)$ and $p(y)$ are the marginal probability distribution functions of $X$ and $Y$, respectively.
@@ -264,15 +272,19 @@ Let $P$ be a set of objects.
     cf) The entropy of a random variable $X$ is given by
 
 
-        $$
+        
+    $$
         H(X) = -\sum_{x \in X} p(x) \log(p(x))
         $$
+        
 
     1. unsupervised clustering accuracy (ACC)
 
-        $$
+        
+    $$
         ACC = max_m \frac{\sum_{i=1}^n 1\{l_i = m(c_i) \}}{n}
         $$
+        
 
 
         where $l_i$ is the ground truth label and $c_i$ is the cluster assignment obtained by the method, and $m$ ranges in the all possible one-to-one mappings between clusters and labels.

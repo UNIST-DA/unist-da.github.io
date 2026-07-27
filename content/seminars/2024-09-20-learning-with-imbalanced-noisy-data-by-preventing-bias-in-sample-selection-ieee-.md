@@ -92,9 +92,11 @@ Learning with noisy labels has gained increasing attention because the inevitabl
 - $F(\cdot, \theta)$: 매개변수 $\theta$로 가지는 Model
 - $L(F(x, \theta), y)$
 
-    $$
+    
+$$
     L(F(x, \theta), y) = \frac{1}{N} \sum_{i=1}^{N} l_{\text{ce}}(x_i, y_i) = -\frac{1}{N} \sum_{i=1}^{N} \sum_{c=1}^{C} y_{c,i} \log(p_c(x_i, \theta))
     $$
+    
 
     - $l_{\text{ce}}$: Cross entropy loss
     - $p_c(x_i, \theta)$ : $i$ 번째 훈련 sample $x_i$에 대한 $c$ 번째 클래스의 예측 softmax 확률
@@ -110,9 +112,11 @@ Learning with noisy labels has gained increasing attention because the inevitabl
 - 따라서 Class-Balance-Based Sample Selection (CBS) 제안
 1. Loss Normalization: 모든 sample들의 loss가 $[0, 1]$ 구간 내에 위치하도록 조정하는 과정
 
-    $$
+    
+$$
     l(F(x, \theta), y) = \frac{l_{ce} - \min\{l_{ce}\}}{\max\{l_{ce}\} - \min\{l_{ce}\}}
     $$
+    
 
     - $l_{ce}= l_{ce}(F(x, \theta), y), (x, y) \in D_{train}$
 2. Sample selection 수 설정
@@ -124,9 +128,11 @@ Learning with noisy labels has gained increasing attention because the inevitabl
 3. clean sample selection:
     - $i$-번째 class의 sample $D_{sub_i}$에서 손실이 가장 작은 것을 찾아서, $|D'{c_i}|$의 크기가 $\delta$인 subset $D'_{c_i}$를 선택
 
-    $$
+    
+$$
     D_{c_i} = \argmin_{D'{c_i} \subseteq D{sub_i} : |D'{c_i}| = \delta, (x_j, y_j) \in D{sub_i}} l_{ce}(F(x_j, \theta), y_j)
     $$
+    
 
     - $D_c = \bigcup_{i=1}^{C} D_{c_i}$ : clean subset
     - $D_n = D_{train} - D_c$ : 노이즈 subset
@@ -142,39 +148,44 @@ Learning with noisy labels has gained increasing attention because the inevitabl
 
 1. $(x_i, y_i) \in D_c$에서 sample을 선택한 후, 다른 sample $(x_j, y_j) \in D_c$를 무작위로 선택하여 결합
 
-    $$
+    
+$$
     \tilde{x}_i =
     \begin{cases}
     l x_i + (1 - l) x_j, & p(x_i)^{max} \geq p(x_j)^{max}, \\
     (1 - l) x_i + l x_j, & p(x_i)^{max} < p(x_j)^{max},
     \end{cases}
-    
-    
-    
     $$
+    
 
 
-    $$
+    
+$$
     \tilde{y}_i =
     \begin{cases}
     l y_i + (1 - l) y_j, & p(x_i)^{max} \geq p(x_j)^{max}, \\
     (1 - l) y_i + l y_j, & p(x_i)^{max} < p(x_j)^{max}.
     \end{cases}
     $$
+    
 
 2. 신뢰도가 높은 sample에 더 높은 계수를 부여
 
-    $$
+    
+$$
     l = \max(l', 1 - l'), \text{ where } l' \text{ is sampled from } B(4, 4).
     $$
+    
 
     - 계수 $l$: Beta 분포 $B(\Phi, \Phi)$에서 sampling
         - $l$의 값은 항상 0과 1 사이 유지
 3. CSA를 통해 선택된 clean sample로부터 신뢰성이 향상된 새로운 subset $\tilde{D}_c$를 재구성
 
+
 $$
 L_{D_c} = - \frac{1}{|\tilde{D}c|} \sum_{(\tilde{x}, \tilde{y}) \in \tilde{D}_c} \tilde{y} \log p(\tilde{x}, \theta)
 $$
+
 
 - Mixup은 임의로 두 sample을 섞음
 - CSA는 신뢰도가 높은 clean sample에 더 높은 계수를 붙여 일반화 성능 향상
@@ -250,9 +261,11 @@ Answer
 - **목적**: 모델이 노이즈가 있는 sample을 적합하게 훈련하는 상황을 고려하여, 더 신뢰할 수 있는 레이블 수정을 위해 지수 이동 평균(EMA) 방식 사용
 - **수식**:
 
-    $$
+    
+$$
     \hat{y_t} = \alpha \hat{y_{t-1}} + (1 - \alpha)p(A_w(x), \theta), \quad (x, y) \in D_n
     $$
+    
 
     - $\hat{y_t}$: $t$ 번째 epoch에서의 soft 수정된 레이블
     - $\alpha$: EMA 계수 (0에서 1 사이의 값)
@@ -266,13 +279,15 @@ Answer
 - **목적**: 수정된 레이블의 신뢰도를 측정
 - **수식**: **각 클래스**  $j$ **에 대한 신뢰도 마진** $CM^t_j(x)$
 
-    $$
+    
+$$
     CM^t_j(x) =
     \begin{cases}
     \hat{y}^t_j - \max_{c \neq j}(\hat{y}^t_c), & \text{if } j = \arg\max(\hat{y}^t) \\
     \hat{y}^t_j - \max(\hat{y}^t), & \text{if } j \neq \arg\max(\hat{y}^t)
     \end{cases}
     $$
+    
 
     - **최대 신뢰도 클래스 = class** $j$
         - $CM^t_j(x) = \hat{y}^t_j - \max_{c \neq j} (\hat{y}^t_c)$
@@ -286,9 +301,11 @@ Answer
 - **목적**:  CM의 한계를 극복하기 위해 모든 epoch의 평균을 사용하여 신뢰도를 측정하여 신뢰도가 낮은 레이블을 필터링
 - **수식**:
 
-    $$
+    
+$$
     ACM^t(x) = \frac{1}{t} \sum_{k=1}^{t} CM^k_{\arg\max \hat{y}^t}(x)
     $$
+    
 
     - 입력 데이터 $x$에 대한 $t$번째 epoch까지의 각 epoch에서 예측된 가장 확실한 클래스에 대한 CM의 평균
 - 훈련 진행 중 지속적인 신뢰도 평가를 통해 품질이 높은 데이터만 유지
@@ -299,9 +316,11 @@ Answer
 - **목적**: 신뢰도가 낮은 sample을 학습에서 제외하기 위한 임계값 설정
 - **수식**
 
-    $$
+    
+$$
     T^t = \min(ACM) + (\max(ACM) - \min(ACM)) \times \tau
     $$
+    
 
     - $\min(ACM)$ : 훈련 중 측정된 평균 CM의 최소 값 (가장 신뢰도가 낮은 샘플)
     - $\max(ACM)$ : 평균 CM의 최대 값  (가장 신뢰도가 높은 샘플)
@@ -311,9 +330,11 @@ Answer
 
 - **수식**
 
-    $$
+    
+$$
     L_{reg} = - \frac{1}{|D'{n}|} \sum_{(x,y) \in |D'_{n}|} \hat{y} \log p(A_s(x), \theta)
     $$
+    
 
     - $D'_{n} = \{(x, y) | ACM_t(x) > T_t, (x, y) \in D_n\}$
     - $|D'_{n}|$: 수정된 레이블 포함 노이즈 sample 집합 크기
@@ -355,9 +376,11 @@ Answer
     - 클래스 불균형 :  Exponential function  $n_i = n_0 \mu_i$ sample 수 조절
     - 클래스 불균형 계수 (IF) : 데이터셋의 최대 클래스 sample 수와 최소 클래스 sample 수의 비율
 
-    $$
+    
+$$
     IF = \frac{\max(n_i)}{\min(n_i)}
     $$
+    
 
 - Real-world Datasets:
     - Web-Aircraft, Web-Bird, Web-Car, Clothing1M 등 사용

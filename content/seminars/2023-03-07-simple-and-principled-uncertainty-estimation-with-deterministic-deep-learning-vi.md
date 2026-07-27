@@ -51,9 +51,11 @@ Bayesian neural networks (BNN) and deep ensembles are principled approaches to e
 
 - **Gaussian process**  is a stochastic process  (a collection of random variables indexed by time or space), such that every finite collection of those random variables has a multivariate normal distribution.
 
+
 $$
 f(\mathbf{x}) \sim \mathcal{G P}\left(\mu(\mathbf{x}), k\left(\mathbf{x}, \mathbf{x}^{\prime}\right)\right)
 $$
+
 
 
 ## Introduction
@@ -93,11 +95,11 @@ Propose simple solution:
 - Data-generation distribution $p^*(y \mid \mathbf{x})$ where $y \in$$\{1, \ldots, K\}$ is the space of $K$-class labels,$\mathbf{x} \in \mathscr{X} \subset \mathbb{R}^d$ is the input data manifold equipped
 - The full data-generating distribution
 
+
 $$
 p^*(y \mid \mathbf{x})= p^*\left(y, \mathbf{x} \in \mathscr{X}_{\text {IND }} \mid \mathbf{x}\right) \quad+\quad p^*\left(y, \mathbf{x} \notin \mathscr{X}_{\text {IND }} \mid \mathbf{x}\right) \\=p^*\left(y \mid \mathbf{x}, \mathbf{x} \in \mathscr{X}_{\mathrm{IND}}\right) * p^*\left(\mathbf{x} \in \mathscr{X}_{\mathrm{IND}}\right)+p^*\left(y \mid \mathbf{x}, \mathbf{x} \notin \mathscr{X}_{\mathrm{IND}}\right) * p^*\left(\mathbf{x} \notin \mathscr{X}_{\mathrm{IND}}\right)
-
-
 $$
+
 
 
 the model only learns the in-domain distribution, so does not have knowledge about out-of-distribution. 
@@ -183,9 +185,11 @@ _Spectral-normalized Neural Gaussian Process (SNGP)_
 - denoting $h_i=h\left(\mathbf{x}_i\right)$_,_
 - _the Gaussian-process output layer_ $g{N \times 1}=\left[g\left(h_1\right), \ldots, g\left(h_N\right)\right]^{\top}$ follows a multivariate normal distribution a priori:
 
+
 $$
 g_{N \times 1} \sim M V N\left(\mathbf{0}_{N \times 1}, \mathbf{K}_{N \times N}\right) \text {, where } \mathbf{K}_{i, j}=\exp \left(-\left\|h_i-h_j\right\|_2^2 / 2\right) \text {, }
 $$
+
 
 
 **Computing the exact Gaussian process posterior for a large-scale classification task is
@@ -201,9 +205,11 @@ This approach makes closed-form posterior that is end-to-end trainable with the 
 **Deploying a low-rank approximation to the kernel matrix** $K = ΦΦ^T$ **using random features**
 
 
+
 $$
 g_{N \times 1} \sim M V N\left(\mathbf{0}_{N \times 1}, \Phi \Phi_{N \times N}^{\top}\right),\\ \quad where \quad \Phi_{i, D_L \times 1}=\sqrt{2 / D_L} * \cos \left(-\mathbf{W}_L h_i+\mathbf{b}_L\right)
 $$
+
 
 
 where $h_i=h\left(\mathbf{x}_i\right)$ _is the hidden representation in the penultimate layer with dimension_ $D_{L-1} $. 
@@ -221,9 +227,11 @@ $\mathbf{b}_{L, D_L \times 1}$ a fixed bias term whose entries are sampled i.i.d
 As a result, for the $k^{t h}$ logit, the **RFF approximation to the GP prior** can be written as a neural network layer with fixed hidden weights $\mathbf{W}$ and learnable output weights $\beta_k$ :
 
 
+
 $$
 g_k\left(h_i\right)=\sqrt{2 / D_L} * \cos \left(-\mathbf{W}_L h_i+\mathbf{b}_L\right)^{\top} \beta_k, \quad \\ with \ prior \quad \beta_{k, D_L \times 1} \sim N\left(0, \mathbf{I}_{D_L \times D_L}\right)
 $$
+
 
 
 conditional on $h, \beta=\left\{\beta_k\right\}_{k=1}^k$ is the only learnable parameter in the model.
@@ -235,9 +243,11 @@ we choose the Laplace method due to its simplicity and the fact that its posteri
  Laplace posterior for GP under the RFF approximation is
 
 
+
 $$
 \beta_k \mid \mathscr{D} \sim M V N\left(\hat{\beta}_k, \hat{\Sigma}_k\right), \\ where \quad \hat{\Sigma}_k^{-1}=\mathbf{I}+\sum_{i=1}^N \hat{p}_{i, k}\left(1-\hat{p}_{i, k}\right) \Phi_i \Phi_i^{\top}.
 $$
+
 
 
 ### Distance-preserving Hidden Mapping via Spectral Normalization
@@ -276,9 +286,11 @@ Consequently, to ensure the hidden mapping $h$ is distance preserving, it is suf
 Briefly, at every training step, the SN method first estimate the spectral norm $\hat{\lambda} \approx\left\|\mathbf{W}_l\right\|_2$ using the power iteration method , and then normalizes the weights as:
 
 
+
 $$
 \mathbf{W}_l= \begin{cases}c * \mathbf{W}_l / \hat{\lambda} & \text { if } c<\hat{\lambda} \\ \mathbf{W}_l & \text { otherwise }\end{cases}
 $$
+
 
 
 where c is hyperparameter used to adjust the exact spectral norm upper bound on $||W_{l}||_2$

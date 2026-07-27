@@ -66,11 +66,13 @@ Residual networks
 ![](/assets/seminars/neural-ordinary-differential-equationsneurips-2018/1.png)
 
 
+
 $$
 \begin{equation}
 \bold{h}_{t+1} = \bold{h}_{t}+ f({h}_{t}, \theta_t)
 \end{equation}
 $$
+
 
 
 $t ∈ \{{0 . . . T\}}$, $h_t ∈ \mathbb{R}^D$
@@ -79,8 +81,8 @@ $t ∈ \{{0 . . . T\}}$, $h_t ∈ \mathbb{R}^D$
 If it goes infinite layers and small step size:
 
 
-$$
 
+$$
 \begin{aligned}
 & \mathbf{h}_{t+1}=f\left(\mathbf{h}_t, \theta_t\right)+\mathbf{h}_t \\
 & \rightarrow \mathbf{h}_{t+1}-\mathbf{h}_t=f\left(\mathbf{h}_t, \theta_t\right) \\
@@ -89,8 +91,9 @@ $$
 & \rightarrow \lim _{\Delta \rightarrow 0} \frac{\mathbf{h}_{t+\Delta}-\mathbf{h}_t}{\Delta}=f\left(\mathbf{h}_t, t, \theta\right) \\
 & \rightarrow \frac{d \mathbf{h}(t)}{d t}=f(\mathbf{h}(t), t, \theta)
 \end{aligned}
-
 $$
+
+
 
 
 $$
@@ -98,6 +101,7 @@ $$
 \frac{d\bold{h}({t})}{dt} =  f({h}_{t}, t, \theta)
 \end{equation}
 $$
+
 
 
 ⇒ infinite layers, Latent state changes continuously, Latent state dynamics controlled by one function 
@@ -109,9 +113,11 @@ $$
 ### Neural ODE :
 
 
+
 $$
 y(0) = y_0, \qquad y(t) = y(0) + \int_0^t f_\theta(s, y(s)) \,d s.
 $$
+
 
 
 $ t > t_i.$
@@ -143,11 +149,13 @@ Two approaches in training continuous-depth network
 
 
 
+
 $$
 \begin{equation}
 \frac{d \mathbf{a}(t)}{d t}=-\mathbf{a}(t)^{\top} \frac{\partial f(\mathbf{z}(t), t, \theta)}{\partial \mathbf{z}}
 \end{equation}
 $$
+
 
 
 ODE solve Backwards
@@ -200,9 +208,11 @@ ODE-Net: ODE + adjoint sensitivity method
 In Theorem 1 (Instantaneous Change of Variables).
 
 
+
 $$
 \operatorname{tr}\left(\frac{d f}{d \mathbf{z}(t)}\right) = det\frac{\partial f}{\partial z_0}
 $$
+
 
 
 ![](/assets/seminars/neural-ordinary-differential-equationsneurips-2018/10.png)
@@ -214,9 +224,11 @@ $$
 # Continuous time-series models
 
 
+
 $$
 \begin{equation}\begin{aligned}\mathbf{z}_{t_0} & \sim p\left(\mathbf{z}_{t_0}\right) \\\mathbf{z}_{t_1}, \mathbf{z}_{t_2}, \ldots, \mathbf{z}_{t_N} & =\text { ODESolve }\left(\mathbf{z}_{t_0}, f, \theta_f, t_0, \ldots, t_N\right) \\\text { each } \quad \mathbf{x}_{t_i} & \sim p\left(\mathbf{x} \mid \mathbf{z}_{t_i}, \theta_{\mathbf{x}}\right)\end{aligned}\end{equation}
 $$
+
 
 
 $f$ is time invariant, given any latent state z(t), the entire latent trajectory is uniquely defined.

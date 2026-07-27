@@ -137,21 +137,23 @@ $\phi(x)$ → CNN network의(Feature extractor) penultimate layer의 activation
 
 - Source domain으로 학습된 모델에 대해 unlabeled target data의 **entropy**에 따라 uncertainty weighting을 진행
 
+
 $$
 \mathcal{H}(Y \mid \mathbf{x})=-\sum_{c=1}^{C} p_{\Theta}(Y=c \mid \mathbf{x}) \log p_{\Theta}(Y=c \mid \mathbf{x})
 $$
+
 
 - Domain shift 상황에서는, entropy를 통해 uncertainty & domainness 모두 capture 가능
     - Source domain으로 학습된 모델을 사용하기 때문에,
         - Source instance는 낮은 entropy, target instance는 높은 entropy를 가지게 됨
 
-    $$
     
+$$
     \begin{equation*}
     p(d(\mathbf{x})=1)=\frac{\mathcal{H}(Y \mid \mathbf{x})}{\log (C)} \propto \mathcal{H}(Y \mid \mathbf{x}) \quad[C \text { is constant }]
     \end{equation*}
-    
     $$
+    
 
 
     ⇒ entropy에 따라 weight을 부여하면, uncertainty가 높고 & domain shift가 큰(target domain에 속할 확률이 높음) 데이터가
@@ -176,12 +178,13 @@ $$
     $\left\{\mu_{1}, \mu_{2}, \ldots, \mu_{K}\right\}$ → 각 set의 centroid
 
 
+
 $$
 \begin{equation*}
 \underset{\mathcal{S}, \mu}{\operatorname{argmin}} \sum_{k=1}^{K} \frac{1}{Z_{k}} \sum_{\mathbf{x} \in X_{k}} \mathcal{H}(Y \mid \mathbf{x})\left\|\phi(\mathbf{x})-\mu_{\mathbf{k}}\right\|^{2}, where \; Z_{k}=\sum_{x \in X_{k}} \mathcal{H}(Y \mid \mathbf{x})
 \end{equation*}
-
 $$
+
 
 
 **Acquire labels(labelieng)**
@@ -212,9 +215,11 @@ $ X_{\mathcal{L} \mathcal{T}}^{\rho} \leftarrow\left\{\mathbf{N N}\left(\mu_{\ma
 - Diversity(feature-space coverage) via clustering
 - 모델의 logit에 Temperature를 적용하여 trade-off를 조정 가능
 
+
 $$
 \begin{equation*}p_{\Theta}(Y \mid \mathbf{x})=\sigma\left(\frac{h(\mathbf{x})}{T}\right) \tag{5}\end{equation*}
 $$
+
 
 
 ![Softmax distributions](/assets/seminars/active-domain-adaptation-via-clustering-uncertainty-weighted-embeddings-iccv-202/11.png)

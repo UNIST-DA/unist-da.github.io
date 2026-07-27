@@ -147,9 +147,11 @@ Epoch  $T_k, T_{max}$, Iteration  $N_{max}$, 최종 고정된 비율값  $\tau$
 
 - Noise Transition matrix Q를 통해 noise를 생성.
 
+
 $$
 NTM : Q_{ij} = Pr(\tilde{y}=j|y=i)
 $$
+
 
 - Clean label : $y$
 - Flipped label : $\tilde{y}$

@@ -222,9 +222,11 @@ _X_와 _U_가 같은 예제 클래스 분포를 공유 : 레이블이 있는 데
 레이블이 붙은 데이터를 증강시키고, 그 데이터를 백본 모델과 ABC에 통과시키며, 이를 통해 학습
 
 
+
 $$
 L_{total} = L_{cls} + L_{con} + L_{back}
 $$
+
 
 
 **Training: Backbone과 ABC의 손실 합계를 사용하여 훈련**
@@ -253,9 +255,11 @@ $$
 - 각 데이터 포인트에 대해 가중치를 적용한 교차 엔트로피 손실의 평균
     - 이 가중치는 수식 (2)에 정의된 마스크 $M(x_b) $ 에 의해 결정
 
+
 $$
 L_{\text{cls}} = \frac{1}{B} \sum_{b=1}^{B} M(x_b) H(p_s (y|\alpha (x_b)), p_b)
 $$
+
 
 - $\frac{1}{B} \sum_{b=1}^{B}$ :미니배치에 있는 각 데이터 포인트에 대한 평균 손실을 계산
     - _B_는 미니배치의 크기.
@@ -267,9 +271,11 @@ $$
 ### **labeled data 에 대한 0/1 masking**
 
 
+
 $$
 M(x_b) = B \left( \frac{N_L}{N_{y_b}} \right)
 $$
+
 
 - $M(x_b) $: 각 레이블이 있는 데이터 포인트 $x_b$에 대한 0/1 마스크.
 - B : 베르누이 분포, $\frac{N_L}{N_{y_b}} $ 를 매개변수로 사용
@@ -291,9 +297,11 @@ $$
         - 모델이 일관되게 예측하는 것을 강화하려는 것을 목표
     - **클래스 불균형 대처:** 다수 클래스에 속하는 unlabeled data point가 많기 때문에, 일관성 정규화를 모든 클래스에 대해 균등하게 적용하기 위해 또 다시 0/1 마스크를 사용함.
 
+
 $$
 L_{\text{con}} = \frac{1}{B} \sum_{b=1}^{B} \sum_{k=1}^{K} M(u_b) I(\max(q_b) > \tau) H(p_s (y|A_k (u_b)), q_b)
 $$
+
 
 - $L_{\text{con}} $ : ABC의 Consistency Regularization Loss
 - $\frac{1}{B} \sum_{b=1}^{B}$ $\sum_{k=1}^{K} $
@@ -311,9 +319,11 @@ $$
 ### unlabeled data 에 대한 0/1 masking
 
 
+
 $$
 M(u_b) = B \left( \frac{N_L}{N_{\widehat{q_b}}} \right)
 $$
+
 
 - $M(u_b) $:  레이블이 없는 데이터 포인트 $u_b$에 대한 마스크.
 - B : 베르누이 분포, $\frac{N_L}{N_{q_b}} $ 를 매개변수로 사용
