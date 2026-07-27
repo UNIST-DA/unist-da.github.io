@@ -231,7 +231,7 @@ i.e., given $\boldsymbol{X}(s)$ and for $t \geqslant s$,
 $$
 \begin{equation}
 \boldsymbol{X}(t) \mid \boldsymbol{X}(s), \boldsymbol{\mu}, \boldsymbol{\sigma}, \boldsymbol{\tau}, \boldsymbol{\rho} \\
- \sim \operatorname{MVN}k\left(\boldsymbol{\mu}+e^{-(t-s) D\tau^{-1}}(\boldsymbol{X}(s)-\boldsymbol{\mu}), Q(t-s)\right),
+\sim \operatorname{MVN}k\left(\boldsymbol{\mu}+e^{-(t-s) D\tau^{-1}}(\boldsymbol{X}(s)-\boldsymbol{\mu}), Q(t-s)\right),
 \end{equation}
 $$
 

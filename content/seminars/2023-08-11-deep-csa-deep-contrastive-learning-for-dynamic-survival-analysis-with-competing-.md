@@ -291,11 +291,11 @@ The cumulative incidence function (CIF)
 
     
 $$
-    \begin{equation*} \small
-    \begin{split} F_{e}^{i}(t_{\mathrm{T}_{\mathrm{i}}}^{\mathrm{i}}+T_{w} \mid h_{\mathrm{r}, \mathrm{T}_{\mathrm{i}}}^{\mathrm{i}})=P(t \leq t_{\mathrm{T}_{\mathrm{i}}}^{\mathrm{i}}+T_{w}, e=e^{*} \mid h_{\mathrm{r}, \mathrm{T}_{\mathrm{i}}}^{\mathrm{i}}, \\
-     t>T_{i})=\sum _{\tau \leq t_{\mathrm{T}_{\mathrm{i}}}^{\mathrm{i}}+T_{w}} P(t=\tau, e=e^{*} \mid h_{\mathrm{r}, \mathrm{T}_{\mathrm{i}}^{\mathrm{i}}}^{\mathrm{i}}, t>T_{i}) \end{split} 
-    \end{equation*}
-    $$
+\begin{equation*} \small
+\begin{split} F_{e}^{i}(t_{\mathrm{T}_{\mathrm{i}}}^{\mathrm{i}}+T_{w} \mid h_{\mathrm{r}, \mathrm{T}_{\mathrm{i}}}^{\mathrm{i}})=P(t \leq t_{\mathrm{T}_{\mathrm{i}}}^{\mathrm{i}}+T_{w}, e=e^{*} \mid h_{\mathrm{r}, \mathrm{T}_{\mathrm{i}}}^{\mathrm{i}}, \\
+t>T_{i})=\sum _{\tau \leq t_{\mathrm{T}_{\mathrm{i}}}^{\mathrm{i}}+T_{w}} P(t=\tau, e=e^{*} \mid h_{\mathrm{r}, \mathrm{T}_{\mathrm{i}}^{\mathrm{i}}}^{\mathrm{i}}, t>T_{i}) \end{split} 
+\end{equation*}
+$$
     
 
 
@@ -329,8 +329,8 @@ Negative log-likelihood loss
 
 $$
 \begin{align*} \small
- \mathcal {L}_{\text{sur}}&=-\sum _{i=1}^{N}\bigg[\mathrm{I}(e^{i} \ne \emptyset) \cdot \log \left(\frac{{o^{i}}_{e^{i}, \tau ^{i}}}{1-\sum _{e \ne \emptyset } \sum _{t \leq T_{i}}{o}_{e, t}^{i}}\right) \\
- &\quad+\mathrm{I}(e^{i}=\emptyset) \cdot \log \bigg(1-\sum _{e \ne \emptyset } \hat{F}_{\mathrm{e}}^{i}\left(\tau ^{i} \mid h_{\mathrm{r}, \mathrm{T}_{\mathrm{i}}}^{\mathrm{i}}\right)\bigg]. 
+\mathcal {L}_{\text{sur}}&=-\sum _{i=1}^{N}\bigg[\mathrm{I}(e^{i} \ne \emptyset) \cdot \log \left(\frac{{o^{i}}_{e^{i}, \tau ^{i}}}{1-\sum _{e \ne \emptyset } \sum _{t \leq T_{i}}{o}_{e, t}^{i}}\right) \\
+&\quad+\mathrm{I}(e^{i}=\emptyset) \cdot \log \bigg(1-\sum _{e \ne \emptyset } \hat{F}_{\mathrm{e}}^{i}\left(\tau ^{i} \mid h_{\mathrm{r}, \mathrm{T}_{\mathrm{i}}}^{\mathrm{i}}\right)\bigg]. 
 \end{align*}
 $$
 
@@ -342,8 +342,8 @@ $$
 
 $$
 \begin{align*} \small
- \mathcal {L}_{total}&=\lambda _{cl-risk} \mathcal {L}_{cl-risk}+\lambda _{rec} \mathcal {L}_{rec}+\lambda _{cl-sh} \mathcal {L}_{cl-sh} \\
- &\quad+\lambda _{cl-mask} \mathcal {L}_{cl-mask}+\lambda _{sur} \mathcal {L}_{sur} 
+\mathcal {L}_{total}&=\lambda _{cl-risk} \mathcal {L}_{cl-risk}+\lambda _{rec} \mathcal {L}_{rec}+\lambda _{cl-sh} \mathcal {L}_{cl-sh} \\
+&\quad+\lambda _{cl-mask} \mathcal {L}_{cl-mask}+\lambda _{sur} \mathcal {L}_{sur} 
 \end{align*}
 $$
 
@@ -420,8 +420,8 @@ Performance Comparison on the Experimental eICU Dataset. (Mean ± Std)
 
 $$
 \begin{align*} \small
- \mathcal {L}_{total}&=\lambda _{cl-risk} \mathcal {L}_{cl-risk}+\lambda _{rec} \mathcal {L}_{rec}+\lambda _{cl-sh} \mathcal {L}_{cl-sh} \\
- &\quad+\lambda _{cl-mask} \mathcal {L}_{cl-mask}+\lambda _{sur} \mathcal {L}_{sur} '
+\mathcal {L}_{total}&=\lambda _{cl-risk} \mathcal {L}_{cl-risk}+\lambda _{rec} \mathcal {L}_{rec}+\lambda _{cl-sh} \mathcal {L}_{cl-sh} \\
+&\quad+\lambda _{cl-mask} \mathcal {L}_{cl-mask}+\lambda _{sur} \mathcal {L}_{sur} '
 \end{align*}
 $$
 

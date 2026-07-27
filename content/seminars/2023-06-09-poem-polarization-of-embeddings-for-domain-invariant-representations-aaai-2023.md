@@ -186,7 +186,7 @@ For a given input $\mathbf{x}$ and $i$-th elementary embedding, the classificati
 
 $$
 \begin{equation}
-	\mathcal{L}_{c}^{(i)}(\mathbf{x},y) = \mathcal{H}\Big(\text{Softmax}\big\{ f_{i}(\mathbf{x}\:;\theta_{i})\mathrm{\Phi}_{i} \big\}, y^{(i)}\Big)
+\mathcal{L}_{c}^{(i)}(\mathbf{x},y) = \mathcal{H}\Big(\text{Softmax}\big\{ f_{i}(\mathbf{x}\:;\theta_{i})\mathrm{\Phi}_{i} \big\}, y^{(i)}\Big)
 \end{equation}
 $$
 

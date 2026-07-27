@@ -180,10 +180,10 @@ Key to the success of this sampling process is training the reverse Markov chain
 
 $$
 \begin{aligned}
-    &\operatorname{KL}(q(\mathbf x_0, \mathbf x_1, \cdots, \mathbf x_T) \mid\mid p_\theta(\mathbf x_0, \mathbf x_1, \cdots, \mathbf x_T))\\
-    \stackrel{(i)}{=} &-\mathbb{E}_{q(\mathbf x_0, \mathbf x_1, \cdots, \mathbf x_T)}[\log p_\theta(\mathbf x_0, \mathbf x_1, \cdots, \mathbf x_T)] + \text{const}\\
-    \stackrel{(ii)}{=} & \underbrace{\mathbb{E}_{q(\mathbf x_0, \mathbf x_1, \cdots, \mathbf x_T)}\bigg[ -\log p(\mathbf x_T) - \sum_{t=1}^T \log \frac{p_\theta(\mathbf x_{t-1}\mid\mathbf x_t)}{q(\mathbf x_t\mid\mathbf x_{t-1})} \bigg]}_{\coloneqq -L_{\textrm{VLB}}(\mathbf x_0)} + \text{const} \\
-    \stackrel{(iii)}{\geq} & \mathbb{E}[{-\log p_\theta(\mathbf x_0)}] + \text{const},
+&\operatorname{KL}(q(\mathbf x_0, \mathbf x_1, \cdots, \mathbf x_T) \mid\mid p_\theta(\mathbf x_0, \mathbf x_1, \cdots, \mathbf x_T))\\
+\stackrel{(i)}{=} &-\mathbb{E}_{q(\mathbf x_0, \mathbf x_1, \cdots, \mathbf x_T)}[\log p_\theta(\mathbf x_0, \mathbf x_1, \cdots, \mathbf x_T)] + \text{const}\\
+\stackrel{(ii)}{=} & \underbrace{\mathbb{E}_{q(\mathbf x_0, \mathbf x_1, \cdots, \mathbf x_T)}\bigg[ -\log p(\mathbf x_T) - \sum_{t=1}^T \log \frac{p_\theta(\mathbf x_{t-1}\mid\mathbf x_t)}{q(\mathbf x_t\mid\mathbf x_{t-1})} \bigg]}_{\coloneqq -L_{\textrm{VLB}}(\mathbf x_0)} + \text{const} \\
+\stackrel{(iii)}{\geq} & \mathbb{E}[{-\log p_\theta(\mathbf x_0)}] + \text{const},
 \end{aligned}
 $$
 

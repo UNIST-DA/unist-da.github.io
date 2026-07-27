@@ -91,9 +91,9 @@ This paper presents PREVENT, a fully unsupervised approach to predict and locali
             - $W_{ij}$ : weight(causality) between node $i$ and node $j$
 
         
-    $$
-        \text{Centrality score } c_i = \mu\sum^n_{j=1}W_{ij}c_i
-        $$
+$$
+\text{Centrality score } c_i = \mu\sum^n_{j=1}W_{ij}c_i
+$$
         
 
 
@@ -139,8 +139,8 @@ This paper presents PREVENT, a fully unsupervised approach to predict and locali
 
     
 $$
-    \text{MSE}= \frac{1}{n}\sum^n_{i=1}(x_i-\hat{x}_i)^2
-    $$
+\text{MSE}= \frac{1}{n}\sum^n_{i=1}(x_i-\hat{x}_i)^2
+$$
     
 
 3. Calculate and **save anomaly score for each KPIs where reconstruction error exceeds the threshold**
@@ -285,8 +285,8 @@ for test_data_set_code in test_data_set_codes:
 
     
 $$
-    E({v_i},{h_j}) = \sum_i a_iv_i + \sum_{i,j} v_iw_{ij}h_j + \sum_j b_jh_j
-    $$
+E({v_i},{h_j}) = \sum_i a_iv_i + \sum_{i,j} v_iw_{ij}h_j + \sum_j b_jh_j
+$$
     
 
     - $v_i, a_i$ : visible variable & bias, $h_j, b_j$ ; hidden variable & bias, $w_{i,j}$ : visible & hidden weigt

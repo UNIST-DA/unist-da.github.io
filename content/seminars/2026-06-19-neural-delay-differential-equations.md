@@ -165,8 +165,8 @@ $$
 
     
 $$
-    \frac{dy(t)}{dt} = f(t, y(t), y_0), \\ y(0) = y_0
-    $$
+\frac{dy(t)}{dt} = f(t, y(t), y_0), \\ y(0) = y_0
+$$
     
 
 - Solve it → obtain the solution on $[0, τ]$; use it as the delayed input on $[τ, 2τ]$ → **another ODE; repeat**.

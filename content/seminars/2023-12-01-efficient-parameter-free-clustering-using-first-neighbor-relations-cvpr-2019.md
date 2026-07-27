@@ -81,8 +81,8 @@ Let $P$ be a set of objects.
 
     
 $$
-    P_i = \{ o \in P \mid dist(o,c_i ) \le dist(o,c_j )\quad \forall j\in[1,k]\}
-    $$
+P_i = \{ o \in P \mid dist(o,c_i ) \le dist(o,c_j )\quad \forall j\in[1,k]\}
+$$
     
 
 
@@ -136,12 +136,12 @@ $$
 
     
 $$
-    A(i, j) = 
-    \begin{cases} 
-    1, & \text{if } j = \kappa_i^1 \text{ or } \kappa_j^1 = i \text{ or } \kappa_i^1 = \kappa_j^1 \\
-    0, & \text{otherwise} 
-    \end{cases}
-    $$
+A(i, j) = 
+\begin{cases} 
+1, & \text{if } j = \kappa_i^1 \text{ or } \kappa_j^1 = i \text{ or } \kappa_i^1 = \kappa_j^1 \\
+0, & \text{otherwise} 
+\end{cases}
+$$
     
 
 
@@ -251,8 +251,8 @@ $$
 
     
 $$
-    \text{NMI}(X, Y) = \frac{2 \times \text{MI}(X, Y)}{H(X) + H(Y)}
-    $$
+\text{NMI}(X, Y) = \frac{2 \times \text{MI}(X, Y)}{H(X) + H(Y)}
+$$
     
 
 
@@ -261,8 +261,8 @@ $$
 
     
 $$
-    \text{MI}(X, Y) = \sum_{x \in X}\sum_{y \in Y} p(x, y) \log \left(\frac{p(x, y)}{p(x)p(y)}\right) \ge 0
-    $$
+\text{MI}(X, Y) = \sum_{x \in X}\sum_{y \in Y} p(x, y) \log \left(\frac{p(x, y)}{p(x)p(y)}\right) \ge 0
+$$
     
 
 
@@ -273,17 +273,17 @@ $$
 
 
         
-    $$
-        H(X) = -\sum_{x \in X} p(x) \log(p(x))
-        $$
+$$
+H(X) = -\sum_{x \in X} p(x) \log(p(x))
+$$
         
 
     1. unsupervised clustering accuracy (ACC)
 
         
-    $$
-        ACC = max_m \frac{\sum_{i=1}^n 1\{l_i = m(c_i) \}}{n}
-        $$
+$$
+ACC = max_m \frac{\sum_{i=1}^n 1\{l_i = m(c_i) \}}{n}
+$$
         
 
 

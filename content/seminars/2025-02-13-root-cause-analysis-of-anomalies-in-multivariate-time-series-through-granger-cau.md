@@ -56,8 +56,8 @@ $$
 
     
 $$
-    f^{(j)}(..., \mathbf x_{\leq t-1}^{(i)}, ...) \neq f^{(j)}(..., \mathbf x_{\leq t-1}^{\prime (i)}, ...)
-    $$
+f^{(j)}(..., \mathbf x_{\leq t-1}^{(i)}, ...) \neq f^{(j)}(..., \mathbf x_{\leq t-1}^{\prime (i)}, ...)
+$$
     
 
 - Granger causality **assumes no hidden confounding and no instantaneous effects,** which can lead to erroneous conclusions if violated.
@@ -78,9 +78,9 @@ $$
     - This unexplained portion is defined as the **exogenous variable** $\mathbf{u}_t$, capturing unpredictable external influences:
 
         
-    $$
-        \mathbf u_t=\mathbf x_t−f(\mathbf x_{≤t−1}) \tag3
-        $$
+$$
+\mathbf u_t=\mathbf x_t−f(\mathbf x_{≤t−1}) \tag3
+$$
         
 
     - If $\mathbf x_t$ were perfectly predictable through Granger causality, then the exogenous variable would be zero: $\mathbf{u}_t = 0$
@@ -100,9 +100,9 @@ $$
 
     
 $$
-    \tilde{x}_t^{(j)} = f^{(j)}\left(x_{\leq t-1}^{(1)}, \cdots, x_{\leq t-1}^{(d)}\right) + \hat{u}_t^{(j)}, \quad \hat{u}_t^{(j)} = u_t^{(j)} + \epsilon_t^{(j)} \text{ for }
-    1 \leq j \leq d, \tag{2}
-    $$
+\tilde{x}_t^{(j)} = f^{(j)}\left(x_{\leq t-1}^{(1)}, \cdots, x_{\leq t-1}^{(d)}\right) + \hat{u}_t^{(j)}, \quad \hat{u}_t^{(j)} = u_t^{(j)} + \epsilon_t^{(j)} \text{ for }
+1 \leq j \leq d, \tag{2}
+$$
     
 
 - The task is to **locate the variables** $j$ **and the time steps** $t$ where exogenous interventions occur.
@@ -125,8 +125,8 @@ $$
 
     
 $$
-    \mathbf u_t: = \mathbf x_t-f(\mathbf x_{\leq{t-1}}), \tag 3
-    $$
+\mathbf u_t: = \mathbf x_t-f(\mathbf x_{\leq{t-1}}), \tag 3
+$$
     
 
 - Decoder(Deductive Reasoning) : Deductive reasoning **reconstructs the observed data** $\mathbf x_t$ **from the exogenous variables** $\mathbf u_t$.
@@ -138,8 +138,8 @@ $$
 
     
 $$
-    \mathbf x_t = f(\mathbf u_{\leq{t-1}})+\mathbf u_t. \tag 4
-    $$
+\mathbf x_t = f(\mathbf u_{\leq{t-1}})+\mathbf u_t. \tag 4
+$$
     
 
 
@@ -151,15 +151,15 @@ $$
 
     
 $$
-    \mathbf X = (\mathbf x_1, ..., \mathbf x_t) → \text{ define }\mathbf W_t = (\mathbf x_{t-K+1},..., \mathbf x_t)
-    $$
+\mathbf X = (\mathbf x_1, ..., \mathbf x_t) → \text{ define }\mathbf W_t = (\mathbf x_{t-K+1},..., \mathbf x_t)
+$$
     
 
 
     
 $$
-    \mathbf W = (\mathbf W_K, \mathbf W_{K+1},...,\mathbf W_T)
-    $$
+\mathbf W = (\mathbf W_K, \mathbf W_{K+1},...,\mathbf W_T)
+$$
     
 
 
@@ -169,18 +169,18 @@ $$
     - **Predict the granger causal relationship between** $\mathbf x_{t-k}$ **and** $\mathbf x_t$**.**
 
         
-    $$
-        \mathbf x_t = \sum^K_{k=1}\omega_{\theta_k}(\mathbf x_{t-k})\mathbf x_{t-k}+\mathbf u_t. \tag5
-        $$
+$$
+\mathbf x_t = \sum^K_{k=1}\omega_{\theta_k}(\mathbf x_{t-k})\mathbf x_{t-k}+\mathbf u_t. \tag5
+$$
         
 
 - The encoder computes exogenous variables $\mathbf U_t$ from each time window.
     - **Calculate** $\mathbf U_t = (\mathbf u_{t-K+1},...,\mathbf u_t) $ **by** $K$ **times encoding**
 
         
-    $$
-        \mathbf u_t = \mathbf x_t-\sum^K_{k=1}\omega_{\theta_k}(\mathbf x_{t-k})\mathbf x_{t-k}. \tag6
-        $$
+$$
+\mathbf u_t = \mathbf x_t-\sum^K_{k=1}\omega_{\theta_k}(\mathbf x_{t-k})\mathbf x_{t-k}. \tag6
+$$
         
 
 - Independence Constraint : **The independence constraint ensures exogenous variables** $\mathbf U_t$ **follows a standard isotropic Gaussian distribution.**
@@ -190,15 +190,15 @@ $$
 
     
 $$
-    D_t^{\text{KL}}(P(\mathbf U_t) \| Q)= \frac{1}{2} \text{tr}(\Sigma_Q^{-1}\Sigma_t) + (\mu_Q -\mu_t)^T\Sigma^{-1}_Q(\mu_Q- \mu_t)- d+\text{log}\frac{\text{det}\Sigma_Q}{\log \det \Sigma_t}.
-    $$
+D_t^{\text{KL}}(P(\mathbf U_t) \| Q)= \frac{1}{2} \text{tr}(\Sigma_Q^{-1}\Sigma_t) + (\mu_Q -\mu_t)^T\Sigma^{-1}_Q(\mu_Q- \mu_t)- d+\text{log}\frac{\text{det}\Sigma_Q}{\log \det \Sigma_t}.
+$$
     
 
 
     
 $$
-    = \frac{1}{2} \text{tr}(\Sigma_t) + \mu_t^T \mu_t - d - \log \det \Sigma_t.
-    $$
+= \frac{1}{2} \text{tr}(\Sigma_t) + \mu_t^T \mu_t - d - \log \det \Sigma_t.
+$$
     
 
 
@@ -210,8 +210,8 @@ $$
 
     
 $$
-    \mathbf x_t = \sum_{m=1}^K \alpha_{K-m} \mathbf u_{t-(K-m)} + \alpha_K \mathbf x_{t-K} + \sum_{m=2}^{K+1} \alpha_{K+1-m} \sum_{k=m}^K \omega_k \mathbf x_{t-k-(K+1-m)} \tag{8}
-    $$
+\mathbf x_t = \sum_{m=1}^K \alpha_{K-m} \mathbf u_{t-(K-m)} + \alpha_K \mathbf x_{t-K} + \sum_{m=2}^{K+1} \alpha_{K+1-m} \sum_{k=m}^K \omega_k \mathbf x_{t-k-(K+1-m)} \tag{8}
+$$
     
 
     - $w_k $ : parameter of Granger causality, $\alpha_n $ : Weights defined by recursive relationships.
@@ -220,8 +220,8 @@ $$
 
     
 $$
-    \hat{\mathbf x}_t = \sum_{k=1}^K \bar{\omega}_{\bar{\theta}_k}(\mathbf u_{t-k}) \mathbf u_{t-k} + \sum_{k=1}^K \bar{\omega}'_{\bar{\theta}'_k}(\mathbf x_{t-K-k}) \mathbf x_{t-K-k} + \mathbf u_t \tag{9}
-    $$
+\hat{\mathbf x}_t = \sum_{k=1}^K \bar{\omega}_{\bar{\theta}_k}(\mathbf u_{t-k}) \mathbf u_{t-k} + \sum_{k=1}^K \bar{\omega}'_{\bar{\theta}'_k}(\mathbf x_{t-K-k}) \mathbf x_{t-K-k} + \mathbf u_t \tag{9}
+$$
     
 
     - $\bar{\omega}_{\bar{\theta}_k}(\mathbf u_{t-k})$ : The impact of the exogenous variable $\mathbf u_{t-k}$ on $\mathbf x_t$.
@@ -241,8 +241,8 @@ $$
 
     
 $$
-    \mathcal{L} = \sum_{t=K+1}^T \left(\| \hat{\mathbf x}_t - \mathbf x_t \|_2 + \beta D_t^{\text{KL}} + \lambda_{\text{en}} R(\Omega_t) + \lambda_{\text{de}} R(\bar{\Omega}_t) + \lambda_{\text{de}} R(\bar{\Omega}'_t)\right) + \sum_{t=K+1}^{T-1} \left(\gamma_{\text{en}} S(\Omega_{t+1}, \Omega_t) + \gamma_{\text{de}} S(\bar{\Omega}_{t+1}, \bar{\Omega}_t) + \gamma_{\text{de}} S(\bar{\Omega}'_{t+1}, \bar{\Omega}'_t)\right). \tag{10}
-    $$
+\mathcal{L} = \sum_{t=K+1}^T \left(\| \hat{\mathbf x}_t - \mathbf x_t \|_2 + \beta D_t^{\text{KL}} + \lambda_{\text{en}} R(\Omega_t) + \lambda_{\text{de}} R(\bar{\Omega}_t) + \lambda_{\text{de}} R(\bar{\Omega}'_t)\right) + \sum_{t=K+1}^{T-1} \left(\gamma_{\text{en}} S(\Omega_{t+1}, \Omega_t) + \gamma_{\text{de}} S(\bar{\Omega}_{t+1}, \bar{\Omega}_t) + \gamma_{\text{de}} S(\bar{\Omega}'_{t+1}, \bar{\Omega}'_t)\right). \tag{10}
+$$
     
 
     - $\| \hat{\mathbf x}_t - \mathbf x_t \|_2$ : Minimizing the reconstruction error.
@@ -283,9 +283,9 @@ $$
     - This enables the method to **precisely identify which time series is affected by an exogenous intervention and from which time step onward.**
 
         
-    $$
-        z_{t^*}^{(j)} = \frac{u_{t^*}^{(j)}-\mu^{(j)}}{\sigma^{(j)}}
-        $$
+$$
+z_{t^*}^{(j)} = \frac{u_{t^*}^{(j)}-\mu^{(j)}}{\sigma^{(j)}}
+$$
         
 
         - $\mu, \sigma $ : mean and standard deviation of the exogeneous variables.
@@ -471,9 +471,9 @@ pred_root_cause_decoder_z_score_pot = pred_root_cause_decoder_z_score_pot.astype
         - Ex) If the top-5 ranked variables include 3 out of 4 ground truth root causes, $AC@5 = 0.75$
 
         
-    $$
-        AC@K = \frac{1}{|\mathcal{X}|} \sum_{X \in \mathcal{X}} \frac{|V^{(RC)}_X \cap \{R_X[k] \mid k = 1, 2, \ldots, K\}|}{\min(K, |V^{(RC)}_X)|}
-        $$
+$$
+AC@K = \frac{1}{|\mathcal{X}|} \sum_{X \in \mathcal{X}} \frac{|V^{(RC)}_X \cap \{R_X[k] \mid k = 1, 2, \ldots, K\}|}{\min(K, |V^{(RC)}_X)|}
+$$
         
 
         - $R_\mathbf X[k]$ : The variable with the $k$**-th highest predict root cause** score in sequence $X.$

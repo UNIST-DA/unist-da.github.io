@@ -51,9 +51,9 @@ keywords: Anomaly Detection, Time-series anomaly detection
                 - Floyd-Warshall 알고리즘을 통한 최단 경로 계산$(k = 1,2,…,N)$
 
                     
-                $$
-                    d_G(i,j) = \text{min} (d_G(i,j), d_G(i,k) + d_G(k,j))
-                    $$
+$$
+d_G(i,j) = \text{min} (d_G(i,j), d_G(i,k) + d_G(k,j))
+$$
                     
 
                 - 최단 경로 행렬 생성 : $D_g = {d_G(i,j)}$
@@ -61,9 +61,9 @@ keywords: Anomaly Detection, Time-series anomaly detection
             - $D_G$에 대한 $\tau$ 연산으로 $\tau(D_G)$ 계산 : $S$ 행렬에 대한 $H$ 곱으로 중심화 거리 계산
 
                 
-            $$
-                \tau(D) = -\frac{1}{2}HSH,\text{ } S_{ij} = D^2_{ij},\text{ }  H_{ij} = \delta_{ ij} - \frac{1}{N}
-                $$
+$$
+\tau(D) = -\frac{1}{2}HSH,\text{ } S_{ij} = D^2_{ij},\text{ }  H_{ij} = \delta_{ ij} - \frac{1}{N}
+$$
                 
 
             - 고유값 분해 : $\tau(D_G)$ 행렬을 고유값 $\lambda_p$와 고유 벡터 $v_p$로 분해
@@ -105,16 +105,16 @@ keywords: Anomaly Detection, Time-series anomaly detection
         - 변화가 생긴 시점 $t_c$에 대해 변화 전 $\theta = \theta_0$, 변화 후 $ \theta = \theta_1$로 설정 시
 
             
-        $$
-            p_{H_0}(\tilde{\mathbf{x}}) = p_{H_0}(x_1,...,x_k) = \prod_{t=1}^{t_c} p_{\theta_0}(x_t)\text{ }\text{ }\text{ }\text{ }\text{ }\text{ }\text{ }(1)
-            $$
+$$
+p_{H_0}(\tilde{\mathbf{x}}) = p_{H_0}(x_1,...,x_k) = \prod_{t=1}^{t_c} p_{\theta_0}(x_t)\text{ }\text{ }\text{ }\text{ }\text{ }\text{ }\text{ }(1)
+$$
             
 
 
             
-        $$
-            p_{H_a}(\tilde{\mathbf{x}}) = p_{H_a}(x_1,...,x_k) = \prod_{t=1}^{t_c} p_{\theta_0}(x_t)\prod_{t=t_c+1}^{k} p_{\theta_1}(x_t)\text{ }\text{ }\text{ }\text{ }\text{ }\text{ }\text{ }(2)
-            $$
+$$
+p_{H_a}(\tilde{\mathbf{x}}) = p_{H_a}(x_1,...,x_k) = \prod_{t=1}^{t_c} p_{\theta_0}(x_t)\prod_{t=t_c+1}^{k} p_{\theta_1}(x_t)\text{ }\text{ }\text{ }\text{ }\text{ }\text{ }\text{ }(2)
+$$
             
 
     - 개별 LLR $s(n)$은 가설 분포 $p_{\theta_1}$와 $p_{\theta_0}$ 간 LLR로, 현재 관측값 $x_n$이 두 가설 중 가까움 평가
@@ -122,9 +122,9 @@ keywords: Anomaly Detection, Time-series anomaly detection
         - 대부분의 경우는 정상일 가능성이 높음에 따라, $s(n)$은 대부분 음수
 
         
-    $$
-        s(n) = \text{log}\frac{p_{\theta_1}(x_n)}{p_{\theta_0}(x_n)}, \text{ }S(k) = \sum^k_{n=1}s(n)\text{ }\text{ }\text{ }\text{ }\text{ }\text{ }\text{ }(3)
-        $$
+$$
+s(n) = \text{log}\frac{p_{\theta_1}(x_n)}{p_{\theta_0}(x_n)}, \text{ }S(k) = \sum^k_{n=1}s(n)\text{ }\text{ }\text{ }\text{ }\text{ }\text{ }\text{ }(3)
+$$
         
 
     - $G(k)$, CUSUM Score : $S(k)$에서 최소 누적합 $\underset{1 \leq t \leq k}{\min} S(t)$ 뺀 값(현재 시점까지 변동 측정)
@@ -132,9 +132,9 @@ keywords: Anomaly Detection, Time-series anomaly detection
         - $m(k)$는 누적합의 최소값이고 항상 $m(k) ≤ m(k-1)$이 성립되므로, $G(k) ≥0$
 
         
-    $$
-        G(k) = S(k) -m(k)\text{ }\text{ }\text{ }\text{ }\text{ }\text{ }\text{ }(4)
-        $$
+$$
+G(k) = S(k) -m(k)\text{ }\text{ }\text{ }\text{ }\text{ }\text{ }\text{ }(4)
+$$
         
 
     - Case1) 변경 시점이 없는 경우 : 정상 지속
@@ -152,8 +152,8 @@ keywords: Anomaly Detection, Time-series anomaly detection
 
     
 $$
-    G(k) = \text{max}(G(k-1) + s(k), 0)
-    $$
+G(k) = \text{max}(G(k-1) + s(k), 0)
+$$
     
 
 <details>
@@ -571,8 +571,8 @@ plot_mst_with_anomalies(data, mst, global_anomalous_edges, local_anomalies)
 
     
 $$
-    C_t = \text{max}(0, C_{t-1}+[{x_t} - \mu_0 - K]), \text{ } K : 오프셋
-    $$
+C_t = \text{max}(0, C_{t-1}+[{x_t} - \mu_0 - K]), \text{ } K : 오프셋
+$$
     
 
     - $C_t$가 Control Limit $H$를 초과할 시 alarm 발생
@@ -613,8 +613,8 @@ $$
 
     
 $$
-    TP_{saving} = \sum_{i=1,...,\text{TP}_\#}(R_{cost}-M_{cost})(\frac{\Delta t_i}{60})
-    $$
+TP_{saving} = \sum_{i=1,...,\text{TP}_\#}(R_{cost}-M_{cost})(\frac{\Delta t_i}{60})
+$$
     
 
     - $\text{TP}_\#$ : TP 수, $R_{cost}$ : 교체 비용, $M_{cost}$ : 유지보수 비용, $\Delta t_i$ : 고장 시간 전 경고 발행 
@@ -623,8 +623,8 @@ $$
 
     
 $$
-    FN_{cost} = \#\text{FN} \times R_{cost}, \text{ } FP_{cost} = \#\text{FP}\times I_{cost}
-    $$
+FN_{cost} = \#\text{FN} \times R_{cost}, \text{ } FP_{cost} = \#\text{FP}\times I_{cost}
+$$
     
 
     - $\#\text{FN}$ : FN 수, $\#\text{FP}$ : FP 수, $I_{cost}$ : 검사 비용
@@ -632,8 +632,8 @@ $$
 
     
 $$
-    U(H) = TP_{saving} - FN_{cost}-FP_{cost}, \text{ }\max_H U(H)
-    $$
+U(H) = TP_{saving} - FN_{cost}-FP_{cost}, \text{ }\max_H U(H)
+$$
     
 
     - $H$ : Control limit이자 Threshold

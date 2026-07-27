@@ -1159,9 +1159,9 @@ $$
         - $∑_{i=1}^nw_i(y_i−X_iβ)^2$
 
             
-        $$
-            \text{Objective: } \sum_{i=1}^{n} (Y_i - X_i \beta)^2 + \lambda \sum_{j=1}^{p} w_j |\beta_j|
-            $$
+$$
+\text{Objective: } \sum_{i=1}^{n} (Y_i - X_i \beta)^2 + \lambda \sum_{j=1}^{p} w_j |\beta_j|
+$$
             
 
     - **Structured**: 트리 기반 계층 구조와 그래프 기반 관계를 통해 데이터의 구조적 특성을 반영하여 가중치를 부여.

@@ -56,9 +56,9 @@ Effective learning from electronic health records (EHR) data for prediction of c
         - 환자가 동시에 위험에 처할 수 있는 여러 경쟁
 
             
-        $$
-            \lambda_k(t \mid X)=P(T=t, K=k \mid T \geq t, X),\newline where \space  k \in \mathcal{K}
-            $$
+$$
+\lambda_k(t \mid X)=P(T=t, K=k \mid T \geq t, X),\newline where \space  k \in \mathcal{K}
+$$
             
 
 - **Neural Ordinary Differential Equation**

@@ -217,8 +217,8 @@ Explored two types of regularization in autoencoder training to avoid arbitraril
 
     
 $$
-    D_{KL}(q_\phi(z|x)||p_\theta(z))+ \mathbb{E}_{q_\phi(z|x)}[log \;p_\theta(x|z)
-    $$
+D_{KL}(q_\phi(z|x)||p_\theta(z))+ \mathbb{E}_{q_\phi(z|x)}[log \;p_\theta(x|z)
+$$
     
 
 

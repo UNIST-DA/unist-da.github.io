@@ -94,8 +94,8 @@ Learning with noisy labels has gained increasing attention because the inevitabl
 
     
 $$
-    L(F(x, \theta), y) = \frac{1}{N} \sum_{i=1}^{N} l_{\text{ce}}(x_i, y_i) = -\frac{1}{N} \sum_{i=1}^{N} \sum_{c=1}^{C} y_{c,i} \log(p_c(x_i, \theta))
-    $$
+L(F(x, \theta), y) = \frac{1}{N} \sum_{i=1}^{N} l_{\text{ce}}(x_i, y_i) = -\frac{1}{N} \sum_{i=1}^{N} \sum_{c=1}^{C} y_{c,i} \log(p_c(x_i, \theta))
+$$
     
 
     - $l_{\text{ce}}$: Cross entropy loss
@@ -114,8 +114,8 @@ $$
 
     
 $$
-    l(F(x, \theta), y) = \frac{l_{ce} - \min\{l_{ce}\}}{\max\{l_{ce}\} - \min\{l_{ce}\}}
-    $$
+l(F(x, \theta), y) = \frac{l_{ce} - \min\{l_{ce}\}}{\max\{l_{ce}\} - \min\{l_{ce}\}}
+$$
     
 
     - $l_{ce}= l_{ce}(F(x, \theta), y), (x, y) \in D_{train}$
@@ -130,8 +130,8 @@ $$
 
     
 $$
-    D_{c_i} = \argmin_{D'{c_i} \subseteq D{sub_i} : |D'{c_i}| = \delta, (x_j, y_j) \in D{sub_i}} l_{ce}(F(x_j, \theta), y_j)
-    $$
+D_{c_i} = \argmin_{D'{c_i} \subseteq D{sub_i} : |D'{c_i}| = \delta, (x_j, y_j) \in D{sub_i}} l_{ce}(F(x_j, \theta), y_j)
+$$
     
 
     - $D_c = \bigcup_{i=1}^{C} D_{c_i}$ : clean subset
@@ -150,31 +150,31 @@ $$
 
     
 $$
-    \tilde{x}_i =
-    \begin{cases}
-    l x_i + (1 - l) x_j, & p(x_i)^{max} \geq p(x_j)^{max}, \\
-    (1 - l) x_i + l x_j, & p(x_i)^{max} < p(x_j)^{max},
-    \end{cases}
-    $$
+\tilde{x}_i =
+\begin{cases}
+l x_i + (1 - l) x_j, & p(x_i)^{max} \geq p(x_j)^{max}, \\
+(1 - l) x_i + l x_j, & p(x_i)^{max} < p(x_j)^{max},
+\end{cases}
+$$
     
 
 
     
 $$
-    \tilde{y}_i =
-    \begin{cases}
-    l y_i + (1 - l) y_j, & p(x_i)^{max} \geq p(x_j)^{max}, \\
-    (1 - l) y_i + l y_j, & p(x_i)^{max} < p(x_j)^{max}.
-    \end{cases}
-    $$
+\tilde{y}_i =
+\begin{cases}
+l y_i + (1 - l) y_j, & p(x_i)^{max} \geq p(x_j)^{max}, \\
+(1 - l) y_i + l y_j, & p(x_i)^{max} < p(x_j)^{max}.
+\end{cases}
+$$
     
 
 2. 신뢰도가 높은 sample에 더 높은 계수를 부여
 
     
 $$
-    l = \max(l', 1 - l'), \text{ where } l' \text{ is sampled from } B(4, 4).
-    $$
+l = \max(l', 1 - l'), \text{ where } l' \text{ is sampled from } B(4, 4).
+$$
     
 
     - 계수 $l$: Beta 분포 $B(\Phi, \Phi)$에서 sampling
@@ -263,8 +263,8 @@ Answer
 
     
 $$
-    \hat{y_t} = \alpha \hat{y_{t-1}} + (1 - \alpha)p(A_w(x), \theta), \quad (x, y) \in D_n
-    $$
+\hat{y_t} = \alpha \hat{y_{t-1}} + (1 - \alpha)p(A_w(x), \theta), \quad (x, y) \in D_n
+$$
     
 
     - $\hat{y_t}$: $t$ 번째 epoch에서의 soft 수정된 레이블
@@ -281,12 +281,12 @@ $$
 
     
 $$
-    CM^t_j(x) =
-    \begin{cases}
-    \hat{y}^t_j - \max_{c \neq j}(\hat{y}^t_c), & \text{if } j = \arg\max(\hat{y}^t) \\
-    \hat{y}^t_j - \max(\hat{y}^t), & \text{if } j \neq \arg\max(\hat{y}^t)
-    \end{cases}
-    $$
+CM^t_j(x) =
+\begin{cases}
+\hat{y}^t_j - \max_{c \neq j}(\hat{y}^t_c), & \text{if } j = \arg\max(\hat{y}^t) \\
+\hat{y}^t_j - \max(\hat{y}^t), & \text{if } j \neq \arg\max(\hat{y}^t)
+\end{cases}
+$$
     
 
     - **최대 신뢰도 클래스 = class** $j$
@@ -303,8 +303,8 @@ $$
 
     
 $$
-    ACM^t(x) = \frac{1}{t} \sum_{k=1}^{t} CM^k_{\arg\max \hat{y}^t}(x)
-    $$
+ACM^t(x) = \frac{1}{t} \sum_{k=1}^{t} CM^k_{\arg\max \hat{y}^t}(x)
+$$
     
 
     - 입력 데이터 $x$에 대한 $t$번째 epoch까지의 각 epoch에서 예측된 가장 확실한 클래스에 대한 CM의 평균
@@ -318,8 +318,8 @@ $$
 
     
 $$
-    T^t = \min(ACM) + (\max(ACM) - \min(ACM)) \times \tau
-    $$
+T^t = \min(ACM) + (\max(ACM) - \min(ACM)) \times \tau
+$$
     
 
     - $\min(ACM)$ : 훈련 중 측정된 평균 CM의 최소 값 (가장 신뢰도가 낮은 샘플)
@@ -332,8 +332,8 @@ $$
 
     
 $$
-    L_{reg} = - \frac{1}{|D'{n}|} \sum_{(x,y) \in |D'_{n}|} \hat{y} \log p(A_s(x), \theta)
-    $$
+L_{reg} = - \frac{1}{|D'{n}|} \sum_{(x,y) \in |D'_{n}|} \hat{y} \log p(A_s(x), \theta)
+$$
     
 
     - $D'_{n} = \{(x, y) | ACM_t(x) > T_t, (x, y) \in D_n\}$
@@ -378,8 +378,8 @@ $$
 
     
 $$
-    IF = \frac{\max(n_i)}{\min(n_i)}
-    $$
+IF = \frac{\max(n_i)}{\min(n_i)}
+$$
     
 
 - Real-world Datasets:

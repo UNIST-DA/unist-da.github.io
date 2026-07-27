@@ -204,8 +204,8 @@ $$
 
     
 $$
-    Attn_{\Nu}=Concat(Attn_{\Nu_1}, \dots,Attn_{\Nu_H})W_N^O
-    $$
+Attn_{\Nu}=Concat(Attn_{\Nu_1}, \dots,Attn_{\Nu_H})W_N^O
+$$
     
 
 - Input shape

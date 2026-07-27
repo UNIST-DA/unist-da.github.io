@@ -149,10 +149,10 @@ $$
 
     
 $$
-    \begin{equation*}
-    p(d(\mathbf{x})=1)=\frac{\mathcal{H}(Y \mid \mathbf{x})}{\log (C)} \propto \mathcal{H}(Y \mid \mathbf{x}) \quad[C \text { is constant }]
-    \end{equation*}
-    $$
+\begin{equation*}
+p(d(\mathbf{x})=1)=\frac{\mathcal{H}(Y \mid \mathbf{x})}{\log (C)} \propto \mathcal{H}(Y \mid \mathbf{x}) \quad[C \text { is constant }]
+\end{equation*}
+$$
     
 
 

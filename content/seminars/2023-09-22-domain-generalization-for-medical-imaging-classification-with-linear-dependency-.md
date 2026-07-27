@@ -368,16 +368,16 @@ Two-strategy
 
     
 $$
-    \begin{equation}D S C=\frac{2|X \cap Y|}{|X|+|Y|}\end{equation}
-    $$
+\begin{equation}D S C=\frac{2|X \cap Y|}{|X|+|Y|}\end{equation}
+$$
     
 
 - Jaccard Index (JI)
 
     
 $$
-    \begin{equation}J(A, B)=\frac{|A \cap B|}{|A \cup B|}=\frac{|A \cap B|}{|A|+|B|-|A \cap B|}\end{equation}
-    $$
+\begin{equation}J(A, B)=\frac{|A \cap B|}{|A \cup B|}=\frac{|A \cap B|}{|A|+|B|-|A \cap B|}\end{equation}
+$$
     
 
 - Conformity Coefficient (CC)
@@ -387,8 +387,8 @@ $$
 
     
 $$
-    \frac{1-(FP +FN)}{TP}
-    $$
+\frac{1-(FP +FN)}{TP}
+$$
     
 
 - Average surface distance (ASD)
@@ -399,8 +399,8 @@ $$
 
     
 $$
-    \frac{TP}{TP + FN}
-    $$
+\frac{TP}{TP + FN}
+$$
     
 
 

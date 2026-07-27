@@ -243,8 +243,8 @@ $$
 
     
 $$
-    \mathcal{E}_{\mathcal{T}}(\theta)<\hat{\mathcal{E}}_{\mathcal{D}}^{\gamma}(\theta)+\frac{1}{2 I} \sum_{i=1}^{I} \operatorname{Div}\left(\mathcal{D}_{i}, \mathcal{T}\right)+\max _{k \in[1, N]} \sqrt{\frac{v_{k} \ln \left(m / v_{k}\right)+\ln (N / \delta)}{m}}
-    $$
+\mathcal{E}_{\mathcal{T}}(\theta)<\hat{\mathcal{E}}_{\mathcal{D}}^{\gamma}(\theta)+\frac{1}{2 I} \sum_{i=1}^{I} \operatorname{Div}\left(\mathcal{D}_{i}, \mathcal{T}\right)+\max _{k \in[1, N]} \sqrt{\frac{v_{k} \ln \left(m / v_{k}\right)+\ln (N / \delta)}{m}}
+$$
     
 
     - Confidence bound diverges to infinity when $\gamma$ goes to zero

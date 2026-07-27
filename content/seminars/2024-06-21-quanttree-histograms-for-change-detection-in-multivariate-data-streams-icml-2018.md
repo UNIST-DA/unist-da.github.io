@@ -129,8 +129,8 @@ $$
 
     
 $$
-    T_h(W) = T_h(y_1, \ldots, y_K) > \tau
-    $$
+T_h(W) = T_h(y_1, \ldots, y_K) > \tau
+$$
     
 
     - $\tau \in \mathbb{R}$ : False Positive Rate (FPR)를 제어하는 임계값
@@ -142,8 +142,8 @@ $$
 
     
 $$
-    P_{\phi_0}(T_h(W) > \tau) \leq \alpha
-    $$
+P_{\phi_0}(T_h(W) > \tau) \leq \alpha
+$$
     
 
 - $P_{\phi_0}$는 $W$가 $\phi_0$에서 생성된 샘플을 포함한다는 가설 하에서의 확률
@@ -256,9 +256,9 @@ Theorem 1. Let $\mathcal{T}_{h}(\cdot)$ _be defined as in (3) over the histogram
     - 생성된 통계량 값들의 집합 $T_{B}=\left\{t_{1}, \ldots, t_{B}\right\}$에서 경험적 분포의 $1-\alpha$ 분위로 임계값 $\tau$를 추정
 
         
-    $$
-        \tau = \min \left\{t \in T_{B}: \#\left\{v \in T_{B}: v>t\right\} \leq \alpha B\right\}
-        $$
+$$
+\tau = \min \left\{t \in T_{B}: \#\left\{v \in T_{B}: v>t\right\} \leq \alpha B\right\}
+$$
         
 
     - $\#A$는 집합 $A$의 원소 개수
@@ -409,10 +409,10 @@ $p_{k}, k \geq 2$**의 분포를 유도**
 
     
 $$
-    \begin{equation*}
-    P_{S_{1}}(\mathbf{x} \in A)=P_{\phi_{0}}\left(\mathbf{x} \in A \mid \mathbf{x} \notin S_{1}\right) \tag{13}
-    \end{equation*}
-    $$
+\begin{equation*}
+P_{S_{1}}(\mathbf{x} \in A)=P_{\phi_{0}}\left(\mathbf{x} \in A \mid \mathbf{x} \notin S_{1}\right) \tag{13}
+\end{equation*}
+$$
     
 
 
@@ -446,7 +446,7 @@ $$
 & p_{k}=P_{\phi_{0}}\left(\mathbf{x} \in S_{k}\right) \\
 & \quad=P_{\phi_{0}}\left(\mathbf{x} \in S_{k} \mid \mathbf{x} \notin \cup_{j=1}^{k-1} S_{j}\right) \cdot P_{\phi_{0}}\left(\mathbf{x} \notin \cup_{j=1}^{k-1} S_{j}\right) \\
 & \quad+P_{\phi_{0}}\left(\mathbf{x} \in S_{k} \mid \mathbf{x} \in \cup_{j=1}^{k-1} S_{j}\right) \cdot P_{\phi_{0}}\left(\mathbf{x} \in \cup_{j=1}^{k-1} S_{j}\right) 
- \\
+\\
 & \quad=P_{\phi_{0}}\left(\mathbf{x} \in S_{k} \mid \mathbf{x} \notin \cup_{j=1}^{k-1} S_{j}\right) \cdot P_{\phi_{0}}\left(\mathbf{x} \notin \cup_{j=1}^{k-1} S_{j}\right)
 &= \widetilde{p}_{k} \cdot (1-\sum_{j=1}^{k-1} p_{j})
 \tag{16}
@@ -462,10 +462,10 @@ $$
 
     
 $$
-    \begin{align*}p_3 &= \widetilde{p}_3 \cdot \left(1 - p_1 - \widetilde{p}_2 \cdot (1 - p_1)\right) 
-     \\ &= \widetilde{p}_3 \cdot \left(1 - p_1 - \widetilde{p}_2 + \widetilde{p}_2 p_1\right)
-     \\ &= \widetilde{p}_3 \cdot \left((1 - p_1)(1 - \widetilde{p}_2)\right) \\ &= \widetilde{p}_3 \cdot \left((1 - \widetilde{p}_1)(1 - \widetilde{p}_2)\right)\end{align*}
-    $$
+\begin{align*}p_3 &= \widetilde{p}_3 \cdot \left(1 - p_1 - \widetilde{p}_2 \cdot (1 - p_1)\right) 
+\\ &= \widetilde{p}_3 \cdot \left(1 - p_1 - \widetilde{p}_2 + \widetilde{p}_2 p_1\right)
+\\ &= \widetilde{p}_3 \cdot \left((1 - p_1)(1 - \widetilde{p}_2)\right) \\ &= \widetilde{p}_3 \cdot \left((1 - \widetilde{p}_1)(1 - \widetilde{p}_2)\right)\end{align*}
+$$
     
 
 

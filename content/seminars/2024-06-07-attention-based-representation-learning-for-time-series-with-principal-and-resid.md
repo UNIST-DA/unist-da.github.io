@@ -143,8 +143,8 @@ $$
 
     
 $$
-    J_a = ||x − \hat{x} || + \lambda \Sigma^{n_c}_{i=1} \Sigma_t \frac{1}{S_i(t)} \log S_i(t)
-    $$
+J_a = ||x − \hat{x} || + \lambda \Sigma^{n_c}_{i=1} \Sigma_t \frac{1}{S_i(t)} \log S_i(t)
+$$
     
 
 

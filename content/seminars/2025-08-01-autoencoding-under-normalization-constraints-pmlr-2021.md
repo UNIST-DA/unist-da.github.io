@@ -312,8 +312,8 @@ $$
 
 $$
 L 
-  = \underbrace{L_{AE} + L_{reg}}_{\text{Conventional AE}}
-  = \underbrace{L_{AE} + T\,\log \Omega_{\theta}}_{\text{NAE}}
+= \underbrace{L_{AE} + L_{reg}}_{\text{Conventional AE}}
+= \underbrace{L_{AE} + T\,\log \Omega_{\theta}}_{\text{NAE}}
 $$
 
 
