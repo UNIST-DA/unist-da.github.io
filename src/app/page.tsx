@@ -41,17 +41,17 @@ export default function Home() {
     {
       title: "Manufacturing AI",
       keywords: ["Quality Engineering", "Time Series Analysis"],
-      image: "/assets/about/ManufacturingAI.png",
+      image: "/assets/about/ManufacturingAI.webp",
     },
     {
       title: "Healthcare AI",
       keywords: ["Survival Analysis", "Multimodal AI"],
-      image: "/assets/about/healthcareAI.png",
+      image: "/assets/about/healthcareAI.webp",
     },
     {
       title: "Service AI",
       keywords: ["Agentic AI", "Recommendation System"],
-      image: "/assets/about/serviceAI.png",
+      image: "/assets/about/serviceAI.webp",
     },
   ];
 

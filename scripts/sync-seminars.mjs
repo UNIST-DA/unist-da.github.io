@@ -103,6 +103,21 @@ function parseFrontmatter(raw) {
   return { data, body: m[2] };
 }
 
+// Notion inline equations sometimes serialize with display delimiters ($$…$$)
+// inline, which remark-math then mis-parses mid-sentence (stray `$` leaks as
+// text). On any line that isn't a standalone display equation, collapse inline
+// `$$…$$` to inline `$…$`.
+function fixMath(md) {
+  return md
+    .split("\n")
+    .map((line) => {
+      const t = line.trim();
+      if (t === "$$" || /^\$\$[^$]+\$\$$/.test(t)) return line; // keep standalone display math
+      return line.replace(/\$\$([^$\n]+?)\$\$/g, "$$$1$$");
+    })
+    .join("\n");
+}
+
 // ---------- selftest ----------
 
 function selftest() {
@@ -135,6 +150,11 @@ function selftest() {
   assert(parsed.data.category === "Lab Seminar", "category round-trip");
   assert(parsed.data.keywords.length === 2 && parsed.data.keywords[0] === "Neural Differential Equation", "keywords round-trip");
   assert(parsed.body.includes("line two"), "body preserved incl. --- rule");
+
+  // math normalization
+  assert(fixMath("- $$z(t_1)$$ , $$z(t_0)$$: x").includes("$z(t_1)$ , $z(t_0)$"), "inline $$ collapse");
+  assert(fixMath("$$\nE=mc^2\n$$") === "$$\nE=mc^2\n$$", "display block preserved");
+  assert(fixMath("$$a=b$$").trim() === "$$a=b$$", "one-line display preserved");
 
   console.log("✓ selftest passed");
 }
@@ -263,6 +283,11 @@ async function sync() {
   n2m.setCustomTransformer("bookmark", linkBlock("자료 링크"));
   n2m.setCustomTransformer("embed", linkBlock("자료"));
   n2m.setCustomTransformer("link_preview", linkBlock("링크"));
+  // Display equation blocks → clean, well-formed `$$ … $$` on their own lines.
+  n2m.setCustomTransformer("equation", (block) => {
+    const expr = (block.equation?.expression || "").trim();
+    return expr ? `\n$$\n${expr}\n$$\n` : "";
+  });
 
   // fetch all published rows
   const pages = [];
@@ -349,7 +374,7 @@ async function sync() {
     let body = "";
     try {
       const blocks = await n2m.pageToMarkdown(page.id);
-      body = n2m.toMarkdownString(blocks).parent || "";
+      body = fixMath(n2m.toMarkdownString(blocks).parent || "");
     } catch (e) {
       console.warn(`  ! body conversion failed for "${title}" (${e.message})`);
     }

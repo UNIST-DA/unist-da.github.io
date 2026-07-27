@@ -33,19 +33,19 @@ const principles = [
 const domains = [
   {
     title: "Manufacturing AI",
-    image: "/assets/about/ManufacturingAI.png",
+    image: "/assets/about/ManufacturingAI.webp",
     desc: "제조 공정의 품질 관리와 고차원 시계열 신호의 이상 탐지를 연구합니다.",
     keywords: ["Quality Engineering", "Time Series Analysis"],
   },
   {
     title: "Healthcare AI",
-    image: "/assets/about/healthcareAI.png",
+    image: "/assets/about/healthcareAI.webp",
     desc: "생존 분석과 멀티모달 학습을 통해 의료 데이터를 분석합니다.",
     keywords: ["Survival Analysis", "Multimodal AI"],
   },
   {
     title: "Service AI",
-    image: "/assets/about/serviceAI.png",
+    image: "/assets/about/serviceAI.webp",
     desc: "LLM 기반 에이전트와 추천 시스템을 통해 서비스 데이터를 분석하고 의사결정을 지원합니다.",
     keywords: ["Agentic AI", "Recommendation System"],
   },
