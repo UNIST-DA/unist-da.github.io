@@ -1060,8 +1060,19 @@ strong { font-weight: 600; }
   object-fit: cover;
   transition: transform 0.4s var(--ease);
 }
-/* hovering a keyword gently zooms its card's illustration — background-tone
-   independent, so all three cards react identically */
+/* signature keyline frame on hover — same effect as the About page domain cards */
+.focus-node__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 0 2px var(--blue);
+  opacity: 0;
+  transition: opacity 0.2s var(--ease);
+  pointer-events: none;
+}
+.focus-node:hover .focus-node__media::after,
+.focus-node:has(.focus-kw:hover) .focus-node__media::after { opacity: 1; }
+.focus-node:hover .focus-node__media img,
 .focus-node:has(.focus-kw:hover) .focus-node__media img { transform: scale(1.05); }
 
 .focus-node__kw {
