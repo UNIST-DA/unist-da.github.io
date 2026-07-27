@@ -69,7 +69,7 @@ z(t_1) = z(t_0) + \int_{t_0}^{t_1} f(z(t), t, \theta) dt
 $$
 
 
-- $z(t_1)$ , $z(t_0)$$: **State**
+- $z(t_1)$ , $z(t_0)$: **State**
 - $f(z(t), t, \theta)$: Neural network
 - $\int_{t_0}^{t_1} (\dots) dt$: **ODE Solver**
 

@@ -92,7 +92,7 @@ Propose simple solution:
 
 **Notation**
 
-- Data-generation distribution $p^*(y \mid \mathbf{x})$ where $y \in$$\{1, \ldots, K\}$ is the space of $K$-class labels,$\mathbf{x} \in \mathscr{X} \subset \mathbb{R}^d$ is the input data manifold equipped
+- Data-generation distribution $p^*(y \mid \mathbf{x})$ where $y \in$\{1, \ldots, K\}$ is the space of $K$-class labels,$\mathbf{x} \in \mathscr{X} \subset \mathbb{R}^d$ is the input data manifold equipped
 - The full data-generating distribution
 
 
@@ -181,7 +181,7 @@ _Spectral-normalized Neural Gaussian Process (SNGP)_
 ### **Distance-aware Output Layer via Laplace-approximated Neural Gaussian Process**
 
 - SNGP replaces the typical dense output layer with a Gaussian process (GP) with an RBF kernel, whose posterior variance at $x^∗$ is characterized by its _L_2  distance from the training data in the hidden space
-- given $N$ training samples $\mathscr{D}=$$\left\{y_i, \mathbf{x}i\right\}_{i=1}^N$
+- given $N$ training samples $\mathscr{D}=$\left\{y_i, \mathbf{x}i\right\}_{i=1}^N$
 - denoting $h_i=h\left(\mathbf{x}_i\right)$_,_
 - _the Gaussian-process output layer_ $g{N \times 1}=\left[g\left(h_1\right), \ldots, g\left(h_N\right)\right]^{\top}$ follows a multivariate normal distribution a priori:
 

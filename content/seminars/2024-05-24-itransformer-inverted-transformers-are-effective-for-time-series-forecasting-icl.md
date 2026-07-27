@@ -148,7 +148,7 @@ attention mechanisms are improperly adopted on the **temporal dimension**
 Historical observations: $\mathbf{X}=\left\{\mathbf{x}_1, \ldots, \mathbf{x}_T\right\} \in \mathbb{R}^{T \times N}$ _with_ $T$ _time steps and_ $N$ _variates_
 
 
-_Future_ $S$ _time steps_ $\mathbf{Y}=\left\{\mathbf{x}_{T+1}, \ldots, \mathbf{x}_{T+S}\right\} \in$$\mathbb{R}^{S \times N}$
+_Future_ $S$ _time steps_ $\mathbf{Y}=\left\{\mathbf{x}_{T+1}, \ldots, \mathbf{x}_{T+S}\right\} \in$\mathbb{R}^{S \times N}$
 
 
 $\mathbf{X}_{t,:}$ : _simultaneously recorded time points at the step_ $t$

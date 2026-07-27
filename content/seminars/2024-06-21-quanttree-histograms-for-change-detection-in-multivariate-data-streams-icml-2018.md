@@ -497,7 +497,7 @@ $$
 
 
 - 간단한 표기를 위해 이후의 설명에서는 $(j=1, \ldots, k-1)$ 표현을 생략
-- $\{\widetilde{L}_k=a\}, $$a \in\{L_k, \ldots, M_k\}$
+- $\{\widetilde{L}_k=a\}, $a \in\{L_k, \ldots, M_k\}$
 
 
 $$
