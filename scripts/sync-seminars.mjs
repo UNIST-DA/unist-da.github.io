@@ -103,6 +103,36 @@ function parseFrontmatter(raw) {
   return { data, body: m[2] };
 }
 
+// Notion nests display equations inside list items (indented). Markdown then
+// mis-parses the indented `$$` block and swallows everything after it as raw
+// text (LaTeX, headings, images all leak). Pull every multi-line `$$ … $$`
+// block out to column 0 with a blank line on each side so remark-math renders
+// it reliably.
+function normalizeDisplayMath(md) {
+  const lines = md.split("\n");
+  const out = [];
+  let inBlock = false;
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    if (line.trim() === "$$") {
+      if (!inBlock) {
+        if (out.length && out[out.length - 1].trim() !== "") out.push("");
+        out.push("$$");
+        inBlock = true;
+      } else {
+        out.push("$$");
+        inBlock = false;
+        if (i + 1 < lines.length && lines[i + 1].trim() !== "") out.push("");
+      }
+    } else if (inBlock) {
+      out.push(line.replace(/^[ \t]+/, "")); // dedent the math content
+    } else {
+      out.push(line);
+    }
+  }
+  return out.join("\n");
+}
+
 // Notion inline equations sometimes serialize with display delimiters ($$…$$)
 // inline, which remark-math then mis-parses mid-sentence (stray `$` leaks as
 // text). On any line that isn't a standalone display equation, collapse inline
@@ -156,6 +186,11 @@ function selftest() {
   assert(fixMath("$$\nE=mc^2\n$$") === "$$\nE=mc^2\n$$", "display block preserved");
   assert(fixMath("$$a=b$$").trim() === "$$a=b$$", "one-line display preserved");
   assert(fixMath("plain $x$ text").includes("plain $x$ text"), "single inline math untouched");
+
+  // display-math dedent (Notion nests it in lists)
+  const nm = normalizeDisplayMath("- item\n    $$\n    a=b\n    $$\n- next");
+  assert(nm.includes("\n$$\na=b\n$$\n"), "indented display math dedented to col 0");
+  assert(!/ {2,}\$\$/.test(nm), "no indented $$ left");
 
   console.log("✓ selftest passed");
 }
@@ -375,7 +410,7 @@ async function sync() {
     let body = "";
     try {
       const blocks = await n2m.pageToMarkdown(page.id);
-      body = fixMath(n2m.toMarkdownString(blocks).parent || "");
+      body = fixMath(normalizeDisplayMath(n2m.toMarkdownString(blocks).parent || ""));
     } catch (e) {
       console.warn(`  ! body conversion failed for "${title}" (${e.message})`);
     }
