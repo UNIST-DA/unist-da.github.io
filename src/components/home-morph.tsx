@@ -120,7 +120,7 @@ export function HomeMorph() {
       ctx.beginPath();
       ctx.moveTo(pts[0].x, pts[0].y);
       for (let i = 1; i <= whole; i++) ctx.lineTo(pts[i].x, pts[i].y);
-      if (whole < pts.length - 1) {
+      if (whole < pts.length - 1 && pts[whole] && pts[whole + 1]) {
         const f = rf - whole;
         const a = pts[whole], b = pts[whole + 1];
         ctx.lineTo(a.x + (b.x - a.x) * f, a.y + (b.y - a.y) * f);
@@ -129,6 +129,7 @@ export function HomeMorph() {
 
       for (let i = 0; i <= whole; i++) {
         const p = pts[i];
+        if (!p) continue;
         if (p.anomaly) {
           ctx.fillStyle = `rgba(${redC},${ca})`;
           ctx.beginPath(); ctx.arc(p.x, p.y, 4.5, 0, Math.PI * 2); ctx.fill();

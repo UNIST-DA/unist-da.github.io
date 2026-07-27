@@ -54,8 +54,18 @@ export function ScrollDeck() {
       move(dir);
     };
 
+    // Don't hijack keys while a control is focused, or the gesture that should
+    // activate/scroll it (Space on a button, arrows in a select, etc.) is lost.
+    const onInteractive = () => {
+      const el = document.activeElement as HTMLElement | null;
+      if (!el) return false;
+      return (
+        ["INPUT", "TEXTAREA", "SELECT", "BUTTON", "A"].includes(el.tagName) ||
+        el.isContentEditable
+      );
+    };
     const onKey = (e: KeyboardEvent) => {
-      if (animating || document.body.hasAttribute("data-modal") || (e.target as HTMLElement)?.tagName === "INPUT") return;
+      if (animating || document.body.hasAttribute("data-modal") || onInteractive()) return;
       if (["ArrowDown", "PageDown", " "].includes(e.key)) { if (move(1)) e.preventDefault(); }
       else if (["ArrowUp", "PageUp"].includes(e.key)) { if (move(-1)) e.preventDefault(); }
     };

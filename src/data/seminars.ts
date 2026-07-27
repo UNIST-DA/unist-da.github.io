@@ -16,6 +16,19 @@ export type SeminarItem = {
 
 type SeminarMeta = Omit<SeminarItem, "slug" | "notes">;
 
-export const seminars: SeminarItem[] = readMarkdownDir<SeminarMeta>("seminars")
-  .map(({ slug, data, body }) => ({ ...data, slug, notes: body }))
+// Normalize every field with a default — a seminar file (edited by non-devs via
+// Notion) that omits `keywords:`/`date:` etc. must never crash the Activity/Home
+// pages. Skip entries with no date or title.
+export const seminars: SeminarItem[] = readMarkdownDir<Partial<SeminarMeta>>("seminars")
+  .map(({ slug, data, body }): SeminarItem => ({
+    slug,
+    date: data.date ?? "",
+    title: data.title ?? "(제목 없음)",
+    category: data.category === "Paper Review" ? "Paper Review" : "Lab Seminar",
+    presenter: data.presenter ?? "",
+    url: data.url ?? "",
+    keywords: Array.isArray(data.keywords) ? data.keywords : [],
+    notes: body,
+  }))
+  .filter((s) => s.date && s.title)
   .sort((a, b) => b.date.localeCompare(a.date));

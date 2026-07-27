@@ -70,7 +70,8 @@ type StudentFile = Omit<Student, "slug"> & { order?: number };
 export const students: Student[] = readJsonDir<StudentFile>("students")
   .sort((a, b) => (a.data.order ?? 999) - (b.data.order ?? 999))
   .map(({ slug, data }) => {
-    const { order: _order, ...rest } = data;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { order: _order, ...rest } = data; // drop `order` (sort key) from output
     return { slug, ...rest };
   });
 

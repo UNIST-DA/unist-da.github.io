@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import type { SeminarItem } from "@/data/seminars";
 import { SeminarNotes } from "./seminar-notes";
@@ -25,6 +25,7 @@ export function SeminarList({ seminars }: { seminars: SeminarItem[] }) {
   const [kw, setKw] = useState<string | null>(null);
   const [showAll, setShowAll] = useState(false);
   const [open, setOpen] = useState<SeminarItem | null>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
 
   const featured = seminars[0];
 
@@ -46,10 +47,30 @@ export function SeminarList({ seminars }: { seminars: SeminarItem[] }) {
   const pick = (key: Filter) => { setFilter(key); setShowAll(false); };
   const toggleKw = (k: string) => { setKw((cur) => (cur === k ? null : k)); setShowAll(false); };
 
-  // open = a modal-like panel; lock the page + pause the scroll-deck while open
+  // open = a modal-like panel; lock the page + pause the scroll-deck while open,
+  // move focus into the dialog, trap Tab, and restore focus to the trigger.
   useEffect(() => {
     if (!open) return;
-    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setOpen(null); };
+    const trigger = document.activeElement as HTMLElement | null;
+    const panel = panelRef.current;
+    const focusable = () =>
+      panel
+        ? [...panel.querySelectorAll<HTMLElement>('a[href], button, [tabindex]:not([tabindex="-1"])')].filter(
+            (el) => !el.hasAttribute("disabled"),
+          )
+        : [];
+    (panel?.querySelector(".sem-modal__close") as HTMLElement | null)?.focus();
+
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") { setOpen(null); return; }
+      if (e.key === "Tab") {
+        const f = focusable();
+        if (!f.length) return;
+        const first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    };
     document.addEventListener("keydown", onKey);
     document.body.setAttribute("data-modal", "");
     const prev = document.body.style.overflow;
@@ -58,6 +79,7 @@ export function SeminarList({ seminars }: { seminars: SeminarItem[] }) {
       document.removeEventListener("keydown", onKey);
       document.body.removeAttribute("data-modal");
       document.body.style.overflow = prev;
+      trigger?.focus?.();
     };
   }, [open]);
 
@@ -132,15 +154,15 @@ export function SeminarList({ seminars }: { seminars: SeminarItem[] }) {
       {/* modal-like write-up panel — portal to <body> so a transformed
           ancestor (Reveal) can't clip the fixed overlay */}
       {open && createPortal(
-        <div className="sem-modal" role="dialog" aria-modal="true" onClick={() => setOpen(null)}>
-          <div className="sem-modal__panel" onClick={(e) => e.stopPropagation()}>
+        <div className="sem-modal" role="dialog" aria-modal="true" aria-labelledby="sem-modal-title" onClick={() => setOpen(null)}>
+          <div ref={panelRef} className="sem-modal__panel" onClick={(e) => e.stopPropagation()}>
             <button className="sem-modal__close" onClick={() => setOpen(null)} aria-label="닫기">✕</button>
             <div className="sem-modal__head">
               <div className="sem-top">
                 <Badge c={open.category} />
                 <span className="sem-date">{fmt(open.date)}</span>
               </div>
-              <h3 className="sem-modal__title">{open.title}</h3>
+              <h3 id="sem-modal-title" className="sem-modal__title">{open.title}</h3>
               {open.presenter && <div className="sem-modal__meta">Presented by {open.presenter}</div>}
               {open.keywords.length > 0 && (
                 <div className="sem-kw-row">
