@@ -289,6 +289,12 @@ async function uploadReleaseAsset(name, buffer, contentType) {
   return asset.browser_download_url;
 }
 
+// URL of an already-uploaded asset by name (lets re-runs skip re-uploading).
+async function existingAssetUrl(name) {
+  const rel = await ensureRelease();
+  return rel.assets.find((a) => a.name === name)?.browser_download_url || null;
+}
+
 // ---------- sync ----------
 
 async function sync() {
@@ -382,6 +388,7 @@ async function sync() {
     // PDF / file attachments → external URLs link directly; Notion-uploaded files
     // (expiring) are mirrored to the GitHub Release so they stay viewable without
     // bloating the site. Falls back to a plain note if the upload can't happen.
+    let fileIdx = 0;
     const fileBlock = (label) => async (block) => {
       const b = block[block.type] || {};
       const url = b.url || b.external?.url || b.file?.url || "";
@@ -389,14 +396,19 @@ async function sync() {
       if (!url) return "";
       if (!isEphemeral(url)) return `\n[📄 ${cap || label} ↗](${url})\n`;
       if (!ghEnabled()) return `\n📄 ${cap || label} (노션 원문 참고)\n`;
+      // Stable per-seminar asset name (ext from the URL path, no download needed)
+      // so re-runs skip already-uploaded slides. ponytail: a slide replaced in
+      // Notion under the same filename won't re-upload (no content hash); fine
+      // since posted slides rarely change.
+      const asciiSlug = slug.replace(/[^a-z0-9-]/g, "").slice(0, 40) || "file";
+      const name = `${date || "0000-00-00"}-${asciiSlug}-${fileIdx++}.${pickExt(url, "", "pdf")}`;
       try {
+        const cached = await existingAssetUrl(name);
+        if (cached) return `\n[📄 ${cap || label} ↗](${cached})\n`;
         const res = await fetch(url);
         if (!res.ok) throw new Error(`fetch ${res.status}`);
         const buf = Buffer.from(await res.arrayBuffer());
         const ct = res.headers.get("content-type") || "application/pdf";
-        const ext = pickExt(url, ct, "pdf");
-        const asciiSlug = slug.replace(/[^a-z0-9-]/g, "").slice(0, 40) || "file";
-        const name = `${date || "0000-00-00"}-${asciiSlug}-a${GH._seq++}.${ext}`;
         const link = await uploadReleaseAsset(name, buf, ct);
         return `\n[📄 ${cap || label} ↗](${link})\n`;
       } catch (e) {

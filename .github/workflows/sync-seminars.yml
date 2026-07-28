@@ -34,8 +34,20 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: npm run sync:seminars
-      - name: Commit changes
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "chore(seminar): sync from Notion"
-          file_pattern: "content/seminars/** public/assets/seminars/**"
+      - name: Commit & push (rebase-safe)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content/seminars public/assets/seminars
+          if git diff --cached --quiet; then
+            echo "No seminar changes to commit."
+            exit 0
+          fi
+          git commit -m "chore(seminar): sync from Notion"
+          # main may have advanced while this ~minutes-long sync ran; rebase our
+          # single commit on top instead of failing the push (non-fast-forward).
+          for i in 1 2 3; do
+            git pull --rebase --autostash origin main && git push origin HEAD:main && exit 0
+            echo "push retry $i…"; sleep 5
+          done
+          echo "push failed after retries"; exit 1
