@@ -8,4 +8,4 @@ keywords: XAI, Anomaly Detection, LLM, soft prompting
 ---
 
 
-[📄 PDF 자료 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2026-05-08-axis-explainable-time-series-anomaly-det-a5.pdf)
+[📄 PDF 자료 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2026-05-08-axis-explainable-time-series-anomaly-det-0.pdf)

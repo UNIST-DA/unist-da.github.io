@@ -33,14 +33,14 @@ auxiliary dataset that improve performance.
 
 
 
-[📄 첨부파일 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2024-04-19-deep-anomaly-detection-with-outlier-expo-a47.pptx)
+[📄 첨부파일 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2024-04-19-deep-anomaly-detection-with-outlier-expo-0.pptx)
 
 
 
 
-[📄 첨부파일 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2024-04-19-deep-anomaly-detection-with-outlier-expo-a48.pdf)
+[📄 첨부파일 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2024-04-19-deep-anomaly-detection-with-outlier-expo-1.pdf)
 
 
 
 
-[📄 PDF 자료 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2024-04-19-deep-anomaly-detection-with-outlier-expo-a49.pdf)
+[📄 PDF 자료 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2024-04-19-deep-anomaly-detection-with-outlier-expo-2.pdf)

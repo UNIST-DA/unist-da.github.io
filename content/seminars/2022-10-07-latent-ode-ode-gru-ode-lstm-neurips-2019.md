@@ -8,4 +8,4 @@ keywords: Neural Differential Equation
 ---
 
 
-[📄 PDF 자료 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2022-10-07-latent-ode-ode-gru-ode-lstm-neurips-2019-a55.pdf)
+[📄 PDF 자료 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2022-10-07-latent-ode-ode-gru-ode-lstm-neurips-2019-0.pdf)

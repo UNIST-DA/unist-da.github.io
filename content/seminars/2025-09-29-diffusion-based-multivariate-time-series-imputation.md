@@ -40,7 +40,7 @@ Diffusion-based Multivariate Time-Series Imputation
 
 
 
-[📄 첨부파일 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2025-09-29-diffusion-based-multivariate-time-series-a17.pdf)
+[📄 첨부파일 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2025-09-29-diffusion-based-multivariate-time-series-0.pdf)
 
 
 

@@ -8,7 +8,7 @@ keywords: State space model, time series, RNN
 ---
 
 
-[📄 첨부파일 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2025-03-28-linear-time-sequence-modeling-with-selec-a36.pdf)
+[📄 첨부파일 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2025-03-28-linear-time-sequence-modeling-with-selec-0.pdf)
 
 
 

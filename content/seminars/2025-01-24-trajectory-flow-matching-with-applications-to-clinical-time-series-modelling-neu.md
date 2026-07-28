@@ -31,7 +31,7 @@ Modeling stochastic and irregularly sampled time series is a challenging problem
 
 
 
-[📄 첨부파일 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2025-01-24-trajectory-flow-matching-with-applicatio-a39.pdf)
+[📄 첨부파일 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2025-01-24-trajectory-flow-matching-with-applicatio-0.pdf)
 
 
 

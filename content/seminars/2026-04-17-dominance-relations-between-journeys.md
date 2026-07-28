@@ -23,7 +23,7 @@ keywords: Route Recommendation, Dominance Relations
 
 
 
-[📄 PDF 자료 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2026-04-17-dominance-relations-between-journeys-a7.pdf)
+[📄 PDF 자료 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2026-04-17-dominance-relations-between-journeys-0.pdf)
 
 
 

@@ -31,7 +31,7 @@ Rendering the semantic content of an image in different styles is a difficult im
 
 
 
-[📄 첨부파일 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2023-01-13-image-style-transfer-using-convolutional-a54.pptx)
+[📄 첨부파일 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2023-01-13-image-style-transfer-using-convolutional-0.pptx)
 
 
 

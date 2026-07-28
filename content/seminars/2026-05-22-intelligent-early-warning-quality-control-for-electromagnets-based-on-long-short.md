@@ -11,4 +11,4 @@ Intelligent early-warning quality control for electromagnets based on long short
 
 
 
-[📄 PDF 자료 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2026-05-22-intelligent-early-warning-quality-contro-a4.pdf)
+[📄 PDF 자료 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2026-05-22-intelligent-early-warning-quality-contro-0.pdf)

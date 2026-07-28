@@ -31,7 +31,7 @@ Nowadays, graph-structured data are increasingly used to model complex systems. 
 
 
 
-[📄 PDF 자료 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2023-04-07-neural-comput-applic-2021-one-class-grap-a53.pdf)
+[📄 PDF 자료 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2023-04-07-neural-comput-applic-2021-one-class-grap-0.pdf)
 
 
 

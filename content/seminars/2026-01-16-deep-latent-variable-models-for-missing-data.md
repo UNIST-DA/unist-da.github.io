@@ -8,7 +8,7 @@ keywords: VAE, variational inference, DeepLearning, imputation
 ---
 
 
-[📄 PDF 자료 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2026-01-16-deep-latent-variable-models-for-missing--a13.pdf)
+[📄 PDF 자료 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2026-01-16-deep-latent-variable-models-for-missing--0.pdf)
 
 
 

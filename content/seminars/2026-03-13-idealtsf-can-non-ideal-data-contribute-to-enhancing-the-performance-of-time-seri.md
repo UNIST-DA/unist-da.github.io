@@ -32,7 +32,7 @@ Deep learning has shown strong performance in time series forecasting tasks. How
 
 
 
-[📄 PDF 자료 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2026-03-13-idealtsf-can-non-ideal-data-contribute-t-a9.pdf)
+[📄 PDF 자료 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2026-03-13-idealtsf-can-non-ideal-data-contribute-t-0.pdf)
 
 
 

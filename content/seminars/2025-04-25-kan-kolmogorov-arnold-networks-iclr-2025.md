@@ -28,9 +28,9 @@ keywords: Deep Learning
 
 
 
-[📄 첨부파일 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2025-04-25-kan-kolmogorov-arnold-networks-iclr-2025-a34.pdf)
+[📄 첨부파일 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2025-04-25-kan-kolmogorov-arnold-networks-iclr-2025-0.pdf)
 
 
 
 
-[📄 PDF 자료 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2025-04-25-kan-kolmogorov-arnold-networks-iclr-2025-a35.pdf)
+[📄 PDF 자료 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2025-04-25-kan-kolmogorov-arnold-networks-iclr-2025-1.pdf)

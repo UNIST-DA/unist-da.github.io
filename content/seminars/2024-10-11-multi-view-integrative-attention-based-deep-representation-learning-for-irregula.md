@@ -32,4 +32,4 @@ Y. Lee, E. Jun, J. Choi and H. -I. Suk, "Multi-View Integrative Attention-Based 
 
 
 
-[📄 PDF 자료 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2024-10-11-multi-view-integrative-attention-based-d-a46.pdf)
+[📄 PDF 자료 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2024-10-11-multi-view-integrative-attention-based-d-0.pdf)

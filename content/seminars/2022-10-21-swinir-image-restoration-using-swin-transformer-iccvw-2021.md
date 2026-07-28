@@ -32,7 +32,7 @@ denoising (including grayscale and color image denoising) and JPEG compression a
 
 
 
-[📄 첨부파일 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2022-10-21-swinir-image-restoration-using-swin-tran-a56.pptx)
+[📄 첨부파일 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2022-10-21-swinir-image-restoration-using-swin-tran-0.pptx)
 
 
 

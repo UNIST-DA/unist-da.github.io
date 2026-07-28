@@ -32,4 +32,4 @@ Laser metal deposition (LMD) is an additive manufacturing method for metal parts
 
 
 
-[📄 PDF 자료 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2025-08-25-a-deep-learning-based-surrogate-model-fo-a25.pdf)
+[📄 PDF 자료 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2025-08-25-a-deep-learning-based-surrogate-model-fo-0.pdf)

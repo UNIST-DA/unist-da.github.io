@@ -24,7 +24,7 @@ Forecasting
 
 
 
-[📄 PDF 자료 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2025-04-18-time-llm-reprogramming-llms-for-time-ser-a31.pdf)
+[📄 PDF 자료 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2025-04-18-time-llm-reprogramming-llms-for-time-ser-0.pdf)
 
 
 
