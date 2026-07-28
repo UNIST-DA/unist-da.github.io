@@ -12,9 +12,9 @@ export const metadata: Metadata = {
 const principles = [
   {
     n: "01",
-    t: "방법론으로서의 통계",
-    en: "Statistics as methodology",
-    d: "문제의 구조를 분석하고, 이에 적합한 통계·딥러닝 모델을 설계합니다.",
+    t: "방법론으로서의 산업 AI 및 데이터사이언스",
+    en: "Industrial AI & data science as methodology",
+    d: "문제의 구조를 분석하고, 이에 적합한 산업 AI 및 데이터사이언스 모델을 설계합니다.",
   },
   {
     n: "02",
@@ -57,7 +57,7 @@ export default function AboutPage() {
       <PageHero
         crumb="About"
         title="About"
-        lead="통계와 머신러닝으로 산업 현장의 실제 문제를 연구하는 UNIST 산업공학과 연구실입니다."
+        lead="산업 AI 및 데이터사이언스 핵심 기술을 연구·개발하여 산업 현장의 실제 문제를 해결하는 UNIST 산업공학과 연구실입니다."
       />
 
       <section className="section">
@@ -66,15 +66,14 @@ export default function AboutPage() {
           <Reveal className="about-lead">
             <span className="kicker">About the Lab</span>
             <p className="about-lead__stmt">
-              UNIST 산업공학과 데이터 애널리틱스 연구실은 <strong>산업 통계</strong>와{" "}
-              <strong>딥러닝·기계학습</strong>을 기반으로, <span className="keep">제조·물류·의료·교통</span> 등 다양한
-              산업 분야의 복잡한 공학 문제를 해결하는 <strong>데이터 사이언스 방법론</strong>을
-              연구합니다. 품질 향상, 시스템 모니터링 및 이상 탐지, 시계열 표현학습을 중심으로
+              UNIST 산업공학과 데이터 애널리틱스 연구실은 <span className="keep">제조, 물류, 의료, 교통</span> 등 다양한
+              산업 현장의 복잡한 공학 문제를 해결하는 <strong>산업 AI 및 데이터사이언스 기술과 방법론</strong>을
+              연구·개발합니다. 품질 향상, 시스템 모니터링 및 이상 탐지, 시계열 표현학습을 중심으로
               방법론 연구와 산업 현장의 실제 문제 해결을 함께 추구합니다.
             </p>
             <p className="about-lead__en">
               The Data Analytics Lab at UNIST develops novel statistical and data science
-              methodologies—grounded in industrial statistics and deep learning—to solve
+              methodologies—grounded in industrial AI and data science—to solve
               complex engineering problems across manufacturing, logistics, healthcare, and
               transportation. Our research centers on quality improvement, system monitoring
               and anomaly detection, and time-series representation learning.
