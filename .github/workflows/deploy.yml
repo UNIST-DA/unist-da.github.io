@@ -34,11 +34,8 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      # Served at the org root (https://unist-da.github.io/) — no basePath.
       - run: npm run build
-        env:
-          # Project-page URL (username.github.io/homepage_new/). When you later
-          # attach the custom domain (served at root), delete these two lines.
-          PAGES_BASE_PATH: "/homepage_new"
       - uses: actions/upload-pages-artifact@v3
         with:
           path: out
