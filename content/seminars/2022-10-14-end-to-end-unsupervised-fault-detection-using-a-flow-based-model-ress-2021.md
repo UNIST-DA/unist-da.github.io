@@ -8,12 +8,12 @@ keywords: Normalizing Flow
 ---
 
 
-[📄 PDF 자료 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2022-10-14-end-to-end-unsupervised-fault-detection--0.pdf)
+[📄 PDF 자료 ↗](https://github.com/UNIST-DA/unist-da.github.io/releases/download/seminar-assets/2022-10-14-end-to-end-unsupervised-fault-detection--0.pdf)
 
 
 
 
-[📄 PDF 자료 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2022-10-14-end-to-end-unsupervised-fault-detection--1.pdf)
+[📄 PDF 자료 ↗](https://github.com/UNIST-DA/unist-da.github.io/releases/download/seminar-assets/2022-10-14-end-to-end-unsupervised-fault-detection--1.pdf)
 
 
 

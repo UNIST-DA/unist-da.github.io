@@ -31,7 +31,7 @@ maintain the temporal correlations between decisions (state–action pairs). Our
 
 
 
-[📄 PDF 자료 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2025-12-08-oil-ad-an-anomaly-detection-framework-fo-0.pdf)
+[📄 PDF 자료 ↗](https://github.com/UNIST-DA/unist-da.github.io/releases/download/seminar-assets/2025-12-08-oil-ad-an-anomaly-detection-framework-fo-0.pdf)
 
 
 

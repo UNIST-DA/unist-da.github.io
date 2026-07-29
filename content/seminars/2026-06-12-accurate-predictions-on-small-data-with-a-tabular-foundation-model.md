@@ -8,9 +8,9 @@ keywords: foundation model
 ---
 
 
-[📄 첨부파일 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2026-06-12-accurate-predictions-on-small-data-with--0.pdf)
+[📄 첨부파일 ↗](https://github.com/UNIST-DA/unist-da.github.io/releases/download/seminar-assets/2026-06-12-accurate-predictions-on-small-data-with--0.pdf)
 
 
 
 
-[📄 첨부파일 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2026-06-12-accurate-predictions-on-small-data-with--1.pdf)
+[📄 첨부파일 ↗](https://github.com/UNIST-DA/unist-da.github.io/releases/download/seminar-assets/2026-06-12-accurate-predictions-on-small-data-with--1.pdf)

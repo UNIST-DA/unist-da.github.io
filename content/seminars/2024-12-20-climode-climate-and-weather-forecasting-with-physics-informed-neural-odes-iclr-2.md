@@ -37,12 +37,12 @@ state of the art.
 
 
 
-[📄 첨부파일 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2024-12-20-climode-climate-and-weather-forecasting--0.pdf)
+[📄 첨부파일 ↗](https://github.com/UNIST-DA/unist-da.github.io/releases/download/seminar-assets/2024-12-20-climode-climate-and-weather-forecasting--0.pdf)
 
 
 
 
-[📄 첨부파일 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2024-12-20-climode-climate-and-weather-forecasting--1.pptx)
+[📄 첨부파일 ↗](https://github.com/UNIST-DA/unist-da.github.io/releases/download/seminar-assets/2024-12-20-climode-climate-and-weather-forecasting--1.pptx)
 
 
 

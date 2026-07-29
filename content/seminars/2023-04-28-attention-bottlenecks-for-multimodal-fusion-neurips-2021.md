@@ -33,7 +33,7 @@ Humans perceive the world by concurrently processing and fusing high-dimensional
 
 
 
-[📄 PDF 자료 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2023-04-28-attention-bottlenecks-for-multimodal-fus-0.pdf)
+[📄 PDF 자료 ↗](https://github.com/UNIST-DA/unist-da.github.io/releases/download/seminar-assets/2023-04-28-attention-bottlenecks-for-multimodal-fus-0.pdf)
 
 
 

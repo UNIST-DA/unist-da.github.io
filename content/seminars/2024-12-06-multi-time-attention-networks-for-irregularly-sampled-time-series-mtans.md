@@ -32,7 +32,7 @@ Irregular sampling occurs in many time series modeling applications where it pre
 
 
 
-[📄 첨부파일 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2024-12-06-multi-time-attention-networks-for-irregu-0.pdf)
+[📄 첨부파일 ↗](https://github.com/UNIST-DA/unist-da.github.io/releases/download/seminar-assets/2024-12-06-multi-time-attention-networks-for-irregu-0.pdf)
 
 
 

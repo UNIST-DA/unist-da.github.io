@@ -8,4 +8,4 @@ keywords: semi-supervised learning, missingness data, Image Representation
 ---
 
 
-[📄 PDF 자료 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2026-04-10-are-labels-informative-in-semi-supervise-0.pdf)
+[📄 PDF 자료 ↗](https://github.com/UNIST-DA/unist-da.github.io/releases/download/seminar-assets/2026-04-10-are-labels-informative-in-semi-supervise-0.pdf)

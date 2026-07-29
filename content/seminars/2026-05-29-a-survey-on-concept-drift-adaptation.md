@@ -30,7 +30,7 @@ Concept drift primarily refers to an online supervised learning scenario when th
 
 
 
-[📄 PDF 자료 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2026-05-29-a-survey-on-concept-drift-adaptation-0.pdf)
+[📄 PDF 자료 ↗](https://github.com/UNIST-DA/unist-da.github.io/releases/download/seminar-assets/2026-05-29-a-survey-on-concept-drift-adaptation-0.pdf)
 
 
 

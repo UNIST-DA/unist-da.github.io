@@ -21,7 +21,7 @@ Evidence from Semiconductor Manufacturing
 
 
 
-[📄 첨부파일 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2025-11-17-using-explainable-artificial-intelligenc-0.pdf)
+[📄 첨부파일 ↗](https://github.com/UNIST-DA/unist-da.github.io/releases/download/seminar-assets/2025-11-17-using-explainable-artificial-intelligenc-0.pdf)
 
 
 

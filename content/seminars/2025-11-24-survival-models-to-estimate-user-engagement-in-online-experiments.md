@@ -8,4 +8,4 @@ keywords: Survival Analysis, User Engagement
 ---
 
 
-[📄 PDF 자료 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2025-11-24-survival-models-to-estimate-user-engagem-0.pdf)
+[📄 PDF 자료 ↗](https://github.com/UNIST-DA/unist-da.github.io/releases/download/seminar-assets/2025-11-24-survival-models-to-estimate-user-engagem-0.pdf)

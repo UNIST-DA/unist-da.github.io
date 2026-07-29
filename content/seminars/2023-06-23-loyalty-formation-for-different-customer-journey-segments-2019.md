@@ -38,7 +38,7 @@ web appendix
 
 
 
-[📄 첨부파일 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2023-06-23-loyalty-formation-for-different-customer-0.pdf)
+[📄 첨부파일 ↗](https://github.com/UNIST-DA/unist-da.github.io/releases/download/seminar-assets/2023-06-23-loyalty-formation-for-different-customer-0.pdf)
 
 
 
@@ -46,7 +46,7 @@ web appendix
 
 
 
-[📄 PDF 자료 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2023-06-23-loyalty-formation-for-different-customer-1.pdf)
+[📄 PDF 자료 ↗](https://github.com/UNIST-DA/unist-da.github.io/releases/download/seminar-assets/2023-06-23-loyalty-formation-for-different-customer-1.pdf)
 
 
 

@@ -8,4 +8,4 @@ keywords: Contrastive learning, Time-series anomaly detection, Transformer
 ---
 
 
-[📄 첨부파일 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2026-02-20-sensorscan-self-supervised-learning-and--0.pdf)
+[📄 첨부파일 ↗](https://github.com/UNIST-DA/unist-da.github.io/releases/download/seminar-assets/2026-02-20-sensorscan-self-supervised-learning-and--0.pdf)

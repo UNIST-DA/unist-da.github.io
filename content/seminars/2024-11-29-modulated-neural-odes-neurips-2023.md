@@ -31,7 +31,7 @@ Neural ordinary differential equations (NODEs) have been proven useful for learn
 
 
 
-[📄 PDF 자료 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2024-11-29-modulated-neural-odes-neurips-2023-0.pdf)
+[📄 PDF 자료 ↗](https://github.com/UNIST-DA/unist-da.github.io/releases/download/seminar-assets/2024-11-29-modulated-neural-odes-neurips-2023-0.pdf)
 
 
 

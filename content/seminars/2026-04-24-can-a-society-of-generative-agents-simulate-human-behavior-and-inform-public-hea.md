@@ -11,7 +11,7 @@ keywords: LLM, Agent Based Modeling, Simulation
 
 
 
-[📄 PDF 자료 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2026-04-24-can-a-society-of-generative-agents-simul-0.pdf)
+[📄 PDF 자료 ↗](https://github.com/UNIST-DA/unist-da.github.io/releases/download/seminar-assets/2026-04-24-can-a-society-of-generative-agents-simul-0.pdf)
 
 
 

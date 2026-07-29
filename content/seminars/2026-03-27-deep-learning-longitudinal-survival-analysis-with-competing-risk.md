@@ -32,7 +32,7 @@ Survival analysis has been extensively utilized to analyze when the event of int
 
 
 
-[📄 PDF 자료 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2026-03-27-deep-learning-longitudinal-survival-anal-0.pdf)
+[📄 PDF 자료 ↗](https://github.com/UNIST-DA/unist-da.github.io/releases/download/seminar-assets/2026-03-27-deep-learning-longitudinal-survival-anal-0.pdf)
 
 
 

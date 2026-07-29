@@ -31,7 +31,7 @@ One main challenge in time series anomaly detection (TSAD) is the lack of labell
 
 
 
-[📄 PDF 자료 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2025-03-14-carla-self-supervised-contrastive-repres-0.pdf)
+[📄 PDF 자료 ↗](https://github.com/UNIST-DA/unist-da.github.io/releases/download/seminar-assets/2025-03-14-carla-self-supervised-contrastive-repres-0.pdf)
 
 
 

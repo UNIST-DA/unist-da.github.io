@@ -8,9 +8,9 @@ keywords: Uncertainty Estimation
 ---
 
 
-[📄 첨부파일 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2026-01-05-uncertainty-quantification-based-on-conf-0.pdf)
+[📄 첨부파일 ↗](https://github.com/UNIST-DA/unist-da.github.io/releases/download/seminar-assets/2026-01-05-uncertainty-quantification-based-on-conf-0.pdf)
 
 
 
 
-[📄 PDF 자료 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2026-01-05-uncertainty-quantification-based-on-conf-1.pdf)
+[📄 PDF 자료 ↗](https://github.com/UNIST-DA/unist-da.github.io/releases/download/seminar-assets/2026-01-05-uncertainty-quantification-based-on-conf-1.pdf)
