@@ -99,14 +99,14 @@ export const externalLinks = [
 
 // Lab Life — photos for the full-bleed gallery band.
 export const galleryPhotos = [
-  { src: "/assets/main/main_homecoming.jpg", caption: "Homecoming" },
-  { src: "/assets/activity/Lab_Events/spring_2025.webp", caption: "Cherry Blossom Picnic" },
-  { src: "/assets/activity/Lab_Events/graduation_2025.webp", caption: "Graduation 2025" },
-  { src: "/assets/activity/Lab_Events/INFORMS_10_28.jpg", caption: "INFORMS 2025" },
-  { src: "/assets/activity/Lab_Events/Homecoming_11_14.jpg", caption: "CIKM · Seoul" },
-  { src: "/assets/activity/Lab_Events/movie_night_2025.webp", caption: "Movie Night" },
-  { src: "/assets/activity/Lab_Events/bbq_2024.webp", caption: "Lab BBQ" },
-  { src: "/assets/activity/Lab_Events/talk_concert.jpg", caption: "IE Talk Concert" },
+  { src: "/assets/activity/Lab_Events/QCRE_awards_2026.jpg", caption: "QCRE Awards" },
+  { src: "/assets/activity/Lab_Events/prof_birthday_2026_1.jpg", caption: "Professor's Birthday" },
+  { src: "/assets/activity/Lab_Events/cherry_1.jpg", caption: "Cherry Blossom" },
+  { src: "/assets/activity/Lab_Events/Picnic.jpg", caption: "Pizza Picnic" },
   { src: "/assets/activity/Lab_Events/spring_unity_2026.jpg", caption: "Spring Unity" },
-  { src: "/assets/about/homecoming_2024.webp", caption: "Homecoming 2024" },
+  { src: "/assets/activity/Lab_Events/CIKM_group_11_14.jpg", caption: "CIKM · Seoul" },
+  { src: "/assets/activity/Lab_Events/Homecoming_11_14.jpg", caption: "DA Lab Homecoming" },
+  { src: "/assets/activity/Lab_Events/KIIE_11_8.jpg", caption: "KIIE Fall" },
+  { src: "/assets/activity/Lab_Events/Prof_birth.webp", caption: "Professor's Birthday" },
+  { src: "/assets/activity/Lab_Events/spring_2025.webp", caption: "Cherry Blossom Picnic" },
 ];
