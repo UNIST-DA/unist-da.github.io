@@ -1,16 +1,23 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Sans_KR, IBM_Plex_Mono } from "next/font/google";
+import localFont from "next/font/local";
+import { IBM_Plex_Mono } from "next/font/google";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ConditionalFooter } from "@/components/conditional-footer";
 import { site } from "@/data/site";
 import "./globals.css";
 
-// IBM Plex — authentic Carbon typography, with Korean glyph coverage.
-const plex = IBM_Plex_Sans_KR({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+// SUIT — Korean-first variable-feel sans, licensed under OFL 1.1.
+const plex = localFont({
+  src: [
+    { path: "./fonts/SUIT-Light.otf", weight: "300", style: "normal" },
+    { path: "./fonts/SUIT-Regular.otf", weight: "400", style: "normal" },
+    { path: "./fonts/SUIT-Medium.otf", weight: "500", style: "normal" },
+    { path: "./fonts/SUIT-SemiBold.otf", weight: "600", style: "normal" },
+    { path: "./fonts/SUIT-Bold.otf", weight: "700", style: "normal" },
+  ],
   variable: "--font-plex",
+  display: "swap",
 });
 const plexMono = IBM_Plex_Mono({
   subsets: ["latin"],

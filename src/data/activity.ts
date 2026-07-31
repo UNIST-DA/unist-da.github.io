@@ -23,7 +23,7 @@ export const events: EventItem[] = [
     "detail": "DA Lab teams won second place and honorable mentions at the IISE QCRE Data Competition."
   },
   {
-    "date": "2026-05-19",
+    "date": "2026-07-06",
     "title": "ICQSR Data Challenge Award",
     "image": "/assets/activity/Lab_Events/ICQSR_award_2026_1.jpg",
     "detail": "Team Everpurple won third place at the 2026 ICQSR Data Challenge in Hong Kong."
