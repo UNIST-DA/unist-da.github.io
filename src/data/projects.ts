@@ -14,6 +14,14 @@ const startKey = (period: string) => Number(period.slice(0, 7).replace(".", ""))
 
 export const projects: Project[] = ([
   {
+    slug: "cobot-rul",
+    title: "Predictive Maintenance and Remaining Useful Life Prediction for Collaborative Robots in Shipbuilding",
+    image: "/assets/research/projects/cobot-rul-1.jpg",
+    summary:
+      "Developing predictive-maintenance and remaining-useful-life (RUL) prediction models for collaborative robots operating in shipyard manufacturing, as part of a national multimodal foundation model R&D program.",
+    period: "2026.03 –",
+  },
+  {
     slug: "lg-lqc",
     title: "Fault Detection via Domain-Knowledge-Based Training Data Refinement",
     image: "/assets/research/projects/lg-lqc-1.png",

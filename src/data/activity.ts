@@ -5,6 +5,36 @@ export type EventItem = { date: string; title: string; image?: string; detail?: 
 
 export const events: EventItem[] = [
   {
+    "date": "2026-07-28",
+    "title": "Visiting Students from Thailand",
+    "image": "/assets/activity/Lab_Events/visiting_students_thailand_1.jpg",
+    "detail": "Visiting students from Thailand took a photo with the professor after their final presentation."
+  },
+  {
+    "date": "2026-06-04",
+    "title": "2026 KIIE Spring Joint Conference",
+    "image": "/assets/activity/Lab_Events/KIIE_2026_spring_1.jpg",
+    "detail": "Lab members presented their research at the 2026 Korean Institute of Industrial Engineers Spring Joint Conference in Gyeongju."
+  },
+  {
+    "date": "2026-05-19",
+    "title": "QCRE Competition Awards",
+    "image": "/assets/activity/Lab_Events/QCRE_awards_2026.jpg",
+    "detail": "DA Lab teams won second place and honorable mentions at the IISE QCRE Data Competition."
+  },
+  {
+    "date": "2026-05-19",
+    "title": "ICQSR Data Challenge Award",
+    "image": "/assets/activity/Lab_Events/ICQSR_award_2026_1.jpg",
+    "detail": "Team Everpurple won third place at the 2026 ICQSR Data Challenge in Hong Kong."
+  },
+  {
+    "date": "2026-04-30",
+    "title": "Professor's Birthday Celebration",
+    "image": "/assets/activity/Lab_Events/prof_birthday_2026_1.jpg",
+    "detail": "Lab members celebrated our professor's birthday together."
+  },
+  {
     "date": "2026-04-07",
     "title": "Cherry Blossom Pizza Picnic",
     "image": "/assets/activity/Lab_Events/Picnic.jpg",

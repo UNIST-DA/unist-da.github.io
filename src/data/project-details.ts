@@ -14,6 +14,17 @@ export type ProjectDetail = {
 const A = "/assets/research/projects";
 
 export const projectDetails: Record<string, ProjectDetail> = {
+  "cobot-rul": {
+    organizer: "IITP (Institute of Information & Communications Technology Planning & Evaluation)",
+    category: "AI in Quality Engineering",
+    tags: ["Collaborative Robots", "Predictive Maintenance", "Remaining Useful Life", "Foundation Model", "Shipbuilding"],
+    sections: [
+      { heading: "Motivation", body: ["In shipbuilding, collaborative robots operate under highly variable, ship-specific conditions, so robot maintenance still relies on experience-based, manual judgment rather than systematic prediction.", "Existing rule-based and single-task AI/ML approaches struggle to generalize across changing designs, new ship types, and heterogeneous multimodal data (drawings, schedules, sensor logs)."] },
+      { heading: "Goal", body: ["As part of a national multimodal foundation-model R&D program (with HD Hyundai Heavy Industries, HD Korea Shipbuilding & Offshore Engineering, and Crowdworks), lead the predictive-maintenance track: anomaly detection, fault diagnosis, remaining useful life (RUL) prediction, and maintenance scheduling for collaborative robots.", "Build a digital twin of robot health that supports explainable, dialogue-based maintenance decisions."] },
+      { heading: "Methodology", body: ["Define the state-space and data pipeline for collaborative-robot condition monitoring, then develop an adaptive physics-informed RUL prediction model that stays reliable under small data and shifting work conditions.", "Extend to a Bayesian neural network for RUL distributions and confidence intervals, feeding a multi-stage (normal/caution/warning/risk) alert system.", "In later stages, integrate diagnosis into an LLM-based conversational maintenance agent and extend to multi-robot coordination."] },
+    ],
+    figures: [{ src: `${A}/cobot-rul-1.jpg` }],
+  },
   "lg-lqc": {
     organizer: "LG Electronics",
     category: "System Monitoring & Anomaly Detection",
