@@ -3,30 +3,15 @@
 // Free of node:fs so Client components can import the type.
 export type EventItem = { date: string; title: string; image?: string; detail?: string };
 
+// Order matters: the Events grid shows the first `cols × 2` items as-is (not
+// date-sorted), so the lab-curated highlights come first, then the rest
+// (date-desc) under "전체 보기".
 export const events: EventItem[] = [
-  {
-    "date": "2026-07-28",
-    "title": "Visiting Students from Thailand",
-    "image": "/assets/activity/Lab_Events/visiting_students_thailand_1.jpg",
-    "detail": "Visiting students from Thailand took a photo with the professor after their final presentation."
-  },
-  {
-    "date": "2026-06-04",
-    "title": "2026 KIIE Spring Joint Conference",
-    "image": "/assets/activity/Lab_Events/KIIE_2026_spring_1.jpg",
-    "detail": "Lab members presented their research at the 2026 Korean Institute of Industrial Engineers Spring Joint Conference in Gyeongju."
-  },
   {
     "date": "2026-05-19",
     "title": "QCRE Competition Awards",
     "image": "/assets/activity/Lab_Events/QCRE_awards_2026.jpg",
     "detail": "DA Lab teams won second place and honorable mentions at the IISE QCRE Data Competition."
-  },
-  {
-    "date": "2026-07-06",
-    "title": "ICQSR Data Challenge Award",
-    "image": "/assets/activity/Lab_Events/ICQSR_award_2026_1.jpg",
-    "detail": "Team Everpurple won third place at the 2026 ICQSR Data Challenge in Hong Kong."
   },
   {
     "date": "2026-04-30",
@@ -36,15 +21,15 @@ export const events: EventItem[] = [
   },
   {
     "date": "2026-04-07",
-    "title": "Cherry Blossom Pizza Picnic",
-    "image": "/assets/activity/Lab_Events/Picnic.jpg",
-    "detail": "Lab Members enjoyed picnic with delicious pizza."
-  },
-  {
-    "date": "2026-04-07",
     "title": "Cherry Blossom Lab Photo",
     "image": "/assets/activity/Lab_Events/cherry_1.jpg",
     "detail": "Lab Members took picture under beautiful cherry blossom."
+  },
+  {
+    "date": "2026-04-07",
+    "title": "Cherry Blossom Pizza Picnic",
+    "image": "/assets/activity/Lab_Events/Picnic.jpg",
+    "detail": "Lab Members enjoyed picnic with delicious pizza."
   },
   {
     "date": "2026-02-27",
@@ -65,6 +50,42 @@ export const events: EventItem[] = [
     "detail": "Held the 2025 DA Lab Homecoming event with professors, students, and alumni."
   },
   {
+    "date": "2025-11-08",
+    "title": "2025 KIIE Fall Conference",
+    "image": "/assets/activity/Lab_Events/KIIE_11_8.jpg",
+    "detail": "Participated in the 2025 KIIE Fall Conference held in KAIST."
+  },
+  {
+    "date": "2025-05-01",
+    "title": "Professor's Birthday Celebration",
+    "image": "/assets/activity/Lab_Events/Prof_birth.webp",
+    "detail": "The lab celebrated our professor's birthday."
+  },
+  {
+    "date": "2025-04-08",
+    "title": "Cherry Blossom Picnic",
+    "image": "/assets/activity/Lab_Events/spring_2025.webp",
+    "detail": "Enjoyed an outdoor picnic among the campus cherry blossoms."
+  },
+  {
+    "date": "2026-07-28",
+    "title": "Visiting Students from Thailand",
+    "image": "/assets/activity/Lab_Events/visiting_students_thailand_1.jpg",
+    "detail": "Visiting students from Thailand took a photo with the professor after their final presentation."
+  },
+  {
+    "date": "2026-07-06",
+    "title": "ICQSR Data Challenge Award",
+    "image": "/assets/activity/Lab_Events/ICQSR_award_2026_1.jpg",
+    "detail": "Team Everpurple won third place at the 2026 ICQSR Data Challenge in Hong Kong."
+  },
+  {
+    "date": "2026-06-04",
+    "title": "2026 KIIE Spring Joint Conference",
+    "image": "/assets/activity/Lab_Events/KIIE_2026_spring_1.jpg",
+    "detail": "Lab members presented their research at the 2026 Korean Institute of Industrial Engineers Spring Joint Conference in Gyeongju."
+  },
+  {
     "date": "2025-11-12",
     "title": "CIKM 2025 Poster Presentation",
     "image": "/assets/activity/Lab_Events/CIKM_poster_11_12.jpg",
@@ -75,12 +96,6 @@ export const events: EventItem[] = [
     "title": "CIKM 2025 Tutorial Session",
     "image": "/assets/activity/Lab_Events/CIKM_tutorial_11_11_prof.jpg",
     "detail": "Tutorial sessions at CIKM 2025 in Seoul."
-  },
-  {
-    "date": "2025-11-08",
-    "title": "2025 KIIE Fall Conference",
-    "image": "/assets/activity/Lab_Events/KIIE_11_8.jpg",
-    "detail": "Participated in the 2025 KIIE Fall Conference held in KAIST."
   },
   {
     "date": "2025-10-30",
@@ -99,18 +114,6 @@ export const events: EventItem[] = [
     "title": "Lab Movie Night",
     "image": "/assets/activity/Lab_Events/movie_night_2025.webp",
     "detail": "Enjoyed a movie night with lab members & U-SURF."
-  },
-  {
-    "date": "2025-05-01",
-    "title": "Professor's Birthday Celebration",
-    "image": "/assets/activity/Lab_Events/Prof_birth.webp",
-    "detail": "The lab celebrated our professor's birthday."
-  },
-  {
-    "date": "2025-04-08",
-    "title": "Cherry Blossom Picnic",
-    "image": "/assets/activity/Lab_Events/spring_2025.webp",
-    "detail": "Enjoyed an outdoor picnic among the campus cherry blossoms."
   },
   {
     "date": "2025-02-20",

@@ -9,12 +9,14 @@ import "./globals.css";
 
 // SUIT — Korean-first variable-feel sans, licensed under OFL 1.1.
 const plex = localFont({
+  // woff2, not otf: otf webfonts load inconsistently across browsers (Safari
+  // could fall back to Apple SD Gothic), and woff2 is ~45% smaller.
   src: [
-    { path: "./fonts/SUIT-Light.otf", weight: "300", style: "normal" },
-    { path: "./fonts/SUIT-Regular.otf", weight: "400", style: "normal" },
-    { path: "./fonts/SUIT-Medium.otf", weight: "500", style: "normal" },
-    { path: "./fonts/SUIT-SemiBold.otf", weight: "600", style: "normal" },
-    { path: "./fonts/SUIT-Bold.otf", weight: "700", style: "normal" },
+    { path: "./fonts/SUIT-Light.woff2", weight: "300", style: "normal" },
+    { path: "./fonts/SUIT-Regular.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/SUIT-Medium.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/SUIT-SemiBold.woff2", weight: "600", style: "normal" },
+    { path: "./fonts/SUIT-Bold.woff2", weight: "700", style: "normal" },
   ],
   variable: "--font-plex",
   display: "swap",
