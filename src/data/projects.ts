@@ -138,7 +138,7 @@ export const projects: Project[] = ([
   {
     slug: "navermap-transport",
     title: "User-Centered Evaluation of Public Transit Route Recommendations",
-    image: "/assets/research/projects/none.png",
+    image: "/assets/research/projects/navermap-transport-1.png",
     summary:
       "Evaluating whether public-transit route recommendations provide practically useful choices for users.",
     period: "2026.03 –",

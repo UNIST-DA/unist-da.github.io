@@ -188,6 +188,6 @@ export const projectDetails: Record<string, ProjectDetail> = {
       { heading: "Methodology", body: ["Analyze the characteristics of recommended transit routes using mobility data.", "Consider multiple factors — time, cost, and travel burden.", "Evaluate whether the list provides practically meaningful choices, with interpretable criteria applicable to real services."] },
       { heading: "Contribution", body: ["Organize user-centered criteria for evaluating transit route recommendations.", "Design an evaluation framework for quantitatively analyzing recommendation quality.", "Provide foundational analysis to support future improvements to real-world mobility services."] },
     ],
-    figures: [],
+    figures: [{ src: `${A}/navermap-transport-1.png`, caption: "Pipeline from transportation data to an enhanced recommended route list via route representation and evaluation." }],
   },
 };
