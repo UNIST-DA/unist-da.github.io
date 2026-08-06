@@ -2,7 +2,7 @@
 date: 2025-10-13
 title: Large Language Models can Deliver Accurate and Interpretable Time Series Anomaly Detection
 category: Lab Seminar
-presenter: Ji_hyun
+presenter: 고지현
 url: https://www.notion.so/28c046396f7e80e28a4de0b911e5cf9a
 keywords: LLM, Anomaly Detection
 ---
