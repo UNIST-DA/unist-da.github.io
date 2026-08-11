@@ -1,7 +1,7 @@
 ---
 date: 2026-04-24
 title: Can a society of generative agents simulate human behavior and inform public health policy? A case study on vaccine hesitancy. In Proceedings of the Conference on Language Modeling
-category: Lab Seminar
+category: Paper Review
 presenter: 고지현
 url: https://www.notion.so/34c046396f7e8073a480e19fff727112
 keywords: LLM, Agent Based Modeling, Simulation

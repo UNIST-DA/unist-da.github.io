@@ -1,7 +1,7 @@
 ---
 date: 2026-07-29
 title: Fast Greedy MAP Inference for Determinantal Point Process to Improve Recommendation Diversity
-category: Lab Seminar
+category: Paper Review
 presenter: 이시은
 url: https://www.notion.so/3ac046396f7e8003900cfbdcc1a98788
 keywords: Recommendation system, Relevance-diversity

@@ -1,7 +1,7 @@
 ---
 date: 2026-05-08
 title: AXIS: Explainable Time Series Anomaly Detection With Large Language Models
-category: Lab Seminar
+category: Paper Review
 presenter: 조용진
 url: https://www.notion.so/35a046396f7e805692b2f1c0726b7750
 keywords: XAI, Anomaly Detection, LLM, soft prompting

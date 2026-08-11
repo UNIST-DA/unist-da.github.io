@@ -1,7 +1,7 @@
 ---
 date: 2026-03-13
 title: IdealTSF: Can Non-Ideal Data Contribute to Enhancing the Performance of Time Series Forecasting Models?
-category: Lab Seminar
+category: Paper Review
 presenter: Yongmin Kim
 url: https://www.notion.so/322046396f7e8082a345e977cb2f5b61
 keywords: optimization, Forecasting, time series

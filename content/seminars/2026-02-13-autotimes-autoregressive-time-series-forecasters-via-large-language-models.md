@@ -1,7 +1,7 @@
 ---
 date: 2026-02-13
 title: AutoTimes: Autoregressive Time Series Forecasters via Large Language Models
-category: Lab Seminar
+category: Paper Review
 presenter: 고지현
 url: https://www.notion.so/308046396f7e80bf8076d85df7673d72
 keywords: LLM, time-series forecasting, Multi-variate
