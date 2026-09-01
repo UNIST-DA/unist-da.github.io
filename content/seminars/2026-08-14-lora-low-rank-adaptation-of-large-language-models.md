@@ -1,7 +1,7 @@
 ---
 date: 2026-08-14
 title: LoRA: Low Rank Adaptation of large language models
-category: Lab Seminar
+category: Paper Review
 presenter: 조용진
 url: https://www.notion.so/3bc046396f7e80318271f0cdd7098a3e
 keywords: LLM, Parameter Efficient Fine Tuning, fine tuning

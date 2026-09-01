@@ -1,7 +1,7 @@
 ---
 date: 2026-08-05
 title: LAMBDA: A Large Model Based Data Agent
-category: Lab Seminar
+category: Paper Review
 presenter: 고지현
 url: https://www.notion.so/3b3046396f7e80bb8c1cff2241c0a84b
 keywords: Multi-Agent, LLM
