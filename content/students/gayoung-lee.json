@@ -1,0 +1,43 @@
+{
+  "order": 13,
+  "name": "Gayoung Lee",
+  "role": "M.S. Student",
+  "period": "2026.09 —",
+  "photo": "/assets/members/students/gayoung-lee.jpeg",
+  "tags": [
+    "Manufacturing AI",
+    "Anomaly Detection",
+    "Computer Vision"
+  ],
+  "links": [
+    {
+      "label": "GitHub",
+      "url": "https://github.com/GayoungLee09"
+    }
+  ],
+  "about": "I am a part-time researcher at the Data Analytics Lab at UNIST, pursuing an M.S. degree at the Novatus Graduate School of Industrial AI. I also work as a Vision AI Engineer at DMTS, developing deep learning-based visual inspection systems for automotive manufacturing. My research focuses on the challenges of maintaining reliable and consistent performance of AI-based visual inspection systems under changing manufacturing environments.",
+  "interests": [
+    "Manufacturing AI",
+    "Industrial Visual Inspection",
+    "Visual Anomaly Detection",
+    "Robustness under Changing Manufacturing Conditions"
+  ],
+  "milestones": [
+    {
+      "start": "2026.09",
+      "title": "M.S. Student, Industrial AI",
+      "note": "UNIST, Novatus Graduate School"
+    },
+    {
+      "start": "2024.05",
+      "title": "Research Engineer, Vision Development Team",
+      "note": "DMTS"
+    },
+    {
+      "start": "2019.03",
+      "end": "2023.08",
+      "title": "B.S. in Industrial and Management Engineering (Double Major in Computer and Electronic Systems Engineering)",
+      "note": "Hankuk University of Foreign Studies"
+    }
+  ]
+}

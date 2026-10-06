@@ -1,0 +1,38 @@
+{
+  "order": 12,
+  "name": "Yonghee Jeong",
+  "role": "Combined M.S.–Ph.D.",
+  "period": "2026.09 —",
+  "photo": "/assets/members/students/yonghee-jeong.png",
+  "email": "dydgml810@unist.ac.kr",
+  "tags": [
+    "Anomaly Detection",
+    "Predictive Maintenance",
+    "Time-Series Analysis"
+  ],
+  "links": [
+    {
+      "label": "GitHub",
+      "url": "https://github.com/dydgml810"
+    }
+  ],
+  "about": "I'm an M.S./Ph.D. combined student in the Department of Industrial Engineering at UNIST. My research interests include anomaly detection, predictive maintenance, and time-series analysis, with a particular focus on their applications to manufacturing systems.",
+  "interests": [
+    "Time-Series anomaly detection",
+    "Predictive maintenance for smart manufacturing",
+    "Reliability and efficiency of manufacturing systems"
+  ],
+  "milestones": [
+    {
+      "start": "2026.09",
+      "title": "M.S./Ph.D. Combined, Industrial Engineering",
+      "note": "UNIST, Data Analytics Lab"
+    },
+    {
+      "start": "2019.02",
+      "end": "2026.02",
+      "title": "B.S. in Industrial Engineering",
+      "note": "Kangwon National University"
+    }
+  ]
+}
