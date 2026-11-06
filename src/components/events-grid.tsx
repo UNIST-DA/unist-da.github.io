@@ -10,10 +10,10 @@ import type { EventItem } from "@/data/activity";
 const ROWS = 2;
 
 const fmt = (iso: string) =>
-  new Date(iso + "T00:00:00").toLocaleDateString("ko-KR", {
+  new Date((iso.length === 7 ? `${iso}-01` : iso) + "T00:00:00").toLocaleDateString("ko-KR", {
     year: "numeric",
     month: "2-digit",
-    day: "2-digit",
+    ...(iso.length === 7 ? {} : { day: "2-digit" as const }),
   });
 
 export function EventsGrid({ events }: { events: EventItem[] }) {

@@ -3,10 +3,44 @@
 // Free of node:fs so Client components can import the type.
 export type EventItem = { date: string; title: string; image?: string; detail?: string };
 
-// Order matters: the Events grid shows the first `cols × 2` items as-is (not
-// date-sorted), so the lab-curated highlights come first, then the rest
-// (date-desc) under "전체 보기".
+// Always show the latest events first, including newly added entries.
 export const events: EventItem[] = [
+  {
+    "date": "2026-11-04",
+    "title": "INFORMS 2026",
+    "image": "/assets/activity/Lab_Events/informs_2026.jpg",
+    "detail": "Lab members participated in INFORMS 2026."
+  },
+  {
+    "date": "2026-10-29",
+    "title": "National Library Conference 2026",
+    "image": "/assets/activity/Lab_Events/national_library_conference_2026.jpg",
+    "detail": "Lab members participated in the 2026 National Library Conference."
+  },
+  {
+    "date": "2026-10-28",
+    "title": "Autumn Lab Picnic",
+    "image": "/assets/activity/Lab_Events/autumn_picnic_2026.jpg",
+    "detail": "Lab members enjoyed an autumn picnic and barbecue together."
+  },
+  {
+    "date": "2026-09-29",
+    "title": "Kakao 돛",
+    "image": "/assets/activity/Lab_Events/kakao_dot_2026.jpg",
+    "detail": "Lab members participated in the Kakao 돛 event."
+  },
+  {
+    "date": "2026-09-08",
+    "title": "Professor's Full Professorship Celebration at Yonsei",
+    "image": "/assets/activity/Lab_Events/full_professorship_celebration_2026.jpg",
+    "detail": "Lab members gathered at Yonsei University to celebrate Prof. Sungil Kim’s promotion to Full Professor."
+  },
+  {
+    "date": "2026-08-18",
+    "title": "IEEE CASE 2026",
+    "image": "/assets/activity/Lab_Events/ieee_case_2026.jpg",
+    "detail": "Lab members participated in IEEE CASE 2026."
+  },
   {
     "date": "2026-05-19",
     "title": "QCRE Competition Awards",
@@ -187,4 +221,4 @@ export const events: EventItem[] = [
     "image": "/assets/activity/Lab_Events/blossom_2021.webp",
     "detail": "Enjoyed a picnic under the cherry blossoms."
   }
-];
+].sort((a, b) => b.date.localeCompare(a.date));
